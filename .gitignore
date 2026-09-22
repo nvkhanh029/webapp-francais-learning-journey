@@ -1,0 +1,32 @@
+# Environment / secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# Frontend dependencies / build output
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+frontend/.vite/
+
+# Backend virtual environment / runtime data
+backend/.venv/
+backend/instance/
+
+# Python generated files
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE / editor local settings
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# OS-generated files
+.DS_Store
+Thumbs.db

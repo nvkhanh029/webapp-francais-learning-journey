@@ -1,0 +1,28 @@
+{
+  "category": "REPLACE: French category title",
+  "category_key": "replace-category-key",
+  "category_sort_order": 10,
+  "category_vi": null,
+  "category_en": null,
+  "topic": "REPLACE: French topic title",
+  "topic_slug": "replace-topic-slug",
+  "topic_sort_order": 10,
+  "topic_vi": null,
+  "topic_en": null,
+  "subtopic": "REPLACE: French subtopic title",
+  "subtopic_key": "replace-subtopic-key",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": null,
+  "subtopic_en": null,
+  "words": [
+    {
+      "french": "REPLACE: French entry",
+      "meaning_vi": "REPLACE: Vietnamese meaning",
+      "meaning_en": "REPLACE: English meaning",
+      "ipa": null,
+      "example_fr": null,
+      "example_vi": null,
+      "example_en": null
+    }
+  ]
+}
