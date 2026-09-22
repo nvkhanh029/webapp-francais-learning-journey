@@ -99,7 +99,7 @@ For a new clone:
 
 ```bash
 git clone https://github.com/nvkhanh029/webapp-francais-learning-journey.git
-cd francais-learning-journey
+cd webapp-francais-learning-journey
 ```
 
 ### 3. Create and activate a virtual environment
