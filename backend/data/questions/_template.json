@@ -1,0 +1,42 @@
+{
+  "learning_unit_slug": "replace-learning-unit-slug",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "REPLACE: Vietnamese prompt",
+      "prompt_en": "REPLACE: English prompt",
+      "explanation_vi": null,
+      "explanation_en": null,
+      "options": [
+        {
+          "text": "REPLACE: correct option",
+          "is_correct": true
+        },
+        {
+          "text": "REPLACE: incorrect option",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "fill_blank",
+      "prompt_vi": "REPLACE: Vietnamese prompt",
+      "prompt_en": "REPLACE: English prompt",
+      "accepted_answers": [
+        "REPLACE: accepted French answer"
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "ordering",
+      "prompt_vi": "REPLACE: Vietnamese prompt",
+      "prompt_en": "REPLACE: English prompt",
+      "pieces": [
+        "REPLACE: first piece",
+        "REPLACE: second piece"
+      ]
+    }
+  ]
+}

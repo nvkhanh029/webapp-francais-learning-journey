@@ -1,0 +1,21 @@
+{
+  "slug": "replace-grammar-slug",
+  "title_fr": "REPLACE: French title",
+  "title_vi": null,
+  "title_en": null,
+  "sort_order": 10,
+  "part": {
+    "key": "replace-part-key",
+    "title_fr": "REPLACE: French title",
+    "title_vi": null,
+    "title_en": null,
+    "sort_order": 10
+  },
+  "chapter": {
+    "key": "replace-chapter-key",
+    "title_fr": "REPLACE: French title",
+    "title_vi": null,
+    "title_en": null,
+    "sort_order": 10
+  }
+}
