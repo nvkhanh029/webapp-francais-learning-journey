@@ -19,7 +19,6 @@ implementation are still team tasks.
 | Feature implementation | Auth, preferences, Dashboard, learner state, content endpoints and Practice business logic are **not implemented** |
 | Curriculum | Templates only. The Content/Data Owner supplies approved demo content |
 | Frontend | Intentionally deferred; `frontend/README.md` only |
-| Verification | See [scaffold status and verification](docs/scaffold-status.md); a passing foundation check is not feature acceptance |
 
 Existing files must be inspected and extended, not recreated in parallel.
 Coding assistants must follow [AGENTS.md](AGENTS.md).
@@ -193,7 +192,7 @@ it is not evidence that demo content is ready.
 
 Once approved source content is added, seeding a fresh initialized database
 loads it. If static content already exists, the seed refuses to replace it.
-**There is no `--reset`, automatic upsert or destructive reseed command in v3.**
+**There is no `--reset`, automatic upsert or destructive reseed command.**
 
 For read-only content checks, use `python seed.py --validate-only`; it does not
 open a database and it prints generated learning-unit slugs for question refs.
