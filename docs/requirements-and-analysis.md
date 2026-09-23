@@ -157,7 +157,19 @@ If an authenticated request reaches language-sensitive application content while
 
 Grammar content shall be organized into lessons based on the chapter/topic structure of a selected grammar reference book.
 
-The MVP does not require all book content to be entered. The system shall be designed so additional lessons can be added later without restructuring the application.
+The content hierarchy shall be:
+
+```text
+Grammar
+└── Part
+    └── Chapter
+        └── Lesson
+```
+- A **Part** represents a major section of the grammar reference structure.
+- A **Chapter** represents a grammar topic or chapter within a Part.
+- A **Lesson** represents the individual learning unit presented to the learner.
+
+The MVP does not require all book content to be entered. The system shall preserve this hierarchy so that additional Parts, Chapters, and Lessons can be added later without restructuring the application.
 
 A Grammar lesson should contain:
 
