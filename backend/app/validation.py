@@ -42,17 +42,6 @@ def require_boolean(body, field):
     return value
 
 
-def require_optional_boolean(body, field):
-    """Return None when the field is absent; otherwise validate it as a boolean.
-
-    Used by partial-update contracts (e.g. PATCH learning-unit state) where a
-    field is only validated/applied when the caller actually supplied it.
-    """
-    if field not in body:
-        return None
-    return require_boolean(body, field)
-
-
 def normalize_email(value):
     if not isinstance(value, str):
         _invalid("email", "Must be a string.")
