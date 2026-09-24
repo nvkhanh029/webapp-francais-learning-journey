@@ -1,0 +1,190 @@
+{
+  "category": "Les commerces",
+  "category_key": "commerces",
+  "category_sort_order": 90,
+  "category_vi": "Cửa hàng và thương mại",
+  "category_en": "Shops and businesses",
+  "topic": "Les courses et les commerces",
+  "topic_slug": "courses-commerces",
+  "topic_sort_order": 10,
+  "topic_vi": "Mua sắm và cửa hàng",
+  "topic_en": "Shopping and stores",
+  "subtopic": "Faire les magasins",
+  "subtopic_key": "faire-les-magasins",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Đi mua sắm",
+  "subtopic_en": "Going shopping",
+  "words": [
+    {
+      "french": "le centre commercial",
+      "meaning_vi": "trung tâm thương mại",
+      "meaning_en": "shopping centre, mall",
+      "ipa": "/sɑ̃tʁ kɔ.mɛʁ.sjal/",
+      "example_fr": "Le centre commercial est plein le samedi.",
+      "example_vi": "Trung tâm thương mại rất đông vào thứ Bảy.",
+      "example_en": "The shopping centre is packed on Saturdays."
+    },
+    {
+      "french": "la boutique",
+      "meaning_vi": "cửa hiệu, shop thời trang",
+      "meaning_en": "boutique, shop",
+      "ipa": "/bu.tik/",
+      "example_fr": "Elle aime cette petite boutique du centre.",
+      "example_vi": "Cô ấy thích cửa hiệu nhỏ này ở trung tâm.",
+      "example_en": "She likes this small boutique downtown."
+    },
+    {
+      "french": "la vitrine",
+      "meaning_vi": "tủ kính trưng bày",
+      "meaning_en": "shop window",
+      "ipa": "/vit.ʁin/",
+      "example_fr": "J'ai vu cette robe en vitrine.",
+      "example_vi": "Tôi đã thấy chiếc váy này trong tủ kính.",
+      "example_en": "I saw this dress in the shop window."
+    },
+    {
+      "french": "faire du lèche-vitrines",
+      "meaning_vi": "đi ngắm hàng (không mua)",
+      "meaning_en": "to go window-shopping",
+      "ipa": "/fɛʁ dy lɛʃ vit.ʁin/",
+      "example_fr": "On fait du lèche-vitrines en ville.",
+      "example_vi": "Chúng tôi đi ngắm hàng trong thành phố.",
+      "example_en": "We are going window-shopping downtown."
+    },
+    {
+      "french": "essayer",
+      "meaning_vi": "thử (quần áo)",
+      "meaning_en": "to try on",
+      "ipa": "/e.se.je/",
+      "example_fr": "Je peux essayer cette chemise ?",
+      "example_vi": "Tôi có thể thử chiếc áo sơ mi này không?",
+      "example_en": "Can I try on this shirt?"
+    },
+    {
+      "french": "la taille",
+      "meaning_vi": "cỡ (quần áo, giày)",
+      "meaning_en": "size",
+      "ipa": "/taj/",
+      "example_fr": "Quelle taille faites-vous ?",
+      "example_vi": "Bạn mặc cỡ nào?",
+      "example_en": "What size are you?"
+    },
+    {
+      "french": "la cabine d'essayage",
+      "meaning_vi": "phòng thử đồ",
+      "meaning_en": "fitting room",
+      "ipa": "/ka.bin dɛ.se.jaʒ/",
+      "example_fr": "Les cabines d'essayage sont au fond.",
+      "example_vi": "Các phòng thử đồ ở phía cuối.",
+      "example_en": "The fitting rooms are at the back."
+    },
+    {
+      "french": "les soldes",
+      "meaning_vi": "đợt giảm giá",
+      "meaning_en": "sales",
+      "ipa": "/sɔld/",
+      "example_fr": "J'ai acheté ce manteau pendant les soldes.",
+      "example_vi": "Tôi đã mua chiếc áo khoác này trong đợt giảm giá.",
+      "example_en": "I bought this coat during the sales."
+    },
+    {
+      "french": "le grand magasin",
+      "meaning_vi": "cửa hàng bách hóa lớn",
+      "meaning_en": "department store",
+      "ipa": "/ɡʁɑ̃ ma.ɡa.zɛ̃/",
+      "example_fr": "On va au grand magasin samedi.",
+      "example_vi": "Chúng tôi đi cửa hàng bách hóa vào thứ Bảy.",
+      "example_en": "We are going to the department store on Saturday."
+    },
+    {
+      "french": "la marque",
+      "meaning_vi": "thương hiệu",
+      "meaning_en": "brand",
+      "ipa": "/maʁk/",
+      "example_fr": "C'est une marque française connue.",
+      "example_vi": "Đó là một thương hiệu Pháp nổi tiếng.",
+      "example_en": "It is a well-known French brand."
+    },
+    {
+      "french": "faire du shopping",
+      "meaning_vi": "đi mua sắm",
+      "meaning_en": "to go shopping",
+      "ipa": "/fɛʁ dy ʃɔ.piŋ/",
+      "example_fr": "Elle fait du shopping tous les samedis.",
+      "example_vi": "Cô ấy đi mua sắm mỗi thứ Bảy.",
+      "example_en": "She goes shopping every Saturday."
+    },
+    {
+      "french": "pas cher",
+      "meaning_vi": "rẻ",
+      "meaning_en": "cheap",
+      "ipa": "/pa ʃɛʁ/",
+      "example_fr": "Ce magasin n'est vraiment pas cher.",
+      "example_vi": "Cửa hàng này thật sự rất rẻ.",
+      "example_en": "This shop is really cheap."
+    },
+    {
+      "french": "la carte de fidélité",
+      "meaning_vi": "thẻ khách hàng thân thiết",
+      "meaning_en": "loyalty card",
+      "ipa": "/kaʁt də fi.de.li.te/",
+      "example_fr": "Avez-vous la carte de fidélité ?",
+      "example_vi": "Bạn có thẻ khách hàng thân thiết không?",
+      "example_en": "Do you have the loyalty card?"
+    },
+    {
+      "french": "la facture",
+      "meaning_vi": "hóa đơn",
+      "meaning_en": "bill, invoice",
+      "ipa": "/fak.tyʁ/",
+      "example_fr": "Pouvez-vous me faire une facture ?",
+      "example_vi": "Bạn có thể xuất hóa đơn cho tôi không?",
+      "example_en": "Can you give me an invoice?"
+    },
+    {
+      "french": "échanger",
+      "meaning_vi": "đổi (hàng)",
+      "meaning_en": "to exchange",
+      "ipa": "/e.ʃɑ̃.ʒe/",
+      "example_fr": "On peut échanger l'article sous trente jours.",
+      "example_vi": "Có thể đổi hàng trong vòng 30 ngày.",
+      "example_en": "You can exchange the item within thirty days."
+    },
+    {
+      "french": "rembourser",
+      "meaning_vi": "hoàn tiền",
+      "meaning_en": "to refund",
+      "ipa": "/ʁɑ̃.buʁ.se/",
+      "example_fr": "Le magasin m'a remboursé sans problème.",
+      "example_vi": "Cửa hàng đã hoàn tiền cho tôi mà không có vấn đề gì.",
+      "example_en": "The shop refunded me without any problem."
+    },
+    {
+      "french": "la galerie marchande",
+      "meaning_vi": "khu phố mua sắm (trong trung tâm)",
+      "meaning_en": "shopping arcade",
+      "ipa": "/gal.ʁi maʁ.ʃɑ̃d/",
+      "example_fr": "La galerie marchande ouvre à dix heures.",
+      "example_vi": "Khu phố mua sắm mở cửa lúc 10 giờ.",
+      "example_en": "The shopping arcade opens at 10 a.m."
+    },
+    {
+      "french": "le sac de shopping",
+      "meaning_vi": "túi mua sắm",
+      "meaning_en": "shopping bag",
+      "ipa": "/sak də ʃɔ.piŋ/",
+      "example_fr": "Elle rentre avec deux sacs de shopping.",
+      "example_vi": "Cô ấy về nhà với hai túi mua sắm.",
+      "example_en": "She comes home with two shopping bags."
+    },
+    {
+      "french": "la préférence",
+      "meaning_vi": "sở thích, sự ưa chuộng",
+      "meaning_en": "preference",
+      "ipa": "/pʁe.fe.ʁɑ̃s/",
+      "example_fr": "J'ai une préférence pour les petites boutiques.",
+      "example_vi": "Tôi thích các cửa hiệu nhỏ hơn.",
+      "example_en": "I have a preference for small boutiques."
+    }
+  ]
+}

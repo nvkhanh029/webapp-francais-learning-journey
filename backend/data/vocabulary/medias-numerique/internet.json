@@ -1,0 +1,190 @@
+{
+  "category": "Les médias et le numérique",
+  "category_key": "medias-numerique",
+  "category_sort_order": 120,
+  "category_vi": "Truyền thông và công nghệ số",
+  "category_en": "Media and digital technology",
+  "topic": "Les médias",
+  "topic_slug": "medias",
+  "topic_sort_order": 10,
+  "topic_vi": "Truyền thông",
+  "topic_en": "The media",
+  "subtopic": "Internet",
+  "subtopic_key": "internet",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Internet",
+  "subtopic_en": "The internet",
+  "words": [
+    {
+      "french": "un site d'information",
+      "meaning_vi": "trang tin tức",
+      "meaning_en": "a news website",
+      "ipa": "/œ̃ sit dɛ̃.fɔʁ.ma.sjɔ̃/",
+      "example_fr": "Je lis un site d'information.",
+      "example_vi": "Tôi đọc một trang tin tức.",
+      "example_en": "I read a news website."
+    },
+    {
+      "french": "la presse en ligne",
+      "meaning_vi": "báo mạng",
+      "meaning_en": "the online press",
+      "ipa": "/la pʁɛs ɑ̃ liɲ/",
+      "example_fr": "La presse en ligne est rapide.",
+      "example_vi": "Báo mạng rất nhanh.",
+      "example_en": "The online press is fast."
+    },
+    {
+      "french": "un blog",
+      "meaning_vi": "blog",
+      "meaning_en": "a blog",
+      "ipa": "/œ̃ blɔɡ/",
+      "example_fr": "Elle tient un blog voyage.",
+      "example_vi": "Cô ấy viết một blog du lịch.",
+      "example_en": "She runs a travel blog."
+    },
+    {
+      "french": "un blogueur",
+      "meaning_vi": "blogger",
+      "meaning_en": "a blogger",
+      "ipa": "/œ̃ blo.ɡœʁ/",
+      "example_fr": "Le blogueur publie chaque jour.",
+      "example_vi": "Blogger đăng bài mỗi ngày.",
+      "example_en": "The blogger posts every day."
+    },
+    {
+      "french": "un article en ligne",
+      "meaning_vi": "bài báo trực tuyến",
+      "meaning_en": "an online article",
+      "ipa": "/œ̃n aʁ.tikl ɑ̃ liɲ/",
+      "example_fr": "Je partage un article en ligne.",
+      "example_vi": "Tôi chia sẻ một bài báo trực tuyến.",
+      "example_en": "I share an online article."
+    },
+    {
+      "french": "une newsletter",
+      "meaning_vi": "bản tin email",
+      "meaning_en": "a newsletter",
+      "ipa": "/yn njuz.lɛ.tœʁ/",
+      "example_fr": "Je reçois la newsletter.",
+      "example_vi": "Tôi nhận bản tin email.",
+      "example_en": "I receive the newsletter."
+    },
+    {
+      "french": "un fil d'actualité",
+      "meaning_vi": "dòng tin tức",
+      "meaning_en": "a news feed",
+      "ipa": "/œ̃ fil dak.tɥa.li.te/",
+      "example_fr": "Le fil d'actualité se met à jour.",
+      "example_vi": "Dòng tin tức tự cập nhật.",
+      "example_en": "The news feed updates itself."
+    },
+    {
+      "french": "un moteur de recherche",
+      "meaning_vi": "công cụ tìm kiếm",
+      "meaning_en": "a search engine",
+      "ipa": "/œ̃ mo.tœʁ də ʁə.ʃɛʁʃ/",
+      "example_fr": "Utilise un moteur de recherche.",
+      "example_vi": "Hãy dùng công cụ tìm kiếm.",
+      "example_en": "Use a search engine."
+    },
+    {
+      "french": "un lien",
+      "meaning_vi": "liên kết",
+      "meaning_en": "a link",
+      "ipa": "/œ̃ ljɛ̃/",
+      "example_fr": "Clique sur ce lien.",
+      "example_vi": "Hãy nhấp vào liên kết này.",
+      "example_en": "Click on this link."
+    },
+    {
+      "french": "la page d'accueil",
+      "meaning_vi": "trang chủ",
+      "meaning_en": "the homepage",
+      "ipa": "/la paʒ da.kœj/",
+      "example_fr": "La page d'accueil est claire.",
+      "example_vi": "Trang chủ rất rõ ràng.",
+      "example_en": "The homepage is clear."
+    },
+    {
+      "french": "un commentaire",
+      "meaning_vi": "bình luận",
+      "meaning_en": "a comment",
+      "ipa": "/œ̃ ko.mɑ̃.tɛʁ/",
+      "example_fr": "Il laisse un commentaire.",
+      "example_vi": "Anh ấy để lại một bình luận.",
+      "example_en": "He leaves a comment."
+    },
+    {
+      "french": "le partage",
+      "meaning_vi": "sự chia sẻ",
+      "meaning_en": "sharing",
+      "ipa": "/lə paʁ.taʒ/",
+      "example_fr": "Le partage est facile ici.",
+      "example_vi": "Việc chia sẻ ở đây rất dễ.",
+      "example_en": "Sharing is easy here."
+    },
+    {
+      "french": "un abonnement numérique",
+      "meaning_vi": "thuê bao số",
+      "meaning_en": "a digital subscription",
+      "ipa": "/œ̃n a.bɔn.mɑ̃ ny.me.ʁik/",
+      "example_fr": "J'ai un abonnement numérique.",
+      "example_vi": "Tôi có thuê bao số.",
+      "example_en": "I have a digital subscription."
+    },
+    {
+      "french": "l'accès payant",
+      "meaning_vi": "truy cập trả phí",
+      "meaning_en": "paid access",
+      "ipa": "/lak.sɛ pɛ.jɑ̃/",
+      "example_fr": "L'accès payant bloque l'article.",
+      "example_vi": "Truy cập trả phí chặn bài báo.",
+      "example_en": "Paid access blocks the article."
+    },
+    {
+      "french": "la version numérique",
+      "meaning_vi": "bản điện tử",
+      "meaning_en": "the digital edition",
+      "ipa": "/la vɛʁ.sjɔ̃ ny.me.ʁik/",
+      "example_fr": "Je lis la version numérique.",
+      "example_vi": "Tôi đọc bản điện tử.",
+      "example_en": "I read the digital edition."
+    },
+    {
+      "french": "une alerte info",
+      "meaning_vi": "thông báo tin tức",
+      "meaning_en": "a news alert",
+      "ipa": "/yn a.lɛʁt ɛ̃.fo/",
+      "example_fr": "Je reçois une alerte info.",
+      "example_vi": "Tôi nhận được thông báo tin tức.",
+      "example_en": "I get a news alert."
+    },
+    {
+      "french": "une infox",
+      "meaning_vi": "tin giả",
+      "meaning_en": "fake news",
+      "ipa": "/yn ɛ̃.fɔks/",
+      "example_fr": "Méfie-toi des infox.",
+      "example_vi": "Hãy cẩn thận với tin giả.",
+      "example_en": "Beware of fake news."
+    },
+    {
+      "french": "la vérification des faits",
+      "meaning_vi": "kiểm chứng thông tin",
+      "meaning_en": "fact-checking",
+      "ipa": "/la ve.ʁi.fi.ka.sjɔ̃ de fɛ/",
+      "example_fr": "La vérification des faits est utile.",
+      "example_vi": "Kiểm chứng thông tin rất hữu ích.",
+      "example_en": "Fact-checking is useful."
+    },
+    {
+      "french": "une mise à jour",
+      "meaning_vi": "bản cập nhật",
+      "meaning_en": "an update",
+      "ipa": "/yn miz a ʒuʁ/",
+      "example_fr": "La mise à jour est récente.",
+      "example_vi": "Bản cập nhật rất mới.",
+      "example_en": "The update is recent."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "La cuisine et la gastronomie",
+  "topic_slug": "cuisine-gastronomie",
+  "topic_sort_order": 30,
+  "topic_vi": "Nấu ăn và ẩm thực",
+  "topic_en": "Cooking and gastronomy",
+  "subtopic": "Se restaurer",
+  "subtopic_key": "se-restaurer",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Ăn uống",
+  "subtopic_en": "Eating out",
+  "words": [
+    {
+      "french": "la brasserie",
+      "meaning_vi": "quán ăn kiểu Pháp",
+      "meaning_en": "brasserie",
+      "ipa": "/bʁas.ʁi/",
+      "example_fr": "La brasserie sert des plats chauds.",
+      "example_vi": "Quán brasserie phục vụ món nóng.",
+      "example_en": "The brasserie serves hot dishes."
+    },
+    {
+      "french": "le bistrot",
+      "meaning_vi": "quán ăn nhỏ",
+      "meaning_en": "bistro",
+      "ipa": "/bis.tʁo/",
+      "example_fr": "Le bistrot est accueillant.",
+      "example_vi": "Quán bistrot ấm cúng.",
+      "example_en": "The bistro is cosy."
+    },
+    {
+      "french": "la terrasse",
+      "meaning_vi": "sân thượng",
+      "meaning_en": "terrace",
+      "ipa": "/te.ʁas/",
+      "example_fr": "Le déjeuner en terrasse.",
+      "example_vi": "Bữa trưa trên sân thượng.",
+      "example_en": "Lunch on the terrace."
+    },
+    {
+      "french": "le serveur",
+      "meaning_vi": "người phục vụ",
+      "meaning_en": "waiter",
+      "ipa": "/sɛʁ.vœʁ/",
+      "example_fr": "Le serveur est poli.",
+      "example_vi": "Người phục vụ lịch sự.",
+      "example_en": "The waiter is polite."
+    },
+    {
+      "french": "la carte",
+      "meaning_vi": "thực đơn",
+      "meaning_en": "menu",
+      "ipa": "/kaʁt/",
+      "example_fr": "La carte, s'il vous plaît.",
+      "example_vi": "Cho xem thực đơn.",
+      "example_en": "The menu, please."
+    },
+    {
+      "french": "le menu du jour",
+      "meaning_vi": "thực đơn trong ngày",
+      "meaning_en": "set menu of the day",
+      "ipa": "/mə.ny dy ʒuʁ/",
+      "example_fr": "Le menu du jour est bon marché.",
+      "example_vi": "Thực đơn ngày giá rẻ.",
+      "example_en": "The set menu is cheap."
+    },
+    {
+      "french": "l'entrée",
+      "meaning_vi": "món khai vị",
+      "meaning_en": "starter",
+      "ipa": "/ɑ̃.tʁe/",
+      "example_fr": "L'entrée est légère.",
+      "example_vi": "Món khai vị nhẹ nhàng.",
+      "example_en": "The starter is light."
+    },
+    {
+      "french": "le plat principal",
+      "meaning_vi": "món chính",
+      "meaning_en": "main course",
+      "ipa": "/pla pʁɛ̃.si.pal/",
+      "example_fr": "Le plat principal est chaud.",
+      "example_vi": "Món chính nóng hổi.",
+      "example_en": "The main course is hot."
+    },
+    {
+      "french": "le dessert",
+      "meaning_vi": "món tráng miệng",
+      "meaning_en": "dessert",
+      "ipa": "/de.sɛʁ/",
+      "example_fr": "Le fromage avant le dessert.",
+      "example_vi": "Phô mai trước món tráng miệng.",
+      "example_en": "Cheese before dessert."
+    },
+    {
+      "french": "la formule",
+      "meaning_vi": "suất ăn giá cố định",
+      "meaning_en": "fixed-price menu",
+      "ipa": "/fɔʁ.myl/",
+      "example_fr": "La formule du midi est avantageuse.",
+      "example_vi": "Suất ăn trưa giá cố định rất hời.",
+      "example_en": "The lunchtime set menu is good value."
+    },
+    {
+      "french": "commander",
+      "meaning_vi": "gọi món",
+      "meaning_en": "to order",
+      "ipa": "/kɔ.mɑ̃.de/",
+      "example_fr": "Commander le poisson, s'il vous plaît.",
+      "example_vi": "Gọi món cá.",
+      "example_en": "Order the fish, please."
+    },
+    {
+      "french": "l'addition",
+      "meaning_vi": "hóa đơn",
+      "meaning_en": "bill",
+      "ipa": "/a.di.sjɔ̃/",
+      "example_fr": "L'addition, s'il vous plaît.",
+      "example_vi": "Tính tiền giúp tôi.",
+      "example_en": "The bill, please."
+    },
+    {
+      "french": "le pourboire",
+      "meaning_vi": "tiền boa",
+      "meaning_en": "tip",
+      "ipa": "/puʁ.bwaʁ/",
+      "example_fr": "Laisser un petit pourboire.",
+      "example_vi": "Để lại chút tiền boa.",
+      "example_en": "Leave a small tip."
+    },
+    {
+      "french": "le petit-déjeuner",
+      "meaning_vi": "bữa sáng",
+      "meaning_en": "breakfast",
+      "ipa": "/pə.ti de.ʒø.ne/",
+      "example_fr": "Le petit-déjeuner à huit heures.",
+      "example_vi": "Bữa sáng lúc tám giờ.",
+      "example_en": "Breakfast at eight."
+    },
+    {
+      "french": "le déjeuner",
+      "meaning_vi": "bữa trưa",
+      "meaning_en": "lunch",
+      "ipa": "/de.ʒø.ne/",
+      "example_fr": "Le déjeuner est prêt.",
+      "example_vi": "Bữa trưa đã sẵn sàng.",
+      "example_en": "Lunch is ready."
+    },
+    {
+      "french": "le dîner",
+      "meaning_vi": "bữa tối",
+      "meaning_en": "dinner",
+      "ipa": "/di.ne/",
+      "example_fr": "Le dîner entre amis.",
+      "example_vi": "Bữa tối với bạn bè.",
+      "example_en": "Dinner with friends."
+    },
+    {
+      "french": "le goûter",
+      "meaning_vi": "bữa xế",
+      "meaning_en": "afternoon snack",
+      "ipa": "/ɡu.te/",
+      "example_fr": "Un goûter à quatre heures.",
+      "example_vi": "Bữa xế lúc bốn giờ.",
+      "example_en": "A snack at four."
+    },
+    {
+      "french": "le brunch",
+      "meaning_vi": "bữa nửa buổi",
+      "meaning_en": "brunch",
+      "ipa": "/bʁœnʃ/",
+      "example_fr": "Le brunch du dimanche est copieux.",
+      "example_vi": "Bữa brunch Chủ nhật rất thịnh soạn.",
+      "example_en": "Sunday brunch is hearty."
+    },
+    {
+      "french": "la pizzeria",
+      "meaning_vi": "tiệm pizza",
+      "meaning_en": "pizzeria",
+      "ipa": "/pid.ze.ʁja/",
+      "example_fr": "La pizzeria est près du parc.",
+      "example_vi": "Tiệm pizza gần công viên.",
+      "example_en": "The pizzeria is near the park."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "L'éducation et le monde professionnel",
+  "category_key": "education-monde-professionnel",
+  "category_sort_order": 50,
+  "category_vi": "Giáo dục và thế giới nghề nghiệp",
+  "category_en": "Education and the professional world",
+  "topic": "Les études et la formation",
+  "topic_slug": "etudes-formation",
+  "topic_sort_order": 10,
+  "topic_vi": "Học tập và đào tạo",
+  "topic_en": "Studies and education",
+  "subtopic": "Les études supérieures et la formation professionnelle",
+  "subtopic_key": "les-etudes-superieures-et-la-formation-professionnelle",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Giáo dục đại học và đào tạo nghề",
+  "subtopic_en": "Higher education and vocational training",
+  "words": [
+    {
+      "french": "l'université",
+      "meaning_vi": "trường đại học",
+      "meaning_en": "university",
+      "ipa": "/ynivɛʁsite/",
+      "example_fr": "Il étudie à l'université.",
+      "example_vi": "Anh ấy học đại học.",
+      "example_en": "He studies at university."
+    },
+    {
+      "french": "la faculté",
+      "meaning_vi": "khoa (đại học)",
+      "meaning_en": "faculty",
+      "ipa": "/fakylte/",
+      "example_fr": "Elle est à la faculté de droit.",
+      "example_vi": "Cô ấy học khoa luật.",
+      "example_en": "She is at the law faculty."
+    },
+    {
+      "french": "l'étudiant, l'étudiante",
+      "meaning_vi": "sinh viên",
+      "meaning_en": "student",
+      "ipa": "/etydjɑ̃/",
+      "example_fr": "Les étudiants assistent au cours.",
+      "example_vi": "Các sinh viên dự giảng.",
+      "example_en": "The students attend the lecture."
+    },
+    {
+      "french": "le diplôme",
+      "meaning_vi": "bằng cấp, văn bằng",
+      "meaning_en": "diploma, degree",
+      "ipa": "/diplom/",
+      "example_fr": "Il a obtenu son diplôme.",
+      "example_vi": "Anh ấy đã nhận bằng.",
+      "example_en": "He got his degree."
+    },
+    {
+      "french": "la licence",
+      "meaning_vi": "bằng cử nhân",
+      "meaning_en": "bachelor's degree",
+      "ipa": "/lisɑ̃s/",
+      "example_fr": "Elle prépare une licence d'anglais.",
+      "example_vi": "Cô ấy học cử nhân tiếng Anh.",
+      "example_en": "She is doing a bachelor's in English."
+    },
+    {
+      "french": "le master",
+      "meaning_vi": "bằng thạc sĩ",
+      "meaning_en": "master's degree",
+      "ipa": "/mastɛʁ/",
+      "example_fr": "Il fait un master en économie.",
+      "example_vi": "Anh ấy học thạc sĩ kinh tế.",
+      "example_en": "He is doing a master's in economics."
+    },
+    {
+      "french": "le doctorat",
+      "meaning_vi": "bằng tiến sĩ",
+      "meaning_en": "doctorate",
+      "ipa": "/dɔktɔʁa/",
+      "example_fr": "Elle prépare un doctorat.",
+      "example_vi": "Cô ấy đang làm tiến sĩ.",
+      "example_en": "She is doing a doctorate."
+    },
+    {
+      "french": "la bourse",
+      "meaning_vi": "học bổng",
+      "meaning_en": "scholarship",
+      "ipa": "/buʁs/",
+      "example_fr": "Il a reçu une bourse.",
+      "example_vi": "Anh ấy nhận được học bổng.",
+      "example_en": "He received a scholarship."
+    },
+    {
+      "french": "l'année de césure",
+      "meaning_vi": "năm bảo lưu (nghỉ ngắt quãng)",
+      "meaning_en": "gap year",
+      "ipa": "/ane də sezyʁ/",
+      "example_fr": "Il prend une année de césure.",
+      "example_vi": "Anh ấy nghỉ một năm bảo lưu.",
+      "example_en": "He takes a gap year."
+    },
+    {
+      "french": "la formation professionnelle",
+      "meaning_vi": "đào tạo nghề",
+      "meaning_en": "vocational training",
+      "ipa": "/fɔʁmasjɔ̃ pʁɔfesjɔnɛl/",
+      "example_fr": "Elle suit une formation professionnelle.",
+      "example_vi": "Cô ấy theo học đào tạo nghề.",
+      "example_en": "She is following vocational training."
+    },
+    {
+      "french": "l'apprentissage",
+      "meaning_vi": "sự học nghề",
+      "meaning_en": "apprenticeship",
+      "ipa": "/apʁɑ̃tisaʒ/",
+      "example_fr": "Il apprend par l'apprentissage.",
+      "example_vi": "Anh ấy học qua học nghề.",
+      "example_en": "He learns through apprenticeship."
+    },
+    {
+      "french": "l'alternance",
+      "meaning_vi": "học vừa học vừa làm",
+      "meaning_en": "work-study programme",
+      "ipa": "/altɛʁnɑ̃s/",
+      "example_fr": "Elle est en alternance.",
+      "example_vi": "Cô ấy học theo hệ vừa học vừa làm.",
+      "example_en": "She is on a work-study programme."
+    },
+    {
+      "french": "le campus",
+      "meaning_vi": "khuôn viên trường",
+      "meaning_en": "campus",
+      "ipa": "/kɑ̃pys/",
+      "example_fr": "Le campus est très grand.",
+      "example_vi": "Khuôn viên trường rất rộng.",
+      "example_en": "The campus is very large."
+    },
+    {
+      "french": "l'amphithéâtre",
+      "meaning_vi": "giảng đường",
+      "meaning_en": "lecture hall",
+      "ipa": "/ɑ̃fiteatʁ/",
+      "example_fr": "Le cours a lieu en amphithéâtre.",
+      "example_vi": "Buổi học diễn ra ở giảng đường.",
+      "example_en": "The lecture takes place in the lecture hall."
+    },
+    {
+      "french": "le mémoire",
+      "meaning_vi": "luận văn",
+      "meaning_en": "dissertation",
+      "ipa": "/memwaʁ/",
+      "example_fr": "Il rédige son mémoire.",
+      "example_vi": "Anh ấy đang viết luận văn.",
+      "example_en": "He is writing his dissertation."
+    },
+    {
+      "french": "la soutenance",
+      "meaning_vi": "buổi bảo vệ luận văn",
+      "meaning_en": "thesis defence",
+      "ipa": "/sutnɑ̃s/",
+      "example_fr": "La soutenance aura lieu demain.",
+      "example_vi": "Buổi bảo vệ diễn ra ngày mai.",
+      "example_en": "The defence will take place tomorrow."
+    },
+    {
+      "french": "s'inscrire",
+      "meaning_vi": "đăng ký",
+      "meaning_en": "to enrol",
+      "ipa": "/sɛ̃skʁiʁ/",
+      "example_fr": "Je m'inscris à l'université.",
+      "example_vi": "Tôi đăng ký vào đại học.",
+      "example_en": "I enrol at the university."
+    },
+    {
+      "french": "le cursus",
+      "meaning_vi": "quá trình học",
+      "meaning_en": "course of study",
+      "ipa": "/kyʁsys/",
+      "example_fr": "Elle a un beau cursus.",
+      "example_vi": "Cô ấy có quá trình học tốt.",
+      "example_en": "She has a good academic record."
+    },
+    {
+      "french": "le concours",
+      "meaning_vi": "kỳ thi tuyển",
+      "meaning_en": "competitive exam",
+      "ipa": "/kɔ̃kuʁ/",
+      "example_fr": "Il prépare le concours.",
+      "example_vi": "Anh ấy ôn thi tuyển.",
+      "example_en": "He is preparing for the competitive exam."
+    }
+  ]
+}

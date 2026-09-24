@@ -1,0 +1,190 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les sens, les sentiments et les émotions",
+  "topic_slug": "sens-sentiments-emotions",
+  "topic_sort_order": 30,
+  "topic_vi": "Giác quan, cảm xúc và tình cảm",
+  "topic_en": "Senses, feelings and emotions",
+  "subtopic": "Les sens et les perceptions",
+  "subtopic_key": "les-sens-et-les-perceptions",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Giác quan và nhận thức",
+  "subtopic_en": "Senses and perceptions",
+  "words": [
+    {
+      "french": "la vue",
+      "meaning_vi": "thị giác",
+      "meaning_en": "sight",
+      "ipa": "/vy/",
+      "example_fr": "La vue est un sens important.",
+      "example_vi": "Thị giác là giác quan quan trọng.",
+      "example_en": "Sight is an important sense."
+    },
+    {
+      "french": "l'ouïe",
+      "meaning_vi": "thính giác",
+      "meaning_en": "hearing",
+      "ipa": "/wi/",
+      "example_fr": "L'ouïe diminue avec l'âge.",
+      "example_vi": "Thính giác giảm theo tuổi.",
+      "example_en": "Hearing decreases with age."
+    },
+    {
+      "french": "l'odorat",
+      "meaning_vi": "khứu giác",
+      "meaning_en": "smell (sense)",
+      "ipa": "/ɔ.dɔ.ʁa/",
+      "example_fr": "L'odorat guide la cuisine.",
+      "example_vi": "Khứu giác giúp việc nấu ăn.",
+      "example_en": "Smell guides cooking."
+    },
+    {
+      "french": "le goût",
+      "meaning_vi": "vị giác",
+      "meaning_en": "taste",
+      "ipa": "/ɡu/",
+      "example_fr": "Le goût varie selon les personnes.",
+      "example_vi": "Vị giác khác nhau tùy người.",
+      "example_en": "Taste varies by person."
+    },
+    {
+      "french": "le toucher",
+      "meaning_vi": "xúc giác",
+      "meaning_en": "touch",
+      "ipa": "/tu.ʃe/",
+      "example_fr": "Le toucher est le premier sens.",
+      "example_vi": "Xúc giác là giác quan đầu tiên.",
+      "example_en": "Touch is the first sense."
+    },
+    {
+      "french": "regarder",
+      "meaning_vi": "nhìn, xem",
+      "meaning_en": "to look, to watch",
+      "ipa": "/ʁə.ɡaʁ.de/",
+      "example_fr": "Regarder est naturel.",
+      "example_vi": "Nhìn là tự nhiên.",
+      "example_en": "To look is natural."
+    },
+    {
+      "french": "voir",
+      "meaning_vi": "nhìn thấy",
+      "meaning_en": "to see",
+      "ipa": "/vwaʁ/",
+      "example_fr": "Je vois un oiseau dans le ciel.",
+      "example_vi": "Tôi thấy một con chim trên trời.",
+      "example_en": "I see a bird in the sky."
+    },
+    {
+      "french": "écouter",
+      "meaning_vi": "nghe",
+      "meaning_en": "to listen",
+      "ipa": "/e.ku.te/",
+      "example_fr": "Elle écoute la radio.",
+      "example_vi": "Cô ấy nghe đài.",
+      "example_en": "She listens to the radio."
+    },
+    {
+      "french": "entendre",
+      "meaning_vi": "nghe thấy",
+      "meaning_en": "to hear",
+      "ipa": "/ɑ̃.tɑ̃dʁ/",
+      "example_fr": "J'entends un bruit dehors.",
+      "example_vi": "Tôi nghe thấy tiếng ồn bên ngoài.",
+      "example_en": "I hear a noise outside."
+    },
+    {
+      "french": "sentir",
+      "meaning_vi": "ngửi",
+      "meaning_en": "to smell",
+      "ipa": "/sɑ̃.tiʁ/",
+      "example_fr": "Sens cette fleur.",
+      "example_vi": "Hãy ngửi bông hoa này.",
+      "example_en": "Smell this flower."
+    },
+    {
+      "french": "goûter",
+      "meaning_vi": "nếm",
+      "meaning_en": "to taste",
+      "ipa": "/ɡu.te/",
+      "example_fr": "Goûte cette soupe.",
+      "example_vi": "Hãy nếm món súp này.",
+      "example_en": "Taste this soup."
+    },
+    {
+      "french": "toucher",
+      "meaning_vi": "chạm vào",
+      "meaning_en": "to touch",
+      "ipa": "/tu.ʃe/",
+      "example_fr": "Touche le tissu, il est doux.",
+      "example_vi": "Hãy chạm vào vải, nó mềm.",
+      "example_en": "Touch the fabric, it's soft."
+    },
+    {
+      "french": "l'odeur",
+      "meaning_vi": "mùi",
+      "meaning_en": "smell, odour",
+      "ipa": "/ɔ.dœʁ/",
+      "example_fr": "Ce gâteau sent bon.",
+      "example_vi": "Chiếc bánh này thơm.",
+      "example_en": "This cake smells good."
+    },
+    {
+      "french": "le bruit",
+      "meaning_vi": "tiếng ồn",
+      "meaning_en": "noise",
+      "ipa": "/bʁɥi/",
+      "example_fr": "Le bruit me réveille.",
+      "example_vi": "Tiếng ồn làm tôi tỉnh giấc.",
+      "example_en": "The noise wakes me up."
+    },
+    {
+      "french": "le silence",
+      "meaning_vi": "sự yên lặng",
+      "meaning_en": "silence",
+      "ipa": "/si.lɑ̃s/",
+      "example_fr": "Le silence aide à se concentrer.",
+      "example_vi": "Sự yên lặng giúp tập trung.",
+      "example_en": "Silence helps concentration."
+    },
+    {
+      "french": "la lumière",
+      "meaning_vi": "ánh sáng",
+      "meaning_en": "light",
+      "ipa": "/ly.mjɛʁ/",
+      "example_fr": "La lumière est trop forte.",
+      "example_vi": "Ánh sáng quá mạnh.",
+      "example_en": "The light is too strong."
+    },
+    {
+      "french": "le parfum",
+      "meaning_vi": "mùi thơm, nước hoa",
+      "meaning_en": "scent, perfume",
+      "ipa": "/paʁ.fœ̃/",
+      "example_fr": "Ce parfum a une odeur douce.",
+      "example_vi": "Nước hoa này có mùi dịu.",
+      "example_en": "This perfume has a sweet scent."
+    },
+    {
+      "french": "la saveur",
+      "meaning_vi": "hương vị",
+      "meaning_en": "flavour",
+      "ipa": "/sa.vœʁ/",
+      "example_fr": "Le plat a une bonne saveur.",
+      "example_vi": "Món ăn có vị ngon.",
+      "example_en": "The food has a good flavour."
+    },
+    {
+      "french": "la sensation",
+      "meaning_vi": "cảm giác",
+      "meaning_en": "sensation, feeling",
+      "ipa": "/sɑ̃.sa.sjɔ̃/",
+      "example_fr": "La pierre est froide au toucher.",
+      "example_vi": "Viên đá lạnh khi chạm vào.",
+      "example_en": "The stone is cold to the touch."
+    }
+  ]
+}

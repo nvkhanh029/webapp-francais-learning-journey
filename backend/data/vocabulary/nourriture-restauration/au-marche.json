@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "L'alimentation (2)",
+  "topic_slug": "alimentation-2",
+  "topic_sort_order": 20,
+  "topic_vi": "Thực phẩm (2)",
+  "topic_en": "Food (2)",
+  "subtopic": "Au marché",
+  "subtopic_key": "au-marche",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Ở chợ",
+  "subtopic_en": "At the market",
+  "words": [
+    {
+      "french": "le marché",
+      "meaning_vi": "chợ",
+      "meaning_en": "market",
+      "ipa": "/maʁ.ʃe/",
+      "example_fr": "Le marché est animé.",
+      "example_vi": "Khu chợ nhộn nhịp.",
+      "example_en": "The market is lively."
+    },
+    {
+      "french": "l'étal",
+      "meaning_vi": "sạp hàng",
+      "meaning_en": "stall",
+      "ipa": "/e.tal/",
+      "example_fr": "L'étal est coloré.",
+      "example_vi": "Sạp hàng sặc sỡ.",
+      "example_en": "The stall is colourful."
+    },
+    {
+      "french": "le vendeur",
+      "meaning_vi": "người bán",
+      "meaning_en": "seller",
+      "ipa": "/vɑ̃.dœʁ/",
+      "example_fr": "Le vendeur est aimable.",
+      "example_vi": "Người bán thân thiện.",
+      "example_en": "The seller is friendly."
+    },
+    {
+      "french": "le marchand",
+      "meaning_vi": "người bán hàng",
+      "meaning_en": "market seller",
+      "ipa": "/maʁ.ʃɑ̃/",
+      "example_fr": "Le marchand propose des légumes frais.",
+      "example_vi": "Người bán hàng có rau tươi.",
+      "example_en": "The market seller offers fresh vegetables."
+    },
+    {
+      "french": "le kilo",
+      "meaning_vi": "ký",
+      "meaning_en": "kilo",
+      "ipa": "/ki.lo/",
+      "example_fr": "Un kilo de tomates.",
+      "example_vi": "Một ký cà chua.",
+      "example_en": "A kilo of tomatoes."
+    },
+    {
+      "french": "le litre",
+      "meaning_vi": "lít",
+      "meaning_en": "litre",
+      "ipa": "/litʁ/",
+      "example_fr": "Un demi-litre de lait.",
+      "example_vi": "Nửa lít sữa.",
+      "example_en": "Half a litre of milk."
+    },
+    {
+      "french": "la botte",
+      "meaning_vi": "bó",
+      "meaning_en": "bunch",
+      "ipa": "/bɔt/",
+      "example_fr": "Une botte de persil.",
+      "example_vi": "Một bó mùi tây.",
+      "example_en": "A bunch of parsley."
+    },
+    {
+      "french": "la tranche",
+      "meaning_vi": "lát",
+      "meaning_en": "slice",
+      "ipa": "/tʁɑ̃ʃ/",
+      "example_fr": "Une tranche de fromage.",
+      "example_vi": "Một lát phô mai.",
+      "example_en": "A slice of cheese."
+    },
+    {
+      "french": "le prix",
+      "meaning_vi": "giá",
+      "meaning_en": "price",
+      "ipa": "/pʁi/",
+      "example_fr": "Combien ça coûte ?",
+      "example_vi": "Cái này giá bao nhiêu?",
+      "example_en": "How much is it?"
+    },
+    {
+      "french": "la caisse",
+      "meaning_vi": "quầy thu ngân",
+      "meaning_en": "checkout",
+      "ipa": "/kɛs/",
+      "example_fr": "Payer à la caisse.",
+      "example_vi": "Thanh toán ở quầy thu ngân.",
+      "example_en": "Pay at the checkout."
+    },
+    {
+      "french": "le ticket de caisse",
+      "meaning_vi": "hóa đơn",
+      "meaning_en": "receipt",
+      "ipa": "/ti.kɛ də kɛs/",
+      "example_fr": "Le ticket de caisse est dans le sac.",
+      "example_vi": "Hóa đơn trong túi.",
+      "example_en": "The receipt is in the bag."
+    },
+    {
+      "french": "le sac",
+      "meaning_vi": "túi",
+      "meaning_en": "bag",
+      "ipa": "/sak/",
+      "example_fr": "Un sac en papier, s'il vous plaît.",
+      "example_vi": "Một túi giấy.",
+      "example_en": "A paper bag, please."
+    },
+    {
+      "french": "le panier",
+      "meaning_vi": "giỏ",
+      "meaning_en": "basket",
+      "ipa": "/pa.nje/",
+      "example_fr": "Le panier est lourd.",
+      "example_vi": "Giỏ hàng nặng.",
+      "example_en": "The bag is heavy."
+    },
+    {
+      "french": "peser",
+      "meaning_vi": "cân",
+      "meaning_en": "to weigh",
+      "ipa": "/pə.ze/",
+      "example_fr": "Je pèse les fruits.",
+      "example_vi": "Tôi cân trái cây.",
+      "example_en": "I weigh the fruit."
+    },
+    {
+      "french": "la balance",
+      "meaning_vi": "cái cân",
+      "meaning_en": "scale",
+      "ipa": "/ba.lɑ̃s/",
+      "example_fr": "La balance est sur l'étal.",
+      "example_vi": "Cái cân ở trên sạp hàng.",
+      "example_en": "The scale is on the stall."
+    },
+    {
+      "french": "cher",
+      "meaning_vi": "đắt",
+      "meaning_en": "expensive",
+      "ipa": "/ʃɛʁ/",
+      "example_fr": "C'est trop cher pour moi.",
+      "example_vi": "Quá đắt với tôi.",
+      "example_en": "Too expensive for me."
+    },
+    {
+      "french": "frais",
+      "meaning_vi": "tươi",
+      "meaning_en": "fresh",
+      "ipa": "/fʁɛ/",
+      "example_fr": "Des abricots frais et mûrs.",
+      "example_vi": "Mơ tươi và chín.",
+      "example_en": "Fresh and ripe apricots."
+    },
+    {
+      "french": "la dégustation",
+      "meaning_vi": "nếm thử",
+      "meaning_en": "tasting",
+      "ipa": "/de.ɡys.ta.sjɔ̃/",
+      "example_fr": "Une dégustation gratuite, s'il vous plaît.",
+      "example_vi": "Nếm thử miễn phí.",
+      "example_en": "A free tasting, please."
+    },
+    {
+      "french": "la promotion",
+      "meaning_vi": "khuyến mãi",
+      "meaning_en": "special offer",
+      "ipa": "/pʁo.mo.sjɔ̃/",
+      "example_fr": "La promotion est intéressante.",
+      "example_vi": "Khuyến mãi hấp dẫn.",
+      "example_en": "The discount is interesting."
+    }
+  ]
+}

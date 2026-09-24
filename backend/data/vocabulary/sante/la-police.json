@@ -1,0 +1,190 @@
+{
+  "category": "La santé",
+  "category_key": "sante",
+  "category_sort_order": 30,
+  "category_vi": "Sức khỏe",
+  "category_en": "Health",
+  "topic": "Les maladies, les accidents et la police",
+  "topic_slug": "maladies-accidents-police",
+  "topic_sort_order": 10,
+  "topic_vi": "Bệnh tật, tai nạn và cảnh sát",
+  "topic_en": "Illnesses, accidents and the police",
+  "subtopic": "La police",
+  "subtopic_key": "la-police",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Cảnh sát",
+  "subtopic_en": "The police",
+  "words": [
+    {
+      "french": "la police",
+      "meaning_vi": "cảnh sát",
+      "meaning_en": "the police",
+      "ipa": "/la pɔlis/",
+      "example_fr": "Appelez la police !",
+      "example_vi": "Hãy gọi cảnh sát!",
+      "example_en": "Call the police!"
+    },
+    {
+      "french": "le policier",
+      "meaning_vi": "cảnh sát (nam)",
+      "meaning_en": "the police officer",
+      "ipa": "/lə pɔlisje/",
+      "example_fr": "Le policier contrôle mes papiers.",
+      "example_vi": "Cảnh sát kiểm tra giấy tờ của tôi.",
+      "example_en": "The officer checks my papers."
+    },
+    {
+      "french": "la policière",
+      "meaning_vi": "nữ cảnh sát",
+      "meaning_en": "the policewoman",
+      "ipa": "/la pɔlisjɛʁ/",
+      "example_fr": "La policière pose des questions.",
+      "example_vi": "Nữ cảnh sát đang hỏi.",
+      "example_en": "The policewoman is asking questions."
+    },
+    {
+      "french": "le commissariat",
+      "meaning_vi": "đồn cảnh sát",
+      "meaning_en": "the police station",
+      "ipa": "/lə kɔmisarja/",
+      "example_fr": "Allez au commissariat.",
+      "example_vi": "Hãy đến đồn cảnh sát.",
+      "example_en": "Go to the police station."
+    },
+    {
+      "french": "l'enquête",
+      "meaning_vi": "cuộc điều tra",
+      "meaning_en": "the investigation",
+      "ipa": "/lɑ̃kɛt/",
+      "example_fr": "L'enquête est en cours.",
+      "example_vi": "Cuộc điều tra đang diễn ra.",
+      "example_en": "The investigation is ongoing."
+    },
+    {
+      "french": "le vol",
+      "meaning_vi": "vụ trộm cắp",
+      "meaning_en": "the theft",
+      "ipa": "/lə vɔl/",
+      "example_fr": "Il signale un vol.",
+      "example_vi": "Anh ấy trình báo một vụ trộm.",
+      "example_en": "He reports a theft."
+    },
+    {
+      "french": "le cambriolage",
+      "meaning_vi": "vụ trộm đột nhập",
+      "meaning_en": "the burglary",
+      "ipa": "/lə kɑ̃bʁijɔlaʒ/",
+      "example_fr": "Il y a eu un cambriolage cette nuit.",
+      "example_vi": "Đêm qua đã xảy ra một vụ trộm đột nhập.",
+      "example_en": "There was a burglary last night."
+    },
+    {
+      "french": "l'agression",
+      "meaning_vi": "vụ tấn công",
+      "meaning_en": "the attack, assault",
+      "ipa": "/laɡʁesjɔ̃/",
+      "example_fr": "Elle a été victime d'une agression.",
+      "example_vi": "Cô ấy là nạn nhân của một vụ tấn công.",
+      "example_en": "She was a victim of an attack."
+    },
+    {
+      "french": "le suspect",
+      "meaning_vi": "nghi phạm",
+      "meaning_en": "the suspect",
+      "ipa": "/lə syspɛ/",
+      "example_fr": "Le témoin décrit le suspect.",
+      "example_vi": "Nhân chứng mô tả nghi phạm.",
+      "example_en": "The witness describes the suspect."
+    },
+    {
+      "french": "la plainte",
+      "meaning_vi": "đơn tố cáo",
+      "meaning_en": "the complaint",
+      "ipa": "/la plɛ̃t/",
+      "example_fr": "Elle porte plainte.",
+      "example_vi": "Cô ấy nộp đơn tố cáo.",
+      "example_en": "She files a complaint."
+    },
+    {
+      "french": "l'amende",
+      "meaning_vi": "tiền phạt",
+      "meaning_en": "the fine",
+      "ipa": "/lamɑ̃d/",
+      "example_fr": "Il paie l'amende.",
+      "example_vi": "Anh ấy nộp tiền phạt.",
+      "example_en": "He pays the fine."
+    },
+    {
+      "french": "l'arrestation",
+      "meaning_vi": "vụ bắt giữ",
+      "meaning_en": "the arrest",
+      "ipa": "/laʁɛstasjɔ̃/",
+      "example_fr": "La police arrête le voleur.",
+      "example_vi": "Cảnh sát bắt tên trộm.",
+      "example_en": "The police arrest the thief."
+    },
+    {
+      "french": "la pièce d'identité",
+      "meaning_vi": "giấy tờ tùy thân",
+      "meaning_en": "the ID card",
+      "ipa": "/la pjɛs didɑ̃tite/",
+      "example_fr": "Montrez-moi votre pièce d'identité.",
+      "example_vi": "Hãy cho tôi xem giấy tờ tùy thân.",
+      "example_en": "Show me your ID."
+    },
+    {
+      "french": "le contrôle d'identité",
+      "meaning_vi": "việc kiểm tra giấy tờ",
+      "meaning_en": "the identity check",
+      "ipa": "/lə kɔ̃tʁol didɑ̃tite/",
+      "example_fr": "L'agent contrôle les papiers.",
+      "example_vi": "Cảnh sát kiểm tra giấy tờ.",
+      "example_en": "The officer checks the documents."
+    },
+    {
+      "french": "la garde à vue",
+      "meaning_vi": "sự tạm giữ",
+      "meaning_en": "the police custody",
+      "ipa": "/la ɡaʁd a vy/",
+      "example_fr": "Le voleur est en garde à vue.",
+      "example_vi": "Tên trộm đang bị tạm giữ.",
+      "example_en": "The thief is in custody."
+    },
+    {
+      "french": "le numéro d'urgence",
+      "meaning_vi": "số khẩn cấp",
+      "meaning_en": "the emergency number",
+      "ipa": "/lə nymeʁo dyʁʒɑ̃s/",
+      "example_fr": "Appelez le numéro d'urgence.",
+      "example_vi": "Hãy gọi số khẩn cấp.",
+      "example_en": "Call the emergency number."
+    },
+    {
+      "french": "la patrouille",
+      "meaning_vi": "đội tuần tra",
+      "meaning_en": "the patrol",
+      "ipa": "/la patʁuj/",
+      "example_fr": "La patrouille surveille le quartier.",
+      "example_vi": "Đội tuần tra đang giám sát khu phố.",
+      "example_en": "The patrol is watching the area."
+    },
+    {
+      "french": "la loi",
+      "meaning_vi": "pháp luật",
+      "meaning_en": "the law",
+      "ipa": "/la lwa/",
+      "example_fr": "Il respecte la loi.",
+      "example_vi": "Anh ấy tuân thủ pháp luật.",
+      "example_en": "He respects the law."
+    },
+    {
+      "french": "la sécurité",
+      "meaning_vi": "sự an toàn, an ninh",
+      "meaning_en": "the safety, security",
+      "ipa": "/la sekyʁite/",
+      "example_fr": "La sécurité est importante.",
+      "example_vi": "An ninh rất quan trọng.",
+      "example_en": "Safety is important."
+    }
+  ]
+}

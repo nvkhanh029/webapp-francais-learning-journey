@@ -1,0 +1,190 @@
+{
+  "category": "Le logement",
+  "category_key": "logement",
+  "category_sort_order": 40,
+  "category_vi": "Nhà ở",
+  "category_en": "Housing",
+  "topic": "Les habitations et le mobilier",
+  "topic_slug": "habitations-mobilier",
+  "topic_sort_order": 10,
+  "topic_vi": "Nhà ở và đồ nội thất",
+  "topic_en": "Housing and furniture",
+  "subtopic": "Les taxes et les aides",
+  "subtopic_key": "les-taxes-et-les-aides",
+  "subtopic_sort_order": 50,
+  "subtopic_vi": "Thuế và trợ cấp",
+  "subtopic_en": "Taxes and benefits",
+  "words": [
+    {
+      "french": "la taxe d'habitation",
+      "meaning_vi": "thuế nhà ở",
+      "meaning_en": "housing tax",
+      "ipa": "/taks da.bi.ta.sjɔ̃/",
+      "example_fr": "La taxe d'habitation est chère.",
+      "example_vi": "Thuế nhà ở rất cao.",
+      "example_en": "The housing tax is expensive."
+    },
+    {
+      "french": "la taxe foncière",
+      "meaning_vi": "thuế đất",
+      "meaning_en": "property tax",
+      "ipa": "/taks fɔ̃.sjɛʁ/",
+      "example_fr": "Il paie la taxe foncière.",
+      "example_vi": "Anh ấy đóng thuế đất.",
+      "example_en": "He pays the property tax."
+    },
+    {
+      "french": "le loyer",
+      "meaning_vi": "tiền thuê nhà",
+      "meaning_en": "the rent",
+      "ipa": "/lwa.je/",
+      "example_fr": "Le loyer est de 800 euros.",
+      "example_vi": "Tiền thuê là 800 euro.",
+      "example_en": "The rent is 800 euros."
+    },
+    {
+      "french": "les charges",
+      "meaning_vi": "phí chung cư, chi phí phụ",
+      "meaning_en": "service charges",
+      "ipa": "/ʃaʁʒ/",
+      "example_fr": "Les charges sont incluses.",
+      "example_vi": "Các phí đã bao gồm.",
+      "example_en": "Charges are included."
+    },
+    {
+      "french": "la caution",
+      "meaning_vi": "tiền đặt cọc",
+      "meaning_en": "the deposit",
+      "ipa": "/ko.sjɔ̃/",
+      "example_fr": "La caution est d'un mois.",
+      "example_vi": "Tiền cọc là một tháng.",
+      "example_en": "The deposit is one month."
+    },
+    {
+      "french": "le dépôt de garantie",
+      "meaning_vi": "tiền ký quỹ đảm bảo",
+      "meaning_en": "the security deposit",
+      "ipa": "/de.po də ɡa.ʁɑ̃.ti/",
+      "example_fr": "Le dépôt de garantie est rendu.",
+      "example_vi": "Tiền ký quỹ được hoàn lại.",
+      "example_en": "The security deposit is returned."
+    },
+    {
+      "french": "l'assurance habitation",
+      "meaning_vi": "bảo hiểm nhà ở",
+      "meaning_en": "home insurance",
+      "ipa": "/a.sy.ʁɑ̃s a.bi.ta.sjɔ̃/",
+      "example_fr": "L'assurance habitation est obligatoire.",
+      "example_vi": "Bảo hiểm nhà ở là bắt buộc.",
+      "example_en": "Home insurance is mandatory."
+    },
+    {
+      "french": "l'aide au logement",
+      "meaning_vi": "trợ cấp nhà ở",
+      "meaning_en": "housing benefit",
+      "ipa": "/ɛd o lɔʒ.mɑ̃/",
+      "example_fr": "Elle reçoit l'aide au logement.",
+      "example_vi": "Cô ấy nhận trợ cấp nhà ở.",
+      "example_en": "She receives housing benefit."
+    },
+    {
+      "french": "l'APL",
+      "meaning_vi": "trợ cấp nhà ở cá nhân (Pháp)",
+      "meaning_en": "personal housing aid",
+      "ipa": "/a.pe.ɛl/",
+      "example_fr": "Il touche l'APL.",
+      "example_vi": "Anh ấy nhận APL.",
+      "example_en": "He gets APL."
+    },
+    {
+      "french": "le bail",
+      "meaning_vi": "hợp đồng thuê nhà",
+      "meaning_en": "the lease",
+      "ipa": "/baj/",
+      "example_fr": "Le bail est de trois ans.",
+      "example_vi": "Hợp đồng thuê ba năm.",
+      "example_en": "The lease is for three years."
+    },
+    {
+      "french": "le propriétaire",
+      "meaning_vi": "chủ nhà",
+      "meaning_en": "the landlord / owner",
+      "ipa": "/pʁɔ.pʁje.tɛʁ/",
+      "example_fr": "Le propriétaire est sympa.",
+      "example_vi": "Chủ nhà rất dễ mến.",
+      "example_en": "The landlord is nice."
+    },
+    {
+      "french": "le locataire",
+      "meaning_vi": "người thuê nhà",
+      "meaning_en": "the tenant",
+      "ipa": "/lɔ.ka.tɛʁ/",
+      "example_fr": "Le locataire paie le loyer.",
+      "example_vi": "Người thuê trả tiền nhà.",
+      "example_en": "The tenant pays the rent."
+    },
+    {
+      "french": "une agence immobilière",
+      "meaning_vi": "công ty bất động sản",
+      "meaning_en": "a real estate agency",
+      "ipa": "/a.ʒɑ̃s i.mɔ.bi.ljɛʁ/",
+      "example_fr": "L'agence immobilière est fermée.",
+      "example_vi": "Công ty bất động sản đã đóng cửa.",
+      "example_en": "The estate agency is closed."
+    },
+    {
+      "french": "un prêt immobilier",
+      "meaning_vi": "khoản vay mua nhà",
+      "meaning_en": "a mortgage",
+      "ipa": "/pʁɛ i.mɔ.bi.lje/",
+      "example_fr": "Ils ont un prêt immobilier.",
+      "example_vi": "Họ có một khoản vay mua nhà.",
+      "example_en": "They have a mortgage."
+    },
+    {
+      "french": "les impôts",
+      "meaning_vi": "thuế",
+      "meaning_en": "taxes",
+      "ipa": "/ɛ̃.po/",
+      "example_fr": "Les impôts sont élevés.",
+      "example_vi": "Thuế rất cao.",
+      "example_en": "Taxes are high."
+    },
+    {
+      "french": "la facture d'électricité",
+      "meaning_vi": "hóa đơn tiền điện",
+      "meaning_en": "the electricity bill",
+      "ipa": "/fak.tyʁ de.lɛk.tʁi.si.te/",
+      "example_fr": "La facture d'électricité arrive.",
+      "example_vi": "Hóa đơn tiền điện đã đến.",
+      "example_en": "The electricity bill arrives."
+    },
+    {
+      "french": "la facture d'eau",
+      "meaning_vi": "hóa đơn tiền nước",
+      "meaning_en": "the water bill",
+      "ipa": "/fak.tyʁ do/",
+      "example_fr": "La facture d'eau est basse.",
+      "example_vi": "Hóa đơn tiền nước thấp.",
+      "example_en": "The water bill is low."
+    },
+    {
+      "french": "le chauffage",
+      "meaning_vi": "hệ thống sưởi",
+      "meaning_en": "heating",
+      "ipa": "/ʃo.faʒ/",
+      "example_fr": "Le chauffage est en panne.",
+      "example_vi": "Hệ thống sưởi bị hỏng.",
+      "example_en": "The heating is broken."
+    },
+    {
+      "french": "une allocation logement",
+      "meaning_vi": "tiền hỗ trợ nhà ở",
+      "meaning_en": "a housing allowance",
+      "ipa": "/a.lɔ.ka.sjɔ̃ lɔʒ.mɑ̃/",
+      "example_fr": "Elle demande une allocation logement.",
+      "example_vi": "Cô ấy xin trợ cấp nhà ở.",
+      "example_en": "She applies for a housing allowance."
+    }
+  ]
+}

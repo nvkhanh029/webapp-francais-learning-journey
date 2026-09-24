@@ -1,0 +1,190 @@
+{
+  "category": "Les commerces",
+  "category_key": "commerces",
+  "category_sort_order": 90,
+  "category_vi": "Cửa hàng và thương mại",
+  "category_en": "Shops and businesses",
+  "topic": "Les courses et les commerces",
+  "topic_slug": "courses-commerces",
+  "topic_sort_order": 10,
+  "topic_vi": "Mua sắm và cửa hàng",
+  "topic_en": "Shopping and stores",
+  "subtopic": "Acheter dans les commerces de proximité",
+  "subtopic_key": "acheter-dans-les-commerces-de-proximite",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Mua sắm ở cửa hàng gần nhà",
+  "subtopic_en": "Shopping at local stores",
+  "words": [
+    {
+      "french": "le commerce de proximité",
+      "meaning_vi": "cửa hàng gần nhà",
+      "meaning_en": "local shop",
+      "ipa": "/kɔ.mɛʁs də pʁɔk.si.mi.te/",
+      "example_fr": "J'achète mon pain au commerce de proximité.",
+      "example_vi": "Tôi mua bánh mì ở cửa hàng gần nhà.",
+      "example_en": "I buy my bread at the local shop."
+    },
+    {
+      "french": "la supérette",
+      "meaning_vi": "siêu thị mini",
+      "meaning_en": "minimarket",
+      "ipa": "/sype.ʁɛt/",
+      "example_fr": "Je fais mes courses à la supérette du coin.",
+      "example_vi": "Tôi mua đồ ở siêu thị mini góc phố.",
+      "example_en": "I shop at the corner minimarket."
+    },
+    {
+      "french": "le primeur",
+      "meaning_vi": "người bán rau củ quả",
+      "meaning_en": "greengrocer",
+      "ipa": "/pʁi.mœʁ/",
+      "example_fr": "J'achète mes légumes chez le primeur.",
+      "example_vi": "Tôi mua rau ở hàng rau củ quả.",
+      "example_en": "I buy my vegetables at the greengrocer's."
+    },
+    {
+      "french": "le traiteur",
+      "meaning_vi": "hàng đồ ăn sẵn",
+      "meaning_en": "caterer, deli",
+      "ipa": "/tʁɛ.tœʁ/",
+      "example_fr": "On commande le repas chez le traiteur.",
+      "example_vi": "Chúng tôi đặt món ăn ở hàng đồ ăn sẵn.",
+      "example_en": "We order the meal from the deli."
+    },
+    {
+      "french": "l'épicerie",
+      "meaning_vi": "cửa hàng tạp hóa",
+      "meaning_en": "grocery store",
+      "ipa": "/e.pis.ʁi/",
+      "example_fr": "L'épicerie du coin ferme tard.",
+      "example_vi": "Cửa hàng tạp hóa ở góc phố đóng cửa muộn.",
+      "example_en": "The corner grocery store closes late."
+    },
+    {
+      "french": "le marché couvert",
+      "meaning_vi": "chợ có mái che",
+      "meaning_en": "covered market",
+      "ipa": "/maʁ.ʃe ku.vɛʁ/",
+      "example_fr": "Le marché couvert est ouvert tous les matins.",
+      "example_vi": "Chợ có mái che mở cử mỗi sáng.",
+      "example_en": "The covered market is open every morning."
+    },
+    {
+      "french": "le pressing",
+      "meaning_vi": "tiệm giặt khô",
+      "meaning_en": "dry cleaner",
+      "ipa": "/pʁɛ.siŋ/",
+      "example_fr": "Je dépose mon costume au pressing.",
+      "example_vi": "Tôi gửi bộ vest ở tiệm giặt khô.",
+      "example_en": "I drop my suit at the dry cleaner."
+    },
+    {
+      "french": "le fleuriste",
+      "meaning_vi": "người bán hoa / tiệm hoa",
+      "meaning_en": "florist",
+      "ipa": "/flœ.ʁist/",
+      "example_fr": "J'ai acheté des roses chez le fleuriste.",
+      "example_vi": "Tôi đã mua hoa hồng ở tiệm hoa.",
+      "example_en": "I bought roses at the florist's."
+    },
+    {
+      "french": "le kiosque",
+      "meaning_vi": "quầy báo",
+      "meaning_en": "newsstand, kiosk",
+      "ipa": "/kjɔsk/",
+      "example_fr": "Il achète son journal au kiosque.",
+      "example_vi": "Anh ấy mua báo ở quầy báo.",
+      "example_en": "He buys his newspaper at the kiosk."
+    },
+    {
+      "french": "le caviste",
+      "meaning_vi": "cửa hàng rượu vang",
+      "meaning_en": "wine merchant",
+      "ipa": "/ka.vist/",
+      "example_fr": "Le caviste m'a conseillé un bon bordeaux.",
+      "example_vi": "Chủ cửa hàng rượu đã tư vấn cho tôi một chai bordeaux ngon.",
+      "example_en": "The wine merchant recommended a good Bordeaux."
+    },
+    {
+      "french": "la librairie",
+      "meaning_vi": "hiệu sách",
+      "meaning_en": "bookshop",
+      "ipa": "/li.bʁɛ.ʁi/",
+      "example_fr": "J'ai acheté ce roman à la librairie du quartier.",
+      "example_vi": "Tôi đã mua cuốn tiểu thuyết này ở hiệu sách trong khu phố.",
+      "example_en": "I bought this novel at the neighbourhood bookshop."
+    },
+    {
+      "french": "les horaires d'ouverture",
+      "meaning_vi": "giờ mở cửa",
+      "meaning_en": "opening hours",
+      "ipa": "/ɔ.ʁɛʁ du.vɛʁ.tyʁ/",
+      "example_fr": "Les horaires d'ouverture sont affichés sur la porte.",
+      "example_vi": "Giờ mở cửa được dán trên cửa.",
+      "example_en": "Opening hours are posted on the door."
+    },
+    {
+      "french": "la pâtisserie",
+      "meaning_vi": "tiệm bánh ngọt",
+      "meaning_en": "pastry shop",
+      "ipa": "/pa.tis.ʁi/",
+      "example_fr": "Cette pâtisserie fait de très bons éclairs.",
+      "example_vi": "Tiệm bánh ngọt này làm bánh éclair rất ngon.",
+      "example_en": "This pastry shop makes very good éclairs."
+    },
+    {
+      "french": "le prix au kilo",
+      "meaning_vi": "giá theo cân",
+      "meaning_en": "price per kilo",
+      "ipa": "/pʁi o ki.lo/",
+      "example_fr": "Quel est le prix au kilo des pommes ?",
+      "example_vi": "Giá táo theo cân là bao nhiêu?",
+      "example_en": "What is the price per kilo of apples?"
+    },
+    {
+      "french": "le tabac",
+      "meaning_vi": "cửa hàng thuốc lá",
+      "meaning_en": "tobacconist",
+      "ipa": "/ta.ba/",
+      "example_fr": "J'achète mon journal au tabac.",
+      "example_vi": "Tôi mua báo ở cửa hàng thuốc lá.",
+      "example_en": "I buy my newspaper at the tobacconist's."
+    },
+    {
+      "french": "la laverie",
+      "meaning_vi": "tiệm giặt tự động",
+      "meaning_en": "laundromat",
+      "ipa": "/lav.ʁi/",
+      "example_fr": "Il y a une laverie près de chez moi.",
+      "example_vi": "Có một tiệm giặt tự động gần nhà tôi.",
+      "example_en": "There is a laundromat near my place."
+    },
+    {
+      "french": "le quartier",
+      "meaning_vi": "khu phố",
+      "meaning_en": "neighbourhood",
+      "ipa": "/kaʁ.tje/",
+      "example_fr": "Il y a une bonne épicerie dans notre quartier.",
+      "example_vi": "Có một cửa hàng tạp hóa ngon trong khu phố của chúng tôi.",
+      "example_en": "There is a good grocery store in our neighbourhood."
+    },
+    {
+      "french": "ouvert",
+      "meaning_vi": "mở cửa",
+      "meaning_en": "open",
+      "ipa": "/u.vɛʁ/",
+      "example_fr": "Le magasin est ouvert jusqu'à dix-neuf heures.",
+      "example_vi": "Cửa hàng mở cửa đến 19 giờ.",
+      "example_en": "The shop is open until 7 p.m."
+    },
+    {
+      "french": "fermé",
+      "meaning_vi": "đóng cửa",
+      "meaning_en": "closed",
+      "ipa": "/fɛʁ.me/",
+      "example_fr": "La boulangerie est fermée le lundi.",
+      "example_vi": "Tiệm bánh mì đóng cửa vào thứ Hai.",
+      "example_en": "The bakery is closed on Mondays."
+    }
+  ]
+}

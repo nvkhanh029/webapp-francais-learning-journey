@@ -1,0 +1,190 @@
+{
+  "category": "Les loisirs",
+  "category_key": "loisirs",
+  "category_sort_order": 60,
+  "category_vi": "Giải trí",
+  "category_en": "Leisure",
+  "topic": "Les activités culturelles et sportives",
+  "topic_slug": "activites-culturelles-sportives",
+  "topic_sort_order": 10,
+  "topic_vi": "Hoạt động văn hóa và thể thao",
+  "topic_en": "Cultural and sports activities",
+  "subtopic": "Les activités culturelles",
+  "subtopic_key": "les-activites-culturelles",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Hoạt động văn hóa",
+  "subtopic_en": "Cultural activities",
+  "words": [
+    {
+      "french": "le musée",
+      "meaning_vi": "bảo tàng",
+      "meaning_en": "museum",
+      "ipa": "/lə myze/",
+      "example_fr": "Nous visitons un musée dimanche.",
+      "example_vi": "Chúng tôi đi thăm bảo tàng vào chủ nhật.",
+      "example_en": "We visit a museum on Sunday."
+    },
+    {
+      "french": "l'exposition (f)",
+      "meaning_vi": "triển lãm",
+      "meaning_en": "exhibition",
+      "ipa": "/lɛɡzpozisjɔ̃/",
+      "example_fr": "L'exposition est très intéressante.",
+      "example_vi": "Triển lãm rất thú vị.",
+      "example_en": "The exhibition is very interesting."
+    },
+    {
+      "french": "le concert",
+      "meaning_vi": "buổi hòa nhạc",
+      "meaning_en": "concert",
+      "ipa": "/lə kɔ̃sɛʁ/",
+      "example_fr": "Nous allons à un concert ce soir.",
+      "example_vi": "Tối nay chúng tôi đi nghe hòa nhạc.",
+      "example_en": "We are going to a concert tonight."
+    },
+    {
+      "french": "le théâtre",
+      "meaning_vi": "nhà hát, kịch",
+      "meaning_en": "theatre",
+      "ipa": "/lə teatʁ/",
+      "example_fr": "Elle adore le théâtre.",
+      "example_vi": "Cô ấy rất thích kịch.",
+      "example_en": "She loves the theatre."
+    },
+    {
+      "french": "le cinéma",
+      "meaning_vi": "rạp chiếu phim",
+      "meaning_en": "cinema",
+      "ipa": "/lə sinema/",
+      "example_fr": "Nous regardons un film au cinéma.",
+      "example_vi": "Chúng tôi xem phim ở rạp chiếu phim.",
+      "example_en": "We watch a film at the cinema."
+    },
+    {
+      "french": "le festival",
+      "meaning_vi": "lễ hội",
+      "meaning_en": "festival",
+      "ipa": "/lə fɛstival/",
+      "example_fr": "Le festival commence en juillet.",
+      "example_vi": "Lễ hội bắt đầu vào tháng bảy.",
+      "example_en": "The festival starts in July."
+    },
+    {
+      "french": "le spectacle",
+      "meaning_vi": "buổi biểu diễn",
+      "meaning_en": "show, performance",
+      "ipa": "/lə spɛktakl/",
+      "example_fr": "Le spectacle était magnifique.",
+      "example_vi": "Buổi biểu diễn rất tuyệt vời.",
+      "example_en": "The show was wonderful."
+    },
+    {
+      "french": "l'opéra (m)",
+      "meaning_vi": "nhạc kịch opera",
+      "meaning_en": "opera",
+      "ipa": "/lɔpeʁa/",
+      "example_fr": "Ils vont à l'opéra.",
+      "example_vi": "Họ đi xem opera.",
+      "example_en": "They are going to the opera."
+    },
+    {
+      "french": "le ballet",
+      "meaning_vi": "múa ba lê",
+      "meaning_en": "ballet",
+      "ipa": "/lə balɛ/",
+      "example_fr": "Elle apprend le ballet.",
+      "example_vi": "Cô ấy đang học múa ba lê.",
+      "example_en": "She is learning ballet."
+    },
+    {
+      "french": "la bibliothèque",
+      "meaning_vi": "thư viện",
+      "meaning_en": "library",
+      "ipa": "/la bibljɔtɛk/",
+      "example_fr": "J'emprunte des livres à la bibliothèque.",
+      "example_vi": "Tôi mượn sách ở thư viện.",
+      "example_en": "I borrow books from the library."
+    },
+    {
+      "french": "la galerie d'art",
+      "meaning_vi": "phòng trưng bày nghệ thuật",
+      "meaning_en": "art gallery",
+      "ipa": "/la ɡalʁi daʁ/",
+      "example_fr": "Cette galerie d'art est célèbre.",
+      "example_vi": "Phòng trưng bày nghệ thuật này nổi tiếng.",
+      "example_en": "This art gallery is famous."
+    },
+    {
+      "french": "la pièce de théâtre",
+      "meaning_vi": "vở kịch",
+      "meaning_en": "play",
+      "ipa": "/la pjɛs də teatʁ/",
+      "example_fr": "La pièce de théâtre commence à huit heures.",
+      "example_vi": "Vở kịch bắt đầu lúc tám giờ.",
+      "example_en": "The play starts at eight."
+    },
+    {
+      "french": "l'artiste (m/f)",
+      "meaning_vi": "nghệ sĩ",
+      "meaning_en": "artist",
+      "ipa": "/laʁtist/",
+      "example_fr": "Cet artiste est talentueux.",
+      "example_vi": "Nghệ sĩ này rất tài năng.",
+      "example_en": "This artist is talented."
+    },
+    {
+      "french": "le patrimoine",
+      "meaning_vi": "di sản",
+      "meaning_en": "heritage",
+      "ipa": "/lə patʁimwan/",
+      "example_fr": "Ils protègent le patrimoine.",
+      "example_vi": "Họ bảo vệ di sản.",
+      "example_en": "They protect the heritage."
+    },
+    {
+      "french": "la visite guidée",
+      "meaning_vi": "chuyến tham quan có hướng dẫn",
+      "meaning_en": "guided tour",
+      "ipa": "/la vizit ɡide/",
+      "example_fr": "La visite guidée dure une heure.",
+      "example_vi": "Chuyến tham quan có hướng dẫn kéo dài một giờ.",
+      "example_en": "The guided tour lasts one hour."
+    },
+    {
+      "french": "le billet",
+      "meaning_vi": "vé",
+      "meaning_en": "ticket",
+      "ipa": "/lə bijɛ/",
+      "example_fr": "J'achète deux billets.",
+      "example_vi": "Tôi mua hai vé.",
+      "example_en": "I buy two tickets."
+    },
+    {
+      "french": "la séance",
+      "meaning_vi": "suất chiếu",
+      "meaning_en": "screening, session",
+      "ipa": "/la seɑ̃s/",
+      "example_fr": "La séance est à neuf heures.",
+      "example_vi": "Suất chiếu lúc chín giờ.",
+      "example_en": "The screening is at nine."
+    },
+    {
+      "french": "le roman",
+      "meaning_vi": "tiểu thuyết",
+      "meaning_en": "novel",
+      "ipa": "/lə ʁɔmɑ̃/",
+      "example_fr": "Il lit un roman chaque semaine.",
+      "example_vi": "Anh ấy đọc một tiểu thuyết mỗi tuần.",
+      "example_en": "He reads a novel every week."
+    },
+    {
+      "french": "le tableau",
+      "meaning_vi": "bức tranh",
+      "meaning_en": "painting",
+      "ipa": "/lə tablo/",
+      "example_fr": "Elle photographie les tableaux.",
+      "example_vi": "Cô ấy chụp ảnh các bức tranh.",
+      "example_en": "She takes photos of the paintings."
+    }
+  ]
+}

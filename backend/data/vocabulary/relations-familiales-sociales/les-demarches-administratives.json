@@ -1,0 +1,190 @@
+{
+  "category": "Les relations familiales et sociales",
+  "category_key": "relations-familiales-sociales",
+  "category_sort_order": 20,
+  "category_vi": "Quan hệ gia đình và xã hội",
+  "category_en": "Family and social relationships",
+  "topic": "La famille",
+  "topic_slug": "famille",
+  "topic_sort_order": 10,
+  "topic_vi": "Gia đình",
+  "topic_en": "Family",
+  "subtopic": "Les démarches administratives",
+  "subtopic_key": "les-demarches-administratives",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Thủ tục hành chính",
+  "subtopic_en": "Administrative procedures",
+  "words": [
+    {
+      "french": "la mairie",
+      "meaning_vi": "tòa thị chính",
+      "meaning_en": "town hall",
+      "ipa": "/la me.ʁi/",
+      "example_fr": "Ils se marient à la mairie samedi.",
+      "example_vi": "Họ kết hôn ở tòa thị chính vào thứ bảy.",
+      "example_en": "They are getting married at the town hall on Saturday."
+    },
+    {
+      "french": "l'état civil",
+      "meaning_vi": "hộ tịch",
+      "meaning_en": "civil registry",
+      "ipa": "/le.ta si.vil/",
+      "example_fr": "Déclarez la naissance à l'état civil.",
+      "example_vi": "Hãy khai sinh tại phòng hộ tịch.",
+      "example_en": "Register the birth at the civil registry."
+    },
+    {
+      "french": "l'acte de naissance",
+      "meaning_vi": "giấy khai sinh",
+      "meaning_en": "birth certificate",
+      "ipa": "/lakt də ne.sɑ̃s/",
+      "example_fr": "Il faut un acte de naissance pour le passeport.",
+      "example_vi": "Cần giấy khai sinh để làm hộ chiếu.",
+      "example_en": "A birth certificate is needed for the passport."
+    },
+    {
+      "french": "l'acte de mariage",
+      "meaning_vi": "giấy chứng nhận kết hôn",
+      "meaning_en": "marriage certificate",
+      "ipa": "/lakt də ma.ʁjaʒ/",
+      "example_fr": "Demandez une copie de l'acte de mariage.",
+      "example_vi": "Hãy xin một bản sao giấy chứng nhận kết hôn.",
+      "example_en": "Ask for a copy of the marriage certificate."
+    },
+    {
+      "french": "le livret de famille",
+      "meaning_vi": "sổ hộ khẩu gia đình",
+      "meaning_en": "family record book",
+      "ipa": "/lə li.vʁe də fa.mij/",
+      "example_fr": "Le livret de famille est remis au mariage.",
+      "example_vi": "Sổ gia đình được trao khi kết hôn.",
+      "example_en": "The family record book is given at the wedding."
+    },
+    {
+      "french": "la carte d'identité",
+      "meaning_vi": "chứng minh nhân dân",
+      "meaning_en": "ID card",
+      "ipa": "/la kaʁt di.dɑ̃.ti.te/",
+      "example_fr": "Présentez votre carte d'identité au guichet.",
+      "example_vi": "Hãy xuất trình chứng minh nhân dân tại quầy.",
+      "example_en": "Show your ID card at the counter."
+    },
+    {
+      "french": "le passeport",
+      "meaning_vi": "hộ chiếu",
+      "meaning_en": "passport",
+      "ipa": "/lə pas.pɔʁ/",
+      "example_fr": "Son passeport est encore valide.",
+      "example_vi": "Hộ chiếu của anh ấy vẫn còn hiệu lực.",
+      "example_en": "His passport is still valid."
+    },
+    {
+      "french": "le formulaire",
+      "meaning_vi": "mẫu đơn",
+      "meaning_en": "form",
+      "ipa": "/lə fɔʁ.my.lɛʁ/",
+      "example_fr": "Remplissez ce formulaire en ligne.",
+      "example_vi": "Hãy điền mẫu đơn này trực tuyến.",
+      "example_en": "Fill in this form online."
+    },
+    {
+      "french": "le dossier",
+      "meaning_vi": "hồ sơ",
+      "meaning_en": "file / application",
+      "ipa": "/lə do.sje/",
+      "example_fr": "Votre dossier est complet.",
+      "example_vi": "Hồ sơ của bạn đã đầy đủ.",
+      "example_en": "Your file is complete."
+    },
+    {
+      "french": "le justificatif de domicile",
+      "meaning_vi": "giấy chứng minh nơi cư trú",
+      "meaning_en": "proof of address",
+      "ipa": "/lə ʒys.ti.fi.ka.tif də do.mi.sil/",
+      "example_fr": "Apportez un justificatif de domicile récent.",
+      "example_vi": "Hãy mang theo giấy chứng minh nơi cư trú gần đây.",
+      "example_en": "Bring a recent proof of address."
+    },
+    {
+      "french": "la demande",
+      "meaning_vi": "đơn yêu cầu",
+      "meaning_en": "request / application",
+      "ipa": "/la də.mɑ̃d/",
+      "example_fr": "J'ai fait une demande de visa.",
+      "example_vi": "Tôi đã nộp đơn xin visa.",
+      "example_en": "I made a visa application."
+    },
+    {
+      "french": "le rendez-vous",
+      "meaning_vi": "cuộc hẹn",
+      "meaning_en": "appointment",
+      "ipa": "/lə ʁɑ̃.de.vu/",
+      "example_fr": "Prenez rendez-vous à la préfecture.",
+      "example_vi": "Hãy đặt lịch hẹn ở tỉnh lỵ.",
+      "example_en": "Make an appointment at the prefecture."
+    },
+    {
+      "french": "le guichet",
+      "meaning_vi": "quầy giao dịch",
+      "meaning_en": "counter",
+      "ipa": "/lə ɡi.ʃɛ/",
+      "example_fr": "Allez au guichet numéro trois.",
+      "example_vi": "Hãy đến quầy số ba.",
+      "example_en": "Go to counter number three."
+    },
+    {
+      "french": "le fonctionnaire",
+      "meaning_vi": "công chức",
+      "meaning_en": "civil servant",
+      "ipa": "/lə fɔ̃k.sjɔ.nɛʁ/",
+      "example_fr": "Le fonctionnaire vérifie les papiers.",
+      "example_vi": "Công chức kiểm tra giấy tờ.",
+      "example_en": "The civil servant checks the papers."
+    },
+    {
+      "french": "déclarer",
+      "meaning_vi": "khai báo",
+      "meaning_en": "to declare",
+      "ipa": "/de.kla.ʁe/",
+      "example_fr": "Il faut déclarer la naissance en mairie.",
+      "example_vi": "Phải khai sinh ở tòa thị chính.",
+      "example_en": "You must register the birth at the town hall."
+    },
+    {
+      "french": "remplir",
+      "meaning_vi": "điền (đơn)",
+      "meaning_en": "to fill in",
+      "ipa": "/ʁɑ̃.pliʁ/",
+      "example_fr": "Remplissez le formulaire avec soin.",
+      "example_vi": "Hãy điền đơn cẩn thận.",
+      "example_en": "Fill in the form carefully."
+    },
+    {
+      "french": "signer",
+      "meaning_vi": "ký tên",
+      "meaning_en": "to sign",
+      "ipa": "/si.ɲe/",
+      "example_fr": "Signez le document ici.",
+      "example_vi": "Hãy ký tài liệu ở đây.",
+      "example_en": "Sign the document here."
+    },
+    {
+      "french": "la préfecture",
+      "meaning_vi": "tỉnh lỵ / sở cảnh sát",
+      "meaning_en": "prefecture",
+      "ipa": "/la pʁe.fɛk.tyʁ/",
+      "example_fr": "Il renouvelle son titre à la préfecture.",
+      "example_vi": "Anh ấy gia hạn giấy tờ ở tỉnh lỵ.",
+      "example_en": "He renews his permit at the prefecture."
+    },
+    {
+      "french": "le délai",
+      "meaning_vi": "thời hạn",
+      "meaning_en": "deadline",
+      "ipa": "/lə de.lɛ/",
+      "example_fr": "Respectez le délai de deux semaines.",
+      "example_vi": "Hãy tuân thủ thời hạn hai tuần.",
+      "example_en": "Respect the two-week deadline."
+    }
+  ]
+}

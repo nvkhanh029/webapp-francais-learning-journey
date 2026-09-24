@@ -1,0 +1,190 @@
+{
+  "category": "Le logement",
+  "category_key": "logement",
+  "category_sort_order": 40,
+  "category_vi": "Nhà ở",
+  "category_en": "Housing",
+  "topic": "Les habitations et le mobilier",
+  "topic_slug": "habitations-mobilier",
+  "topic_sort_order": 10,
+  "topic_vi": "Nhà ở và đồ nội thất",
+  "topic_en": "Housing and furniture",
+  "subtopic": "Le mobilier",
+  "subtopic_key": "le-mobilier",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Đồ nội thất",
+  "subtopic_en": "Furniture",
+  "words": [
+    {
+      "french": "un lit",
+      "meaning_vi": "cái giường",
+      "meaning_en": "a bed",
+      "ipa": "/li/",
+      "example_fr": "Le lit est confortable.",
+      "example_vi": "Cái giường rất thoải mái.",
+      "example_en": "The bed is comfortable."
+    },
+    {
+      "french": "une armoire",
+      "meaning_vi": "tủ quần áo",
+      "meaning_en": "a wardrobe",
+      "ipa": "/aʁ.mwaʁ/",
+      "example_fr": "L'armoire est grande.",
+      "example_vi": "Tủ quần áo rất lớn.",
+      "example_en": "The wardrobe is big."
+    },
+    {
+      "french": "une commode",
+      "meaning_vi": "tủ ngăn kéo",
+      "meaning_en": "a chest of drawers",
+      "ipa": "/kɔ.mɔd/",
+      "example_fr": "La commode est en bois.",
+      "example_vi": "Tủ ngăn kéo bằng gỗ.",
+      "example_en": "The chest of drawers is wooden."
+    },
+    {
+      "french": "une table",
+      "meaning_vi": "cái bàn",
+      "meaning_en": "a table",
+      "ipa": "/tabl/",
+      "example_fr": "La table est ronde.",
+      "example_vi": "Cái bàn thì tròn.",
+      "example_en": "The table is round."
+    },
+    {
+      "french": "une chaise",
+      "meaning_vi": "cái ghế",
+      "meaning_en": "a chair",
+      "ipa": "/ʃɛz/",
+      "example_fr": "La chaise est cassée.",
+      "example_vi": "Cái ghế bị hỏng.",
+      "example_en": "The chair is broken."
+    },
+    {
+      "french": "un fauteuil",
+      "meaning_vi": "ghế bành",
+      "meaning_en": "an armchair",
+      "ipa": "/fo.tœj/",
+      "example_fr": "Le fauteuil est doux.",
+      "example_vi": "Ghế bành rất êm.",
+      "example_en": "The armchair is soft."
+    },
+    {
+      "french": "un canapé",
+      "meaning_vi": "ghế sofa",
+      "meaning_en": "a sofa",
+      "ipa": "/ka.na.pe/",
+      "example_fr": "Le canapé est neuf.",
+      "example_vi": "Ghế sofa còn mới.",
+      "example_en": "The sofa is new."
+    },
+    {
+      "french": "une étagère",
+      "meaning_vi": "kệ, giá sách",
+      "meaning_en": "a shelf",
+      "ipa": "/e.ta.ʒɛʁ/",
+      "example_fr": "L'étagère est pleine.",
+      "example_vi": "Cái kệ đầy đồ.",
+      "example_en": "The shelf is full."
+    },
+    {
+      "french": "un tabouret",
+      "meaning_vi": "ghế đẩu",
+      "meaning_en": "a stool",
+      "ipa": "/ta.bu.ʁɛ/",
+      "example_fr": "Le tabouret est près de la table.",
+      "example_vi": "Ghế đẩu ở cạnh cái bàn.",
+      "example_en": "The stool is next to the table."
+    },
+    {
+      "french": "un placard",
+      "meaning_vi": "tủ âm tường",
+      "meaning_en": "a cupboard",
+      "ipa": "/pla.kaʁ/",
+      "example_fr": "Le placard est vide.",
+      "example_vi": "Tủ âm tường trống trơn.",
+      "example_en": "The cupboard is empty."
+    },
+    {
+      "french": "un miroir",
+      "meaning_vi": "cái gương",
+      "meaning_en": "a mirror",
+      "ipa": "/mi.ʁwaʁ/",
+      "example_fr": "Le miroir est sale.",
+      "example_vi": "Cái gương bị bẩn.",
+      "example_en": "The mirror is dirty."
+    },
+    {
+      "french": "une lampe",
+      "meaning_vi": "cái đèn",
+      "meaning_en": "a lamp",
+      "ipa": "/lɑ̃p/",
+      "example_fr": "La lampe est allumée.",
+      "example_vi": "Cái đèn đang bật.",
+      "example_en": "The lamp is on."
+    },
+    {
+      "french": "un tapis",
+      "meaning_vi": "tấm thảm",
+      "meaning_en": "a carpet / rug",
+      "ipa": "/ta.pi/",
+      "example_fr": "Le tapis est rouge.",
+      "example_vi": "Tấm thảm màu đỏ.",
+      "example_en": "The rug is red."
+    },
+    {
+      "french": "un rideau",
+      "meaning_vi": "rèm cửa",
+      "meaning_en": "a curtain",
+      "ipa": "/ʁi.do/",
+      "example_fr": "Le rideau est fermé.",
+      "example_vi": "Rèm cửa đã đóng.",
+      "example_en": "The curtain is closed."
+    },
+    {
+      "french": "un matelas",
+      "meaning_vi": "nệm",
+      "meaning_en": "a mattress",
+      "ipa": "/mat.la/",
+      "example_fr": "Le matelas est dur.",
+      "example_vi": "Tấm nệm rất cứng.",
+      "example_en": "The mattress is hard."
+    },
+    {
+      "french": "un oreiller",
+      "meaning_vi": "cái gối",
+      "meaning_en": "a pillow",
+      "ipa": "/ɔ.ʁe.je/",
+      "example_fr": "L'oreiller est mou.",
+      "example_vi": "Cái gối rất mềm.",
+      "example_en": "The pillow is soft."
+    },
+    {
+      "french": "une couverture",
+      "meaning_vi": "cái chăn",
+      "meaning_en": "a blanket",
+      "ipa": "/ku.vɛʁ.tyʁ/",
+      "example_fr": "La couverture est chaude.",
+      "example_vi": "Cái chăn rất ấm.",
+      "example_en": "The blanket is warm."
+    },
+    {
+      "french": "un réfrigérateur",
+      "meaning_vi": "tủ lạnh",
+      "meaning_en": "a refrigerator",
+      "ipa": "/ʁe.fʁi.ʒe.ʁa.tœʁ/",
+      "example_fr": "Le réfrigérateur est plein.",
+      "example_vi": "Tủ lạnh đầy đồ ăn.",
+      "example_en": "The fridge is full."
+    },
+    {
+      "french": "une machine à laver",
+      "meaning_vi": "máy giặt",
+      "meaning_en": "a washing machine",
+      "ipa": "/ma.ʃin a la.ve/",
+      "example_fr": "La machine à laver est en panne.",
+      "example_vi": "Máy giặt bị hỏng.",
+      "example_en": "The washing machine is broken."
+    }
+  ]
+}

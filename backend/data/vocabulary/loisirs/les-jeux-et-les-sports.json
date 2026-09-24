@@ -1,0 +1,190 @@
+{
+  "category": "Les loisirs",
+  "category_key": "loisirs",
+  "category_sort_order": 60,
+  "category_vi": "Giải trí",
+  "category_en": "Leisure",
+  "topic": "Les activités culturelles et sportives",
+  "topic_slug": "activites-culturelles-sportives",
+  "topic_sort_order": 10,
+  "topic_vi": "Hoạt động văn hóa và thể thao",
+  "topic_en": "Cultural and sports activities",
+  "subtopic": "Les jeux et les sports",
+  "subtopic_key": "les-jeux-et-les-sports",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Trò chơi và thể thao",
+  "subtopic_en": "Games and sports",
+  "words": [
+    {
+      "french": "le football",
+      "meaning_vi": "bóng đá",
+      "meaning_en": "football, soccer",
+      "ipa": "/lə futbol/",
+      "example_fr": "Il joue au football le samedi.",
+      "example_vi": "Anh ấy chơi bóng đá vào thứ bảy.",
+      "example_en": "He plays football on Saturday."
+    },
+    {
+      "french": "le basketball",
+      "meaning_vi": "bóng rổ",
+      "meaning_en": "basketball",
+      "ipa": "/lə baskɛtbol/",
+      "example_fr": "Elle joue au basketball.",
+      "example_vi": "Cô ấy chơi bóng rổ.",
+      "example_en": "She plays basketball."
+    },
+    {
+      "french": "le tennis",
+      "meaning_vi": "quần vợt",
+      "meaning_en": "tennis",
+      "ipa": "/lə tenis/",
+      "example_fr": "Nous jouons au tennis ensemble.",
+      "example_vi": "Chúng tôi chơi quần vợt cùng nhau.",
+      "example_en": "We play tennis together."
+    },
+    {
+      "french": "la natation",
+      "meaning_vi": "bơi lội",
+      "meaning_en": "swimming",
+      "ipa": "/la natasjɔ̃/",
+      "example_fr": "La natation est bonne pour la santé.",
+      "example_vi": "Bơi lội tốt cho sức khỏe.",
+      "example_en": "Swimming is good for health."
+    },
+    {
+      "french": "le cyclisme",
+      "meaning_vi": "đạp xe",
+      "meaning_en": "cycling",
+      "ipa": "/lə siklism/",
+      "example_fr": "Il adore le cyclisme.",
+      "example_vi": "Anh ấy rất thích đạp xe.",
+      "example_en": "He loves cycling."
+    },
+    {
+      "french": "la course à pied",
+      "meaning_vi": "chạy bộ",
+      "meaning_en": "running",
+      "ipa": "/la kuʁs a pje/",
+      "example_fr": "Elle fait de la course à pied chaque matin.",
+      "example_vi": "Cô ấy chạy bộ mỗi sáng.",
+      "example_en": "She runs every morning."
+    },
+    {
+      "french": "le judo",
+      "meaning_vi": "môn judo",
+      "meaning_en": "judo",
+      "ipa": "/lə ʒydo/",
+      "example_fr": "Mon fils fait du judo.",
+      "example_vi": "Con trai tôi tập judo.",
+      "example_en": "My son does judo."
+    },
+    {
+      "french": "le match",
+      "meaning_vi": "trận đấu",
+      "meaning_en": "match, game",
+      "ipa": "/lə matʃ/",
+      "example_fr": "Le match commence à huit heures.",
+      "example_vi": "Trận đấu bắt đầu lúc tám giờ.",
+      "example_en": "The match starts at eight."
+    },
+    {
+      "french": "l'équipe (f)",
+      "meaning_vi": "đội",
+      "meaning_en": "team",
+      "ipa": "/lekip/",
+      "example_fr": "Notre équipe a gagné.",
+      "example_vi": "Đội của chúng tôi đã thắng.",
+      "example_en": "Our team won."
+    },
+    {
+      "french": "le joueur",
+      "meaning_vi": "cầu thủ, người chơi",
+      "meaning_en": "player",
+      "ipa": "/lə ʒwœʁ/",
+      "example_fr": "Ce joueur est rapide.",
+      "example_vi": "Cầu thủ này rất nhanh.",
+      "example_en": "This player is fast."
+    },
+    {
+      "french": "l'entraîneur (m)",
+      "meaning_vi": "huấn luyện viên",
+      "meaning_en": "coach",
+      "ipa": "/lɑ̃tʁɛnœʁ/",
+      "example_fr": "L'entraîneur nous encourage.",
+      "example_vi": "Huấn luyện viên động viên chúng tôi.",
+      "example_en": "The coach encourages us."
+    },
+    {
+      "french": "la victoire",
+      "meaning_vi": "chiến thắng",
+      "meaning_en": "victory",
+      "ipa": "/la viktwaʁ/",
+      "example_fr": "La victoire nous rend heureux.",
+      "example_vi": "Chiến thắng làm chúng tôi vui.",
+      "example_en": "Victory makes us happy."
+    },
+    {
+      "french": "la défaite",
+      "meaning_vi": "thất bại",
+      "meaning_en": "defeat",
+      "ipa": "/la defɛt/",
+      "example_fr": "La défaite est difficile à accepter.",
+      "example_vi": "Thất bại thật khó chấp nhận.",
+      "example_en": "Defeat is hard to accept."
+    },
+    {
+      "french": "le championnat",
+      "meaning_vi": "giải vô địch",
+      "meaning_en": "championship",
+      "ipa": "/lə ʃɑ̃pjɔna/",
+      "example_fr": "Ils ont gagné le championnat.",
+      "example_vi": "Họ đã thắng giải vô địch.",
+      "example_en": "They won the championship."
+    },
+    {
+      "french": "les échecs (m)",
+      "meaning_vi": "cờ vua",
+      "meaning_en": "chess",
+      "ipa": "/lezeʃɛk/",
+      "example_fr": "Il joue bien aux échecs.",
+      "example_vi": "Anh ấy chơi cờ vua giỏi.",
+      "example_en": "He plays chess well."
+    },
+    {
+      "french": "les cartes (f)",
+      "meaning_vi": "bài (lá bài)",
+      "meaning_en": "cards",
+      "ipa": "/le kaʁt/",
+      "example_fr": "Nous jouons aux cartes le soir.",
+      "example_vi": "Buổi tối chúng tôi chơi bài.",
+      "example_en": "We play cards in the evening."
+    },
+    {
+      "french": "le jeu de société",
+      "meaning_vi": "trò chơi hội đồng",
+      "meaning_en": "board game",
+      "ipa": "/lə ʒø də sɔsjete/",
+      "example_fr": "Nous aimons les jeux de société.",
+      "example_vi": "Chúng tôi thích trò chơi hội đồng.",
+      "example_en": "We love board games."
+    },
+    {
+      "french": "l'arbitre (m/f)",
+      "meaning_vi": "trọng tài",
+      "meaning_en": "referee",
+      "ipa": "/laʁbitʁ/",
+      "example_fr": "L'arbitre siffle.",
+      "example_vi": "Trọng tài thổi còi.",
+      "example_en": "The referee whistles."
+    },
+    {
+      "french": "le score",
+      "meaning_vi": "tỉ số",
+      "meaning_en": "score",
+      "ipa": "/lə skɔʁ/",
+      "example_fr": "Quel est le score ?",
+      "example_vi": "Tỉ số là bao nhiêu?",
+      "example_en": "What is the score?"
+    }
+  ]
+}

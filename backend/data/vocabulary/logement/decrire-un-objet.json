@@ -1,0 +1,190 @@
+{
+  "category": "Le logement",
+  "category_key": "logement",
+  "category_sort_order": 40,
+  "category_vi": "Nhà ở",
+  "category_en": "Housing",
+  "topic": "Les habitations et le mobilier",
+  "topic_slug": "habitations-mobilier",
+  "topic_sort_order": 10,
+  "topic_vi": "Nhà ở và đồ nội thất",
+  "topic_en": "Housing and furniture",
+  "subtopic": "Décrire un objet",
+  "subtopic_key": "decrire-un-objet",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Miêu tả đồ vật",
+  "subtopic_en": "Describing an object",
+  "words": [
+    {
+      "french": "grand",
+      "meaning_vi": "to, lớn",
+      "meaning_en": "big / tall",
+      "ipa": "/ɡʁɑ̃/",
+      "example_fr": "C'est un grand fauteuil.",
+      "example_vi": "Đó là một chiếc ghế bành lớn.",
+      "example_en": "It's a big armchair."
+    },
+    {
+      "french": "petit",
+      "meaning_vi": "nhỏ",
+      "meaning_en": "small",
+      "ipa": "/pə.ti/",
+      "example_fr": "C'est un petit miroir.",
+      "example_vi": "Đó là một chiếc gương nhỏ.",
+      "example_en": "It's a small mirror."
+    },
+    {
+      "french": "long",
+      "meaning_vi": "dài",
+      "meaning_en": "long",
+      "ipa": "/lɔ̃/",
+      "example_fr": "Le couloir est long.",
+      "example_vi": "Hành lang rất dài.",
+      "example_en": "The corridor is long."
+    },
+    {
+      "french": "large",
+      "meaning_vi": "rộng",
+      "meaning_en": "wide",
+      "ipa": "/laʁʒ/",
+      "example_fr": "La table est large.",
+      "example_vi": "Cái bàn rất rộng.",
+      "example_en": "The table is wide."
+    },
+    {
+      "french": "rond",
+      "meaning_vi": "tròn",
+      "meaning_en": "round",
+      "ipa": "/ʁɔ̃/",
+      "example_fr": "Le tapis est rond.",
+      "example_vi": "Tấm thảm hình tròn.",
+      "example_en": "The rug is round."
+    },
+    {
+      "french": "carré",
+      "meaning_vi": "vuông",
+      "meaning_en": "square",
+      "ipa": "/ka.ʁe/",
+      "example_fr": "La table est carrée.",
+      "example_vi": "Cái bàn hình vuông.",
+      "example_en": "The table is square."
+    },
+    {
+      "french": "lourd",
+      "meaning_vi": "nặng",
+      "meaning_en": "heavy",
+      "ipa": "/luʁ/",
+      "example_fr": "Le meuble est lourd.",
+      "example_vi": "Đồ nội thất rất nặng.",
+      "example_en": "The furniture is heavy."
+    },
+    {
+      "french": "léger",
+      "meaning_vi": "nhẹ",
+      "meaning_en": "light",
+      "ipa": "/le.ʒe/",
+      "example_fr": "Ce rideau est léger.",
+      "example_vi": "Rèm này rất nhẹ.",
+      "example_en": "This curtain is light."
+    },
+    {
+      "french": "neuf",
+      "meaning_vi": "mới",
+      "meaning_en": "new",
+      "ipa": "/nœf/",
+      "example_fr": "Le canapé est neuf.",
+      "example_vi": "Ghế sofa còn mới.",
+      "example_en": "The sofa is new."
+    },
+    {
+      "french": "ancien",
+      "meaning_vi": "cũ, cổ",
+      "meaning_en": "old / antique",
+      "ipa": "/ɑ̃.sjɛ̃/",
+      "example_fr": "C'est un meuble ancien.",
+      "example_vi": "Đó là đồ nội thất cổ.",
+      "example_en": "It's an antique piece."
+    },
+    {
+      "french": "moderne",
+      "meaning_vi": "hiện đại",
+      "meaning_en": "modern",
+      "ipa": "/mɔ.dɛʁn/",
+      "example_fr": "La lampe est moderne.",
+      "example_vi": "Cái đèn rất hiện đại.",
+      "example_en": "The lamp is modern."
+    },
+    {
+      "french": "confortable",
+      "meaning_vi": "thoải mái",
+      "meaning_en": "comfortable",
+      "ipa": "/kɔ̃.fɔʁ.tabl/",
+      "example_fr": "Ce lit est confortable.",
+      "example_vi": "Giường này rất thoải mái.",
+      "example_en": "This bed is comfortable."
+    },
+    {
+      "french": "pratique",
+      "meaning_vi": "tiện lợi",
+      "meaning_en": "practical",
+      "ipa": "/pʁa.tik/",
+      "example_fr": "C'est un objet pratique.",
+      "example_vi": "Đó là một đồ vật tiện lợi.",
+      "example_en": "It's a practical object."
+    },
+    {
+      "french": "fragile",
+      "meaning_vi": "dễ vỡ",
+      "meaning_en": "fragile",
+      "ipa": "/fʁa.ʒil/",
+      "example_fr": "Le vase est fragile.",
+      "example_vi": "Cái bình rất dễ vỡ.",
+      "example_en": "The vase is fragile."
+    },
+    {
+      "french": "solide",
+      "meaning_vi": "chắc chắn",
+      "meaning_en": "sturdy / solid",
+      "ipa": "/sɔ.lid/",
+      "example_fr": "La chaise est solide.",
+      "example_vi": "Cái ghế rất chắc chắn.",
+      "example_en": "The chair is sturdy."
+    },
+    {
+      "french": "en bois",
+      "meaning_vi": "bằng gỗ",
+      "meaning_en": "made of wood / wooden",
+      "ipa": "/ɑ̃ bwa/",
+      "example_fr": "La table est en bois.",
+      "example_vi": "Cái bàn bằng gỗ.",
+      "example_en": "The table is wooden."
+    },
+    {
+      "french": "en verre",
+      "meaning_vi": "bằng kính",
+      "meaning_en": "made of glass",
+      "ipa": "/ɑ̃ vɛʁ/",
+      "example_fr": "Le vase est en verre.",
+      "example_vi": "Cái bình bằng thủy tinh.",
+      "example_en": "The vase is made of glass."
+    },
+    {
+      "french": "en métal",
+      "meaning_vi": "bằng kim loại",
+      "meaning_en": "made of metal",
+      "ipa": "/ɑ̃ me.tal/",
+      "example_fr": "La lampe est en métal.",
+      "example_vi": "Cái đèn bằng kim loại.",
+      "example_en": "The lamp is made of metal."
+    },
+    {
+      "french": "bon marché",
+      "meaning_vi": "rẻ",
+      "meaning_en": "cheap",
+      "ipa": "/bɔ̃ maʁ.ʃe/",
+      "example_fr": "Ce tapis est bon marché.",
+      "example_vi": "Tấm thảm này rẻ.",
+      "example_en": "This rug is cheap."
+    }
+  ]
+}

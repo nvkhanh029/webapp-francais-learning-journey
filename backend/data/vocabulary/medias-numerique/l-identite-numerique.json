@@ -1,0 +1,190 @@
+{
+  "category": "Les médias et le numérique",
+  "category_key": "medias-numerique",
+  "category_sort_order": 120,
+  "category_vi": "Truyền thông và công nghệ số",
+  "category_en": "Media and digital technology",
+  "topic": "Le numérique",
+  "topic_slug": "numerique",
+  "topic_sort_order": 20,
+  "topic_vi": "Công nghệ số",
+  "topic_en": "Digital technology",
+  "subtopic": "L'identité numérique",
+  "subtopic_key": "l-identite-numerique",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Danh tính số",
+  "subtopic_en": "Digital identity",
+  "words": [
+    {
+      "french": "l'identité numérique",
+      "meaning_vi": "danh tính số",
+      "meaning_en": "digital identity",
+      "ipa": "/li.dɑ̃.ti.te ny.me.ʁik/",
+      "example_fr": "Protège ton identité numérique.",
+      "example_vi": "Hãy bảo vệ danh tính số của bạn.",
+      "example_en": "Protect your digital identity."
+    },
+    {
+      "french": "les données personnelles",
+      "meaning_vi": "dữ liệu cá nhân",
+      "meaning_en": "personal data",
+      "ipa": "/le do.ne pɛʁ.so.nɛl/",
+      "example_fr": "Ne partage pas tes données personnelles.",
+      "example_vi": "Đừng chia sẻ dữ liệu cá nhân.",
+      "example_en": "Don't share your personal data."
+    },
+    {
+      "french": "la vie privée",
+      "meaning_vi": "đời tư",
+      "meaning_en": "privacy",
+      "ipa": "/la vi pʁi.ve/",
+      "example_fr": "Il respecte ma vie privée.",
+      "example_vi": "Anh ấy tôn trọng đời tư của tôi.",
+      "example_en": "He respects my privacy."
+    },
+    {
+      "french": "la confidentialité",
+      "meaning_vi": "tính bảo mật",
+      "meaning_en": "confidentiality",
+      "ipa": "/la kɔ̃.fi.dɑ̃.sja.li.te/",
+      "example_fr": "La confidentialité est importante.",
+      "example_vi": "Tính bảo mật rất quan trọng.",
+      "example_en": "Confidentiality is important."
+    },
+    {
+      "french": "le pseudonyme",
+      "meaning_vi": "bút danh",
+      "meaning_en": "a pseudonym",
+      "ipa": "/lə psø.do.nim/",
+      "example_fr": "Le pseudonyme protège l'auteur.",
+      "example_vi": "Bút danh bảo vệ tác giả.",
+      "example_en": "The pseudonym protects the author."
+    },
+    {
+      "french": "un pseudonyme",
+      "meaning_vi": "biệt danh",
+      "meaning_en": "a pseudonym",
+      "ipa": "/œ̃ psø.do.nim/",
+      "example_fr": "Elle écrit sous pseudonyme.",
+      "example_vi": "Cô ấy viết dưới bút danh.",
+      "example_en": "She writes under a pseudonym."
+    },
+    {
+      "french": "un avatar",
+      "meaning_vi": "ảnh đại diện",
+      "meaning_en": "an avatar",
+      "ipa": "/œ̃n a.va.taʁ/",
+      "example_fr": "Change ton avatar.",
+      "example_vi": "Hãy đổi ảnh đại diện.",
+      "example_en": "Change your avatar."
+    },
+    {
+      "french": "l'authentification",
+      "meaning_vi": "sự xác thực",
+      "meaning_en": "authentication",
+      "ipa": "/lo.tɑ̃.ti.fi.ka.sjɔ̃/",
+      "example_fr": "L'authentification sécurise le compte.",
+      "example_vi": "Xác thực bảo mật tài khoản.",
+      "example_en": "Authentication secures the account."
+    },
+    {
+      "french": "un compte utilisateur",
+      "meaning_vi": "tài khoản người dùng",
+      "meaning_en": "a user account",
+      "ipa": "/œ̃ kɔ̃t y.ti.li.za.tœʁ/",
+      "example_fr": "Je supprime mon compte utilisateur.",
+      "example_vi": "Tôi xóa tài khoản người dùng.",
+      "example_en": "I delete my user account."
+    },
+    {
+      "french": "une adresse e-mail",
+      "meaning_vi": "địa chỉ email",
+      "meaning_en": "an email address",
+      "ipa": "/yn a.dʁɛs i.mɛl/",
+      "example_fr": "Donne ton adresse e-mail.",
+      "example_vi": "Hãy cho địa chỉ email.",
+      "example_en": "Give your email address."
+    },
+    {
+      "french": "une trace numérique",
+      "meaning_vi": "dấu vết số",
+      "meaning_en": "a digital footprint",
+      "ipa": "/yn tʁas ny.me.ʁik/",
+      "example_fr": "Chaque clic laisse une trace numérique.",
+      "example_vi": "Mỗi cú nhấp để lại dấu vết số.",
+      "example_en": "Each click leaves a digital footprint."
+    },
+    {
+      "french": "l'e-réputation",
+      "meaning_vi": "danh tiếng trực tuyến",
+      "meaning_en": "e-reputation",
+      "ipa": "/lø ʁe.py.ta.sjɔ̃/",
+      "example_fr": "Soigne ton e-réputation.",
+      "example_vi": "Hãy chăm chút danh tiếng trực tuyến.",
+      "example_en": "Take care of your e-reputation."
+    },
+    {
+      "french": "le piratage",
+      "meaning_vi": "sự tấn công mạng",
+      "meaning_en": "hacking",
+      "ipa": "/lə pi.ʁa.taʒ/",
+      "example_fr": "Le piratage vole des données.",
+      "example_vi": "Tấn công mạng đánh cắp dữ liệu.",
+      "example_en": "Hacking steals data."
+    },
+    {
+      "french": "l'usurpation d'identité",
+      "meaning_vi": "mạo danh",
+      "meaning_en": "identity theft",
+      "ipa": "/ly.zyʁ.pa.sjɔ̃ di.dɑ̃.ti.te/",
+      "example_fr": "L'usurpation d'identité est grave.",
+      "example_vi": "Mạo danh là nghiêm trọng.",
+      "example_en": "Identity theft is serious."
+    },
+    {
+      "french": "la fraude",
+      "meaning_vi": "sự lừa đảo",
+      "meaning_en": "fraud",
+      "ipa": "/la fʁod/",
+      "example_fr": "Signale la fraude vite.",
+      "example_vi": "Hãy báo lừa đảo ngay.",
+      "example_en": "Report fraud quickly."
+    },
+    {
+      "french": "la protection des données",
+      "meaning_vi": "bảo vệ dữ liệu",
+      "meaning_en": "data protection",
+      "ipa": "/la pʁo.tɛk.sjɔ̃ de do.ne/",
+      "example_fr": "La protection des données est obligatoire.",
+      "example_vi": "Bảo vệ dữ liệu là bắt buộc.",
+      "example_en": "Data protection is mandatory."
+    },
+    {
+      "french": "un paramètre de confidentialité",
+      "meaning_vi": "cài đặt riêng tư",
+      "meaning_en": "a privacy setting",
+      "ipa": "/œ̃ pa.ʁa.mɛtʁ də kɔ̃.fi.dɑ̃.sja.li.te/",
+      "example_fr": "Vérifie tes paramètres de confidentialité.",
+      "example_vi": "Hãy kiểm tra cài đặt riêng tư.",
+      "example_en": "Check your privacy settings."
+    },
+    {
+      "french": "un cookie",
+      "meaning_vi": "cookie",
+      "meaning_en": "a cookie",
+      "ipa": "/œ̃ ku.ki/",
+      "example_fr": "Le site utilise des cookies.",
+      "example_vi": "Trang web dùng cookie.",
+      "example_en": "The site uses cookies."
+    },
+    {
+      "french": "la cybersécurité",
+      "meaning_vi": "an ninh mạng",
+      "meaning_en": "cybersecurity",
+      "ipa": "/la si.bɛʁ.se.ky.ʁi.te/",
+      "example_fr": "La cybersécurité protège les systèmes.",
+      "example_vi": "An ninh mạng bảo vệ hệ thống.",
+      "example_en": "Cybersecurity protects systems."
+    }
+  ]
+}

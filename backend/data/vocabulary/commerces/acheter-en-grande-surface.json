@@ -1,0 +1,190 @@
+{
+  "category": "Les commerces",
+  "category_key": "commerces",
+  "category_sort_order": 90,
+  "category_vi": "Cửa hàng và thương mại",
+  "category_en": "Shops and businesses",
+  "topic": "Les courses et les commerces",
+  "topic_slug": "courses-commerces",
+  "topic_sort_order": 10,
+  "topic_vi": "Mua sắm và cửa hàng",
+  "topic_en": "Shopping and stores",
+  "subtopic": "Acheter en grande surface",
+  "subtopic_key": "acheter-en-grande-surface",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Mua sắm ở siêu thị lớn",
+  "subtopic_en": "Shopping at a hypermarket",
+  "words": [
+    {
+      "french": "l'hypermarché",
+      "meaning_vi": "đại siêu thị",
+      "meaning_en": "hypermarket",
+      "ipa": "/i.pɛʁ.maʁ.ʃe/",
+      "example_fr": "On va à l'hypermarché le samedi.",
+      "example_vi": "Chúng tôi đi đại siêu thị vào thứ Bảy.",
+      "example_en": "We go to the hypermarket on Saturdays."
+    },
+    {
+      "french": "le supermarché",
+      "meaning_vi": "siêu thị",
+      "meaning_en": "supermarket",
+      "ipa": "/sy.pɛʁ.maʁ.ʃe/",
+      "example_fr": "Le supermarché ferme à vingt heures.",
+      "example_vi": "Siêu thị đóng cửa lúc 20 giờ.",
+      "example_en": "The supermarket closes at 8 p.m."
+    },
+    {
+      "french": "le chariot",
+      "meaning_vi": "xe đẩy mua hàng",
+      "meaning_en": "shopping cart, trolley",
+      "ipa": "/ʃa.ʁjo/",
+      "example_fr": "Prends un chariot à l'entrée.",
+      "example_vi": "Hãy lấy một chiếc xe đẩy ở lối vào.",
+      "example_en": "Take a cart at the entrance."
+    },
+    {
+      "french": "le rayon",
+      "meaning_vi": "quầy hàng, gian hàng",
+      "meaning_en": "aisle, department",
+      "ipa": "/ʁɛ.jɔ̃/",
+      "example_fr": "Le rayon des fruits est au fond.",
+      "example_vi": "Gian hàng trái cây ở phía cuối.",
+      "example_en": "The fruit aisle is at the back."
+    },
+    {
+      "french": "la file d'attente",
+      "meaning_vi": "hàng chờ",
+      "meaning_en": "queue",
+      "ipa": "/fil da.tɑ̃t/",
+      "example_fr": "La file d'attente aux caisses est longue.",
+      "example_vi": "Hàng chờ ở quầy thu ngân rất dài.",
+      "example_en": "The queue at the checkouts is long."
+    },
+    {
+      "french": "la caissière",
+      "meaning_vi": "nữ thu ngân",
+      "meaning_en": "cashier (female)",
+      "ipa": "/kɛ.sjɛʁ/",
+      "example_fr": "La caissière scanne les articles.",
+      "example_vi": "Cô thu ngân quét các mặt hàng.",
+      "example_en": "The cashier scans the items."
+    },
+    {
+      "french": "le drive",
+      "meaning_vi": "điểm lấy hàng drive",
+      "meaning_en": "drive-through pickup",
+      "ipa": "/dʁajv/",
+      "example_fr": "Je récupère mes courses au drive.",
+      "example_vi": "Tôi lấy hàng ở điểm drive.",
+      "example_en": "I pick up my groceries at the drive."
+    },
+    {
+      "french": "le code-barres",
+      "meaning_vi": "mã vạch",
+      "meaning_en": "barcode",
+      "ipa": "/kɔd baʁ/",
+      "example_fr": "Le code-barres ne passe pas.",
+      "example_vi": "Mã vạch không quét được.",
+      "example_en": "The barcode won't scan."
+    },
+    {
+      "french": "le prospectus",
+      "meaning_vi": "tờ rơi quảng cáo",
+      "meaning_en": "advertising leaflet",
+      "ipa": "/pʁɔs.pɛk.tys/",
+      "example_fr": "J'ai vu cette offre dans le prospectus.",
+      "example_vi": "Tôi đã thấy ưu đãi này trong tờ rơi quảng cáo.",
+      "example_en": "I saw this offer in the leaflet."
+    },
+    {
+      "french": "la réduction",
+      "meaning_vi": "giảm giá",
+      "meaning_en": "discount",
+      "ipa": "/ʁe.dyk.sjɔ̃/",
+      "example_fr": "J'ai eu une réduction de dix pour cent.",
+      "example_vi": "Tôi được giảm giá mười phần trăm.",
+      "example_en": "I got a ten percent discount."
+    },
+    {
+      "french": "la livraison à domicile",
+      "meaning_vi": "giao hàng tận nhà",
+      "meaning_en": "home delivery",
+      "ipa": "/liv.ʁɛ.zɔ̃ a dɔ.mi.sil/",
+      "example_fr": "Le magasin propose la livraison à domicile.",
+      "example_vi": "Cửa hàng có dịch vụ giao hàng tận nhà.",
+      "example_en": "The store offers home delivery."
+    },
+    {
+      "french": "le bon de réduction",
+      "meaning_vi": "phiếu giảm giá",
+      "meaning_en": "discount voucher",
+      "ipa": "/bɔ̃ də ʁe.dyk.sjɔ̃/",
+      "example_fr": "J'ai un bon de réduction de cinq euros.",
+      "example_vi": "Tôi có một phiếu giảm giá năm euro.",
+      "example_en": "I have a five-euro discount voucher."
+    },
+    {
+      "french": "le service après-vente",
+      "meaning_vi": "dịch vụ hậu mãi",
+      "meaning_en": "after-sales service",
+      "ipa": "/sɛʁ.vis a.pʁɛ vɑ̃t/",
+      "example_fr": "Contacte le service après-vente en cas de panne.",
+      "example_vi": "Hãy liên hệ dịch vụ hậu mãi nếu bị hỏng.",
+      "example_en": "Contact after-sales service if it breaks down."
+    },
+    {
+      "french": "le libre-service",
+      "meaning_vi": "tự phục vụ",
+      "meaning_en": "self-service",
+      "ipa": "/libʁ sɛʁ.vis/",
+      "example_fr": "La station essence est en libre-service.",
+      "example_vi": "Trạm xăng này là tự phục vụ.",
+      "example_en": "The petrol station is self-service."
+    },
+    {
+      "french": "le produit",
+      "meaning_vi": "sản phẩm",
+      "meaning_en": "product",
+      "ipa": "/pʁɔ.dɥi/",
+      "example_fr": "Ce produit est en rupture de stock.",
+      "example_vi": "Sản phẩm này đã hết hàng.",
+      "example_en": "This product is out of stock."
+    },
+    {
+      "french": "la carte cadeau",
+      "meaning_vi": "thẻ quà tặng",
+      "meaning_en": "gift card",
+      "ipa": "/kaʁt ka.do/",
+      "example_fr": "J'ai payé avec une carte cadeau.",
+      "example_vi": "Tôi đã trả bằng thẻ quà tặng.",
+      "example_en": "I paid with a gift card."
+    },
+    {
+      "french": "faire les courses",
+      "meaning_vi": "đi mua đồ (hàng ngày)",
+      "meaning_en": "to do the grocery shopping",
+      "ipa": "/fɛʁ le kuʁs/",
+      "example_fr": "Je fais les courses une fois par semaine.",
+      "example_vi": "Tôi đi mua đồ một lần mỗi tuần.",
+      "example_en": "I do the grocery shopping once a week."
+    },
+    {
+      "french": "la caisse automatique",
+      "meaning_vi": "quầy tự thanh toán",
+      "meaning_en": "self-checkout",
+      "ipa": "/kɛs o.to.ma.tik/",
+      "example_fr": "Va à la caisse automatique, c'est plus rapide.",
+      "example_vi": "Hãy ra quầy tự thanh toán, nhanh hơn đấy.",
+      "example_en": "Go to the self-checkout, it's faster."
+    },
+    {
+      "french": "le parking",
+      "meaning_vi": "bãi đỗ xe",
+      "meaning_en": "car park, parking lot",
+      "ipa": "/paʁ.kiŋ/",
+      "example_fr": "Le parking du centre est gratuit.",
+      "example_vi": "Bãi đỗ xe của trung tâm miễn phí.",
+      "example_en": "The centre's car park is free."
+    }
+  ]
+}

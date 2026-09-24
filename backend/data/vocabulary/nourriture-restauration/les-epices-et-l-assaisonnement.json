@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "L'alimentation (1)",
+  "topic_slug": "alimentation-1",
+  "topic_sort_order": 10,
+  "topic_vi": "Thực phẩm (1)",
+  "topic_en": "Food (1)",
+  "subtopic": "Les épices et l'assaisonnement",
+  "subtopic_key": "les-epices-et-l-assaisonnement",
+  "subtopic_sort_order": 50,
+  "subtopic_vi": "Gia vị và nêm nếm",
+  "subtopic_en": "Spices and seasoning",
+  "words": [
+    {
+      "french": "le sel",
+      "meaning_vi": "muối",
+      "meaning_en": "salt",
+      "ipa": "/sɛl/",
+      "example_fr": "Du sel et du poivre, s'il vous plaît.",
+      "example_vi": "Muối và tiêu.",
+      "example_en": "Salt and pepper, please."
+    },
+    {
+      "french": "le poivre",
+      "meaning_vi": "hạt tiêu",
+      "meaning_en": "pepper",
+      "ipa": "/pwavʁ/",
+      "example_fr": "Du poivre noir sur le steak.",
+      "example_vi": "Tiêu đen trên bít tết.",
+      "example_en": "Black pepper on the steak."
+    },
+    {
+      "french": "le sucre",
+      "meaning_vi": "đường",
+      "meaning_en": "sugar",
+      "ipa": "/sykʁ/",
+      "example_fr": "Du sucre dans le café.",
+      "example_vi": "Đường trong cà phê.",
+      "example_en": "Sugar in the coffee."
+    },
+    {
+      "french": "l'huile d'olive",
+      "meaning_vi": "dầu ô liu",
+      "meaning_en": "olive oil",
+      "ipa": "/ɥil dɔ.liv/",
+      "example_fr": "De l'huile d'olive pour la salade.",
+      "example_vi": "Dầu ô liu cho món salad.",
+      "example_en": "Olive oil for the salad."
+    },
+    {
+      "french": "le vinaigre",
+      "meaning_vi": "giấm",
+      "meaning_en": "vinegar",
+      "ipa": "/vi.nɛɡʁ/",
+      "example_fr": "Du vinaigre dans la vinaigrette.",
+      "example_vi": "Giấm trong nước sốt.",
+      "example_en": "Vinegar in the dressing."
+    },
+    {
+      "french": "la moutarde",
+      "meaning_vi": "mù tạt",
+      "meaning_en": "mustard",
+      "ipa": "/mu.taʁd/",
+      "example_fr": "De la moutarde avec les saucisses.",
+      "example_vi": "Mù tạt với xúc xích.",
+      "example_en": "Mustard with sausages."
+    },
+    {
+      "french": "le ketchup",
+      "meaning_vi": "tương cà",
+      "meaning_en": "ketchup",
+      "ipa": "/kɛt.ʃœp/",
+      "example_fr": "Du ketchup pour les enfants.",
+      "example_vi": "Tương cà cho trẻ em.",
+      "example_en": "Ketchup for the children."
+    },
+    {
+      "french": "la mayonnaise",
+      "meaning_vi": "sốt mayonnaise",
+      "meaning_en": "mayonnaise",
+      "ipa": "/ma.jɔ.nɛz/",
+      "example_fr": "De la mayonnaise avec des frites.",
+      "example_vi": "Mayonnaise với khoai chiên.",
+      "example_en": "Mayonnaise with fries."
+    },
+    {
+      "french": "le beurre",
+      "meaning_vi": "bơ",
+      "meaning_en": "butter",
+      "ipa": "/bœʁ/",
+      "example_fr": "Le beurre fond vite.",
+      "example_vi": "Bơ tan nhanh.",
+      "example_en": "Butter melts quickly."
+    },
+    {
+      "french": "l'ail",
+      "meaning_vi": "tỏi",
+      "meaning_en": "garlic",
+      "ipa": "/aj/",
+      "example_fr": "L'ail sent fort.",
+      "example_vi": "Tỏi có mùi nồng.",
+      "example_en": "Garlic smells strong."
+    },
+    {
+      "french": "l'oignon",
+      "meaning_vi": "hành tây",
+      "meaning_en": "onion",
+      "ipa": "/ɔ.ɲɔ̃/",
+      "example_fr": "L'oignon émincé dans la poêle.",
+      "example_vi": "Hành tây thái trong chảo.",
+      "example_en": "Chopped onion in the pan."
+    },
+    {
+      "french": "le paprika",
+      "meaning_vi": "ớt bột",
+      "meaning_en": "paprika",
+      "ipa": "/pa.pʁi.ka/",
+      "example_fr": "Le paprika donne de la couleur.",
+      "example_vi": "Ớt bột paprika tạo màu.",
+      "example_en": "Paprika gives colour."
+    },
+    {
+      "french": "le curry",
+      "meaning_vi": "cà ri",
+      "meaning_en": "curry",
+      "ipa": "/ky.ʁi/",
+      "example_fr": "Le curry avec du riz.",
+      "example_vi": "Cà ri với cơm.",
+      "example_en": "Curry with rice."
+    },
+    {
+      "french": "la cannelle",
+      "meaning_vi": "quế",
+      "meaning_en": "cinnamon",
+      "ipa": "/ka.nɛl/",
+      "example_fr": "De la cannelle dans la tarte aux pommes.",
+      "example_vi": "Quế trong bánh táo.",
+      "example_en": "Cinnamon in the apple tart."
+    },
+    {
+      "french": "le cumin",
+      "meaning_vi": "thì là Ai Cập",
+      "meaning_en": "cumin",
+      "ipa": "/ky.mɛ̃/",
+      "example_fr": "Du cumin pour le couscous.",
+      "example_vi": "Thì là Ai Cập cho couscous.",
+      "example_en": "Cumin for the couscous."
+    },
+    {
+      "french": "le basilic",
+      "meaning_vi": "húng quế",
+      "meaning_en": "basil",
+      "ipa": "/ba.zi.lik/",
+      "example_fr": "Du basilic sur la pizza.",
+      "example_vi": "Húng quế trên pizza.",
+      "example_en": "Basil on the pizza."
+    },
+    {
+      "french": "le persil",
+      "meaning_vi": "mùi tây",
+      "meaning_en": "parsley",
+      "ipa": "/pɛʁ.si/",
+      "example_fr": "Du persil avec le poisson.",
+      "example_vi": "Mùi tây với cá.",
+      "example_en": "Parsley with the fish."
+    },
+    {
+      "french": "le thym",
+      "meaning_vi": "cỏ xạ hương",
+      "meaning_en": "thyme",
+      "ipa": "/tɛ̃/",
+      "example_fr": "Le thym sent bon.",
+      "example_vi": "Cỏ xạ hương thơm.",
+      "example_en": "Thyme smells good."
+    },
+    {
+      "french": "le piment",
+      "meaning_vi": "ớt",
+      "meaning_en": "chilli",
+      "ipa": "/pi.mɑ̃/",
+      "example_fr": "Le piment est très épicé.",
+      "example_vi": "Ớt rất cay.",
+      "example_en": "Chilli is very spicy."
+    }
+  ]
+}

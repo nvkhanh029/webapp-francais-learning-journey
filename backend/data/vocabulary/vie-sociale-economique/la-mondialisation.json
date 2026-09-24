@@ -1,0 +1,190 @@
+{
+  "category": "La vie sociale et économique",
+  "category_key": "vie-sociale-economique",
+  "category_sort_order": 110,
+  "category_vi": "Đời sống xã hội và kinh tế",
+  "category_en": "Social and economic life",
+  "topic": "La vie économique",
+  "topic_slug": "vie-economique",
+  "topic_sort_order": 10,
+  "topic_vi": "Đời sống kinh tế",
+  "topic_en": "Economic life",
+  "subtopic": "La mondialisation",
+  "subtopic_key": "la-mondialisation",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Toàn cầu hóa",
+  "subtopic_en": "Globalization",
+  "words": [
+    {
+      "french": "la mondialisation",
+      "meaning_vi": "toàn cầu hóa",
+      "meaning_en": "globalization",
+      "ipa": "/mɔ̃.dja.li.za.sjɔ̃/",
+      "example_fr": "La mondialisation change le monde.",
+      "example_vi": "Toàn cầu hóa thay đổi thế giới.",
+      "example_en": "Globalization is changing the world."
+    },
+    {
+      "french": "le commerce international",
+      "meaning_vi": "thương mại quốc tế",
+      "meaning_en": "international trade",
+      "ipa": "/kɔ.mɛʁs ɛ̃.tɛʁ.na.sjɔ.nal/",
+      "example_fr": "Le commerce international grandit.",
+      "example_vi": "Thương mại quốc tế phát triển.",
+      "example_en": "International trade is growing."
+    },
+    {
+      "french": "l'importation (f)",
+      "meaning_vi": "nhập khẩu",
+      "meaning_en": "import",
+      "ipa": "/ɛ̃.pɔʁ.ta.sjɔ̃/",
+      "example_fr": "L'importation de café augmente.",
+      "example_vi": "Nhập khẩu cà phê tăng.",
+      "example_en": "Coffee imports are rising."
+    },
+    {
+      "french": "l'exportation (f)",
+      "meaning_vi": "xuất khẩu",
+      "meaning_en": "export",
+      "ipa": "/ɛks.pɔʁ.ta.sjɔ̃/",
+      "example_fr": "L'exportation de vin est célèbre.",
+      "example_vi": "Xuất khẩu rượu vang rất nổi tiếng.",
+      "example_en": "Wine exports are famous."
+    },
+    {
+      "french": "la douane",
+      "meaning_vi": "hải quan",
+      "meaning_en": "customs",
+      "ipa": "/dwan/",
+      "example_fr": "Il passe la douane à l'aéroport.",
+      "example_vi": "Anh ấy qua hải quan ở sân bay.",
+      "example_en": "He goes through customs at the airport."
+    },
+    {
+      "french": "le libre-échange",
+      "meaning_vi": "tự do thương mại",
+      "meaning_en": "free trade",
+      "ipa": "/libʁ e.ʃɑ̃ʒ/",
+      "example_fr": "Le libre-échange aide les entreprises.",
+      "example_vi": "Tự do thương mại giúp công ty.",
+      "example_en": "Free trade helps companies."
+    },
+    {
+      "french": "la multinationale",
+      "meaning_vi": "công ty đa quốc gia",
+      "meaning_en": "multinational",
+      "ipa": "/myl.ti.na.sjɔ.nal/",
+      "example_fr": "Elle travaille pour une multinationale.",
+      "example_vi": "Cô ấy làm cho công ty đa quốc gia.",
+      "example_en": "She works for a multinational."
+    },
+    {
+      "french": "la délocalisation",
+      "meaning_vi": "chuyển sản xuất ra nước ngoài",
+      "meaning_en": "offshoring",
+      "ipa": "/de.lɔ.ka.li.za.sjɔ̃/",
+      "example_fr": "La délocalisation inquiète les ouvriers.",
+      "example_vi": "Chuyển sản xuất ra nước ngoài làm công nhân lo.",
+      "example_en": "Offshoring worries workers."
+    },
+    {
+      "french": "le marché mondial",
+      "meaning_vi": "thị trường toàn cầu",
+      "meaning_en": "world market",
+      "ipa": "/maʁ.ʃe mɔ̃.djal/",
+      "example_fr": "Le marché mondial est ouvert.",
+      "example_vi": "Thị trường toàn cầu đang mở.",
+      "example_en": "The world market is open."
+    },
+    {
+      "french": "la concurrence internationale",
+      "meaning_vi": "cạnh tranh quốc tế",
+      "meaning_en": "international competition",
+      "ipa": "/kɔ̃.ky.ʁɑ̃s ɛ̃.tɛʁ.na.sjɔ.nal/",
+      "example_fr": "La concurrence internationale est dure.",
+      "example_vi": "Cạnh tranh quốc tế rất gay gắt.",
+      "example_en": "International competition is tough."
+    },
+    {
+      "french": "l'échange (m)",
+      "meaning_vi": "trao đổi",
+      "meaning_en": "exchange",
+      "ipa": "/e.ʃɑ̃ʒ/",
+      "example_fr": "Les échanges sont rapides aujourd'hui.",
+      "example_vi": "Trao đổi ngày nay rất nhanh.",
+      "example_en": "Exchanges are fast today."
+    },
+    {
+      "french": "le transport international",
+      "meaning_vi": "vận tải quốc tế",
+      "meaning_en": "international transport",
+      "ipa": "/tʁɑ̃s.pɔʁ ɛ̃.tɛʁ.na.sjɔ.nal/",
+      "example_fr": "Le transport international coûte cher.",
+      "example_vi": "Vận tải quốc tế khá đắt.",
+      "example_en": "International transport is expensive."
+    },
+    {
+      "french": "Internet (m)",
+      "meaning_vi": "mạng Internet",
+      "meaning_en": "Internet",
+      "ipa": "/ɛ̃.tɛʁ.nɛt/",
+      "example_fr": "Internet connecte le monde.",
+      "example_vi": "Internet kết nối thế giới.",
+      "example_en": "The Internet connects the world."
+    },
+    {
+      "french": "le protectionnisme",
+      "meaning_vi": "chủ nghĩa bảo hộ",
+      "meaning_en": "protectionism",
+      "ipa": "/lə pʁɔ.tɛk.sjɔ.nism/",
+      "example_fr": "Le protectionnisme protège le marché national.",
+      "example_vi": "Chủ nghĩa bảo hộ bảo vệ thị trường trong nước.",
+      "example_en": "Protectionism protects the domestic market."
+    },
+    {
+      "french": "la culture mondiale",
+      "meaning_vi": "văn hóa toàn cầu",
+      "meaning_en": "world culture",
+      "ipa": "/kyl.tyʁ mɔ̃.djal/",
+      "example_fr": "La culture mondiale se mélange.",
+      "example_vi": "Văn hóa toàn cầu hòa trộn.",
+      "example_en": "World culture is mixing."
+    },
+    {
+      "french": "le voyage",
+      "meaning_vi": "chuyến đi",
+      "meaning_en": "travel",
+      "ipa": "/vwa.jaʒ/",
+      "example_fr": "Il aime les voyages à l'étranger.",
+      "example_vi": "Anh ấy thích đi nước ngoài.",
+      "example_en": "He likes trips abroad."
+    },
+    {
+      "french": "le tourisme international",
+      "meaning_vi": "du lịch quốc tế",
+      "meaning_en": "international tourism",
+      "ipa": "/tu.ʁism ɛ̃.tɛʁ.na.sjɔ.nal/",
+      "example_fr": "Le tourisme international reprend.",
+      "example_vi": "Du lịch quốc tế phục hồi.",
+      "example_en": "International tourism is recovering."
+    },
+    {
+      "french": "le produit importé",
+      "meaning_vi": "sản phẩm nhập khẩu",
+      "meaning_en": "imported product",
+      "ipa": "/pʁɔ.dɥi ɛ̃.pɔʁ.te/",
+      "example_fr": "Ce produit importé vient d'Asie.",
+      "example_vi": "Sản phẩm nhập khẩu này từ châu Á.",
+      "example_en": "This imported product comes from Asia."
+    },
+    {
+      "french": "la solidarité internationale",
+      "meaning_vi": "tình đoàn kết quốc tế",
+      "meaning_en": "international solidarity",
+      "ipa": "/sɔ.li.da.ʁi.te ɛ̃.tɛʁ.na.sjɔ.nal/",
+      "example_fr": "La solidarité internationale est importante.",
+      "example_vi": "Tình đoàn kết quốc tế rất quan trọng.",
+      "example_en": "International solidarity is important."
+    }
+  ]
+}

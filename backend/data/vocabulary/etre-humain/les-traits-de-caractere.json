@@ -1,0 +1,190 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les caractéristiques morales",
+  "topic_slug": "caracteristiques-morales",
+  "topic_sort_order": 20,
+  "topic_vi": "Đặc điểm tính cách",
+  "topic_en": "Moral / personality characteristics",
+  "subtopic": "Les traits de caractère",
+  "subtopic_key": "les-traits-de-caractere",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Nét tính cách",
+  "subtopic_en": "Character traits",
+  "words": [
+    {
+      "french": "honnête",
+      "meaning_vi": "trung thực",
+      "meaning_en": "honest",
+      "ipa": "/ɔ.nɛt/",
+      "example_fr": "C'est un homme honnête.",
+      "example_vi": "Anh ấy là người trung thực.",
+      "example_en": "He is an honest man."
+    },
+    {
+      "french": "généreux / généreuse",
+      "meaning_vi": "hào phóng",
+      "meaning_en": "generous",
+      "ipa": "/ʒe.ne.ʁø / ʒe.ne.ʁøz/",
+      "example_fr": "Elle est généreuse avec ses amis.",
+      "example_vi": "Cô ấy hào phóng với bạn bè.",
+      "example_en": "She is generous with her friends."
+    },
+    {
+      "french": "avare",
+      "meaning_vi": "keo kiệt",
+      "meaning_en": "stingy",
+      "ipa": "/a.vaʁ/",
+      "example_fr": "Il est avare avec l'argent.",
+      "example_vi": "Anh ấy keo kiệt tiền bạc.",
+      "example_en": "He is stingy with money."
+    },
+    {
+      "french": "fidèle",
+      "meaning_vi": "trung thành",
+      "meaning_en": "loyal, faithful",
+      "ipa": "/fi.dɛl/",
+      "example_fr": "Elle est fidèle à sa famille.",
+      "example_vi": "Cô ấy trung thành với gia đình.",
+      "example_en": "She is loyal to her family."
+    },
+    {
+      "french": "calme",
+      "meaning_vi": "bình tĩnh",
+      "meaning_en": "calm",
+      "ipa": "/kalm/",
+      "example_fr": "Il est calme en toute situation.",
+      "example_vi": "Anh ấy bình tĩnh trong mọi tình huống.",
+      "example_en": "He is calm in every situation."
+    },
+    {
+      "french": "intelligent(e)",
+      "meaning_vi": "thông minh",
+      "meaning_en": "intelligent",
+      "ipa": "/ɛ̃.te.li.ʒɑ̃ / ɛ̃.te.li.ʒɑ̃t/",
+      "example_fr": "Elle est intelligente et vive.",
+      "example_vi": "Cô ấy thông minh và nhanh nhạy.",
+      "example_en": "She is intelligent and quick."
+    },
+    {
+      "french": "sage",
+      "meaning_vi": "khôn ngoan, ngoan",
+      "meaning_en": "wise, well-behaved",
+      "ipa": "/saʒ/",
+      "example_fr": "Il est sage et réfléchi.",
+      "example_vi": "Anh ấy khôn ngoan và chín chắn.",
+      "example_en": "He is wise and thoughtful."
+    },
+    {
+      "french": "ambitieux / ambitieuse",
+      "meaning_vi": "tham vọng",
+      "meaning_en": "ambitious",
+      "ipa": "/ɑ̃.bi.sjø / ɑ̃.bi.sjøz/",
+      "example_fr": "Elle est ambitieuse au travail.",
+      "example_vi": "Cô ấy đầy tham vọng trong công việc.",
+      "example_en": "She is ambitious at work."
+    },
+    {
+      "french": "sociable",
+      "meaning_vi": "hòa đồng",
+      "meaning_en": "sociable",
+      "ipa": "/sɔ.sjabl/",
+      "example_fr": "Il est sociable et ouvert.",
+      "example_vi": "Anh ấy hòa đồng và cởi mở.",
+      "example_en": "He is sociable and open."
+    },
+    {
+      "french": "timide",
+      "meaning_vi": "nhút nhát",
+      "meaning_en": "shy",
+      "ipa": "/ti.mid/",
+      "example_fr": "Elle est timide avec les inconnus.",
+      "example_vi": "Cô ấy nhút nhát với người lạ.",
+      "example_en": "She is shy with strangers."
+    },
+    {
+      "french": "confiant(e)",
+      "meaning_vi": "tự tin",
+      "meaning_en": "confident",
+      "ipa": "/kɔ̃.fjɑ̃ / kɔ̃.fjɑ̃t/",
+      "example_fr": "Il a confiance en lui.",
+      "example_vi": "Anh ấy tự tin vào bản thân.",
+      "example_en": "He is self-confident."
+    },
+    {
+      "french": "tolérant(e)",
+      "meaning_vi": "khoan dung",
+      "meaning_en": "tolerant",
+      "ipa": "/tɔ.le.ʁɑ̃ / tɔ.le.ʁɑ̃t/",
+      "example_fr": "Elle est tolérante envers les différences.",
+      "example_vi": "Cô ấy khoan dung với sự khác biệt.",
+      "example_en": "She is tolerant of differences."
+    },
+    {
+      "french": "rigoureux / rigoureuse",
+      "meaning_vi": "nghiêm ngặt",
+      "meaning_en": "rigorous",
+      "ipa": "/ʁi.ɡu.ʁø / ʁi.ɡu.ʁøz/",
+      "example_fr": "Il est rigoureux dans son travail.",
+      "example_vi": "Anh ấy nghiêm ngặt trong công việc.",
+      "example_en": "He is rigorous in his work."
+    },
+    {
+      "french": "franc / franche",
+      "meaning_vi": "thẳng thắn",
+      "meaning_en": "frank",
+      "ipa": "/fʁɑ̃ / fʁɑ̃ʃ/",
+      "example_fr": "Elle est franche avec ses collègues.",
+      "example_vi": "Cô ấy thẳng thắn với đồng nghiệp.",
+      "example_en": "She is frank with her colleagues."
+    },
+    {
+      "french": "discret / discrète",
+      "meaning_vi": "kín đáo",
+      "meaning_en": "discreet",
+      "ipa": "/dis.kʁɛ / dis.kʁɛt/",
+      "example_fr": "Il est discret sur sa vie.",
+      "example_vi": "Anh ấy kín đáo về cuộc sống.",
+      "example_en": "He is discreet about his life."
+    },
+    {
+      "french": "curieux / curieuse",
+      "meaning_vi": "tò mò",
+      "meaning_en": "curious",
+      "ipa": "/ky.ʁjø / ky.ʁjøz/",
+      "example_fr": "Elle est curieuse de tout.",
+      "example_vi": "Cô ấy tò mò về mọi thứ.",
+      "example_en": "She is curious about everything."
+    },
+    {
+      "french": "autoritaire",
+      "meaning_vi": "độc đoán",
+      "meaning_en": "authoritarian",
+      "ipa": "/o.tɔ.ʁi.tɛʁ/",
+      "example_fr": "Il est autoritaire avec son équipe.",
+      "example_vi": "Anh ấy độc đoán với đội của mình.",
+      "example_en": "He is authoritarian with his team."
+    },
+    {
+      "french": "compréhensif / compréhensive",
+      "meaning_vi": "thấu hiểu",
+      "meaning_en": "understanding",
+      "ipa": "/kɔ̃.pʁe.ɑ̃.sif / kɔ̃.pʁe.ɑ̃.siv/",
+      "example_fr": "Elle est compréhensive avec nous.",
+      "example_vi": "Cô ấy thấu hiểu chúng tôi.",
+      "example_en": "She is understanding with us."
+    },
+    {
+      "french": "responsable",
+      "meaning_vi": "có trách nhiệm",
+      "meaning_en": "responsible",
+      "ipa": "/ʁɛs.pɔ̃.sabl/",
+      "example_fr": "Il est responsable et ponctuel.",
+      "example_vi": "Anh ấy có trách nhiệm và đúng giờ.",
+      "example_en": "He is responsible and punctual."
+    }
+  ]
+}

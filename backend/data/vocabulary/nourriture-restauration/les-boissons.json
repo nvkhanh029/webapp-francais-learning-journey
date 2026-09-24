@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "La cuisine et la gastronomie",
+  "topic_slug": "cuisine-gastronomie",
+  "topic_sort_order": 30,
+  "topic_vi": "Nấu ăn và ẩm thực",
+  "topic_en": "Cooking and gastronomy",
+  "subtopic": "Les boissons",
+  "subtopic_key": "les-boissons",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Đồ uống",
+  "subtopic_en": "Beverages",
+  "words": [
+    {
+      "french": "l'eau",
+      "meaning_vi": "nước",
+      "meaning_en": "water",
+      "ipa": "/o/",
+      "example_fr": "Un verre d'eau.",
+      "example_vi": "Một ly nước.",
+      "example_en": "A glass of water."
+    },
+    {
+      "french": "l'eau gazeuse",
+      "meaning_vi": "nước có ga",
+      "meaning_en": "sparkling water",
+      "ipa": "/o ɡa.zøz/",
+      "example_fr": "De l'eau gazeuse, s'il vous plaît.",
+      "example_vi": "Nước có ga.",
+      "example_en": "Sparkling water, please."
+    },
+    {
+      "french": "le café",
+      "meaning_vi": "cà phê",
+      "meaning_en": "coffee",
+      "ipa": "/ka.fe/",
+      "example_fr": "Un café noir.",
+      "example_vi": "Một ly cà phê đen.",
+      "example_en": "A black coffee."
+    },
+    {
+      "french": "l'express",
+      "meaning_vi": "cà phê espresso",
+      "meaning_en": "espresso",
+      "ipa": "/ɛks.pʁɛs/",
+      "example_fr": "Un express, s'il vous plaît.",
+      "example_vi": "Một ly espresso.",
+      "example_en": "An espresso, please."
+    },
+    {
+      "french": "le thé",
+      "meaning_vi": "trà",
+      "meaning_en": "tea",
+      "ipa": "/te/",
+      "example_fr": "Un thé vert à la menthe.",
+      "example_vi": "Trà xanh bạc hà.",
+      "example_en": "Green tea with mint."
+    },
+    {
+      "french": "le chocolat chaud",
+      "meaning_vi": "sô-cô-la nóng",
+      "meaning_en": "hot chocolate",
+      "ipa": "/ʃo.ko.la ʃo/",
+      "example_fr": "Un chocolat chaud en hiver.",
+      "example_vi": "Sô-cô-la nóng vào mùa đông.",
+      "example_en": "Hot chocolate in winter."
+    },
+    {
+      "french": "le jus d'orange",
+      "meaning_vi": "nước cam",
+      "meaning_en": "orange juice",
+      "ipa": "/ʒy dɔ.ʁɑ̃ʒ/",
+      "example_fr": "Un jus d'orange frais.",
+      "example_vi": "Nước cam tươi.",
+      "example_en": "Fresh orange juice."
+    },
+    {
+      "french": "le jus de pomme",
+      "meaning_vi": "nước táo",
+      "meaning_en": "apple juice",
+      "ipa": "/ʒy də pɔm/",
+      "example_fr": "Un jus de pomme pour les enfants.",
+      "example_vi": "Nước táo cho trẻ em.",
+      "example_en": "Apple juice for children."
+    },
+    {
+      "french": "le lait",
+      "meaning_vi": "sữa",
+      "meaning_en": "milk",
+      "ipa": "/lɛ/",
+      "example_fr": "Un verre de lait froid.",
+      "example_vi": "Một ly sữa lạnh.",
+      "example_en": "A glass of cold milk."
+    },
+    {
+      "french": "le soda",
+      "meaning_vi": "nước ngọt có ga",
+      "meaning_en": "soda",
+      "ipa": "/so.da/",
+      "example_fr": "Une boisson gazeuse sucrée.",
+      "example_vi": "Nước ngọt có ga.",
+      "example_en": "A sweet fizzy drink."
+    },
+    {
+      "french": "le cola",
+      "meaning_vi": "cola",
+      "meaning_en": "cola",
+      "ipa": "/ko.la/",
+      "example_fr": "Un cola avec des glaçons.",
+      "example_vi": "Một ly cola với đá.",
+      "example_en": "A cola with ice."
+    },
+    {
+      "french": "la limonade",
+      "meaning_vi": "nước chanh",
+      "meaning_en": "lemonade",
+      "ipa": "/li.mɔ.nad/",
+      "example_fr": "La limonade est rafraîchissante.",
+      "example_vi": "Nước chanh mát lạnh.",
+      "example_en": "Lemonade is refreshing."
+    },
+    {
+      "french": "le vin rouge",
+      "meaning_vi": "rượu vang đỏ",
+      "meaning_en": "red wine",
+      "ipa": "/vɛ̃ ʁuʒ/",
+      "example_fr": "Un verre de vin rouge.",
+      "example_vi": "Một ly vang đỏ.",
+      "example_en": "A glass of red wine."
+    },
+    {
+      "french": "le vin blanc",
+      "meaning_vi": "rượu vang trắng",
+      "meaning_en": "white wine",
+      "ipa": "/vɛ̃ blɑ̃/",
+      "example_fr": "Un verre de vin blanc.",
+      "example_vi": "Một ly vang trắng.",
+      "example_en": "A glass of white wine."
+    },
+    {
+      "french": "la bière",
+      "meaning_vi": "bia",
+      "meaning_en": "beer",
+      "ipa": "/bjɛʁ/",
+      "example_fr": "Une bière fraîche, s'il vous plaît.",
+      "example_vi": "Một ly bia lạnh.",
+      "example_en": "A cold beer, please."
+    },
+    {
+      "french": "le champagne",
+      "meaning_vi": "rượu champagne",
+      "meaning_en": "champagne",
+      "ipa": "/ʃɑ̃.paɲ/",
+      "example_fr": "Du champagne pour la fête.",
+      "example_vi": "Champagne cho bữa tiệc.",
+      "example_en": "Champagne for the party."
+    },
+    {
+      "french": "le cidre",
+      "meaning_vi": "rượu táo",
+      "meaning_en": "cider",
+      "ipa": "/sidʁ/",
+      "example_fr": "Le cidre de Bretagne.",
+      "example_vi": "Rượu táo vùng Bretagne.",
+      "example_en": "Apple cider from Brittany."
+    },
+    {
+      "french": "le smoothie",
+      "meaning_vi": "sinh tố",
+      "meaning_en": "smoothie",
+      "ipa": "/smu.di/",
+      "example_fr": "Un smoothie aux fruits frais.",
+      "example_vi": "Một ly sinh tố trái cây tươi.",
+      "example_en": "A fresh fruit smoothie."
+    },
+    {
+      "french": "la tisane",
+      "meaning_vi": "trà thảo mộc",
+      "meaning_en": "herbal tea",
+      "ipa": "/ti.zan/",
+      "example_fr": "Une tisane le soir.",
+      "example_vi": "Trà thảo mộc buổi tối.",
+      "example_en": "A herbal tea in the evening."
+    }
+  ]
+}

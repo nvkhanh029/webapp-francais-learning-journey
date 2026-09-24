@@ -1,0 +1,190 @@
+{
+  "category": "L'environnement",
+  "category_key": "environnement",
+  "category_sort_order": 100,
+  "category_vi": "Môi trường",
+  "category_en": "The environment",
+  "topic": "La ville, la campagne et l'écologie",
+  "topic_slug": "ville-campagne-ecologie",
+  "topic_sort_order": 10,
+  "topic_vi": "Thành phố, nông thôn và sinh thái",
+  "topic_en": "City, countryside and ecology",
+  "subtopic": "La campagne",
+  "subtopic_key": "la-campagne",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Vùng nông thôn",
+  "subtopic_en": "The countryside",
+  "words": [
+    {
+      "french": "le pré",
+      "meaning_vi": "đồng cỏ",
+      "meaning_en": "a meadow",
+      "ipa": "/lə pʁe/",
+      "example_fr": "Les chevaux sont dans le pré.",
+      "example_vi": "Những con ngựa ở trên đồng cỏ.",
+      "example_en": "The horses are in the meadow."
+    },
+    {
+      "french": "le hameau",
+      "meaning_vi": "xóm nhỏ",
+      "meaning_en": "a hamlet",
+      "ipa": "/lə a.mo/",
+      "example_fr": "Le hameau a dix maisons.",
+      "example_vi": "Xóm nhỏ có mười ngôi nhà.",
+      "example_en": "The hamlet has ten houses."
+    },
+    {
+      "french": "le berger",
+      "meaning_vi": "người chăn cừu",
+      "meaning_en": "a shepherd",
+      "ipa": "/lə bɛʁ.ʒe/",
+      "example_fr": "Le berger garde ses moutons.",
+      "example_vi": "Người chăn cừu trông đàn cừu.",
+      "example_en": "The shepherd watches his sheep."
+    },
+    {
+      "french": "une prairie",
+      "meaning_vi": "đồng cỏ",
+      "meaning_en": "a meadow",
+      "ipa": "/yn pʁɛ.ʁi/",
+      "example_fr": "Les vaches sont dans la prairie.",
+      "example_vi": "Những con bò ở trên đồng cỏ.",
+      "example_en": "The cows are in the meadow."
+    },
+    {
+      "french": "un agriculteur",
+      "meaning_vi": "người nông dân (nam)",
+      "meaning_en": "a farmer",
+      "ipa": "/œ̃n a.ɡʁi.kyl.tœʁ/",
+      "example_fr": "L'agriculteur travaille tôt.",
+      "example_vi": "Người nông dân làm việc từ sớm.",
+      "example_en": "The farmer works early."
+    },
+    {
+      "french": "une récolte",
+      "meaning_vi": "vụ thu hoạch",
+      "meaning_en": "a harvest",
+      "ipa": "/yn ʁe.kɔlt/",
+      "example_fr": "La récolte est bonne cette année.",
+      "example_vi": "Vụ thu hoạch năm nay tốt.",
+      "example_en": "The harvest is good this year."
+    },
+    {
+      "french": "un tracteur",
+      "meaning_vi": "máy kéo",
+      "meaning_en": "a tractor",
+      "ipa": "/œ̃ tʁak.tœʁ/",
+      "example_fr": "Le tracteur est dans le champ.",
+      "example_vi": "Máy kéo ở trên cánh đồng.",
+      "example_en": "The tractor is in the field."
+    },
+    {
+      "french": "une vache",
+      "meaning_vi": "con bò",
+      "meaning_en": "a cow",
+      "ipa": "/yn vaʃ/",
+      "example_fr": "La vache mange de l'herbe.",
+      "example_vi": "Con bò ăn cỏ.",
+      "example_en": "The cow eats grass."
+    },
+    {
+      "french": "un mouton",
+      "meaning_vi": "con cừu",
+      "meaning_en": "a sheep",
+      "ipa": "/œ̃ mu.tɔ̃/",
+      "example_fr": "Le mouton est blanc.",
+      "example_vi": "Con cừu màu trắng.",
+      "example_en": "The sheep is white."
+    },
+    {
+      "french": "une poule",
+      "meaning_vi": "con gà mái",
+      "meaning_en": "a hen",
+      "ipa": "/yn pul/",
+      "example_fr": "La poule pond des œufs.",
+      "example_vi": "Con gà mái đẻ trứng.",
+      "example_en": "The hen lays eggs."
+    },
+    {
+      "french": "l'étang",
+      "meaning_vi": "cái ao",
+      "meaning_en": "a pond",
+      "ipa": "/le.tɑ̃/",
+      "example_fr": "L'étang est plein de canards.",
+      "example_vi": "Cái ao đầy vịt.",
+      "example_en": "The pond is full of ducks."
+    },
+    {
+      "french": "une rivière",
+      "meaning_vi": "con sông",
+      "meaning_en": "a river",
+      "ipa": "/yn ʁi.vjɛʁ/",
+      "example_fr": "La rivière est très propre.",
+      "example_vi": "Con sông rất sạch.",
+      "example_en": "The river is very clean."
+    },
+    {
+      "french": "un chemin",
+      "meaning_vi": "con đường nhỏ",
+      "meaning_en": "a path / way",
+      "ipa": "/œ̃ ʃə.mɛ̃/",
+      "example_fr": "Ce chemin mène au village.",
+      "example_vi": "Con đường này dẫn đến làng.",
+      "example_en": "This path leads to the village."
+    },
+    {
+      "french": "un verger",
+      "meaning_vi": "vườn cây ăn quả",
+      "meaning_en": "an orchard",
+      "ipa": "/œ̃ vɛʁ.ʒe/",
+      "example_fr": "Le verger a beaucoup de pommes.",
+      "example_vi": "Vườn cây ăn quả có nhiều táo.",
+      "example_en": "The orchard has many apples."
+    },
+    {
+      "french": "une moisson",
+      "meaning_vi": "vụ gặt",
+      "meaning_en": "a (grain) harvest",
+      "ipa": "/yn mwa.sɔ̃/",
+      "example_fr": "La moisson du blé est en été.",
+      "example_vi": "Vụ gặt lúa mì vào mùa hè.",
+      "example_en": "The wheat harvest is in summer."
+    },
+    {
+      "french": "le potager",
+      "meaning_vi": "vườn rau",
+      "meaning_en": "a vegetable garden",
+      "ipa": "/lə pɔ.ta.ʒe/",
+      "example_fr": "Le potager donne de bons légumes.",
+      "example_vi": "Vườn rau cho rau ngon.",
+      "example_en": "The vegetable garden gives good vegetables."
+    },
+    {
+      "french": "la grange",
+      "meaning_vi": "nhà kho thóc",
+      "meaning_en": "a barn",
+      "ipa": "/la ɡʁɑ̃ʒ/",
+      "example_fr": "Le foin est dans la grange.",
+      "example_vi": "Cỏ khô ở trong nhà kho.",
+      "example_en": "The hay is in the barn."
+    },
+    {
+      "french": "une étable",
+      "meaning_vi": "chuồng bò",
+      "meaning_en": "a stable / cowshed",
+      "ipa": "/yn e.tabl/",
+      "example_fr": "Les vaches sont dans l'étable.",
+      "example_vi": "Những con bò ở trong chuồng.",
+      "example_en": "The cows are in the stable."
+    },
+    {
+      "french": "un ruisseau",
+      "meaning_vi": "con suối",
+      "meaning_en": "a stream",
+      "ipa": "/œ̃ ʁɥi.so/",
+      "example_fr": "Un ruisseau traverse le pré.",
+      "example_vi": "Một con suối chảy qua đồng cỏ.",
+      "example_en": "A stream crosses the meadow."
+    }
+  ]
+}

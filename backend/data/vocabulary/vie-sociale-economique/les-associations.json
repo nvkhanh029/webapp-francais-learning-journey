@@ -1,0 +1,190 @@
+{
+  "category": "La vie sociale et économique",
+  "category_key": "vie-sociale-economique",
+  "category_sort_order": 110,
+  "category_vi": "Đời sống xã hội và kinh tế",
+  "category_en": "Social and economic life",
+  "topic": "La vie associative et religieuse",
+  "topic_slug": "vie-associative-religieuse",
+  "topic_sort_order": 30,
+  "topic_vi": "Đời sống hội đoàn và tôn giáo",
+  "topic_en": "Associative and religious life",
+  "subtopic": "Les associations",
+  "subtopic_key": "les-associations",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Hiệp hội",
+  "subtopic_en": "Associations",
+  "words": [
+    {
+      "french": "une association",
+      "meaning_vi": "hội, hiệp hội",
+      "meaning_en": "association",
+      "ipa": "/a.sɔ.sja.sjɔ̃/",
+      "example_fr": "Elle rejoint une association locale.",
+      "example_vi": "Cô ấy tham gia một hội địa phương.",
+      "example_en": "She joins a local association."
+    },
+    {
+      "french": "le bénévole",
+      "meaning_vi": "tình nguyện viên",
+      "meaning_en": "volunteer",
+      "ipa": "/be.ne.vɔl/",
+      "example_fr": "Le bénévole aide les enfants.",
+      "example_vi": "Tình nguyện viên giúp trẻ em.",
+      "example_en": "The volunteer helps children."
+    },
+    {
+      "french": "le bénévolat",
+      "meaning_vi": "hoạt động tình nguyện",
+      "meaning_en": "volunteering",
+      "ipa": "/be.ne.vɔ.la/",
+      "example_fr": "Il fait du bénévolat le samedi.",
+      "example_vi": "Anh ấy làm tình nguyện thứ bảy.",
+      "example_en": "He volunteers on Saturdays."
+    },
+    {
+      "french": "le membre",
+      "meaning_vi": "thành viên",
+      "meaning_en": "member",
+      "ipa": "/mɑ̃bʁ/",
+      "example_fr": "Chaque membre paie une cotisation.",
+      "example_vi": "Mỗi thành viên đóng hội phí.",
+      "example_en": "Each member pays a fee."
+    },
+    {
+      "french": "l'adhésion (f)",
+      "meaning_vi": "đăng ký tham gia",
+      "meaning_en": "membership",
+      "ipa": "/a.de.zjɔ̃/",
+      "example_fr": "L'adhésion est gratuite ici.",
+      "example_vi": "Đăng ký thành viên miễn phí ở đây.",
+      "example_en": "Membership is free here."
+    },
+    {
+      "french": "la subvention",
+      "meaning_vi": "tiền trợ cấp",
+      "meaning_en": "subsidy, grant",
+      "ipa": "/la syb.vɑ̃.sjɔ̃/",
+      "example_fr": "L'association reçoit une subvention.",
+      "example_vi": "Hội nhận được một khoản trợ cấp.",
+      "example_en": "The association receives a grant."
+    },
+    {
+      "french": "l'assemblée générale",
+      "meaning_vi": "đại hội đồng (của hội)",
+      "meaning_en": "general meeting",
+      "ipa": "/la.sɑ̃.ble ʒe.ne.ʁal/",
+      "example_fr": "L'assemblée générale a lieu en juin.",
+      "example_vi": "Đại hội đồng diễn ra vào tháng sáu.",
+      "example_en": "The general meeting takes place in June."
+    },
+    {
+      "french": "le président d'association",
+      "meaning_vi": "chủ tịch hội",
+      "meaning_en": "association president",
+      "ipa": "/pʁe.zi.dɑ̃ da.sɔ.sja.sjɔ̃/",
+      "example_fr": "Le président ouvre la réunion.",
+      "example_vi": "Chủ tịch khai mạc cuộc họp.",
+      "example_en": "The president opens the meeting."
+    },
+    {
+      "french": "le trésorier",
+      "meaning_vi": "thủ quỹ",
+      "meaning_en": "treasurer",
+      "ipa": "/tʁe.zɔ.ʁje/",
+      "example_fr": "Le trésorier garde les comptes.",
+      "example_vi": "Thủ quỹ giữ sổ sách.",
+      "example_en": "The treasurer keeps accounts."
+    },
+    {
+      "french": "le secrétaire",
+      "meaning_vi": "thư ký",
+      "meaning_en": "secretary",
+      "ipa": "/sə.kʁe.tɛʁ/",
+      "example_fr": "Le secrétaire écrit le rapport.",
+      "example_vi": "Thư ký viết báo cáo.",
+      "example_en": "The secretary writes the report."
+    },
+    {
+      "french": "le projet",
+      "meaning_vi": "dự án",
+      "meaning_en": "project",
+      "ipa": "/pʁɔ.ʒɛ/",
+      "example_fr": "Le projet aide les jeunes.",
+      "example_vi": "Dự án giúp thanh niên.",
+      "example_en": "The project helps young people."
+    },
+    {
+      "french": "l'aide humanitaire (f)",
+      "meaning_vi": "viện trợ nhân đạo",
+      "meaning_en": "humanitarian aid",
+      "ipa": "/ɛd y.ma.ni.tɛʁ/",
+      "example_fr": "L'aide humanitaire arrive vite.",
+      "example_vi": "Viện trợ nhân đạo đến nhanh.",
+      "example_en": "Humanitarian aid arrives fast."
+    },
+    {
+      "french": "la pétition",
+      "meaning_vi": "đơn kiến nghị",
+      "meaning_en": "petition",
+      "ipa": "/la pe.ti.sjɔ̃/",
+      "example_fr": "Ils signent une pétition.",
+      "example_vi": "Họ ký một đơn kiến nghị.",
+      "example_en": "They sign a petition."
+    },
+    {
+      "french": "le don",
+      "meaning_vi": "quyên góp",
+      "meaning_en": "donation",
+      "ipa": "/dɔ̃/",
+      "example_fr": "Merci pour votre don !",
+      "example_vi": "Cảm ơn bạn đã quyên góp!",
+      "example_en": "Thank you for your donation!"
+    },
+    {
+      "french": "la collecte",
+      "meaning_vi": "đợt quyên góp",
+      "meaning_en": "collection, drive",
+      "ipa": "/kɔ.lɛkt/",
+      "example_fr": "La collecte de vêtements commence.",
+      "example_vi": "Đợt quyên góp quần áo bắt đầu.",
+      "example_en": "The clothes drive is starting."
+    },
+    {
+      "french": "le club sportif",
+      "meaning_vi": "câu lạc bộ thể thao",
+      "meaning_en": "sports club",
+      "ipa": "/klœb spɔʁ.tif/",
+      "example_fr": "Mon fils est au club sportif.",
+      "example_vi": "Con trai tôi ở câu lạc bộ thể thao.",
+      "example_en": "My son is in the sports club."
+    },
+    {
+      "french": "la fête de quartier",
+      "meaning_vi": "lễ hội khu phố",
+      "meaning_en": "neighborhood party",
+      "ipa": "/fɛt də kaʁ.tje/",
+      "example_fr": "La fête de quartier est samedi.",
+      "example_vi": "Lễ hội khu phố vào thứ bảy.",
+      "example_en": "The neighborhood party is Saturday."
+    },
+    {
+      "french": "adhérer",
+      "meaning_vi": "gia nhập (hội)",
+      "meaning_en": "to join",
+      "ipa": "/a.de.ʁe/",
+      "example_fr": "J'adhère à une association sportive.",
+      "example_vi": "Tôi gia nhập một hội thể thao.",
+      "example_en": "I join a sports association."
+    },
+    {
+      "french": "organiser",
+      "meaning_vi": "tổ chức",
+      "meaning_en": "to organize",
+      "ipa": "/ɔʁ.ɡa.ni.ze/",
+      "example_fr": "Ils organisent un concert.",
+      "example_vi": "Họ tổ chức một buổi hòa nhạc.",
+      "example_en": "They organize a concert."
+    }
+  ]
+}

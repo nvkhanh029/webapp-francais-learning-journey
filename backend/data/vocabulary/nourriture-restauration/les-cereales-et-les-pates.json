@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "L'alimentation (1)",
+  "topic_slug": "alimentation-1",
+  "topic_sort_order": 10,
+  "topic_vi": "Thực phẩm (1)",
+  "topic_en": "Food (1)",
+  "subtopic": "Les céréales et les pâtes",
+  "subtopic_key": "les-cereales-et-les-pates",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Ngũ cốc và mì ống",
+  "subtopic_en": "Cereals and pasta",
+  "words": [
+    {
+      "french": "les pâtes",
+      "meaning_vi": "mì ống",
+      "meaning_en": "pasta",
+      "ipa": "/pat/",
+      "example_fr": "Les pâtes à la sauce tomate.",
+      "example_vi": "Mì Ý sốt cà chua.",
+      "example_en": "Pasta with tomato sauce."
+    },
+    {
+      "french": "les spaghettis",
+      "meaning_vi": "mì spaghetti",
+      "meaning_en": "spaghetti",
+      "ipa": "/spa.ɡe.ti/",
+      "example_fr": "Des spaghettis bolognaise, s'il vous plaît.",
+      "example_vi": "Mì spaghetti bò bằm.",
+      "example_en": "Spaghetti bolognese, please."
+    },
+    {
+      "french": "le riz",
+      "meaning_vi": "gạo, cơm",
+      "meaning_en": "rice",
+      "ipa": "/ʁi/",
+      "example_fr": "Le riz blanc avec du poulet.",
+      "example_vi": "Cơm trắng với gà.",
+      "example_en": "White rice with chicken."
+    },
+    {
+      "french": "le riz basmati",
+      "meaning_vi": "gạo basmati",
+      "meaning_en": "basmati rice",
+      "ipa": "/ʁi baz.ma.ti/",
+      "example_fr": "Le riz basmati est parfumé.",
+      "example_vi": "Gạo basmati rất thơm.",
+      "example_en": "Basmati rice is fragrant."
+    },
+    {
+      "french": "le blé",
+      "meaning_vi": "lúa mì",
+      "meaning_en": "wheat",
+      "ipa": "/ble/",
+      "example_fr": "Le blé est une céréale.",
+      "example_vi": "Lúa mì là một loại ngũ cốc.",
+      "example_en": "Wheat is a cereal."
+    },
+    {
+      "french": "l'avoine",
+      "meaning_vi": "yến mạch",
+      "meaning_en": "oats",
+      "ipa": "/a.vwan/",
+      "example_fr": "De l'avoine au petit-déjeuner.",
+      "example_vi": "Yến mạch cho bữa sáng.",
+      "example_en": "Oats for breakfast."
+    },
+    {
+      "french": "le maïs",
+      "meaning_vi": "ngô",
+      "meaning_en": "corn",
+      "ipa": "/ma.is/",
+      "example_fr": "Le maïs est jaune et sucré.",
+      "example_vi": "Ngô vàng và ngọt.",
+      "example_en": "Corn is yellow and sweet."
+    },
+    {
+      "french": "le couscous",
+      "meaning_vi": "món couscous",
+      "meaning_en": "couscous",
+      "ipa": "/kus.kus/",
+      "example_fr": "Le couscous du vendredi.",
+      "example_vi": "Couscous ngày thứ Sáu.",
+      "example_en": "Couscous on Friday."
+    },
+    {
+      "french": "le quinoa",
+      "meaning_vi": "hạt quinoa",
+      "meaning_en": "quinoa",
+      "ipa": "/ki.no.a/",
+      "example_fr": "Le quinoa est sain.",
+      "example_vi": "Hạt quinoa tốt cho sức khỏe.",
+      "example_en": "Quinoa is healthy."
+    },
+    {
+      "french": "la farine",
+      "meaning_vi": "bột mì",
+      "meaning_en": "flour",
+      "ipa": "/fa.ʁin/",
+      "example_fr": "De la farine pour le gâteau.",
+      "example_vi": "Bột mì cho chiếc bánh.",
+      "example_en": "Flour for the cake."
+    },
+    {
+      "french": "la nouille",
+      "meaning_vi": "sợi mì",
+      "meaning_en": "noodle",
+      "ipa": "/nuj/",
+      "example_fr": "Des nouilles aux légumes.",
+      "example_vi": "Mì với rau củ.",
+      "example_en": "Noodles with vegetables."
+    },
+    {
+      "french": "la lasagne",
+      "meaning_vi": "mì lasagne",
+      "meaning_en": "lasagne",
+      "ipa": "/la.zaɲ/",
+      "example_fr": "Les lasagnes au four.",
+      "example_vi": "Mì lasagne đút lò.",
+      "example_en": "Lasagne in the oven."
+    },
+    {
+      "french": "la coquillette",
+      "meaning_vi": "mì ống nhỏ",
+      "meaning_en": "small shell pasta",
+      "ipa": "/kɔ.ki.jɛt/",
+      "example_fr": "Les coquillettes plaisent aux enfants.",
+      "example_vi": "Mì coquillettes hợp với trẻ em.",
+      "example_en": "Pasta shells suit children."
+    },
+    {
+      "french": "la céréale",
+      "meaning_vi": "ngũ cốc",
+      "meaning_en": "cereal",
+      "ipa": "/se.ʁe.al/",
+      "example_fr": "Des céréales au lait froid.",
+      "example_vi": "Ngũ cốc với sữa lạnh.",
+      "example_en": "Cereals with cold milk."
+    },
+    {
+      "french": "le muesli",
+      "meaning_vi": "ngũ cốc muesli",
+      "meaning_en": "muesli",
+      "ipa": "/mys.li/",
+      "example_fr": "Le muesli avec du yaourt.",
+      "example_vi": "Muesli với sữa chua.",
+      "example_en": "Muesli with yoghurt."
+    },
+    {
+      "french": "l'orge",
+      "meaning_vi": "lúa mạch",
+      "meaning_en": "barley",
+      "ipa": "/ɔʁʒ/",
+      "example_fr": "De l'orge dans la soupe.",
+      "example_vi": "Lúa mạch trong súp.",
+      "example_en": "Barley in the soup."
+    },
+    {
+      "french": "le seigle",
+      "meaning_vi": "lúa mạch đen",
+      "meaning_en": "rye",
+      "ipa": "/sɛɡl/",
+      "example_fr": "Le seigle est riche en fibres.",
+      "example_vi": "Lúa mạch đen giàu chất xơ.",
+      "example_en": "Rye is rich in fibre."
+    },
+    {
+      "french": "le sarrasin",
+      "meaning_vi": "kiều mạch",
+      "meaning_en": "buckwheat",
+      "ipa": "/sa.ʁa.zɛ̃/",
+      "example_fr": "Les crêpes au sarrasin sont savoureuses.",
+      "example_vi": "Bánh crepe kiều mạch rất ngon.",
+      "example_en": "Buckwheat crepes are tasty."
+    },
+    {
+      "french": "le boulgour",
+      "meaning_vi": "lúa mì bulgur",
+      "meaning_en": "bulgur",
+      "ipa": "/bul.ɡuʁ/",
+      "example_fr": "Le boulgour à la menthe.",
+      "example_vi": "Bulgur với bạc hà.",
+      "example_en": "Bulgur with mint."
+    }
+  ]
+}

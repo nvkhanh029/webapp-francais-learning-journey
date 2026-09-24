@@ -1,0 +1,190 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les caractéristiques physiques",
+  "topic_slug": "caracteristiques-physiques",
+  "topic_sort_order": 10,
+  "topic_vi": "Đặc điểm thể chất",
+  "topic_en": "Physical characteristics",
+  "subtopic": "La description physique",
+  "subtopic_key": "la-description-physique",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Miêu tả ngoại hình",
+  "subtopic_en": "Physical description",
+  "words": [
+    {
+      "french": "grand(e)",
+      "meaning_vi": "cao",
+      "meaning_en": "tall",
+      "ipa": "/ɡʁɑ̃ / ɡʁɑ̃d/",
+      "example_fr": "Il est grand.",
+      "example_vi": "Anh ấy cao.",
+      "example_en": "He is tall."
+    },
+    {
+      "french": "petit(e)",
+      "meaning_vi": "thấp, nhỏ",
+      "meaning_en": "short, small",
+      "ipa": "/pə.ti / pə.tit/",
+      "example_fr": "Elle est petite.",
+      "example_vi": "Cô ấy thấp.",
+      "example_en": "She is short."
+    },
+    {
+      "french": "mince",
+      "meaning_vi": "mảnh mai",
+      "meaning_en": "slim",
+      "ipa": "/mɛ̃s/",
+      "example_fr": "Il est mince.",
+      "example_vi": "Anh ấy mảnh mai.",
+      "example_en": "He is slim."
+    },
+    {
+      "french": "gros(se)",
+      "meaning_vi": "béo, to",
+      "meaning_en": "fat, big",
+      "ipa": "/ɡʁo / ɡʁos/",
+      "example_fr": "Elle est grosse.",
+      "example_vi": "Cô ấy béo.",
+      "example_en": "She is fat."
+    },
+    {
+      "french": "blond(e)",
+      "meaning_vi": "tóc vàng",
+      "meaning_en": "blond",
+      "ipa": "/blɔ̃ / blɔ̃d/",
+      "example_fr": "Il a les cheveux blonds.",
+      "example_vi": "Anh ấy có tóc vàng.",
+      "example_en": "He has blond hair."
+    },
+    {
+      "french": "brun(e)",
+      "meaning_vi": "tóc nâu",
+      "meaning_en": "brown (hair)",
+      "ipa": "/bʁœ̃ / bʁyn/",
+      "example_fr": "Elle a les cheveux bruns.",
+      "example_vi": "Cô ấy có tóc nâu.",
+      "example_en": "She has brown hair."
+    },
+    {
+      "french": "les cheveux blancs",
+      "meaning_vi": "tóc bạc",
+      "meaning_en": "white/grey hair",
+      "ipa": "/ʃə.vø blɑ̃/",
+      "example_fr": "Mon grand-père a les cheveux blancs.",
+      "example_vi": "Ông tôi có tóc bạc.",
+      "example_en": "My grandfather has white hair."
+    },
+    {
+      "french": "chauve",
+      "meaning_vi": "hói",
+      "meaning_en": "bald",
+      "ipa": "/ʃov/",
+      "example_fr": "Il est chauve.",
+      "example_vi": "Anh ấy bị hói.",
+      "example_en": "He is bald."
+    },
+    {
+      "french": "bouclé(e)",
+      "meaning_vi": "xoăn",
+      "meaning_en": "curly",
+      "ipa": "/bu.kle/",
+      "example_fr": "Elle a les cheveux bouclés.",
+      "example_vi": "Cô ấy có tóc xoăn.",
+      "example_en": "She has curly hair."
+    },
+    {
+      "french": "raide",
+      "meaning_vi": "thẳng (tóc)",
+      "meaning_en": "straight (hair)",
+      "ipa": "/ʁɛd/",
+      "example_fr": "Il a les cheveux raides.",
+      "example_vi": "Anh ấy có tóc thẳng.",
+      "example_en": "He has straight hair."
+    },
+    {
+      "french": "porter des lunettes",
+      "meaning_vi": "đeo kính",
+      "meaning_en": "to wear glasses",
+      "ipa": "/pɔʁ.te de ly.nɛt/",
+      "example_fr": "Elle porte des lunettes.",
+      "example_vi": "Cô ấy đeo kính.",
+      "example_en": "She wears glasses."
+    },
+    {
+      "french": "la barbe",
+      "meaning_vi": "râu",
+      "meaning_en": "beard",
+      "ipa": "/baʁb/",
+      "example_fr": "Il a une barbe.",
+      "example_vi": "Anh ấy để râu.",
+      "example_en": "He has a beard."
+    },
+    {
+      "french": "la moustache",
+      "meaning_vi": "ria mép",
+      "meaning_en": "moustache",
+      "ipa": "/mus.taʃ/",
+      "example_fr": "Il a une moustache.",
+      "example_vi": "Anh ấy để ria mép.",
+      "example_en": "He has a moustache."
+    },
+    {
+      "french": "beau / belle",
+      "meaning_vi": "đẹp",
+      "meaning_en": "beautiful, handsome",
+      "ipa": "/bo / bɛl/",
+      "example_fr": "Elle est belle.",
+      "example_vi": "Cô ấy đẹp.",
+      "example_en": "She is beautiful."
+    },
+    {
+      "french": "laid(e)",
+      "meaning_vi": "xấu",
+      "meaning_en": "ugly",
+      "ipa": "/lɛ / lɛd/",
+      "example_fr": "Il est laid sur cette photo.",
+      "example_vi": "Anh ấy trông xấu trong ảnh này.",
+      "example_en": "He is ugly in this photo."
+    },
+    {
+      "french": "jeune",
+      "meaning_vi": "trẻ",
+      "meaning_en": "young",
+      "ipa": "/ʒœn/",
+      "example_fr": "Elle est jeune.",
+      "example_vi": "Cô ấy trẻ.",
+      "example_en": "She is young."
+    },
+    {
+      "french": "vieux / vieille",
+      "meaning_vi": "già",
+      "meaning_en": "old",
+      "ipa": "/vjø / vjɛj/",
+      "example_fr": "Il a l'air vieux.",
+      "example_vi": "Anh ấy trông già.",
+      "example_en": "He looks old."
+    },
+    {
+      "french": "de taille moyenne",
+      "meaning_vi": "cao trung bình",
+      "meaning_en": "of medium height",
+      "ipa": "/də taj mwa.jɛn/",
+      "example_fr": "Elle est de taille moyenne.",
+      "example_vi": "Cô ấy có chiều cao trung bình.",
+      "example_en": "She is of medium height."
+    },
+    {
+      "french": "fort(e)",
+      "meaning_vi": "khỏe, mạnh",
+      "meaning_en": "strong",
+      "ipa": "/fɔʁ / fɔʁt/",
+      "example_fr": "Il est fort.",
+      "example_vi": "Anh ấy khỏe.",
+      "example_en": "He is strong."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "Le logement",
+  "category_key": "logement",
+  "category_sort_order": 40,
+  "category_vi": "Nhà ở",
+  "category_en": "Housing",
+  "topic": "Les habitations et le mobilier",
+  "topic_slug": "habitations-mobilier",
+  "topic_sort_order": 10,
+  "topic_vi": "Nhà ở và đồ nội thất",
+  "topic_en": "Housing and furniture",
+  "subtopic": "Décrire un logement",
+  "subtopic_key": "decrire-un-logement",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Miêu tả nơi ở",
+  "subtopic_en": "Describing a home",
+  "words": [
+    {
+      "french": "une entrée",
+      "meaning_vi": "lối vào, tiền sảnh",
+      "meaning_en": "an entrance / hallway",
+      "ipa": "/ɑ̃.tʁe/",
+      "example_fr": "L'entrée est lumineuse.",
+      "example_vi": "Lối vào rất sáng.",
+      "example_en": "The entrance is bright."
+    },
+    {
+      "french": "un salon",
+      "meaning_vi": "phòng khách",
+      "meaning_en": "a living room",
+      "ipa": "/sa.lɔ̃/",
+      "example_fr": "Le salon est grand.",
+      "example_vi": "Phòng khách rất rộng.",
+      "example_en": "The living room is big."
+    },
+    {
+      "french": "une salle à manger",
+      "meaning_vi": "phòng ăn",
+      "meaning_en": "a dining room",
+      "ipa": "/sal a mɑ̃.ʒe/",
+      "example_fr": "La salle à manger est claire.",
+      "example_vi": "Phòng ăn rất sáng.",
+      "example_en": "The dining room is bright."
+    },
+    {
+      "french": "une cuisine",
+      "meaning_vi": "nhà bếp",
+      "meaning_en": "a kitchen",
+      "ipa": "/kɥi.zin/",
+      "example_fr": "La cuisine est équipée.",
+      "example_vi": "Nhà bếp được trang bị đầy đủ.",
+      "example_en": "The kitchen is equipped."
+    },
+    {
+      "french": "une chambre",
+      "meaning_vi": "phòng ngủ",
+      "meaning_en": "a bedroom",
+      "ipa": "/ʃɑ̃bʁ/",
+      "example_fr": "La chambre est calme.",
+      "example_vi": "Phòng ngủ rất yên tĩnh.",
+      "example_en": "The bedroom is quiet."
+    },
+    {
+      "french": "une salle de bain",
+      "meaning_vi": "phòng tắm",
+      "meaning_en": "a bathroom",
+      "ipa": "/sal də bɛ̃/",
+      "example_fr": "La salle de bain est petite.",
+      "example_vi": "Phòng tắm rất nhỏ.",
+      "example_en": "The bathroom is small."
+    },
+    {
+      "french": "les toilettes",
+      "meaning_vi": "nhà vệ sinh",
+      "meaning_en": "the toilet",
+      "ipa": "/twa.lɛt/",
+      "example_fr": "Les toilettes sont séparées.",
+      "example_vi": "Nhà vệ sinh ở riêng.",
+      "example_en": "The toilet is separate."
+    },
+    {
+      "french": "un balcon",
+      "meaning_vi": "ban công",
+      "meaning_en": "a balcony",
+      "ipa": "/bal.kɔ̃/",
+      "example_fr": "L'appartement a un balcon.",
+      "example_vi": "Căn hộ có một ban công.",
+      "example_en": "The flat has a balcony."
+    },
+    {
+      "french": "une terrasse",
+      "meaning_vi": "sân thượng, hiên",
+      "meaning_en": "a terrace",
+      "ipa": "/tɛ.ʁas/",
+      "example_fr": "La terrasse est ensoleillée.",
+      "example_vi": "Sân hiên đầy nắng.",
+      "example_en": "The terrace is sunny."
+    },
+    {
+      "french": "un jardin",
+      "meaning_vi": "khu vườn",
+      "meaning_en": "a garden",
+      "ipa": "/ʒaʁ.dɛ̃/",
+      "example_fr": "Le jardin est fleuri.",
+      "example_vi": "Khu vườn đầy hoa.",
+      "example_en": "The garden is full of flowers."
+    },
+    {
+      "french": "un garage",
+      "meaning_vi": "nhà để xe",
+      "meaning_en": "a garage",
+      "ipa": "/ɡa.ʁaʒ/",
+      "example_fr": "Le garage est fermé.",
+      "example_vi": "Nhà để xe đã đóng.",
+      "example_en": "The garage is closed."
+    },
+    {
+      "french": "une cave",
+      "meaning_vi": "tầng hầm",
+      "meaning_en": "a cellar / basement",
+      "ipa": "/kav/",
+      "example_fr": "La cave est en bas.",
+      "example_vi": "Tầng hầm ở bên dưới.",
+      "example_en": "The cellar is downstairs."
+    },
+    {
+      "french": "un grenier",
+      "meaning_vi": "gác mái",
+      "meaning_en": "an attic",
+      "ipa": "/ɡʁə.nje/",
+      "example_fr": "Le grenier est sombre.",
+      "example_vi": "Gác mái rất tối.",
+      "example_en": "The attic is dark."
+    },
+    {
+      "french": "un couloir",
+      "meaning_vi": "hành lang",
+      "meaning_en": "a corridor / hallway",
+      "ipa": "/ku.lwaʁ/",
+      "example_fr": "Le couloir est long.",
+      "example_vi": "Hành lang rất dài.",
+      "example_en": "The corridor is long."
+    },
+    {
+      "french": "un bureau",
+      "meaning_vi": "phòng làm việc",
+      "meaning_en": "a study / office",
+      "ipa": "/by.ʁo/",
+      "example_fr": "Le bureau est rangé.",
+      "example_vi": "Phòng làm việc rất gọn gàng.",
+      "example_en": "The study is tidy."
+    },
+    {
+      "french": "une buanderie",
+      "meaning_vi": "phòng giặt",
+      "meaning_en": "a laundry room",
+      "ipa": "/bɥɑ̃.dʁi/",
+      "example_fr": "La buanderie est petite.",
+      "example_vi": "Phòng giặt rất nhỏ.",
+      "example_en": "The laundry room is small."
+    },
+    {
+      "french": "le rez-de-chaussée",
+      "meaning_vi": "tầng trệt",
+      "meaning_en": "the ground floor",
+      "ipa": "/ʁed.ʃo.se/",
+      "example_fr": "C'est au rez-de-chaussée.",
+      "example_vi": "Nó ở tầng trệt.",
+      "example_en": "It's on the ground floor."
+    },
+    {
+      "french": "le premier étage",
+      "meaning_vi": "tầng một",
+      "meaning_en": "the first floor",
+      "ipa": "/pʁə.mje e.taʒ/",
+      "example_fr": "La chambre est au premier étage.",
+      "example_vi": "Phòng ngủ ở tầng một.",
+      "example_en": "The bedroom is on the first floor."
+    },
+    {
+      "french": "un ascenseur",
+      "meaning_vi": "thang máy",
+      "meaning_en": "a lift / elevator",
+      "ipa": "/a.sɑ̃.sœʁ/",
+      "example_fr": "L'immeuble a un ascenseur.",
+      "example_vi": "Tòa nhà có thang máy.",
+      "example_en": "The building has a lift."
+    }
+  ]
+}

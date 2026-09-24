@@ -1,0 +1,190 @@
+{
+  "category": "Les relations familiales et sociales",
+  "category_key": "relations-familiales-sociales",
+  "category_sort_order": 20,
+  "category_vi": "Quan hệ gia đình và xã hội",
+  "category_en": "Family and social relationships",
+  "topic": "La famille",
+  "topic_slug": "famille",
+  "topic_sort_order": 10,
+  "topic_vi": "Gia đình",
+  "topic_en": "Family",
+  "subtopic": "Les types de familles",
+  "subtopic_key": "les-types-de-familles",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Các loại hình gia đình",
+  "subtopic_en": "Types of families",
+  "words": [
+    {
+      "french": "la famille nucléaire",
+      "meaning_vi": "gia đình hạt nhân",
+      "meaning_en": "nuclear family",
+      "ipa": "/la fa.mij ny.kle.ɛʁ/",
+      "example_fr": "Ils forment une famille nucléaire classique.",
+      "example_vi": "Họ tạo thành một gia đình hạt nhân điển hình.",
+      "example_en": "They form a classic nuclear family."
+    },
+    {
+      "french": "la famille monoparentale",
+      "meaning_vi": "gia đình đơn thân",
+      "meaning_en": "single-parent family",
+      "ipa": "/la fa.mij mɔ.no.pa.ʁɑ̃.tal/",
+      "example_fr": "Elle élève seule ses enfants dans une famille monoparentale.",
+      "example_vi": "Cô ấy một mình nuôi con trong gia đình đơn thân.",
+      "example_en": "She raises her children alone in a single-parent family."
+    },
+    {
+      "french": "la famille recomposée",
+      "meaning_vi": "gia đình tái hôn",
+      "meaning_en": "blended family",
+      "ipa": "/la fa.mij ʁə.kɔ̃.po.ze/",
+      "example_fr": "C'est une famille recomposée avec quatre enfants.",
+      "example_vi": "Đó là một gia đình tái hôn với bốn đứa con.",
+      "example_en": "It's a blended family with four children."
+    },
+    {
+      "french": "la famille nombreuse",
+      "meaning_vi": "gia đình đông con",
+      "meaning_en": "large family",
+      "ipa": "/la fa.mij nɔ̃.bʁøz/",
+      "example_fr": "Ils ont une famille nombreuse avec cinq enfants.",
+      "example_vi": "Họ có một gia đình đông con với năm đứa trẻ.",
+      "example_en": "They have a large family with five children."
+    },
+    {
+      "french": "la famille élargie",
+      "meaning_vi": "gia đình mở rộng",
+      "meaning_en": "extended family",
+      "ipa": "/la fa.mij e.laʁ.ʒi/",
+      "example_fr": "Toute la famille élargie vient à Noël.",
+      "example_vi": "Cả gia đình mở rộng đều đến vào dịp Giáng sinh.",
+      "example_en": "The whole extended family comes at Christmas."
+    },
+    {
+      "french": "la famille adoptive",
+      "meaning_vi": "gia đình nuôi",
+      "meaning_en": "adoptive family",
+      "ipa": "/la fa.mij a.dɔp.tiv/",
+      "example_fr": "L'enfant a trouvé une famille adoptive aimante.",
+      "example_vi": "Đứa trẻ đã tìm được một gia đình nuôi yêu thương.",
+      "example_en": "The child found a loving adoptive family."
+    },
+    {
+      "french": "la famille d'accueil",
+      "meaning_vi": "gia đình bảo trợ",
+      "meaning_en": "foster family",
+      "ipa": "/la fa.mij da.kœj/",
+      "example_fr": "Il a grandi dans une famille d'accueil.",
+      "example_vi": "Cậu ấy lớn lên trong một gia đình bảo trợ.",
+      "example_en": "He grew up in a foster family."
+    },
+    {
+      "french": "la famille homoparentale",
+      "meaning_vi": "gia đình đồng giới",
+      "meaning_en": "same-sex parent family",
+      "ipa": "/la fa.mij o.mo.pa.ʁɑ̃.tal/",
+      "example_fr": "Les familles homoparentales sont reconnues par la loi.",
+      "example_vi": "Các gia đình đồng giới được pháp luật công nhận.",
+      "example_en": "Same-sex parent families are recognized by law."
+    },
+    {
+      "french": "le couple sans enfant",
+      "meaning_vi": "cặp đôi không con",
+      "meaning_en": "childless couple",
+      "ipa": "/lə kupl sɑ̃.zɑ̃.fɑ̃/",
+      "example_fr": "Ils sont un couple sans enfant et voyagent beaucoup.",
+      "example_vi": "Họ là một cặp đôi không con và đi du lịch nhiều.",
+      "example_en": "They are a childless couple and travel a lot."
+    },
+    {
+      "french": "le parent solo",
+      "meaning_vi": "cha/mẹ đơn thân",
+      "meaning_en": "solo parent",
+      "ipa": "/lə pa.ʁɑ̃ so.lo/",
+      "example_fr": "En tant que parent solo, il s'organise bien.",
+      "example_vi": "Là cha đơn thân, anh ấy tổ chức cuộc sống rất tốt.",
+      "example_en": "As a solo parent, he organizes himself well."
+    },
+    {
+      "french": "la mère célibataire",
+      "meaning_vi": "mẹ đơn thân",
+      "meaning_en": "single mother",
+      "ipa": "/la mɛʁ se.li.ba.tɛʁ/",
+      "example_fr": "C'est une mère célibataire courageuse.",
+      "example_vi": "Cô ấy là một bà mẹ đơn thân dũng cảm.",
+      "example_en": "She is a courageous single mother."
+    },
+    {
+      "french": "le père célibataire",
+      "meaning_vi": "bố đơn thân",
+      "meaning_en": "single father",
+      "ipa": "/lə pɛʁ se.li.ba.tɛʁ/",
+      "example_fr": "C'est un père célibataire très attentif.",
+      "example_vi": "Anh ấy là một ông bố đơn thân rất chu đáo.",
+      "example_en": "He is a very caring single father."
+    },
+    {
+      "french": "l'enfant unique",
+      "meaning_vi": "con một",
+      "meaning_en": "only child",
+      "ipa": "/lɑ̃.fɑ̃ y.nik/",
+      "example_fr": "Elle est enfant unique.",
+      "example_vi": "Cô ấy là con một.",
+      "example_en": "She is an only child."
+    },
+    {
+      "french": "les jumeaux",
+      "meaning_vi": "cặp song sinh",
+      "meaning_en": "twins",
+      "ipa": "/le ʒy.mo/",
+      "example_fr": "Ils ont des jumeaux de trois ans.",
+      "example_vi": "Họ có một cặp song sinh ba tuổi.",
+      "example_en": "They have three-year-old twins."
+    },
+    {
+      "french": "la fratrie",
+      "meaning_vi": "anh chị em ruột",
+      "meaning_en": "siblings",
+      "ipa": "/la fʁa.tʁi/",
+      "example_fr": "La fratrie se réunit chaque dimanche.",
+      "example_vi": "Anh chị em sum họp mỗi chủ nhật.",
+      "example_en": "The siblings get together every Sunday."
+    },
+    {
+      "french": "le foyer",
+      "meaning_vi": "mái ấm gia đình",
+      "meaning_en": "home / household",
+      "ipa": "/lə fwa.je/",
+      "example_fr": "Ils ont fondé leur foyer à Lyon.",
+      "example_vi": "Họ đã lập mái ấm ở Lyon.",
+      "example_en": "They set up their home in Lyon."
+    },
+    {
+      "french": "le ménage",
+      "meaning_vi": "hộ gia đình",
+      "meaning_en": "household",
+      "ipa": "/lə me.naʒ/",
+      "example_fr": "Ce logement convient à un ménage de quatre personnes.",
+      "example_vi": "Căn nhà này phù hợp cho một hộ gia đình bốn người.",
+      "example_en": "This housing suits a four-person household."
+    },
+    {
+      "french": "le beau-parent",
+      "meaning_vi": "cha/mẹ kế",
+      "meaning_en": "stepparent",
+      "ipa": "/lə bo.pa.ʁɑ̃/",
+      "example_fr": "Son beau-parent l'aide pour les devoirs.",
+      "example_vi": "Bố dượng của cậu ấy giúp làm bài tập.",
+      "example_en": "His stepparent helps him with homework."
+    },
+    {
+      "french": "la belle-famille",
+      "meaning_vi": "gia đình nhà chồng/vợ",
+      "meaning_en": "in-laws",
+      "ipa": "/la bɛl.fa.mij/",
+      "example_fr": "Il s'entend bien avec sa belle-famille.",
+      "example_vi": "Anh ấy hòa thuận với gia đình nhà vợ.",
+      "example_en": "He gets along well with his in-laws."
+    }
+  ]
+}

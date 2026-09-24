@@ -1,0 +1,190 @@
+{
+  "category": "La communication",
+  "category_key": "communication",
+  "category_sort_order": 130,
+  "category_vi": "Giao tiếp",
+  "category_en": "Communication",
+  "topic": "La pensée et l'argumentation",
+  "topic_slug": "pensee-argumentation",
+  "topic_sort_order": 10,
+  "topic_vi": "Tư duy và lập luận",
+  "topic_en": "Thinking and argumentation",
+  "subtopic": "Exprimer des règles",
+  "subtopic_key": "exprimer-des-regles",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Diễn đạt quy tắc",
+  "subtopic_en": "Expressing rules",
+  "words": [
+    {
+      "french": "la règle",
+      "meaning_vi": "quy tắc",
+      "meaning_en": "rule",
+      "ipa": "/la ʁɛgl/",
+      "example_fr": "Respecte la règle du jeu.",
+      "example_vi": "Hãy tuân thủ quy tắc trò chơi.",
+      "example_en": "Follow the rule of the game."
+    },
+    {
+      "french": "le règlement",
+      "meaning_vi": "nội quy",
+      "meaning_en": "regulations",
+      "ipa": "/lə ʁɛ.glə.mɑ̃/",
+      "example_fr": "Lisez le règlement intérieur.",
+      "example_vi": "Hãy đọc nội quy.",
+      "example_en": "Read the internal regulations."
+    },
+    {
+      "french": "la norme",
+      "meaning_vi": "chuẩn mực, quy chuẩn",
+      "meaning_en": "norm, standard",
+      "ipa": "/la nɔʁm/",
+      "example_fr": "Il faut respecter les normes.",
+      "example_vi": "Cần tuân thủ các chuẩn mực.",
+      "example_en": "We must follow the standards."
+    },
+    {
+      "french": "l'obligation (f)",
+      "meaning_vi": "nghĩa vụ",
+      "meaning_en": "obligation",
+      "ipa": "/ɔ.bli.ga.sjɔ̃/",
+      "example_fr": "C'est une obligation légale.",
+      "example_vi": "Đó là nghĩa vụ pháp lý.",
+      "example_en": "It's a legal obligation."
+    },
+    {
+      "french": "l'interdiction (f)",
+      "meaning_vi": "sự cấm",
+      "meaning_en": "prohibition, ban",
+      "ipa": "/ɛ̃.tɛʁ.dik.sjɔ̃/",
+      "example_fr": "Il y a une interdiction de stationner.",
+      "example_vi": "Có biển cấm đỗ xe.",
+      "example_en": "There is a parking ban."
+    },
+    {
+      "french": "autoriser",
+      "meaning_vi": "cho phép",
+      "meaning_en": "to authorize, to allow",
+      "ipa": "/o.tɔ.ʁi.ze/",
+      "example_fr": "Le professeur autorise la calculatrice.",
+      "example_vi": "Thầy giáo cho phép dùng máy tính.",
+      "example_en": "The teacher allows the calculator."
+    },
+    {
+      "french": "interdire",
+      "meaning_vi": "cấm",
+      "meaning_en": "to forbid",
+      "ipa": "/ɛ̃.tɛʁ.diʁ/",
+      "example_fr": "On interdit les portables en classe.",
+      "example_vi": "Người ta cấm điện thoại trong lớp.",
+      "example_en": "Phones are forbidden in class."
+    },
+    {
+      "french": "obliger",
+      "meaning_vi": "bắt buộc",
+      "meaning_en": "to oblige, to force",
+      "ipa": "/ɔ.bli.ʒe/",
+      "example_fr": "Rien ne t'oblige à venir.",
+      "example_vi": "Không ai bắt bạn phải đến.",
+      "example_en": "Nothing forces you to come."
+    },
+    {
+      "french": "permettre",
+      "meaning_vi": "cho phép",
+      "meaning_en": "to permit, to allow",
+      "ipa": "/pɛʁ.mɛtʁ/",
+      "example_fr": "Ce billet permet deux entrées.",
+      "example_vi": "Vé này cho phép vào hai lần.",
+      "example_en": "This ticket allows two entries."
+    },
+    {
+      "french": "devoir",
+      "meaning_vi": "phải",
+      "meaning_en": "must, to have to",
+      "ipa": "/də.vwaʁ/",
+      "example_fr": "Tu dois porter un casque.",
+      "example_vi": "Bạn phải đội mũ bảo hiểm.",
+      "example_en": "You must wear a helmet."
+    },
+    {
+      "french": "falloir",
+      "meaning_vi": "cần phải",
+      "meaning_en": "to be necessary",
+      "ipa": "/fa.lwaʁ/",
+      "example_fr": "Il faut réserver avant vendredi.",
+      "example_vi": "Cần đặt trước thứ Sáu.",
+      "example_en": "You must book before Friday."
+    },
+    {
+      "french": "il est interdit de",
+      "meaning_vi": "bị cấm",
+      "meaning_en": "it is forbidden to",
+      "ipa": "/il ɛ.t‿ɛ̃.tɛʁ.di də/",
+      "example_fr": "Il est interdit de fumer.",
+      "example_vi": "Cấm hút thuốc.",
+      "example_en": "Smoking is forbidden."
+    },
+    {
+      "french": "il est obligatoire de",
+      "meaning_vi": "bắt buộc phải",
+      "meaning_en": "it is mandatory to",
+      "ipa": "/il ɛ.t‿ɔ.bli.ga.twaʁ də/",
+      "example_fr": "Il est obligatoire de voter.",
+      "example_vi": "Bắt buộc phải bỏ phiếu.",
+      "example_en": "Voting is mandatory."
+    },
+    {
+      "french": "respecter",
+      "meaning_vi": "tôn trọng, tuân thủ",
+      "meaning_en": "to respect",
+      "ipa": "/ʁɛs.pɛk.te/",
+      "example_fr": "Respectez les autres passagers.",
+      "example_vi": "Hãy tôn trọng các hành khách khác.",
+      "example_en": "Respect the other passengers."
+    },
+    {
+      "french": "enfreindre",
+      "meaning_vi": "vi phạm",
+      "meaning_en": "to infringe, to break",
+      "ipa": "/ɑ̃.fʁɛ̃dʁ/",
+      "example_fr": "Il a enfreint le règlement.",
+      "example_vi": "Anh ấy đã vi phạm nội quy.",
+      "example_en": "He broke the rules."
+    },
+    {
+      "french": "avoir le droit de",
+      "meaning_vi": "có quyền",
+      "meaning_en": "to have the right to",
+      "ipa": "/a.vwaʁ lə dʁwa də/",
+      "example_fr": "Tu as le droit de refuser.",
+      "example_vi": "Bạn có quyền từ chối.",
+      "example_en": "You have the right to refuse."
+    },
+    {
+      "french": "défendre de",
+      "meaning_vi": "cấm",
+      "meaning_en": "to forbid",
+      "ipa": "/de.fɑ̃dʁ də/",
+      "example_fr": "Je te défends de sortir.",
+      "example_vi": "Mẹ cấm con ra ngoài.",
+      "example_en": "I forbid you to go out."
+    },
+    {
+      "french": "exiger",
+      "meaning_vi": "yêu cầu, đòi hỏi",
+      "meaning_en": "to demand, to require",
+      "ipa": "/ɛɡ.zi.ʒe/",
+      "example_fr": "L'école exige l'uniforme.",
+      "example_vi": "Trường yêu cầu mặc đồng phục.",
+      "example_en": "The school requires a uniform."
+    },
+    {
+      "french": "tolérer",
+      "meaning_vi": "chấp nhận, dung thứ",
+      "meaning_en": "to tolerate",
+      "ipa": "/tɔ.le.ʁe/",
+      "example_fr": "Je ne tolère aucun retard.",
+      "example_vi": "Tôi không chấp nhận trễ giờ.",
+      "example_en": "I tolerate no delay."
+    }
+  ]
+}

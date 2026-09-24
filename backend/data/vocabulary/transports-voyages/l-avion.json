@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les transports publics",
+  "topic_slug": "transports-publics",
+  "topic_sort_order": 10,
+  "topic_vi": "Giao thông công cộng",
+  "topic_en": "Public transport",
+  "subtopic": "L'avion",
+  "subtopic_key": "l-avion",
+  "subtopic_sort_order": 50,
+  "subtopic_vi": "Máy bay",
+  "subtopic_en": "The airplane",
+  "words": [
+    {
+      "french": "un avion",
+      "meaning_vi": "máy bay",
+      "meaning_en": "a plane",
+      "ipa": "/œ̃n avjɔ̃/",
+      "example_fr": "L'avion décolle.",
+      "example_vi": "Máy bay cất cánh.",
+      "example_en": "The plane takes off."
+    },
+    {
+      "french": "un aéroport",
+      "meaning_vi": "sân bay",
+      "meaning_en": "an airport",
+      "ipa": "/œ̃n aeʁopɔʁ/",
+      "example_fr": "L'aéroport est grand.",
+      "example_vi": "Sân bay rất lớn.",
+      "example_en": "The airport is big."
+    },
+    {
+      "french": "un vol",
+      "meaning_vi": "chuyến bay",
+      "meaning_en": "a flight",
+      "ipa": "/œ̃ vɔl/",
+      "example_fr": "Notre vol est à dix heures.",
+      "example_vi": "Chuyến bay lúc mười giờ.",
+      "example_en": "Our flight is at ten."
+    },
+    {
+      "french": "un embarquement",
+      "meaning_vi": "sự lên máy bay",
+      "meaning_en": "boarding",
+      "ipa": "/œ̃n ɑ̃baʁkəmɑ̃/",
+      "example_fr": "Va à la porte d'embarquement cinq.",
+      "example_vi": "Ra cửa lên máy bay số năm.",
+      "example_en": "Go to boarding gate five."
+    },
+    {
+      "french": "une carte d'embarquement",
+      "meaning_vi": "thẻ lên máy bay",
+      "meaning_en": "a boarding pass",
+      "ipa": "/yn kaʁt dɑ̃baʁkəmɑ̃/",
+      "example_fr": "Voici ma carte d'embarquement.",
+      "example_vi": "Đây là thẻ lên máy bay của tôi.",
+      "example_en": "Here is my boarding pass."
+    },
+    {
+      "french": "un passeport",
+      "meaning_vi": "hộ chiếu",
+      "meaning_en": "a passport",
+      "ipa": "/œ̃ paspɔʁ/",
+      "example_fr": "Montre ton passeport.",
+      "example_vi": "Hãy xuất trình hộ chiếu.",
+      "example_en": "Show your passport."
+    },
+    {
+      "french": "le hublot",
+      "meaning_vi": "cửa sổ máy bay",
+      "meaning_en": "an airplane window",
+      "ipa": "/lə yblo/",
+      "example_fr": "Regarde par le hublot.",
+      "example_vi": "Nhìn qua cửa sổ máy bay.",
+      "example_en": "Look through the airplane window."
+    },
+    {
+      "french": "une valise",
+      "meaning_vi": "va li",
+      "meaning_en": "a suitcase",
+      "ipa": "/yn valiz/",
+      "example_fr": "Ma valise est lourde.",
+      "example_vi": "Va li của tôi nặng.",
+      "example_en": "My suitcase is heavy."
+    },
+    {
+      "french": "retardé",
+      "meaning_vi": "bị hoãn, trễ",
+      "meaning_en": "delayed",
+      "ipa": "/ʁətaʁde/",
+      "example_fr": "Le vol est retardé.",
+      "example_vi": "Chuyến bay bị hoãn.",
+      "example_en": "The flight is delayed."
+    },
+    {
+      "french": "annulé",
+      "meaning_vi": "bị hủy",
+      "meaning_en": "cancelled",
+      "ipa": "/anyle/",
+      "example_fr": "Le vol est annulé.",
+      "example_vi": "Chuyến bay bị hủy.",
+      "example_en": "The flight is cancelled."
+    },
+    {
+      "french": "un pilote",
+      "meaning_vi": "phi công",
+      "meaning_en": "a pilot",
+      "ipa": "/œ̃ pilɔt/",
+      "example_fr": "Le pilote est expérimenté.",
+      "example_vi": "Phi công rất kinh nghiệm.",
+      "example_en": "The pilot is experienced."
+    },
+    {
+      "french": "une hôtesse de l'air",
+      "meaning_vi": "tiếp viên hàng không",
+      "meaning_en": "a flight attendant",
+      "ipa": "/yn otɛs də lɛʁ/",
+      "example_fr": "L'hôtesse sourit.",
+      "example_vi": "Tiếp viên mỉm cười.",
+      "example_en": "The hostess is smiling."
+    },
+    {
+      "french": "une ceinture de sécurité",
+      "meaning_vi": "dây an toàn",
+      "meaning_en": "a seatbelt",
+      "ipa": "/yn sɛ̃tyʁ də sekyʁite/",
+      "example_fr": "Attache ta ceinture.",
+      "example_vi": "Hãy thắt dây an toàn.",
+      "example_en": "Fasten your seatbelt."
+    },
+    {
+      "french": "un siège",
+      "meaning_vi": "ghế ngồi",
+      "meaning_en": "a seat",
+      "ipa": "/œ̃ sjɛʒ/",
+      "example_fr": "Ma place est côté couloir.",
+      "example_vi": "Chỗ tôi cạnh lối đi.",
+      "example_en": "My seat is by the aisle."
+    },
+    {
+      "french": "atterrir",
+      "meaning_vi": "hạ cánh",
+      "meaning_en": "to land",
+      "ipa": "/ateʁiʁ/",
+      "example_fr": "On atterrit dans une heure.",
+      "example_vi": "Chúng ta hạ cánh trong một giờ.",
+      "example_en": "We land in one hour."
+    },
+    {
+      "french": "un décollage",
+      "meaning_vi": "sự cất cánh",
+      "meaning_en": "takeoff",
+      "ipa": "/œ̃ dekɔlaʒ/",
+      "example_fr": "Le décollage est à midi.",
+      "example_vi": "Cất cánh lúc trưa.",
+      "example_en": "Takeoff is at noon."
+    },
+    {
+      "french": "un contrôle de sécurité",
+      "meaning_vi": "kiểm tra an ninh",
+      "meaning_en": "a security check",
+      "ipa": "/œ̃ kɔ̃tʁol də sekyʁite/",
+      "example_fr": "Passe le contrôle de sécurité.",
+      "example_vi": "Qua kiểm tra an ninh.",
+      "example_en": "Go through security check."
+    },
+    {
+      "french": "un vol low cost",
+      "meaning_vi": "chuyến bay giá rẻ",
+      "meaning_en": "a budget flight",
+      "ipa": "/œ̃ vɔl lo kost/",
+      "example_fr": "Le vol low cost est pas cher.",
+      "example_vi": "Chuyến bay giá rẻ.",
+      "example_en": "The low-cost flight is cheap."
+    },
+    {
+      "french": "la classe économique",
+      "meaning_vi": "hạng phổ thông",
+      "meaning_en": "economy class",
+      "ipa": "/la klas ekɔnɔmik/",
+      "example_fr": "Je voyage en classe économique.",
+      "example_vi": "Tôi đi hạng phổ thông.",
+      "example_en": "I travel in economy class."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les voyages et les migrations",
+  "topic_slug": "voyages-migrations",
+  "topic_sort_order": 30,
+  "topic_vi": "Du lịch và di cư",
+  "topic_en": "Travel and migration",
+  "subtopic": "Les paysages",
+  "subtopic_key": "les-paysages",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Phong cảnh",
+  "subtopic_en": "Landscapes",
+  "words": [
+    {
+      "french": "une montagne",
+      "meaning_vi": "núi",
+      "meaning_en": "a mountain",
+      "ipa": "/yn mɔ̃taɲ/",
+      "example_fr": "La montagne est haute.",
+      "example_vi": "Ngọn núi cao.",
+      "example_en": "The mountain is high."
+    },
+    {
+      "french": "la mer",
+      "meaning_vi": "biển",
+      "meaning_en": "the sea",
+      "ipa": "/la mɛʁ/",
+      "example_fr": "La mer est calme.",
+      "example_vi": "Biển lặng.",
+      "example_en": "The sea is calm."
+    },
+    {
+      "french": "une plage",
+      "meaning_vi": "bãi biển",
+      "meaning_en": "a beach",
+      "ipa": "/yn plaʒ/",
+      "example_fr": "La plage est belle.",
+      "example_vi": "Bãi biển đẹp.",
+      "example_en": "The beach is beautiful."
+    },
+    {
+      "french": "un fleuve",
+      "meaning_vi": "sông lớn",
+      "meaning_en": "a river (to sea)",
+      "ipa": "/œ̃ flœv/",
+      "example_fr": "Le fleuve coule.",
+      "example_vi": "Sông chảy.",
+      "example_en": "The river flows."
+    },
+    {
+      "french": "un lac",
+      "meaning_vi": "hồ",
+      "meaning_en": "a lake",
+      "ipa": "/œ̃ lak/",
+      "example_fr": "Le lac est clair.",
+      "example_vi": "Hồ trong.",
+      "example_en": "The lake is clear."
+    },
+    {
+      "french": "une forêt",
+      "meaning_vi": "rừng",
+      "meaning_en": "a forest",
+      "ipa": "/yn fɔʁɛ/",
+      "example_fr": "La forêt est grande.",
+      "example_vi": "Rừng rộng lớn.",
+      "example_en": "The forest is big."
+    },
+    {
+      "french": "une colline",
+      "meaning_vi": "đồi",
+      "meaning_en": "a hill",
+      "ipa": "/yn kɔlin/",
+      "example_fr": "La colline est verte.",
+      "example_vi": "Đồi xanh.",
+      "example_en": "The hill is green."
+    },
+    {
+      "french": "une vallée",
+      "meaning_vi": "thung lũng",
+      "meaning_en": "a valley",
+      "ipa": "/yn vale/",
+      "example_fr": "La vallée est paisible.",
+      "example_vi": "Thung lũng yên bình.",
+      "example_en": "The valley is peaceful."
+    },
+    {
+      "french": "la campagne",
+      "meaning_vi": "nông thôn",
+      "meaning_en": "the countryside",
+      "ipa": "/la kɑ̃paɲ/",
+      "example_fr": "La campagne est calme.",
+      "example_vi": "Nông thôn yên tĩnh.",
+      "example_en": "The countryside is calm."
+    },
+    {
+      "french": "une île",
+      "meaning_vi": "đảo",
+      "meaning_en": "an island",
+      "ipa": "/yn il/",
+      "example_fr": "L'île est petite.",
+      "example_vi": "Hòn đảo nhỏ.",
+      "example_en": "The island is small."
+    },
+    {
+      "french": "une falaise",
+      "meaning_vi": "vách đá",
+      "meaning_en": "a cliff",
+      "ipa": "/yn falɛz/",
+      "example_fr": "La falaise est raide.",
+      "example_vi": "Vách đá dốc.",
+      "example_en": "The cliff is steep."
+    },
+    {
+      "french": "un désert",
+      "meaning_vi": "sa mạc",
+      "meaning_en": "a desert",
+      "ipa": "/œ̃ dezɛʁ/",
+      "example_fr": "Le désert est chaud.",
+      "example_vi": "Sa mạc nóng.",
+      "example_en": "The desert is hot."
+    },
+    {
+      "french": "une cascade",
+      "meaning_vi": "thác nước",
+      "meaning_en": "a waterfall",
+      "ipa": "/yn kaskad/",
+      "example_fr": "La cascade est haute.",
+      "example_vi": "Thác nước cao.",
+      "example_en": "The waterfall is high."
+    },
+    {
+      "french": "un champ",
+      "meaning_vi": "cánh đồng",
+      "meaning_en": "a field",
+      "ipa": "/œ̃ ʃɑ̃/",
+      "example_fr": "Le champ est jaune.",
+      "example_vi": "Cánh đồng vàng.",
+      "example_en": "The field is yellow."
+    },
+    {
+      "french": "un village",
+      "meaning_vi": "làng",
+      "meaning_en": "a village",
+      "ipa": "/œ̃ vilaʒ/",
+      "example_fr": "Le village est joli.",
+      "example_vi": "Ngôi làng xinh.",
+      "example_en": "The village is pretty."
+    },
+    {
+      "french": "une ville",
+      "meaning_vi": "thành phố",
+      "meaning_en": "a city, town",
+      "ipa": "/yn vil/",
+      "example_fr": "La ville est animée.",
+      "example_vi": "Thành phố sôi động.",
+      "example_en": "The city is lively."
+    },
+    {
+      "french": "la côte",
+      "meaning_vi": "bờ biển",
+      "meaning_en": "the coast",
+      "ipa": "/la kot/",
+      "example_fr": "La côte est belle.",
+      "example_vi": "Bờ biển đẹp.",
+      "example_en": "The coast is beautiful."
+    },
+    {
+      "french": "un sommet",
+      "meaning_vi": "đỉnh",
+      "meaning_en": "a summit",
+      "ipa": "/œ̃ sɔmɛ/",
+      "example_fr": "Le sommet est enneigé.",
+      "example_vi": "Đỉnh núi phủ tuyết.",
+      "example_en": "The summit is snowy."
+    },
+    {
+      "french": "un panorama",
+      "meaning_vi": "toàn cảnh",
+      "meaning_en": "a panorama",
+      "ipa": "/œ̃ panɔʁama/",
+      "example_fr": "Le panorama est magnifique.",
+      "example_vi": "Toàn cảnh thật tuyệt đẹp.",
+      "example_en": "The panorama is magnificent."
+    }
+  ]
+}

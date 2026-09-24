@@ -1,0 +1,190 @@
+{
+  "category": "La vie sociale et économique",
+  "category_key": "vie-sociale-economique",
+  "category_sort_order": 110,
+  "category_vi": "Đời sống xã hội và kinh tế",
+  "category_en": "Social and economic life",
+  "topic": "La vie politique et citoyenne",
+  "topic_slug": "vie-politique-citoyenne",
+  "topic_sort_order": 20,
+  "topic_vi": "Đời sống chính trị và công dân",
+  "topic_en": "Political and civic life",
+  "subtopic": "Le gouvernement français",
+  "subtopic_key": "le-gouvernement-francais",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Chính phủ Pháp",
+  "subtopic_en": "The French government",
+  "words": [
+    {
+      "french": "le président de la République",
+      "meaning_vi": "tổng thống Pháp",
+      "meaning_en": "President of the Republic",
+      "ipa": "/pʁe.zi.dɑ̃ də la ʁe.py.blik/",
+      "example_fr": "Le président habite à l'Élysée.",
+      "example_vi": "Tổng thống sống ở điện Élysée.",
+      "example_en": "The president lives at the Élysée."
+    },
+    {
+      "french": "le Premier ministre",
+      "meaning_vi": "thủ tướng",
+      "meaning_en": "Prime Minister",
+      "ipa": "/pʁə.mje mi.nistʁ/",
+      "example_fr": "Le Premier ministre parle à la télé.",
+      "example_vi": "Thủ tướng phát biểu trên TV.",
+      "example_en": "The Prime Minister speaks on TV."
+    },
+    {
+      "french": "le secrétaire d'État",
+      "meaning_vi": "quốc vụ khanh",
+      "meaning_en": "secretary of state",
+      "ipa": "/lə sə.kʁe.tɛʁ de.ta/",
+      "example_fr": "Le secrétaire d'État parle à la radio.",
+      "example_vi": "Quốc vụ khanh phát biểu trên đài.",
+      "example_en": "The secretary of state speaks on the radio."
+    },
+    {
+      "french": "l'Assemblée nationale (f)",
+      "meaning_vi": "Hạ viện Pháp",
+      "meaning_en": "National Assembly",
+      "ipa": "/a.sɑ̃.ble na.sjɔ.nal/",
+      "example_fr": "L'Assemblée vote la loi.",
+      "example_vi": "Hạ viện bỏ phiếu thông qua luật.",
+      "example_en": "The Assembly votes the law."
+    },
+    {
+      "french": "le Sénat",
+      "meaning_vi": "Thượng viện",
+      "meaning_en": "Senate",
+      "ipa": "/se.na/",
+      "example_fr": "Le Sénat est à Paris.",
+      "example_vi": "Thượng viện ở Paris.",
+      "example_en": "The Senate is in Paris."
+    },
+    {
+      "french": "le député",
+      "meaning_vi": "nghị sĩ hạ viện",
+      "meaning_en": "deputy, MP",
+      "ipa": "/de.py.te/",
+      "example_fr": "Le député écoute les gens.",
+      "example_vi": "Nghị sĩ lắng nghe người dân.",
+      "example_en": "The deputy listens to people."
+    },
+    {
+      "french": "le sénateur",
+      "meaning_vi": "thượng nghị sĩ",
+      "meaning_en": "senator",
+      "ipa": "/se.na.tœʁ/",
+      "example_fr": "Le sénateur parle du budget.",
+      "example_vi": "Thượng nghị sĩ nói về ngân sách.",
+      "example_en": "The senator talks about the budget."
+    },
+    {
+      "french": "le maire",
+      "meaning_vi": "thị trưởng",
+      "meaning_en": "mayor",
+      "ipa": "/mɛʁ/",
+      "example_fr": "Le maire organise une fête.",
+      "example_vi": "Thị trưởng tổ chức lễ hội.",
+      "example_en": "The mayor organizes a party."
+    },
+    {
+      "french": "l'arrondissement",
+      "meaning_vi": "quận (ở thành phố lớn)",
+      "meaning_en": "district, arrondissement",
+      "ipa": "/la.ʁɔ̃.dismɑ̃/",
+      "example_fr": "Paris a vingt arrondissements.",
+      "example_vi": "Paris có hai mươi quận.",
+      "example_en": "Paris has twenty arrondissements."
+    },
+    {
+      "french": "la région",
+      "meaning_vi": "vùng",
+      "meaning_en": "region",
+      "ipa": "/ʁe.ʒjɔ̃/",
+      "example_fr": "La région aide les écoles.",
+      "example_vi": "Vùng hỗ trợ các trường học.",
+      "example_en": "The region helps schools."
+    },
+    {
+      "french": "le département",
+      "meaning_vi": "tỉnh",
+      "meaning_en": "department",
+      "ipa": "/de.paʁt.mɑ̃/",
+      "example_fr": "Mon département est très vert.",
+      "example_vi": "Tỉnh của tôi rất xanh.",
+      "example_en": "My department is very green."
+    },
+    {
+      "french": "la commune",
+      "meaning_vi": "xã",
+      "meaning_en": "commune",
+      "ipa": "/kɔ.myn/",
+      "example_fr": "La commune organise le marché.",
+      "example_vi": "Xã tổ chức chợ.",
+      "example_en": "The commune organizes the market."
+    },
+    {
+      "french": "la sous-préfecture",
+      "meaning_vi": "quận lỵ (phó tỉnh lỵ)",
+      "meaning_en": "sub-prefecture",
+      "ipa": "/la su.pʁe.fɛk.tyʁ/",
+      "example_fr": "La sous-préfecture est fermée le lundi.",
+      "example_vi": "Quận lỵ đóng cửa thứ hai.",
+      "example_en": "The sub-prefecture is closed on Mondays."
+    },
+    {
+      "french": "le conseil municipal",
+      "meaning_vi": "hội đồng thành phố",
+      "meaning_en": "municipal council",
+      "ipa": "/kɔ̃.sɛj my.ni.si.pal/",
+      "example_fr": "Le conseil municipal se réunit lundi.",
+      "example_vi": "Hội đồng thành phố họp thứ hai.",
+      "example_en": "The municipal council meets Monday."
+    },
+    {
+      "french": "l'administration (f)",
+      "meaning_vi": "hành chính",
+      "meaning_en": "administration",
+      "ipa": "/ad.mi.nis.tʁa.sjɔ̃/",
+      "example_fr": "L'administration demande un papier.",
+      "example_vi": "Cơ quan hành chính yêu cầu giấy tờ.",
+      "example_en": "The administration asks for a document."
+    },
+    {
+      "french": "le préfet",
+      "meaning_vi": "tỉnh trưởng",
+      "meaning_en": "prefect",
+      "ipa": "/lə pʁe.fɛ/",
+      "example_fr": "Le préfet signe l'arrêté.",
+      "example_vi": "Tỉnh trưởng ký quyết định.",
+      "example_en": "The prefect signs the order."
+    },
+    {
+      "french": "le service public",
+      "meaning_vi": "dịch vụ công",
+      "meaning_en": "public service",
+      "ipa": "/sɛʁ.vis py.blik/",
+      "example_fr": "Le service public aide tout le monde.",
+      "example_vi": "Dịch vụ công giúp mọi người.",
+      "example_en": "Public service helps everyone."
+    },
+    {
+      "french": "le conseil régional",
+      "meaning_vi": "hội đồng vùng",
+      "meaning_en": "regional council",
+      "ipa": "/lə kɔ̃.sɛj ʁe.ʒjɔ.nal/",
+      "example_fr": "Le conseil régional vote le budget.",
+      "example_vi": "Hội đồng vùng bỏ phiếu về ngân sách.",
+      "example_en": "The regional council votes on the budget."
+    },
+    {
+      "french": "le drapeau français",
+      "meaning_vi": "quốc kỳ Pháp",
+      "meaning_en": "French flag",
+      "ipa": "/dʁa.po fʁɑ̃.sɛ/",
+      "example_fr": "Le drapeau français est bleu blanc rouge.",
+      "example_vi": "Quốc kỳ Pháp có ba màu xanh trắng đỏ.",
+      "example_en": "The French flag is blue white red."
+    }
+  ]
+}

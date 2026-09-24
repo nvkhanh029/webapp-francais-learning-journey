@@ -1,0 +1,190 @@
+{
+  "category": "Les médias et le numérique",
+  "category_key": "medias-numerique",
+  "category_sort_order": 120,
+  "category_vi": "Truyền thông và công nghệ số",
+  "category_en": "Media and digital technology",
+  "topic": "Les médias",
+  "topic_slug": "medias",
+  "topic_sort_order": 10,
+  "topic_vi": "Truyền thông",
+  "topic_en": "The media",
+  "subtopic": "La télévision",
+  "subtopic_key": "la-television",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Truyền hình",
+  "subtopic_en": "Television",
+  "words": [
+    {
+      "french": "la télévision",
+      "meaning_vi": "truyền hình",
+      "meaning_en": "television",
+      "ipa": "/la te.le.vi.zjɔ̃/",
+      "example_fr": "Nous regardons la télévision le soir.",
+      "example_vi": "Buổi tối chúng tôi xem truyền hình.",
+      "example_en": "We watch television in the evening."
+    },
+    {
+      "french": "une chaîne",
+      "meaning_vi": "kênh truyền hình",
+      "meaning_en": "a channel",
+      "ipa": "/yn ʃɛn/",
+      "example_fr": "Ma chaîne préférée est la deux.",
+      "example_vi": "Kênh yêu thích của tôi là kênh hai.",
+      "example_en": "My favourite channel is channel two."
+    },
+    {
+      "french": "un programme",
+      "meaning_vi": "chương trình",
+      "meaning_en": "a programme",
+      "ipa": "/œ̃ pʁo.ɡʁam/",
+      "example_fr": "Le programme commence à vingt heures.",
+      "example_vi": "Chương trình bắt đầu lúc hai mươi giờ.",
+      "example_en": "The programme starts at 8 p.m."
+    },
+    {
+      "french": "le journal télévisé",
+      "meaning_vi": "bản tin truyền hình",
+      "meaning_en": "the TV news",
+      "ipa": "/lə ʒuʁ.nal te.le.vi.ze/",
+      "example_fr": "Il regarde le journal télévisé.",
+      "example_vi": "Anh ấy xem bản tin truyền hình.",
+      "example_en": "He watches the TV news."
+    },
+    {
+      "french": "un présentateur",
+      "meaning_vi": "người dẫn chương trình",
+      "meaning_en": "a presenter",
+      "ipa": "/œ̃ pʁe.zɑ̃.ta.tœʁ/",
+      "example_fr": "La présentatrice sourit.",
+      "example_vi": "Người dẫn chương trình nữ mỉm cười.",
+      "example_en": "The presenter smiles."
+    },
+    {
+      "french": "un documentaire",
+      "meaning_vi": "phim tài liệu",
+      "meaning_en": "a documentary",
+      "ipa": "/œ̃ do.ky.mɑ̃.tɛʁ/",
+      "example_fr": "Ce documentaire parle des océans.",
+      "example_vi": "Phim tài liệu này nói về đại dương.",
+      "example_en": "This documentary is about the oceans."
+    },
+    {
+      "french": "une série",
+      "meaning_vi": "phim bộ",
+      "meaning_en": "a series",
+      "ipa": "/yn se.ʁi/",
+      "example_fr": "Je suis une série française.",
+      "example_vi": "Tôi đang theo dõi một phim bộ Pháp.",
+      "example_en": "I follow a French series."
+    },
+    {
+      "french": "un téléfilm",
+      "meaning_vi": "phim truyền hình",
+      "meaning_en": "a TV movie",
+      "ipa": "/œ̃ te.le.film/",
+      "example_fr": "Le téléfilm passe samedi.",
+      "example_vi": "Phim truyền hình chiếu vào thứ Bảy.",
+      "example_en": "The TV movie is on Saturday."
+    },
+    {
+      "french": "la téléréalité",
+      "meaning_vi": "truyền hình thực tế",
+      "meaning_en": "reality TV",
+      "ipa": "/la te.le.ʁe.a.li.te/",
+      "example_fr": "Il n'aime pas la téléréalité.",
+      "example_vi": "Anh ấy không thích truyền hình thực tế.",
+      "example_en": "He doesn't like reality TV."
+    },
+    {
+      "french": "un jeu télévisé",
+      "meaning_vi": "gameshow truyền hình",
+      "meaning_en": "a game show",
+      "ipa": "/œ̃ ʒø te.le.vi.ze/",
+      "example_fr": "Le jeu télévisé est amusant.",
+      "example_vi": "Gameshow rất vui.",
+      "example_en": "The game show is fun."
+    },
+    {
+      "french": "le feuilleton",
+      "meaning_vi": "phim nhiều tập",
+      "meaning_en": "a serial drama",
+      "ipa": "/lə fœj.tɔ̃/",
+      "example_fr": "Le feuilleton passe chaque soir.",
+      "example_vi": "Phim nhiều tập chiếu mỗi tối.",
+      "example_en": "The serial airs every evening."
+    },
+    {
+      "french": "une télécommande",
+      "meaning_vi": "điều khiển từ xa",
+      "meaning_en": "a remote control",
+      "ipa": "/yn te.le.ko.mɑ̃d/",
+      "example_fr": "Où est la télécommande ?",
+      "example_vi": "Điều khiển từ xa ở đâu?",
+      "example_en": "Where is the remote control?"
+    },
+    {
+      "french": "un écran plat",
+      "meaning_vi": "màn hình phẳng",
+      "meaning_en": "a flat screen",
+      "ipa": "/œ̃n e.kʁɑ̃ pla/",
+      "example_fr": "Ils ont un écran plat.",
+      "example_vi": "Họ có một màn hình phẳng.",
+      "example_en": "They have a flat screen."
+    },
+    {
+      "french": "en direct",
+      "meaning_vi": "trực tiếp",
+      "meaning_en": "live",
+      "ipa": "/ɑ̃ di.ʁɛkt/",
+      "example_fr": "Le match est en direct.",
+      "example_vi": "Trận đấu được phát trực tiếp.",
+      "example_en": "The match is live."
+    },
+    {
+      "french": "une rediffusion",
+      "meaning_vi": "phát lại",
+      "meaning_en": "a rerun",
+      "ipa": "/yn ʁə.di.fy.zjɔ̃/",
+      "example_fr": "C'est une rediffusion d'hier.",
+      "example_vi": "Đây là chương trình phát lại hôm qua.",
+      "example_en": "It's yesterday's rerun."
+    },
+    {
+      "french": "les sous-titres",
+      "meaning_vi": "phụ đề",
+      "meaning_en": "subtitles",
+      "ipa": "/le su.titʁ/",
+      "example_fr": "Je mets les sous-titres.",
+      "example_vi": "Tôi bật phụ đề.",
+      "example_en": "I put on the subtitles."
+    },
+    {
+      "french": "l'audience",
+      "meaning_vi": "lượng khán giả",
+      "meaning_en": "the ratings",
+      "ipa": "/lo.djɑ̃s/",
+      "example_fr": "L'audience augmente.",
+      "example_vi": "Lượng khán giả tăng.",
+      "example_en": "The ratings go up."
+    },
+    {
+      "french": "zapper",
+      "meaning_vi": "chuyển kênh liên tục",
+      "meaning_en": "to channel-hop",
+      "ipa": "/za.pe/",
+      "example_fr": "Il zappe pendant la pub.",
+      "example_vi": "Anh ấy chuyển kênh trong lúc quảng cáo.",
+      "example_en": "He channel-hops during the ads."
+    },
+    {
+      "french": "la série",
+      "meaning_vi": "phim bộ",
+      "meaning_en": "a series",
+      "ipa": "/la se.ʁi/",
+      "example_fr": "La série a beaucoup de succès.",
+      "example_vi": "Phim bộ rất thành công.",
+      "example_en": "The series is very successful."
+    }
+  ]
+}

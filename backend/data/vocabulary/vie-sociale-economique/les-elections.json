@@ -1,0 +1,190 @@
+{
+  "category": "La vie sociale et économique",
+  "category_key": "vie-sociale-economique",
+  "category_sort_order": 110,
+  "category_vi": "Đời sống xã hội và kinh tế",
+  "category_en": "Social and economic life",
+  "topic": "La vie politique et citoyenne",
+  "topic_slug": "vie-politique-citoyenne",
+  "topic_sort_order": 20,
+  "topic_vi": "Đời sống chính trị và công dân",
+  "topic_en": "Political and civic life",
+  "subtopic": "Les élections",
+  "subtopic_key": "les-elections",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Bầu cử",
+  "subtopic_en": "Elections",
+  "words": [
+    {
+      "french": "une élection",
+      "meaning_vi": "cuộc bầu cử",
+      "meaning_en": "election",
+      "ipa": "/e.lɛk.sjɔ̃/",
+      "example_fr": "L'élection a lieu dimanche.",
+      "example_vi": "Bầu cử diễn ra chủ nhật.",
+      "example_en": "The election is on Sunday."
+    },
+    {
+      "french": "voter",
+      "meaning_vi": "bỏ phiếu",
+      "meaning_en": "to vote",
+      "ipa": "/vɔ.te/",
+      "example_fr": "Je vote à la mairie.",
+      "example_vi": "Tôi bỏ phiếu ở thị chính.",
+      "example_en": "I vote at the town hall."
+    },
+    {
+      "french": "la procuration",
+      "meaning_vi": "giấy ủy quyền bầu cử",
+      "meaning_en": "proxy vote",
+      "ipa": "/la pʁɔ.ky.ʁa.sjɔ̃/",
+      "example_fr": "Elle vote par procuration.",
+      "example_vi": "Cô ấy bầu cử theo ủy quyền.",
+      "example_en": "She votes by proxy."
+    },
+    {
+      "french": "l'électeur (m)",
+      "meaning_vi": "cử tri",
+      "meaning_en": "voter",
+      "ipa": "/e.lɛk.tœʁ/",
+      "example_fr": "L'électeur montre sa carte.",
+      "example_vi": "Cử tri xuất trình thẻ.",
+      "example_en": "The voter shows his card."
+    },
+    {
+      "french": "la carte d'électeur",
+      "meaning_vi": "thẻ cử tri",
+      "meaning_en": "voter card",
+      "ipa": "/kaʁt de.lɛk.tœʁ/",
+      "example_fr": "J'ai oublié ma carte d'électeur.",
+      "example_vi": "Tôi quên thẻ cử tri.",
+      "example_en": "I forgot my voter card."
+    },
+    {
+      "french": "le bureau de vote",
+      "meaning_vi": "điểm bỏ phiếu",
+      "meaning_en": "polling station",
+      "ipa": "/by.ʁo də vɔt/",
+      "example_fr": "Le bureau de vote est près d'ici.",
+      "example_vi": "Điểm bỏ phiếu ở gần đây.",
+      "example_en": "The polling station is nearby."
+    },
+    {
+      "french": "l'urne (f)",
+      "meaning_vi": "hòm phiếu",
+      "meaning_en": "ballot box",
+      "ipa": "/yʁn/",
+      "example_fr": "Il met son bulletin dans l'urne.",
+      "example_vi": "Anh ấy bỏ phiếu vào hòm.",
+      "example_en": "He puts his ballot in the box."
+    },
+    {
+      "french": "le bulletin de vote",
+      "meaning_vi": "phiếu bầu",
+      "meaning_en": "ballot paper",
+      "ipa": "/byl.tɛ̃ də vɔt/",
+      "example_fr": "Prends un bulletin de vote.",
+      "example_vi": "Hãy lấy một phiếu bầu.",
+      "example_en": "Take a ballot paper."
+    },
+    {
+      "french": "l'isoloir (m)",
+      "meaning_vi": "buồng bỏ phiếu kín",
+      "meaning_en": "voting booth",
+      "ipa": "/i.zɔ.lwaʁ/",
+      "example_fr": "Entre dans l'isoloir pour voter.",
+      "example_vi": "Hãy vào buồng kín để bỏ phiếu.",
+      "example_en": "Go into the booth to vote."
+    },
+    {
+      "french": "le premier tour",
+      "meaning_vi": "vòng một",
+      "meaning_en": "first round",
+      "ipa": "/pʁə.mje tuʁ/",
+      "example_fr": "Le premier tour a lieu en avril.",
+      "example_vi": "Vòng một diễn ra tháng tư.",
+      "example_en": "The first round is in April."
+    },
+    {
+      "french": "le second tour",
+      "meaning_vi": "vòng hai",
+      "meaning_en": "second round",
+      "ipa": "/sə.ɡɔ̃ tuʁ/",
+      "example_fr": "Le second tour décide du gagnant.",
+      "example_vi": "Vòng hai quyết định người thắng.",
+      "example_en": "The second round decides the winner."
+    },
+    {
+      "french": "le résultat",
+      "meaning_vi": "kết quả",
+      "meaning_en": "result",
+      "ipa": "/ʁe.zyl.ta/",
+      "example_fr": "Les résultats arrivent ce soir.",
+      "example_vi": "Kết quả có tối nay.",
+      "example_en": "The results arrive tonight."
+    },
+    {
+      "french": "le dépouillement",
+      "meaning_vi": "kiểm phiếu",
+      "meaning_en": "counting of votes",
+      "ipa": "/de.pu.jə.mɑ̃/",
+      "example_fr": "Le dépouillement commence à huit heures.",
+      "example_vi": "Kiểm phiếu bắt đầu lúc 8 giờ.",
+      "example_en": "Counting starts at eight."
+    },
+    {
+      "french": "le suffrage universel",
+      "meaning_vi": "phổ thông đầu phiếu",
+      "meaning_en": "universal suffrage",
+      "ipa": "/lə sy.fʁaʒ y.ni.vɛʁ.sɛl/",
+      "example_fr": "Le suffrage universel est un droit.",
+      "example_vi": "Phổ thông đầu phiếu là một quyền.",
+      "example_en": "Universal suffrage is a right."
+    },
+    {
+      "french": "l'abstention (f)",
+      "meaning_vi": "không đi bỏ phiếu",
+      "meaning_en": "abstention",
+      "ipa": "/aps.tɑ̃.sjɔ̃/",
+      "example_fr": "L'abstention est forte cette année.",
+      "example_vi": "Tỉ lệ không đi bầu cao năm nay.",
+      "example_en": "Abstention is high this year."
+    },
+    {
+      "french": "le vote blanc",
+      "meaning_vi": "phiếu trắng",
+      "meaning_en": "blank vote",
+      "ipa": "/lə vɔt blɑ̃/",
+      "example_fr": "Le vote blanc n'est pas compté.",
+      "example_vi": "Phiếu trắng không được tính.",
+      "example_en": "The blank vote is not counted."
+    },
+    {
+      "french": "le taux de participation",
+      "meaning_vi": "tỷ lệ cử tri đi bầu",
+      "meaning_en": "turnout",
+      "ipa": "/lə to də paʁ.ti.si.pa.sjɔ̃/",
+      "example_fr": "Le taux de participation augmente.",
+      "example_vi": "Tỷ lệ đi bầu tăng lên.",
+      "example_en": "Turnout is increasing."
+    },
+    {
+      "french": "élire",
+      "meaning_vi": "bầu chọn",
+      "meaning_en": "to elect",
+      "ipa": "/e.liʁ/",
+      "example_fr": "On élit le maire dimanche.",
+      "example_vi": "Chúng ta bầu thị trưởng chủ nhật.",
+      "example_en": "We elect the mayor Sunday."
+    },
+    {
+      "french": "le mandat",
+      "meaning_vi": "nhiệm kỳ",
+      "meaning_en": "mandate, term",
+      "ipa": "/mɑ̃.da/",
+      "example_fr": "Le mandat dure cinq ans.",
+      "example_vi": "Nhiệm kỳ kéo dài năm năm.",
+      "example_en": "The term lasts five years."
+    }
+  ]
+}

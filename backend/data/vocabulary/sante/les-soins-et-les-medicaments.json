@@ -1,0 +1,190 @@
+{
+  "category": "La santé",
+  "category_key": "sante",
+  "category_sort_order": 30,
+  "category_vi": "Sức khỏe",
+  "category_en": "Health",
+  "topic": "Se soigner, guérir",
+  "topic_slug": "se-soigner-guerir",
+  "topic_sort_order": 20,
+  "topic_vi": "Chữa bệnh, hồi phục",
+  "topic_en": "Getting treatment, healing",
+  "subtopic": "Les soins et les médicaments",
+  "subtopic_key": "les-soins-et-les-medicaments",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Chăm sóc y tế và thuốc men",
+  "subtopic_en": "Care and medication",
+  "words": [
+    {
+      "french": "le soin",
+      "meaning_vi": "sự chăm sóc",
+      "meaning_en": "the care, treatment",
+      "ipa": "/lə swɛ̃/",
+      "example_fr": "L'infirmier donne de bons soins.",
+      "example_vi": "Y tá chăm sóc rất tốt.",
+      "example_en": "The nurse gives good care."
+    },
+    {
+      "french": "le médicament",
+      "meaning_vi": "thuốc",
+      "meaning_en": "the medicine, drug",
+      "ipa": "/lə medikamɑ̃/",
+      "example_fr": "Prends ton médicament.",
+      "example_vi": "Hãy uống thuốc của bạn.",
+      "example_en": "Take your medicine."
+    },
+    {
+      "french": "l'ordonnance",
+      "meaning_vi": "đơn thuốc",
+      "meaning_en": "the prescription",
+      "ipa": "/lɔʁdɔnɑ̃s/",
+      "example_fr": "Le médecin fait une ordonnance.",
+      "example_vi": "Bác sĩ kê đơn thuốc.",
+      "example_en": "The doctor writes a prescription."
+    },
+    {
+      "french": "la pharmacie",
+      "meaning_vi": "hiệu thuốc",
+      "meaning_en": "the pharmacy",
+      "ipa": "/la faʁmasi/",
+      "example_fr": "La pharmacie est ouverte.",
+      "example_vi": "Hiệu thuốc đang mở cửa.",
+      "example_en": "The pharmacy is open."
+    },
+    {
+      "french": "le comprimé",
+      "meaning_vi": "viên thuốc",
+      "meaning_en": "the tablet, pill",
+      "ipa": "/lə kɔ̃pʁime/",
+      "example_fr": "Prends un comprimé le matin.",
+      "example_vi": "Hãy uống một viên thuốc vào buổi sáng.",
+      "example_en": "Take one pill in the morning."
+    },
+    {
+      "french": "le sirop",
+      "meaning_vi": "thuốc xi-rô",
+      "meaning_en": "the syrup",
+      "ipa": "/lə siʁo/",
+      "example_fr": "Ce sirop est contre la toux.",
+      "example_vi": "Xi-rô này trị ho.",
+      "example_en": "This syrup is for coughs."
+    },
+    {
+      "french": "le traitement",
+      "meaning_vi": "sự điều trị",
+      "meaning_en": "the treatment",
+      "ipa": "/lə tʁɛtmɑ̃/",
+      "example_fr": "Il suit un traitement.",
+      "example_vi": "Anh ấy đang điều trị.",
+      "example_en": "He is following a treatment."
+    },
+    {
+      "french": "le vaccin",
+      "meaning_vi": "vắc-xin",
+      "meaning_en": "the vaccine",
+      "ipa": "/lə vaksɛ̃/",
+      "example_fr": "Le vaccin protège les enfants.",
+      "example_vi": "Vắc-xin bảo vệ trẻ em.",
+      "example_en": "The vaccine protects children."
+    },
+    {
+      "french": "le médecin",
+      "meaning_vi": "bác sĩ",
+      "meaning_en": "the doctor",
+      "ipa": "/lə medsɛ̃/",
+      "example_fr": "Elle prend rendez-vous chez le médecin.",
+      "example_vi": "Cô ấy đặt lịch hẹn với bác sĩ.",
+      "example_en": "She makes an appointment with the doctor."
+    },
+    {
+      "french": "l'infirmier",
+      "meaning_vi": "y tá",
+      "meaning_en": "the nurse",
+      "ipa": "/lɛ̃fiʁmje/",
+      "example_fr": "L'infirmière est très gentille.",
+      "example_vi": "Cô y tá rất tốt bụng.",
+      "example_en": "The nurse is very kind."
+    },
+    {
+      "french": "la consultation",
+      "meaning_vi": "buổi khám",
+      "meaning_en": "the consultation, appointment",
+      "ipa": "/la kɔ̃syltasjɔ̃/",
+      "example_fr": "J'ai une consultation demain.",
+      "example_vi": "Ngày mai tôi có buổi khám.",
+      "example_en": "I have a consultation tomorrow."
+    },
+    {
+      "french": "la piqûre",
+      "meaning_vi": "mũi tiêm",
+      "meaning_en": "the injection, shot",
+      "ipa": "/la pikyʁ/",
+      "example_fr": "Il fait une piqûre.",
+      "example_vi": "Anh ấy tiêm một mũi.",
+      "example_en": "He gives an injection."
+    },
+    {
+      "french": "le bandage",
+      "meaning_vi": "băng gạc",
+      "meaning_en": "the bandage",
+      "ipa": "/lə bɑ̃daʒ/",
+      "example_fr": "Elle met un bandage.",
+      "example_vi": "Cô ấy băng bó vết thương.",
+      "example_en": "She puts on a bandage."
+    },
+    {
+      "french": "l'opération",
+      "meaning_vi": "ca phẫu thuật",
+      "meaning_en": "the operation",
+      "ipa": "/lɔpeʁasjɔ̃/",
+      "example_fr": "L'opération s'est bien passée.",
+      "example_vi": "Ca phẫu thuật đã thành công.",
+      "example_en": "The operation went well."
+    },
+    {
+      "french": "la goutte",
+      "meaning_vi": "giọt thuốc",
+      "meaning_en": "the drop (of medicine)",
+      "ipa": "/la ɡut/",
+      "example_fr": "Prends deux gouttes le soir.",
+      "example_vi": "Hãy nhỏ hai giọt vào buổi tối.",
+      "example_en": "Take two drops in the evening."
+    },
+    {
+      "french": "l'antidouleur",
+      "meaning_vi": "thuốc giảm đau",
+      "meaning_en": "the painkiller",
+      "ipa": "/lɑ̃tidulœʁ/",
+      "example_fr": "Ce médicament soulage la douleur.",
+      "example_vi": "Thuốc này giảm đau.",
+      "example_en": "This medicine relieves pain."
+    },
+    {
+      "french": "se laver",
+      "meaning_vi": "rửa, tắm",
+      "meaning_en": "to wash (oneself)",
+      "ipa": "/sə lave/",
+      "example_fr": "Lave-toi les mains au savon.",
+      "example_vi": "Hãy rửa tay bằng xà phòng.",
+      "example_en": "Wash your hands with soap."
+    },
+    {
+      "french": "guérir",
+      "meaning_vi": "khỏi bệnh, chữa lành",
+      "meaning_en": "to heal, recover",
+      "ipa": "/ɡeʁiʁ/",
+      "example_fr": "Il guérit vite.",
+      "example_vi": "Anh ấy đang hồi phục nhanh.",
+      "example_en": "He is getting better."
+    },
+    {
+      "french": "le repos",
+      "meaning_vi": "sự nghỉ ngơi",
+      "meaning_en": "the rest",
+      "ipa": "/lə ʁəpo/",
+      "example_fr": "Repose-toi, tu as besoin de repos.",
+      "example_vi": "Hãy nghỉ ngơi, bạn cần nghỉ ngơi.",
+      "example_en": "Rest, you need rest."
+    }
+  ]
+}

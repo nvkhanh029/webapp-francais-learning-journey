@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les transports publics",
+  "topic_slug": "transports-publics",
+  "topic_sort_order": 10,
+  "topic_vi": "Giao thông công cộng",
+  "topic_en": "Public transport",
+  "subtopic": "Les titres de transport",
+  "subtopic_key": "les-titres-de-transport",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Vé giao thông",
+  "subtopic_en": "Transport tickets",
+  "words": [
+    {
+      "french": "un billet",
+      "meaning_vi": "vé",
+      "meaning_en": "a ticket",
+      "ipa": "/œ̃ bijɛ/",
+      "example_fr": "J'ai acheté un billet.",
+      "example_vi": "Tôi đã mua một vé.",
+      "example_en": "I bought a ticket."
+    },
+    {
+      "french": "un forfait",
+      "meaning_vi": "gói vé",
+      "meaning_en": "a travel package, pass",
+      "ipa": "/œ̃ fɔʁfɛ/",
+      "example_fr": "Le forfait est valable un mois.",
+      "example_vi": "Gói vé có hiệu lực một tháng.",
+      "example_en": "The pass is valid one month."
+    },
+    {
+      "french": "un billet électronique",
+      "meaning_vi": "vé điện tử",
+      "meaning_en": "an e-ticket",
+      "ipa": "/œ̃ bijɛ eletʁɔnik/",
+      "example_fr": "Montre ton billet électronique.",
+      "example_vi": "Xuất trình vé điện tử của bạn.",
+      "example_en": "Show your e-ticket."
+    },
+    {
+      "french": "un tarif réduit",
+      "meaning_vi": "giá ưu đãi",
+      "meaning_en": "a reduced fare",
+      "ipa": "/œ̃ taʁif ʁedɥi/",
+      "example_fr": "Le tarif réduit est pour les étudiants.",
+      "example_vi": "Giá ưu đãi dành cho sinh viên.",
+      "example_en": "The reduced fare is for students."
+    },
+    {
+      "french": "un plein tarif",
+      "meaning_vi": "giá vé đầy đủ",
+      "meaning_en": "a full fare",
+      "ipa": "/œ̃ plɛ̃ taʁif/",
+      "example_fr": "Le plein tarif est cher.",
+      "example_vi": "Giá vé đầy đủ khá đắt.",
+      "example_en": "The full fare is expensive."
+    },
+    {
+      "french": "en ligne",
+      "meaning_vi": "trực tuyến",
+      "meaning_en": "online",
+      "ipa": "/ɑ̃ liɲ/",
+      "example_fr": "Achète ton billet en ligne.",
+      "example_vi": "Hãy mua vé trực tuyến.",
+      "example_en": "Book your ticket online."
+    },
+    {
+      "french": "un guichet",
+      "meaning_vi": "quầy vé",
+      "meaning_en": "a ticket counter",
+      "ipa": "/œ̃ ɡiʃɛ/",
+      "example_fr": "Le guichet est fermé.",
+      "example_vi": "Quầy vé đóng cửa.",
+      "example_en": "The ticket office is closed."
+    },
+    {
+      "french": "un distributeur",
+      "meaning_vi": "máy bán vé tự động",
+      "meaning_en": "a ticket machine",
+      "ipa": "/œ̃ distʁibytœʁ/",
+      "example_fr": "Achète au distributeur.",
+      "example_vi": "Hãy mua ở máy bán vé.",
+      "example_en": "Buy at the vending machine."
+    },
+    {
+      "french": "valable",
+      "meaning_vi": "có hiệu lực",
+      "meaning_en": "valid",
+      "ipa": "/valabl/",
+      "example_fr": "Mon titre est valable.",
+      "example_vi": "Vé của tôi còn hiệu lực.",
+      "example_en": "My ticket is valid."
+    },
+    {
+      "french": "périmé",
+      "meaning_vi": "hết hạn",
+      "meaning_en": "expired",
+      "ipa": "/peʁime/",
+      "example_fr": "La carte est périmée.",
+      "example_vi": "Thẻ đã hết hạn.",
+      "example_en": "The card is expired."
+    },
+    {
+      "french": "un validateur",
+      "meaning_vi": "máy quẹt vé",
+      "meaning_en": "a ticket validator",
+      "ipa": "/œ̃ validatœʁ/",
+      "example_fr": "Passe ton titre au validateur.",
+      "example_vi": "Quẹt vé vào máy.",
+      "example_en": "Tap your ticket on the validator."
+    },
+    {
+      "french": "une amende",
+      "meaning_vi": "tiền phạt",
+      "meaning_en": "a fine",
+      "ipa": "/yn amɑ̃d/",
+      "example_fr": "L'amende est de cinquante euros.",
+      "example_vi": "Tiền phạt là năm mươi euro.",
+      "example_en": "The fine is fifty euros."
+    },
+    {
+      "french": "un justificatif",
+      "meaning_vi": "giấy chứng nhận",
+      "meaning_en": "proof (of purchase)",
+      "ipa": "/œ̃ ʒystifikatif/",
+      "example_fr": "Garde ton justificatif.",
+      "example_vi": "Hãy giữ bằng chứng mua vé.",
+      "example_en": "Keep your proof of purchase."
+    },
+    {
+      "french": "une réduction",
+      "meaning_vi": "sự giảm giá",
+      "meaning_en": "a discount",
+      "ipa": "/yn ʁedyksjɔ̃/",
+      "example_fr": "J'ai une réduction étudiante.",
+      "example_vi": "Tôi được giảm giá sinh viên.",
+      "example_en": "I get a student discount."
+    },
+    {
+      "french": "un tarif jeune",
+      "meaning_vi": "giá ưu đãi cho giới trẻ",
+      "meaning_en": "a youth fare",
+      "ipa": "/œ̃ taʁif ʒœn/",
+      "example_fr": "Le tarif jeune est moins cher.",
+      "example_vi": "Giá cho giới trẻ rẻ hơn.",
+      "example_en": "The youth fare is cheaper."
+    },
+    {
+      "french": "un pass hebdomadaire",
+      "meaning_vi": "vé tuần",
+      "meaning_en": "a weekly pass",
+      "ipa": "/œ̃ pas ɛbdɔmadɛʁ/",
+      "example_fr": "Prends un pass hebdomadaire.",
+      "example_vi": "Mua vé tuần.",
+      "example_en": "Get a weekly pass."
+    },
+    {
+      "french": "une carte de transport",
+      "meaning_vi": "thẻ giao thông",
+      "meaning_en": "a travel card",
+      "ipa": "/yn kaʁt də tʁɑ̃spɔʁ/",
+      "example_fr": "Recharge ta carte de transport.",
+      "example_vi": "Hãy nạp thẻ giao thông.",
+      "example_en": "Recharge your travel card."
+    },
+    {
+      "french": "un titre de transport",
+      "meaning_vi": "vé đi lại",
+      "meaning_en": "a transport ticket",
+      "ipa": "/œ̃ titʁ də tʁɑ̃spɔʁ/",
+      "example_fr": "Garde ton titre de transport.",
+      "example_vi": "Giữ vé đi lại của bạn.",
+      "example_en": "Keep your transport ticket."
+    },
+    {
+      "french": "gratuit",
+      "meaning_vi": "miễn phí",
+      "meaning_en": "free",
+      "ipa": "/ɡʁatɥi/",
+      "example_fr": "Le billet est gratuit pour les enfants.",
+      "example_vi": "Vé miễn phí cho trẻ em.",
+      "example_en": "The ticket is free for children."
+    }
+  ]
+}

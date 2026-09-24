@@ -1,0 +1,190 @@
+{
+  "category": "Les loisirs",
+  "category_key": "loisirs",
+  "category_sort_order": 60,
+  "category_vi": "Giải trí",
+  "category_en": "Leisure",
+  "topic": "Les activités culturelles et sportives",
+  "topic_slug": "activites-culturelles-sportives",
+  "topic_sort_order": 10,
+  "topic_vi": "Hoạt động văn hóa và thể thao",
+  "topic_en": "Cultural and sports activities",
+  "subtopic": "Les loisirs",
+  "subtopic_key": "les-loisirs",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Hoạt động giải trí",
+  "subtopic_en": "Leisure activities",
+  "words": [
+    {
+      "french": "le temps libre",
+      "meaning_vi": "thời gian rảnh",
+      "meaning_en": "free time",
+      "ipa": "/lə tɑ̃ libʁ/",
+      "example_fr": "Je profite de mon temps libre.",
+      "example_vi": "Tôi tận hưởng thời gian rảnh.",
+      "example_en": "I enjoy my free time."
+    },
+    {
+      "french": "le passe-temps",
+      "meaning_vi": "sở thích, thú tiêu khiển",
+      "meaning_en": "hobby, pastime",
+      "ipa": "/lə pastɑ̃/",
+      "example_fr": "La lecture est mon passe-temps.",
+      "example_vi": "Đọc sách là sở thích của tôi.",
+      "example_en": "Reading is my hobby."
+    },
+    {
+      "french": "le bricolage",
+      "meaning_vi": "việc sửa chữa lặt vặt",
+      "meaning_en": "DIY",
+      "ipa": "/lə bʁikɔlaʒ/",
+      "example_fr": "Il fait du bricolage le week-end.",
+      "example_vi": "Anh ấy làm đồ thủ công vào cuối tuần.",
+      "example_en": "He does DIY on weekends."
+    },
+    {
+      "french": "le jardinage",
+      "meaning_vi": "việc làm vườn",
+      "meaning_en": "gardening",
+      "ipa": "/lə ʒaʁdinaʒ/",
+      "example_fr": "Elle adore le jardinage.",
+      "example_vi": "Cô ấy rất thích làm vườn.",
+      "example_en": "She loves gardening."
+    },
+    {
+      "french": "la cuisine",
+      "meaning_vi": "việc nấu ăn",
+      "meaning_en": "cooking, kitchen",
+      "ipa": "/la kɥizin/",
+      "example_fr": "J'aime la cuisine.",
+      "example_vi": "Tôi thích nấu ăn.",
+      "example_en": "I like cooking."
+    },
+    {
+      "french": "la lecture",
+      "meaning_vi": "việc đọc sách",
+      "meaning_en": "reading",
+      "ipa": "/la lɛktyʁ/",
+      "example_fr": "Elle lit chaque soir.",
+      "example_vi": "Cô ấy đọc sách mỗi tối.",
+      "example_en": "She reads every evening."
+    },
+    {
+      "french": "le dessin",
+      "meaning_vi": "vẽ",
+      "meaning_en": "drawing",
+      "ipa": "/lə desɛ̃/",
+      "example_fr": "Il est doué en dessin.",
+      "example_vi": "Anh ấy giỏi vẽ.",
+      "example_en": "He is good at drawing."
+    },
+    {
+      "french": "la peinture",
+      "meaning_vi": "hội họa",
+      "meaning_en": "painting",
+      "ipa": "/la pɛ̃tyʁ/",
+      "example_fr": "Elle apprend la peinture.",
+      "example_vi": "Cô ấy đang học hội họa.",
+      "example_en": "She is learning painting."
+    },
+    {
+      "french": "la photographie",
+      "meaning_vi": "nhiếp ảnh",
+      "meaning_en": "photography",
+      "ipa": "/la fɔtɔɡʁafi/",
+      "example_fr": "La photographie est sa passion.",
+      "example_vi": "Nhiếp ảnh là đam mê của anh ấy.",
+      "example_en": "Photography is his passion."
+    },
+    {
+      "french": "la musique",
+      "meaning_vi": "âm nhạc",
+      "meaning_en": "music",
+      "ipa": "/la myzik/",
+      "example_fr": "La musique me détend.",
+      "example_vi": "Âm nhạc giúp tôi thư giãn.",
+      "example_en": "Music relaxes me."
+    },
+    {
+      "french": "le chant",
+      "meaning_vi": "ca hát",
+      "meaning_en": "singing",
+      "ipa": "/lə ʃɑ̃/",
+      "example_fr": "Il chante très bien.",
+      "example_vi": "Anh ấy hát rất hay.",
+      "example_en": "He sings very well."
+    },
+    {
+      "french": "la danse",
+      "meaning_vi": "khiêu vũ",
+      "meaning_en": "dance",
+      "ipa": "/la dɑ̃s/",
+      "example_fr": "Ils apprennent la danse.",
+      "example_vi": "Họ đang học nhảy.",
+      "example_en": "They are learning to dance."
+    },
+    {
+      "french": "le tricot",
+      "meaning_vi": "việc đan len",
+      "meaning_en": "knitting",
+      "ipa": "/lə tʁiko/",
+      "example_fr": "Il tricote une écharpe.",
+      "example_vi": "Anh ấy đang đan một chiếc khăn.",
+      "example_en": "He is knitting a scarf."
+    },
+    {
+      "french": "la collection",
+      "meaning_vi": "bộ sưu tập",
+      "meaning_en": "collection",
+      "ipa": "/la kɔlɛksjɔ̃/",
+      "example_fr": "Elle a une collection de timbres.",
+      "example_vi": "Cô ấy có một bộ sưu tập tem.",
+      "example_en": "She has a stamp collection."
+    },
+    {
+      "french": "le jeu vidéo",
+      "meaning_vi": "trò chơi điện tử",
+      "meaning_en": "video game",
+      "ipa": "/lə ʒø video/",
+      "example_fr": "Il joue aux jeux vidéo.",
+      "example_vi": "Anh ấy chơi trò chơi điện tử.",
+      "example_en": "He plays video games."
+    },
+    {
+      "french": "la promenade",
+      "meaning_vi": "cuộc đi dạo",
+      "meaning_en": "walk, stroll",
+      "ipa": "/la pʁɔmnad/",
+      "example_fr": "Nous faisons une promenade au parc.",
+      "example_vi": "Chúng tôi đi dạo trong công viên.",
+      "example_en": "We take a walk in the park."
+    },
+    {
+      "french": "la pétanque",
+      "meaning_vi": "môn ném bóng sắt",
+      "meaning_en": "petanque (French bowls)",
+      "ipa": "/pe.tɑ̃k/",
+      "example_fr": "Ils jouent à la pétanque au parc.",
+      "example_vi": "Họ chơi ném bóng sắt trong công viên.",
+      "example_en": "They play petanque in the park."
+    },
+    {
+      "french": "le week-end",
+      "meaning_vi": "cuối tuần",
+      "meaning_en": "weekend",
+      "ipa": "/lə wikɛnd/",
+      "example_fr": "Nous partons en week-end.",
+      "example_vi": "Chúng tôi đi chơi cuối tuần.",
+      "example_en": "We leave for the weekend."
+    },
+    {
+      "french": "la couture",
+      "meaning_vi": "may vá",
+      "meaning_en": "sewing",
+      "ipa": "/la kutyʁ/",
+      "example_fr": "Mon loisir préféré est la couture.",
+      "example_vi": "Sở thích của tôi là may vá.",
+      "example_en": "My hobby is sewing."
+    }
+  ]
+}

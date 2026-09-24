@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les transports publics",
+  "topic_slug": "transports-publics",
+  "topic_sort_order": 10,
+  "topic_vi": "Giao thông công cộng",
+  "topic_en": "Public transport",
+  "subtopic": "Le bus et l'autocar",
+  "subtopic_key": "le-bus-et-l-autocar",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Xe buýt và xe khách",
+  "subtopic_en": "The bus and the coach",
+  "words": [
+    {
+      "french": "un bus",
+      "meaning_vi": "xe buýt",
+      "meaning_en": "a bus",
+      "ipa": "/œ̃ bys/",
+      "example_fr": "Je prends le bus chaque matin.",
+      "example_vi": "Tôi đi xe buýt mỗi sáng.",
+      "example_en": "I take the bus every morning."
+    },
+    {
+      "french": "un autocar",
+      "meaning_vi": "xe khách đường dài",
+      "meaning_en": "a coach",
+      "ipa": "/œ̃n otokaʁ/",
+      "example_fr": "L'autocar part pour Lyon.",
+      "example_vi": "Xe khách đi Lyon.",
+      "example_en": "The coach goes to Lyon."
+    },
+    {
+      "french": "un arrêt de bus",
+      "meaning_vi": "trạm xe buýt",
+      "meaning_en": "a bus stop",
+      "ipa": "/œ̃n aʁɛ də bys/",
+      "example_fr": "L'arrêt de bus est proche.",
+      "example_vi": "Trạm xe buýt ở gần.",
+      "example_en": "The bus stop is near."
+    },
+    {
+      "french": "un chauffeur",
+      "meaning_vi": "tài xế",
+      "meaning_en": "a driver",
+      "ipa": "/œ̃ ʃofœʁ/",
+      "example_fr": "Le chauffeur est aimable.",
+      "example_vi": "Bác tài xế rất thân thiện.",
+      "example_en": "The driver is kind."
+    },
+    {
+      "french": "un passager",
+      "meaning_vi": "hành khách",
+      "meaning_en": "a passenger",
+      "ipa": "/œ̃ pasaʒe/",
+      "example_fr": "Les passagers descendent.",
+      "example_vi": "Hành khách xuống xe.",
+      "example_en": "The passengers get off."
+    },
+    {
+      "french": "un ticket",
+      "meaning_vi": "vé",
+      "meaning_en": "a ticket",
+      "ipa": "/œ̃ tikɛ/",
+      "example_fr": "Un ticket coûte deux euros.",
+      "example_vi": "Một vé giá hai euro.",
+      "example_en": "A ticket costs two euros."
+    },
+    {
+      "french": "composter",
+      "meaning_vi": "bấm vé, xác nhận vé",
+      "meaning_en": "to validate (a ticket)",
+      "ipa": "/kɔ̃pɔste/",
+      "example_fr": "N'oubliez pas de composter.",
+      "example_vi": "Đừng quên bấm vé.",
+      "example_en": "Remember to validate your ticket."
+    },
+    {
+      "french": "monter",
+      "meaning_vi": "lên xe",
+      "meaning_en": "to get on",
+      "ipa": "/mɔ̃te/",
+      "example_fr": "On monte par l'avant.",
+      "example_vi": "Chúng ta lên xe ở cửa trước.",
+      "example_en": "We board at the front."
+    },
+    {
+      "french": "descendre",
+      "meaning_vi": "xuống xe",
+      "meaning_en": "to get off",
+      "ipa": "/desɑ̃dʁ/",
+      "example_fr": "Je descends au prochain arrêt.",
+      "example_vi": "Tôi xuống ở trạm tới.",
+      "example_en": "I get off at the next stop."
+    },
+    {
+      "french": "un couloir de bus",
+      "meaning_vi": "làn đường xe buýt",
+      "meaning_en": "a bus lane",
+      "ipa": "/œ̃ kulwaʁ də bys/",
+      "example_fr": "Le couloir de bus est réservé.",
+      "example_vi": "Làn xe buýt được ưu tiên.",
+      "example_en": "The bus lane is reserved."
+    },
+    {
+      "french": "une gare routière",
+      "meaning_vi": "bến xe",
+      "meaning_en": "a bus station",
+      "ipa": "/yn ɡaʁ ʁutjɛʁ/",
+      "example_fr": "La gare routière est pleine.",
+      "example_vi": "Bến xe rất đông.",
+      "example_en": "The station is crowded."
+    },
+    {
+      "french": "un horaire",
+      "meaning_vi": "lịch trình, giờ chạy",
+      "meaning_en": "a timetable",
+      "ipa": "/œ̃n ɔʁɛʁ/",
+      "example_fr": "Vérifie l'horaire.",
+      "example_vi": "Hãy xem giờ chạy.",
+      "example_en": "Check the timetable."
+    },
+    {
+      "french": "un retard",
+      "meaning_vi": "sự trễ",
+      "meaning_en": "a delay",
+      "ipa": "/œ̃ ʁətaʁ/",
+      "example_fr": "Le bus a dix minutes de retard.",
+      "example_vi": "Xe buýt trễ mười phút.",
+      "example_en": "The bus is ten minutes late."
+    },
+    {
+      "french": "bondé",
+      "meaning_vi": "chật cứng, đông đúc",
+      "meaning_en": "packed, crowded",
+      "ipa": "/bɔ̃de/",
+      "example_fr": "Le bus est bondé.",
+      "example_vi": "Xe buýt chật cứng.",
+      "example_en": "The bus is packed."
+    },
+    {
+      "french": "un abonnement",
+      "meaning_vi": "vé tháng, thẻ thuê bao",
+      "meaning_en": "a travel pass",
+      "ipa": "/œ̃n abɔnmɑ̃/",
+      "example_fr": "J'ai un abonnement mensuel.",
+      "example_vi": "Tôi có vé tháng.",
+      "example_en": "I have a monthly pass."
+    },
+    {
+      "french": "une correspondance",
+      "meaning_vi": "chuyến chuyển tiếp",
+      "meaning_en": "a connection, transfer",
+      "ipa": "/yn kɔʁɛspɔ̃dɑ̃s/",
+      "example_fr": "J'ai une correspondance.",
+      "example_vi": "Tôi phải chuyển xe.",
+      "example_en": "I have a transfer to make."
+    },
+    {
+      "french": "le terminus",
+      "meaning_vi": "bến cuối",
+      "meaning_en": "the terminus",
+      "ipa": "/lə tɛʁminys/",
+      "example_fr": "Tout le monde descend au terminus.",
+      "example_vi": "Mọi người xuống ở bến cuối.",
+      "example_en": "Everyone gets off at the terminus."
+    },
+    {
+      "french": "une ligne",
+      "meaning_vi": "tuyến xe",
+      "meaning_en": "a line",
+      "ipa": "/yn liɲ/",
+      "example_fr": "Prends la ligne cinq.",
+      "example_vi": "Hãy đi tuyến số năm.",
+      "example_en": "Take line number five."
+    },
+    {
+      "french": "un contrôleur",
+      "meaning_vi": "nhân viên soát vé",
+      "meaning_en": "a ticket inspector",
+      "ipa": "/œ̃ kɔ̃tʁolœʁ/",
+      "example_fr": "Le contrôleur vérifie les tickets.",
+      "example_vi": "Nhân viên kiểm tra vé.",
+      "example_en": "The inspector checks the tickets."
+    }
+  ]
+}

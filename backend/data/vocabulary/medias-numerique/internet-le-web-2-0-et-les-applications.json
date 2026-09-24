@@ -1,0 +1,190 @@
+{
+  "category": "Les médias et le numérique",
+  "category_key": "medias-numerique",
+  "category_sort_order": 120,
+  "category_vi": "Truyền thông và công nghệ số",
+  "category_en": "Media and digital technology",
+  "topic": "Le numérique",
+  "topic_slug": "numerique",
+  "topic_sort_order": 20,
+  "topic_vi": "Công nghệ số",
+  "topic_en": "Digital technology",
+  "subtopic": "Internet, le web 2.0 et les applications",
+  "subtopic_key": "internet-le-web-2-0-et-les-applications",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Internet, web 2.0 và ứng dụng",
+  "subtopic_en": "The internet, web 2.0 and apps",
+  "words": [
+    {
+      "french": "un réseau social",
+      "meaning_vi": "mạng xã hội",
+      "meaning_en": "a social network",
+      "ipa": "/œ̃ ʁe.zo so.sjal/",
+      "example_fr": "Il est sur un réseau social.",
+      "example_vi": "Anh ấy dùng một mạng xã hội.",
+      "example_en": "He is on a social network."
+    },
+    {
+      "french": "une application mobile",
+      "meaning_vi": "ứng dụng di động",
+      "meaning_en": "a mobile app",
+      "ipa": "/yn a.pli.ka.sjɔ̃ mo.bil/",
+      "example_fr": "J'installe une application mobile.",
+      "example_vi": "Tôi cài một ứng dụng di động.",
+      "example_en": "I install a mobile app."
+    },
+    {
+      "french": "un smartphone",
+      "meaning_vi": "điện thoại thông minh",
+      "meaning_en": "a smartphone",
+      "ipa": "/œ̃ smaʁt.fɔn/",
+      "example_fr": "Mon smartphone est neuf.",
+      "example_vi": "Điện thoại của tôi còn mới.",
+      "example_en": "My smartphone is new."
+    },
+    {
+      "french": "le cloud",
+      "meaning_vi": "đám mây lưu trữ",
+      "meaning_en": "the cloud",
+      "ipa": "/lə klawd/",
+      "example_fr": "Je sauve mes photos dans le cloud.",
+      "example_vi": "Tôi lưu ảnh trên đám mây.",
+      "example_en": "I save my photos in the cloud."
+    },
+    {
+      "french": "le streaming",
+      "meaning_vi": "phát trực tuyến",
+      "meaning_en": "streaming",
+      "ipa": "/lə stʁi.miŋ/",
+      "example_fr": "Nous regardons un film en streaming.",
+      "example_vi": "Chúng tôi xem phim trực tuyến.",
+      "example_en": "We watch a film by streaming."
+    },
+    {
+      "french": "le téléchargement",
+      "meaning_vi": "sự tải xuống",
+      "meaning_en": "downloading",
+      "ipa": "/lə te.le.ʃaʁ.ʒə.mɑ̃/",
+      "example_fr": "Le téléchargement est lent.",
+      "example_vi": "Tải xuống rất chậm.",
+      "example_en": "Downloading is slow."
+    },
+    {
+      "french": "un profil",
+      "meaning_vi": "hồ sơ cá nhân",
+      "meaning_en": "a profile",
+      "ipa": "/œ̃ pʁo.fil/",
+      "example_fr": "Son profil est public.",
+      "example_vi": "Hồ sơ của anh ấy công khai.",
+      "example_en": "His profile is public."
+    },
+    {
+      "french": "un compte",
+      "meaning_vi": "tài khoản",
+      "meaning_en": "an account",
+      "ipa": "/œ̃ kɔ̃t/",
+      "example_fr": "Je crée un compte.",
+      "example_vi": "Tôi tạo một tài khoản.",
+      "example_en": "I create an account."
+    },
+    {
+      "french": "un mot de passe",
+      "meaning_vi": "mật khẩu",
+      "meaning_en": "a password",
+      "ipa": "/œ̃ mo də pas/",
+      "example_fr": "Le mot de passe est secret.",
+      "example_vi": "Mật khẩu được giữ bí mật.",
+      "example_en": "The password is secret."
+    },
+    {
+      "french": "un identifiant",
+      "meaning_vi": "tên đăng nhập",
+      "meaning_en": "a username",
+      "ipa": "/œ̃n i.dɑ̃.ti.fjɑ̃/",
+      "example_fr": "Entre ton identifiant.",
+      "example_vi": "Hãy nhập tên đăng nhập.",
+      "example_en": "Enter your username."
+    },
+    {
+      "french": "un abonné",
+      "meaning_vi": "người theo dõi",
+      "meaning_en": "a follower",
+      "ipa": "/œ̃n a.bɔ.ne/",
+      "example_fr": "Elle a mille abonnés.",
+      "example_vi": "Cô ấy có một nghìn người theo dõi.",
+      "example_en": "She has a thousand followers."
+    },
+    {
+      "french": "une publication",
+      "meaning_vi": "bài đăng",
+      "meaning_en": "a post",
+      "ipa": "/yn py.bli.ka.sjɔ̃/",
+      "example_fr": "Sa publication a du succès.",
+      "example_vi": "Bài đăng của cô ấy rất thành công.",
+      "example_en": "Her post is successful."
+    },
+    {
+      "french": "une story",
+      "meaning_vi": "tin/story",
+      "meaning_en": "a story",
+      "ipa": "/yn sto.ʁi/",
+      "example_fr": "Elle poste une story.",
+      "example_vi": "Cô ấy đăng một story.",
+      "example_en": "She posts a story."
+    },
+    {
+      "french": "un j'aime",
+      "meaning_vi": "lượt thích",
+      "meaning_en": "a like",
+      "ipa": "/œ̃ ʒɛm/",
+      "example_fr": "La photo a cent j'aime.",
+      "example_vi": "Ảnh có một trăm lượt thích.",
+      "example_en": "The photo has a hundred likes."
+    },
+    {
+      "french": "un partage",
+      "meaning_vi": "lượt chia sẻ",
+      "meaning_en": "a share",
+      "ipa": "/œ̃ paʁ.taʒ/",
+      "example_fr": "Merci pour le partage !",
+      "example_vi": "Cảm ơn vì đã chia sẻ!",
+      "example_en": "Thanks for sharing!"
+    },
+    {
+      "french": "une notification",
+      "meaning_vi": "thông báo",
+      "meaning_en": "a notification",
+      "ipa": "/yn no.ti.fi.ka.sjɔ̃/",
+      "example_fr": "Je reçois une notification.",
+      "example_vi": "Tôi nhận được một thông báo.",
+      "example_en": "I get a notification."
+    },
+    {
+      "french": "un hashtag",
+      "meaning_vi": "hashtag",
+      "meaning_en": "a hashtag",
+      "ipa": "/œ̃ aʃ.taɡ/",
+      "example_fr": "Ajoute un hashtag.",
+      "example_vi": "Hãy thêm một hashtag.",
+      "example_en": "Add a hashtag."
+    },
+    {
+      "french": "une tablette",
+      "meaning_vi": "máy tính bảng",
+      "meaning_en": "a tablet",
+      "ipa": "/yn ta.blɛt/",
+      "example_fr": "L'enfant joue sur la tablette.",
+      "example_vi": "Đứa trẻ chơi trên máy tính bảng.",
+      "example_en": "The child plays on the tablet."
+    },
+    {
+      "french": "une vidéo en ligne",
+      "meaning_vi": "video trực tuyến",
+      "meaning_en": "an online video",
+      "ipa": "/yn vi.de.o ɑ̃ liɲ/",
+      "example_fr": "Je regarde une vidéo en ligne.",
+      "example_vi": "Tôi xem một video trực tuyến.",
+      "example_en": "I watch an online video."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "La communication",
+  "category_key": "communication",
+  "category_sort_order": 130,
+  "category_vi": "Giao tiếp",
+  "category_en": "Communication",
+  "topic": "La pensée et l'argumentation",
+  "topic_slug": "pensee-argumentation",
+  "topic_sort_order": 10,
+  "topic_vi": "Tư duy và lập luận",
+  "topic_en": "Thinking and argumentation",
+  "subtopic": "Donner son opinion / son point de vue",
+  "subtopic_key": "donner-son-opinion-son-point-de-vue",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Bày tỏ ý kiến / quan điểm",
+  "subtopic_en": "Giving one's opinion / point of view",
+  "words": [
+    {
+      "french": "à mon avis",
+      "meaning_vi": "theo ý kiến của tôi",
+      "meaning_en": "in my opinion",
+      "ipa": "/a mɔ̃.na.vi/",
+      "example_fr": "À mon avis, ce film est excellent.",
+      "example_vi": "Theo tôi, bộ phim này rất hay.",
+      "example_en": "In my opinion, this film is excellent."
+    },
+    {
+      "french": "selon moi",
+      "meaning_vi": "theo tôi",
+      "meaning_en": "according to me",
+      "ipa": "/sə.lɔ̃ mwa/",
+      "example_fr": "Selon moi, il faut attendre.",
+      "example_vi": "Theo tôi, chúng ta nên chờ.",
+      "example_en": "According to me, we should wait."
+    },
+    {
+      "french": "je pense que",
+      "meaning_vi": "tôi nghĩ rằng",
+      "meaning_en": "I think that",
+      "ipa": "/ʒə pɑ̃s kə/",
+      "example_fr": "Je pense que tu as raison.",
+      "example_vi": "Tôi nghĩ rằng bạn đúng.",
+      "example_en": "I think you are right."
+    },
+    {
+      "french": "je crois que",
+      "meaning_vi": "tôi tin rằng",
+      "meaning_en": "I believe that",
+      "ipa": "/ʒə kʁwa kə/",
+      "example_fr": "Je crois que c'est possible.",
+      "example_vi": "Tôi tin rằng điều đó khả thi.",
+      "example_en": "I believe it is possible."
+    },
+    {
+      "french": "je trouve que",
+      "meaning_vi": "tôi thấy rằng",
+      "meaning_en": "I find that",
+      "ipa": "/ʒə tʁuv kə/",
+      "example_fr": "Je trouve que ce plat est salé.",
+      "example_vi": "Tôi thấy món này hơi mặn.",
+      "example_en": "I find this dish salty."
+    },
+    {
+      "french": "l'opinion (f)",
+      "meaning_vi": "ý kiến",
+      "meaning_en": "opinion",
+      "ipa": "/ɔ.pi.njɔ̃/",
+      "example_fr": "Quelle est ton opinion ?",
+      "example_vi": "Ý kiến của bạn là gì?",
+      "example_en": "What is your opinion?"
+    },
+    {
+      "french": "le point de vue",
+      "meaning_vi": "quan điểm",
+      "meaning_en": "point of view",
+      "ipa": "/pwɛ̃ də vy/",
+      "example_fr": "Donne-moi ton point de vue.",
+      "example_vi": "Hãy cho tôi biết quan điểm của bạn.",
+      "example_en": "Give me your point of view."
+    },
+    {
+      "french": "être d'accord",
+      "meaning_vi": "đồng ý",
+      "meaning_en": "to agree",
+      "ipa": "/ɛtʁ da.kɔʁ/",
+      "example_fr": "Je suis d'accord avec toi.",
+      "example_vi": "Tôi đồng ý với bạn.",
+      "example_en": "I agree with you."
+    },
+    {
+      "french": "être contre",
+      "meaning_vi": "phản đối, chống lại",
+      "meaning_en": "to be against",
+      "ipa": "/ɛtʁ kɔ̃tʁ/",
+      "example_fr": "Je suis contre cette décision.",
+      "example_vi": "Tôi phản đối quyết định này.",
+      "example_en": "I am against this decision."
+    },
+    {
+      "french": "approuver",
+      "meaning_vi": "tán thành",
+      "meaning_en": "to approve",
+      "ipa": "/a.pʁu.ve/",
+      "example_fr": "J'approuve ton choix.",
+      "example_vi": "Tôi tán thành lựa chọn của bạn.",
+      "example_en": "I approve your choice."
+    },
+    {
+      "french": "désapprouver",
+      "meaning_vi": "không tán thành",
+      "meaning_en": "to disapprove",
+      "ipa": "/de.za.pʁu.ve/",
+      "example_fr": "Il désapprouve ce comportement.",
+      "example_vi": "Anh ấy không tán thành hành vi này.",
+      "example_en": "He disapproves of this behavior."
+    },
+    {
+      "french": "préférer",
+      "meaning_vi": "thích hơn",
+      "meaning_en": "to prefer",
+      "ipa": "/pʁe.fe.ʁe/",
+      "example_fr": "Je préfère le thé au café.",
+      "example_vi": "Tôi thích trà hơn cà phê.",
+      "example_en": "I prefer tea to coffee."
+    },
+    {
+      "french": "personnellement",
+      "meaning_vi": "cá nhân tôi, riêng tôi",
+      "meaning_en": "personally",
+      "ipa": "/pɛʁ.sɔ.nɛl.mɑ̃/",
+      "example_fr": "Personnellement, je reste ici.",
+      "example_vi": "Riêng tôi, tôi sẽ ở lại đây.",
+      "example_en": "Personally, I'll stay here."
+    },
+    {
+      "french": "franchement",
+      "meaning_vi": "thẳng thắn mà nói",
+      "meaning_en": "frankly",
+      "ipa": "/fʁɑ̃ʃ.mɑ̃/",
+      "example_fr": "Franchement, je n'aime pas ça.",
+      "example_vi": "Thẳng thắn mà nói, tôi không thích điều đó.",
+      "example_en": "Frankly, I don't like it."
+    },
+    {
+      "french": "il me semble que",
+      "meaning_vi": "tôi thấy rằng, dường như với tôi",
+      "meaning_en": "it seems to me that",
+      "ipa": "/il mə sɑ̃bl kə/",
+      "example_fr": "Il me semble que c'est tard.",
+      "example_vi": "Tôi thấy hình như đã muộn rồi.",
+      "example_en": "It seems to me that it's late."
+    },
+    {
+      "french": "je suis sûr(e) que",
+      "meaning_vi": "tôi chắc chắn rằng",
+      "meaning_en": "I'm sure that",
+      "ipa": "/ʒə sɥi syʁ kə/",
+      "example_fr": "Je suis sûr qu'il viendra.",
+      "example_vi": "Tôi chắc chắn anh ấy sẽ đến.",
+      "example_en": "I'm sure he will come."
+    },
+    {
+      "french": "à mon sens",
+      "meaning_vi": "theo tôi nghĩ",
+      "meaning_en": "in my view",
+      "ipa": "/a mɔ̃ sɑ̃s/",
+      "example_fr": "À mon sens, c'est une erreur.",
+      "example_vi": "Theo tôi, đó là một sai lầm.",
+      "example_en": "In my view, it's a mistake."
+    },
+    {
+      "french": "pour moi",
+      "meaning_vi": "đối với tôi",
+      "meaning_en": "for me, as for me",
+      "ipa": "/puʁ mwa/",
+      "example_fr": "Pour moi, c'est parfait.",
+      "example_vi": "Đối với tôi, thế là hoàn hảo.",
+      "example_en": "For me, it's perfect."
+    },
+    {
+      "french": "il est vrai que",
+      "meaning_vi": "đúng là",
+      "meaning_en": "it is true that",
+      "ipa": "/il ɛ vʁɛ kə/",
+      "example_fr": "Il est vrai qu'il pleut.",
+      "example_vi": "Đúng là trời đang mưa.",
+      "example_en": "It is true that it's raining."
+    }
+  ]
+}

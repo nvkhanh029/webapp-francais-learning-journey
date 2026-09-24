@@ -1,0 +1,190 @@
+{
+  "category": "Les relations familiales et sociales",
+  "category_key": "relations-familiales-sociales",
+  "category_sort_order": 20,
+  "category_vi": "Quan hệ gia đình và xã hội",
+  "category_en": "Family and social relationships",
+  "topic": "Les relations sociales",
+  "topic_slug": "relations-sociales",
+  "topic_sort_order": 20,
+  "topic_vi": "Quan hệ xã hội",
+  "topic_en": "Social relationships",
+  "subtopic": "Les relations professionnelles",
+  "subtopic_key": "les-relations-professionnelles",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Quan hệ nghề nghiệp",
+  "subtopic_en": "Professional relationships",
+  "words": [
+    {
+      "french": "le collègue",
+      "meaning_vi": "đồng nghiệp (nam)",
+      "meaning_en": "colleague (male)",
+      "ipa": "/lə ko.lɛɡ/",
+      "example_fr": "Mon collègue m'aide beaucoup.",
+      "example_vi": "Đồng nghiệp của tôi giúp tôi rất nhiều.",
+      "example_en": "My colleague helps me a lot."
+    },
+    {
+      "french": "la collègue",
+      "meaning_vi": "đồng nghiệp (nữ)",
+      "meaning_en": "colleague (female)",
+      "ipa": "/la ko.lɛɡ/",
+      "example_fr": "Ma collègue est en réunion.",
+      "example_vi": "Đồng nghiệp nữ của tôi đang họp.",
+      "example_en": "My colleague is in a meeting."
+    },
+    {
+      "french": "le patron",
+      "meaning_vi": "sếp / ông chủ",
+      "meaning_en": "boss",
+      "ipa": "/lə pa.tʁɔ̃/",
+      "example_fr": "Le patron organise une réunion.",
+      "example_vi": "Sếp tổ chức một cuộc họp.",
+      "example_en": "The boss organizes a meeting."
+    },
+    {
+      "french": "la patronne",
+      "meaning_vi": "sếp nữ / bà chủ",
+      "meaning_en": "boss (female)",
+      "ipa": "/la pa.tʁɔn/",
+      "example_fr": "La patronne est en voyage.",
+      "example_vi": "Nữ sếp đang đi công tác.",
+      "example_en": "The boss is traveling."
+    },
+    {
+      "french": "le supérieur",
+      "meaning_vi": "cấp trên",
+      "meaning_en": "supervisor",
+      "ipa": "/lə sy.pe.ʁjœʁ/",
+      "example_fr": "Il parle à son supérieur hiérarchique.",
+      "example_vi": "Anh ấy nói chuyện với cấp trên.",
+      "example_en": "He speaks to his supervisor."
+    },
+    {
+      "french": "l'employé",
+      "meaning_vi": "nhân viên (nam)",
+      "meaning_en": "employee (male)",
+      "ipa": "/lɑ̃.plwa.je/",
+      "example_fr": "Cet employé est très sérieux.",
+      "example_vi": "Nhân viên này rất nghiêm túc.",
+      "example_en": "This employee is very serious."
+    },
+    {
+      "french": "l'employée",
+      "meaning_vi": "nhân viên (nữ)",
+      "meaning_en": "employee (female)",
+      "ipa": "/lɑ̃.plwa.je/",
+      "example_fr": "Cette employée est très efficace.",
+      "example_vi": "Nhân viên này rất hiệu quả.",
+      "example_en": "This employee is very efficient."
+    },
+    {
+      "french": "l'équipe",
+      "meaning_vi": "đội / nhóm",
+      "meaning_en": "team",
+      "ipa": "/le.kip/",
+      "example_fr": "Notre équipe travaille bien ensemble.",
+      "example_vi": "Nhóm của chúng tôi làm việc tốt cùng nhau.",
+      "example_en": "Our team works well together."
+    },
+    {
+      "french": "la réunion",
+      "meaning_vi": "cuộc họp",
+      "meaning_en": "meeting",
+      "ipa": "/la ʁe.y.njɔ̃/",
+      "example_fr": "La réunion commence à neuf heures.",
+      "example_vi": "Cuộc họp bắt đầu lúc chín giờ.",
+      "example_en": "The meeting starts at nine."
+    },
+    {
+      "french": "l'entretien",
+      "meaning_vi": "cuộc phỏng vấn / trao đổi",
+      "meaning_en": "interview",
+      "ipa": "/lɑ̃.tʁə.tjɛ̃/",
+      "example_fr": "J'ai un entretien d'embauche demain.",
+      "example_vi": "Ngày mai tôi có một buổi phỏng vấn xin việc.",
+      "example_en": "I have a job interview tomorrow."
+    },
+    {
+      "french": "le client",
+      "meaning_vi": "khách hàng (nam)",
+      "meaning_en": "client (male)",
+      "ipa": "/lə kli.jɑ̃/",
+      "example_fr": "Le client attend une réponse.",
+      "example_vi": "Khách hàng đang chờ câu trả lời.",
+      "example_en": "The client is waiting for an answer."
+    },
+    {
+      "french": "la cliente",
+      "meaning_vi": "khách hàng (nữ)",
+      "meaning_en": "client (female)",
+      "ipa": "/la kli.jɑ̃t/",
+      "example_fr": "La cliente est satisfaite du service.",
+      "example_vi": "Nữ khách hàng hài lòng với dịch vụ.",
+      "example_en": "The client is satisfied with the service."
+    },
+    {
+      "french": "le partenaire",
+      "meaning_vi": "đối tác (nam)",
+      "meaning_en": "partner (male)",
+      "ipa": "/lə paʁ.tə.nɛʁ/",
+      "example_fr": "C'est notre partenaire principal.",
+      "example_vi": "Đó là đối tác chính của chúng tôi.",
+      "example_en": "He's our main partner."
+    },
+    {
+      "french": "collaborer",
+      "meaning_vi": "hợp tác",
+      "meaning_en": "to collaborate",
+      "ipa": "/ko.la.bo.ʁe/",
+      "example_fr": "Nous collaborons avec une autre équipe.",
+      "example_vi": "Chúng tôi hợp tác với một nhóm khác.",
+      "example_en": "We collaborate with another team."
+    },
+    {
+      "french": "le conflit",
+      "meaning_vi": "xung đột",
+      "meaning_en": "conflict",
+      "ipa": "/lə kɔ̃.fli/",
+      "example_fr": "Il y a un conflit entre collègues.",
+      "example_vi": "Có một xung đột giữa các đồng nghiệp.",
+      "example_en": "There is a conflict between colleagues."
+    },
+    {
+      "french": "la hiérarchie",
+      "meaning_vi": "cấp bậc",
+      "meaning_en": "hierarchy",
+      "ipa": "/la je.ʁaʁ.ʃi/",
+      "example_fr": "Il faut respecter la hiérarchie.",
+      "example_vi": "Phải tôn trọng cấp bậc.",
+      "example_en": "You must respect the hierarchy."
+    },
+    {
+      "french": "le contrat",
+      "meaning_vi": "hợp đồng",
+      "meaning_en": "contract",
+      "ipa": "/lə kɔ̃.tʁa/",
+      "example_fr": "Elle a signé un contrat à durée indéterminée.",
+      "example_vi": "Cô ấy đã ký hợp đồng không thời hạn.",
+      "example_en": "She signed a permanent contract."
+    },
+    {
+      "french": "le stage",
+      "meaning_vi": "kỳ thực tập",
+      "meaning_en": "internship",
+      "ipa": "/lə staʒ/",
+      "example_fr": "Il fait un stage de trois mois.",
+      "example_vi": "Anh ấy thực tập ba tháng.",
+      "example_en": "He's doing a three-month internship."
+    },
+    {
+      "french": "le réseau professionnel",
+      "meaning_vi": "mạng lưới nghề nghiệp",
+      "meaning_en": "professional network",
+      "ipa": "/lə ʁe.zo pʁo.fe.sjɔ.nɛl/",
+      "example_fr": "Il développe son réseau professionnel.",
+      "example_vi": "Anh ấy phát triển mạng lưới nghề nghiệp.",
+      "example_en": "He develops his professional network."
+    }
+  ]
+}

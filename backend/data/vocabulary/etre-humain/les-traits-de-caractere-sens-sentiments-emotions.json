@@ -1,0 +1,190 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les sens, les sentiments et les émotions",
+  "topic_slug": "sens-sentiments-emotions",
+  "topic_sort_order": 30,
+  "topic_vi": "Giác quan, cảm xúc và tình cảm",
+  "topic_en": "Senses, feelings and emotions",
+  "subtopic": "Les traits de caractère",
+  "subtopic_key": "les-traits-de-caractere-sens-sentiments-emotions",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Nét tính cách",
+  "subtopic_en": "Character traits",
+  "words": [
+    {
+      "french": "sensible",
+      "meaning_vi": "nhạy cảm",
+      "meaning_en": "sensitive",
+      "ipa": "/sɑ̃.sibl/",
+      "example_fr": "Elle est très sensible.",
+      "example_vi": "Cô ấy rất nhạy cảm.",
+      "example_en": "She is very sensitive."
+    },
+    {
+      "french": "impulsif / impulsive",
+      "meaning_vi": "bốc đồng",
+      "meaning_en": "impulsive",
+      "ipa": "/ɛ̃.pyl.sif / ɛ̃.pyl.siv/",
+      "example_fr": "Il est impulsif dans ses décisions.",
+      "example_vi": "Anh ấy bốc đồng trong quyết định.",
+      "example_en": "He is impulsive in his decisions."
+    },
+    {
+      "french": "anxieux / anxieuse",
+      "meaning_vi": "lo âu",
+      "meaning_en": "anxious",
+      "ipa": "/ɑ̃ksjø / ɑ̃ksjøz/",
+      "example_fr": "Elle devient anxieuse avant les examens.",
+      "example_vi": "Cô ấy lo lắng trước kỳ thi.",
+      "example_en": "She becomes anxious before exams."
+    },
+    {
+      "french": "serein(e)",
+      "meaning_vi": "điềm tĩnh",
+      "meaning_en": "serene",
+      "ipa": "/sə.ʁɛ̃ / sə.ʁɛn/",
+      "example_fr": "Il reste serein sous la pression.",
+      "example_vi": "Anh ấy điềm tĩnh dưới áp lực.",
+      "example_en": "He stays calm under pressure."
+    },
+    {
+      "french": "émotif / émotive",
+      "meaning_vi": "dễ xúc động",
+      "meaning_en": "emotional",
+      "ipa": "/e.mɔ.tif / e.mɔ.tiv/",
+      "example_fr": "Elle est émotive devant les films.",
+      "example_vi": "Cô ấy dễ xúc động khi xem phim.",
+      "example_en": "She is emotional during films."
+    },
+    {
+      "french": "irritable",
+      "meaning_vi": "dễ cáu",
+      "meaning_en": "irritable",
+      "ipa": "/i.ʁi.tabl/",
+      "example_fr": "Il est facilement irritable.",
+      "example_vi": "Anh ấy dễ cáu kỉnh.",
+      "example_en": "He is easily irritable."
+    },
+    {
+      "french": "enjoué(e)",
+      "meaning_vi": "vui vẻ",
+      "meaning_en": "cheerful, lively",
+      "ipa": "/ɑ̃.ʒwe/",
+      "example_fr": "Elle est enjouée chaque matin.",
+      "example_vi": "Cô ấy vui vẻ mỗi sáng.",
+      "example_en": "She is cheerful every morning."
+    },
+    {
+      "french": "mélancolique",
+      "meaning_vi": "u sầu",
+      "meaning_en": "melancholic",
+      "ipa": "/me.lɑ̃.kɔ.lik/",
+      "example_fr": "Il est mélancolique en automne.",
+      "example_vi": "Anh ấy u sầu vào mùa thu.",
+      "example_en": "He is melancholic in autumn."
+    },
+    {
+      "french": "jaloux / jalouse",
+      "meaning_vi": "ghen tị",
+      "meaning_en": "jealous",
+      "ipa": "/ʒa.lu / ʒa.luz/",
+      "example_fr": "Elle est jalouse de sa sœur.",
+      "example_vi": "Cô ấy ghen tị với em gái.",
+      "example_en": "She is jealous of her sister."
+    },
+    {
+      "french": "susceptible",
+      "meaning_vi": "dễ tự ái",
+      "meaning_en": "touchy, oversensitive",
+      "ipa": "/sy.sɛp.tibl/",
+      "example_fr": "Il est susceptible face aux critiques.",
+      "example_vi": "Anh ấy dễ tự ái trước lời phê bình.",
+      "example_en": "He is susceptible to criticism."
+    },
+    {
+      "french": "passionné(e)",
+      "meaning_vi": "đam mê",
+      "meaning_en": "passionate",
+      "ipa": "/pa.sjɔ.ne/",
+      "example_fr": "Elle est passionnée de danse.",
+      "example_vi": "Cô ấy đam mê khiêu vũ.",
+      "example_en": "She is passionate about dance."
+    },
+    {
+      "french": "froid(e)",
+      "meaning_vi": "lạnh lùng",
+      "meaning_en": "cold (personality)",
+      "ipa": "/fʁwa / fʁwad/",
+      "example_fr": "Il est froid avec les inconnus.",
+      "example_vi": "Anh ấy lạnh lùng với người lạ.",
+      "example_en": "He is cold with strangers."
+    },
+    {
+      "french": "chaleureux / chaleureuse",
+      "meaning_vi": "nồng hậu",
+      "meaning_en": "warm (personality)",
+      "ipa": "/ʃa.lœ.ʁø / ʃa.lœ.ʁøz/",
+      "example_fr": "Elle est chaleureuse et accueillante.",
+      "example_vi": "Cô ấy nồng hậu và thân thiện.",
+      "example_en": "She is warm and welcoming."
+    },
+    {
+      "french": "nerveux / nerveuse",
+      "meaning_vi": "hồi hộp, căng thẳng",
+      "meaning_en": "nervous",
+      "ipa": "/nɛʁ.vø / nɛʁ.vøz/",
+      "example_fr": "Il est nerveux avant de parler.",
+      "example_vi": "Anh ấy hồi hộp trước khi phát biểu.",
+      "example_en": "He is nervous before speaking."
+    },
+    {
+      "french": "romantique",
+      "meaning_vi": "lãng mạn",
+      "meaning_en": "romantic",
+      "ipa": "/ʁɔ.mɑ̃.tik/",
+      "example_fr": "Elle est romantique dans ses lettres.",
+      "example_vi": "Cô ấy lãng mạn trong thư.",
+      "example_en": "She is romantic in her letters."
+    },
+    {
+      "french": "maussade",
+      "meaning_vi": "cau có, u ám",
+      "meaning_en": "sullen, gloomy",
+      "ipa": "/mo.sad/",
+      "example_fr": "Il est maussade aujourd'hui.",
+      "example_vi": "Hôm nay anh ấy cau có.",
+      "example_en": "He is sullen today."
+    },
+    {
+      "french": "capricieux / capricieuse",
+      "meaning_vi": "thất thường",
+      "meaning_en": "capricious, moody",
+      "ipa": "/ka.pʁi.sjø / ka.pʁi.sjøz/",
+      "example_fr": "Elle est capricieuse dans ses humeurs.",
+      "example_vi": "Cô ấy thất thường trong tâm trạng.",
+      "example_en": "She is capricious in her moods."
+    },
+    {
+      "french": "posé(e)",
+      "meaning_vi": "điềm đạm",
+      "meaning_en": "composed, level-headed",
+      "ipa": "/po.ze/",
+      "example_fr": "Il est d'humeur égale et stable.",
+      "example_vi": "Anh ấy điềm đạm và ổn định.",
+      "example_en": "He is even-tempered and stable."
+    },
+    {
+      "french": "enthousiaste",
+      "meaning_vi": "hào hứng",
+      "meaning_en": "enthusiastic",
+      "ipa": "/ɑ̃.tu.zjast/",
+      "example_fr": "Elle est enthousiaste pour le voyage.",
+      "example_vi": "Cô ấy hào hứng về chuyến đi.",
+      "example_en": "She is enthusiastic about the trip."
+    }
+  ]
+}

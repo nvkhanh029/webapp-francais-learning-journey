@@ -1,0 +1,190 @@
+{
+  "category": "L'éducation et le monde professionnel",
+  "category_key": "education-monde-professionnel",
+  "category_sort_order": 50,
+  "category_vi": "Giáo dục và thế giới nghề nghiệp",
+  "category_en": "Education and the professional world",
+  "topic": "Les conditions de travail et les revendications",
+  "topic_slug": "conditions-travail-revendications",
+  "topic_sort_order": 30,
+  "topic_vi": "Điều kiện làm việc và yêu sách",
+  "topic_en": "Working conditions and demands",
+  "subtopic": "La recherche d'emploi",
+  "subtopic_key": "la-recherche-d-emploi",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Tìm việc làm",
+  "subtopic_en": "Job hunting",
+  "words": [
+    {
+      "french": "l'offre d'emploi",
+      "meaning_vi": "tin tuyển dụng",
+      "meaning_en": "job offer",
+      "ipa": "/ɔfʁə dɑ̃plwa/",
+      "example_fr": "Je réponds à une offre d'emploi.",
+      "example_vi": "Tôi trả lời một tin tuyển dụng.",
+      "example_en": "I answer a job offer."
+    },
+    {
+      "french": "le CV",
+      "meaning_vi": "sơ yếu lý lịch",
+      "meaning_en": "CV, résumé",
+      "ipa": "/se ve/",
+      "example_fr": "Il envoie son CV.",
+      "example_vi": "Anh ấy gửi CV.",
+      "example_en": "He sends his CV."
+    },
+    {
+      "french": "la lettre de motivation",
+      "meaning_vi": "thư xin việc",
+      "meaning_en": "cover letter",
+      "ipa": "/lɛtʁə də mɔtivasjɔ̃/",
+      "example_fr": "Elle écrit sa lettre de motivation.",
+      "example_vi": "Cô ấy viết thư xin việc.",
+      "example_en": "She writes her cover letter."
+    },
+    {
+      "french": "l'entretien d'embauche",
+      "meaning_vi": "buổi phỏng vấn tuyển dụng",
+      "meaning_en": "job interview",
+      "ipa": "/ɑ̃tʁətjɛ̃ dɑ̃boʃ/",
+      "example_fr": "J'ai un entretien d'embauche demain.",
+      "example_vi": "Ngày mai tôi có phỏng vấn.",
+      "example_en": "I have a job interview tomorrow."
+    },
+    {
+      "french": "le candidat, la candidate",
+      "meaning_vi": "ứng viên",
+      "meaning_en": "candidate",
+      "ipa": "/kɑ̃dida/",
+      "example_fr": "Le candidat attend sa réponse.",
+      "example_vi": "Ứng viên chờ kết quả.",
+      "example_en": "The candidate waits for an answer."
+    },
+    {
+      "french": "le recruteur",
+      "meaning_vi": "nhà tuyển dụng",
+      "meaning_en": "recruiter",
+      "ipa": "/ʁəkʁytœʁ/",
+      "example_fr": "Le recruteur pose des questions.",
+      "example_vi": "Nhà tuyển dụng đặt câu hỏi.",
+      "example_en": "The recruiter asks questions."
+    },
+    {
+      "french": "postuler",
+      "meaning_vi": "ứng tuyển",
+      "meaning_en": "to apply",
+      "ipa": "/pɔstyle/",
+      "example_fr": "Je postule pour ce poste.",
+      "example_vi": "Tôi ứng tuyển vị trí này.",
+      "example_en": "I apply for this position."
+    },
+    {
+      "french": "être embauché",
+      "meaning_vi": "được tuyển dụng",
+      "meaning_en": "to be hired",
+      "ipa": "/ɛtʁə ɑ̃boʃe/",
+      "example_fr": "Il est embauché en juin.",
+      "example_vi": "Anh ấy được tuyển vào tháng sáu.",
+      "example_en": "He is hired in June."
+    },
+    {
+      "french": "le demandeur d'emploi",
+      "meaning_vi": "người tìm việc",
+      "meaning_en": "job seeker",
+      "ipa": "/dəmɑ̃dœʁ dɑ̃plwa/",
+      "example_fr": "Le demandeur d'emploi prépare son CV.",
+      "example_vi": "Người tìm việc chuẩn bị CV.",
+      "example_en": "The job seeker prepares his CV."
+    },
+    {
+      "french": "Pôle emploi",
+      "meaning_vi": "trung tâm việc làm",
+      "meaning_en": "employment centre",
+      "ipa": "/pol ɑ̃plwa/",
+      "example_fr": "Il s'inscrit à Pôle emploi.",
+      "example_vi": "Anh ấy đăng ký ở trung tâm việc làm.",
+      "example_en": "He registers at the employment centre."
+    },
+    {
+      "french": "la petite annonce",
+      "meaning_vi": "quảng cáo rao vặt",
+      "meaning_en": "classified ad",
+      "ipa": "/pətit anɔ̃s/",
+      "example_fr": "Je lis les petites annonces.",
+      "example_vi": "Tôi đọc các rao vặt.",
+      "example_en": "I read the classified ads."
+    },
+    {
+      "french": "le travail saisonnier",
+      "meaning_vi": "việc làm thời vụ",
+      "meaning_en": "seasonal work",
+      "ipa": "/tʁavaj sɛzɔnje/",
+      "example_fr": "Elle cherche un travail saisonnier.",
+      "example_vi": "Cô ấy tìm việc làm thời vụ.",
+      "example_en": "She looks for seasonal work."
+    },
+    {
+      "french": "la lettre de recommandation",
+      "meaning_vi": "thư giới thiệu",
+      "meaning_en": "letter of recommendation",
+      "ipa": "/lɛtʁə də ʁəkɔmɑ̃dasjɔ̃/",
+      "example_fr": "Il demande une lettre de recommandation.",
+      "example_vi": "Anh ấy xin một thư giới thiệu.",
+      "example_en": "He asks for a letter of recommendation."
+    },
+    {
+      "french": "la candidature spontanée",
+      "meaning_vi": "ứng tuyển tự phát",
+      "meaning_en": "unsolicited application",
+      "ipa": "/kɑ̃didatyʁ spɔ̃tane/",
+      "example_fr": "J'envoie une candidature spontanée.",
+      "example_vi": "Tôi gửi hồ sơ tự ứng tuyển.",
+      "example_en": "I send an unsolicited application."
+    },
+    {
+      "french": "le salaire brut",
+      "meaning_vi": "lương gộp",
+      "meaning_en": "gross salary",
+      "ipa": "/salɛʁ bʁyt/",
+      "example_fr": "Le salaire brut est indiqué.",
+      "example_vi": "Lương gộp được ghi rõ.",
+      "example_en": "The gross salary is stated."
+    },
+    {
+      "french": "le salaire net",
+      "meaning_vi": "lương ròng",
+      "meaning_en": "net salary",
+      "ipa": "/salɛʁ nɛt/",
+      "example_fr": "Quel est le salaire net ?",
+      "example_vi": "Lương ròng là bao nhiêu?",
+      "example_en": "What is the net salary?"
+    },
+    {
+      "french": "la période d'essai",
+      "meaning_vi": "thời gian thử việc",
+      "meaning_en": "probation period",
+      "ipa": "/peʁjɔd desɛ/",
+      "example_fr": "La période d'essai dure trois mois.",
+      "example_vi": "Thời gian thử việc kéo dài ba tháng.",
+      "example_en": "The probation lasts three months."
+    },
+    {
+      "french": "le poste vacant",
+      "meaning_vi": "vị trí trống",
+      "meaning_en": "vacant position",
+      "ipa": "/pɔst vakɑ̃/",
+      "example_fr": "Ce poste vacant m'intéresse.",
+      "example_vi": "Vị trí trống này làm tôi quan tâm.",
+      "example_en": "This vacancy interests me."
+    },
+    {
+      "french": "le bilan de compétences",
+      "meaning_vi": "đánh giá kỹ năng",
+      "meaning_en": "skills assessment",
+      "ipa": "/bilɑ̃ də kɔ̃petɑ̃s/",
+      "example_fr": "Elle fait un bilan de compétences.",
+      "example_vi": "Cô ấy làm đánh giá kỹ năng.",
+      "example_en": "She does a skills assessment."
+    }
+  ]
+}

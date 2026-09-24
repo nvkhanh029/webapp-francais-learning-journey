@@ -1,0 +1,190 @@
+{
+  "category": "L'éducation et le monde professionnel",
+  "category_key": "education-monde-professionnel",
+  "category_sort_order": 50,
+  "category_vi": "Giáo dục và thế giới nghề nghiệp",
+  "category_en": "Education and the professional world",
+  "topic": "Les activités professionnelles",
+  "topic_slug": "activites-professionnelles",
+  "topic_sort_order": 20,
+  "topic_vi": "Hoạt động nghề nghiệp",
+  "topic_en": "Professional activities",
+  "subtopic": "Les métiers / les professions",
+  "subtopic_key": "les-metiers-les-professions",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Nghề nghiệp",
+  "subtopic_en": "Trades / professions",
+  "words": [
+    {
+      "french": "le dentiste",
+      "meaning_vi": "nha sĩ",
+      "meaning_en": "dentist",
+      "ipa": "/dɑ̃tist/",
+      "example_fr": "Le dentiste soigne les dents.",
+      "example_vi": "Nha sĩ chữa răng.",
+      "example_en": "The dentist treats teeth."
+    },
+    {
+      "french": "l'infirmier, l'infirmière",
+      "meaning_vi": "y tá, điều dưỡng",
+      "meaning_en": "nurse",
+      "ipa": "/ɛ̃fiʁmje/",
+      "example_fr": "L'infirmière fait les soins.",
+      "example_vi": "Y tá chăm sóc bệnh nhân.",
+      "example_en": "The nurse provides care."
+    },
+    {
+      "french": "l'enseignant",
+      "meaning_vi": "giáo viên, giảng viên",
+      "meaning_en": "teacher",
+      "ipa": "/ɑ̃sɛɲɑ̃/",
+      "example_fr": "L'enseignant prépare son cours.",
+      "example_vi": "Giáo viên chuẩn bị bài giảng.",
+      "example_en": "The teacher prepares his lesson."
+    },
+    {
+      "french": "l'ingénieur",
+      "meaning_vi": "kỹ sư",
+      "meaning_en": "engineer",
+      "ipa": "/ɛ̃ʒenjœʁ/",
+      "example_fr": "L'ingénieur construit un pont.",
+      "example_vi": "Kỹ sư xây một cây cầu.",
+      "example_en": "The engineer builds a bridge."
+    },
+    {
+      "french": "l'avocat, l'avocate",
+      "meaning_vi": "luật sư",
+      "meaning_en": "lawyer",
+      "ipa": "/avɔka/",
+      "example_fr": "L'avocat défend son client.",
+      "example_vi": "Luật sư bào chữa cho thân chủ.",
+      "example_en": "The lawyer defends his client."
+    },
+    {
+      "french": "le commerçant, la commerçante",
+      "meaning_vi": "người buôn bán",
+      "meaning_en": "shopkeeper",
+      "ipa": "/kɔmɛʁsɑ̃/",
+      "example_fr": "Le commerçant ouvre sa boutique.",
+      "example_vi": "Người bán hàng mở cửa tiệm.",
+      "example_en": "The shopkeeper opens his shop."
+    },
+    {
+      "french": "le chauffeur",
+      "meaning_vi": "tài xế",
+      "meaning_en": "driver",
+      "ipa": "/ʃofœʁ/",
+      "example_fr": "Le chauffeur conduit le bus.",
+      "example_vi": "Tài xế lái xe buýt.",
+      "example_en": "The driver drives the bus."
+    },
+    {
+      "french": "le cuisinier, la cuisinière",
+      "meaning_vi": "đầu bếp",
+      "meaning_en": "cook",
+      "ipa": "/kɥizinje/",
+      "example_fr": "Le cuisinier prépare le repas.",
+      "example_vi": "Đầu bếp chuẩn bị bữa ăn.",
+      "example_en": "The cook prepares the meal."
+    },
+    {
+      "french": "le serveur, la serveuse",
+      "meaning_vi": "nhân viên phục vụ",
+      "meaning_en": "waiter, waitress",
+      "ipa": "/sɛʁvœʁ/",
+      "example_fr": "La serveuse apporte le café.",
+      "example_vi": "Cô phục vụ mang cà phê.",
+      "example_en": "The waitress brings the coffee."
+    },
+    {
+      "french": "le coiffeur, la coiffeuse",
+      "meaning_vi": "thợ cắt tóc",
+      "meaning_en": "hairdresser",
+      "ipa": "/kwafœʁ/",
+      "example_fr": "Je vais chez le coiffeur.",
+      "example_vi": "Tôi đi cắt tóc.",
+      "example_en": "I'm going to the hairdresser."
+    },
+    {
+      "french": "le plombier",
+      "meaning_vi": "thợ sửa ống nước",
+      "meaning_en": "plumber",
+      "ipa": "/plɔ̃bje/",
+      "example_fr": "Le plombier répare l'évier.",
+      "example_vi": "Thợ ống nước sửa bồn rửa.",
+      "example_en": "The plumber repairs the sink."
+    },
+    {
+      "french": "l'électricien",
+      "meaning_vi": "thợ điện",
+      "meaning_en": "electrician",
+      "ipa": "/elɛktʁisjɛ̃/",
+      "example_fr": "L'électricien installe la lampe.",
+      "example_vi": "Thợ điện lắp đèn.",
+      "example_en": "The electrician installs the lamp."
+    },
+    {
+      "french": "le comptable",
+      "meaning_vi": "kế toán",
+      "meaning_en": "accountant",
+      "ipa": "/kɔ̃tabl/",
+      "example_fr": "Le comptable vérifie les factures.",
+      "example_vi": "Kế toán kiểm tra hóa đơn.",
+      "example_en": "The accountant checks the invoices."
+    },
+    {
+      "french": "le secrétaire, la secrétaire",
+      "meaning_vi": "thư ký",
+      "meaning_en": "secretary",
+      "ipa": "/səkʁetɛʁ/",
+      "example_fr": "La secrétaire répond au téléphone.",
+      "example_vi": "Cô thư ký nghe điện thoại.",
+      "example_en": "The secretary answers the phone."
+    },
+    {
+      "french": "le gendarme",
+      "meaning_vi": "hiến binh",
+      "meaning_en": "gendarme",
+      "ipa": "/ʒɑ̃daʁm/",
+      "example_fr": "Le gendarme patrouille en ville.",
+      "example_vi": "Hiến binh tuần tra trong thành phố.",
+      "example_en": "The gendarme patrols the town."
+    },
+    {
+      "french": "le pompier",
+      "meaning_vi": "lính cứu hỏa",
+      "meaning_en": "firefighter",
+      "ipa": "/pɔ̃pje/",
+      "example_fr": "Les pompiers éteignent le feu.",
+      "example_vi": "Lính cứu hỏa dập lửa.",
+      "example_en": "The firefighters put out the fire."
+    },
+    {
+      "french": "l'agriculteur, l'agricultrice",
+      "meaning_vi": "nông dân",
+      "meaning_en": "farmer",
+      "ipa": "/aɡʁikyltœʁ/",
+      "example_fr": "L'agriculteur cultive le blé.",
+      "example_vi": "Nông dân trồng lúa mì.",
+      "example_en": "The farmer grows wheat."
+    },
+    {
+      "french": "le journaliste",
+      "meaning_vi": "nhà báo",
+      "meaning_en": "journalist",
+      "ipa": "/ʒuʁnalist/",
+      "example_fr": "Le journaliste écrit un article.",
+      "example_vi": "Nhà báo viết một bài báo.",
+      "example_en": "The journalist writes an article."
+    },
+    {
+      "french": "l'artisan",
+      "meaning_vi": "thợ thủ công",
+      "meaning_en": "craftsman",
+      "ipa": "/aʁtizɑ̃/",
+      "example_fr": "L'artisan fabrique des meubles.",
+      "example_vi": "Thợ thủ công làm đồ gỗ.",
+      "example_en": "The craftsman makes furniture."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "La vie sociale et économique",
+  "category_key": "vie-sociale-economique",
+  "category_sort_order": 110,
+  "category_vi": "Đời sống xã hội và kinh tế",
+  "category_en": "Social and economic life",
+  "topic": "La vie politique et citoyenne",
+  "topic_slug": "vie-politique-citoyenne",
+  "topic_sort_order": 20,
+  "topic_vi": "Đời sống chính trị và công dân",
+  "topic_en": "Political and civic life",
+  "subtopic": "Les systèmes politiques",
+  "subtopic_key": "les-systemes-politiques",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Hệ thống chính trị",
+  "subtopic_en": "Political systems",
+  "words": [
+    {
+      "french": "la politique",
+      "meaning_vi": "chính trị",
+      "meaning_en": "politics",
+      "ipa": "/pɔ.li.tik/",
+      "example_fr": "Il s'intéresse à la politique.",
+      "example_vi": "Anh ấy quan tâm chính trị.",
+      "example_en": "He is interested in politics."
+    },
+    {
+      "french": "la démocratie",
+      "meaning_vi": "dân chủ",
+      "meaning_en": "democracy",
+      "ipa": "/de.mɔ.kʁa.si/",
+      "example_fr": "La démocratie respecte le vote.",
+      "example_vi": "Dân chủ tôn trọng lá phiếu.",
+      "example_en": "Democracy respects the vote."
+    },
+    {
+      "french": "la république",
+      "meaning_vi": "cộng hòa",
+      "meaning_en": "republic",
+      "ipa": "/ʁe.py.blik/",
+      "example_fr": "La France est une république.",
+      "example_vi": "Pháp là một nước cộng hòa.",
+      "example_en": "France is a republic."
+    },
+    {
+      "french": "la monarchie",
+      "meaning_vi": "quân chủ",
+      "meaning_en": "monarchy",
+      "ipa": "/mɔ.naʁ.ʃi/",
+      "example_fr": "La monarchie a un roi.",
+      "example_vi": "Chế độ quân chủ có vua.",
+      "example_en": "The monarchy has a king."
+    },
+    {
+      "french": "la dictature",
+      "meaning_vi": "độc tài",
+      "meaning_en": "dictatorship",
+      "ipa": "/dik.ta.tyʁ/",
+      "example_fr": "La dictature limite les libertés.",
+      "example_vi": "Độc tài hạn chế tự do.",
+      "example_en": "Dictatorship limits freedoms."
+    },
+    {
+      "french": "le pouvoir",
+      "meaning_vi": "quyền lực",
+      "meaning_en": "power",
+      "ipa": "/pu.vwaʁ/",
+      "example_fr": "Le pouvoir appartient au peuple.",
+      "example_vi": "Quyền lực thuộc về nhân dân.",
+      "example_en": "Power belongs to the people."
+    },
+    {
+      "french": "le gouvernement",
+      "meaning_vi": "chính phủ",
+      "meaning_en": "government",
+      "ipa": "/ɡu.vɛʁ.nə.mɑ̃/",
+      "example_fr": "Le gouvernement prépare une loi.",
+      "example_vi": "Chính phủ soạn thảo luật.",
+      "example_en": "The government prepares a law."
+    },
+    {
+      "french": "le parlement",
+      "meaning_vi": "nghị viện, quốc hội",
+      "meaning_en": "parliament",
+      "ipa": "/paʁ.lə.mɑ̃/",
+      "example_fr": "Le parlement vote les lois.",
+      "example_vi": "Quốc hội bỏ phiếu thông qua luật.",
+      "example_en": "Parliament votes laws."
+    },
+    {
+      "french": "le président",
+      "meaning_vi": "tổng thống, chủ tịch",
+      "meaning_en": "president",
+      "ipa": "/pʁe.zi.dɑ̃/",
+      "example_fr": "Le président parle ce soir.",
+      "example_vi": "Tổng thống phát biểu tối nay.",
+      "example_en": "The president speaks tonight."
+    },
+    {
+      "french": "le ministre",
+      "meaning_vi": "bộ trưởng",
+      "meaning_en": "minister",
+      "ipa": "/mi.nistʁ/",
+      "example_fr": "Le ministre visite une école.",
+      "example_vi": "Bộ trưởng thăm một trường học.",
+      "example_en": "The minister visits a school."
+    },
+    {
+      "french": "le régime",
+      "meaning_vi": "chế độ (chính trị)",
+      "meaning_en": "regime",
+      "ipa": "/lə ʁe.ʒim/",
+      "example_fr": "Ce pays change de régime.",
+      "example_vi": "Đất nước này thay đổi chế độ.",
+      "example_en": "This country is changing regime."
+    },
+    {
+      "french": "le vote",
+      "meaning_vi": "bỏ phiếu",
+      "meaning_en": "vote",
+      "ipa": "/vɔt/",
+      "example_fr": "Le vote est un droit.",
+      "example_vi": "Bỏ phiếu là một quyền.",
+      "example_en": "Voting is a right."
+    },
+    {
+      "french": "le citoyen",
+      "meaning_vi": "công dân",
+      "meaning_en": "citizen",
+      "ipa": "/si.twa.jɛ̃/",
+      "example_fr": "Chaque citoyen peut voter.",
+      "example_vi": "Mỗi công dân đều có thể bỏ phiếu.",
+      "example_en": "Every citizen can vote."
+    },
+    {
+      "french": "les droits de l'homme",
+      "meaning_vi": "nhân quyền",
+      "meaning_en": "human rights",
+      "ipa": "/dʁwa də lɔm/",
+      "example_fr": "Les droits de l'homme sont essentiels.",
+      "example_vi": "Nhân quyền rất thiết yếu.",
+      "example_en": "Human rights are essential."
+    },
+    {
+      "french": "la liberté",
+      "meaning_vi": "tự do",
+      "meaning_en": "freedom",
+      "ipa": "/li.bɛʁ.te/",
+      "example_fr": "La liberté est précieuse.",
+      "example_vi": "Tự do rất quý giá.",
+      "example_en": "Freedom is precious."
+    },
+    {
+      "french": "l'égalité (f)",
+      "meaning_vi": "bình đẳng",
+      "meaning_en": "equality",
+      "ipa": "/e.ɡa.li.te/",
+      "example_fr": "L'égalité est importante à l'école.",
+      "example_vi": "Bình đẳng rất quan trọng ở trường.",
+      "example_en": "Equality is important at school."
+    },
+    {
+      "french": "le totalitarisme",
+      "meaning_vi": "chủ nghĩa toàn trị",
+      "meaning_en": "totalitarianism",
+      "ipa": "/lə tɔ.ta.li.ta.ʁism/",
+      "example_fr": "Le totalitarisme supprime les libertés.",
+      "example_vi": "Chủ nghĩa toàn trị xóa bỏ các tự do.",
+      "example_en": "Totalitarianism abolishes freedoms."
+    },
+    {
+      "french": "l'État (m)",
+      "meaning_vi": "nhà nước",
+      "meaning_en": "state",
+      "ipa": "/e.ta/",
+      "example_fr": "L'État aide les familles.",
+      "example_vi": "Nhà nước giúp đỡ các gia đình.",
+      "example_en": "The state helps families."
+    },
+    {
+      "french": "la constitution",
+      "meaning_vi": "hiến pháp",
+      "meaning_en": "constitution",
+      "ipa": "/kɔ̃s.ti.ty.sjɔ̃/",
+      "example_fr": "La constitution organise le pays.",
+      "example_vi": "Hiến pháp tổ chức đất nước.",
+      "example_en": "The constitution organizes the country."
+    }
+  ]
+}

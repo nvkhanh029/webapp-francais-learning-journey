@@ -1,0 +1,190 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les caractéristiques physiques",
+  "topic_slug": "caracteristiques-physiques",
+  "topic_sort_order": 10,
+  "topic_vi": "Đặc điểm thể chất",
+  "topic_en": "Physical characteristics",
+  "subtopic": "Les cycles de la vie",
+  "subtopic_key": "les-cycles-de-la-vie",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Các giai đoạn của cuộc đời",
+  "subtopic_en": "The stages of life",
+  "words": [
+    {
+      "french": "la naissance",
+      "meaning_vi": "sự sinh ra",
+      "meaning_en": "birth",
+      "ipa": "/nɛ.sɑ̃s/",
+      "example_fr": "La naissance s'est bien passée.",
+      "example_vi": "Ca sinh đã diễn ra tốt đẹp.",
+      "example_en": "The birth went well."
+    },
+    {
+      "french": "l'enfance",
+      "meaning_vi": "tuổi thơ",
+      "meaning_en": "childhood",
+      "ipa": "/ɑ̃.fɑ̃s/",
+      "example_fr": "L'enfance est une période heureuse.",
+      "example_vi": "Tuổi thơ là thời gian hạnh phúc.",
+      "example_en": "Childhood is a happy time."
+    },
+    {
+      "french": "le bébé",
+      "meaning_vi": "em bé",
+      "meaning_en": "baby",
+      "ipa": "/be.be/",
+      "example_fr": "Le bébé dort dans sa chambre.",
+      "example_vi": "Em bé đang ngủ trong phòng.",
+      "example_en": "The baby sleeps in his room."
+    },
+    {
+      "french": "l'enfant",
+      "meaning_vi": "đứa trẻ",
+      "meaning_en": "child",
+      "ipa": "/ɑ̃.fɑ̃/",
+      "example_fr": "L'enfant joue dehors.",
+      "example_vi": "Đứa trẻ chơi ở ngoài.",
+      "example_en": "The child plays outside."
+    },
+    {
+      "french": "l'adolescence",
+      "meaning_vi": "tuổi dậy thì",
+      "meaning_en": "adolescence",
+      "ipa": "/a.dɔ.le.sɑ̃s/",
+      "example_fr": "L'adolescence est parfois difficile.",
+      "example_vi": "Tuổi dậy thì đôi khi khó khăn.",
+      "example_en": "Adolescence is difficult sometimes."
+    },
+    {
+      "french": "l'adolescent",
+      "meaning_vi": "thiếu niên",
+      "meaning_en": "teenager",
+      "ipa": "/a.dɔ.le.sɑ̃/",
+      "example_fr": "L'adolescent aime la musique.",
+      "example_vi": "Cậu thiếu niên thích âm nhạc.",
+      "example_en": "The teenager likes music."
+    },
+    {
+      "french": "le jeune homme / la jeune femme",
+      "meaning_vi": "chàng trai / cô gái trẻ",
+      "meaning_en": "young man / young woman",
+      "ipa": "/ʒœn ɔm / ʒœn fam/",
+      "example_fr": "La jeune femme travaille à Paris.",
+      "example_vi": "Cô gái trẻ làm việc ở Paris.",
+      "example_en": "The young woman works in Paris."
+    },
+    {
+      "french": "devenir adulte",
+      "meaning_vi": "trở thành người lớn",
+      "meaning_en": "to become an adult",
+      "ipa": "/də.vniʁ a.dylt/",
+      "example_fr": "Devenir adulte est une grande étape.",
+      "example_vi": "Trở thành người lớn là một bước lớn.",
+      "example_en": "To become an adult is a big step."
+    },
+    {
+      "french": "l'adulte",
+      "meaning_vi": "người lớn",
+      "meaning_en": "adult",
+      "ipa": "/a.dylt/",
+      "example_fr": "L'adulte prend ses responsabilités.",
+      "example_vi": "Người lớn gánh vác trách nhiệm.",
+      "example_en": "The adult takes his responsibilities."
+    },
+    {
+      "french": "le mariage",
+      "meaning_vi": "hôn nhân, đám cưới",
+      "meaning_en": "marriage, wedding",
+      "ipa": "/ma.ʁjaʒ/",
+      "example_fr": "Le mariage est une belle cérémonie.",
+      "example_vi": "Đám cưới là một buổi lễ đẹp.",
+      "example_en": "Marriage is a beautiful ceremony."
+    },
+    {
+      "french": "la grossesse",
+      "meaning_vi": "thai kỳ",
+      "meaning_en": "pregnancy",
+      "ipa": "/ɡʁo.sɛs/",
+      "example_fr": "Elle attend un enfant.",
+      "example_vi": "Cô ấy đang mong chờ một đứa con.",
+      "example_en": "She is expecting a baby."
+    },
+    {
+      "french": "le nouveau-né",
+      "meaning_vi": "trẻ sơ sinh",
+      "meaning_en": "newborn",
+      "ipa": "/nu.vo.ne/",
+      "example_fr": "Ils ont un nouveau-né.",
+      "example_vi": "Họ có một em bé sơ sinh.",
+      "example_en": "They have a newborn."
+    },
+    {
+      "french": "grandir",
+      "meaning_vi": "lớn lên",
+      "meaning_en": "to grow up",
+      "ipa": "/ɡʁɑ̃.diʁ/",
+      "example_fr": "Grandir prend du temps.",
+      "example_vi": "Lớn lên cần thời gian.",
+      "example_en": "To grow up takes time."
+    },
+    {
+      "french": "l'âge mûr",
+      "meaning_vi": "tuổi trung niên",
+      "meaning_en": "middle age",
+      "ipa": "/ɑʒ myʁ/",
+      "example_fr": "L'âge adulte est une période calme.",
+      "example_vi": "Tuổi trung niên là giai đoạn bình yên.",
+      "example_en": "Middle age is a calm period."
+    },
+    {
+      "french": "la personne âgée",
+      "meaning_vi": "người cao tuổi",
+      "meaning_en": "elderly person",
+      "ipa": "/pɛʁ.sɔn a.ʒe/",
+      "example_fr": "La personne âgée lit son journal.",
+      "example_vi": "Người cao tuổi đọc báo.",
+      "example_en": "The elderly man reads his newspaper."
+    },
+    {
+      "french": "le grand-père / la grand-mère",
+      "meaning_vi": "ông / bà",
+      "meaning_en": "grandfather / grandmother",
+      "ipa": "/ɡʁɑ̃.pɛʁ / ɡʁɑ̃.mɛʁ/",
+      "example_fr": "Ma grand-mère a quatre-vingts ans.",
+      "example_vi": "Bà tôi tám mươi tuổi.",
+      "example_en": "My grandmother is eighty years old."
+    },
+    {
+      "french": "la retraite",
+      "meaning_vi": "sự nghỉ hưu",
+      "meaning_en": "retirement",
+      "ipa": "/ʁə.tʁɛt/",
+      "example_fr": "La retraite permet de voyager.",
+      "example_vi": "Nghỉ hưu cho phép đi du lịch.",
+      "example_en": "Retirement allows time to travel."
+    },
+    {
+      "french": "vieillir",
+      "meaning_vi": "già đi",
+      "meaning_en": "to grow old",
+      "ipa": "/vje.jiʁ/",
+      "example_fr": "Vieillir est naturel.",
+      "example_vi": "Già đi là tự nhiên.",
+      "example_en": "To grow old is natural."
+    },
+    {
+      "french": "la mort",
+      "meaning_vi": "cái chết",
+      "meaning_en": "death",
+      "ipa": "/mɔʁ/",
+      "example_fr": "La mort fait partie de la vie.",
+      "example_vi": "Cái chết là một phần của cuộc sống.",
+      "example_en": "Death is part of life."
+    }
+  ]
+}

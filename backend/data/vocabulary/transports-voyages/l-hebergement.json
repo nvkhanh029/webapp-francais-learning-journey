@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les hébergements de vacances",
+  "topic_slug": "hebergements-vacances",
+  "topic_sort_order": 40,
+  "topic_vi": "Nơi lưu trú kỳ nghỉ",
+  "topic_en": "Holiday accommodation",
+  "subtopic": "L'hébergement (l'hôtel, le camping, le gîte rural et la chambre d'hôte, les maisons et les appartements à louer)",
+  "subtopic_key": "l-hebergement",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Nơi lưu trú (khách sạn, khu cắm trại, nhà nghỉ nông thôn, nhà/căn hộ cho thuê)",
+  "subtopic_en": "Accommodation (hotel, campsite, rural cottage and B&B, rental houses and apartments)",
+  "words": [
+    {
+      "french": "un hôtel",
+      "meaning_vi": "khách sạn",
+      "meaning_en": "a hotel",
+      "ipa": "/œ̃n otɛl/",
+      "example_fr": "L'hôtel est confortable.",
+      "example_vi": "Khách sạn tiện nghi.",
+      "example_en": "The hotel is comfortable."
+    },
+    {
+      "french": "un dortoir",
+      "meaning_vi": "phòng tập thể",
+      "meaning_en": "a dormitory",
+      "ipa": "/œ̃ dɔʁtwaʁ/",
+      "example_fr": "Le dortoir a huit lits.",
+      "example_vi": "Phòng tập thể có tám giường.",
+      "example_en": "The dormitory has eight beds."
+    },
+    {
+      "french": "une réception",
+      "meaning_vi": "lễ tân",
+      "meaning_en": "reception",
+      "ipa": "/yn ʁesɛpsjɔ̃/",
+      "example_fr": "La réception est ouverte toute la nuit.",
+      "example_vi": "Lễ tân mở cả đêm.",
+      "example_en": "Reception is open all night."
+    },
+    {
+      "french": "un petit-déjeuner",
+      "meaning_vi": "bữa sáng",
+      "meaning_en": "breakfast",
+      "ipa": "/œ̃ pəti deʒœne/",
+      "example_fr": "Le petit-déjeuner est inclus.",
+      "example_vi": "Đã gồm bữa sáng.",
+      "example_en": "Breakfast is included."
+    },
+    {
+      "french": "un camping",
+      "meaning_vi": "khu cắm trại",
+      "meaning_en": "a campsite",
+      "ipa": "/œ̃ kɑ̃piŋ/",
+      "example_fr": "Le camping est au bord de la mer.",
+      "example_vi": "Khu cắm trại cạnh biển.",
+      "example_en": "The campsite is by the sea."
+    },
+    {
+      "french": "une tente",
+      "meaning_vi": "lều",
+      "meaning_en": "a tent",
+      "ipa": "/yn tɑ̃t/",
+      "example_fr": "On dort sous la tente.",
+      "example_vi": "Chúng tôi ngủ trong lều.",
+      "example_en": "We sleep in a tent."
+    },
+    {
+      "french": "un gîte rural",
+      "meaning_vi": "nhà nghỉ nông thôn",
+      "meaning_en": "a rural cottage",
+      "ipa": "/œ̃ ʒit ʁyʁal/",
+      "example_fr": "Le gîte est à la campagne.",
+      "example_vi": "Nhà nghỉ nông thôn ở quê.",
+      "example_en": "The cottage is in the countryside."
+    },
+    {
+      "french": "une chambre d'hôte",
+      "meaning_vi": "nhà nghỉ kiểu B&B",
+      "meaning_en": "a bed and breakfast",
+      "ipa": "/yn ʃɑ̃bʁ dot/",
+      "example_fr": "La chambre d'hôte est charmante.",
+      "example_vi": "Nhà nghỉ B&B rất duyên.",
+      "example_en": "The B&B is charming."
+    },
+    {
+      "french": "un appartement à louer",
+      "meaning_vi": "căn hộ cho thuê",
+      "meaning_en": "an apartment for rent",
+      "ipa": "/œ̃n apaʁtəmɑ̃ a lwe/",
+      "example_fr": "On loue un appartement.",
+      "example_vi": "Chúng tôi thuê một căn hộ.",
+      "example_en": "We rent an apartment."
+    },
+    {
+      "french": "une maison à louer",
+      "meaning_vi": "nhà cho thuê",
+      "meaning_en": "a house for rent",
+      "ipa": "/yn mɛzɔ̃ a lwe/",
+      "example_fr": "La maison a un jardin.",
+      "example_vi": "Ngôi nhà có vườn.",
+      "example_en": "The house has a garden."
+    },
+    {
+      "french": "une auberge de jeunesse",
+      "meaning_vi": "nhà trọ thanh niên",
+      "meaning_en": "a youth hostel",
+      "ipa": "/yn obɛʁʒ də ʒœnɛs/",
+      "example_fr": "L'auberge de jeunesse est pas chère.",
+      "example_vi": "Ký túc xá du lịch rẻ.",
+      "example_en": "The youth hostel is cheap."
+    },
+    {
+      "french": "une clé",
+      "meaning_vi": "chìa khóa",
+      "meaning_en": "a key",
+      "ipa": "/yn kle/",
+      "example_fr": "La clé est à la réception.",
+      "example_vi": "Chìa khóa ở lễ tân.",
+      "example_en": "The key is at reception."
+    },
+    {
+      "french": "la demi-pension",
+      "meaning_vi": "nửa bao ăn",
+      "meaning_en": "half board",
+      "ipa": "/la dəmi pɑ̃sjɔ̃/",
+      "example_fr": "La demi-pension est pratique.",
+      "example_vi": "Nửa bao ăn rất tiện.",
+      "example_en": "Half board is practical."
+    },
+    {
+      "french": "la climatisation",
+      "meaning_vi": "điều hòa không khí",
+      "meaning_en": "air conditioning",
+      "ipa": "/la klimatizasjɔ̃/",
+      "example_fr": "La climatisation marche bien.",
+      "example_vi": "Điều hòa chạy tốt.",
+      "example_en": "The air conditioning works well."
+    },
+    {
+      "french": "la nuitée",
+      "meaning_vi": "đêm nghỉ khách sạn",
+      "meaning_en": "an overnight stay",
+      "ipa": "/la nɥite/",
+      "example_fr": "La nuitée coûte cent euros.",
+      "example_vi": "Một đêm nghỉ giá một trăm euro.",
+      "example_en": "The overnight stay costs one hundred euros."
+    },
+    {
+      "french": "une chambre simple",
+      "meaning_vi": "phòng đơn",
+      "meaning_en": "a single room",
+      "ipa": "/yn ʃɑ̃bʁ sɛ̃pl/",
+      "example_fr": "La chambre simple est petite.",
+      "example_vi": "Phòng đơn nhỏ.",
+      "example_en": "The single room is small."
+    },
+    {
+      "french": "une chambre double",
+      "meaning_vi": "phòng đôi",
+      "meaning_en": "a double room",
+      "ipa": "/yn ʃɑ̃bʁ dubl/",
+      "example_fr": "La chambre double est grande.",
+      "example_vi": "Phòng đôi rộng.",
+      "example_en": "The double room is big."
+    },
+    {
+      "french": "le petit-déjeuner inclus",
+      "meaning_vi": "bữa sáng kèm theo",
+      "meaning_en": "breakfast included",
+      "ipa": "/lə pəti deʒœne ɛ̃kly/",
+      "example_fr": "Le petit-déjeuner inclus est pratique.",
+      "example_vi": "Bữa sáng kèm theo rất tiện.",
+      "example_en": "Breakfast included is convenient."
+    },
+    {
+      "french": "un propriétaire",
+      "meaning_vi": "chủ nhà",
+      "meaning_en": "an owner, host",
+      "ipa": "/œ̃ pʁɔpʁijetɛʁ/",
+      "example_fr": "Le propriétaire est accueillant.",
+      "example_vi": "Chủ nhà mến khách.",
+      "example_en": "The owner is welcoming."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "La communication",
+  "category_key": "communication",
+  "category_sort_order": 130,
+  "category_vi": "Giao tiếp",
+  "category_en": "Communication",
+  "topic": "La pensée et l'argumentation",
+  "topic_slug": "pensee-argumentation",
+  "topic_sort_order": 10,
+  "topic_vi": "Tư duy và lập luận",
+  "topic_en": "Thinking and argumentation",
+  "subtopic": "Structurer son propos pour convaincre son interlocuteur",
+  "subtopic_key": "structurer-son-propos-pour-convaincre-son-interlocuteur",
+  "subtopic_sort_order": 50,
+  "subtopic_vi": "Sắp xếp lập luận để thuyết phục người nghe",
+  "subtopic_en": "Structuring one's argument to convince the listener",
+  "words": [
+    {
+      "french": "d'abord",
+      "meaning_vi": "trước hết",
+      "meaning_en": "first, first of all",
+      "ipa": "/da.bɔʁ/",
+      "example_fr": "D'abord, écoutons les faits.",
+      "example_vi": "Trước hết, hãy nghe các dữ kiện.",
+      "example_en": "First, let's hear the facts."
+    },
+    {
+      "french": "ensuite",
+      "meaning_vi": "sau đó",
+      "meaning_en": "then, next",
+      "ipa": "/ɑ̃.sɥit/",
+      "example_fr": "Ensuite, on décidera ensemble.",
+      "example_vi": "Sau đó, chúng ta sẽ cùng quyết định.",
+      "example_en": "Then, we'll decide together."
+    },
+    {
+      "french": "enfin",
+      "meaning_vi": "cuối cùng",
+      "meaning_en": "finally",
+      "ipa": "/ɑ̃.fɛ̃/",
+      "example_fr": "Enfin, je vous remercie tous.",
+      "example_vi": "Cuối cùng, tôi cảm ơn tất cả các bạn.",
+      "example_en": "Finally, I thank you all."
+    },
+    {
+      "french": "premièrement",
+      "meaning_vi": "thứ nhất",
+      "meaning_en": "firstly",
+      "ipa": "/pʁə.mjɛʁ.mɑ̃/",
+      "example_fr": "Premièrement, c'est trop cher.",
+      "example_vi": "Thứ nhất, nó quá đắt.",
+      "example_en": "Firstly, it's too expensive."
+    },
+    {
+      "french": "deuxièmement",
+      "meaning_vi": "thứ hai",
+      "meaning_en": "secondly",
+      "ipa": "/dø.zjɛm.mɑ̃/",
+      "example_fr": "Deuxièmement, c'est trop loin.",
+      "example_vi": "Thứ hai, nó quá xa.",
+      "example_en": "Secondly, it's too far."
+    },
+    {
+      "french": "en effet",
+      "meaning_vi": "thật vậy, quả thật",
+      "meaning_en": "indeed",
+      "ipa": "/ɑ̃.n‿e.fɛ/",
+      "example_fr": "En effet, les prix augmentent.",
+      "example_vi": "Quả thật, giá cả đang tăng.",
+      "example_en": "Indeed, prices are rising."
+    },
+    {
+      "french": "par exemple",
+      "meaning_vi": "ví dụ",
+      "meaning_en": "for example",
+      "ipa": "/paʁ ɛɡ.zɑ̃pl/",
+      "example_fr": "Prends un fruit, par exemple une pomme.",
+      "example_vi": "Hãy lấy một loại quả, ví dụ như táo.",
+      "example_en": "Take a fruit, for example an apple."
+    },
+    {
+      "french": "en revanche",
+      "meaning_vi": "ngược lại",
+      "meaning_en": "on the other hand",
+      "ipa": "/ɑ̃ ʁə.vɑ̃ʃ/",
+      "example_fr": "Il est petit ; en revanche, il est rapide.",
+      "example_vi": "Cậu ấy nhỏ con; ngược lại, cậu ấy rất nhanh.",
+      "example_en": "He is small; on the other hand, he is fast."
+    },
+    {
+      "french": "cependant",
+      "meaning_vi": "tuy nhiên",
+      "meaning_en": "however",
+      "ipa": "/sə.pɑ̃.dɑ̃/",
+      "example_fr": "Il pleut ; cependant, on sort.",
+      "example_vi": "Trời mưa; tuy nhiên, chúng ta vẫn đi.",
+      "example_en": "It's raining; however, we're going out."
+    },
+    {
+      "french": "donc",
+      "meaning_vi": "vì vậy, nên",
+      "meaning_en": "so, therefore",
+      "ipa": "/dɔ̃k/",
+      "example_fr": "Il est tard, donc on part.",
+      "example_vi": "Đã muộn, vì vậy chúng ta đi thôi.",
+      "example_en": "It's late, so we're leaving."
+    },
+    {
+      "french": "par conséquent",
+      "meaning_vi": "do đó",
+      "meaning_en": "consequently",
+      "ipa": "/paʁ kɔ̃.se.kɑ̃/",
+      "example_fr": "Il a neigé ; par conséquent, on reste.",
+      "example_vi": "Tuyết đã rơi; do đó, chúng ta ở lại.",
+      "example_en": "It snowed; consequently, we stay."
+    },
+    {
+      "french": "c'est pourquoi",
+      "meaning_vi": "đó là lý do vì sao",
+      "meaning_en": "that's why",
+      "ipa": "/sɛ puʁ.kwa/",
+      "example_fr": "Il est malade, c'est pourquoi il reste.",
+      "example_vi": "Anh ấy bị ốm, đó là lý do anh ấy ở lại.",
+      "example_en": "He's sick, that's why he's staying."
+    },
+    {
+      "french": "en conclusion",
+      "meaning_vi": "kết luận lại",
+      "meaning_en": "in conclusion",
+      "ipa": "/ɑ̃ kɔ̃.kly.zjɔ̃/",
+      "example_fr": "En conclusion, votons pour ce projet.",
+      "example_vi": "Kết luận lại, hãy bỏ phiếu cho dự án này.",
+      "example_en": "In conclusion, let's vote for this project."
+    },
+    {
+      "french": "pour conclure",
+      "meaning_vi": "để kết luận",
+      "meaning_en": "to conclude",
+      "ipa": "/puʁ kɔ̃.klyʁ/",
+      "example_fr": "Pour conclure, je dis oui.",
+      "example_vi": "Để kết luận, tôi đồng ý.",
+      "example_en": "To conclude, I say yes."
+    },
+    {
+      "french": "en résumé",
+      "meaning_vi": "tóm lại",
+      "meaning_en": "in short, in summary",
+      "ipa": "/ɑ̃ ʁe.zy.me/",
+      "example_fr": "En résumé, tout va bien.",
+      "example_vi": "Tóm lại, mọi thứ đều ổn.",
+      "example_en": "In short, all is well."
+    },
+    {
+      "french": "d'une part... d'autre part",
+      "meaning_vi": "một mặt... mặt khác",
+      "meaning_en": "on the one hand... on the other hand",
+      "ipa": "/dyn paʁ dotʁ paʁ/",
+      "example_fr": "D'une part c'est cher, d'autre part c'est utile.",
+      "example_vi": "Một mặt thì đắt, mặt khác thì hữu ích.",
+      "example_en": "On the one hand it's expensive, on the other it's useful."
+    },
+    {
+      "french": "non seulement... mais aussi",
+      "meaning_vi": "không chỉ... mà còn",
+      "meaning_en": "not only... but also",
+      "ipa": "/nɔ̃ sœl.mɑ̃ mɛ o.si/",
+      "example_fr": "Il est non seulement riche, mais aussi généreux.",
+      "example_vi": "Anh ấy không chỉ giàu mà còn hào phóng.",
+      "example_en": "He is not only rich but also generous."
+    },
+    {
+      "french": "convaincant",
+      "meaning_vi": "thuyết phục",
+      "meaning_en": "convincing",
+      "ipa": "/kɔ̃.vɛ̃.kɑ̃/",
+      "example_fr": "Son discours était convaincant.",
+      "example_vi": "Bài phát biểu của anh ấy rất thuyết phục.",
+      "example_en": "His speech was convincing."
+    },
+    {
+      "french": "prouver",
+      "meaning_vi": "chứng minh",
+      "meaning_en": "to prove",
+      "ipa": "/pʁu.ve/",
+      "example_fr": "Prouve ce que tu dis.",
+      "example_vi": "Hãy chứng minh điều bạn nói.",
+      "example_en": "Prove what you say."
+    }
+  ]
+}

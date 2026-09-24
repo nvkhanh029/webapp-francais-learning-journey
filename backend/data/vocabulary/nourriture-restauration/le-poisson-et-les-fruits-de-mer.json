@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "L'alimentation (1)",
+  "topic_slug": "alimentation-1",
+  "topic_sort_order": 10,
+  "topic_vi": "Thực phẩm (1)",
+  "topic_en": "Food (1)",
+  "subtopic": "Le poisson et les fruits de mer",
+  "subtopic_key": "le-poisson-et-les-fruits-de-mer",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Cá và hải sản",
+  "subtopic_en": "Fish and seafood",
+  "words": [
+    {
+      "french": "le poisson",
+      "meaning_vi": "cá",
+      "meaning_en": "fish",
+      "ipa": "/pwa.sɔ̃/",
+      "example_fr": "Le poisson grillé au citron.",
+      "example_vi": "Cá nướng với chanh.",
+      "example_en": "Grilled fish with lemon."
+    },
+    {
+      "french": "le saumon",
+      "meaning_vi": "cá hồi",
+      "meaning_en": "salmon",
+      "ipa": "/so.mɔ̃/",
+      "example_fr": "Le saumon frais est délicieux.",
+      "example_vi": "Cá hồi tươi rất ngon.",
+      "example_en": "Fresh salmon is delicious."
+    },
+    {
+      "french": "le thon",
+      "meaning_vi": "cá ngừ",
+      "meaning_en": "tuna",
+      "ipa": "/tɔ̃/",
+      "example_fr": "Le thon aux tomates.",
+      "example_vi": "Cá ngừ với cà chua.",
+      "example_en": "Tuna with tomatoes."
+    },
+    {
+      "french": "la morue",
+      "meaning_vi": "cá tuyết",
+      "meaning_en": "cod",
+      "ipa": "/mo.ʁy/",
+      "example_fr": "La morue à la crème.",
+      "example_vi": "Cá tuyết sốt kem.",
+      "example_en": "Cod with cream sauce."
+    },
+    {
+      "french": "le bar",
+      "meaning_vi": "cá vược",
+      "meaning_en": "sea bass",
+      "ipa": "/baʁ/",
+      "example_fr": "Le bar au four.",
+      "example_vi": "Cá vược đút lò.",
+      "example_en": "Sea bass in the oven."
+    },
+    {
+      "french": "la sardine",
+      "meaning_vi": "cá mòi",
+      "meaning_en": "sardine",
+      "ipa": "/saʁ.din/",
+      "example_fr": "Les sardines grillées sont bon marché.",
+      "example_vi": "Cá mòi nướng rẻ.",
+      "example_en": "Grilled sardines are cheap."
+    },
+    {
+      "french": "la truite",
+      "meaning_vi": "cá hồi sông",
+      "meaning_en": "trout",
+      "ipa": "/tʁɥit/",
+      "example_fr": "La truite aux amandes.",
+      "example_vi": "Cá hồi sông với hạnh nhân.",
+      "example_en": "Trout with almonds."
+    },
+    {
+      "french": "la sole",
+      "meaning_vi": "cá bơn",
+      "meaning_en": "sole",
+      "ipa": "/sɔl/",
+      "example_fr": "La sole est un poisson délicat.",
+      "example_vi": "Cá bơn là loại cá tinh tế.",
+      "example_en": "Sole is a delicate fish."
+    },
+    {
+      "french": "la crevette",
+      "meaning_vi": "tôm",
+      "meaning_en": "shrimp",
+      "ipa": "/kʁə.vɛt/",
+      "example_fr": "Les crevettes à l'ail.",
+      "example_vi": "Tôm sốt tỏi.",
+      "example_en": "Shrimp with garlic."
+    },
+    {
+      "french": "la moule",
+      "meaning_vi": "vẹm",
+      "meaning_en": "mussel",
+      "ipa": "/mul/",
+      "example_fr": "Les moules avec des frites.",
+      "example_vi": "Vẹm với khoai tây chiên.",
+      "example_en": "Mussels with French fries."
+    },
+    {
+      "french": "l'huître",
+      "meaning_vi": "hàu",
+      "meaning_en": "oyster",
+      "ipa": "/ɥitʁ/",
+      "example_fr": "Des huîtres pour les fêtes.",
+      "example_vi": "Hàu cho dịp lễ.",
+      "example_en": "Oysters for the holidays."
+    },
+    {
+      "french": "le calamar",
+      "meaning_vi": "mực",
+      "meaning_en": "squid",
+      "ipa": "/ka.la.maʁ/",
+      "example_fr": "Le calamar grillé est tendre.",
+      "example_vi": "Mực nướng mềm.",
+      "example_en": "Grilled squid is tender."
+    },
+    {
+      "french": "le crabe",
+      "meaning_vi": "cua",
+      "meaning_en": "crab",
+      "ipa": "/kʁab/",
+      "example_fr": "Le crabe à la mayonnaise.",
+      "example_vi": "Cua với sốt mayonnaise.",
+      "example_en": "Crab with mayonnaise."
+    },
+    {
+      "french": "le homard",
+      "meaning_vi": "tôm hùm",
+      "meaning_en": "lobster",
+      "ipa": "/ɔ.maʁ/",
+      "example_fr": "Le homard est un plat de luxe.",
+      "example_vi": "Tôm hùm là món sang trọng.",
+      "example_en": "Lobster is a luxury dish."
+    },
+    {
+      "french": "la coquille Saint-Jacques",
+      "meaning_vi": "sò điệp",
+      "meaning_en": "scallop",
+      "ipa": "/kɔ.kij sɛ̃ ʒak/",
+      "example_fr": "Des coquilles Saint-Jacques pour Noël.",
+      "example_vi": "Sò điệp cho Giáng sinh.",
+      "example_en": "Scallops for Christmas."
+    },
+    {
+      "french": "l'escargot",
+      "meaning_vi": "ốc sên",
+      "meaning_en": "snail",
+      "ipa": "/ɛs.kaʁ.ɡo/",
+      "example_fr": "Les escargots au beurre persillé.",
+      "example_vi": "Ốc sên sốt bơ mùi tây.",
+      "example_en": "Snails with parsley butter."
+    },
+    {
+      "french": "le poisson gras",
+      "meaning_vi": "cá béo",
+      "meaning_en": "oily fish",
+      "ipa": "/pwa.sɔ̃ ɡʁa/",
+      "example_fr": "Le thon est un poisson gras.",
+      "example_vi": "Cá ngừ là cá béo.",
+      "example_en": "Tuna is an oily fish."
+    },
+    {
+      "french": "la poissonnerie",
+      "meaning_vi": "tiệm cá",
+      "meaning_en": "fish shop",
+      "ipa": "/pwa.sɔn.ʁi/",
+      "example_fr": "La poissonnerie est ouverte.",
+      "example_vi": "Tiệm cá mở cửa.",
+      "example_en": "The fish market is open."
+    },
+    {
+      "french": "les fruits de mer",
+      "meaning_vi": "hải sản",
+      "meaning_en": "seafood",
+      "ipa": "/fʁɥi də mɛʁ/",
+      "example_fr": "Un plateau de fruits de mer frais.",
+      "example_vi": "Một khay hải sản tươi.",
+      "example_en": "Fresh seafood platter."
+    }
+  ]
+}
