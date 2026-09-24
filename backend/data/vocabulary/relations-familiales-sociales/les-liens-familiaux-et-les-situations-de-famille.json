@@ -1,0 +1,190 @@
+{
+  "category": "Les relations familiales et sociales",
+  "category_key": "relations-familiales-sociales",
+  "category_sort_order": 20,
+  "category_vi": "Quan hệ gia đình và xã hội",
+  "category_en": "Family and social relationships",
+  "topic": "La famille",
+  "topic_slug": "famille",
+  "topic_sort_order": 10,
+  "topic_vi": "Gia đình",
+  "topic_en": "Family",
+  "subtopic": "Les liens familiaux et les situations de famille",
+  "subtopic_key": "les-liens-familiaux-et-les-situations-de-famille",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Quan hệ huyết thống và hoàn cảnh gia đình",
+  "subtopic_en": "Family ties and family situations",
+  "words": [
+    {
+      "french": "le lien de parenté",
+      "meaning_vi": "quan hệ họ hàng",
+      "meaning_en": "family tie",
+      "ipa": "/lə ljɛ̃ də pa.ʁɑ̃.te/",
+      "example_fr": "Quel est votre lien de parenté avec lui ?",
+      "example_vi": "Bạn có quan hệ họ hàng gì với anh ấy?",
+      "example_en": "What is your family tie with him?"
+    },
+    {
+      "french": "l'époux",
+      "meaning_vi": "người chồng",
+      "meaning_en": "spouse (husband)",
+      "ipa": "/le.pu/",
+      "example_fr": "Mon époux travaille à Paris.",
+      "example_vi": "Chồng tôi làm việc ở Paris.",
+      "example_en": "My husband works in Paris."
+    },
+    {
+      "french": "l'épouse",
+      "meaning_vi": "người vợ",
+      "meaning_en": "spouse (wife)",
+      "ipa": "/le.puz/",
+      "example_fr": "Son épouse est médecin.",
+      "example_vi": "Vợ anh ấy là bác sĩ.",
+      "example_en": "His wife is a doctor."
+    },
+    {
+      "french": "le fils",
+      "meaning_vi": "con trai",
+      "meaning_en": "son",
+      "ipa": "/lə fis/",
+      "example_fr": "Leur fils a dix ans.",
+      "example_vi": "Con trai của họ mười tuổi.",
+      "example_en": "Their son is ten years old."
+    },
+    {
+      "french": "la fille",
+      "meaning_vi": "con gái",
+      "meaning_en": "daughter",
+      "ipa": "/la fij/",
+      "example_fr": "Leur fille étudie à Hanoï.",
+      "example_vi": "Con gái của họ học ở Hà Nội.",
+      "example_en": "Their daughter studies in Hanoi."
+    },
+    {
+      "french": "le frère",
+      "meaning_vi": "anh/em trai",
+      "meaning_en": "brother",
+      "ipa": "/lə fʁɛʁ/",
+      "example_fr": "Mon frère habite près de chez moi.",
+      "example_vi": "Anh trai tôi sống gần nhà tôi.",
+      "example_en": "My brother lives near me."
+    },
+    {
+      "french": "la sœur",
+      "meaning_vi": "chị/em gái",
+      "meaning_en": "sister",
+      "ipa": "/la sœʁ/",
+      "example_fr": "Ma sœur est plus jeune que moi.",
+      "example_vi": "Em gái tôi nhỏ tuổi hơn tôi.",
+      "example_en": "My sister is younger than me."
+    },
+    {
+      "french": "le grand-parent",
+      "meaning_vi": "ông bà",
+      "meaning_en": "grandparent",
+      "ipa": "/lə ɡʁɑ̃.pa.ʁɑ̃/",
+      "example_fr": "Les grands-parents gardent les enfants.",
+      "example_vi": "Ông bà trông các cháu.",
+      "example_en": "The grandparents look after the children."
+    },
+    {
+      "french": "le petit-enfant",
+      "meaning_vi": "cháu",
+      "meaning_en": "grandchild",
+      "ipa": "/lə pə.ti.tɑ̃.fɑ̃/",
+      "example_fr": "Elle a trois petits-enfants.",
+      "example_vi": "Bà ấy có ba đứa cháu.",
+      "example_en": "She has three grandchildren."
+    },
+    {
+      "french": "l'oncle",
+      "meaning_vi": "chú/cậu/bác trai",
+      "meaning_en": "uncle",
+      "ipa": "/lɔ̃kl/",
+      "example_fr": "Mon oncle vient dîner ce soir.",
+      "example_vi": "Chú tôi đến ăn tối tối nay.",
+      "example_en": "My uncle is coming for dinner tonight."
+    },
+    {
+      "french": "la tante",
+      "meaning_vi": "cô/dì/bác gái",
+      "meaning_en": "aunt",
+      "ipa": "/la tɑ̃t/",
+      "example_fr": "Ma tante habite à Marseille.",
+      "example_vi": "Dì tôi sống ở Marseille.",
+      "example_en": "My aunt lives in Marseille."
+    },
+    {
+      "french": "le cousin",
+      "meaning_vi": "anh/em họ (nam)",
+      "meaning_en": "cousin (male)",
+      "ipa": "/lə ku.zɛ̃/",
+      "example_fr": "Mon cousin est mon meilleur ami.",
+      "example_vi": "Anh họ tôi là bạn thân nhất của tôi.",
+      "example_en": "My cousin is my best friend."
+    },
+    {
+      "french": "la cousine",
+      "meaning_vi": "chị/em họ (nữ)",
+      "meaning_en": "cousin (female)",
+      "ipa": "/la ku.zin/",
+      "example_fr": "Ma cousine se marie en juin.",
+      "example_vi": "Chị họ tôi kết hôn vào tháng sáu.",
+      "example_en": "My cousin is getting married in June."
+    },
+    {
+      "french": "le veuvage",
+      "meaning_vi": "cảnh góa bụa",
+      "meaning_en": "widowhood",
+      "ipa": "/lə vø.vaʒ/",
+      "example_fr": "Après le décès de son mari, elle vit son veuvage avec courage.",
+      "example_vi": "Sau khi chồng mất, bà đối mặt với cảnh góa bụa một cách dũng cảm.",
+      "example_en": "After her husband's death, she faces widowhood with courage."
+    },
+    {
+      "french": "le divorce",
+      "meaning_vi": "sự ly hôn",
+      "meaning_en": "divorce",
+      "ipa": "/lə di.vɔʁs/",
+      "example_fr": "Après le divorce, ils restent amis.",
+      "example_vi": "Sau khi ly hôn, họ vẫn là bạn.",
+      "example_en": "After the divorce, they remain friends."
+    },
+    {
+      "french": "divorcer",
+      "meaning_vi": "ly hôn",
+      "meaning_en": "to divorce",
+      "ipa": "/di.vɔʁ.se/",
+      "example_fr": "Ils ont décidé de divorcer.",
+      "example_vi": "Họ đã quyết định ly hôn.",
+      "example_en": "They decided to divorce."
+    },
+    {
+      "french": "se marier",
+      "meaning_vi": "kết hôn",
+      "meaning_en": "to get married",
+      "ipa": "/sə ma.ʁje/",
+      "example_fr": "Ils vont se marier l'été prochain.",
+      "example_vi": "Họ sẽ kết hôn vào mùa hè tới.",
+      "example_en": "They will get married next summer."
+    },
+    {
+      "french": "le veuf",
+      "meaning_vi": "người góa vợ",
+      "meaning_en": "widower",
+      "ipa": "/lə vœf/",
+      "example_fr": "Il est veuf depuis deux ans.",
+      "example_vi": "Ông ấy góa vợ được hai năm rồi.",
+      "example_en": "He has been a widower for two years."
+    },
+    {
+      "french": "la veuve",
+      "meaning_vi": "người góa chồng",
+      "meaning_en": "widow",
+      "ipa": "/la vœv/",
+      "example_fr": "La veuve vit avec sa fille.",
+      "example_vi": "Bà góa sống cùng con gái.",
+      "example_en": "The widow lives with her daughter."
+    }
+  ]
+}

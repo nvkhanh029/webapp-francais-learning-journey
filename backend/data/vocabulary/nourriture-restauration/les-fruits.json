@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "L'alimentation (2)",
+  "topic_slug": "alimentation-2",
+  "topic_sort_order": 20,
+  "topic_vi": "Thực phẩm (2)",
+  "topic_en": "Food (2)",
+  "subtopic": "Les fruits",
+  "subtopic_key": "les-fruits",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Trái cây",
+  "subtopic_en": "Fruits",
+  "words": [
+    {
+      "french": "la pomme",
+      "meaning_vi": "quả táo",
+      "meaning_en": "apple",
+      "ipa": "/pɔm/",
+      "example_fr": "Une pomme rouge et juteuse.",
+      "example_vi": "Một quả táo đỏ mọng nước.",
+      "example_en": "A juicy red apple."
+    },
+    {
+      "french": "la poire",
+      "meaning_vi": "quả lê",
+      "meaning_en": "pear",
+      "ipa": "/pwaʁ/",
+      "example_fr": "Une poire jaune et mûre.",
+      "example_vi": "Một quả lê vàng chín.",
+      "example_en": "A ripe yellow pear."
+    },
+    {
+      "french": "la banane",
+      "meaning_vi": "chuối",
+      "meaning_en": "banana",
+      "ipa": "/ba.nan/",
+      "example_fr": "Des bananes sucrées.",
+      "example_vi": "Chuối ngọt.",
+      "example_en": "Sweet bananas."
+    },
+    {
+      "french": "l'orange",
+      "meaning_vi": "quả cam",
+      "meaning_en": "orange",
+      "ipa": "/ɔ.ʁɑ̃ʒ/",
+      "example_fr": "Une orange fraîche et juteuse.",
+      "example_vi": "Cam tươi mọng nước.",
+      "example_en": "Fresh juicy orange."
+    },
+    {
+      "french": "le citron",
+      "meaning_vi": "quả chanh",
+      "meaning_en": "lemon",
+      "ipa": "/si.tʁɔ̃/",
+      "example_fr": "Un citron jaune pour le thé.",
+      "example_vi": "Chanh vàng cho trà.",
+      "example_en": "Yellow lemon for tea."
+    },
+    {
+      "french": "la fraise",
+      "meaning_vi": "dâu tây",
+      "meaning_en": "strawberry",
+      "ipa": "/fʁɛz/",
+      "example_fr": "Des fraises rouges et sucrées.",
+      "example_vi": "Dâu tây đỏ ngọt.",
+      "example_en": "Sweet red strawberries."
+    },
+    {
+      "french": "la framboise",
+      "meaning_vi": "quả mâm xôi",
+      "meaning_en": "raspberry",
+      "ipa": "/fʁɑ̃.bwaz/",
+      "example_fr": "Des framboises avec de la crème.",
+      "example_vi": "Mâm xôi với kem.",
+      "example_en": "Raspberries with cream."
+    },
+    {
+      "french": "la myrtille",
+      "meaning_vi": "quả việt quất",
+      "meaning_en": "blueberry",
+      "ipa": "/miʁ.tij/",
+      "example_fr": "Des myrtilles au petit-déjeuner.",
+      "example_vi": "Việt quất cho bữa sáng.",
+      "example_en": "Blueberries for breakfast."
+    },
+    {
+      "french": "la cerise",
+      "meaning_vi": "quả anh đào",
+      "meaning_en": "cherry",
+      "ipa": "/sə.ʁiz/",
+      "example_fr": "Des cerises noires et sucrées.",
+      "example_vi": "Anh đào đen ngọt.",
+      "example_en": "Sweet black cherries."
+    },
+    {
+      "french": "la nectarine",
+      "meaning_vi": "quả xuân đào",
+      "meaning_en": "nectarine",
+      "ipa": "/nɛk.ta.ʁin/",
+      "example_fr": "Des nectarines sucrées en été.",
+      "example_vi": "Xuân đào ngọt vào mùa hè.",
+      "example_en": "Sweet nectarines in summer."
+    },
+    {
+      "french": "l'abricot",
+      "meaning_vi": "quả mơ",
+      "meaning_en": "apricot",
+      "ipa": "/a.bʁi.ko/",
+      "example_fr": "Un abricot bien mûr.",
+      "example_vi": "Một quả mơ chín.",
+      "example_en": "A ripe apricot."
+    },
+    {
+      "french": "le raisin",
+      "meaning_vi": "nho",
+      "meaning_en": "grapes",
+      "ipa": "/ʁɛ.zɛ̃/",
+      "example_fr": "Du raisin vert, s'il vous plaît.",
+      "example_vi": "Nho xanh.",
+      "example_en": "Green grapes, please."
+    },
+    {
+      "french": "le melon",
+      "meaning_vi": "dưa lưới",
+      "meaning_en": "melon",
+      "ipa": "/mə.lɔ̃/",
+      "example_fr": "Un melon bien sucré.",
+      "example_vi": "Dưa lưới ngọt.",
+      "example_en": "A sweet melon."
+    },
+    {
+      "french": "la pastèque",
+      "meaning_vi": "dưa hấu",
+      "meaning_en": "watermelon",
+      "ipa": "/pas.tɛk/",
+      "example_fr": "Une tranche de pastèque.",
+      "example_vi": "Một miếng dưa hấu.",
+      "example_en": "A slice of watermelon."
+    },
+    {
+      "french": "le kiwi",
+      "meaning_vi": "quả kiwi",
+      "meaning_en": "kiwi",
+      "ipa": "/ki.wi/",
+      "example_fr": "Un kiwi bien mûr.",
+      "example_vi": "Một quả kiwi chín.",
+      "example_en": "A ripe kiwi."
+    },
+    {
+      "french": "la mangue",
+      "meaning_vi": "quả xoài",
+      "meaning_en": "mango",
+      "ipa": "/mɑ̃ɡ/",
+      "example_fr": "La mangue est exotique.",
+      "example_vi": "Xoài rất lạ miệng.",
+      "example_en": "Mango is exotic."
+    },
+    {
+      "french": "l'ananas",
+      "meaning_vi": "quả dứa",
+      "meaning_en": "pineapple",
+      "ipa": "/a.na.nas/",
+      "example_fr": "Un jus d'ananas frais.",
+      "example_vi": "Nước dứa tươi.",
+      "example_en": "Fresh pineapple juice."
+    },
+    {
+      "french": "la prune",
+      "meaning_vi": "quả mận",
+      "meaning_en": "plum",
+      "ipa": "/pʁyn/",
+      "example_fr": "Deux prunes en dessert.",
+      "example_vi": "Hai quả mận làm tráng miệng.",
+      "example_en": "Two plums for dessert."
+    },
+    {
+      "french": "la noix",
+      "meaning_vi": "quả óc chó",
+      "meaning_en": "walnut",
+      "ipa": "/nwa/",
+      "example_fr": "Des noix avec du fromage.",
+      "example_vi": "Quả óc chó với phô mai.",
+      "example_en": "Walnuts with cheese."
+    }
+  ]
+}

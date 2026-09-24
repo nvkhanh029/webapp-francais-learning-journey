@@ -1,0 +1,190 @@
+{
+  "category": "L'éducation et le monde professionnel",
+  "category_key": "education-monde-professionnel",
+  "category_sort_order": 50,
+  "category_vi": "Giáo dục và thế giới nghề nghiệp",
+  "category_en": "Education and the professional world",
+  "topic": "Les activités professionnelles",
+  "topic_slug": "activites-professionnelles",
+  "topic_sort_order": 20,
+  "topic_vi": "Hoạt động nghề nghiệp",
+  "topic_en": "Professional activities",
+  "subtopic": "Les domaines d'activité",
+  "subtopic_key": "les-domaines-d-activite",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Lĩnh vực hoạt động",
+  "subtopic_en": "Fields of activity",
+  "words": [
+    {
+      "french": "la santé",
+      "meaning_vi": "y tế, sức khỏe",
+      "meaning_en": "health",
+      "ipa": "/sɑ̃te/",
+      "example_fr": "Elle travaille dans la santé.",
+      "example_vi": "Cô ấy làm trong ngành y tế.",
+      "example_en": "She works in healthcare."
+    },
+    {
+      "french": "l'éducation",
+      "meaning_vi": "giáo dục",
+      "meaning_en": "education",
+      "ipa": "/edykasjɔ̃/",
+      "example_fr": "Il travaille dans l'éducation.",
+      "example_vi": "Anh ấy làm trong giáo dục.",
+      "example_en": "He works in education."
+    },
+    {
+      "french": "le commerce",
+      "meaning_vi": "thương mại",
+      "meaning_en": "trade, commerce",
+      "ipa": "/kɔmɛʁs/",
+      "example_fr": "Le commerce se développe vite.",
+      "example_vi": "Thương mại phát triển nhanh.",
+      "example_en": "Trade is growing fast."
+    },
+    {
+      "french": "l'industrie",
+      "meaning_vi": "công nghiệp",
+      "meaning_en": "industry",
+      "ipa": "/ɛ̃dystʁi/",
+      "example_fr": "L'industrie crée des emplois.",
+      "example_vi": "Công nghiệp tạo việc làm.",
+      "example_en": "Industry creates jobs."
+    },
+    {
+      "french": "l'agriculture",
+      "meaning_vi": "nông nghiệp",
+      "meaning_en": "agriculture",
+      "ipa": "/aɡʁikyltyʁ/",
+      "example_fr": "L'agriculture est importante ici.",
+      "example_vi": "Nông nghiệp quan trọng ở đây.",
+      "example_en": "Agriculture is important here."
+    },
+    {
+      "french": "le bâtiment",
+      "meaning_vi": "xây dựng",
+      "meaning_en": "construction",
+      "ipa": "/batimɑ̃/",
+      "example_fr": "Il travaille dans le bâtiment.",
+      "example_vi": "Anh ấy làm trong xây dựng.",
+      "example_en": "He works in construction."
+    },
+    {
+      "french": "les transports",
+      "meaning_vi": "giao thông vận tải",
+      "meaning_en": "transport",
+      "ipa": "/tʁɑ̃spɔʁ/",
+      "example_fr": "Les transports emploient beaucoup.",
+      "example_vi": "Ngành vận tải tuyển nhiều người.",
+      "example_en": "Transport employs many people."
+    },
+    {
+      "french": "l'hôtellerie",
+      "meaning_vi": "ngành khách sạn",
+      "meaning_en": "hotel industry",
+      "ipa": "/otɛlʁi/",
+      "example_fr": "Elle travaille dans l'hôtellerie.",
+      "example_vi": "Cô ấy làm ngành khách sạn.",
+      "example_en": "She works in the hotel industry."
+    },
+    {
+      "french": "la restauration",
+      "meaning_vi": "ngành ăn uống",
+      "meaning_en": "catering",
+      "ipa": "/ʁɛstoʁasjɔ̃/",
+      "example_fr": "La restauration recrute souvent.",
+      "example_vi": "Ngành ăn uống thường tuyển dụng.",
+      "example_en": "Catering often recruits."
+    },
+    {
+      "french": "la banque",
+      "meaning_vi": "ngân hàng",
+      "meaning_en": "banking",
+      "ipa": "/bɑ̃k/",
+      "example_fr": "Il fait carrière dans la banque.",
+      "example_vi": "Anh ấy làm sự nghiệp ngân hàng.",
+      "example_en": "He has a career in banking."
+    },
+    {
+      "french": "l'informatique",
+      "meaning_vi": "tin học",
+      "meaning_en": "IT, computing",
+      "ipa": "/ɛ̃fɔʁmatik/",
+      "example_fr": "L'informatique offre des emplois.",
+      "example_vi": "Tin học mang lại nhiều việc làm.",
+      "example_en": "IT offers jobs."
+    },
+    {
+      "french": "la communication",
+      "meaning_vi": "truyền thông",
+      "meaning_en": "communication",
+      "ipa": "/kɔmynikasjɔ̃/",
+      "example_fr": "Elle travaille dans la communication.",
+      "example_vi": "Cô ấy làm trong truyền thông.",
+      "example_en": "She works in communications."
+    },
+    {
+      "french": "le tourisme",
+      "meaning_vi": "du lịch",
+      "meaning_en": "tourism",
+      "ipa": "/tuʁism/",
+      "example_fr": "Le tourisme est en plein essor.",
+      "example_vi": "Du lịch đang phát triển mạnh.",
+      "example_en": "Tourism is booming."
+    },
+    {
+      "french": "la culture",
+      "meaning_vi": "văn hóa",
+      "meaning_en": "culture",
+      "ipa": "/kyltyʁ/",
+      "example_fr": "Il travaille dans la culture.",
+      "example_vi": "Anh ấy làm trong văn hóa.",
+      "example_en": "He works in culture."
+    },
+    {
+      "french": "le sport",
+      "meaning_vi": "thể thao",
+      "meaning_en": "sport",
+      "ipa": "/spɔʁ/",
+      "example_fr": "Elle fait carrière dans le sport.",
+      "example_vi": "Cô ấy làm sự nghiệp thể thao.",
+      "example_en": "She has a career in sport."
+    },
+    {
+      "french": "la justice",
+      "meaning_vi": "tư pháp",
+      "meaning_en": "justice, law",
+      "ipa": "/ʒystis/",
+      "example_fr": "Il travaille dans la justice.",
+      "example_vi": "Anh ấy làm trong ngành tư pháp.",
+      "example_en": "He works in justice."
+    },
+    {
+      "french": "l'environnement",
+      "meaning_vi": "môi trường",
+      "meaning_en": "environment",
+      "ipa": "/ɑ̃viʁɔnmɑ̃/",
+      "example_fr": "Elle milite pour l'environnement.",
+      "example_vi": "Cô ấy hoạt động vì môi trường.",
+      "example_en": "She campaigns for the environment."
+    },
+    {
+      "french": "la recherche",
+      "meaning_vi": "nghiên cứu",
+      "meaning_en": "research",
+      "ipa": "/ʁəʃɛʁʃ/",
+      "example_fr": "Il fait de la recherche.",
+      "example_vi": "Anh ấy làm nghiên cứu.",
+      "example_en": "He does research."
+    },
+    {
+      "french": "les services",
+      "meaning_vi": "dịch vụ",
+      "meaning_en": "services",
+      "ipa": "/sɛʁvis/",
+      "example_fr": "Les services dominent l'économie.",
+      "example_vi": "Dịch vụ chiếm ưu thế trong kinh tế.",
+      "example_en": "Services dominate the economy."
+    }
+  ]
+}

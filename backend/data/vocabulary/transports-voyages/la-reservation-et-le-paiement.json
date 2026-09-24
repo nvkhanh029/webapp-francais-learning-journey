@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les hébergements de vacances",
+  "topic_slug": "hebergements-vacances",
+  "topic_sort_order": 40,
+  "topic_vi": "Nơi lưu trú kỳ nghỉ",
+  "topic_en": "Holiday accommodation",
+  "subtopic": "La réservation et le paiement",
+  "subtopic_key": "la-reservation-et-le-paiement",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Đặt phòng và thanh toán",
+  "subtopic_en": "Booking and payment",
+  "words": [
+    {
+      "french": "confirmer",
+      "meaning_vi": "xác nhận",
+      "meaning_en": "to confirm",
+      "ipa": "/kɔ̃fiʁme/",
+      "example_fr": "Confirme ta réservation.",
+      "example_vi": "Xác nhận đặt chỗ của bạn.",
+      "example_en": "Confirm your booking."
+    },
+    {
+      "french": "une réservation",
+      "meaning_vi": "sự đặt trước",
+      "meaning_en": "a booking",
+      "ipa": "/yn ʁezɛʁvasjɔ̃/",
+      "example_fr": "La réservation est confirmée.",
+      "example_vi": "Đặt phòng được xác nhận.",
+      "example_en": "The booking is confirmed."
+    },
+    {
+      "french": "annuler",
+      "meaning_vi": "hủy",
+      "meaning_en": "to cancel",
+      "ipa": "/anyle/",
+      "example_fr": "Annule deux jours avant.",
+      "example_vi": "Hủy trước hai ngày.",
+      "example_en": "Cancel two days before."
+    },
+    {
+      "french": "une annulation",
+      "meaning_vi": "sự hủy",
+      "meaning_en": "a cancellation",
+      "ipa": "/yn anylasjɔ̃/",
+      "example_fr": "L'annulation est gratuite.",
+      "example_vi": "Hủy miễn phí.",
+      "example_en": "The cancellation is free."
+    },
+    {
+      "french": "une disponibilité",
+      "meaning_vi": "chỗ trống",
+      "meaning_en": "availability",
+      "ipa": "/yn disponabilite/",
+      "example_fr": "Vérifie la disponibilité.",
+      "example_vi": "Kiểm tra chỗ trống.",
+      "example_en": "Check availability."
+    },
+    {
+      "french": "un acompte",
+      "meaning_vi": "tiền đặt cọc",
+      "meaning_en": "a deposit",
+      "ipa": "/œ̃n akɔ̃t/",
+      "example_fr": "Un acompte est demandé.",
+      "example_vi": "Cần đặt cọc trước.",
+      "example_en": "A deposit is required."
+    },
+    {
+      "french": "les arrhes",
+      "meaning_vi": "tiền đặt cọc",
+      "meaning_en": "a deposit, down payment",
+      "ipa": "/le zaʁ/",
+      "example_fr": "Verse les arrhes maintenant.",
+      "example_vi": "Trả tiền cọc ngay.",
+      "example_en": "Pay the deposit now."
+    },
+    {
+      "french": "le prix par nuit",
+      "meaning_vi": "giá mỗi đêm",
+      "meaning_en": "the price per night",
+      "ipa": "/lə pʁi paʁ nɥi/",
+      "example_fr": "Le prix par nuit est de 80 euros.",
+      "example_vi": "Giá mỗi đêm là 80 euro.",
+      "example_en": "The price per night is 80 euros."
+    },
+    {
+      "french": "payer par carte",
+      "meaning_vi": "trả bằng thẻ",
+      "meaning_en": "to pay by card",
+      "ipa": "/peje paʁ kaʁt/",
+      "example_fr": "Je peux payer par carte ?",
+      "example_vi": "Tôi trả bằng thẻ được không?",
+      "example_en": "Can I pay by card?"
+    },
+    {
+      "french": "payer en espèces",
+      "meaning_vi": "trả tiền mặt",
+      "meaning_en": "to pay in cash",
+      "ipa": "/peje ɑ̃n ɛspɛs/",
+      "example_fr": "Je paie en espèces.",
+      "example_vi": "Tôi trả tiền mặt.",
+      "example_en": "I pay in cash."
+    },
+    {
+      "french": "une facture",
+      "meaning_vi": "hóa đơn",
+      "meaning_en": "a bill, invoice",
+      "ipa": "/yn faktyʁ/",
+      "example_fr": "Voici la facture.",
+      "example_vi": "Đây là hóa đơn.",
+      "example_en": "Here is the bill."
+    },
+    {
+      "french": "un reçu",
+      "meaning_vi": "biên lai",
+      "meaning_en": "a receipt",
+      "ipa": "/œ̃ ʁəsy/",
+      "example_fr": "Demande un reçu.",
+      "example_vi": "Hãy xin biên lai.",
+      "example_en": "Ask for a receipt."
+    },
+    {
+      "french": "l'arrivée",
+      "meaning_vi": "giờ nhận phòng",
+      "meaning_en": "arrival, check-in",
+      "ipa": "/laʁive/",
+      "example_fr": "L'arrivée est à 15h.",
+      "example_vi": "Nhận phòng lúc 15 giờ.",
+      "example_en": "Check-in is at 3pm."
+    },
+    {
+      "french": "le départ",
+      "meaning_vi": "giờ trả phòng",
+      "meaning_en": "departure, check-out",
+      "ipa": "/lə depaʁ/",
+      "example_fr": "Le départ est à midi.",
+      "example_vi": "Trả phòng lúc trưa.",
+      "example_en": "Check-out is at noon."
+    },
+    {
+      "french": "un devis",
+      "meaning_vi": "bảng báo giá",
+      "meaning_en": "a quote",
+      "ipa": "/œ̃ dəvi/",
+      "example_fr": "Demande un devis.",
+      "example_vi": "Hãy xin bảng báo giá.",
+      "example_en": "Ask for a quote."
+    },
+    {
+      "french": "une confirmation",
+      "meaning_vi": "sự xác nhận",
+      "meaning_en": "a confirmation",
+      "ipa": "/yn kɔ̃fiʁmasjɔ̃/",
+      "example_fr": "La confirmation est par mail.",
+      "example_vi": "Xác nhận qua email.",
+      "example_en": "The confirmation is by email."
+    },
+    {
+      "french": "un formulaire",
+      "meaning_vi": "mẫu đơn",
+      "meaning_en": "a form",
+      "ipa": "/œ̃ fɔʁmylɛʁ/",
+      "example_fr": "Remplis le formulaire.",
+      "example_vi": "Điền vào mẫu.",
+      "example_en": "Fill in the form."
+    },
+    {
+      "french": "un remboursement",
+      "meaning_vi": "sự hoàn tiền",
+      "meaning_en": "a refund",
+      "ipa": "/œ̃ ʁɑ̃buʁsəmɑ̃/",
+      "example_fr": "Le remboursement est rapide.",
+      "example_vi": "Việc hoàn tiền rất nhanh.",
+      "example_en": "The refund is fast."
+    },
+    {
+      "french": "une taxe de séjour",
+      "meaning_vi": "thuế lưu trú",
+      "meaning_en": "a tourist tax",
+      "ipa": "/yn taks də seʒuʁ/",
+      "example_fr": "La taxe de séjour est incluse.",
+      "example_vi": "Đã gồm thuế lưu trú.",
+      "example_en": "Tourist tax is included."
+    }
+  ]
+}

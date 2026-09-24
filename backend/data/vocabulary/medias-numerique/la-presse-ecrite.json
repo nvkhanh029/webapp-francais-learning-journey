@@ -1,0 +1,190 @@
+{
+  "category": "Les médias et le numérique",
+  "category_key": "medias-numerique",
+  "category_sort_order": 120,
+  "category_vi": "Truyền thông và công nghệ số",
+  "category_en": "Media and digital technology",
+  "topic": "Les médias",
+  "topic_slug": "medias",
+  "topic_sort_order": 10,
+  "topic_vi": "Truyền thông",
+  "topic_en": "The media",
+  "subtopic": "La presse écrite",
+  "subtopic_key": "la-presse-ecrite",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Báo in",
+  "subtopic_en": "Print press",
+  "words": [
+    {
+      "french": "un journal",
+      "meaning_vi": "tờ báo",
+      "meaning_en": "a newspaper",
+      "ipa": "/œ̃ ʒuʁ.nal/",
+      "example_fr": "J'achète un journal chaque matin.",
+      "example_vi": "Tôi mua một tờ báo mỗi sáng.",
+      "example_en": "I buy a newspaper every morning."
+    },
+    {
+      "french": "un quotidien",
+      "meaning_vi": "nhật báo",
+      "meaning_en": "a daily paper",
+      "ipa": "/œ̃ ko.ti.djɛ̃/",
+      "example_fr": "Il lit un quotidien national.",
+      "example_vi": "Anh ấy đọc một tờ nhật báo quốc gia.",
+      "example_en": "He reads a national daily."
+    },
+    {
+      "french": "un hebdomadaire",
+      "meaning_vi": "tuần báo",
+      "meaning_en": "a weekly magazine",
+      "ipa": "/œ̃ ɛb.do.ma.dɛʁ/",
+      "example_fr": "Elle travaille pour un hebdomadaire.",
+      "example_vi": "Cô ấy làm việc cho một tuần báo.",
+      "example_en": "She works for a weekly."
+    },
+    {
+      "french": "un magazine",
+      "meaning_vi": "tạp chí",
+      "meaning_en": "a magazine",
+      "ipa": "/œ̃ ma.ɡa.zin/",
+      "example_fr": "Ce magazine parle de cinéma.",
+      "example_vi": "Tạp chí này nói về điện ảnh.",
+      "example_en": "This magazine is about cinema."
+    },
+    {
+      "french": "un kiosque à journaux",
+      "meaning_vi": "quầy bán báo",
+      "meaning_en": "a newsstand",
+      "ipa": "/œ̃ kjosk a ʒuʁ.no/",
+      "example_fr": "Le kiosque est près de la gare.",
+      "example_vi": "Quầy báo ở gần nhà ga.",
+      "example_en": "The newsstand is near the station."
+    },
+    {
+      "french": "le quotidien",
+      "meaning_vi": "nhật báo",
+      "meaning_en": "a daily newspaper",
+      "ipa": "/lə ko.ti.djɛ̃/",
+      "example_fr": "Le quotidien paraît chaque matin.",
+      "example_vi": "Nhật báo ra mỗi sáng.",
+      "example_en": "The daily appears every morning."
+    },
+    {
+      "french": "la rédaction",
+      "meaning_vi": "tòa soạn",
+      "meaning_en": "the editorial office",
+      "ipa": "/la ʁe.dak.sjɔ̃/",
+      "example_fr": "La rédaction prépare le numéro.",
+      "example_vi": "Tòa soạn đang chuẩn bị số báo.",
+      "example_en": "The editorial office prepares the issue."
+    },
+    {
+      "french": "un journaliste",
+      "meaning_vi": "nhà báo",
+      "meaning_en": "a journalist",
+      "ipa": "/œ̃ ʒuʁ.na.list/",
+      "example_fr": "Le journaliste pose des questions.",
+      "example_vi": "Nhà báo đặt câu hỏi.",
+      "example_en": "The journalist asks questions."
+    },
+    {
+      "french": "un éditorial",
+      "meaning_vi": "bài xã luận",
+      "meaning_en": "an editorial",
+      "ipa": "/œ̃n e.di.to.ʁjal/",
+      "example_fr": "L'éditorial commente l'actualité.",
+      "example_vi": "Bài xã luận bình luận thời sự.",
+      "example_en": "The editorial comments on the news."
+    },
+    {
+      "french": "la une",
+      "meaning_vi": "trang nhất",
+      "meaning_en": "the front page",
+      "ipa": "/la yn/",
+      "example_fr": "L'affaire est à la une.",
+      "example_vi": "Vụ việc lên trang nhất.",
+      "example_en": "The case is on the front page."
+    },
+    {
+      "french": "un gros titre",
+      "meaning_vi": "tít lớn",
+      "meaning_en": "a headline",
+      "ipa": "/œ̃ ɡʁo titʁ/",
+      "example_fr": "Le gros titre annonce la victoire.",
+      "example_vi": "Tít lớn thông báo chiến thắng.",
+      "example_en": "The headline announces the victory."
+    },
+    {
+      "french": "un article",
+      "meaning_vi": "bài báo",
+      "meaning_en": "an article",
+      "ipa": "/œ̃n aʁ.tikl/",
+      "example_fr": "Cet article est très intéressant.",
+      "example_vi": "Bài báo này rất thú vị.",
+      "example_en": "This article is very interesting."
+    },
+    {
+      "french": "une rubrique",
+      "meaning_vi": "chuyên mục",
+      "meaning_en": "a section / column",
+      "ipa": "/yn ʁy.bʁik/",
+      "example_fr": "Je lis la rubrique sport.",
+      "example_vi": "Tôi đọc chuyên mục thể thao.",
+      "example_en": "I read the sports section."
+    },
+    {
+      "french": "une chronique",
+      "meaning_vi": "chuyên mục bình luận",
+      "meaning_en": "a column",
+      "ipa": "/yn kʁo.nik/",
+      "example_fr": "Sa chronique paraît chaque lundi.",
+      "example_vi": "Chuyên mục của cô ấy ra mỗi thứ Hai.",
+      "example_en": "Her column appears every Monday."
+    },
+    {
+      "french": "un reportage",
+      "meaning_vi": "bài phóng sự",
+      "meaning_en": "a report",
+      "ipa": "/œ̃ ʁə.pɔʁ.taʒ/",
+      "example_fr": "Le reportage montre le village.",
+      "example_vi": "Bài phóng sự cho thấy ngôi làng.",
+      "example_en": "The report shows the village."
+    },
+    {
+      "french": "une interview",
+      "meaning_vi": "cuộc phỏng vấn",
+      "meaning_en": "an interview",
+      "ipa": "/yn ɛ̃.tɛʁ.vju/",
+      "example_fr": "L'interview dure dix minutes.",
+      "example_vi": "Cuộc phỏng vấn kéo dài mười phút.",
+      "example_en": "The interview lasts ten minutes."
+    },
+    {
+      "french": "un fait divers",
+      "meaning_vi": "tin vặt xã hội",
+      "meaning_en": "a news in brief",
+      "ipa": "/œ̃ fɛ di.vɛʁ/",
+      "example_fr": "Il lit les faits divers.",
+      "example_vi": "Anh ấy đọc tin vặt.",
+      "example_en": "He reads the news in brief."
+    },
+    {
+      "french": "un dessin de presse",
+      "meaning_vi": "tranh biếm họa báo chí",
+      "meaning_en": "a press cartoon",
+      "ipa": "/œ̃ de.sɛ̃ də pʁɛs/",
+      "example_fr": "Le dessin de presse fait rire.",
+      "example_vi": "Tranh biếm họa gây cười.",
+      "example_en": "The press cartoon is funny."
+    },
+    {
+      "french": "le tirage",
+      "meaning_vi": "số lượng in",
+      "meaning_en": "the print run",
+      "ipa": "/lə ti.ʁaʒ/",
+      "example_fr": "Le tirage augmente le dimanche.",
+      "example_vi": "Số lượng in tăng vào Chủ nhật.",
+      "example_en": "The print run rises on Sundays."
+    }
+  ]
+}

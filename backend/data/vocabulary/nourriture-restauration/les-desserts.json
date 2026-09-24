@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "La cuisine et la gastronomie",
+  "topic_slug": "cuisine-gastronomie",
+  "topic_sort_order": 30,
+  "topic_vi": "Nấu ăn và ẩm thực",
+  "topic_en": "Cooking and gastronomy",
+  "subtopic": "Les desserts",
+  "subtopic_key": "les-desserts",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Món tráng miệng",
+  "subtopic_en": "Desserts",
+  "words": [
+    {
+      "french": "le gâteau",
+      "meaning_vi": "bánh ngọt",
+      "meaning_en": "cake",
+      "ipa": "/ɡa.to/",
+      "example_fr": "Un gâteau au chocolat.",
+      "example_vi": "Một chiếc bánh sô-cô-la.",
+      "example_en": "A chocolate cake."
+    },
+    {
+      "french": "la tarte aux pommes",
+      "meaning_vi": "bánh táo",
+      "meaning_en": "apple tart",
+      "ipa": "/taʁt o pɔm/",
+      "example_fr": "Une tarte aux pommes.",
+      "example_vi": "Một chiếc bánh táo.",
+      "example_en": "An apple pie."
+    },
+    {
+      "french": "la crème brûlée",
+      "meaning_vi": "kem nướng crème brûlée",
+      "meaning_en": "crème brûlée",
+      "ipa": "/kʁɛm bʁy.le/",
+      "example_fr": "La crème brûlée est onctueuse.",
+      "example_vi": "Crème brûlée béo mịn.",
+      "example_en": "Crème brûlée is creamy."
+    },
+    {
+      "french": "la mousse au chocolat",
+      "meaning_vi": "mousse sô-cô-la",
+      "meaning_en": "chocolate mousse",
+      "ipa": "/mus o ʃo.ko.la/",
+      "example_fr": "La mousse au chocolat est légère.",
+      "example_vi": "Mousse sô-cô-la nhẹ xốp.",
+      "example_en": "Chocolate mousse is light."
+    },
+    {
+      "french": "la glace",
+      "meaning_vi": "kem",
+      "meaning_en": "ice cream",
+      "ipa": "/ɡlas/",
+      "example_fr": "Une glace à la vanille.",
+      "example_vi": "Kem vani.",
+      "example_en": "Vanilla ice cream."
+    },
+    {
+      "french": "le sorbet",
+      "meaning_vi": "kem sorbet",
+      "meaning_en": "sorbet",
+      "ipa": "/sɔʁ.bɛ/",
+      "example_fr": "Un sorbet aux fruits.",
+      "example_vi": "Kem sorbet trái cây.",
+      "example_en": "A fruit sorbet."
+    },
+    {
+      "french": "la crêpe",
+      "meaning_vi": "bánh crepe",
+      "meaning_en": "crepe",
+      "ipa": "/kʁɛp/",
+      "example_fr": "Des crêpes fines au sucre.",
+      "example_vi": "Bánh crepe mỏng với đường.",
+      "example_en": "Thin crepes with sugar."
+    },
+    {
+      "french": "la gaufre",
+      "meaning_vi": "bánh quế",
+      "meaning_en": "waffle",
+      "ipa": "/ɡofʁ/",
+      "example_fr": "Une gaufre moelleuse.",
+      "example_vi": "Bánh quế mềm.",
+      "example_en": "A soft waffle."
+    },
+    {
+      "french": "le pancake",
+      "meaning_vi": "bánh pancake",
+      "meaning_en": "pancake",
+      "ipa": "/pan.kɛk/",
+      "example_fr": "Des pancakes au sirop d'érable.",
+      "example_vi": "Bánh pancake với siro phong.",
+      "example_en": "Pancakes with maple syrup."
+    },
+    {
+      "french": "la profiterole",
+      "meaning_vi": "bánh su profiteroles",
+      "meaning_en": "profiterole",
+      "ipa": "/pʁɔ.fi.tʁɔl/",
+      "example_fr": "Des profiteroles au chocolat.",
+      "example_vi": "Bánh profiteroles sô-cô-la.",
+      "example_en": "Profiteroles with chocolate."
+    },
+    {
+      "french": "le Paris-Brest",
+      "meaning_vi": "bánh Paris-Brest",
+      "meaning_en": "Paris-Brest",
+      "ipa": "/pa.ʁi bʁɛst/",
+      "example_fr": "Un Paris-Brest au praliné.",
+      "example_vi": "Bánh Paris-Brest nhân praliné.",
+      "example_en": "A Paris-Brest with praline."
+    },
+    {
+      "french": "la tarte au citron",
+      "meaning_vi": "bánh tart chanh",
+      "meaning_en": "lemon tart",
+      "ipa": "/taʁt o si.tʁɔ̃/",
+      "example_fr": "Une tarte au citron.",
+      "example_vi": "Một chiếc bánh tart chanh.",
+      "example_en": "A lemon tart."
+    },
+    {
+      "french": "le flan",
+      "meaning_vi": "bánh flan",
+      "meaning_en": "flan",
+      "ipa": "/flɑ̃/",
+      "example_fr": "Un flan en dessert.",
+      "example_vi": "Một chiếc bánh flan tráng miệng.",
+      "example_en": "A flan for dessert."
+    },
+    {
+      "french": "le riz au lait",
+      "meaning_vi": "chè gạo sữa",
+      "meaning_en": "rice pudding",
+      "ipa": "/ʁi o lɛ/",
+      "example_fr": "Le riz au lait à la vanille.",
+      "example_vi": "Chè gạo sữa vani.",
+      "example_en": "Rice pudding with vanilla."
+    },
+    {
+      "french": "la salade de fruits",
+      "meaning_vi": "salad trái cây",
+      "meaning_en": "fruit salad",
+      "ipa": "/sa.lad də fʁɥi/",
+      "example_fr": "La salade de fruits est fraîche.",
+      "example_vi": "Salad trái cây tươi mát.",
+      "example_en": "Fruit salad is fresh."
+    },
+    {
+      "french": "le fondant au chocolat",
+      "meaning_vi": "bánh sô-cô-la tan chảy",
+      "meaning_en": "chocolate fondant",
+      "ipa": "/fɔ̃.dɑ̃ o ʃo.ko.la/",
+      "example_fr": "Un fondant au chocolat.",
+      "example_vi": "Bánh sô-cô-la tan chảy.",
+      "example_en": "A chocolate fondant."
+    },
+    {
+      "french": "le biscuit",
+      "meaning_vi": "bánh quy",
+      "meaning_en": "biscuit",
+      "ipa": "/bis.kɥi/",
+      "example_fr": "Un petit biscuit sec.",
+      "example_vi": "Một chiếc bánh quy khô.",
+      "example_en": "A small dry biscuit."
+    },
+    {
+      "french": "la crème chantilly",
+      "meaning_vi": "kem tươi chantilly",
+      "meaning_en": "whipped cream",
+      "ipa": "/kʁɛm ʃɑ̃.ti.ji/",
+      "example_fr": "De la crème chantilly dessus.",
+      "example_vi": "Kem chantilly bên trên.",
+      "example_en": "Whipped cream on top."
+    },
+    {
+      "french": "la friandise",
+      "meaning_vi": "kẹo ngọt",
+      "meaning_en": "sweet treat",
+      "ipa": "/fʁi.jɑ̃.diz/",
+      "example_fr": "Une friandise sucrée, s'il vous plaît.",
+      "example_vi": "Một món kẹo ngọt.",
+      "example_en": "A sweet treat, please."
+    }
+  ]
+}

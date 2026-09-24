@@ -1,0 +1,190 @@
+{
+  "category": "La vie sociale et économique",
+  "category_key": "vie-sociale-economique",
+  "category_sort_order": 110,
+  "category_vi": "Đời sống xã hội và kinh tế",
+  "category_en": "Social and economic life",
+  "topic": "La vie politique et citoyenne",
+  "topic_slug": "vie-politique-citoyenne",
+  "topic_sort_order": 20,
+  "topic_vi": "Đời sống chính trị và công dân",
+  "topic_en": "Political and civic life",
+  "subtopic": "Les partis politiques",
+  "subtopic_key": "les-partis-politiques",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Đảng chính trị",
+  "subtopic_en": "Political parties",
+  "words": [
+    {
+      "french": "un parti politique",
+      "meaning_vi": "đảng chính trị",
+      "meaning_en": "political party",
+      "ipa": "/paʁ.ti pɔ.li.tik/",
+      "example_fr": "Il soutient un parti politique.",
+      "example_vi": "Anh ấy ủng hộ một đảng chính trị.",
+      "example_en": "He supports a political party."
+    },
+    {
+      "french": "la gauche",
+      "meaning_vi": "cánh tả",
+      "meaning_en": "the left",
+      "ipa": "/ɡoʃ/",
+      "example_fr": "La gauche défend les ouvriers.",
+      "example_vi": "Cánh tả bảo vệ công nhân.",
+      "example_en": "The left defends workers."
+    },
+    {
+      "french": "la droite",
+      "meaning_vi": "cánh hữu",
+      "meaning_en": "the right",
+      "ipa": "/dʁwat/",
+      "example_fr": "La droite parle d'économie.",
+      "example_vi": "Cánh hữu nói về kinh tế.",
+      "example_en": "The right talks about economy."
+    },
+    {
+      "french": "le centre",
+      "meaning_vi": "trung dung",
+      "meaning_en": "the center",
+      "ipa": "/sɑ̃tʁ/",
+      "example_fr": "Le centre cherche un accord.",
+      "example_vi": "Trung dung tìm kiếm thỏa thuận.",
+      "example_en": "The center seeks agreement."
+    },
+    {
+      "french": "l'écologie (f)",
+      "meaning_vi": "sinh thái, đảng xanh",
+      "meaning_en": "ecology, Greens",
+      "ipa": "/e.kɔ.lɔ.ʒi/",
+      "example_fr": "L'écologie protège la nature.",
+      "example_vi": "Đảng xanh bảo vệ thiên nhiên.",
+      "example_en": "The Greens protect nature."
+    },
+    {
+      "french": "le programme",
+      "meaning_vi": "chương trình tranh cử",
+      "meaning_en": "program",
+      "ipa": "/pʁɔ.ɡʁam/",
+      "example_fr": "Le programme parle d'écoles.",
+      "example_vi": "Chương trình nói về trường học.",
+      "example_en": "The program talks about schools."
+    },
+    {
+      "french": "le candidat",
+      "meaning_vi": "ứng cử viên",
+      "meaning_en": "candidate",
+      "ipa": "/kɑ̃.di.da/",
+      "example_fr": "Le candidat visite la ville.",
+      "example_vi": "Ứng cử viên thăm thành phố.",
+      "example_en": "The candidate visits the city."
+    },
+    {
+      "french": "le militant",
+      "meaning_vi": "đảng viên tích cực",
+      "meaning_en": "activist",
+      "ipa": "/mi.li.tɑ̃/",
+      "example_fr": "Le militant distribue des tracts.",
+      "example_vi": "Đảng viên phát tờ rơi.",
+      "example_en": "The activist hands out leaflets."
+    },
+    {
+      "french": "la campagne électorale",
+      "meaning_vi": "chiến dịch tranh cử",
+      "meaning_en": "election campaign",
+      "ipa": "/kɑ̃.paɲ e.lɛk.tɔ.ʁal/",
+      "example_fr": "La campagne commence en mars.",
+      "example_vi": "Chiến dịch bắt đầu vào tháng ba.",
+      "example_en": "The campaign starts in March."
+    },
+    {
+      "french": "le débat",
+      "meaning_vi": "tranh luận",
+      "meaning_en": "debate",
+      "ipa": "/de.ba/",
+      "example_fr": "Le débat passe ce soir.",
+      "example_vi": "Cuộc tranh luận chiếu tối nay.",
+      "example_en": "The debate is on tonight."
+    },
+    {
+      "french": "le meeting",
+      "meaning_vi": "buổi mít tinh",
+      "meaning_en": "rally",
+      "ipa": "/mi.tiŋ/",
+      "example_fr": "Le meeting est plein de monde.",
+      "example_vi": "Buổi mít tinh rất đông.",
+      "example_en": "The rally is crowded."
+    },
+    {
+      "french": "l'opinion publique (f)",
+      "meaning_vi": "dư luận",
+      "meaning_en": "public opinion",
+      "ipa": "/ɔ.pi.njɔ̃ py.blik/",
+      "example_fr": "L'opinion publique change vite.",
+      "example_vi": "Dư luận thay đổi nhanh.",
+      "example_en": "Public opinion changes fast."
+    },
+    {
+      "french": "le sondage",
+      "meaning_vi": "thăm dò ý kiến",
+      "meaning_en": "poll",
+      "ipa": "/sɔ̃.daʒ/",
+      "example_fr": "Le sondage montre un match serré.",
+      "example_vi": "Thăm dò cho thấy cuộc đua sít sao.",
+      "example_en": "The poll shows a close race."
+    },
+    {
+      "french": "la coalition",
+      "meaning_vi": "liên minh",
+      "meaning_en": "coalition",
+      "ipa": "/kɔ.a.li.sjɔ̃/",
+      "example_fr": "Deux partis forment une coalition.",
+      "example_vi": "Hai đảng lập liên minh.",
+      "example_en": "Two parties form a coalition."
+    },
+    {
+      "french": "l'opposition (f)",
+      "meaning_vi": "đối lập",
+      "meaning_en": "opposition",
+      "ipa": "/ɔ.po.zi.sjɔ̃/",
+      "example_fr": "L'opposition critique le budget.",
+      "example_vi": "Phe đối lập chỉ trích ngân sách.",
+      "example_en": "The opposition criticizes the budget."
+    },
+    {
+      "french": "la majorité",
+      "meaning_vi": "đa số",
+      "meaning_en": "majority",
+      "ipa": "/ma.ʒɔ.ʁi.te/",
+      "example_fr": "La majorité vote la loi.",
+      "example_vi": "Đa số bỏ phiếu thông qua luật.",
+      "example_en": "The majority votes the law."
+    },
+    {
+      "french": "le programme électoral",
+      "meaning_vi": "cương lĩnh tranh cử",
+      "meaning_en": "electoral platform",
+      "ipa": "/lə pʁɔ.ɡʁam e.lɛk.tɔ.ʁal/",
+      "example_fr": "Le parti présente son programme électoral.",
+      "example_vi": "Đảng trình bày cương lĩnh tranh cử.",
+      "example_en": "The party presents its platform."
+    },
+    {
+      "french": "militer",
+      "meaning_vi": "hoạt động (trong đảng, hội)",
+      "meaning_en": "to campaign (activism)",
+      "ipa": "/mi.li.te/",
+      "example_fr": "Il milite pour l'écologie.",
+      "example_vi": "Anh ấy hoạt động vì môi trường.",
+      "example_en": "He campaigns for the environment."
+    },
+    {
+      "french": "le tract",
+      "meaning_vi": "tờ rơi (chính trị)",
+      "meaning_en": "leaflet",
+      "ipa": "/lə tʁakt/",
+      "example_fr": "Ils distribuent des tracts.",
+      "example_vi": "Họ phát tờ rơi.",
+      "example_en": "They hand out leaflets."
+    }
+  ]
+}

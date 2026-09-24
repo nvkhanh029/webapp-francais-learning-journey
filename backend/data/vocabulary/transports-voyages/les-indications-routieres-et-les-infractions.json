@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les transports privés",
+  "topic_slug": "transports-prives",
+  "topic_sort_order": 20,
+  "topic_vi": "Giao thông cá nhân",
+  "topic_en": "Private transport",
+  "subtopic": "Les indications routières et les infractions",
+  "subtopic_key": "les-indications-routieres-et-les-infractions",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Chỉ dẫn giao thông và vi phạm",
+  "subtopic_en": "Road signs and traffic violations",
+  "words": [
+    {
+      "french": "la signalisation",
+      "meaning_vi": "hệ thống biển báo",
+      "meaning_en": "signage",
+      "ipa": "/la siɲalizasjɔ̃/",
+      "example_fr": "Suis la signalisation.",
+      "example_vi": "Hãy theo biển báo.",
+      "example_en": "Follow the road signs."
+    },
+    {
+      "french": "un panneau stop",
+      "meaning_vi": "biển dừng",
+      "meaning_en": "a stop sign",
+      "ipa": "/œ̃ pano stɔp/",
+      "example_fr": "Arrête-toi au panneau stop.",
+      "example_vi": "Dừng ở biển stop.",
+      "example_en": "Stop at the sign."
+    },
+    {
+      "french": "un feu rouge",
+      "meaning_vi": "đèn đỏ",
+      "meaning_en": "a red light",
+      "ipa": "/œ̃ fø ʁuʒ/",
+      "example_fr": "Le feu est rouge.",
+      "example_vi": "Đèn đỏ.",
+      "example_en": "The light is red."
+    },
+    {
+      "french": "un feu vert",
+      "meaning_vi": "đèn xanh",
+      "meaning_en": "a green light",
+      "ipa": "/œ̃ fø vɛʁ/",
+      "example_fr": "Le feu est vert.",
+      "example_vi": "Đèn xanh.",
+      "example_en": "The light is green."
+    },
+    {
+      "french": "un cédez-le-passage",
+      "meaning_vi": "biển nhường đường",
+      "meaning_en": "a give-way sign",
+      "ipa": "/œ̃ sede lə pasaʒ/",
+      "example_fr": "Cédez le passage ici.",
+      "example_vi": "Nhường đường ở đây.",
+      "example_en": "Give way here."
+    },
+    {
+      "french": "un sens interdit",
+      "meaning_vi": "đường cấm",
+      "meaning_en": "no entry",
+      "ipa": "/œ̃ sɑ̃s ɛ̃tɛʁdi/",
+      "example_fr": "Sens interdit.",
+      "example_vi": "Đường cấm.",
+      "example_en": "No entry."
+    },
+    {
+      "french": "un sens unique",
+      "meaning_vi": "một chiều",
+      "meaning_en": "one way",
+      "ipa": "/œ̃ sɑ̃s ynik/",
+      "example_fr": "Rue en sens unique.",
+      "example_vi": "Đường một chiều.",
+      "example_en": "One-way street."
+    },
+    {
+      "french": "une limitation de vitesse",
+      "meaning_vi": "giới hạn tốc độ",
+      "meaning_en": "a speed limit",
+      "ipa": "/yn limitasjɔ̃ də vitɛs/",
+      "example_fr": "La vitesse est limitée à 50.",
+      "example_vi": "Tốc độ giới hạn 50.",
+      "example_en": "Speed is limited to 50."
+    },
+    {
+      "french": "une priorité",
+      "meaning_vi": "quyền ưu tiên",
+      "meaning_en": "priority, right of way",
+      "ipa": "/yn pʁijɔʁite/",
+      "example_fr": "La priorité est à droite.",
+      "example_vi": "Ưu tiên bên phải.",
+      "example_en": "Priority is on the right."
+    },
+    {
+      "french": "un passage piéton",
+      "meaning_vi": "vạch qua đường",
+      "meaning_en": "a pedestrian crossing",
+      "ipa": "/œ̃ pasaʒ pietɔ̃/",
+      "example_fr": "Ralentis au passage piéton.",
+      "example_vi": "Giảm tốc ở vạch qua đường.",
+      "example_en": "Slow down at the crosswalk."
+    },
+    {
+      "french": "griller un feu",
+      "meaning_vi": "vượt đèn đỏ",
+      "meaning_en": "to run a light",
+      "ipa": "/ɡʁije œ̃ fø/",
+      "example_fr": "Il a grillé un feu rouge.",
+      "example_vi": "Anh ấy vượt đèn đỏ.",
+      "example_en": "He drove through a red light."
+    },
+    {
+      "french": "un excès de vitesse",
+      "meaning_vi": "chạy quá tốc độ",
+      "meaning_en": "speeding",
+      "ipa": "/œ̃n ɛksɛ də vitɛs/",
+      "example_fr": "L'excès de vitesse coûte des points.",
+      "example_vi": "Chạy quá tốc độ bị trừ điểm.",
+      "example_en": "Speeding costs points."
+    },
+    {
+      "french": "le radar",
+      "meaning_vi": "máy bắn tốc độ",
+      "meaning_en": "a speed camera",
+      "ipa": "/lə ʁadaʁ/",
+      "example_fr": "Le radar est après le pont.",
+      "example_vi": "Máy bắn tốc độ ở sau cầu.",
+      "example_en": "The speed camera is after the bridge."
+    },
+    {
+      "french": "un point de permis",
+      "meaning_vi": "điểm bằng lái",
+      "meaning_en": "a licence point",
+      "ipa": "/œ̃ pwɛ̃ də pɛʁmi/",
+      "example_fr": "Il a perdu des points sur son permis.",
+      "example_vi": "Anh ấy bị trừ điểm bằng lái.",
+      "example_en": "He lost points on his licence."
+    },
+    {
+      "french": "l'alcoolémie",
+      "meaning_vi": "nồng độ cồn",
+      "meaning_en": "blood alcohol level",
+      "ipa": "/lalkolemi/",
+      "example_fr": "L'alcoolémie est contrôlée.",
+      "example_vi": "Nồng độ cồn bị kiểm tra.",
+      "example_en": "Alcohol level is controlled."
+    },
+    {
+      "french": "un contrôle",
+      "meaning_vi": "sự kiểm tra",
+      "meaning_en": "a check",
+      "ipa": "/œ̃ kɔ̃tʁol/",
+      "example_fr": "La police fait un contrôle.",
+      "example_vi": "Cảnh sát kiểm tra.",
+      "example_en": "The police do a check."
+    },
+    {
+      "french": "un panneau",
+      "meaning_vi": "biển báo",
+      "meaning_en": "a sign",
+      "ipa": "/œ̃ pano/",
+      "example_fr": "Regarde les panneaux.",
+      "example_vi": "Hãy nhìn biển báo.",
+      "example_en": "Look at the road signs."
+    },
+    {
+      "french": "tout droit",
+      "meaning_vi": "thẳng",
+      "meaning_en": "straight ahead",
+      "ipa": "/tu dʁwa/",
+      "example_fr": "Continue tout droit.",
+      "example_vi": "Đi thẳng.",
+      "example_en": "Go straight ahead."
+    },
+    {
+      "french": "un danger",
+      "meaning_vi": "nguy hiểm",
+      "meaning_en": "danger",
+      "ipa": "/œ̃ dɑ̃ʒe/",
+      "example_fr": "Danger, ralentissez.",
+      "example_vi": "Nguy hiểm, giảm tốc.",
+      "example_en": "Danger, slow down."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les transports privés",
+  "topic_slug": "transports-prives",
+  "topic_sort_order": 20,
+  "topic_vi": "Giao thông cá nhân",
+  "topic_en": "Private transport",
+  "subtopic": "L'entretien de la voiture",
+  "subtopic_key": "l-entretien-de-la-voiture",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Bảo dưỡng xe",
+  "subtopic_en": "Car maintenance",
+  "words": [
+    {
+      "french": "un moteur",
+      "meaning_vi": "động cơ",
+      "meaning_en": "an engine",
+      "ipa": "/œ̃ motœʁ/",
+      "example_fr": "Le moteur fait du bruit.",
+      "example_vi": "Động cơ kêu to.",
+      "example_en": "The engine is noisy."
+    },
+    {
+      "french": "un pneu",
+      "meaning_vi": "lốp xe",
+      "meaning_en": "a tyre",
+      "ipa": "/œ̃ pnø/",
+      "example_fr": "Vérifie la pression des pneus.",
+      "example_vi": "Kiểm tra áp suất lốp.",
+      "example_en": "Check the tyre pressure."
+    },
+    {
+      "french": "une roue",
+      "meaning_vi": "bánh xe",
+      "meaning_en": "a wheel",
+      "ipa": "/yn ʁu/",
+      "example_fr": "La roue est à plat.",
+      "example_vi": "Bánh xe bị xẹp.",
+      "example_en": "The wheel is flat."
+    },
+    {
+      "french": "une vidange",
+      "meaning_vi": "sự thay dầu",
+      "meaning_en": "an oil change",
+      "ipa": "/yn vidɑ̃ʒ/",
+      "example_fr": "Fais la vidange régulièrement.",
+      "example_vi": "Hãy thay dầu thường xuyên.",
+      "example_en": "Change the oil regularly."
+    },
+    {
+      "french": "une batterie",
+      "meaning_vi": "ắc quy",
+      "meaning_en": "a battery",
+      "ipa": "/yn batʁi/",
+      "example_fr": "La batterie est à plat.",
+      "example_vi": "Ắc quy hết điện.",
+      "example_en": "The battery is dead."
+    },
+    {
+      "french": "un embrayage",
+      "meaning_vi": "bộ ly hợp",
+      "meaning_en": "a clutch",
+      "ipa": "/œ̃n ɑ̃bʁɛjaʒ/",
+      "example_fr": "Vérifie ton embrayage.",
+      "example_vi": "Kiểm tra bộ ly hợp.",
+      "example_en": "Check your clutch."
+    },
+    {
+      "french": "un pare-brise",
+      "meaning_vi": "kính chắn gió",
+      "meaning_en": "a windscreen",
+      "ipa": "/œ̃ paʁbʁiz/",
+      "example_fr": "Le pare-brise est sale.",
+      "example_vi": "Kính chắn gió bẩn.",
+      "example_en": "The windscreen is dirty."
+    },
+    {
+      "french": "un réservoir",
+      "meaning_vi": "bình xăng",
+      "meaning_en": "a fuel tank",
+      "ipa": "/œ̃ ʁezɛʁvwaʁ/",
+      "example_fr": "Remplis le réservoir.",
+      "example_vi": "Đổ đầy bình xăng.",
+      "example_en": "Fill the fuel tank."
+    },
+    {
+      "french": "un amortisseur",
+      "meaning_vi": "bộ giảm xóc",
+      "meaning_en": "a shock absorber",
+      "ipa": "/œ̃n amɔʁtisœʁ/",
+      "example_fr": "Change les amortisseurs.",
+      "example_vi": "Thay bộ giảm xóc.",
+      "example_en": "Replace the shock absorbers."
+    },
+    {
+      "french": "un mécanicien",
+      "meaning_vi": "thợ máy",
+      "meaning_en": "a mechanic",
+      "ipa": "/œ̃ mekanisjɛ̃/",
+      "example_fr": "Le mécanicien est honnête.",
+      "example_vi": "Thợ máy rất thật thà.",
+      "example_en": "The mechanic is honest."
+    },
+    {
+      "french": "une révision",
+      "meaning_vi": "bảo dưỡng định kỳ",
+      "meaning_en": "a service",
+      "ipa": "/yn ʁevizjɔ̃/",
+      "example_fr": "La révision coûte 200 euros.",
+      "example_vi": "Bảo dưỡng tốn 200 euro.",
+      "example_en": "The service costs 200 euros."
+    },
+    {
+      "french": "une panne",
+      "meaning_vi": "sự hỏng xe",
+      "meaning_en": "a breakdown",
+      "ipa": "/yn pan/",
+      "example_fr": "On est en panne.",
+      "example_vi": "Chúng tôi bị hỏng xe.",
+      "example_en": "We have a breakdown."
+    },
+    {
+      "french": "un dépannage",
+      "meaning_vi": "cứu hộ xe",
+      "meaning_en": "breakdown assistance",
+      "ipa": "/œ̃ depanaʒ/",
+      "example_fr": "Appelle le dépannage.",
+      "example_vi": "Gọi cứu hộ.",
+      "example_en": "Call roadside assistance."
+    },
+    {
+      "french": "un capot",
+      "meaning_vi": "nắp ca-pô",
+      "meaning_en": "a bonnet, hood",
+      "ipa": "/œ̃ kapo/",
+      "example_fr": "Ouvre le capot.",
+      "example_vi": "Mở nắp ca-pô.",
+      "example_en": "Open the bonnet."
+    },
+    {
+      "french": "un coffre",
+      "meaning_vi": "cốp xe",
+      "meaning_en": "a boot, trunk",
+      "ipa": "/œ̃ kɔfʁ/",
+      "example_fr": "Ferme le coffre.",
+      "example_vi": "Đóng cốp xe.",
+      "example_en": "Close the boot."
+    },
+    {
+      "french": "un essuie-glace",
+      "meaning_vi": "cần gạt nước",
+      "meaning_en": "a windscreen wiper",
+      "ipa": "/œ̃n esɥiɡlas/",
+      "example_fr": "Change les essuie-glaces.",
+      "example_vi": "Thay cần gạt nước.",
+      "example_en": "Change the wipers."
+    },
+    {
+      "french": "une courroie de distribution",
+      "meaning_vi": "dây đai cam",
+      "meaning_en": "a timing belt",
+      "ipa": "/yn kuʁwa də distʁibysjɔ̃/",
+      "example_fr": "Change la courroie de distribution.",
+      "example_vi": "Thay dây đai cam.",
+      "example_en": "Replace the timing belt."
+    },
+    {
+      "french": "l'huile",
+      "meaning_vi": "dầu",
+      "meaning_en": "oil",
+      "ipa": "/lɥil/",
+      "example_fr": "Vérifie le niveau d'huile.",
+      "example_vi": "Kiểm tra mức dầu.",
+      "example_en": "Check the oil level."
+    },
+    {
+      "french": "un contrôle technique",
+      "meaning_vi": "đăng kiểm xe",
+      "meaning_en": "a roadworthiness test",
+      "ipa": "/œ̃ kɔ̃tʁol tɛknik/",
+      "example_fr": "Le contrôle technique est obligatoire.",
+      "example_vi": "Đăng kiểm là bắt buộc.",
+      "example_en": "The technical inspection is required."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les voyages et les migrations",
+  "topic_slug": "voyages-migrations",
+  "topic_sort_order": 30,
+  "topic_vi": "Du lịch và di cư",
+  "topic_en": "Travel and migration",
+  "subtopic": "Le climat",
+  "subtopic_key": "le-climat",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Khí hậu",
+  "subtopic_en": "Climate",
+  "words": [
+    {
+      "french": "le temps",
+      "meaning_vi": "thời tiết",
+      "meaning_en": "the weather",
+      "ipa": "/lə tɑ̃/",
+      "example_fr": "Le temps est beau.",
+      "example_vi": "Thời tiết đẹp.",
+      "example_en": "The weather is nice."
+    },
+    {
+      "french": "le climat",
+      "meaning_vi": "khí hậu",
+      "meaning_en": "the climate",
+      "ipa": "/lə klima/",
+      "example_fr": "Le climat est doux.",
+      "example_vi": "Khí hậu ôn hòa.",
+      "example_en": "The climate is mild."
+    },
+    {
+      "french": "le soleil",
+      "meaning_vi": "mặt trời, nắng",
+      "meaning_en": "the sun",
+      "ipa": "/lə sɔlɛj/",
+      "example_fr": "Il fait soleil.",
+      "example_vi": "Trời nắng.",
+      "example_en": "It is sunny."
+    },
+    {
+      "french": "la pluie",
+      "meaning_vi": "mưa",
+      "meaning_en": "rain",
+      "ipa": "/la plɥi/",
+      "example_fr": "Il pleut.",
+      "example_vi": "Trời đang mưa.",
+      "example_en": "It is raining."
+    },
+    {
+      "french": "le vent",
+      "meaning_vi": "gió",
+      "meaning_en": "wind",
+      "ipa": "/lə vɑ̃/",
+      "example_fr": "Il y a du vent.",
+      "example_vi": "Trời có gió.",
+      "example_en": "It is windy."
+    },
+    {
+      "french": "la neige",
+      "meaning_vi": "tuyết",
+      "meaning_en": "snow",
+      "ipa": "/la nɛʒ/",
+      "example_fr": "Il neige.",
+      "example_vi": "Trời đang có tuyết.",
+      "example_en": "It is snowing."
+    },
+    {
+      "french": "le brouillard",
+      "meaning_vi": "sương mù",
+      "meaning_en": "fog",
+      "ipa": "/lə bʁujaʁ/",
+      "example_fr": "Il y a du brouillard.",
+      "example_vi": "Trời có sương mù.",
+      "example_en": "There is fog."
+    },
+    {
+      "french": "un orage",
+      "meaning_vi": "cơn bão, giông",
+      "meaning_en": "a storm",
+      "ipa": "/œ̃n ɔʁaʒ/",
+      "example_fr": "Il y a un orage.",
+      "example_vi": "Có bão.",
+      "example_en": "There is a storm."
+    },
+    {
+      "french": "chaud",
+      "meaning_vi": "nóng",
+      "meaning_en": "hot",
+      "ipa": "/ʃo/",
+      "example_fr": "Il fait chaud.",
+      "example_vi": "Trời nóng.",
+      "example_en": "It is hot."
+    },
+    {
+      "french": "froid",
+      "meaning_vi": "lạnh",
+      "meaning_en": "cold",
+      "ipa": "/fʁwa/",
+      "example_fr": "Il fait froid.",
+      "example_vi": "Trời lạnh.",
+      "example_en": "It is cold."
+    },
+    {
+      "french": "le printemps",
+      "meaning_vi": "mùa xuân",
+      "meaning_en": "spring",
+      "ipa": "/lə pʁɛ̃tɑ̃/",
+      "example_fr": "Le printemps est doux.",
+      "example_vi": "Mùa xuân ôn hòa.",
+      "example_en": "Spring is mild."
+    },
+    {
+      "french": "l'été",
+      "meaning_vi": "mùa hè",
+      "meaning_en": "summer",
+      "ipa": "/lete/",
+      "example_fr": "L'été est chaud.",
+      "example_vi": "Mùa hè nóng.",
+      "example_en": "Summer is hot."
+    },
+    {
+      "french": "l'automne",
+      "meaning_vi": "mùa thu",
+      "meaning_en": "autumn",
+      "ipa": "/lotɔn/",
+      "example_fr": "L'automne est pluvieux.",
+      "example_vi": "Mùa thu nhiều mưa.",
+      "example_en": "Autumn is rainy."
+    },
+    {
+      "french": "l'hiver",
+      "meaning_vi": "mùa đông",
+      "meaning_en": "winter",
+      "ipa": "/livɛʁ/",
+      "example_fr": "L'hiver est froid.",
+      "example_vi": "Mùa đông lạnh.",
+      "example_en": "Winter is cold."
+    },
+    {
+      "french": "la température",
+      "meaning_vi": "nhiệt độ",
+      "meaning_en": "temperature",
+      "ipa": "/la tɑ̃peʁatyʁ/",
+      "example_fr": "La température baisse.",
+      "example_vi": "Nhiệt độ giảm.",
+      "example_en": "The temperature drops."
+    },
+    {
+      "french": "le ciel",
+      "meaning_vi": "bầu trời",
+      "meaning_en": "the sky",
+      "ipa": "/lə sjɛl/",
+      "example_fr": "Le ciel est bleu.",
+      "example_vi": "Bầu trời xanh.",
+      "example_en": "The sky is blue."
+    },
+    {
+      "french": "un nuage",
+      "meaning_vi": "đám mây",
+      "meaning_en": "a cloud",
+      "ipa": "/œ̃ nɥaʒ/",
+      "example_fr": "Regarde les nuages.",
+      "example_vi": "Nhìn mây kìa.",
+      "example_en": "Look at the clouds."
+    },
+    {
+      "french": "la météo",
+      "meaning_vi": "dự báo thời tiết",
+      "meaning_en": "the weather forecast",
+      "ipa": "/la meteo/",
+      "example_fr": "La météo est bonne.",
+      "example_vi": "Dự báo thời tiết tốt.",
+      "example_en": "The forecast is good."
+    },
+    {
+      "french": "le verglas",
+      "meaning_vi": "băng mỏng trên đường",
+      "meaning_en": "black ice",
+      "ipa": "/lə vɛʁɡla/",
+      "example_fr": "Il y a du verglas sur la route.",
+      "example_vi": "Đường có băng.",
+      "example_en": "There is ice on the road."
+    }
+  ]
+}

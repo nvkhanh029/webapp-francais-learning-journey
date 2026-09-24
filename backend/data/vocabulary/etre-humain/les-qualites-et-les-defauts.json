@@ -1,0 +1,190 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les caractéristiques morales",
+  "topic_slug": "caracteristiques-morales",
+  "topic_sort_order": 20,
+  "topic_vi": "Đặc điểm tính cách",
+  "topic_en": "Moral / personality characteristics",
+  "subtopic": "Les qualités et les défauts",
+  "subtopic_key": "les-qualites-et-les-defauts",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Ưu điểm và khuyết điểm",
+  "subtopic_en": "Qualities and flaws",
+  "words": [
+    {
+      "french": "gentil(le)",
+      "meaning_vi": "tốt bụng",
+      "meaning_en": "kind, nice",
+      "ipa": "/ʒɑ̃.ti / ʒɑ̃.tij/",
+      "example_fr": "Elle est très gentille.",
+      "example_vi": "Cô ấy rất tốt bụng.",
+      "example_en": "She is very kind."
+    },
+    {
+      "french": "méchant(e)",
+      "meaning_vi": "xấu tính, ác",
+      "meaning_en": "mean, nasty",
+      "ipa": "/me.ʃɑ̃ / me.ʃɑ̃t/",
+      "example_fr": "Il est méchant avec les autres.",
+      "example_vi": "Anh ấy xấu tính với người khác.",
+      "example_en": "He is mean to others."
+    },
+    {
+      "french": "courageux / courageuse",
+      "meaning_vi": "dũng cảm",
+      "meaning_en": "brave",
+      "ipa": "/ku.ʁa.ʒø / ku.ʁa.ʒøz/",
+      "example_fr": "C'est un homme courageux.",
+      "example_vi": "Anh ấy là người dũng cảm.",
+      "example_en": "He is a courageous man."
+    },
+    {
+      "french": "peureux / peureuse",
+      "meaning_vi": "nhát gan",
+      "meaning_en": "fearful",
+      "ipa": "/pø.ʁø / pø.ʁøz/",
+      "example_fr": "Elle est peureuse dans le noir.",
+      "example_vi": "Cô ấy nhát gan trong bóng tối.",
+      "example_en": "She is afraid of the dark."
+    },
+    {
+      "french": "travailleur / travailleuse",
+      "meaning_vi": "chăm chỉ",
+      "meaning_en": "hard-working",
+      "ipa": "/tʁa.va.jœʁ / tʁa.va.jøz/",
+      "example_fr": "Il est très travailleur.",
+      "example_vi": "Anh ấy rất chăm chỉ.",
+      "example_en": "He always works hard."
+    },
+    {
+      "french": "paresseux / paresseuse",
+      "meaning_vi": "lười biếng",
+      "meaning_en": "lazy",
+      "ipa": "/pa.ʁɛ.sø / pa.ʁɛ.søz/",
+      "example_fr": "Elle est paresseuse le dimanche.",
+      "example_vi": "Cô ấy lười biếng vào chủ nhật.",
+      "example_en": "She is lazy on Sundays."
+    },
+    {
+      "french": "sincère",
+      "meaning_vi": "chân thành",
+      "meaning_en": "sincere",
+      "ipa": "/sɛ̃.sɛʁ/",
+      "example_fr": "Il est sincère avec ses amis.",
+      "example_vi": "Anh ấy chân thành với bạn bè.",
+      "example_en": "He is sincere with his friends."
+    },
+    {
+      "french": "menteur / menteuse",
+      "meaning_vi": "nói dối",
+      "meaning_en": "lying, liar",
+      "ipa": "/mɑ̃.tœʁ / mɑ̃.tøz/",
+      "example_fr": "C'est un menteur.",
+      "example_vi": "Anh ta là kẻ nói dối.",
+      "example_en": "He is a liar."
+    },
+    {
+      "french": "modeste",
+      "meaning_vi": "khiêm tốn",
+      "meaning_en": "modest",
+      "ipa": "/mɔ.dɛst/",
+      "example_fr": "Elle est modeste malgré son succès.",
+      "example_vi": "Cô ấy khiêm tốn dù thành công.",
+      "example_en": "She is modest despite her success."
+    },
+    {
+      "french": "orgueilleux / orgueilleuse",
+      "meaning_vi": "kiêu ngạo",
+      "meaning_en": "proud, arrogant",
+      "ipa": "/ɔʁ.ɡœ.jø / ɔʁ.ɡœ.jøz/",
+      "example_fr": "Il est trop orgueilleux.",
+      "example_vi": "Anh ấy quá kiêu ngạo.",
+      "example_en": "He is too proud."
+    },
+    {
+      "french": "patient(e)",
+      "meaning_vi": "kiên nhẫn",
+      "meaning_en": "patient",
+      "ipa": "/pa.sjɑ̃ / pa.sjɑ̃t/",
+      "example_fr": "Elle est patiente avec les enfants.",
+      "example_vi": "Cô ấy kiên nhẫn với trẻ em.",
+      "example_en": "She is patient with children."
+    },
+    {
+      "french": "impatient(e)",
+      "meaning_vi": "thiếu kiên nhẫn",
+      "meaning_en": "impatient",
+      "ipa": "/ɛ̃.pa.sjɑ̃ / ɛ̃.pa.sjɑ̃t/",
+      "example_fr": "Il s'impatiente vite.",
+      "example_vi": "Anh ấy nhanh mất kiên nhẫn.",
+      "example_en": "He gets impatient quickly."
+    },
+    {
+      "french": "poli(e)",
+      "meaning_vi": "lịch sự",
+      "meaning_en": "polite",
+      "ipa": "/pɔ.li/",
+      "example_fr": "Il est poli avec tout le monde.",
+      "example_vi": "Anh ấy lịch sự với mọi người.",
+      "example_en": "He is polite to everyone."
+    },
+    {
+      "french": "impoli(e)",
+      "meaning_vi": "bất lịch sự",
+      "meaning_en": "rude",
+      "ipa": "/ɛ̃.pɔ.li/",
+      "example_fr": "Elle est impolie parfois.",
+      "example_vi": "Cô ấy đôi khi bất lịch sự.",
+      "example_en": "She is rude sometimes."
+    },
+    {
+      "french": "optimiste",
+      "meaning_vi": "lạc quan",
+      "meaning_en": "optimistic",
+      "ipa": "/ɔp.ti.mist/",
+      "example_fr": "Il est optimiste pour l'avenir.",
+      "example_vi": "Anh ấy lạc quan về tương lai.",
+      "example_en": "He is optimistic about the future."
+    },
+    {
+      "french": "pessimiste",
+      "meaning_vi": "bi quan",
+      "meaning_en": "pessimistic",
+      "ipa": "/pe.si.mist/",
+      "example_fr": "Elle est pessimiste aujourd'hui.",
+      "example_vi": "Hôm nay cô ấy bi quan.",
+      "example_en": "She is pessimistic today."
+    },
+    {
+      "french": "sérieux / sérieuse",
+      "meaning_vi": "nghiêm túc",
+      "meaning_en": "serious",
+      "ipa": "/se.ʁjø / se.ʁjøz/",
+      "example_fr": "C'est une personne sérieuse.",
+      "example_vi": "Anh ấy là người nghiêm túc.",
+      "example_en": "He is a serious person."
+    },
+    {
+      "french": "drôle",
+      "meaning_vi": "vui tính, buồn cười",
+      "meaning_en": "funny",
+      "ipa": "/dʁol/",
+      "example_fr": "Elle est drôle et joyeuse.",
+      "example_vi": "Cô ấy vui tính và vui vẻ.",
+      "example_en": "She is funny and cheerful."
+    },
+    {
+      "french": "têtu(e)",
+      "meaning_vi": "bướng bỉnh",
+      "meaning_en": "stubborn",
+      "ipa": "/te.ty/",
+      "example_fr": "Il est très têtu.",
+      "example_vi": "Anh ấy rất bướng bỉnh.",
+      "example_en": "He is very stubborn."
+    }
+  ]
+}

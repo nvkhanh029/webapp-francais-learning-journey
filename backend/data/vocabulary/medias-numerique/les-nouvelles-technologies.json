@@ -1,0 +1,190 @@
+{
+  "category": "Les médias et le numérique",
+  "category_key": "medias-numerique",
+  "category_sort_order": 120,
+  "category_vi": "Truyền thông và công nghệ số",
+  "category_en": "Media and digital technology",
+  "topic": "Le numérique",
+  "topic_slug": "numerique",
+  "topic_sort_order": 20,
+  "topic_vi": "Công nghệ số",
+  "topic_en": "Digital technology",
+  "subtopic": "Les nouvelles technologies",
+  "subtopic_key": "les-nouvelles-technologies",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Công nghệ mới",
+  "subtopic_en": "New technologies",
+  "words": [
+    {
+      "french": "les nouvelles technologies",
+      "meaning_vi": "công nghệ mới",
+      "meaning_en": "new technologies",
+      "ipa": "/le nu.vɛl tɛk.no.lo.ʒi/",
+      "example_fr": "Il adore les nouvelles technologies.",
+      "example_vi": "Anh ấy rất thích công nghệ mới.",
+      "example_en": "He loves new technologies."
+    },
+    {
+      "french": "l'intelligence artificielle",
+      "meaning_vi": "trí tuệ nhân tạo",
+      "meaning_en": "artificial intelligence",
+      "ipa": "/lɛ̃.te.li.ʒɑ̃s aʁ.ti.fi.sjɛl/",
+      "example_fr": "L'intelligence artificielle progresse.",
+      "example_vi": "Trí tuệ nhân tạo đang tiến bộ.",
+      "example_en": "Artificial intelligence is advancing."
+    },
+    {
+      "french": "un robot",
+      "meaning_vi": "người máy",
+      "meaning_en": "a robot",
+      "ipa": "/œ̃ ʁo.bo/",
+      "example_fr": "Le robot aide à l'usine.",
+      "example_vi": "Người máy hỗ trợ trong nhà máy.",
+      "example_en": "The robot helps in the factory."
+    },
+    {
+      "french": "un drone",
+      "meaning_vi": "thiết bị bay không người lái",
+      "meaning_en": "a drone",
+      "ipa": "/œ̃ dʁon/",
+      "example_fr": "Le drone filme le château.",
+      "example_vi": "Drone quay phim lâu đài.",
+      "example_en": "The drone films the castle."
+    },
+    {
+      "french": "la réalité virtuelle",
+      "meaning_vi": "thực tế ảo",
+      "meaning_en": "virtual reality",
+      "ipa": "/la ʁe.a.li.te viʁ.tɥɛl/",
+      "example_fr": "Le jeu utilise la réalité virtuelle.",
+      "example_vi": "Trò chơi dùng thực tế ảo.",
+      "example_en": "The game uses virtual reality."
+    },
+    {
+      "french": "la réalité augmentée",
+      "meaning_vi": "thực tế tăng cường",
+      "meaning_en": "augmented reality",
+      "ipa": "/la ʁe.a.li.te oɡ.mɑ̃.te/",
+      "example_fr": "L'appli montre la réalité augmentée.",
+      "example_vi": "Ứng dụng hiển thị thực tế tăng cường.",
+      "example_en": "The app shows augmented reality."
+    },
+    {
+      "french": "une imprimante 3D",
+      "meaning_vi": "máy in 3D",
+      "meaning_en": "a 3D printer",
+      "ipa": "/yn ɛ̃.pʁi.mɑ̃t tʁwa de/",
+      "example_fr": "L'imprimante 3D crée un objet.",
+      "example_vi": "Máy in 3D tạo ra một vật thể.",
+      "example_en": "The 3D printer creates an object."
+    },
+    {
+      "french": "une voiture autonome",
+      "meaning_vi": "xe tự lái",
+      "meaning_en": "a self-driving car",
+      "ipa": "/yn vwa.tyʁ o.to.nom/",
+      "example_fr": "La voiture autonome roule seule.",
+      "example_vi": "Xe tự lái tự di chuyển.",
+      "example_en": "The self-driving car drives alone."
+    },
+    {
+      "french": "un assistant vocal",
+      "meaning_vi": "trợ lý ảo giọng nói",
+      "meaning_en": "a voice assistant",
+      "ipa": "/œ̃n a.sis.tɑ̃ vo.kal/",
+      "example_fr": "L'assistant vocal répond vite.",
+      "example_vi": "Trợ lý giọng nói trả lời nhanh.",
+      "example_en": "The voice assistant answers fast."
+    },
+    {
+      "french": "la reconnaissance faciale",
+      "meaning_vi": "nhận diện khuôn mặt",
+      "meaning_en": "facial recognition",
+      "ipa": "/la ʁə.ko.nɛ.sɑ̃s fa.sjal/",
+      "example_fr": "Le téléphone a la reconnaissance faciale.",
+      "example_vi": "Điện thoại có nhận diện khuôn mặt.",
+      "example_en": "The phone has facial recognition."
+    },
+    {
+      "french": "une innovation",
+      "meaning_vi": "sự đổi mới",
+      "meaning_en": "an innovation",
+      "ipa": "/yn i.no.va.sjɔ̃/",
+      "example_fr": "C'est une innovation utile.",
+      "example_vi": "Đó là một đổi mới hữu ích.",
+      "example_en": "It's a useful innovation."
+    },
+    {
+      "french": "une start-up",
+      "meaning_vi": "công ty khởi nghiệp",
+      "meaning_en": "a start-up",
+      "ipa": "/yn staʁ.tœp/",
+      "example_fr": "Elle crée une start-up.",
+      "example_vi": "Cô ấy thành lập một start-up.",
+      "example_en": "She creates a start-up."
+    },
+    {
+      "french": "un laboratoire",
+      "meaning_vi": "phòng thí nghiệm",
+      "meaning_en": "a laboratory",
+      "ipa": "/œ̃ la.bo.ʁa.twaʁ/",
+      "example_fr": "Ils travaillent au laboratoire.",
+      "example_vi": "Họ làm việc trong phòng thí nghiệm.",
+      "example_en": "They work in the laboratory."
+    },
+    {
+      "french": "un brevet",
+      "meaning_vi": "bằng sáng chế",
+      "meaning_en": "a patent",
+      "ipa": "/œ̃ bʁə.vɛ/",
+      "example_fr": "Il dépose un brevet.",
+      "example_vi": "Anh ấy nộp đơn xin bằng sáng chế.",
+      "example_en": "He files a patent."
+    },
+    {
+      "french": "un prototype",
+      "meaning_vi": "nguyên mẫu",
+      "meaning_en": "a prototype",
+      "ipa": "/œ̃ pʁo.to.tip/",
+      "example_fr": "Le prototype fonctionne bien.",
+      "example_vi": "Nguyên mẫu hoạt động tốt.",
+      "example_en": "The prototype works well."
+    },
+    {
+      "french": "la haute technologie",
+      "meaning_vi": "công nghệ cao",
+      "meaning_en": "high tech",
+      "ipa": "/la ot tɛk.no.lo.ʒi/",
+      "example_fr": "Ce train, c'est de la haute technologie.",
+      "example_vi": "Tàu này là công nghệ cao.",
+      "example_en": "This train is high tech."
+    },
+    {
+      "french": "la révolution numérique",
+      "meaning_vi": "cuộc cách mạng số",
+      "meaning_en": "the digital revolution",
+      "ipa": "/la ʁe.vo.ly.sjɔ̃ ny.me.ʁik/",
+      "example_fr": "La révolution numérique change tout.",
+      "example_vi": "Cách mạng số thay đổi mọi thứ.",
+      "example_en": "The digital revolution changes everything."
+    },
+    {
+      "french": "un écran tactile",
+      "meaning_vi": "màn hình cảm ứng",
+      "meaning_en": "a touchscreen",
+      "ipa": "/œ̃n e.kʁɑ̃ tak.til/",
+      "example_fr": "L'écran tactile répond vite.",
+      "example_vi": "Màn hình cảm ứng phản hồi nhanh.",
+      "example_en": "The touchscreen responds fast."
+    },
+    {
+      "french": "un capteur",
+      "meaning_vi": "cảm biến",
+      "meaning_en": "a sensor",
+      "ipa": "/œ̃ kap.tœʁ/",
+      "example_fr": "Le capteur détecte la lumière.",
+      "example_vi": "Cảm biến phát hiện ánh sáng.",
+      "example_en": "The sensor detects light."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "Les relations familiales et sociales",
+  "category_key": "relations-familiales-sociales",
+  "category_sort_order": 20,
+  "category_vi": "Quan hệ gia đình và xã hội",
+  "category_en": "Family and social relationships",
+  "topic": "Les relations sociales",
+  "topic_slug": "relations-sociales",
+  "topic_sort_order": 20,
+  "topic_vi": "Quan hệ xã hội",
+  "topic_en": "Social relationships",
+  "subtopic": "Les relations amicales",
+  "subtopic_key": "les-relations-amicales",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Quan hệ bạn bè",
+  "subtopic_en": "Friendships",
+  "words": [
+    {
+      "french": "l'ami",
+      "meaning_vi": "bạn (nam)",
+      "meaning_en": "friend (male)",
+      "ipa": "/la.mi/",
+      "example_fr": "C'est un ami d'enfance.",
+      "example_vi": "Đó là một người bạn thời thơ ấu.",
+      "example_en": "He's a childhood friend."
+    },
+    {
+      "french": "l'amie",
+      "meaning_vi": "bạn (nữ)",
+      "meaning_en": "friend (female)",
+      "ipa": "/la.mi/",
+      "example_fr": "C'est ma meilleure amie.",
+      "example_vi": "Đó là bạn thân nhất của tôi.",
+      "example_en": "She's my best friend."
+    },
+    {
+      "french": "la complicité",
+      "meaning_vi": "sự thấu hiểu / đồng điệu",
+      "meaning_en": "bond / closeness",
+      "ipa": "/la kɔ̃.pli.si.te/",
+      "example_fr": "Il y a une vraie complicité entre ces deux amies.",
+      "example_vi": "Có sự đồng điệu thật sự giữa hai người bạn này.",
+      "example_en": "There is a real bond between these two friends."
+    },
+    {
+      "french": "le copain",
+      "meaning_vi": "bạn trai / cậu bạn",
+      "meaning_en": "buddy / boyfriend",
+      "ipa": "/lə ko.pɛ̃/",
+      "example_fr": "Je sors avec des copains ce soir.",
+      "example_vi": "Tối nay tôi đi chơi với mấy cậu bạn.",
+      "example_en": "I'm going out with buddies tonight."
+    },
+    {
+      "french": "la copine",
+      "meaning_vi": "bạn gái / cô bạn",
+      "meaning_en": "girlfriend / female buddy",
+      "ipa": "/la ko.pin/",
+      "example_fr": "Elle déjeune avec une copine.",
+      "example_vi": "Cô ấy ăn trưa với một cô bạn.",
+      "example_en": "She's having lunch with a girlfriend."
+    },
+    {
+      "french": "le voisin",
+      "meaning_vi": "hàng xóm (nam)",
+      "meaning_en": "neighbor (male)",
+      "ipa": "/lə vwa.zɛ̃/",
+      "example_fr": "Mon voisin est très gentil.",
+      "example_vi": "Hàng xóm của tôi rất tốt bụng.",
+      "example_en": "My neighbor is very kind."
+    },
+    {
+      "french": "la voisine",
+      "meaning_vi": "hàng xóm (nữ)",
+      "meaning_en": "neighbor (female)",
+      "ipa": "/la vwa.zin/",
+      "example_fr": "Ma voisine m'aide souvent.",
+      "example_vi": "Bà hàng xóm thường giúp tôi.",
+      "example_en": "My neighbor often helps me."
+    },
+    {
+      "french": "la connaissance",
+      "meaning_vi": "người quen",
+      "meaning_en": "acquaintance",
+      "ipa": "/la ko.ne.sɑ̃s/",
+      "example_fr": "C'est une simple connaissance.",
+      "example_vi": "Đó chỉ là một người quen.",
+      "example_en": "He's just an acquaintance."
+    },
+    {
+      "french": "la confiance",
+      "meaning_vi": "sự tin tưởng",
+      "meaning_en": "trust",
+      "ipa": "/la kɔ̃.fjɑ̃s/",
+      "example_fr": "J'ai totalement confiance en elle.",
+      "example_vi": "Tôi hoàn toàn tin tưởng cô ấy.",
+      "example_en": "I fully trust her."
+    },
+    {
+      "french": "se disputer",
+      "meaning_vi": "cãi nhau",
+      "meaning_en": "to argue",
+      "ipa": "/sə dis.py.te/",
+      "example_fr": "Ils se disputent pour un rien.",
+      "example_vi": "Họ cãi nhau vì chuyện nhỏ.",
+      "example_en": "They argue over nothing."
+    },
+    {
+      "french": "se réconcilier",
+      "meaning_vi": "làm hòa",
+      "meaning_en": "to make up",
+      "ipa": "/sə ʁe.kɔ̃.si.lje/",
+      "example_fr": "Ils se sont réconciliés hier.",
+      "example_vi": "Họ đã làm hòa hôm qua.",
+      "example_en": "They made up yesterday."
+    },
+    {
+      "french": "inviter",
+      "meaning_vi": "mời",
+      "meaning_en": "to invite",
+      "ipa": "/ɛ̃.vi.te/",
+      "example_fr": "J'invite mes amis à dîner.",
+      "example_vi": "Tôi mời bạn bè đến ăn tối.",
+      "example_en": "I invite my friends to dinner."
+    },
+    {
+      "french": "rendre visite",
+      "meaning_vi": "đến thăm",
+      "meaning_en": "to visit someone",
+      "ipa": "/ʁɑ̃dʁ vi.zit/",
+      "example_fr": "Nous rendons visite à nos amis.",
+      "example_vi": "Chúng tôi đến thăm bạn bè.",
+      "example_en": "We visit our friends."
+    },
+    {
+      "french": "la fête",
+      "meaning_vi": "bữa tiệc",
+      "meaning_en": "party",
+      "ipa": "/la fɛt/",
+      "example_fr": "Ils organisent une fête samedi.",
+      "example_vi": "Họ tổ chức một bữa tiệc vào thứ bảy.",
+      "example_en": "They're having a party on Saturday."
+    },
+    {
+      "french": "loyal",
+      "meaning_vi": "trung thành",
+      "meaning_en": "loyal",
+      "ipa": "/lwa.jal/",
+      "example_fr": "C'est un ami loyal sur qui on peut compter.",
+      "example_vi": "Đó là một người bạn trung thành mà mình có thể tin cậy.",
+      "example_en": "He is a loyal friend one can rely on."
+    },
+    {
+      "french": "solidaire",
+      "meaning_vi": "biết đoàn kết / tương trợ",
+      "meaning_en": "supportive / showing solidarity",
+      "ipa": "/sɔ.li.dɛʁ/",
+      "example_fr": "Elle est toujours solidaire avec ses amis.",
+      "example_vi": "Cô ấy luôn tương trợ bạn bè.",
+      "example_en": "She is always supportive of her friends."
+    },
+    {
+      "french": "soutenir",
+      "meaning_vi": "ủng hộ / động viên",
+      "meaning_en": "to support",
+      "ipa": "/su.tniʁ/",
+      "example_fr": "Il soutient ses amis en difficulté.",
+      "example_vi": "Anh ấy động viên bạn bè lúc khó khăn.",
+      "example_en": "He supports his friends in difficulty."
+    },
+    {
+      "french": "partager",
+      "meaning_vi": "chia sẻ",
+      "meaning_en": "to share",
+      "ipa": "/paʁ.ta.ʒe/",
+      "example_fr": "Ils partagent tout entre amis.",
+      "example_vi": "Họ chia sẻ mọi thứ với nhau.",
+      "example_en": "They share everything as friends."
+    },
+    {
+      "french": "la bande d'amis",
+      "meaning_vi": "nhóm bạn",
+      "meaning_en": "group of friends",
+      "ipa": "/la bɑ̃d da.mi/",
+      "example_fr": "Toute la bande d'amis part en vacances.",
+      "example_vi": "Cả nhóm bạn đi nghỉ cùng nhau.",
+      "example_en": "The whole group of friends goes on holiday."
+    }
+  ]
+}

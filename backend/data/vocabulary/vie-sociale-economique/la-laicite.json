@@ -1,0 +1,190 @@
+{
+  "category": "La vie sociale et économique",
+  "category_key": "vie-sociale-economique",
+  "category_sort_order": 110,
+  "category_vi": "Đời sống xã hội và kinh tế",
+  "category_en": "Social and economic life",
+  "topic": "La vie associative et religieuse",
+  "topic_slug": "vie-associative-religieuse",
+  "topic_sort_order": 30,
+  "topic_vi": "Đời sống hội đoàn và tôn giáo",
+  "topic_en": "Associative and religious life",
+  "subtopic": "La laïcité",
+  "subtopic_key": "la-laicite",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Tính thế tục",
+  "subtopic_en": "Secularism",
+  "words": [
+    {
+      "french": "la laïcité",
+      "meaning_vi": "tính thế tục (tách tôn giáo khỏi nhà nước)",
+      "meaning_en": "secularism",
+      "ipa": "/la.i.si.te/",
+      "example_fr": "La laïcité est une valeur française.",
+      "example_vi": "Tính thế tục là giá trị của Pháp.",
+      "example_en": "Secularism is a French value."
+    },
+    {
+      "french": "la neutralité",
+      "meaning_vi": "trung lập",
+      "meaning_en": "neutrality",
+      "ipa": "/nø.tʁa.li.te/",
+      "example_fr": "L'école reste neutre.",
+      "example_vi": "Trường học giữ trung lập.",
+      "example_en": "The school stays neutral."
+    },
+    {
+      "french": "la tolérance",
+      "meaning_vi": "khoan dung",
+      "meaning_en": "tolerance",
+      "ipa": "/tɔ.le.ʁɑ̃s/",
+      "example_fr": "La tolérance aide à vivre ensemble.",
+      "example_vi": "Khoan dung giúp sống chung với nhau.",
+      "example_en": "Tolerance helps living together."
+    },
+    {
+      "french": "le respect",
+      "meaning_vi": "tôn trọng",
+      "meaning_en": "respect",
+      "ipa": "/ʁɛs.pɛ/",
+      "example_fr": "Le respect est essentiel.",
+      "example_vi": "Tôn trọng là điều thiết yếu.",
+      "example_en": "Respect is essential."
+    },
+    {
+      "french": "la liberté de conscience",
+      "meaning_vi": "tự do lương tâm",
+      "meaning_en": "freedom of conscience",
+      "ipa": "/li.bɛʁ.te də kɔ̃.sjɑ̃s/",
+      "example_fr": "Chacun a la liberté de conscience.",
+      "example_vi": "Mỗi người có tự do lương tâm.",
+      "example_en": "Everyone has freedom of conscience."
+    },
+    {
+      "french": "la liberté d'expression",
+      "meaning_vi": "tự do ngôn luận",
+      "meaning_en": "freedom of expression",
+      "ipa": "/li.bɛʁ.te dɛks.pʁe.sjɔ̃/",
+      "example_fr": "La liberté d'expression est protégée.",
+      "example_vi": "Tự do ngôn luận được bảo vệ.",
+      "example_en": "Freedom of expression is protected."
+    },
+    {
+      "french": "l'école publique (f)",
+      "meaning_vi": "trường công",
+      "meaning_en": "public school",
+      "ipa": "/e.kɔl py.blik/",
+      "example_fr": "Mon fils va à l'école publique.",
+      "example_vi": "Con trai tôi học trường công.",
+      "example_en": "My son goes to public school."
+    },
+    {
+      "french": "l'école privée (f)",
+      "meaning_vi": "trường tư",
+      "meaning_en": "private school",
+      "ipa": "/e.kɔl pʁi.ve/",
+      "example_fr": "L'école privée est payante.",
+      "example_vi": "Trường tư phải đóng học phí.",
+      "example_en": "Private school costs money."
+    },
+    {
+      "french": "le signe religieux",
+      "meaning_vi": "biểu tượng tôn giáo",
+      "meaning_en": "religious sign",
+      "ipa": "/siɲ ʁə.li.ʒjø/",
+      "example_fr": "Les signes religieux sont limités à l'école.",
+      "example_vi": "Biểu tượng tôn giáo bị hạn chế ở trường.",
+      "example_en": "Religious signs are limited at school."
+    },
+    {
+      "french": "la loi de 1905",
+      "meaning_vi": "luật 1905 (tách giáo hội và nhà nước)",
+      "meaning_en": "1905 law",
+      "ipa": "/lwa də mil.nœf.sɑ̃.sɛ̃k/",
+      "example_fr": "La loi de 1905 sépare les Églises et l'État.",
+      "example_vi": "Luật 1905 tách giáo hội và nhà nước.",
+      "example_en": "The 1905 law separates Church and State."
+    },
+    {
+      "french": "le culte",
+      "meaning_vi": "việc thờ cúng",
+      "meaning_en": "worship",
+      "ipa": "/lə kylt/",
+      "example_fr": "Le culte est libre en France.",
+      "example_vi": "Việc thờ cúng được tự do ở Pháp.",
+      "example_en": "Worship is free in France."
+    },
+    {
+      "french": "l'athéisme",
+      "meaning_vi": "chủ nghĩa vô thần",
+      "meaning_en": "atheism",
+      "ipa": "/la.te.ism/",
+      "example_fr": "L'athéisme est une conviction personnelle.",
+      "example_vi": "Vô thần là một niềm tin cá nhân.",
+      "example_en": "Atheism is a personal conviction."
+    },
+    {
+      "french": "la liberté de culte",
+      "meaning_vi": "tự do tín ngưỡng",
+      "meaning_en": "freedom of worship",
+      "ipa": "/la li.bɛʁ.te də kylt/",
+      "example_fr": "La liberté de culte est garantie.",
+      "example_vi": "Tự do tín ngưỡng được đảm bảo.",
+      "example_en": "Freedom of worship is guaranteed."
+    },
+    {
+      "french": "la diversité",
+      "meaning_vi": "đa dạng",
+      "meaning_en": "diversity",
+      "ipa": "/di.vɛʁ.si.te/",
+      "example_fr": "La diversité est une richesse.",
+      "example_vi": "Đa dạng là một sự giàu có.",
+      "example_en": "Diversity is a richness."
+    },
+    {
+      "french": "le dialogue",
+      "meaning_vi": "đối thoại",
+      "meaning_en": "dialogue",
+      "ipa": "/dja.lɔɡ/",
+      "example_fr": "Le dialogue évite les conflits.",
+      "example_vi": "Đối thoại tránh xung đột.",
+      "example_en": "Dialogue avoids conflicts."
+    },
+    {
+      "french": "vivre ensemble",
+      "meaning_vi": "sống chung với nhau",
+      "meaning_en": "living together",
+      "ipa": "/vivʁ ɑ̃.sɑ̃bl/",
+      "example_fr": "Vivre ensemble demande du respect.",
+      "example_vi": "Sống chung cần sự tôn trọng.",
+      "example_en": "Living together needs respect."
+    },
+    {
+      "french": "la discrimination",
+      "meaning_vi": "phân biệt đối xử",
+      "meaning_en": "discrimination",
+      "ipa": "/dis.kʁi.mi.na.sjɔ̃/",
+      "example_fr": "La discrimination est interdite.",
+      "example_vi": "Phân biệt đối xử bị cấm.",
+      "example_en": "Discrimination is forbidden."
+    },
+    {
+      "french": "la liberté religieuse",
+      "meaning_vi": "tự do tôn giáo",
+      "meaning_en": "religious freedom",
+      "ipa": "/li.bɛʁ.te ʁə.li.ʒjøz/",
+      "example_fr": "La liberté religieuse est garantie.",
+      "example_vi": "Tự do tôn giáo được đảm bảo.",
+      "example_en": "Religious freedom is guaranteed."
+    },
+    {
+      "french": "l'État neutre (m)",
+      "meaning_vi": "nhà nước trung lập",
+      "meaning_en": "neutral state",
+      "ipa": "/e.ta nøtʁ/",
+      "example_fr": "L'État reste neutre face aux religions.",
+      "example_vi": "Nhà nước trung lập với các tôn giáo.",
+      "example_en": "The state stays neutral toward religions."
+    }
+  ]
+}

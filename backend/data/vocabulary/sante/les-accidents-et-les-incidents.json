@@ -1,0 +1,190 @@
+{
+  "category": "La santé",
+  "category_key": "sante",
+  "category_sort_order": 30,
+  "category_vi": "Sức khỏe",
+  "category_en": "Health",
+  "topic": "Les maladies, les accidents et la police",
+  "topic_slug": "maladies-accidents-police",
+  "topic_sort_order": 10,
+  "topic_vi": "Bệnh tật, tai nạn và cảnh sát",
+  "topic_en": "Illnesses, accidents and the police",
+  "subtopic": "Les accidents et les incidents",
+  "subtopic_key": "les-accidents-et-les-incidents",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Tai nạn và sự cố",
+  "subtopic_en": "Accidents and incidents",
+  "words": [
+    {
+      "french": "l'accident",
+      "meaning_vi": "vụ tai nạn",
+      "meaning_en": "the accident",
+      "ipa": "/laksidɑ̃/",
+      "example_fr": "Il y a eu un accident.",
+      "example_vi": "Đã xảy ra một vụ tai nạn.",
+      "example_en": "There was an accident."
+    },
+    {
+      "french": "l'incident",
+      "meaning_vi": "sự cố",
+      "meaning_en": "the incident",
+      "ipa": "/lɛ̃sidɑ̃/",
+      "example_fr": "Un petit incident est arrivé.",
+      "example_vi": "Một sự cố nhỏ đã xảy ra.",
+      "example_en": "A small incident occurred."
+    },
+    {
+      "french": "la chute",
+      "meaning_vi": "cú ngã",
+      "meaning_en": "the fall",
+      "ipa": "/la ʃyt/",
+      "example_fr": "Elle a fait une chute dans l'escalier.",
+      "example_vi": "Cô ấy bị ngã cầu thang.",
+      "example_en": "She fell down the stairs."
+    },
+    {
+      "french": "la fracture",
+      "meaning_vi": "chỗ gãy xương",
+      "meaning_en": "the fracture",
+      "ipa": "/la fʁaktyʁ/",
+      "example_fr": "Il s'est fracturé la jambe.",
+      "example_vi": "Anh ấy bị gãy chân.",
+      "example_en": "He broke his leg."
+    },
+    {
+      "french": "la blessure",
+      "meaning_vi": "vết thương",
+      "meaning_en": "the injury, wound",
+      "ipa": "/la blesyʁ/",
+      "example_fr": "La blessure guérit bien.",
+      "example_vi": "Vết thương đang lành tốt.",
+      "example_en": "The wound is healing."
+    },
+    {
+      "french": "la brûlure",
+      "meaning_vi": "vết bỏng",
+      "meaning_en": "the burn",
+      "ipa": "/la bʁylyʁ/",
+      "example_fr": "Elle a une brûlure à la main.",
+      "example_vi": "Cô ấy bị bỏng ở tay.",
+      "example_en": "She has a burn on her hand."
+    },
+    {
+      "french": "la coupure",
+      "meaning_vi": "vết cắt",
+      "meaning_en": "the cut",
+      "ipa": "/la kupyʁ/",
+      "example_fr": "Il a une coupure au doigt.",
+      "example_vi": "Anh ấy bị đứt tay.",
+      "example_en": "He has a cut on his finger."
+    },
+    {
+      "french": "le choc",
+      "meaning_vi": "cú sốc",
+      "meaning_en": "the shock",
+      "ipa": "/lə ʃɔk/",
+      "example_fr": "Il est en état de choc.",
+      "example_vi": "Anh ấy đang bị sốc.",
+      "example_en": "He is in shock."
+    },
+    {
+      "french": "les secours",
+      "meaning_vi": "đội cứu hộ",
+      "meaning_en": "the emergency services, rescue",
+      "ipa": "/le səkuʁ/",
+      "example_fr": "Appelez les secours !",
+      "example_vi": "Hãy gọi cứu hộ!",
+      "example_en": "Call for help!"
+    },
+    {
+      "french": "l'urgence",
+      "meaning_vi": "trường hợp khẩn cấp",
+      "meaning_en": "the emergency",
+      "ipa": "/lyʁʒɑ̃s/",
+      "example_fr": "C'est une urgence.",
+      "example_vi": "Đây là trường hợp khẩn cấp.",
+      "example_en": "This is an emergency."
+    },
+    {
+      "french": "l'ambulance",
+      "meaning_vi": "xe cứu thương",
+      "meaning_en": "the ambulance",
+      "ipa": "/lɑ̃bylɑ̃s/",
+      "example_fr": "L'ambulance arrive.",
+      "example_vi": "Xe cứu thương đang đến.",
+      "example_en": "The ambulance is coming."
+    },
+    {
+      "french": "l'hôpital",
+      "meaning_vi": "bệnh viện",
+      "meaning_en": "the hospital",
+      "ipa": "/lopital/",
+      "example_fr": "Il est à l'hôpital.",
+      "example_vi": "Anh ấy đang ở bệnh viện.",
+      "example_en": "He is at the hospital."
+    },
+    {
+      "french": "le pansement",
+      "meaning_vi": "miếng băng gạc",
+      "meaning_en": "the bandage",
+      "ipa": "/lə pɑ̃smɑ̃/",
+      "example_fr": "Mets un pansement.",
+      "example_vi": "Hãy dán băng gạc.",
+      "example_en": "Put on a bandage."
+    },
+    {
+      "french": "le médecin urgentiste",
+      "meaning_vi": "bác sĩ cấp cứu",
+      "meaning_en": "the emergency doctor",
+      "ipa": "/lə medsɛ̃ yʁʒɑ̃tist/",
+      "example_fr": "Elle appelle le médecin.",
+      "example_vi": "Cô ấy gọi bác sĩ.",
+      "example_en": "She calls the doctor."
+    },
+    {
+      "french": "le témoin",
+      "meaning_vi": "nhân chứng",
+      "meaning_en": "the witness",
+      "ipa": "/lə temwɛ̃/",
+      "example_fr": "Le témoin appelle la police.",
+      "example_vi": "Nhân chứng gọi cảnh sát.",
+      "example_en": "The witness calls the police."
+    },
+    {
+      "french": "la victime",
+      "meaning_vi": "nạn nhân",
+      "meaning_en": "the victim",
+      "ipa": "/la viktim/",
+      "example_fr": "La victime est saine et sauve.",
+      "example_vi": "Nạn nhân đã an toàn.",
+      "example_en": "The victim is safe."
+    },
+    {
+      "french": "l'embouteillage",
+      "meaning_vi": "vụ kẹt xe",
+      "meaning_en": "the traffic jam",
+      "ipa": "/lɑ̃butɛjaʒ/",
+      "example_fr": "Il y a un embouteillage après l'accident.",
+      "example_vi": "Có kẹt xe sau vụ tai nạn.",
+      "example_en": "There was a traffic jam after the accident."
+    },
+    {
+      "french": "dangereux",
+      "meaning_vi": "nguy hiểm",
+      "meaning_en": "dangerous",
+      "ipa": "/dɑ̃ʒʁø/",
+      "example_fr": "Conduis prudemment, c'est dangereux.",
+      "example_vi": "Hãy lái xe cẩn thận, nguy hiểm đấy.",
+      "example_en": "Drive carefully, it's dangerous."
+    },
+    {
+      "french": "l'appel à l'aide",
+      "meaning_vi": "lời kêu cứu",
+      "meaning_en": "the call for help",
+      "ipa": "/lapɛl a lɛd/",
+      "example_fr": "Appelle à l'aide vite !",
+      "example_vi": "Hãy gọi cứu giúp nhanh lên!",
+      "example_en": "Call for help quickly!"
+    }
+  ]
+}

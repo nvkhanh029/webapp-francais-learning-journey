@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "L'alimentation (1)",
+  "topic_slug": "alimentation-1",
+  "topic_sort_order": 10,
+  "topic_vi": "Thực phẩm (1)",
+  "topic_en": "Food (1)",
+  "subtopic": "La viande et la charcuterie",
+  "subtopic_key": "la-viande-et-la-charcuterie",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Thịt và thịt nguội",
+  "subtopic_en": "Meat and deli meats",
+  "words": [
+    {
+      "french": "le bœuf",
+      "meaning_vi": "thịt bò",
+      "meaning_en": "beef",
+      "ipa": "/bœf/",
+      "example_fr": "Le bœuf est cher aujourd'hui.",
+      "example_vi": "Thịt bò hôm nay đắt.",
+      "example_en": "Beef is expensive today."
+    },
+    {
+      "french": "le porc",
+      "meaning_vi": "thịt lợn",
+      "meaning_en": "pork",
+      "ipa": "/pɔʁ/",
+      "example_fr": "Le porc à la moutarde est savoureux.",
+      "example_vi": "Thịt lợn sốt mù tạt rất ngon.",
+      "example_en": "Pork with mustard is tasty."
+    },
+    {
+      "french": "le poulet",
+      "meaning_vi": "thịt gà",
+      "meaning_en": "chicken",
+      "ipa": "/pu.lɛ/",
+      "example_fr": "Le poulet rôti du dimanche.",
+      "example_vi": "Gà quay ngày Chủ nhật.",
+      "example_en": "Roast chicken on Sunday."
+    },
+    {
+      "french": "l'agneau",
+      "meaning_vi": "thịt cừu non",
+      "meaning_en": "lamb",
+      "ipa": "/a.ɲo/",
+      "example_fr": "L'agneau aux herbes est délicieux.",
+      "example_vi": "Thịt cừu non sốt thảo mộc rất ngon.",
+      "example_en": "Lamb with herbs is delicious."
+    },
+    {
+      "french": "le veau",
+      "meaning_vi": "thịt bê",
+      "meaning_en": "veal",
+      "ipa": "/vo/",
+      "example_fr": "Le veau est très tendre.",
+      "example_vi": "Thịt bê rất mềm.",
+      "example_en": "Veal is very tender."
+    },
+    {
+      "french": "le canard",
+      "meaning_vi": "thịt vịt",
+      "meaning_en": "duck",
+      "ipa": "/ka.naʁ/",
+      "example_fr": "Le canard est ma viande préférée.",
+      "example_vi": "Thịt vịt là món thịt tôi thích nhất.",
+      "example_en": "Duck is my favourite meat."
+    },
+    {
+      "french": "le steak",
+      "meaning_vi": "bít tết",
+      "meaning_en": "steak",
+      "ipa": "/stɛk/",
+      "example_fr": "Un steak grillé, s'il vous plaît.",
+      "example_vi": "Một miếng bít tết nướng.",
+      "example_en": "A grilled steak, please."
+    },
+    {
+      "french": "la saucisse",
+      "meaning_vi": "xúc xích",
+      "meaning_en": "sausage",
+      "ipa": "/so.sis/",
+      "example_fr": "Des saucisses avec de la purée.",
+      "example_vi": "Xúc xích với khoai tây nghiền.",
+      "example_en": "Sausages with mashed potatoes."
+    },
+    {
+      "french": "le jambon",
+      "meaning_vi": "giăm bông",
+      "meaning_en": "ham",
+      "ipa": "/ʒɑ̃.bɔ̃/",
+      "example_fr": "Un sandwich jambon-beurre.",
+      "example_vi": "Bánh mì kẹp giăm bông bơ.",
+      "example_en": "Ham and butter sandwich."
+    },
+    {
+      "french": "le jambon sec",
+      "meaning_vi": "giăm bông khô",
+      "meaning_en": "dry-cured ham",
+      "ipa": "/ʒɑ̃.bɔ̃ sɛk/",
+      "example_fr": "Le jambon sec est salé.",
+      "example_vi": "Giăm bông khô mặn.",
+      "example_en": "Dry-cured ham is salty."
+    },
+    {
+      "french": "le saucisson",
+      "meaning_vi": "xúc xích khô",
+      "meaning_en": "dry sausage",
+      "ipa": "/so.si.sɔ̃/",
+      "example_fr": "Du saucisson sec pour l'apéritif.",
+      "example_vi": "Xúc xích khô cho món khai vị.",
+      "example_en": "Dry sausage for the aperitif."
+    },
+    {
+      "french": "le boudin",
+      "meaning_vi": "dồi huyết",
+      "meaning_en": "blood sausage",
+      "ipa": "/bu.dɛ̃/",
+      "example_fr": "J'aime le boudin noir aux pommes.",
+      "example_vi": "Tôi thích dồi huyết với táo.",
+      "example_en": "I like black pudding with apples."
+    },
+    {
+      "french": "le pâté",
+      "meaning_vi": "pa-tê",
+      "meaning_en": "pâté",
+      "ipa": "/pa.te/",
+      "example_fr": "Le pâté est fait maison.",
+      "example_vi": "Pa-tê làm tại nhà.",
+      "example_en": "The pâté is homemade."
+    },
+    {
+      "french": "les rillettes",
+      "meaning_vi": "thịt hầm xé rillettes",
+      "meaning_en": "rillettes",
+      "ipa": "/ʁi.jɛt/",
+      "example_fr": "Les rillettes sur du pain grillé sont excellentes.",
+      "example_vi": "Rillettes trên bánh mì nướng rất ngon.",
+      "example_en": "Rillettes on toast are excellent."
+    },
+    {
+      "french": "le lard",
+      "meaning_vi": "thịt xông khói",
+      "meaning_en": "bacon",
+      "ipa": "/laʁ/",
+      "example_fr": "Du lard grillé au petit-déjeuner.",
+      "example_vi": "Thịt xông khói nướng cho bữa sáng.",
+      "example_en": "Grilled bacon for breakfast."
+    },
+    {
+      "french": "la dinde",
+      "meaning_vi": "gà tây",
+      "meaning_en": "turkey",
+      "ipa": "/dɛ̃d/",
+      "example_fr": "La dinde rôtie pour Noël.",
+      "example_vi": "Gà tây quay cho Giáng sinh.",
+      "example_en": "Roast turkey for Christmas."
+    },
+    {
+      "french": "la viande hachée",
+      "meaning_vi": "thịt băm",
+      "meaning_en": "minced meat",
+      "ipa": "/vjɑ̃d a.ʃe/",
+      "example_fr": "De la viande hachée pour la sauce.",
+      "example_vi": "Thịt băm cho nước sốt.",
+      "example_en": "Minced meat for the sauce."
+    },
+    {
+      "french": "la boucherie",
+      "meaning_vi": "tiệm thịt",
+      "meaning_en": "butcher shop",
+      "ipa": "/buʃ.ʁi/",
+      "example_fr": "La boucherie est fermée.",
+      "example_vi": "Tiệm thịt đóng cửa.",
+      "example_en": "The butcher shop is closed."
+    },
+    {
+      "french": "la charcuterie",
+      "meaning_vi": "thịt nguội",
+      "meaning_en": "deli meats",
+      "ipa": "/ʃaʁ.ky.tʁi/",
+      "example_fr": "La planche de charcuterie est généreuse.",
+      "example_vi": "Khay thịt nguội đầy đặn.",
+      "example_en": "The charcuterie board is generous."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "L'éducation et le monde professionnel",
+  "category_key": "education-monde-professionnel",
+  "category_sort_order": 50,
+  "category_vi": "Giáo dục và thế giới nghề nghiệp",
+  "category_en": "Education and the professional world",
+  "topic": "Les activités professionnelles",
+  "topic_slug": "activites-professionnelles",
+  "topic_sort_order": 20,
+  "topic_vi": "Hoạt động nghề nghiệp",
+  "topic_en": "Professional activities",
+  "subtopic": "Les lieux de travail",
+  "subtopic_key": "les-lieux-de-travail",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Nơi làm việc",
+  "subtopic_en": "Workplaces",
+  "words": [
+    {
+      "french": "le bureau",
+      "meaning_vi": "văn phòng",
+      "meaning_en": "office",
+      "ipa": "/byʁo/",
+      "example_fr": "Je travaille dans un bureau.",
+      "example_vi": "Tôi làm việc trong văn phòng.",
+      "example_en": "I work in an office."
+    },
+    {
+      "french": "l'usine",
+      "meaning_vi": "nhà máy",
+      "meaning_en": "factory",
+      "ipa": "/yzin/",
+      "example_fr": "L'usine emploie cent personnes.",
+      "example_vi": "Nhà máy tuyển một trăm người.",
+      "example_en": "The factory employs a hundred people."
+    },
+    {
+      "french": "l'atelier",
+      "meaning_vi": "xưởng",
+      "meaning_en": "workshop",
+      "ipa": "/atəlje/",
+      "example_fr": "L'ouvrier travaille à l'atelier.",
+      "example_vi": "Công nhân làm việc ở xưởng.",
+      "example_en": "The worker works in the workshop."
+    },
+    {
+      "french": "le magasin",
+      "meaning_vi": "cửa hàng",
+      "meaning_en": "shop, store",
+      "ipa": "/maɡazɛ̃/",
+      "example_fr": "Elle tient un petit magasin.",
+      "example_vi": "Cô ấy quản lý một cửa hàng nhỏ.",
+      "example_en": "She runs a small shop."
+    },
+    {
+      "french": "la clinique",
+      "meaning_vi": "phòng khám",
+      "meaning_en": "clinic",
+      "ipa": "/klinik/",
+      "example_fr": "Elle travaille à la clinique.",
+      "example_vi": "Cô ấy làm việc ở phòng khám.",
+      "example_en": "She works at the clinic."
+    },
+    {
+      "french": "l'école",
+      "meaning_vi": "trường học",
+      "meaning_en": "school",
+      "ipa": "/ekɔl/",
+      "example_fr": "Le professeur enseigne à l'école.",
+      "example_vi": "Giáo viên dạy ở trường.",
+      "example_en": "The teacher teaches at school."
+    },
+    {
+      "french": "le chantier",
+      "meaning_vi": "công trường",
+      "meaning_en": "construction site",
+      "ipa": "/ʃɑ̃tje/",
+      "example_fr": "Les ouvriers sont sur le chantier.",
+      "example_vi": "Công nhân đang ở công trường.",
+      "example_en": "The workers are on the site."
+    },
+    {
+      "french": "le restaurant",
+      "meaning_vi": "nhà hàng",
+      "meaning_en": "restaurant",
+      "ipa": "/ʁɛstoʁɑ̃/",
+      "example_fr": "Le serveur travaille au restaurant.",
+      "example_vi": "Nhân viên phục vụ làm ở nhà hàng.",
+      "example_en": "The waiter works in the restaurant."
+    },
+    {
+      "french": "l'hôtel",
+      "meaning_vi": "khách sạn",
+      "meaning_en": "hotel",
+      "ipa": "/otɛl/",
+      "example_fr": "Elle travaille à l'hôtel.",
+      "example_vi": "Cô ấy làm việc ở khách sạn.",
+      "example_en": "She works at the hotel."
+    },
+    {
+      "french": "la ferme",
+      "meaning_vi": "nông trại",
+      "meaning_en": "farm",
+      "ipa": "/fɛʁm/",
+      "example_fr": "Il travaille à la ferme.",
+      "example_vi": "Anh ấy làm việc ở nông trại.",
+      "example_en": "He works on the farm."
+    },
+    {
+      "french": "le tribunal",
+      "meaning_vi": "tòa án",
+      "meaning_en": "court",
+      "ipa": "/tʁibynal/",
+      "example_fr": "L'avocat plaide au tribunal.",
+      "example_vi": "Luật sư bào chữa tại tòa.",
+      "example_en": "The lawyer pleads in court."
+    },
+    {
+      "french": "l'agence bancaire",
+      "meaning_vi": "chi nhánh ngân hàng",
+      "meaning_en": "bank branch",
+      "ipa": "/aʒɑ̃s bɑ̃kɛʁ/",
+      "example_fr": "Il travaille à l'agence bancaire.",
+      "example_vi": "Anh ấy làm việc ở chi nhánh ngân hàng.",
+      "example_en": "He works at the bank branch."
+    },
+    {
+      "french": "la poste",
+      "meaning_vi": "bưu điện",
+      "meaning_en": "post office",
+      "ipa": "/pɔst/",
+      "example_fr": "Je vais à la poste.",
+      "example_vi": "Tôi đi đến bưu điện.",
+      "example_en": "I'm going to the post office."
+    },
+    {
+      "french": "le laboratoire",
+      "meaning_vi": "phòng thí nghiệm",
+      "meaning_en": "laboratory",
+      "ipa": "/labɔʁatwaʁ/",
+      "example_fr": "Le chercheur travaille au laboratoire.",
+      "example_vi": "Nhà nghiên cứu làm ở phòng thí nghiệm.",
+      "example_en": "The researcher works in the lab."
+    },
+    {
+      "french": "l'open space",
+      "meaning_vi": "văn phòng mở",
+      "meaning_en": "open-plan office",
+      "ipa": "/opɛn spɛs/",
+      "example_fr": "Nous partageons un open space.",
+      "example_vi": "Chúng tôi dùng chung văn phòng mở.",
+      "example_en": "We share an open-plan office."
+    },
+    {
+      "french": "la salle de réunion",
+      "meaning_vi": "phòng họp",
+      "meaning_en": "meeting room",
+      "ipa": "/sal də ʁeynjɔ̃/",
+      "example_fr": "La réunion est en salle de réunion.",
+      "example_vi": "Cuộc họp ở phòng họp.",
+      "example_en": "The meeting is in the meeting room."
+    },
+    {
+      "french": "le domicile (télétravail)",
+      "meaning_vi": "nhà riêng (làm từ xa)",
+      "meaning_en": "home (remote work)",
+      "ipa": "/dɔmisil/",
+      "example_fr": "Je travaille à domicile.",
+      "example_vi": "Tôi làm việc tại nhà.",
+      "example_en": "I work from home."
+    },
+    {
+      "french": "l'entrepôt",
+      "meaning_vi": "kho hàng",
+      "meaning_en": "warehouse",
+      "ipa": "/ɑ̃tʁəpo/",
+      "example_fr": "Les colis sont à l'entrepôt.",
+      "example_vi": "Các kiện hàng ở trong kho.",
+      "example_en": "The parcels are in the warehouse."
+    },
+    {
+      "french": "la gendarmerie",
+      "meaning_vi": "đồn hiến binh",
+      "meaning_en": "gendarmerie (police station)",
+      "ipa": "/ʒɑ̃daʁməʁi/",
+      "example_fr": "Le gendarme travaille à la gendarmerie.",
+      "example_vi": "Hiến binh làm việc ở đồn.",
+      "example_en": "The officer works at the gendarmerie."
+    }
+  ]
+}

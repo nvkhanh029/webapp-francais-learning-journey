@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les transports privés",
+  "topic_slug": "transports-prives",
+  "topic_sort_order": 20,
+  "topic_vi": "Giao thông cá nhân",
+  "topic_en": "Private transport",
+  "subtopic": "Les types de transports et les routes",
+  "subtopic_key": "les-types-de-transports-et-les-routes",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Các loại phương tiện và đường sá",
+  "subtopic_en": "Types of transport and roads",
+  "words": [
+    {
+      "french": "une voiture",
+      "meaning_vi": "xe hơi",
+      "meaning_en": "a car",
+      "ipa": "/yn vwatyyʁ/",
+      "example_fr": "Ma voiture est rouge.",
+      "example_vi": "Xe hơi của tôi màu đỏ.",
+      "example_en": "My car is red."
+    },
+    {
+      "french": "un vélo",
+      "meaning_vi": "xe đạp",
+      "meaning_en": "a bike",
+      "ipa": "/œ̃ velo/",
+      "example_fr": "Je fais du vélo chaque jour.",
+      "example_vi": "Tôi đi xe đạp mỗi ngày.",
+      "example_en": "I ride my bike daily."
+    },
+    {
+      "french": "une moto",
+      "meaning_vi": "xe máy",
+      "meaning_en": "a motorbike",
+      "ipa": "/yn moto/",
+      "example_fr": "La moto est rapide.",
+      "example_vi": "Xe máy rất nhanh.",
+      "example_en": "The motorbike is fast."
+    },
+    {
+      "french": "un scooter",
+      "meaning_vi": "xe tay ga",
+      "meaning_en": "a scooter",
+      "ipa": "/œ̃ skutœʁ/",
+      "example_fr": "Le scooter est pratique.",
+      "example_vi": "Xe tay ga rất tiện.",
+      "example_en": "The scooter is practical."
+    },
+    {
+      "french": "un taxi",
+      "meaning_vi": "xe taxi",
+      "meaning_en": "a taxi",
+      "ipa": "/œ̃ taksi/",
+      "example_fr": "Appelle un taxi.",
+      "example_vi": "Hãy gọi taxi.",
+      "example_en": "Call a taxi."
+    },
+    {
+      "french": "un camion",
+      "meaning_vi": "xe tải",
+      "meaning_en": "a truck",
+      "ipa": "/œ̃ kamjɔ̃/",
+      "example_fr": "Le camion est grand.",
+      "example_vi": "Xe tải rất lớn.",
+      "example_en": "The truck is big."
+    },
+    {
+      "french": "une autoroute",
+      "meaning_vi": "đường cao tốc",
+      "meaning_en": "a highway",
+      "ipa": "/yn otɔʁut/",
+      "example_fr": "Prends l'autoroute.",
+      "example_vi": "Hãy đi đường cao tốc.",
+      "example_en": "Take the highway."
+    },
+    {
+      "french": "une route",
+      "meaning_vi": "con đường",
+      "meaning_en": "a road",
+      "ipa": "/yn ʁut/",
+      "example_fr": "La route est étroite.",
+      "example_vi": "Con đường hẹp.",
+      "example_en": "The road is narrow."
+    },
+    {
+      "french": "une rue",
+      "meaning_vi": "phố, đường",
+      "meaning_en": "a street",
+      "ipa": "/yn ʁy/",
+      "example_fr": "La rue est animée.",
+      "example_vi": "Phố rất nhộn nhịp.",
+      "example_en": "The street is busy."
+    },
+    {
+      "french": "un pont",
+      "meaning_vi": "cây cầu",
+      "meaning_en": "a bridge",
+      "ipa": "/œ̃ pɔ̃/",
+      "example_fr": "Traverse le pont.",
+      "example_vi": "Hãy qua cầu.",
+      "example_en": "Cross the bridge."
+    },
+    {
+      "french": "un tunnel",
+      "meaning_vi": "đường hầm",
+      "meaning_en": "a tunnel",
+      "ipa": "/œ̃ tynɛl/",
+      "example_fr": "Passe par le tunnel.",
+      "example_vi": "Đi qua đường hầm.",
+      "example_en": "Go through the tunnel."
+    },
+    {
+      "french": "un carrefour",
+      "meaning_vi": "ngã tư",
+      "meaning_en": "a crossroads",
+      "ipa": "/œ̃ kaʁfuʁ/",
+      "example_fr": "Au carrefour, tourne à gauche.",
+      "example_vi": "Ở ngã tư, rẽ trái.",
+      "example_en": "At the crossroads, turn left."
+    },
+    {
+      "french": "un rond-point",
+      "meaning_vi": "vòng xuyến",
+      "meaning_en": "a roundabout",
+      "ipa": "/œ̃ ʁɔ̃pwɛ̃/",
+      "example_fr": "Le rond-point est nouveau.",
+      "example_vi": "Vòng xuyến mới.",
+      "example_en": "The roundabout is new."
+    },
+    {
+      "french": "une piste cyclable",
+      "meaning_vi": "đường dành cho xe đạp",
+      "meaning_en": "a bike lane",
+      "ipa": "/yn pist siklabl/",
+      "example_fr": "Utilise la piste cyclable.",
+      "example_vi": "Hãy đi đường xe đạp.",
+      "example_en": "Use the bike path."
+    },
+    {
+      "french": "un trottoir",
+      "meaning_vi": "vỉa hè",
+      "meaning_en": "a sidewalk",
+      "ipa": "/œ̃ tʁɔtwaʁ/",
+      "example_fr": "Marche sur le trottoir.",
+      "example_vi": "Hãy đi trên vỉa hè.",
+      "example_en": "Walk on the sidewalk."
+    },
+    {
+      "french": "la circulation",
+      "meaning_vi": "giao thông",
+      "meaning_en": "traffic",
+      "ipa": "/la siʁkylasjɔ̃/",
+      "example_fr": "La circulation est dense.",
+      "example_vi": "Giao thông đông đúc.",
+      "example_en": "The traffic is heavy."
+    },
+    {
+      "french": "un embouteillage",
+      "meaning_vi": "sự kẹt xe",
+      "meaning_en": "a traffic jam",
+      "ipa": "/œ̃n ɑ̃butɛjaʒ/",
+      "example_fr": "Il y a un embouteillage.",
+      "example_vi": "Đang kẹt xe.",
+      "example_en": "There is a traffic jam."
+    },
+    {
+      "french": "un arrêt",
+      "meaning_vi": "trạm dừng",
+      "meaning_en": "a stop",
+      "ipa": "/œ̃n aʁɛ/",
+      "example_fr": "L'arrêt est là.",
+      "example_vi": "Trạm dừng ở kia.",
+      "example_en": "The bus stop is there."
+    },
+    {
+      "french": "un péage",
+      "meaning_vi": "trạm thu phí",
+      "meaning_en": "a toll",
+      "ipa": "/œ̃ peaʒ/",
+      "example_fr": "Le péage est cher.",
+      "example_vi": "Trạm thu phí đắt.",
+      "example_en": "The toll is expensive."
+    }
+  ]
+}

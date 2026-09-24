@@ -1,0 +1,190 @@
+{
+  "category": "Les médias et le numérique",
+  "category_key": "medias-numerique",
+  "category_sort_order": 120,
+  "category_vi": "Truyền thông và công nghệ số",
+  "category_en": "Media and digital technology",
+  "topic": "Les médias",
+  "topic_slug": "medias",
+  "topic_sort_order": 10,
+  "topic_vi": "Truyền thông",
+  "topic_en": "The media",
+  "subtopic": "La radio",
+  "subtopic_key": "la-radio",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Đài phát thanh",
+  "subtopic_en": "Radio",
+  "words": [
+    {
+      "french": "la radio",
+      "meaning_vi": "đài phát thanh",
+      "meaning_en": "the radio",
+      "ipa": "/la ʁa.djo/",
+      "example_fr": "J'écoute la radio le matin.",
+      "example_vi": "Buổi sáng tôi nghe đài.",
+      "example_en": "I listen to the radio in the morning."
+    },
+    {
+      "french": "une station de radio",
+      "meaning_vi": "đài phát thanh",
+      "meaning_en": "a radio station",
+      "ipa": "/yn sta.sjɔ̃ də ʁa.djo/",
+      "example_fr": "C'est ma station préférée.",
+      "example_vi": "Đây là đài yêu thích của tôi.",
+      "example_en": "It's my favourite station."
+    },
+    {
+      "french": "la fréquence",
+      "meaning_vi": "tần số",
+      "meaning_en": "the frequency",
+      "ipa": "/la fʁe.kɑ̃s/",
+      "example_fr": "La fréquence est 105.5.",
+      "example_vi": "Tần số là 105.5.",
+      "example_en": "The frequency is 105.5."
+    },
+    {
+      "french": "l'antenne",
+      "meaning_vi": "sóng phát thanh",
+      "meaning_en": "the airwaves",
+      "ipa": "/lɑ̃.tɛn/",
+      "example_fr": "Il passe à l'antenne à huit heures.",
+      "example_vi": "Anh ấy lên sóng lúc tám giờ.",
+      "example_en": "He goes on air at eight."
+    },
+    {
+      "french": "un animateur",
+      "meaning_vi": "phát thanh viên",
+      "meaning_en": "a host",
+      "ipa": "/œ̃n a.ni.ma.tœʁ/",
+      "example_fr": "L'animateur parle vite.",
+      "example_vi": "Người dẫn nói nhanh.",
+      "example_en": "The host speaks fast."
+    },
+    {
+      "french": "un auditeur",
+      "meaning_vi": "thính giả",
+      "meaning_en": "a listener",
+      "ipa": "/œ̃n o.di.tœʁ/",
+      "example_fr": "Les auditeurs appellent.",
+      "example_vi": "Thính giả gọi điện đến.",
+      "example_en": "Listeners call in."
+    },
+    {
+      "french": "une émission",
+      "meaning_vi": "chương trình",
+      "meaning_en": "a programme",
+      "ipa": "/yn e.mi.sjɔ̃/",
+      "example_fr": "J'aime cette émission du soir.",
+      "example_vi": "Tôi thích chương trình buổi tối này.",
+      "example_en": "I like this evening programme."
+    },
+    {
+      "french": "le podcast",
+      "meaning_vi": "podcast",
+      "meaning_en": "a podcast",
+      "ipa": "/lə pɔd.kast/",
+      "example_fr": "Le podcast parle d'histoire.",
+      "example_vi": "Podcast nói về lịch sử.",
+      "example_en": "The podcast is about history."
+    },
+    {
+      "french": "un flash info",
+      "meaning_vi": "bản tin nhanh",
+      "meaning_en": "a newsflash",
+      "ipa": "/œ̃ flaʃ ɛ̃.fo/",
+      "example_fr": "Le flash info dure deux minutes.",
+      "example_vi": "Bản tin nhanh kéo dài hai phút.",
+      "example_en": "The newsflash lasts two minutes."
+    },
+    {
+      "french": "l'auditeur",
+      "meaning_vi": "thính giả",
+      "meaning_en": "a listener",
+      "ipa": "/lo.di.tœʁ/",
+      "example_fr": "L'auditeur pose une question.",
+      "example_vi": "Thính giả đặt câu hỏi.",
+      "example_en": "The listener asks a question."
+    },
+    {
+      "french": "un débat",
+      "meaning_vi": "cuộc tranh luận",
+      "meaning_en": "a debate",
+      "ipa": "/œ̃ de.ba/",
+      "example_fr": "Le débat est animé.",
+      "example_vi": "Cuộc tranh luận rất sôi nổi.",
+      "example_en": "The debate is lively."
+    },
+    {
+      "french": "un podcast",
+      "meaning_vi": "podcast",
+      "meaning_en": "a podcast",
+      "ipa": "/œ̃ pɔd.kast/",
+      "example_fr": "J'écoute un podcast en voiture.",
+      "example_vi": "Tôi nghe podcast trên xe.",
+      "example_en": "I listen to a podcast in the car."
+    },
+    {
+      "french": "une webradio",
+      "meaning_vi": "đài phát thanh trực tuyến",
+      "meaning_en": "a web radio",
+      "ipa": "/yn wɛb.ʁa.djo/",
+      "example_fr": "Elle écoute une webradio.",
+      "example_vi": "Cô ấy nghe đài trực tuyến.",
+      "example_en": "She listens to a web radio."
+    },
+    {
+      "french": "un transistor",
+      "meaning_vi": "radio bỏ túi",
+      "meaning_en": "a transistor radio",
+      "ipa": "/œ̃ tʁɑ̃.zis.tɔʁ/",
+      "example_fr": "Mon grand-père a un transistor.",
+      "example_vi": "Ông tôi có một chiếc radio bỏ túi.",
+      "example_en": "My grandfather has a transistor radio."
+    },
+    {
+      "french": "un réveil radio",
+      "meaning_vi": "đồng hồ báo thức radio",
+      "meaning_en": "a clock radio",
+      "ipa": "/œ̃ ʁe.vɛj ʁa.djo/",
+      "example_fr": "Le réveil radio sonne à six heures.",
+      "example_vi": "Đồng hồ báo thức reo lúc sáu giờ.",
+      "example_en": "The clock radio rings at six."
+    },
+    {
+      "french": "la bande FM",
+      "meaning_vi": "băng tần FM",
+      "meaning_en": "the FM band",
+      "ipa": "/la bɑ̃d ɛf.ɛm/",
+      "example_fr": "Cherche sur la bande FM.",
+      "example_vi": "Hãy dò trên băng tần FM.",
+      "example_en": "Search on the FM band."
+    },
+    {
+      "french": "l'écoute",
+      "meaning_vi": "sự lắng nghe",
+      "meaning_en": "listening",
+      "ipa": "/le.kut/",
+      "example_fr": "Bonne écoute à tous !",
+      "example_vi": "Chúc mọi người nghe vui vẻ!",
+      "example_en": "Happy listening everyone!"
+    },
+    {
+      "french": "un jingle",
+      "meaning_vi": "nhạc hiệu",
+      "meaning_en": "a jingle",
+      "ipa": "/œ̃ dʒinɡl/",
+      "example_fr": "Le jingle est reconnaissable.",
+      "example_vi": "Nhạc hiệu rất dễ nhận ra.",
+      "example_en": "The jingle is recognisable."
+    },
+    {
+      "french": "la matinale",
+      "meaning_vi": "chương trình buổi sáng",
+      "meaning_en": "a morning show",
+      "ipa": "/la ma.ti.nal/",
+      "example_fr": "La matinale commence à sept heures.",
+      "example_vi": "Chương trình buổi sáng bắt đầu lúc bảy giờ.",
+      "example_en": "The morning show starts at seven."
+    }
+  ]
+}

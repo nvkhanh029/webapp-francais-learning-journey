@@ -1,0 +1,190 @@
+{
+  "category": "Le logement",
+  "category_key": "logement",
+  "category_sort_order": 40,
+  "category_vi": "Nhà ở",
+  "category_en": "Housing",
+  "topic": "Les habitations et le mobilier",
+  "topic_slug": "habitations-mobilier",
+  "topic_sort_order": 10,
+  "topic_vi": "Nhà ở và đồ nội thất",
+  "topic_en": "Housing and furniture",
+  "subtopic": "Les types d'habitations",
+  "subtopic_key": "les-types-d-habitations",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Các loại nhà ở",
+  "subtopic_en": "Types of housing",
+  "words": [
+    {
+      "french": "une maison",
+      "meaning_vi": "ngôi nhà",
+      "meaning_en": "a house",
+      "ipa": "/mɛ.zɔ̃/",
+      "example_fr": "J'habite dans une maison.",
+      "example_vi": "Tôi sống trong một ngôi nhà.",
+      "example_en": "I live in a house."
+    },
+    {
+      "french": "un appartement",
+      "meaning_vi": "căn hộ",
+      "meaning_en": "an apartment",
+      "ipa": "/a.paʁ.tə.mɑ̃/",
+      "example_fr": "Il loue un appartement.",
+      "example_vi": "Anh ấy thuê một căn hộ.",
+      "example_en": "He rents an apartment."
+    },
+    {
+      "french": "un studio",
+      "meaning_vi": "căn hộ studio (một phòng)",
+      "meaning_en": "a studio flat",
+      "ipa": "/sty.djo/",
+      "example_fr": "Elle vit dans un studio.",
+      "example_vi": "Cô ấy sống trong một căn studio.",
+      "example_en": "She lives in a studio."
+    },
+    {
+      "french": "un immeuble",
+      "meaning_vi": "tòa nhà",
+      "meaning_en": "a building",
+      "ipa": "/i.mœbl/",
+      "example_fr": "L'immeuble est moderne.",
+      "example_vi": "Tòa nhà rất hiện đại.",
+      "example_en": "The building is modern."
+    },
+    {
+      "french": "une villa",
+      "meaning_vi": "biệt thự",
+      "meaning_en": "a villa",
+      "ipa": "/vi.la/",
+      "example_fr": "Ils ont une villa.",
+      "example_vi": "Họ có một biệt thự.",
+      "example_en": "They have a villa."
+    },
+    {
+      "french": "un chalet",
+      "meaning_vi": "nhà gỗ trên núi",
+      "meaning_en": "a chalet",
+      "ipa": "/ʃa.lɛ/",
+      "example_fr": "Le chalet est en bois.",
+      "example_vi": "Ngôi nhà gỗ làm bằng gỗ.",
+      "example_en": "The chalet is made of wood."
+    },
+    {
+      "french": "une ferme",
+      "meaning_vi": "trang trại, nhà nông thôn",
+      "meaning_en": "a farm / farmhouse",
+      "ipa": "/fɛʁm/",
+      "example_fr": "La ferme est à la campagne.",
+      "example_vi": "Trang trại ở nông thôn.",
+      "example_en": "The farm is in the countryside."
+    },
+    {
+      "french": "un loft",
+      "meaning_vi": "căn hộ gác xép",
+      "meaning_en": "a loft",
+      "ipa": "/lɔft/",
+      "example_fr": "C'est un grand loft.",
+      "example_vi": "Đó là một căn loft rộng.",
+      "example_en": "It's a big loft."
+    },
+    {
+      "french": "un pavillon",
+      "meaning_vi": "nhà riêng ngoại ô",
+      "meaning_en": "a detached house",
+      "ipa": "/pa.vi.jɔ̃/",
+      "example_fr": "Ils achètent un pavillon.",
+      "example_vi": "Họ mua một ngôi nhà riêng.",
+      "example_en": "They are buying a detached house."
+    },
+    {
+      "french": "une maison individuelle",
+      "meaning_vi": "nhà riêng lẻ",
+      "meaning_en": "a detached / individual house",
+      "ipa": "/mɛ.zɔ̃ ɛ̃.di.vi.dɥɛl/",
+      "example_fr": "C'est une maison individuelle.",
+      "example_vi": "Đó là một ngôi nhà riêng lẻ.",
+      "example_en": "It's an individual house."
+    },
+    {
+      "french": "une maison mitoyenne",
+      "meaning_vi": "nhà liền kề",
+      "meaning_en": "a terraced / semi-detached house",
+      "ipa": "/mɛ.zɔ̃ mi.twa.jɛn/",
+      "example_fr": "La maison mitoyenne est petite.",
+      "example_vi": "Ngôi nhà liền kề thì nhỏ.",
+      "example_en": "The terraced house is small."
+    },
+    {
+      "french": "un duplex",
+      "meaning_vi": "căn hộ hai tầng",
+      "meaning_en": "a duplex",
+      "ipa": "/dy.plɛks/",
+      "example_fr": "Le duplex a deux étages.",
+      "example_vi": "Căn duplex có hai tầng.",
+      "example_en": "The duplex has two floors."
+    },
+    {
+      "french": "une résidence secondaire",
+      "meaning_vi": "nhà thứ hai (nghỉ dưỡng)",
+      "meaning_en": "a second home",
+      "ipa": "/ʁe.zi.dɑ̃s sə.ɡɔ̃.dɛʁ/",
+      "example_fr": "C'est leur résidence secondaire.",
+      "example_vi": "Đó là nhà thứ hai của họ.",
+      "example_en": "It's their second home."
+    },
+    {
+      "french": "un logement social",
+      "meaning_vi": "nhà ở xã hội",
+      "meaning_en": "social housing",
+      "ipa": "/lɔʒ.mɑ̃ sɔ.sjal/",
+      "example_fr": "Il habite un logement social.",
+      "example_vi": "Anh ấy ở nhà ở xã hội.",
+      "example_en": "He lives in social housing."
+    },
+    {
+      "french": "une caravane",
+      "meaning_vi": "xe nhà lưu động",
+      "meaning_en": "a caravan",
+      "ipa": "/ka.ʁa.van/",
+      "example_fr": "La caravane est petite.",
+      "example_vi": "Chiếc xe nhà rất nhỏ.",
+      "example_en": "The caravan is small."
+    },
+    {
+      "french": "un mobil-home",
+      "meaning_vi": "nhà di động",
+      "meaning_en": "a mobile home",
+      "ipa": "/mɔ.bil.om/",
+      "example_fr": "Ils louent un mobil-home.",
+      "example_vi": "Họ thuê một nhà di động.",
+      "example_en": "They rent a mobile home."
+    },
+    {
+      "french": "une péniche",
+      "meaning_vi": "nhà thuyền",
+      "meaning_en": "a houseboat / barge",
+      "ipa": "/pe.niʃ/",
+      "example_fr": "La péniche est sur le fleuve.",
+      "example_vi": "Nhà thuyền ở trên sông.",
+      "example_en": "The houseboat is on the river."
+    },
+    {
+      "french": "un deux-pièces",
+      "meaning_vi": "căn hộ hai phòng",
+      "meaning_en": "a one-bedroom flat",
+      "ipa": "/dø.pjɛs/",
+      "example_fr": "C'est un deux-pièces.",
+      "example_vi": "Đó là một căn hộ hai phòng.",
+      "example_en": "It's a one-bedroom flat."
+    },
+    {
+      "french": "un trois-pièces",
+      "meaning_vi": "căn hộ ba phòng",
+      "meaning_en": "a two-bedroom flat",
+      "ipa": "/tʁwa.pjɛs/",
+      "example_fr": "Nous cherchons un trois-pièces.",
+      "example_vi": "Chúng tôi tìm một căn hộ ba phòng.",
+      "example_en": "We are looking for a two-bedroom flat."
+    }
+  ]
+}

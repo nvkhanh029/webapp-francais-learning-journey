@@ -1,0 +1,190 @@
+{
+  "category": "La santé",
+  "category_key": "sante",
+  "category_sort_order": 30,
+  "category_vi": "Sức khỏe",
+  "category_en": "Health",
+  "topic": "Les maladies, les accidents et la police",
+  "topic_slug": "maladies-accidents-police",
+  "topic_sort_order": 10,
+  "topic_vi": "Bệnh tật, tai nạn và cảnh sát",
+  "topic_en": "Illnesses, accidents and the police",
+  "subtopic": "Les maladies et leurs symptômes",
+  "subtopic_key": "les-maladies-et-leurs-symptomes",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Bệnh tật và triệu chứng",
+  "subtopic_en": "Illnesses and their symptoms",
+  "words": [
+    {
+      "french": "la grippe",
+      "meaning_vi": "bệnh cúm",
+      "meaning_en": "the flu",
+      "ipa": "/la ɡʁip/",
+      "example_fr": "Elle a la grippe.",
+      "example_vi": "Cô ấy bị cúm.",
+      "example_en": "She has the flu."
+    },
+    {
+      "french": "le rhume",
+      "meaning_vi": "bệnh cảm lạnh",
+      "meaning_en": "the cold",
+      "ipa": "/lə ʁym/",
+      "example_fr": "Il a un rhume.",
+      "example_vi": "Anh ấy bị cảm lạnh.",
+      "example_en": "He has a cold."
+    },
+    {
+      "french": "la fièvre",
+      "meaning_vi": "cơn sốt",
+      "meaning_en": "the fever",
+      "ipa": "/la fjɛvʁ/",
+      "example_fr": "Il a de la fièvre.",
+      "example_vi": "Anh ấy bị sốt.",
+      "example_en": "He has a fever."
+    },
+    {
+      "french": "la toux",
+      "meaning_vi": "cơn ho",
+      "meaning_en": "the cough",
+      "ipa": "/la tu/",
+      "example_fr": "La toux m'empêche de dormir.",
+      "example_vi": "Cơn ho làm tôi mất ngủ.",
+      "example_en": "The cough keeps me awake."
+    },
+    {
+      "french": "le mal de tête",
+      "meaning_vi": "chứng đau đầu",
+      "meaning_en": "the headache",
+      "ipa": "/lə mal də tɛt/",
+      "example_fr": "J'ai mal à la tête.",
+      "example_vi": "Tôi bị đau đầu.",
+      "example_en": "I have a headache."
+    },
+    {
+      "french": "le mal de gorge",
+      "meaning_vi": "chứng đau họng",
+      "meaning_en": "the sore throat",
+      "ipa": "/lə mal də ɡɔʁʒ/",
+      "example_fr": "J'ai mal à la gorge.",
+      "example_vi": "Tôi bị đau họng.",
+      "example_en": "My throat hurts."
+    },
+    {
+      "french": "le mal de ventre",
+      "meaning_vi": "chứng đau bụng",
+      "meaning_en": "the stomach ache",
+      "ipa": "/lə mal də vɑ̃tʁ/",
+      "example_fr": "J'ai mal au ventre.",
+      "example_vi": "Tôi bị đau bụng.",
+      "example_en": "My stomach hurts."
+    },
+    {
+      "french": "le symptôme",
+      "meaning_vi": "triệu chứng",
+      "meaning_en": "the symptom",
+      "ipa": "/lə sɛ̃ptom/",
+      "example_fr": "Il décrit ses symptômes.",
+      "example_vi": "Anh ấy mô tả các triệu chứng.",
+      "example_en": "He describes his symptoms."
+    },
+    {
+      "french": "la douleur",
+      "meaning_vi": "cơn đau",
+      "meaning_en": "the pain",
+      "ipa": "/la dulœʁ/",
+      "example_fr": "Où avez-vous mal ?",
+      "example_vi": "Bạn đau ở đâu?",
+      "example_en": "Where is the pain?"
+    },
+    {
+      "french": "le nez qui coule",
+      "meaning_vi": "chứng chảy nước mũi",
+      "meaning_en": "the runny nose",
+      "ipa": "/lə ne ki kul/",
+      "example_fr": "J'ai le nez qui coule.",
+      "example_vi": "Tôi bị chảy nước mũi.",
+      "example_en": "I have a runny nose."
+    },
+    {
+      "french": "l'éternuement",
+      "meaning_vi": "cái hắt hơi",
+      "meaning_en": "the sneeze",
+      "ipa": "/letɛʁnymɑ̃/",
+      "example_fr": "Il éternue beaucoup.",
+      "example_vi": "Anh ấy hắt hơi nhiều.",
+      "example_en": "He sneezes a lot."
+    },
+    {
+      "french": "la fatigue",
+      "meaning_vi": "sự mệt mỏi",
+      "meaning_en": "the tiredness, fatigue",
+      "ipa": "/la fatiɡ/",
+      "example_fr": "Je me sens très fatigué.",
+      "example_vi": "Tôi cảm thấy rất mệt.",
+      "example_en": "I feel very tired."
+    },
+    {
+      "french": "le vertige",
+      "meaning_vi": "chứng chóng mặt",
+      "meaning_en": "the dizziness",
+      "ipa": "/lə vɛʁtiʒ/",
+      "example_fr": "J'ai des vertiges.",
+      "example_vi": "Tôi bị chóng mặt.",
+      "example_en": "I feel dizzy."
+    },
+    {
+      "french": "la nausée",
+      "meaning_vi": "cơn buồn nôn",
+      "meaning_en": "the nausea",
+      "ipa": "/la noze/",
+      "example_fr": "Elle a la nausée.",
+      "example_vi": "Cô ấy bị buồn nôn.",
+      "example_en": "She feels nauseous."
+    },
+    {
+      "french": "l'allergie",
+      "meaning_vi": "chứng dị ứng",
+      "meaning_en": "the allergy",
+      "ipa": "/lalɛʁʒi/",
+      "example_fr": "Il a une allergie au pollen.",
+      "example_vi": "Anh ấy bị dị ứng phấn hoa.",
+      "example_en": "He has an allergy to pollen."
+    },
+    {
+      "french": "l'asthme",
+      "meaning_vi": "bệnh hen suyễn",
+      "meaning_en": "the asthma",
+      "ipa": "/lasm/",
+      "example_fr": "Elle fait de l'asthme.",
+      "example_vi": "Cô ấy bị hen suyễn.",
+      "example_en": "She has asthma."
+    },
+    {
+      "french": "l'infection",
+      "meaning_vi": "chứng nhiễm trùng",
+      "meaning_en": "the infection",
+      "ipa": "/lɛ̃fɛksjɔ̃/",
+      "example_fr": "Il soigne l'infection.",
+      "example_vi": "Anh ấy chữa chứng nhiễm trùng.",
+      "example_en": "He treats the infection."
+    },
+    {
+      "french": "le virus",
+      "meaning_vi": "vi-rút",
+      "meaning_en": "the virus",
+      "ipa": "/lə viʁys/",
+      "example_fr": "Le virus se propage.",
+      "example_vi": "Vi-rút đang lây lan.",
+      "example_en": "The virus is spreading."
+    },
+    {
+      "french": "le diabète",
+      "meaning_vi": "bệnh tiểu đường",
+      "meaning_en": "the diabetes",
+      "ipa": "/lə djabɛt/",
+      "example_fr": "Il a du diabète.",
+      "example_vi": "Anh ấy bị tiểu đường.",
+      "example_en": "He has diabetes."
+    }
+  ]
+}

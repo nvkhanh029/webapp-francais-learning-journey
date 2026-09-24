@@ -1,0 +1,190 @@
+{
+  "category": "L'éducation et le monde professionnel",
+  "category_key": "education-monde-professionnel",
+  "category_sort_order": 50,
+  "category_vi": "Giáo dục và thế giới nghề nghiệp",
+  "category_en": "Education and the professional world",
+  "topic": "Les conditions de travail et les revendications",
+  "topic_slug": "conditions-travail-revendications",
+  "topic_sort_order": 30,
+  "topic_vi": "Điều kiện làm việc và yêu sách",
+  "topic_en": "Working conditions and demands",
+  "subtopic": "Les organisations professionnelles, les revendications",
+  "subtopic_key": "les-organisations-professionnelles-les-revendications",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Tổ chức nghề nghiệp và yêu sách",
+  "subtopic_en": "Professional organizations and demands",
+  "words": [
+    {
+      "french": "le syndicat",
+      "meaning_vi": "công đoàn",
+      "meaning_en": "trade union",
+      "ipa": "/sɛ̃dika/",
+      "example_fr": "Le syndicat défend les salariés.",
+      "example_vi": "Công đoàn bảo vệ người lao động.",
+      "example_en": "The union defends employees."
+    },
+    {
+      "french": "la grève",
+      "meaning_vi": "cuộc đình công",
+      "meaning_en": "strike",
+      "ipa": "/ɡʁɛv/",
+      "example_fr": "Les ouvriers font la grève.",
+      "example_vi": "Công nhân đình công.",
+      "example_en": "The workers go on strike."
+    },
+    {
+      "french": "la manifestation",
+      "meaning_vi": "cuộc biểu tình",
+      "meaning_en": "demonstration",
+      "ipa": "/manifɛstasjɔ̃/",
+      "example_fr": "La manifestation est pacifique.",
+      "example_vi": "Cuộc biểu tình diễn ra ôn hòa.",
+      "example_en": "The demonstration is peaceful."
+    },
+    {
+      "french": "la revendication",
+      "meaning_vi": "yêu sách",
+      "meaning_en": "demand, claim",
+      "ipa": "/ʁəvɑ̃dikasjɔ̃/",
+      "example_fr": "Les revendications sont claires.",
+      "example_vi": "Các yêu sách rất rõ ràng.",
+      "example_en": "The demands are clear."
+    },
+    {
+      "french": "la négociation",
+      "meaning_vi": "đàm phán",
+      "meaning_en": "negotiation",
+      "ipa": "/neɡɔsjasjɔ̃/",
+      "example_fr": "La négociation commence demain.",
+      "example_vi": "Đàm phán bắt đầu ngày mai.",
+      "example_en": "Negotiation starts tomorrow."
+    },
+    {
+      "french": "l'accord",
+      "meaning_vi": "thỏa thuận",
+      "meaning_en": "agreement",
+      "ipa": "/akɔʁ/",
+      "example_fr": "Ils signent un accord.",
+      "example_vi": "Họ ký một thỏa thuận.",
+      "example_en": "They sign an agreement."
+    },
+    {
+      "french": "le conflit social",
+      "meaning_vi": "xung đột xã hội",
+      "meaning_en": "industrial dispute",
+      "ipa": "/kɔ̃fli sɔsjal/",
+      "example_fr": "Le conflit social s'aggrave.",
+      "example_vi": "Xung đột xã hội trầm trọng hơn.",
+      "example_en": "The dispute is worsening."
+    },
+    {
+      "french": "le délégué du personnel",
+      "meaning_vi": "đại diện nhân viên",
+      "meaning_en": "staff representative",
+      "ipa": "/deleɡe dy pɛʁsɔnɛl/",
+      "example_fr": "Le délégué parle au directeur.",
+      "example_vi": "Đại diện nhân viên nói với giám đốc.",
+      "example_en": "The representative speaks to the director."
+    },
+    {
+      "french": "le comité d'entreprise",
+      "meaning_vi": "ban chấp hành công ty",
+      "meaning_en": "works council",
+      "ipa": "/kɔmite dɑ̃tʁəpʁiz/",
+      "example_fr": "Le comité organise une fête.",
+      "example_vi": "Ban chấp hành tổ chức tiệc.",
+      "example_en": "The works council organizes a party."
+    },
+    {
+      "french": "le patronat",
+      "meaning_vi": "giới chủ",
+      "meaning_en": "employers' association",
+      "ipa": "/patʁɔna/",
+      "example_fr": "Le patronat rencontre les syndicats.",
+      "example_vi": "Giới chủ gặp công đoàn.",
+      "example_en": "Employers meet the unions."
+    },
+    {
+      "french": "l'augmentation de salaire",
+      "meaning_vi": "tăng lương",
+      "meaning_en": "pay rise",
+      "ipa": "/oɡmɑ̃tasjɔ̃ də salɛʁ/",
+      "example_fr": "Ils demandent une augmentation de salaire.",
+      "example_vi": "Họ yêu cầu tăng lương.",
+      "example_en": "They demand a pay rise."
+    },
+    {
+      "french": "les conditions de travail",
+      "meaning_vi": "điều kiện làm việc",
+      "meaning_en": "working conditions",
+      "ipa": "/kɔ̃disjɔ̃ də tʁavaj/",
+      "example_fr": "Ils veulent de meilleures conditions de travail.",
+      "example_vi": "Họ muốn điều kiện làm việc tốt hơn.",
+      "example_en": "They want better working conditions."
+    },
+    {
+      "french": "le préavis de grève",
+      "meaning_vi": "thông báo đình công",
+      "meaning_en": "strike notice",
+      "ipa": "/pʁeavi də ɡʁɛv/",
+      "example_fr": "Le préavis de grève est déposé.",
+      "example_vi": "Thông báo đình công đã nộp.",
+      "example_en": "The strike notice is filed."
+    },
+    {
+      "french": "faire grève",
+      "meaning_vi": "đình công",
+      "meaning_en": "to strike",
+      "ipa": "/fɛʁ ɡʁɛv/",
+      "example_fr": "Les enseignants font grève.",
+      "example_vi": "Giáo viên đình công.",
+      "example_en": "Teachers are on strike."
+    },
+    {
+      "french": "manifester",
+      "meaning_vi": "biểu tình",
+      "meaning_en": "to demonstrate",
+      "ipa": "/manifɛste/",
+      "example_fr": "Ils manifestent dans la rue.",
+      "example_vi": "Họ biểu tình trên phố.",
+      "example_en": "They demonstrate in the street."
+    },
+    {
+      "french": "réclamer",
+      "meaning_vi": "đòi hỏi, yêu cầu",
+      "meaning_en": "to demand",
+      "ipa": "/ʁeklame/",
+      "example_fr": "Ils réclament plus de repos.",
+      "example_vi": "Họ đòi nghỉ ngơi nhiều hơn.",
+      "example_en": "They demand more rest."
+    },
+    {
+      "french": "le dialogue social",
+      "meaning_vi": "đối thoại xã hội",
+      "meaning_en": "social dialogue",
+      "ipa": "/djalɔɡ sɔsjal/",
+      "example_fr": "Le dialogue social est important.",
+      "example_vi": "Đối thoại xã hội rất quan trọng.",
+      "example_en": "Social dialogue is important."
+    },
+    {
+      "french": "le droit de grève",
+      "meaning_vi": "quyền đình công",
+      "meaning_en": "right to strike",
+      "ipa": "/dʁwa də ɡʁɛv/",
+      "example_fr": "Le droit de grève est protégé.",
+      "example_vi": "Quyền đình công được bảo vệ.",
+      "example_en": "The right to strike is protected."
+    },
+    {
+      "french": "le lock-out",
+      "meaning_vi": "đóng cửa bãi công (chủ)",
+      "meaning_en": "lockout",
+      "ipa": "/lɔkawt/",
+      "example_fr": "Le lock-out bloque l'usine.",
+      "example_vi": "Việc đóng cửa làm nhà máy ngừng trệ.",
+      "example_en": "The lockout blocks the factory."
+    }
+  ]
+}

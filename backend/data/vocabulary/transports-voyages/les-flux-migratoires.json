@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les voyages et les migrations",
+  "topic_slug": "voyages-migrations",
+  "topic_sort_order": 30,
+  "topic_vi": "Du lịch và di cư",
+  "topic_en": "Travel and migration",
+  "subtopic": "Les flux migratoires",
+  "subtopic_key": "les-flux-migratoires",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Dòng di cư",
+  "subtopic_en": "Migration flows",
+  "words": [
+    {
+      "french": "une migration",
+      "meaning_vi": "sự di cư",
+      "meaning_en": "migration",
+      "ipa": "/yn miɡʁasjɔ̃/",
+      "example_fr": "La migration augmente.",
+      "example_vi": "Di cư đang tăng.",
+      "example_en": "Migration is increasing."
+    },
+    {
+      "french": "un immigré",
+      "meaning_vi": "người nhập cư",
+      "meaning_en": "an immigrant",
+      "ipa": "/œ̃n imiɡʁe/",
+      "example_fr": "C'est un immigré.",
+      "example_vi": "Anh ấy là người nhập cư.",
+      "example_en": "He is an immigrant."
+    },
+    {
+      "french": "émigrer",
+      "meaning_vi": "di cư đi",
+      "meaning_en": "to emigrate",
+      "ipa": "/emiɡʁe/",
+      "example_fr": "Elle a émigré au Canada.",
+      "example_vi": "Cô ấy đã di cư sang Canada.",
+      "example_en": "She emigrated to Canada."
+    },
+    {
+      "french": "immigrer",
+      "meaning_vi": "nhập cư",
+      "meaning_en": "to immigrate",
+      "ipa": "/imiɡʁe/",
+      "example_fr": "Il a immigré en France.",
+      "example_vi": "Anh ấy nhập cư vào Pháp.",
+      "example_en": "He immigrated to France."
+    },
+    {
+      "french": "un réfugié",
+      "meaning_vi": "người tị nạn",
+      "meaning_en": "a refugee",
+      "ipa": "/œ̃ ʁefyʒje/",
+      "example_fr": "Un réfugié a besoin de protection.",
+      "example_vi": "Người tị nạn cần bảo vệ.",
+      "example_en": "A refugee needs protection."
+    },
+    {
+      "french": "l'asile",
+      "meaning_vi": "sự tị nạn",
+      "meaning_en": "asylum",
+      "ipa": "/lazil/",
+      "example_fr": "Il demande l'asile.",
+      "example_vi": "Anh ấy xin tị nạn.",
+      "example_en": "He asks for asylum."
+    },
+    {
+      "french": "une frontière",
+      "meaning_vi": "biên giới",
+      "meaning_en": "a border",
+      "ipa": "/yn fʁɔ̃tjɛʁ/",
+      "example_fr": "La frontière est fermée.",
+      "example_vi": "Biên giới đóng cửa.",
+      "example_en": "The border is closed."
+    },
+    {
+      "french": "un visa",
+      "meaning_vi": "thị thực, visa",
+      "meaning_en": "a visa",
+      "ipa": "/œ̃ viza/",
+      "example_fr": "Montre ton visa.",
+      "example_vi": "Xuất trình thị thực.",
+      "example_en": "Show your visa."
+    },
+    {
+      "french": "un titre de séjour",
+      "meaning_vi": "thẻ cư trú",
+      "meaning_en": "a residence permit",
+      "ipa": "/œ̃ titʁ də seʒuʁ/",
+      "example_fr": "Le titre de séjour est obligatoire.",
+      "example_vi": "Thẻ cư trú là bắt buộc.",
+      "example_en": "The residence permit is required."
+    },
+    {
+      "french": "une nationalité",
+      "meaning_vi": "quốc tịch",
+      "meaning_en": "nationality",
+      "ipa": "/yn nasjɔnalite/",
+      "example_fr": "Il a la nationalité française.",
+      "example_vi": "Anh ấy có quốc tịch Pháp.",
+      "example_en": "He has French nationality."
+    },
+    {
+      "french": "l'intégration",
+      "meaning_vi": "sự hòa nhập",
+      "meaning_en": "integration",
+      "ipa": "/lɛ̃teɡʁasjɔ̃/",
+      "example_fr": "L'intégration prend du temps.",
+      "example_vi": "Hòa nhập cần thời gian.",
+      "example_en": "Integration takes time."
+    },
+    {
+      "french": "quitter",
+      "meaning_vi": "rời đi",
+      "meaning_en": "to leave",
+      "ipa": "/kite/",
+      "example_fr": "Il quitte son pays.",
+      "example_vi": "Anh ấy rời đất nước.",
+      "example_en": "He leaves his country."
+    },
+    {
+      "french": "s'installer",
+      "meaning_vi": "định cư, ổn định",
+      "meaning_en": "to settle",
+      "ipa": "/sɛ̃stale/",
+      "example_fr": "Il s'installe à Paris.",
+      "example_vi": "Anh ấy định cư ở Paris.",
+      "example_en": "He settles in Paris."
+    },
+    {
+      "french": "le regroupement familial",
+      "meaning_vi": "đoàn tụ gia đình",
+      "meaning_en": "family reunification",
+      "ipa": "/lə ʁəɡʁupmɑ̃ familjal/",
+      "example_fr": "Le regroupement familial prend du temps.",
+      "example_vi": "Đoàn tụ gia đình mất thời gian.",
+      "example_en": "Family reunification takes time."
+    },
+    {
+      "french": "un retour",
+      "meaning_vi": "sự trở về",
+      "meaning_en": "a return",
+      "ipa": "/œ̃ ʁətuʁ/",
+      "example_fr": "Le retour est prévu.",
+      "example_vi": "Sự trở về đã lên kế hoạch.",
+      "example_en": "The return is planned."
+    },
+    {
+      "french": "l'exil",
+      "meaning_vi": "sự tha hương",
+      "meaning_en": "exile",
+      "ipa": "/lɛɡzil/",
+      "example_fr": "L'exil est douloureux.",
+      "example_vi": "Tha hương rất đau khổ.",
+      "example_en": "Exile is painful."
+    },
+    {
+      "french": "un demandeur d'asile",
+      "meaning_vi": "người xin tị nạn",
+      "meaning_en": "an asylum seeker",
+      "ipa": "/œ̃ dəmɑ̃dœʁ dazil/",
+      "example_fr": "Il cherche une vie meilleure.",
+      "example_vi": "Anh ấy tìm cuộc sống tốt hơn.",
+      "example_en": "He seeks a better life."
+    },
+    {
+      "french": "un camp",
+      "meaning_vi": "trại",
+      "meaning_en": "a camp",
+      "ipa": "/œ̃ kɑ̃/",
+      "example_fr": "Le camp est plein.",
+      "example_vi": "Trại đông đúc.",
+      "example_en": "The camp is crowded."
+    },
+    {
+      "french": "la naturalisation",
+      "meaning_vi": "sự nhập quốc tịch",
+      "meaning_en": "naturalisation",
+      "ipa": "/la natyʁalizasjɔ̃/",
+      "example_fr": "La naturalisation est longue.",
+      "example_vi": "Nhập quốc tịch mất nhiều thời gian.",
+      "example_en": "Naturalisation is long."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "La vie sociale et économique",
+  "category_key": "vie-sociale-economique",
+  "category_sort_order": 110,
+  "category_vi": "Đời sống xã hội và kinh tế",
+  "category_en": "Social and economic life",
+  "topic": "La vie économique",
+  "topic_slug": "vie-economique",
+  "topic_sort_order": 10,
+  "topic_vi": "Đời sống kinh tế",
+  "topic_en": "Economic life",
+  "subtopic": "L'argent et la banque",
+  "subtopic_key": "l-argent-et-la-banque",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Tiền bạc và ngân hàng",
+  "subtopic_en": "Money and banking",
+  "words": [
+    {
+      "french": "l'argent (m)",
+      "meaning_vi": "tiền",
+      "meaning_en": "money",
+      "ipa": "/laʁ.ʒɑ̃/",
+      "example_fr": "Il économise de l'argent.",
+      "example_vi": "Anh ấy tiết kiệm tiền.",
+      "example_en": "He saves money."
+    },
+    {
+      "french": "le distributeur",
+      "meaning_vi": "máy rút tiền",
+      "meaning_en": "cash dispenser",
+      "ipa": "/lə dis.tʁi.by.tœʁ/",
+      "example_fr": "Le distributeur est en panne.",
+      "example_vi": "Máy rút tiền bị hỏng.",
+      "example_en": "The cash dispenser is out of order."
+    },
+    {
+      "french": "le compte bancaire",
+      "meaning_vi": "tài khoản ngân hàng",
+      "meaning_en": "bank account",
+      "ipa": "/kɔ̃t bɑ̃.kɛʁ/",
+      "example_fr": "J'ouvre un compte bancaire.",
+      "example_vi": "Tôi mở tài khoản ngân hàng.",
+      "example_en": "I open a bank account."
+    },
+    {
+      "french": "le découvert",
+      "meaning_vi": "thấu chi (số dư âm)",
+      "meaning_en": "overdraft",
+      "ipa": "/lə de.ku.vɛʁ/",
+      "example_fr": "Son compte est à découvert.",
+      "example_vi": "Tài khoản của anh ấy bị thấu chi.",
+      "example_en": "His account is overdrawn."
+    },
+    {
+      "french": "le distributeur automatique",
+      "meaning_vi": "máy ATM",
+      "meaning_en": "ATM",
+      "ipa": "/dis.tʁi.by.tœʁ o.to.ma.tik/",
+      "example_fr": "Je retire au distributeur.",
+      "example_vi": "Tôi rút tiền ở máy ATM.",
+      "example_en": "I withdraw from the ATM."
+    },
+    {
+      "french": "le relevé bancaire",
+      "meaning_vi": "sao kê ngân hàng",
+      "meaning_en": "bank statement",
+      "ipa": "/lə ʁə.le.ve bɑ̃.kɛʁ/",
+      "example_fr": "Je vérifie mon relevé bancaire.",
+      "example_vi": "Tôi kiểm tra sao kê ngân hàng.",
+      "example_en": "I check my bank statement."
+    },
+    {
+      "french": "le virement",
+      "meaning_vi": "chuyển khoản",
+      "meaning_en": "transfer",
+      "ipa": "/viʁ.mɑ̃/",
+      "example_fr": "Je fais un virement demain.",
+      "example_vi": "Tôi chuyển khoản ngày mai.",
+      "example_en": "I make a transfer tomorrow."
+    },
+    {
+      "french": "le chèque",
+      "meaning_vi": "séc, chi phiếu",
+      "meaning_en": "cheque",
+      "ipa": "/ʃɛk/",
+      "example_fr": "Il paie par chèque.",
+      "example_vi": "Anh ấy trả bằng séc.",
+      "example_en": "He pays by cheque."
+    },
+    {
+      "french": "les espèces (f)",
+      "meaning_vi": "tiền mặt",
+      "meaning_en": "cash",
+      "ipa": "/ɛs.pɛs/",
+      "example_fr": "Je préfère payer en espèces.",
+      "example_vi": "Tôi thích trả tiền mặt.",
+      "example_en": "I prefer to pay cash."
+    },
+    {
+      "french": "la monnaie",
+      "meaning_vi": "tiền xu, tiền lẻ",
+      "meaning_en": "change, currency",
+      "ipa": "/mɔ.nɛ/",
+      "example_fr": "Avez-vous de la monnaie ?",
+      "example_vi": "Bạn có tiền lẻ không?",
+      "example_en": "Do you have change?"
+    },
+    {
+      "french": "le chéquier",
+      "meaning_vi": "sổ séc",
+      "meaning_en": "chequebook",
+      "ipa": "/lə ʃe.kje/",
+      "example_fr": "Il a perdu son chéquier.",
+      "example_vi": "Anh ấy mất sổ séc.",
+      "example_en": "He lost his chequebook."
+    },
+    {
+      "french": "la pièce",
+      "meaning_vi": "đồng xu",
+      "meaning_en": "coin",
+      "ipa": "/pjɛs/",
+      "example_fr": "Il met une pièce dans la machine.",
+      "example_vi": "Anh ấy bỏ xu vào máy.",
+      "example_en": "He puts a coin in the machine."
+    },
+    {
+      "french": "l'épargne (f)",
+      "meaning_vi": "tiết kiệm",
+      "meaning_en": "savings",
+      "ipa": "/e.paʁɲ/",
+      "example_fr": "L'épargne est utile pour l'avenir.",
+      "example_vi": "Tiết kiệm tốt cho tương lai.",
+      "example_en": "Savings are useful for the future."
+    },
+    {
+      "french": "le livret d'épargne",
+      "meaning_vi": "sổ tiết kiệm",
+      "meaning_en": "savings book",
+      "ipa": "/li.vʁe de.paʁɲ/",
+      "example_fr": "Elle a un livret d'épargne.",
+      "example_vi": "Cô ấy có sổ tiết kiệm.",
+      "example_en": "She has a savings book."
+    },
+    {
+      "french": "le crédit",
+      "meaning_vi": "khoản vay, tín dụng",
+      "meaning_en": "loan, credit",
+      "ipa": "/kʁe.di/",
+      "example_fr": "Il demande un crédit à la banque.",
+      "example_vi": "Anh ấy vay tiền ngân hàng.",
+      "example_en": "He asks the bank for a loan."
+    },
+    {
+      "french": "le taux d'intérêt",
+      "meaning_vi": "lãi suất",
+      "meaning_en": "interest rate",
+      "ipa": "/to dɛ̃.te.ʁɛ/",
+      "example_fr": "Le taux d'intérêt est bas.",
+      "example_vi": "Lãi suất đang thấp.",
+      "example_en": "The interest rate is low."
+    },
+    {
+      "french": "épargner",
+      "meaning_vi": "tiết kiệm (tiền)",
+      "meaning_en": "to save (money)",
+      "ipa": "/e.pa.ʁɲe/",
+      "example_fr": "Elle épargne chaque mois.",
+      "example_vi": "Cô ấy tiết kiệm mỗi tháng.",
+      "example_en": "She saves every month."
+    },
+    {
+      "french": "emprunter",
+      "meaning_vi": "vay, mượn",
+      "meaning_en": "to borrow",
+      "ipa": "/ɑ̃.pʁœ̃.te/",
+      "example_fr": "Il emprunte de l'argent à la banque.",
+      "example_vi": "Anh ấy vay tiền ngân hàng.",
+      "example_en": "He borrows money from the bank."
+    },
+    {
+      "french": "le paiement sans contact",
+      "meaning_vi": "thanh toán không chạm",
+      "meaning_en": "contactless payment",
+      "ipa": "/lə pɛ.mɑ̃ sɑ̃ kɔ̃.takt/",
+      "example_fr": "Le paiement sans contact est rapide.",
+      "example_vi": "Thanh toán không chạm rất nhanh.",
+      "example_en": "Contactless payment is fast."
+    }
+  ]
+}

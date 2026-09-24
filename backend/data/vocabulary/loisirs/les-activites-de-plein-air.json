@@ -1,0 +1,190 @@
+{
+  "category": "Les loisirs",
+  "category_key": "loisirs",
+  "category_sort_order": 60,
+  "category_vi": "Giải trí",
+  "category_en": "Leisure",
+  "topic": "Les activités culturelles et sportives",
+  "topic_slug": "activites-culturelles-sportives",
+  "topic_sort_order": 10,
+  "topic_vi": "Hoạt động văn hóa và thể thao",
+  "topic_en": "Cultural and sports activities",
+  "subtopic": "Les activités de plein air",
+  "subtopic_key": "les-activites-de-plein-air",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Hoạt động ngoài trời",
+  "subtopic_en": "Outdoor activities",
+  "words": [
+    {
+      "french": "la randonnée",
+      "meaning_vi": "cuộc đi bộ đường dài",
+      "meaning_en": "hike",
+      "ipa": "/la ʁɑ̃dɔne/",
+      "example_fr": "Nous faisons une randonnée en montagne.",
+      "example_vi": "Chúng tôi đi bộ đường dài trên núi.",
+      "example_en": "We go hiking in the mountains."
+    },
+    {
+      "french": "le camping",
+      "meaning_vi": "cắm trại",
+      "meaning_en": "camping",
+      "ipa": "/lə kɑ̃piŋ/",
+      "example_fr": "Ils adorent le camping.",
+      "example_vi": "Họ rất thích cắm trại.",
+      "example_en": "They love camping."
+    },
+    {
+      "french": "le pique-nique",
+      "meaning_vi": "dã ngoại",
+      "meaning_en": "picnic",
+      "ipa": "/lə piknik/",
+      "example_fr": "Nous faisons un pique-nique au bord du lac.",
+      "example_vi": "Chúng tôi dã ngoại bên hồ.",
+      "example_en": "We have a picnic by the lake."
+    },
+    {
+      "french": "la pêche",
+      "meaning_vi": "câu cá",
+      "meaning_en": "fishing",
+      "ipa": "/la pɛʃ/",
+      "example_fr": "Il va à la pêche dimanche.",
+      "example_vi": "Anh ấy đi câu cá vào chủ nhật.",
+      "example_en": "He goes fishing on Sunday."
+    },
+    {
+      "french": "le vélo",
+      "meaning_vi": "xe đạp",
+      "meaning_en": "bike, cycling",
+      "ipa": "/lə velo/",
+      "example_fr": "Nous faisons du vélo en forêt.",
+      "example_vi": "Chúng tôi đạp xe trong rừng.",
+      "example_en": "We ride bikes in the forest."
+    },
+    {
+      "french": "l'escalade (f)",
+      "meaning_vi": "leo núi",
+      "meaning_en": "climbing",
+      "ipa": "/lɛskalad/",
+      "example_fr": "Elle adore l'escalade.",
+      "example_vi": "Cô ấy rất thích leo núi.",
+      "example_en": "She loves climbing."
+    },
+    {
+      "french": "le canoë",
+      "meaning_vi": "ca nô",
+      "meaning_en": "canoe, canoeing",
+      "ipa": "/lə kanɔe/",
+      "example_fr": "Nous faisons du canoë sur la rivière.",
+      "example_vi": "Chúng tôi chèo ca nô trên sông.",
+      "example_en": "We do canoeing on the river."
+    },
+    {
+      "french": "la voile",
+      "meaning_vi": "thuyền buồm",
+      "meaning_en": "sailing",
+      "ipa": "/la vwal/",
+      "example_fr": "Ils font de la voile.",
+      "example_vi": "Họ đang đi thuyền buồm.",
+      "example_en": "They are sailing."
+    },
+    {
+      "french": "le ski",
+      "meaning_vi": "trượt tuyết",
+      "meaning_en": "skiing",
+      "ipa": "/lə ski/",
+      "example_fr": "Nous faisons du ski en hiver.",
+      "example_vi": "Chúng tôi trượt tuyết vào mùa đông.",
+      "example_en": "We go skiing in winter."
+    },
+    {
+      "french": "le jogging",
+      "meaning_vi": "chạy bộ",
+      "meaning_en": "jogging",
+      "ipa": "/lə dʒɔɡiŋ/",
+      "example_fr": "Il fait du jogging chaque matin.",
+      "example_vi": "Anh ấy chạy bộ mỗi sáng.",
+      "example_en": "He jogs every morning."
+    },
+    {
+      "french": "le barbecue",
+      "meaning_vi": "tiệc nướng",
+      "meaning_en": "barbecue",
+      "ipa": "/lə baʁbəky/",
+      "example_fr": "Nous organisons un barbecue.",
+      "example_vi": "Chúng tôi tổ chức tiệc nướng.",
+      "example_en": "We organize a barbecue."
+    },
+    {
+      "french": "la tente",
+      "meaning_vi": "lều",
+      "meaning_en": "tent",
+      "ipa": "/la tɑ̃t/",
+      "example_fr": "Nous dormons sous la tente.",
+      "example_vi": "Chúng tôi ngủ trong lều.",
+      "example_en": "We sleep in a tent."
+    },
+    {
+      "french": "le sac à dos",
+      "meaning_vi": "ba lô",
+      "meaning_en": "backpack",
+      "ipa": "/lə sak a do/",
+      "example_fr": "Il prépare son sac à dos.",
+      "example_vi": "Anh ấy chuẩn bị ba lô.",
+      "example_en": "He packs his backpack."
+    },
+    {
+      "french": "la boussole",
+      "meaning_vi": "la bàn",
+      "meaning_en": "compass",
+      "ipa": "/la busɔl/",
+      "example_fr": "Prends la boussole.",
+      "example_vi": "Hãy mang theo la bàn.",
+      "example_en": "Take the compass."
+    },
+    {
+      "french": "le sentier",
+      "meaning_vi": "đường mòn",
+      "meaning_en": "trail, path",
+      "ipa": "/lə sɑ̃tje/",
+      "example_fr": "Le sentier est magnifique.",
+      "example_vi": "Con đường mòn rất đẹp.",
+      "example_en": "The trail is beautiful."
+    },
+    {
+      "french": "le parc",
+      "meaning_vi": "công viên",
+      "meaning_en": "park",
+      "ipa": "/lə paʁk/",
+      "example_fr": "Les enfants jouent dans le parc.",
+      "example_vi": "Trẻ em chơi trong công viên.",
+      "example_en": "Children play in the park."
+    },
+    {
+      "french": "la nature",
+      "meaning_vi": "thiên nhiên",
+      "meaning_en": "nature",
+      "ipa": "/la natyʁ/",
+      "example_fr": "La nature est belle.",
+      "example_vi": "Thiên nhiên thật đẹp.",
+      "example_en": "Nature is beautiful."
+    },
+    {
+      "french": "la baignade",
+      "meaning_vi": "tắm",
+      "meaning_en": "swimming, bathing",
+      "ipa": "/la bɛɲad/",
+      "example_fr": "Nous nous baignons dans le lac.",
+      "example_vi": "Chúng tôi tắm ở hồ.",
+      "example_en": "We swim in the lake."
+    },
+    {
+      "french": "l'observation des oiseaux",
+      "meaning_vi": "ngắm chim",
+      "meaning_en": "birdwatching",
+      "ipa": "/lɔpsɛʁvasjɔ̃ dezwazo/",
+      "example_fr": "Nous observons les oiseaux.",
+      "example_vi": "Chúng tôi ngắm chim.",
+      "example_en": "We watch birds."
+    }
+  ]
+}

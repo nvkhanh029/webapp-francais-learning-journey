@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "L'alimentation (2)",
+  "topic_slug": "alimentation-2",
+  "topic_sort_order": 20,
+  "topic_vi": "Thực phẩm (2)",
+  "topic_en": "Food (2)",
+  "subtopic": "Le fromage",
+  "subtopic_key": "le-fromage",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Phô mai",
+  "subtopic_en": "Cheese",
+  "words": [
+    {
+      "french": "le fromage",
+      "meaning_vi": "phô mai",
+      "meaning_en": "cheese",
+      "ipa": "/fʁɔ.maʒ/",
+      "example_fr": "Le fromage après le repas.",
+      "example_vi": "Phô mai sau bữa ăn.",
+      "example_en": "Cheese after the meal."
+    },
+    {
+      "french": "le camembert",
+      "meaning_vi": "phô mai Camembert",
+      "meaning_en": "camembert",
+      "ipa": "/ka.mɑ̃.bɛʁ/",
+      "example_fr": "Le camembert sent fort.",
+      "example_vi": "Camembert mùi nồng.",
+      "example_en": "Camembert smells strong."
+    },
+    {
+      "french": "le brie",
+      "meaning_vi": "phô mai Brie",
+      "meaning_en": "brie",
+      "ipa": "/bʁi/",
+      "example_fr": "Du brie avec une baguette.",
+      "example_vi": "Phô mai Brie với baguette.",
+      "example_en": "Brie with a baguette."
+    },
+    {
+      "french": "le roquefort",
+      "meaning_vi": "phô mai Roquefort",
+      "meaning_en": "roquefort",
+      "ipa": "/ʁɔk.fɔʁ/",
+      "example_fr": "Le roquefort est salé.",
+      "example_vi": "Phô mai Roquefort mặn.",
+      "example_en": "Roquefort is salty."
+    },
+    {
+      "french": "le chèvre",
+      "meaning_vi": "phô mai dê",
+      "meaning_en": "goat cheese",
+      "ipa": "/ʃɛvʁ/",
+      "example_fr": "Le chèvre frais.",
+      "example_vi": "Phô mai dê tươi.",
+      "example_en": "Soft goat cheese."
+    },
+    {
+      "french": "le comté",
+      "meaning_vi": "phô mai Comté",
+      "meaning_en": "Comté",
+      "ipa": "/kɔ̃.te/",
+      "example_fr": "Le comté est un fromage à pâte dure.",
+      "example_vi": "Comté là phô mai cứng.",
+      "example_en": "Comté is a hard cheese."
+    },
+    {
+      "french": "la raclette",
+      "meaning_vi": "phô mai raclette",
+      "meaning_en": "raclette",
+      "ipa": "/ʁa.klɛt/",
+      "example_fr": "La raclette fondue en hiver.",
+      "example_vi": "Phô mai raclette chảy vào mùa đông.",
+      "example_en": "Melted raclette in winter."
+    },
+    {
+      "french": "le reblochon",
+      "meaning_vi": "phô mai Reblochon",
+      "meaning_en": "reblochon",
+      "ipa": "/ʁə.blɔ.ʃɔ̃/",
+      "example_fr": "Le reblochon pour la tartiflette.",
+      "example_vi": "Reblochon cho món tartiflette.",
+      "example_en": "Reblochon for tartiflette."
+    },
+    {
+      "french": "le munster",
+      "meaning_vi": "phô mai Munster",
+      "meaning_en": "munster",
+      "ipa": "/mœ̃.stɛʁ/",
+      "example_fr": "Le munster est parfumé.",
+      "example_vi": "Munster thơm nồng.",
+      "example_en": "Munster is fragrant."
+    },
+    {
+      "french": "le fromage frais",
+      "meaning_vi": "phô mai tươi",
+      "meaning_en": "fresh cheese",
+      "ipa": "/fʁɔ.maʁ fʁɛ/",
+      "example_fr": "Un fromage frais léger.",
+      "example_vi": "Phô mai tươi nhẹ.",
+      "example_en": "A light cream cheese."
+    },
+    {
+      "french": "le fromage à pâte molle",
+      "meaning_vi": "phô mai mềm",
+      "meaning_en": "soft cheese",
+      "ipa": "/fʁɔ.maʒ a pat mɔl/",
+      "example_fr": "Un fromage à pâte molle.",
+      "example_vi": "Một loại phô mai mềm.",
+      "example_en": "A soft cheese."
+    },
+    {
+      "french": "le fromage à pâte dure",
+      "meaning_vi": "phô mai cứng",
+      "meaning_en": "hard cheese",
+      "ipa": "/fʁɔ.maʒ a pat dyʁ/",
+      "example_fr": "Un fromage à pâte dure.",
+      "example_vi": "Một loại phô mai cứng.",
+      "example_en": "A hard cheese."
+    },
+    {
+      "french": "le fromage bleu",
+      "meaning_vi": "phô mai xanh",
+      "meaning_en": "blue cheese",
+      "ipa": "/fʁɔ.maʒ blø/",
+      "example_fr": "Un fromage à pâte persillée.",
+      "example_vi": "Một loại phô mai xanh.",
+      "example_en": "A blue cheese."
+    },
+    {
+      "french": "le gruyère",
+      "meaning_vi": "phô mai Gruyère",
+      "meaning_en": "gruyère",
+      "ipa": "/ɡʁɥi.jɛʁ/",
+      "example_fr": "Du gruyère râpé sur les pâtes.",
+      "example_vi": "Gruyère bào trên mì.",
+      "example_en": "Grated gruyère on pasta."
+    },
+    {
+      "french": "la mozzarella",
+      "meaning_vi": "phô mai mozzarella",
+      "meaning_en": "mozzarella",
+      "ipa": "/mɔd.za.ʁe.la/",
+      "example_fr": "La mozzarella aux tomates.",
+      "example_vi": "Mozzarella với cà chua.",
+      "example_en": "Mozzarella with tomatoes."
+    },
+    {
+      "french": "le parmesan",
+      "meaning_vi": "phô mai Parmesan",
+      "meaning_en": "parmesan",
+      "ipa": "/paʁ.mə.zɑ̃/",
+      "example_fr": "Du parmesan sur la soupe.",
+      "example_vi": "Parmesan trên súp.",
+      "example_en": "Parmesan on the soup."
+    },
+    {
+      "french": "le plateau de fromages",
+      "meaning_vi": "khay phô mai",
+      "meaning_en": "cheese platter",
+      "ipa": "/pla.to də fʁɔ.maʒ/",
+      "example_fr": "Un petit plateau de fromages.",
+      "example_vi": "Một khay phô mai nhỏ.",
+      "example_en": "A small cheese platter."
+    },
+    {
+      "french": "le yaourt",
+      "meaning_vi": "sữa chua",
+      "meaning_en": "yoghurt",
+      "ipa": "/ja.uʁt/",
+      "example_fr": "Un yaourt nature, s'il vous plaît.",
+      "example_vi": "Một hũ sữa chua không đường.",
+      "example_en": "Plain yoghurt, please."
+    },
+    {
+      "french": "la fromagerie",
+      "meaning_vi": "tiệm phô mai",
+      "meaning_en": "cheese shop",
+      "ipa": "/fʁɔ.maʒ.ʁi/",
+      "example_fr": "La fromagerie est ouverte.",
+      "example_vi": "Tiệm phô mai mở cửa.",
+      "example_en": "The cheese dairy is open."
+    }
+  ]
+}

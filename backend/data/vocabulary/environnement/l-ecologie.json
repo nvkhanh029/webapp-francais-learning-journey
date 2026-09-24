@@ -1,0 +1,190 @@
+{
+  "category": "L'environnement",
+  "category_key": "environnement",
+  "category_sort_order": 100,
+  "category_vi": "Môi trường",
+  "category_en": "The environment",
+  "topic": "La ville, la campagne et l'écologie",
+  "topic_slug": "ville-campagne-ecologie",
+  "topic_sort_order": 10,
+  "topic_vi": "Thành phố, nông thôn và sinh thái",
+  "topic_en": "City, countryside and ecology",
+  "subtopic": "L'écologie",
+  "subtopic_key": "l-ecologie",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Sinh thái học",
+  "subtopic_en": "Ecology",
+  "words": [
+    {
+      "french": "l'écologie",
+      "meaning_vi": "sinh thái học",
+      "meaning_en": "ecology",
+      "ipa": "/le.kɔ.lɔ.ʒi/",
+      "example_fr": "L'écologie est importante aujourd'hui.",
+      "example_vi": "Sinh thái học rất quan trọng hiện nay.",
+      "example_en": "Ecology is important today."
+    },
+    {
+      "french": "le compostage",
+      "meaning_vi": "sự ủ phân hữu cơ",
+      "meaning_en": "composting",
+      "ipa": "/lə kɔ̃.pɔs.taʒ/",
+      "example_fr": "Le compostage réduit les ordures.",
+      "example_vi": "Ủ phân hữu cơ giúp giảm rác.",
+      "example_en": "Composting reduces garbage."
+    },
+    {
+      "french": "la pollution",
+      "meaning_vi": "sự ô nhiễm",
+      "meaning_en": "pollution",
+      "ipa": "/la pɔ.ly.sjɔ̃/",
+      "example_fr": "La pollution nuit à la santé.",
+      "example_vi": "Ô nhiễm gây hại cho sức khỏe.",
+      "example_en": "Pollution harms health."
+    },
+    {
+      "french": "le réchauffement climatique",
+      "meaning_vi": "sự nóng lên toàn cầu",
+      "meaning_en": "global warming",
+      "ipa": "/lə ʁe.ʃof.mɑ̃ kli.ma.tik/",
+      "example_fr": "Le réchauffement climatique inquiète tout le monde.",
+      "example_vi": "Sự nóng lên toàn cầu khiến mọi người lo lắng.",
+      "example_en": "Global warming worries everyone."
+    },
+    {
+      "french": "le recyclage",
+      "meaning_vi": "sự tái chế",
+      "meaning_en": "recycling",
+      "ipa": "/lə ʁə.si.klaʒ/",
+      "example_fr": "Le recyclage réduit les déchets.",
+      "example_vi": "Tái chế giúp giảm rác thải.",
+      "example_en": "Recycling reduces waste."
+    },
+    {
+      "french": "un déchet",
+      "meaning_vi": "rác thải",
+      "meaning_en": "a piece of waste",
+      "ipa": "/œ̃ de.ʃɛ/",
+      "example_fr": "Trie tes déchets, s'il te plaît.",
+      "example_vi": "Hãy phân loại rác của bạn.",
+      "example_en": "Sort your waste, please."
+    },
+    {
+      "french": "le tri sélectif",
+      "meaning_vi": "phân loại rác",
+      "meaning_en": "waste sorting",
+      "ipa": "/lə tʁi se.lɛk.tif/",
+      "example_fr": "Le tri sélectif est obligatoire ici.",
+      "example_vi": "Phân loại rác là bắt buộc ở đây.",
+      "example_en": "Sorting is obligatory here."
+    },
+    {
+      "french": "l'énergie renouvelable",
+      "meaning_vi": "năng lượng tái tạo",
+      "meaning_en": "renewable energy",
+      "ipa": "/lɛ.nɛʁ.ʒi ʁə.nu.və.labl/",
+      "example_fr": "L'énergie renouvelable est propre.",
+      "example_vi": "Năng lượng tái tạo rất sạch.",
+      "example_en": "Renewable energy is clean."
+    },
+    {
+      "french": "l'énergie solaire",
+      "meaning_vi": "năng lượng mặt trời",
+      "meaning_en": "solar energy",
+      "ipa": "/lɛ.nɛʁ.ʒi sɔ.lɛʁ/",
+      "example_fr": "L'énergie solaire chauffe la maison.",
+      "example_vi": "Năng lượng mặt trời sưởi ấm ngôi nhà.",
+      "example_en": "Solar energy heats the house."
+    },
+    {
+      "french": "un panneau solaire",
+      "meaning_vi": "tấm pin mặt trời",
+      "meaning_en": "a solar panel",
+      "ipa": "/œ̃ pa.no sɔ.lɛʁ/",
+      "example_fr": "Les panneaux solaires sont sur le toit.",
+      "example_vi": "Các tấm pin mặt trời ở trên mái nhà.",
+      "example_en": "Solar panels are on the roof."
+    },
+    {
+      "french": "une éolienne",
+      "meaning_vi": "tua-bin gió",
+      "meaning_en": "a wind turbine",
+      "ipa": "/yn e.ɔ.ljɛn/",
+      "example_fr": "Les éoliennes tournent vite.",
+      "example_vi": "Các tua-bin gió quay nhanh.",
+      "example_en": "The wind turbines turn fast."
+    },
+    {
+      "french": "la biodiversité",
+      "meaning_vi": "đa dạng sinh học",
+      "meaning_en": "biodiversity",
+      "ipa": "/la bjo.di.vɛʁ.si.te/",
+      "example_fr": "La biodiversité est fragile.",
+      "example_vi": "Đa dạng sinh học rất mong manh.",
+      "example_en": "Biodiversity is fragile."
+    },
+    {
+      "french": "le gaspillage",
+      "meaning_vi": "sự lãng phí",
+      "meaning_en": "waste / wastage",
+      "ipa": "/lə ɡas.pi.jaʒ/",
+      "example_fr": "Évite le gaspillage alimentaire.",
+      "example_vi": "Hãy tránh lãng phí thực phẩm.",
+      "example_en": "Avoid food waste."
+    },
+    {
+      "french": "une espèce menacée",
+      "meaning_vi": "loài có nguy cơ tuyệt chủng",
+      "meaning_en": "an endangered species",
+      "ipa": "/yn ɛs.pɛs mə.na.se/",
+      "example_fr": "Le panda est une espèce menacée.",
+      "example_vi": "Gấu trúc là loài có nguy cơ tuyệt chủng.",
+      "example_en": "The panda is an endangered species."
+    },
+    {
+      "french": "l'empreinte carbone",
+      "meaning_vi": "dấu chân carbon",
+      "meaning_en": "the carbon footprint",
+      "ipa": "/lɑ̃.pʁɛ̃t kaʁ.bɔn/",
+      "example_fr": "Réduis ton empreinte carbone.",
+      "example_vi": "Hãy giảm dấu chân carbon của bạn.",
+      "example_en": "Reduce your carbon footprint."
+    },
+    {
+      "french": "le développement durable",
+      "meaning_vi": "phát triển bền vững",
+      "meaning_en": "sustainable development",
+      "ipa": "/lə dev.lɔp.mɑ̃ dy.ʁabl/",
+      "example_fr": "Le développement durable, c'est l'avenir.",
+      "example_vi": "Phát triển bền vững là tương lai.",
+      "example_en": "Sustainable development is the future."
+    },
+    {
+      "french": "protéger",
+      "meaning_vi": "bảo vệ",
+      "meaning_en": "to protect",
+      "ipa": "/pʁɔ.te.ʒe/",
+      "example_fr": "Il faut protéger la planète.",
+      "example_vi": "Chúng ta phải bảo vệ hành tinh.",
+      "example_en": "We must protect the planet."
+    },
+    {
+      "french": "la sécheresse",
+      "meaning_vi": "hạn hán",
+      "meaning_en": "drought",
+      "ipa": "/la seʃ.ʁɛs/",
+      "example_fr": "La sécheresse est grave cette année.",
+      "example_vi": "Hạn hán năm nay rất nghiêm trọng.",
+      "example_en": "The drought is severe this year."
+    },
+    {
+      "french": "une inondation",
+      "meaning_vi": "trận lụt",
+      "meaning_en": "a flood",
+      "ipa": "/yn i.nɔ̃.da.sjɔ̃/",
+      "example_fr": "L'inondation a abîmé le village.",
+      "example_vi": "Trận lụt đã làm hư hại ngôi làng.",
+      "example_en": "The flood damaged the village."
+    }
+  ]
+}

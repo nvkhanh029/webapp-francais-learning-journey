@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "L'alimentation (2)",
+  "topic_slug": "alimentation-2",
+  "topic_sort_order": 20,
+  "topic_vi": "Thực phẩm (2)",
+  "topic_en": "Food (2)",
+  "subtopic": "Les légumes",
+  "subtopic_key": "les-legumes",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Rau củ",
+  "subtopic_en": "Vegetables",
+  "words": [
+    {
+      "french": "la tomate",
+      "meaning_vi": "cà chua",
+      "meaning_en": "tomato",
+      "ipa": "/tɔ.mat/",
+      "example_fr": "Des tomates rouges et mûres.",
+      "example_vi": "Cà chua đỏ chín.",
+      "example_en": "Ripe red tomatoes."
+    },
+    {
+      "french": "la pomme de terre",
+      "meaning_vi": "khoai tây",
+      "meaning_en": "potato",
+      "ipa": "/pɔm də tɛʁ/",
+      "example_fr": "Des pommes de terre bouillies.",
+      "example_vi": "Khoai tây luộc.",
+      "example_en": "Boiled potatoes."
+    },
+    {
+      "french": "la carotte",
+      "meaning_vi": "cà rốt",
+      "meaning_en": "carrot",
+      "ipa": "/ka.ʁɔt/",
+      "example_fr": "Des carottes râpées.",
+      "example_vi": "Cà rốt bào.",
+      "example_en": "Grated carrots."
+    },
+    {
+      "french": "la salade",
+      "meaning_vi": "xà lách, salad",
+      "meaning_en": "lettuce, salad",
+      "ipa": "/sa.lad/",
+      "example_fr": "Une salade verte, s'il vous plaît.",
+      "example_vi": "Salad xanh.",
+      "example_en": "Green salad, please."
+    },
+    {
+      "french": "l'épinard",
+      "meaning_vi": "rau chân vịt",
+      "meaning_en": "spinach",
+      "ipa": "/e.pi.naʁ/",
+      "example_fr": "Des épinards frais.",
+      "example_vi": "Rau chân vịt tươi.",
+      "example_en": "Fresh spinach."
+    },
+    {
+      "french": "le chou-fleur",
+      "meaning_vi": "súp lơ trắng",
+      "meaning_en": "cauliflower",
+      "ipa": "/ʃu flœʁ/",
+      "example_fr": "Le gratin de chou-fleur.",
+      "example_vi": "Súp lơ trắng đút lò.",
+      "example_en": "Cauliflower gratin."
+    },
+    {
+      "french": "le chou",
+      "meaning_vi": "bắp cải",
+      "meaning_en": "cabbage",
+      "ipa": "/ʃu/",
+      "example_fr": "La soupe au chou vert.",
+      "example_vi": "Súp bắp cải xanh.",
+      "example_en": "Green cabbage soup."
+    },
+    {
+      "french": "le brocoli",
+      "meaning_vi": "bông cải xanh",
+      "meaning_en": "broccoli",
+      "ipa": "/bʁɔ.ko.li/",
+      "example_fr": "Le brocoli est sain.",
+      "example_vi": "Bông cải xanh tốt cho sức khỏe.",
+      "example_en": "Broccoli is healthy."
+    },
+    {
+      "french": "la courgette",
+      "meaning_vi": "bí ngòi",
+      "meaning_en": "courgette, zucchini",
+      "ipa": "/kuʁ.ʒɛt/",
+      "example_fr": "Des courgettes en été.",
+      "example_vi": "Bí ngòi vào mùa hè.",
+      "example_en": "Courgettes in summer."
+    },
+    {
+      "french": "l'aubergine",
+      "meaning_vi": "cà tím",
+      "meaning_en": "eggplant",
+      "ipa": "/o.bɛʁ.ʒin/",
+      "example_fr": "L'aubergine grillée.",
+      "example_vi": "Cà tím nướng.",
+      "example_en": "Grilled eggplant."
+    },
+    {
+      "french": "le poivron",
+      "meaning_vi": "ớt chuông",
+      "meaning_en": "bell pepper",
+      "ipa": "/pwa.vʁɔ̃/",
+      "example_fr": "Les poivrons sont colorés.",
+      "example_vi": "Ớt chuông sặc sỡ.",
+      "example_en": "Peppers are colourful."
+    },
+    {
+      "french": "le haricot vert",
+      "meaning_vi": "đậu que",
+      "meaning_en": "green bean",
+      "ipa": "/a.ʁi.ko vɛʁ/",
+      "example_fr": "Des haricots verts au beurre.",
+      "example_vi": "Đậu que với bơ.",
+      "example_en": "Green beans with butter."
+    },
+    {
+      "french": "le petit pois",
+      "meaning_vi": "đậu Hà Lan",
+      "meaning_en": "pea",
+      "ipa": "/pə.ti pwa/",
+      "example_fr": "Les petits pois sont sucrés.",
+      "example_vi": "Đậu Hà Lan ngọt.",
+      "example_en": "Peas are sweet."
+    },
+    {
+      "french": "le poireau",
+      "meaning_vi": "tỏi tây",
+      "meaning_en": "leek",
+      "ipa": "/pwa.ʁo/",
+      "example_fr": "Des poireaux dans la soupe.",
+      "example_vi": "Tỏi tây trong súp.",
+      "example_en": "Leeks in the soup."
+    },
+    {
+      "french": "le champignon",
+      "meaning_vi": "nấm",
+      "meaning_en": "mushroom",
+      "ipa": "/ʃɑ̃.pi.ɲɔ̃/",
+      "example_fr": "Des champignons de Paris.",
+      "example_vi": "Nấm mỡ.",
+      "example_en": "Mushrooms from Paris."
+    },
+    {
+      "french": "le radis",
+      "meaning_vi": "củ cải",
+      "meaning_en": "radish",
+      "ipa": "/ʁa.di/",
+      "example_fr": "Des radis blancs croquants.",
+      "example_vi": "Củ cải trắng giòn.",
+      "example_en": "Crisp white radishes."
+    },
+    {
+      "french": "le concombre",
+      "meaning_vi": "dưa chuột",
+      "meaning_en": "cucumber",
+      "ipa": "/kɔ̃.kɔ̃bʁ/",
+      "example_fr": "Le concombre est rafraîchissant.",
+      "example_vi": "Dưa chuột mát lạnh.",
+      "example_en": "Cucumber is refreshing."
+    },
+    {
+      "french": "l'épi de maïs",
+      "meaning_vi": "bắp ngô",
+      "meaning_en": "corn cob",
+      "ipa": "/e.pi də ma.is/",
+      "example_fr": "L'épi de maïs doux.",
+      "example_vi": "Bắp ngô ngọt.",
+      "example_en": "Sweet corn on the cob."
+    },
+    {
+      "french": "le potiron",
+      "meaning_vi": "bí đỏ",
+      "meaning_en": "pumpkin",
+      "ipa": "/pɔ.ti.ʁɔ̃/",
+      "example_fr": "La soupe au potiron en automne.",
+      "example_vi": "Súp bí đỏ vào mùa thu.",
+      "example_en": "Pumpkin soup in autumn."
+    }
+  ]
+}

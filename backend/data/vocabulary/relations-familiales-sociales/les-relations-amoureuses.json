@@ -1,0 +1,190 @@
+{
+  "category": "Les relations familiales et sociales",
+  "category_key": "relations-familiales-sociales",
+  "category_sort_order": 20,
+  "category_vi": "Quan hệ gia đình và xã hội",
+  "category_en": "Family and social relationships",
+  "topic": "Les relations sociales",
+  "topic_slug": "relations-sociales",
+  "topic_sort_order": 20,
+  "topic_vi": "Quan hệ xã hội",
+  "topic_en": "Social relationships",
+  "subtopic": "Les relations amoureuses",
+  "subtopic_key": "les-relations-amoureuses",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Quan hệ tình cảm",
+  "subtopic_en": "Romantic relationships",
+  "words": [
+    {
+      "french": "le coup de foudre",
+      "meaning_vi": "tiếng sét ái tình",
+      "meaning_en": "love at first sight",
+      "ipa": "/lə ku də fudʁ/",
+      "example_fr": "Ça a été le coup de foudre dès leur première rencontre.",
+      "example_vi": "Đó là tiếng sét ái tình ngay từ lần gặp đầu tiên.",
+      "example_en": "It was love at first sight from their first meeting."
+    },
+    {
+      "french": "l'amoureux",
+      "meaning_vi": "người yêu (nam)",
+      "meaning_en": "boyfriend / lover (male)",
+      "ipa": "/la.mu.ʁø/",
+      "example_fr": "Son amoureux vient ce soir.",
+      "example_vi": "Bạn trai của cô ấy đến tối nay.",
+      "example_en": "Her boyfriend is coming tonight."
+    },
+    {
+      "french": "l'amoureuse",
+      "meaning_vi": "người yêu (nữ)",
+      "meaning_en": "girlfriend / lover (female)",
+      "ipa": "/la.mu.ʁøz/",
+      "example_fr": "Il écrit à son amoureuse.",
+      "example_vi": "Anh ấy viết thư cho người yêu.",
+      "example_en": "He writes to his girlfriend."
+    },
+    {
+      "french": "le couple",
+      "meaning_vi": "cặp đôi",
+      "meaning_en": "couple",
+      "ipa": "/lə kupl/",
+      "example_fr": "Ils forment un beau couple.",
+      "example_vi": "Họ là một cặp đôi đẹp.",
+      "example_en": "They make a lovely couple."
+    },
+    {
+      "french": "le petit ami",
+      "meaning_vi": "bạn trai",
+      "meaning_en": "boyfriend",
+      "ipa": "/lə pə.ti.ta.mi/",
+      "example_fr": "Elle présente son petit ami.",
+      "example_vi": "Cô ấy giới thiệu bạn trai.",
+      "example_en": "She introduces her boyfriend."
+    },
+    {
+      "french": "la petite amie",
+      "meaning_vi": "bạn gái",
+      "meaning_en": "girlfriend",
+      "ipa": "/la pə.ti.ta.mi/",
+      "example_fr": "Il sort avec sa petite amie.",
+      "example_vi": "Anh ấy đi chơi với bạn gái.",
+      "example_en": "He goes out with his girlfriend."
+    },
+    {
+      "french": "le fiancé",
+      "meaning_vi": "hôn phu",
+      "meaning_en": "fiancé",
+      "ipa": "/lə fjɑ̃.se/",
+      "example_fr": "Son fiancé habite à Nice.",
+      "example_vi": "Hôn phu của cô ấy sống ở Nice.",
+      "example_en": "Her fiancé lives in Nice."
+    },
+    {
+      "french": "la fiancée",
+      "meaning_vi": "hôn thê",
+      "meaning_en": "fiancée",
+      "ipa": "/la fjɑ̃.se/",
+      "example_fr": "Sa fiancée porte une belle bague.",
+      "example_vi": "Hôn thê của anh ấy đeo một chiếc nhẫn đẹp.",
+      "example_en": "His fiancée wears a beautiful ring."
+    },
+    {
+      "french": "tomber amoureux",
+      "meaning_vi": "phải lòng / yêu",
+      "meaning_en": "to fall in love",
+      "ipa": "/tɔ̃.be a.mu.ʁø/",
+      "example_fr": "Il est tombé amoureux d'elle.",
+      "example_vi": "Anh ấy đã phải lòng cô ấy.",
+      "example_en": "He fell in love with her."
+    },
+    {
+      "french": "aimer",
+      "meaning_vi": "yêu / thích",
+      "meaning_en": "to love",
+      "ipa": "/e.me/",
+      "example_fr": "Je t'aime de tout mon cœur.",
+      "example_vi": "Anh yêu em bằng cả trái tim.",
+      "example_en": "I love you with all my heart."
+    },
+    {
+      "french": "embrasser",
+      "meaning_vi": "hôn",
+      "meaning_en": "to kiss",
+      "ipa": "/ɑ̃.bʁa.se/",
+      "example_fr": "Il embrasse sa femme.",
+      "example_vi": "Anh ấy hôn vợ mình.",
+      "example_en": "He kisses his wife."
+    },
+    {
+      "french": "le baiser",
+      "meaning_vi": "nụ hôn",
+      "meaning_en": "kiss",
+      "ipa": "/lə be.ze/",
+      "example_fr": "Ils échangent un baiser.",
+      "example_vi": "Họ trao nhau một nụ hôn.",
+      "example_en": "They share a kiss."
+    },
+    {
+      "french": "le rendez-vous amoureux",
+      "meaning_vi": "buổi hẹn hò",
+      "meaning_en": "date",
+      "ipa": "/lə ʁɑ̃.de.vu a.mu.ʁø/",
+      "example_fr": "Ils ont un rendez-vous amoureux vendredi.",
+      "example_vi": "Họ có một buổi hẹn hò vào thứ sáu.",
+      "example_en": "They have a date on Friday."
+    },
+    {
+      "french": "la demande en mariage",
+      "meaning_vi": "lời cầu hôn",
+      "meaning_en": "marriage proposal",
+      "ipa": "/la də.mɑ̃d ɑ̃ ma.ʁjaʒ/",
+      "example_fr": "Il a fait sa demande en mariage à Paris.",
+      "example_vi": "Anh ấy đã cầu hôn ở Paris.",
+      "example_en": "He proposed in Paris."
+    },
+    {
+      "french": "les fiançailles",
+      "meaning_vi": "lễ đính hôn",
+      "meaning_en": "engagement",
+      "ipa": "/le fjɑ̃.saj/",
+      "example_fr": "Les fiançailles auront lieu en mai.",
+      "example_vi": "Lễ đính hôn sẽ diễn ra vào tháng năm.",
+      "example_en": "The engagement will be in May."
+    },
+    {
+      "french": "rompre",
+      "meaning_vi": "chia tay",
+      "meaning_en": "to break up",
+      "ipa": "/ʁɔ̃pʁ/",
+      "example_fr": "Ils ont rompu après deux ans.",
+      "example_vi": "Họ đã chia tay sau hai năm.",
+      "example_en": "They broke up after two years."
+    },
+    {
+      "french": "la rupture",
+      "meaning_vi": "sự chia tay",
+      "meaning_en": "breakup",
+      "ipa": "/la ʁyp.tyʁ/",
+      "example_fr": "La rupture a été difficile.",
+      "example_vi": "Cuộc chia tay thật khó khăn.",
+      "example_en": "The breakup was difficult."
+    },
+    {
+      "french": "célibataire",
+      "meaning_vi": "độc thân",
+      "meaning_en": "single",
+      "ipa": "/se.li.ba.tɛʁ/",
+      "example_fr": "Il est célibataire depuis un an.",
+      "example_vi": "Anh ấy độc thân được một năm rồi.",
+      "example_en": "He has been single for a year."
+    },
+    {
+      "french": "fidélité",
+      "meaning_vi": "sự chung thủy",
+      "meaning_en": "faithfulness",
+      "ipa": "/fi.de.li.te/",
+      "example_fr": "La fidélité est importante pour eux.",
+      "example_vi": "Sự chung thủy rất quan trọng với họ.",
+      "example_en": "Faithfulness is important to them."
+    }
+  ]
+}

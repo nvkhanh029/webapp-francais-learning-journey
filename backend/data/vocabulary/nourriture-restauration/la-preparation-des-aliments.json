@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "L'alimentation (1)",
+  "topic_slug": "alimentation-1",
+  "topic_sort_order": 10,
+  "topic_vi": "Thực phẩm (1)",
+  "topic_en": "Food (1)",
+  "subtopic": "La préparation des aliments",
+  "subtopic_key": "la-preparation-des-aliments",
+  "subtopic_sort_order": 60,
+  "subtopic_vi": "Chế biến thực phẩm",
+  "subtopic_en": "Food preparation",
+  "words": [
+    {
+      "french": "le produit frais",
+      "meaning_vi": "sản phẩm tươi",
+      "meaning_en": "fresh product",
+      "ipa": "/pʁɔ.dɥi fʁɛ/",
+      "example_fr": "Un produit frais chaque jour.",
+      "example_vi": "Một sản phẩm tươi mỗi ngày.",
+      "example_en": "A fresh product every day."
+    },
+    {
+      "french": "le produit surgelé",
+      "meaning_vi": "sản phẩm đông lạnh",
+      "meaning_en": "frozen product",
+      "ipa": "/pʁɔ.dɥi syʁ.ʒə.le/",
+      "example_fr": "Les petits pois surgelés sont pratiques.",
+      "example_vi": "Đậu Hà Lan đông lạnh rất tiện.",
+      "example_en": "Frozen peas are handy."
+    },
+    {
+      "french": "la conserve",
+      "meaning_vi": "đồ hộp",
+      "meaning_en": "canned food",
+      "ipa": "/kɔ̃.sɛʁv/",
+      "example_fr": "Le thon en conserve se garde longtemps.",
+      "example_vi": "Cá ngừ đóng hộp để được lâu.",
+      "example_en": "Canned tuna lasts long."
+    },
+    {
+      "french": "le produit bio",
+      "meaning_vi": "sản phẩm hữu cơ",
+      "meaning_en": "organic product",
+      "ipa": "/pʁɔ.dɥi bjo/",
+      "example_fr": "Une pomme bio.",
+      "example_vi": "Một quả táo hữu cơ.",
+      "example_en": "An organic apple."
+    },
+    {
+      "french": "la date limite",
+      "meaning_vi": "hạn sử dụng",
+      "meaning_en": "expiry date",
+      "ipa": "/dat li.mit/",
+      "example_fr": "La date limite est dépassée.",
+      "example_vi": "Hạn sử dụng đã qua.",
+      "example_en": "The expiry date has passed."
+    },
+    {
+      "french": "couper",
+      "meaning_vi": "cắt",
+      "meaning_en": "to cut",
+      "ipa": "/ku.pe/",
+      "example_fr": "Couper les légumes finement.",
+      "example_vi": "Cắt rau củ thật nhỏ.",
+      "example_en": "Cut the vegetables finely."
+    },
+    {
+      "french": "éplucher",
+      "meaning_vi": "gọt vỏ",
+      "meaning_en": "to peel",
+      "ipa": "/e.ply.ʃe/",
+      "example_fr": "Éplucher d'abord les carottes.",
+      "example_vi": "Gọt vỏ cà rốt trước.",
+      "example_en": "Peel the carrots first."
+    },
+    {
+      "french": "mélanger",
+      "meaning_vi": "trộn",
+      "meaning_en": "to mix",
+      "ipa": "/me.lɑ̃.ʒe/",
+      "example_fr": "Mélanger les œufs et la farine.",
+      "example_vi": "Trộn trứng và bột.",
+      "example_en": "Mix the eggs and flour."
+    },
+    {
+      "french": "ajouter",
+      "meaning_vi": "thêm vào",
+      "meaning_en": "to add",
+      "ipa": "/a.ʒu.te/",
+      "example_fr": "Ajouter un peu de sel.",
+      "example_vi": "Thêm một chút muối.",
+      "example_en": "Add a little salt."
+    },
+    {
+      "french": "assaisonner",
+      "meaning_vi": "nêm nếm",
+      "meaning_en": "to season",
+      "ipa": "/a.sɛ.zɔ.ne/",
+      "example_fr": "Assaisonner à votre goût.",
+      "example_vi": "Nêm nếm theo khẩu vị.",
+      "example_en": "Season to your taste."
+    },
+    {
+      "french": "bouillir",
+      "meaning_vi": "luộc",
+      "meaning_en": "to boil",
+      "ipa": "/bu.jiʁ/",
+      "example_fr": "Faire bouillir les pommes de terre.",
+      "example_vi": "Luộc khoai tây.",
+      "example_en": "Boil the potatoes."
+    },
+    {
+      "french": "cuire",
+      "meaning_vi": "nấu, nướng",
+      "meaning_en": "to cook, to bake",
+      "ipa": "/kɥiʁ/",
+      "example_fr": "Cuire le pain lentement.",
+      "example_vi": "Nướng bánh mì từ từ.",
+      "example_en": "Bake the bread slowly."
+    },
+    {
+      "french": "frire",
+      "meaning_vi": "chiên",
+      "meaning_en": "to fry",
+      "ipa": "/fʁiʁ/",
+      "example_fr": "Faire frire les oignons doucement.",
+      "example_vi": "Chiên hành nhẹ nhàng.",
+      "example_en": "Fry the onions gently."
+    },
+    {
+      "french": "griller",
+      "meaning_vi": "nướng vỉ",
+      "meaning_en": "to grill",
+      "ipa": "/ɡʁi.je/",
+      "example_fr": "Griller la viande rapidement.",
+      "example_vi": "Nướng thịt nhanh.",
+      "example_en": "Grill the meat quickly."
+    },
+    {
+      "french": "cuire à la vapeur",
+      "meaning_vi": "hấp",
+      "meaning_en": "to steam",
+      "ipa": "/kɥiʁ a la va.pœʁ/",
+      "example_fr": "Cuire le poisson à la vapeur.",
+      "example_vi": "Hấp cá nhẹ nhàng.",
+      "example_en": "Steam the fish lightly."
+    },
+    {
+      "french": "cuire au four",
+      "meaning_vi": "nướng lò",
+      "meaning_en": "to bake in oven",
+      "ipa": "/kɥiʁ o fuʁ/",
+      "example_fr": "Le gâteau cuit bien.",
+      "example_vi": "Bánh nướng đều.",
+      "example_en": "The cake bakes well."
+    },
+    {
+      "french": "égoutter",
+      "meaning_vi": "để ráo, chắt nước",
+      "meaning_en": "to drain",
+      "ipa": "/e.ɡu.te/",
+      "example_fr": "Égoutter les pâtes avant de servir.",
+      "example_vi": "Để mì ráo nước trước khi dọn.",
+      "example_en": "Drain the pasta before serving."
+    },
+    {
+      "french": "la recette",
+      "meaning_vi": "công thức",
+      "meaning_en": "recipe",
+      "ipa": "/ʁə.sɛt/",
+      "example_fr": "La recette est simple.",
+      "example_vi": "Công thức đơn giản.",
+      "example_en": "The recipe is simple."
+    },
+    {
+      "french": "l'ingrédient",
+      "meaning_vi": "nguyên liệu",
+      "meaning_en": "ingredient",
+      "ipa": "/ɛ̃.ɡʁe.djɑ̃/",
+      "example_fr": "Les ingrédients sont frais.",
+      "example_vi": "Nguyên liệu tươi.",
+      "example_en": "The ingredients are fresh."
+    }
+  ]
+}

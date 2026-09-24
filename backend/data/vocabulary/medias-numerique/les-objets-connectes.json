@@ -1,0 +1,190 @@
+{
+  "category": "Les médias et le numérique",
+  "category_key": "medias-numerique",
+  "category_sort_order": 120,
+  "category_vi": "Truyền thông và công nghệ số",
+  "category_en": "Media and digital technology",
+  "topic": "Le numérique",
+  "topic_slug": "numerique",
+  "topic_sort_order": 20,
+  "topic_vi": "Công nghệ số",
+  "topic_en": "Digital technology",
+  "subtopic": "Les objets connectés",
+  "subtopic_key": "les-objets-connectes",
+  "subtopic_sort_order": 40,
+  "subtopic_vi": "Thiết bị kết nối",
+  "subtopic_en": "Connected devices",
+  "words": [
+    {
+      "french": "un objet connecté",
+      "meaning_vi": "thiết bị kết nối",
+      "meaning_en": "a connected device",
+      "ipa": "/œ̃n ɔb.ʒɛ ko.nɛk.te/",
+      "example_fr": "Cet objet connecté est pratique.",
+      "example_vi": "Thiết bị kết nối này tiện lợi.",
+      "example_en": "This connected device is handy."
+    },
+    {
+      "french": "une montre connectée",
+      "meaning_vi": "đồng hồ thông minh",
+      "meaning_en": "a smartwatch",
+      "ipa": "/yn mɔ̃tʁ ko.nɛk.te/",
+      "example_fr": "Sa montre connectée compte les pas.",
+      "example_vi": "Đồng hồ thông minh đếm bước chân.",
+      "example_en": "Her smartwatch counts steps."
+    },
+    {
+      "french": "un bracelet connecté",
+      "meaning_vi": "vòng tay thông minh",
+      "meaning_en": "a fitness tracker",
+      "ipa": "/œ̃ bʁas.lɛ ko.nɛk.te/",
+      "example_fr": "Le bracelet mesure le sommeil.",
+      "example_vi": "Vòng tay đo giấc ngủ.",
+      "example_en": "The tracker measures sleep."
+    },
+    {
+      "french": "la tablette",
+      "meaning_vi": "máy tính bảng",
+      "meaning_en": "a tablet",
+      "ipa": "/la ta.blɛt/",
+      "example_fr": "La tablette contrôle la maison.",
+      "example_vi": "Máy tính bảng điều khiển ngôi nhà.",
+      "example_en": "The tablet controls the house."
+    },
+    {
+      "french": "une maison connectée",
+      "meaning_vi": "nhà thông minh",
+      "meaning_en": "a smart home",
+      "ipa": "/yn mɛ.zɔ̃ ko.nɛk.te/",
+      "example_fr": "La maison connectée économise l'énergie.",
+      "example_vi": "Nhà thông minh tiết kiệm năng lượng.",
+      "example_en": "The smart home saves energy."
+    },
+    {
+      "french": "une enceinte connectée",
+      "meaning_vi": "loa thông minh",
+      "meaning_en": "a smart speaker",
+      "ipa": "/yn ɑ̃.sɛ̃t ko.nɛk.te/",
+      "example_fr": "L'enceinte joue de la musique.",
+      "example_vi": "Loa thông minh phát nhạc.",
+      "example_en": "The smart speaker plays music."
+    },
+    {
+      "french": "un thermostat connecté",
+      "meaning_vi": "bộ điều nhiệt thông minh",
+      "meaning_en": "a smart thermostat",
+      "ipa": "/œ̃ tɛʁ.mo.sta ko.nɛk.te/",
+      "example_fr": "Le thermostat règle la chaleur.",
+      "example_vi": "Bộ điều nhiệt chỉnh nhiệt độ.",
+      "example_en": "The thermostat sets the heat."
+    },
+    {
+      "french": "une caméra de surveillance",
+      "meaning_vi": "camera giám sát",
+      "meaning_en": "a security camera",
+      "ipa": "/yn ka.me.ʁa də syʁ.vɛ.jɑ̃s/",
+      "example_fr": "La caméra filme l'entrée.",
+      "example_vi": "Camera quay cửa ra vào.",
+      "example_en": "The camera films the entrance."
+    },
+    {
+      "french": "une serrure connectée",
+      "meaning_vi": "khóa thông minh",
+      "meaning_en": "a smart lock",
+      "ipa": "/yn se.ʁyʁ ko.nɛk.te/",
+      "example_fr": "La serrure s'ouvre avec le téléphone.",
+      "example_vi": "Khóa mở bằng điện thoại.",
+      "example_en": "The lock opens with the phone."
+    },
+    {
+      "french": "un réfrigérateur connecté",
+      "meaning_vi": "tủ lạnh thông minh",
+      "meaning_en": "a smart fridge",
+      "ipa": "/œ̃ ʁe.fʁi.ʒe.ʁa.tœʁ ko.nɛk.te/",
+      "example_fr": "Le frigo signale les produits frais.",
+      "example_vi": "Tủ lạnh báo thực phẩm tươi.",
+      "example_en": "The fridge reports fresh food."
+    },
+    {
+      "french": "un GPS",
+      "meaning_vi": "thiết bị định vị GPS",
+      "meaning_en": "a GPS",
+      "ipa": "/œ̃ ʒe.pe.ɛs/",
+      "example_fr": "Le GPS guide la voiture.",
+      "example_vi": "GPS chỉ đường cho xe.",
+      "example_en": "The GPS guides the car."
+    },
+    {
+      "french": "la domotique",
+      "meaning_vi": "tự động hóa nhà ở",
+      "meaning_en": "home automation",
+      "ipa": "/la do.mo.tik/",
+      "example_fr": "La domotique gère la lumière.",
+      "example_vi": "Tự động hóa quản lý ánh sáng.",
+      "example_en": "Home automation manages the light."
+    },
+    {
+      "french": "le Wi-Fi",
+      "meaning_vi": "Wi-Fi",
+      "meaning_en": "Wi-Fi",
+      "ipa": "/lə wi.fi/",
+      "example_fr": "Le Wi-Fi est coupé.",
+      "example_vi": "Wi-Fi bị ngắt.",
+      "example_en": "The Wi-Fi is off."
+    },
+    {
+      "french": "le Bluetooth",
+      "meaning_vi": "Bluetooth",
+      "meaning_en": "Bluetooth",
+      "ipa": "/lə blu.tut/",
+      "example_fr": "Active le Bluetooth.",
+      "example_vi": "Hãy bật Bluetooth.",
+      "example_en": "Turn on Bluetooth."
+    },
+    {
+      "french": "l'enceinte connectée",
+      "meaning_vi": "loa thông minh",
+      "meaning_en": "a smart speaker",
+      "ipa": "/lɑ̃.sɛ̃t ko.nɛk.te/",
+      "example_fr": "L'enceinte connectée répond vite.",
+      "example_vi": "Loa thông minh trả lời nhanh.",
+      "example_en": "The smart speaker answers fast."
+    },
+    {
+      "french": "le chargeur",
+      "meaning_vi": "cục sạc",
+      "meaning_en": "a charger",
+      "ipa": "/lə ʃaʁ.ʒœʁ/",
+      "example_fr": "Le chargeur est branché.",
+      "example_vi": "Cục sạc đang cắm điện.",
+      "example_en": "The charger is plugged in."
+    },
+    {
+      "french": "un chargeur",
+      "meaning_vi": "cục sạc",
+      "meaning_en": "a charger",
+      "ipa": "/œ̃ ʃaʁ.ʒœʁ/",
+      "example_fr": "J'ai oublié mon chargeur.",
+      "example_vi": "Tôi quên cục sạc.",
+      "example_en": "I forgot my charger."
+    },
+    {
+      "french": "une application",
+      "meaning_vi": "ứng dụng",
+      "meaning_en": "an app",
+      "ipa": "/yn a.pli.ka.sjɔ̃/",
+      "example_fr": "Ouvre l'application maison.",
+      "example_vi": "Hãy mở ứng dụng nhà.",
+      "example_en": "Open the home app."
+    },
+    {
+      "french": "la commande vocale",
+      "meaning_vi": "điều khiển bằng giọng nói",
+      "meaning_en": "voice control",
+      "ipa": "/la ko.mɑ̃d vo.kal/",
+      "example_fr": "La commande vocale allume la lumière.",
+      "example_vi": "Điều khiển giọng nói bật đèn.",
+      "example_en": "Voice control turns on the light."
+    }
+  ]
+}

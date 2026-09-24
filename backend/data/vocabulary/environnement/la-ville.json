@@ -1,0 +1,190 @@
+{
+  "category": "L'environnement",
+  "category_key": "environnement",
+  "category_sort_order": 100,
+  "category_vi": "Môi trường",
+  "category_en": "The environment",
+  "topic": "La ville, la campagne et l'écologie",
+  "topic_slug": "ville-campagne-ecologie",
+  "topic_sort_order": 10,
+  "topic_vi": "Thành phố, nông thôn và sinh thái",
+  "topic_en": "City, countryside and ecology",
+  "subtopic": "La ville",
+  "subtopic_key": "la-ville",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Thành phố",
+  "subtopic_en": "The city",
+  "words": [
+    {
+      "french": "un quartier",
+      "meaning_vi": "khu phố",
+      "meaning_en": "a neighborhood / district",
+      "ipa": "/œ̃ kaʁ.tje/",
+      "example_fr": "J'habite dans un quartier calme.",
+      "example_vi": "Tôi sống trong một khu phố yên tĩnh.",
+      "example_en": "I live in a calm neighborhood."
+    },
+    {
+      "french": "le centre-ville",
+      "meaning_vi": "trung tâm thành phố",
+      "meaning_en": "the city centre",
+      "ipa": "/lə sɑ̃tʁ.vil/",
+      "example_fr": "Le centre-ville est animé.",
+      "example_vi": "Trung tâm thành phố rất nhộn nhịp.",
+      "example_en": "The city centre is lively."
+    },
+    {
+      "french": "une banlieue",
+      "meaning_vi": "ngoại ô",
+      "meaning_en": "a suburb",
+      "ipa": "/yn bɑ̃.ljø/",
+      "example_fr": "Elle habite en banlieue de Paris.",
+      "example_vi": "Cô ấy sống ở ngoại ô Paris.",
+      "example_en": "She lives in the suburbs of Paris."
+    },
+    {
+      "french": "l'avenue",
+      "meaning_vi": "đại lộ",
+      "meaning_en": "an avenue",
+      "ipa": "/la.v.ny/",
+      "example_fr": "L'avenue est bordée d'arbres.",
+      "example_vi": "Đại lộ được bao quanh bởi cây xanh.",
+      "example_en": "The avenue is lined with trees."
+    },
+    {
+      "french": "le boulevard",
+      "meaning_vi": "đại lộ rộng",
+      "meaning_en": "a boulevard",
+      "ipa": "/lə bul.vaʁ/",
+      "example_fr": "Le boulevard est très animé le soir.",
+      "example_vi": "Đại lộ rất nhộn nhịp vào buổi tối.",
+      "example_en": "The boulevard is very lively in the evening."
+    },
+    {
+      "french": "la ruelle",
+      "meaning_vi": "ngõ hẻm",
+      "meaning_en": "an alley / lane",
+      "ipa": "/la ʁɥɛl/",
+      "example_fr": "La ruelle est étroite et calme.",
+      "example_vi": "Con ngõ hẹp và yên tĩnh.",
+      "example_en": "The alley is narrow and quiet."
+    },
+    {
+      "french": "le faubourg",
+      "meaning_vi": "khu phố ven đô cổ",
+      "meaning_en": "an outlying district",
+      "ipa": "/lə fo.buʁ/",
+      "example_fr": "Il habite dans un vieux faubourg.",
+      "example_vi": "Anh ấy sống trong một khu ven đô cổ.",
+      "example_en": "He lives in an old outlying district."
+    },
+    {
+      "french": "le square",
+      "meaning_vi": "vườn hoa công cộng nhỏ",
+      "meaning_en": "a small public garden",
+      "ipa": "/lə skwaʁ/",
+      "example_fr": "Les enfants jouent dans le square.",
+      "example_vi": "Trẻ em chơi trong vườn hoa công cộng.",
+      "example_en": "The children play in the small public garden."
+    },
+    {
+      "french": "le jardin public",
+      "meaning_vi": "công viên",
+      "meaning_en": "a public garden / park",
+      "ipa": "/lə ʒaʁ.dɛ̃ py.blik/",
+      "example_fr": "Le jardin public est plein de fleurs.",
+      "example_vi": "Công viên đầy hoa.",
+      "example_en": "The public garden is full of flowers."
+    },
+    {
+      "french": "la périphérie",
+      "meaning_vi": "vùng ven đô",
+      "meaning_en": "the outskirts",
+      "ipa": "/la pe.ʁi.fe.ʁi/",
+      "example_fr": "La périphérie grandit vite.",
+      "example_vi": "Vùng ven đô phát triển nhanh.",
+      "example_en": "The outskirts are growing fast."
+    },
+    {
+      "french": "la gare",
+      "meaning_vi": "nhà ga",
+      "meaning_en": "the (train) station",
+      "ipa": "/la ɡaʁ/",
+      "example_fr": "La gare est loin d'ici.",
+      "example_vi": "Nhà ga ở xa đây.",
+      "example_en": "The station is far from here."
+    },
+    {
+      "french": "une station de métro",
+      "meaning_vi": "ga tàu điện ngầm",
+      "meaning_en": "a metro station",
+      "ipa": "/yn sta.sjɔ̃ də me.tʁo/",
+      "example_fr": "La station de métro est fermée.",
+      "example_vi": "Ga tàu điện ngầm đã đóng cửa.",
+      "example_en": "The metro station is closed."
+    },
+    {
+      "french": "le parvis",
+      "meaning_vi": "sân trước nhà thờ",
+      "meaning_en": "a forecourt / plaza",
+      "ipa": "/lə paʁ.vi/",
+      "example_fr": "Le parvis de la cathédrale est immense.",
+      "example_vi": "Sân trước nhà thờ rất rộng.",
+      "example_en": "The cathedral forecourt is huge."
+    },
+    {
+      "french": "un musée",
+      "meaning_vi": "bảo tàng",
+      "meaning_en": "a museum",
+      "ipa": "/œ̃ my.ze/",
+      "example_fr": "On visite un musée dimanche.",
+      "example_vi": "Chúng tôi thăm bảo tàng vào chủ nhật.",
+      "example_en": "We visit a museum on Sunday."
+    },
+    {
+      "french": "l'esplanade",
+      "meaning_vi": "quảng trường rộng",
+      "meaning_en": "an esplanade",
+      "ipa": "/lɛs.pla.nad/",
+      "example_fr": "L'esplanade accueille le marché.",
+      "example_vi": "Quảng trường rộng tổ chức chợ.",
+      "example_en": "The esplanade hosts the market."
+    },
+    {
+      "french": "le rond-point",
+      "meaning_vi": "vòng xuyến",
+      "meaning_en": "a roundabout",
+      "ipa": "/lə ʁɔ̃.pwɛ̃/",
+      "example_fr": "Prends la deuxième sortie au rond-point.",
+      "example_vi": "Đi lối ra thứ hai ở vòng xuyến.",
+      "example_en": "Take the second exit at the roundabout."
+    },
+    {
+      "french": "la fontaine",
+      "meaning_vi": "đài phun nước",
+      "meaning_en": "a fountain",
+      "ipa": "/la fɔ̃.tɛn/",
+      "example_fr": "La fontaine est au milieu du parc.",
+      "example_vi": "Đài phun nước ở giữa công viên.",
+      "example_en": "The fountain is in the middle of the park."
+    },
+    {
+      "french": "un habitant",
+      "meaning_vi": "cư dân",
+      "meaning_en": "a resident / inhabitant",
+      "ipa": "/œ̃n a.bi.tɑ̃/",
+      "example_fr": "Les habitants sont contents ici.",
+      "example_vi": "Cư dân ở đây rất hài lòng.",
+      "example_en": "The residents are happy here."
+    },
+    {
+      "french": "un gratte-ciel",
+      "meaning_vi": "tòa nhà chọc trời",
+      "meaning_en": "a skyscraper",
+      "ipa": "/œ̃ ɡʁat.sjɛl/",
+      "example_fr": "Le gratte-ciel est très haut.",
+      "example_vi": "Tòa nhà chọc trời rất cao.",
+      "example_en": "The skyscraper is very tall."
+    }
+  ]
+}

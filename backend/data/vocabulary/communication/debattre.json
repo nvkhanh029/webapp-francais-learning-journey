@@ -1,0 +1,190 @@
+{
+  "category": "La communication",
+  "category_key": "communication",
+  "category_sort_order": 130,
+  "category_vi": "Giao tiếp",
+  "category_en": "Communication",
+  "topic": "La pensée et l'argumentation",
+  "topic_slug": "pensee-argumentation",
+  "topic_sort_order": 10,
+  "topic_vi": "Tư duy và lập luận",
+  "topic_en": "Thinking and argumentation",
+  "subtopic": "Débattre",
+  "subtopic_key": "debattre",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Tranh luận",
+  "subtopic_en": "Debating",
+  "words": [
+    {
+      "french": "débattre",
+      "meaning_vi": "tranh luận",
+      "meaning_en": "to debate",
+      "ipa": "/de.batʁ/",
+      "example_fr": "Ils débattent du projet.",
+      "example_vi": "Họ đang tranh luận về dự án.",
+      "example_en": "They are debating the project."
+    },
+    {
+      "french": "la prise de parole",
+      "meaning_vi": "lượt phát biểu",
+      "meaning_en": "speaking turn",
+      "ipa": "/la pʁiz də pa.ʁɔl/",
+      "example_fr": "La prise de parole est limitée à deux minutes.",
+      "example_vi": "Lượt phát biểu giới hạn trong hai phút.",
+      "example_en": "Speaking time is limited to two minutes."
+    },
+    {
+      "french": "discuter",
+      "meaning_vi": "thảo luận, bàn bạc",
+      "meaning_en": "to discuss",
+      "ipa": "/dis.ky.te/",
+      "example_fr": "On a discuté toute la soirée.",
+      "example_vi": "Chúng tôi đã thảo luận cả buổi tối.",
+      "example_en": "We discussed all evening."
+    },
+    {
+      "french": "intervenir",
+      "meaning_vi": "can thiệp, lên tiếng",
+      "meaning_en": "to intervene, to speak up",
+      "ipa": "/ɛ̃.tɛʁ.və.niʁ/",
+      "example_fr": "Il est intervenu dans le débat.",
+      "example_vi": "Anh ấy đã lên tiếng trong cuộc tranh luận.",
+      "example_en": "He spoke up in the debate."
+    },
+    {
+      "french": "argumenter",
+      "meaning_vi": "đưa ra lập luận",
+      "meaning_en": "to argue",
+      "ipa": "/aʁ.gy.mɑ̃.te/",
+      "example_fr": "Elle sait bien argumenter.",
+      "example_vi": "Cô ấy biết cách lập luận.",
+      "example_en": "She argues well."
+    },
+    {
+      "french": "l'argument (m)",
+      "meaning_vi": "luận điểm, lý lẽ",
+      "meaning_en": "argument",
+      "ipa": "/aʁ.gy.mɑ̃/",
+      "example_fr": "C'est un bon argument.",
+      "example_vi": "Đó là một lý lẽ hay.",
+      "example_en": "That's a good argument."
+    },
+    {
+      "french": "contredire",
+      "meaning_vi": "phản bác, cãi lại",
+      "meaning_en": "to contradict",
+      "ipa": "/kɔ̃tʁ.diʁ/",
+      "example_fr": "Ne le contredis pas devant tous.",
+      "example_vi": "Đừng phản bác anh ấy trước mọi người.",
+      "example_en": "Don't contradict him in front of everyone."
+    },
+    {
+      "french": "interrompre",
+      "meaning_vi": "ngắt lời",
+      "meaning_en": "to interrupt",
+      "ipa": "/ɛ̃.te.ʁɔ̃pʁ/",
+      "example_fr": "Ne m'interromps pas, s'il te plaît.",
+      "example_vi": "Xin đừng ngắt lời tôi.",
+      "example_en": "Please don't interrupt me."
+    },
+    {
+      "french": "la contradiction",
+      "meaning_vi": "sự phản biện, ý kiến trái chiều",
+      "meaning_en": "contradiction, counter-argument",
+      "ipa": "/la kɔ̃.tʁa.dik.sjɔ̃/",
+      "example_fr": "Elle a soulevé une contradiction.",
+      "example_vi": "Cô ấy đã nêu ra một ý kiến trái chiều.",
+      "example_en": "She raised a counter-argument."
+    },
+    {
+      "french": "prendre la parole",
+      "meaning_vi": "phát biểu, lên tiếng",
+      "meaning_en": "to take the floor",
+      "ipa": "/pʁɑ̃dʁ la pa.ʁɔl/",
+      "example_fr": "Il a pris la parole en premier.",
+      "example_vi": "Anh ấy đã phát biểu đầu tiên.",
+      "example_en": "He spoke first."
+    },
+    {
+      "french": "donner la parole à",
+      "meaning_vi": "mời phát biểu",
+      "meaning_en": "to give the floor to",
+      "ipa": "/dɔ.ne la pa.ʁɔl a/",
+      "example_fr": "Je donne la parole à Marie.",
+      "example_vi": "Tôi mời Marie phát biểu.",
+      "example_en": "I give the floor to Marie."
+    },
+    {
+      "french": "être pour",
+      "meaning_vi": "ủng hộ",
+      "meaning_en": "to be in favor of",
+      "ipa": "/ɛtʁ puʁ/",
+      "example_fr": "Je suis pour ce projet.",
+      "example_vi": "Tôi ủng hộ dự án này.",
+      "example_en": "I am in favor of this project."
+    },
+    {
+      "french": "le pour et le contre",
+      "meaning_vi": "mặt lợi và mặt hại",
+      "meaning_en": "the pros and cons",
+      "ipa": "/lə puʁ e lə kɔ̃tʁ/",
+      "example_fr": "Il faut peser le pour et le contre.",
+      "example_vi": "Cần cân nhắc lợi và hại.",
+      "example_en": "We must weigh the pros and cons."
+    },
+    {
+      "french": "convaincre",
+      "meaning_vi": "thuyết phục",
+      "meaning_en": "to convince",
+      "ipa": "/kɔ̃.vɛ̃kʁ/",
+      "example_fr": "Il m'a convaincu facilement.",
+      "example_vi": "Anh ấy đã thuyết phục tôi dễ dàng.",
+      "example_en": "He convinced me easily."
+    },
+    {
+      "french": "persuader",
+      "meaning_vi": "thuyết phục",
+      "meaning_en": "to persuade",
+      "ipa": "/pɛʁ.sɥa.de/",
+      "example_fr": "Elle l'a persuadé de rester.",
+      "example_vi": "Cô ấy đã thuyết phục anh ấy ở lại.",
+      "example_en": "She persuaded him to stay."
+    },
+    {
+      "french": "nuancer",
+      "meaning_vi": "nói giảm, làm tinh tế hơn",
+      "meaning_en": "to qualify, to add nuance",
+      "ipa": "/nɥɑ̃.se/",
+      "example_fr": "Il faut nuancer ton avis.",
+      "example_vi": "Bạn cần điều chỉnh ý kiến cho tinh tế hơn.",
+      "example_en": "You need to nuance your opinion."
+    },
+    {
+      "french": "reformuler",
+      "meaning_vi": "diễn đạt lại",
+      "meaning_en": "to rephrase",
+      "ipa": "/ʁə.fɔʁ.my.le/",
+      "example_fr": "Peux-tu reformuler ta question ?",
+      "example_vi": "Bạn có thể diễn đạt lại câu hỏi không?",
+      "example_en": "Can you rephrase your question?"
+    },
+    {
+      "french": "résumer",
+      "meaning_vi": "tóm tắt",
+      "meaning_en": "to summarize",
+      "ipa": "/ʁe.zy.me/",
+      "example_fr": "Résume ton idée en deux phrases.",
+      "example_vi": "Hãy tóm tắt ý của bạn trong hai câu.",
+      "example_en": "Sum up your idea in two sentences."
+    },
+    {
+      "french": "trancher",
+      "meaning_vi": "quyết định dứt khoát",
+      "meaning_en": "to decide, to settle",
+      "ipa": "/tʁɑ̃.ʃe/",
+      "example_fr": "C'est à toi de trancher.",
+      "example_vi": "Bạn là người quyết định.",
+      "example_en": "It's up to you to decide."
+    }
+  ]
+}

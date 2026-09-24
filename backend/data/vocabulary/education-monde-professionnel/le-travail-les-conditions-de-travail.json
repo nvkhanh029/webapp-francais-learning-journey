@@ -1,0 +1,190 @@
+{
+  "category": "L'éducation et le monde professionnel",
+  "category_key": "education-monde-professionnel",
+  "category_sort_order": 50,
+  "category_vi": "Giáo dục và thế giới nghề nghiệp",
+  "category_en": "Education and the professional world",
+  "topic": "Les conditions de travail et les revendications",
+  "topic_slug": "conditions-travail-revendications",
+  "topic_sort_order": 30,
+  "topic_vi": "Điều kiện làm việc và yêu sách",
+  "topic_en": "Working conditions and demands",
+  "subtopic": "Le travail, les conditions de travail",
+  "subtopic_key": "le-travail-les-conditions-de-travail",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Công việc và điều kiện làm việc",
+  "subtopic_en": "Work and working conditions",
+  "words": [
+    {
+      "french": "le contrat de travail",
+      "meaning_vi": "hợp đồng lao động",
+      "meaning_en": "employment contract",
+      "ipa": "/kɔ̃tʁa də tʁavaj/",
+      "example_fr": "Il signe son contrat de travail.",
+      "example_vi": "Anh ấy ký hợp đồng lao động.",
+      "example_en": "He signs his employment contract."
+    },
+    {
+      "french": "le CDI",
+      "meaning_vi": "hợp đồng không xác định thời hạn",
+      "meaning_en": "permanent contract",
+      "ipa": "/se de i/",
+      "example_fr": "Elle a un CDI.",
+      "example_vi": "Cô ấy có hợp đồng dài hạn.",
+      "example_en": "She has a permanent contract."
+    },
+    {
+      "french": "le CDD",
+      "meaning_vi": "hợp đồng xác định thời hạn",
+      "meaning_en": "fixed-term contract",
+      "ipa": "/se de de/",
+      "example_fr": "Il a un CDD de six mois.",
+      "example_vi": "Anh ấy có hợp đồng sáu tháng.",
+      "example_en": "He has a six-month contract."
+    },
+    {
+      "french": "le temps plein",
+      "meaning_vi": "toàn thời gian",
+      "meaning_en": "full time",
+      "ipa": "/tɑ̃ plɛ̃/",
+      "example_fr": "Elle travaille à temps plein.",
+      "example_vi": "Cô ấy làm toàn thời gian.",
+      "example_en": "She works full time."
+    },
+    {
+      "french": "le temps partiel",
+      "meaning_vi": "bán thời gian",
+      "meaning_en": "part time",
+      "ipa": "/tɑ̃ paʁsjɛl/",
+      "example_fr": "Il travaille à temps partiel.",
+      "example_vi": "Anh ấy làm bán thời gian.",
+      "example_en": "He works part time."
+    },
+    {
+      "french": "le salaire",
+      "meaning_vi": "tiền lương",
+      "meaning_en": "salary",
+      "ipa": "/salɛʁ/",
+      "example_fr": "Son salaire augmente.",
+      "example_vi": "Lương của anh ấy tăng.",
+      "example_en": "His salary is increasing."
+    },
+    {
+      "french": "les horaires",
+      "meaning_vi": "giờ làm việc",
+      "meaning_en": "working hours",
+      "ipa": "/ɔʁɛʁ/",
+      "example_fr": "Les horaires sont flexibles.",
+      "example_vi": "Giờ làm việc linh hoạt.",
+      "example_en": "Working hours are flexible."
+    },
+    {
+      "french": "les heures supplémentaires",
+      "meaning_vi": "giờ làm thêm",
+      "meaning_en": "overtime",
+      "ipa": "/œʁ syplemɑ̃tɛʁ/",
+      "example_fr": "Il fait des heures supplémentaires.",
+      "example_vi": "Anh ấy làm thêm giờ.",
+      "example_en": "He does overtime."
+    },
+    {
+      "french": "les congés payés",
+      "meaning_vi": "nghỉ phép có lương",
+      "meaning_en": "paid leave",
+      "ipa": "/kɔ̃ʒe peje/",
+      "example_fr": "Je prends mes congés payés.",
+      "example_vi": "Tôi nghỉ phép có lương.",
+      "example_en": "I take my paid leave."
+    },
+    {
+      "french": "le congé sabbatique",
+      "meaning_vi": "nghỉ phép dài không lương",
+      "meaning_en": "sabbatical leave",
+      "ipa": "/lə kɔ̃ʒe sabatik/",
+      "example_fr": "Elle prend un congé sabbatique.",
+      "example_vi": "Cô ấy nghỉ sabbatical.",
+      "example_en": "She takes a sabbatical."
+    },
+    {
+      "french": "le télétravail",
+      "meaning_vi": "làm việc từ xa",
+      "meaning_en": "remote work",
+      "ipa": "/teletʁavaj/",
+      "example_fr": "Elle fait du télétravail.",
+      "example_vi": "Cô ấy làm việc từ xa.",
+      "example_en": "She works remotely."
+    },
+    {
+      "french": "la convention collective",
+      "meaning_vi": "thỏa ước lao động tập thể",
+      "meaning_en": "collective agreement",
+      "ipa": "/kɔ̃vɑ̃sjɔ̃ kɔlɛktiv/",
+      "example_fr": "La convention collective protège les salariés.",
+      "example_vi": "Thỏa ước tập thể bảo vệ người lao động.",
+      "example_en": "The collective agreement protects employees."
+    },
+    {
+      "french": "le licenciement",
+      "meaning_vi": "sa thải",
+      "meaning_en": "dismissal",
+      "ipa": "/lisɑ̃simɑ̃/",
+      "example_fr": "Le licenciement est difficile.",
+      "example_vi": "Việc sa thải thật khó khăn.",
+      "example_en": "Dismissal is difficult."
+    },
+    {
+      "french": "la démission",
+      "meaning_vi": "từ chức",
+      "meaning_en": "resignation",
+      "ipa": "/demisjɔ̃/",
+      "example_fr": "Elle donne sa démission.",
+      "example_vi": "Cô ấy nộp đơn từ chức.",
+      "example_en": "She hands in her resignation."
+    },
+    {
+      "french": "travailler",
+      "meaning_vi": "làm việc",
+      "meaning_en": "to work",
+      "ipa": "/tʁavaje/",
+      "example_fr": "Je travaille à Paris.",
+      "example_vi": "Tôi làm việc ở Paris.",
+      "example_en": "I work in Paris."
+    },
+    {
+      "french": "embaucher",
+      "meaning_vi": "tuyển dụng",
+      "meaning_en": "to hire",
+      "ipa": "/ɑ̃boʃe/",
+      "example_fr": "L'entreprise embauche souvent.",
+      "example_vi": "Công ty thường tuyển dụng.",
+      "example_en": "The company often hires."
+    },
+    {
+      "french": "la sécurité au travail",
+      "meaning_vi": "an toàn lao động",
+      "meaning_en": "workplace safety",
+      "ipa": "/sekyʁite o tʁavaj/",
+      "example_fr": "La sécurité au travail est essentielle.",
+      "example_vi": "An toàn lao động rất quan trọng.",
+      "example_en": "Workplace safety is essential."
+    },
+    {
+      "french": "le stress",
+      "meaning_vi": "căng thẳng",
+      "meaning_en": "stress",
+      "ipa": "/stʁɛs/",
+      "example_fr": "Le stress au travail augmente.",
+      "example_vi": "Căng thẳng công việc tăng lên.",
+      "example_en": "Work stress is increasing."
+    },
+    {
+      "french": "l'ambiance de travail",
+      "meaning_vi": "bầu không khí làm việc",
+      "meaning_en": "work atmosphere",
+      "ipa": "/ɑ̃bjɑ̃s də tʁavaj/",
+      "example_fr": "L'ambiance de travail est bonne.",
+      "example_vi": "Không khí làm việc rất tốt.",
+      "example_en": "The work atmosphere is good."
+    }
+  ]
+}

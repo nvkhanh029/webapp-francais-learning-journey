@@ -1,0 +1,190 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les sens, les sentiments et les émotions",
+  "topic_slug": "sens-sentiments-emotions",
+  "topic_sort_order": 30,
+  "topic_vi": "Giác quan, cảm xúc và tình cảm",
+  "topic_en": "Senses, feelings and emotions",
+  "subtopic": "Les sentiments et les émotions",
+  "subtopic_key": "les-sentiments-et-les-emotions",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Cảm xúc và tình cảm",
+  "subtopic_en": "Feelings and emotions",
+  "words": [
+    {
+      "french": "la joie",
+      "meaning_vi": "niềm vui",
+      "meaning_en": "joy",
+      "ipa": "/ʒwa/",
+      "example_fr": "La joie remplit la maison.",
+      "example_vi": "Niềm vui tràn ngập ngôi nhà.",
+      "example_en": "Joy fills the house."
+    },
+    {
+      "french": "la tristesse",
+      "meaning_vi": "nỗi buồn",
+      "meaning_en": "sadness",
+      "ipa": "/tʁis.tɛs/",
+      "example_fr": "La tristesse passe avec le temps.",
+      "example_vi": "Nỗi buồn qua đi theo thời gian.",
+      "example_en": "Sadness passes with time."
+    },
+    {
+      "french": "le bonheur",
+      "meaning_vi": "hạnh phúc",
+      "meaning_en": "happiness",
+      "ipa": "/bɔ.nœʁ/",
+      "example_fr": "Il ressent un grand bonheur.",
+      "example_vi": "Anh ấy cảm thấy hạnh phúc lớn.",
+      "example_en": "He feels great happiness."
+    },
+    {
+      "french": "le malheur",
+      "meaning_vi": "bất hạnh",
+      "meaning_en": "misfortune, unhappiness",
+      "ipa": "/ma.lœʁ/",
+      "example_fr": "Le malheur touche tout le monde.",
+      "example_vi": "Bất hạnh ảnh hưởng đến mọi người.",
+      "example_en": "Misfortune affects everyone."
+    },
+    {
+      "french": "la colère",
+      "meaning_vi": "cơn giận",
+      "meaning_en": "anger",
+      "ipa": "/kɔ.lɛʁ/",
+      "example_fr": "La colère monte vite.",
+      "example_vi": "Cơn giận dâng lên nhanh.",
+      "example_en": "Anger rises quickly."
+    },
+    {
+      "french": "la peur",
+      "meaning_vi": "nỗi sợ",
+      "meaning_en": "fear",
+      "ipa": "/pœʁ/",
+      "example_fr": "La peur l'empêche de parler.",
+      "example_vi": "Nỗi sợ ngăn anh ấy nói.",
+      "example_en": "Fear prevents him from speaking."
+    },
+    {
+      "french": "la surprise",
+      "meaning_vi": "sự ngạc nhiên",
+      "meaning_en": "surprise",
+      "ipa": "/syʁ.pʁiz/",
+      "example_fr": "Elle est surprise par la nouvelle.",
+      "example_vi": "Cô ấy ngạc nhiên vì tin tức.",
+      "example_en": "She is surprised by the news."
+    },
+    {
+      "french": "la honte",
+      "meaning_vi": "sự xấu hổ",
+      "meaning_en": "shame",
+      "ipa": "/ɔ̃t/",
+      "example_fr": "La honte le fait rougir.",
+      "example_vi": "Sự xấu hổ làm anh ấy đỏ mặt.",
+      "example_en": "Shame makes him blush."
+    },
+    {
+      "french": "l'amour",
+      "meaning_vi": "tình yêu",
+      "meaning_en": "love",
+      "ipa": "/la.muʁ/",
+      "example_fr": "L'amour est plus fort que tout.",
+      "example_vi": "Tình yêu mạnh hơn tất cả.",
+      "example_en": "Love is stronger than everything."
+    },
+    {
+      "french": "la haine",
+      "meaning_vi": "sự thù hận",
+      "meaning_en": "hatred",
+      "ipa": "/ɛn/",
+      "example_fr": "La haine détruit l'amitié.",
+      "example_vi": "Sự thù hận phá hủy tình bạn.",
+      "example_en": "Hatred destroys friendship."
+    },
+    {
+      "french": "l'amitié",
+      "meaning_vi": "tình bạn",
+      "meaning_en": "friendship",
+      "ipa": "/a.mi.tje/",
+      "example_fr": "L'amitié dure des années.",
+      "example_vi": "Tình bạn kéo dài nhiều năm.",
+      "example_en": "Friendship lasts for years."
+    },
+    {
+      "french": "la nostalgie",
+      "meaning_vi": "nỗi nhớ",
+      "meaning_en": "nostalgia",
+      "ipa": "/nɔs.tal.ʒi/",
+      "example_fr": "J'ai de la nostalgie pour mon enfance.",
+      "example_vi": "Tôi thấy nhớ nhung tuổi thơ.",
+      "example_en": "I feel nostalgic for my childhood."
+    },
+    {
+      "french": "l'espoir",
+      "meaning_vi": "hy vọng",
+      "meaning_en": "hope",
+      "ipa": "/ɛs.pwaʁ/",
+      "example_fr": "L'espoir donne du courage.",
+      "example_vi": "Hy vọng mang lại dũng khí.",
+      "example_en": "Hope gives courage."
+    },
+    {
+      "french": "l'inquiétude",
+      "meaning_vi": "sự lo lắng",
+      "meaning_en": "worry",
+      "ipa": "/ɛ̃.kje.tyd/",
+      "example_fr": "L'inquiétude la tient éveillée.",
+      "example_vi": "Sự lo lắng làm cô ấy mất ngủ.",
+      "example_en": "Worry keeps her awake."
+    },
+    {
+      "french": "être heureux / heureuse",
+      "meaning_vi": "hạnh phúc",
+      "meaning_en": "to be happy",
+      "ipa": "/ɛtʁ œ.ʁø / œ.ʁøz/",
+      "example_fr": "Être heureux est important.",
+      "example_vi": "Được hạnh phúc là quan trọng.",
+      "example_en": "To be happy is important."
+    },
+    {
+      "french": "être triste",
+      "meaning_vi": "buồn",
+      "meaning_en": "to be sad",
+      "ipa": "/ɛtʁ tʁist/",
+      "example_fr": "Il est triste ce soir.",
+      "example_vi": "Tối nay anh ấy buồn.",
+      "example_en": "He is sad tonight."
+    },
+    {
+      "french": "pleurer",
+      "meaning_vi": "khóc",
+      "meaning_en": "to cry",
+      "ipa": "/plœ.ʁe/",
+      "example_fr": "Elle pleure de joie.",
+      "example_vi": "Cô ấy khóc vì vui.",
+      "example_en": "She cries with joy."
+    },
+    {
+      "french": "rire",
+      "meaning_vi": "cười",
+      "meaning_en": "to laugh",
+      "ipa": "/ʁiʁ/",
+      "example_fr": "Ils rient ensemble.",
+      "example_vi": "Họ cười cùng nhau.",
+      "example_en": "They laugh together."
+    },
+    {
+      "french": "la fierté",
+      "meaning_vi": "niềm tự hào",
+      "meaning_en": "pride",
+      "ipa": "/fjɛʁ.te/",
+      "example_fr": "Je suis fier de toi.",
+      "example_vi": "Tôi tự hào về bạn.",
+      "example_en": "I am proud of you."
+    }
+  ]
+}

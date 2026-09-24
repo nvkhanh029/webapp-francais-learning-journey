@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les transports privés",
+  "topic_slug": "transports-prives",
+  "topic_sort_order": 20,
+  "topic_vi": "Giao thông cá nhân",
+  "topic_en": "Private transport",
+  "subtopic": "La conduite et le stationnement",
+  "subtopic_key": "la-conduite-et-le-stationnement",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Lái xe và đỗ xe",
+  "subtopic_en": "Driving and parking",
+  "words": [
+    {
+      "french": "conduire",
+      "meaning_vi": "lái xe",
+      "meaning_en": "to drive",
+      "ipa": "/kɔ̃dɥiʁ/",
+      "example_fr": "Je conduis pour aller au travail.",
+      "example_vi": "Tôi lái xe đi làm.",
+      "example_en": "I drive to work."
+    },
+    {
+      "french": "un permis de conduire",
+      "meaning_vi": "bằng lái xe",
+      "meaning_en": "a driving licence",
+      "ipa": "/œ̃ pɛʁmi də kɔ̃dɥiʁ/",
+      "example_fr": "J'ai le permis de conduire.",
+      "example_vi": "Tôi có bằng lái xe.",
+      "example_en": "I have a driving licence."
+    },
+    {
+      "french": "un volant",
+      "meaning_vi": "vô lăng",
+      "meaning_en": "a steering wheel",
+      "ipa": "/œ̃ vɔlɑ̃/",
+      "example_fr": "Tourne le volant.",
+      "example_vi": "Hãy xoay vô lăng.",
+      "example_en": "Turn the steering wheel."
+    },
+    {
+      "french": "un frein",
+      "meaning_vi": "phanh",
+      "meaning_en": "a brake",
+      "ipa": "/œ̃ fʁɛ̃/",
+      "example_fr": "Appuie sur le frein.",
+      "example_vi": "Hãy đạp phanh.",
+      "example_en": "Press the brake."
+    },
+    {
+      "french": "un accélérateur",
+      "meaning_vi": "chân ga",
+      "meaning_en": "an accelerator",
+      "ipa": "/œ̃n akseləʁatœʁ/",
+      "example_fr": "Appuie doucement sur l'accélérateur.",
+      "example_vi": "Nhấn nhẹ chân ga.",
+      "example_en": "Press the accelerator gently."
+    },
+    {
+      "french": "une vitesse",
+      "meaning_vi": "số, tốc độ",
+      "meaning_en": "a gear, speed",
+      "ipa": "/yn vitɛs/",
+      "example_fr": "Change de vitesse.",
+      "example_vi": "Hãy chuyển số.",
+      "example_en": "Change gear."
+    },
+    {
+      "french": "un rétroviseur",
+      "meaning_vi": "gương chiếu hậu",
+      "meaning_en": "a rear-view mirror",
+      "ipa": "/œ̃ ʁetʁovizœʁ/",
+      "example_fr": "Regarde le rétroviseur.",
+      "example_vi": "Hãy nhìn gương chiếu hậu.",
+      "example_en": "Check the mirror."
+    },
+    {
+      "french": "un angle mort",
+      "meaning_vi": "điểm mù",
+      "meaning_en": "a blind spot",
+      "ipa": "/œ̃n ɑ̃ɡl mɔʁ/",
+      "example_fr": "Vérifie ton angle mort.",
+      "example_vi": "Kiểm tra điểm mù.",
+      "example_en": "Check your blind spot."
+    },
+    {
+      "french": "ralentir",
+      "meaning_vi": "giảm tốc",
+      "meaning_en": "to slow down",
+      "ipa": "/ʁalɑ̃tiʁ/",
+      "example_fr": "Ralentis ici.",
+      "example_vi": "Hãy giảm tốc độ ở đây.",
+      "example_en": "Slow down here."
+    },
+    {
+      "french": "un dépassement",
+      "meaning_vi": "sự vượt xe",
+      "meaning_en": "overtaking",
+      "ipa": "/œ̃ depasmɑ̃/",
+      "example_fr": "Le dépassement est interdit.",
+      "example_vi": "Cấm vượt.",
+      "example_en": "Overtaking is forbidden."
+    },
+    {
+      "french": "se garer",
+      "meaning_vi": "đỗ xe",
+      "meaning_en": "to park",
+      "ipa": "/sə ɡaʁe/",
+      "example_fr": "Gare la voiture ici.",
+      "example_vi": "Hãy đỗ xe ở đây.",
+      "example_en": "Park the car here."
+    },
+    {
+      "french": "un stationnement",
+      "meaning_vi": "sự đỗ xe",
+      "meaning_en": "parking",
+      "ipa": "/œ̃ stasjɔnmɑ̃/",
+      "example_fr": "Le stationnement est gratuit.",
+      "example_vi": "Đỗ xe miễn phí.",
+      "example_en": "Parking is free."
+    },
+    {
+      "french": "un parking",
+      "meaning_vi": "bãi đỗ xe",
+      "meaning_en": "a car park",
+      "ipa": "/œ̃ paʁkiŋ/",
+      "example_fr": "Le parking est plein.",
+      "example_vi": "Bãi đỗ xe đầy.",
+      "example_en": "The car park is full."
+    },
+    {
+      "french": "un horodateur",
+      "meaning_vi": "máy thu phí đỗ xe",
+      "meaning_en": "a parking meter",
+      "ipa": "/œ̃n ɔʁɔdatœʁ/",
+      "example_fr": "Paie à l'horodateur.",
+      "example_vi": "Hãy trả ở máy thu phí đỗ xe.",
+      "example_en": "Pay at the meter."
+    },
+    {
+      "french": "une contravention",
+      "meaning_vi": "giấy phạt",
+      "meaning_en": "a fine, ticket",
+      "ipa": "/yn kɔ̃tʁavɑ̃sjɔ̃/",
+      "example_fr": "J'ai eu une contravention.",
+      "example_vi": "Tôi bị phạt.",
+      "example_en": "I got a fine."
+    },
+    {
+      "french": "un phare",
+      "meaning_vi": "đèn pha",
+      "meaning_en": "a headlight",
+      "ipa": "/œ̃ faʁ/",
+      "example_fr": "Allume les phares.",
+      "example_vi": "Hãy bật đèn pha.",
+      "example_en": "Turn on the headlights."
+    },
+    {
+      "french": "un clignotant",
+      "meaning_vi": "đèn xi nhan",
+      "meaning_en": "an indicator",
+      "ipa": "/œ̃ kliɲɔtɑ̃/",
+      "example_fr": "Mets ton clignotant.",
+      "example_vi": "Hãy bật đèn xi nhan.",
+      "example_en": "Use your indicators."
+    },
+    {
+      "french": "l'essence",
+      "meaning_vi": "xăng",
+      "meaning_en": "petrol, fuel",
+      "ipa": "/lesɑ̃s/",
+      "example_fr": "Fais le plein d'essence.",
+      "example_vi": "Hãy đổ đầy xăng.",
+      "example_en": "Fill up the tank."
+    },
+    {
+      "french": "une auto-école",
+      "meaning_vi": "trường dạy lái xe",
+      "meaning_en": "a driving school",
+      "ipa": "/yn otoekɔl/",
+      "example_fr": "Prends des leçons de conduite.",
+      "example_vi": "Hãy học lái xe.",
+      "example_en": "Take driving lessons."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "La vie sociale et économique",
+  "category_key": "vie-sociale-economique",
+  "category_sort_order": 110,
+  "category_vi": "Đời sống xã hội và kinh tế",
+  "category_en": "Social and economic life",
+  "topic": "La vie économique",
+  "topic_slug": "vie-economique",
+  "topic_sort_order": 10,
+  "topic_vi": "Đời sống kinh tế",
+  "topic_en": "Economic life",
+  "subtopic": "La consommation",
+  "subtopic_key": "la-consommation",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Tiêu dùng",
+  "subtopic_en": "Consumption",
+  "words": [
+    {
+      "french": "la consommation",
+      "meaning_vi": "tiêu dùng",
+      "meaning_en": "consumption",
+      "ipa": "/kɔ̃.sɔ.ma.sjɔ̃/",
+      "example_fr": "La consommation augmente en été.",
+      "example_vi": "Tiêu dùng tăng vào mùa hè.",
+      "example_en": "Consumption rises in summer."
+    },
+    {
+      "french": "le consommateur",
+      "meaning_vi": "người tiêu dùng",
+      "meaning_en": "consumer",
+      "ipa": "/kɔ̃.sɔ.ma.tœʁ/",
+      "example_fr": "Le consommateur compare les prix.",
+      "example_vi": "Người tiêu dùng so sánh giá.",
+      "example_en": "The consumer compares prices."
+    },
+    {
+      "french": "acheter",
+      "meaning_vi": "mua",
+      "meaning_en": "to buy",
+      "ipa": "/aʃ.te/",
+      "example_fr": "J'achète du pain chaque jour.",
+      "example_vi": "Tôi mua bánh mì mỗi ngày.",
+      "example_en": "I buy bread every day."
+    },
+    {
+      "french": "vendre",
+      "meaning_vi": "bán",
+      "meaning_en": "to sell",
+      "ipa": "/vɑ̃dʁ/",
+      "example_fr": "Il vend des fruits au marché.",
+      "example_vi": "Anh ấy bán trái cây ở chợ.",
+      "example_en": "He sells fruit at the market."
+    },
+    {
+      "french": "l'étiquette",
+      "meaning_vi": "nhãn mác",
+      "meaning_en": "label",
+      "ipa": "/le.ti.kɛt/",
+      "example_fr": "Lis l'étiquette avant d'acheter.",
+      "example_vi": "Hãy đọc nhãn mác trước khi mua.",
+      "example_en": "Read the label before buying."
+    },
+    {
+      "french": "la garantie",
+      "meaning_vi": "bảo hành",
+      "meaning_en": "warranty",
+      "ipa": "/la ɡa.ʁɑ̃.ti/",
+      "example_fr": "Ce téléphone a deux ans de garantie.",
+      "example_vi": "Điện thoại này được bảo hành hai năm.",
+      "example_en": "This phone has a two-year warranty."
+    },
+    {
+      "french": "les soldes (f)",
+      "meaning_vi": "đợt giảm giá",
+      "meaning_en": "sales",
+      "ipa": "/sɔld/",
+      "example_fr": "J'adore les soldes d'hiver.",
+      "example_vi": "Tôi thích đợt giảm giá mùa đông.",
+      "example_en": "I love the winter sales."
+    },
+    {
+      "french": "le service client",
+      "meaning_vi": "dịch vụ khách hàng",
+      "meaning_en": "customer service",
+      "ipa": "/lə sɛʁ.vis kli.jɑ̃/",
+      "example_fr": "Contacte le service client.",
+      "example_vi": "Hãy liên hệ dịch vụ khách hàng.",
+      "example_en": "Contact customer service."
+    },
+    {
+      "french": "la publicité",
+      "meaning_vi": "quảng cáo",
+      "meaning_en": "advertising",
+      "ipa": "/py.bli.si.te/",
+      "example_fr": "La publicité passe à la télé.",
+      "example_vi": "Quảng cáo chiếu trên TV.",
+      "example_en": "The ad is on TV."
+    },
+    {
+      "french": "le commerce équitable",
+      "meaning_vi": "thương mại công bằng",
+      "meaning_en": "fair trade",
+      "ipa": "/lə kɔ.mɛʁs e.ki.tabl/",
+      "example_fr": "J'achète du café du commerce équitable.",
+      "example_vi": "Tôi mua cà phê thương mại công bằng.",
+      "example_en": "I buy fair-trade coffee."
+    },
+    {
+      "french": "le retrait en magasin",
+      "meaning_vi": "nhận hàng tại cửa hàng (đặt online, lấy tại shop)",
+      "meaning_en": "store pickup (click and collect)",
+      "ipa": "/lə ʁətʁɛ ɑ̃ maɡazɛ̃/",
+      "example_fr": "Je choisis le retrait en magasin.",
+      "example_vi": "Tôi chọn nhận hàng tại cửa hàng.",
+      "example_en": "I choose store pickup."
+    },
+    {
+      "french": "la qualité",
+      "meaning_vi": "chất lượng",
+      "meaning_en": "quality",
+      "ipa": "/ka.li.te/",
+      "example_fr": "La qualité est excellente.",
+      "example_vi": "Chất lượng rất tuyệt.",
+      "example_en": "The quality is excellent."
+    },
+    {
+      "french": "comparer les prix",
+      "meaning_vi": "so sánh giá",
+      "meaning_en": "to compare prices",
+      "ipa": "/kɔ̃.pa.ʁe le pʁi/",
+      "example_fr": "Il faut comparer les prix.",
+      "example_vi": "Cần so sánh giá cả.",
+      "example_en": "You should compare prices."
+    },
+    {
+      "french": "l'emballage",
+      "meaning_vi": "bao bì",
+      "meaning_en": "packaging",
+      "ipa": "/lɑ̃.ba.laʒ/",
+      "example_fr": "L'emballage est recyclable.",
+      "example_vi": "Bao bì có thể tái chế.",
+      "example_en": "The packaging is recyclable."
+    },
+    {
+      "french": "l'achat en ligne",
+      "meaning_vi": "mua sắm trực tuyến",
+      "meaning_en": "online shopping",
+      "ipa": "/la.ʃa ɑ̃ liɲ/",
+      "example_fr": "L'achat en ligne progresse.",
+      "example_vi": "Mua sắm trực tuyến ngày càng phát triển.",
+      "example_en": "Online shopping is growing."
+    },
+    {
+      "french": "économiser",
+      "meaning_vi": "tiết kiệm",
+      "meaning_en": "to save (money)",
+      "ipa": "/e.kɔ.nɔ.mi.ze/",
+      "example_fr": "J'économise pour les vacances.",
+      "example_vi": "Tôi tiết kiệm cho kỳ nghỉ.",
+      "example_en": "I save for the holidays."
+    },
+    {
+      "french": "le hard-discount",
+      "meaning_vi": "cửa hàng giá rẻ (hard-discount)",
+      "meaning_en": "hard-discount store",
+      "ipa": "/lə aʁd diskunt/",
+      "example_fr": "J'achète souvent au hard-discount.",
+      "example_vi": "Tôi thường mua ở cửa hàng giá rẻ.",
+      "example_en": "I often shop at hard-discount stores."
+    },
+    {
+      "french": "la carte bancaire",
+      "meaning_vi": "thẻ ngân hàng",
+      "meaning_en": "bank card",
+      "ipa": "/kaʁt bɑ̃.kɛʁ/",
+      "example_fr": "Je paie par carte bancaire.",
+      "example_vi": "Tôi trả bằng thẻ ngân hàng.",
+      "example_en": "I pay by bank card."
+    },
+    {
+      "french": "la date de péremption",
+      "meaning_vi": "hạn sử dụng",
+      "meaning_en": "expiry date",
+      "ipa": "/la dat də pe.ʁɑ̃p.sjɔ̃/",
+      "example_fr": "Vérifie la date de péremption.",
+      "example_vi": "Hãy kiểm tra hạn sử dụng.",
+      "example_en": "Check the expiry date."
+    }
+  ]
+}

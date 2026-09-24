@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "La cuisine et la gastronomie",
+  "topic_slug": "cuisine-gastronomie",
+  "topic_sort_order": 30,
+  "topic_vi": "Nấu ăn và ẩm thực",
+  "topic_en": "Cooking and gastronomy",
+  "subtopic": "Faire la cuisine",
+  "subtopic_key": "faire-la-cuisine",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Nấu ăn",
+  "subtopic_en": "Cooking",
+  "words": [
+    {
+      "french": "la mijoteuse",
+      "meaning_vi": "nồi nấu chậm",
+      "meaning_en": "slow cooker",
+      "ipa": "/mi.ʒɔ.tøz/",
+      "example_fr": "La mijoteuse cuit le ragoût doucement.",
+      "example_vi": "Nồi nấu chậm hầm món ragu từ từ.",
+      "example_en": "The slow cooker simmers the stew gently."
+    },
+    {
+      "french": "le cuisinier",
+      "meaning_vi": "đầu bếp",
+      "meaning_en": "cook",
+      "ipa": "/kɥi.zi.nje/",
+      "example_fr": "Le cuisinier est talentueux.",
+      "example_vi": "Đầu bếp tài năng.",
+      "example_en": "The cook is talented."
+    },
+    {
+      "french": "le couteau",
+      "meaning_vi": "dao",
+      "meaning_en": "knife",
+      "ipa": "/ku.to/",
+      "example_fr": "Un couteau bien aiguisé.",
+      "example_vi": "Một con dao sắc.",
+      "example_en": "A sharp knife."
+    },
+    {
+      "french": "la cuillère",
+      "meaning_vi": "thìa",
+      "meaning_en": "spoon",
+      "ipa": "/kɥi.jɛʁ/",
+      "example_fr": "Une cuillère en bois.",
+      "example_vi": "Một chiếc thìa gỗ.",
+      "example_en": "A wooden spoon."
+    },
+    {
+      "french": "la fourchette",
+      "meaning_vi": "nĩa",
+      "meaning_en": "fork",
+      "ipa": "/fuʁ.ʃɛt/",
+      "example_fr": "Une fourchette et un couteau.",
+      "example_vi": "Nĩa và dao.",
+      "example_en": "A fork and a knife."
+    },
+    {
+      "french": "l'assiette",
+      "meaning_vi": "đĩa",
+      "meaning_en": "plate",
+      "ipa": "/a.sjɛt/",
+      "example_fr": "Une assiette creuse.",
+      "example_vi": "Một chiếc đĩa sâu lòng.",
+      "example_en": "A soup plate."
+    },
+    {
+      "french": "le verre",
+      "meaning_vi": "ly",
+      "meaning_en": "glass",
+      "ipa": "/vɛʁ/",
+      "example_fr": "Un verre d'eau.",
+      "example_vi": "Một ly nước.",
+      "example_en": "A glass of water."
+    },
+    {
+      "french": "la poêle",
+      "meaning_vi": "chảo",
+      "meaning_en": "frying pan",
+      "ipa": "/pwal/",
+      "example_fr": "Une poêle bien chaude.",
+      "example_vi": "Một chiếc chảo nóng.",
+      "example_en": "A hot frying pan."
+    },
+    {
+      "french": "la casserole",
+      "meaning_vi": "nồi",
+      "meaning_en": "saucepan",
+      "ipa": "/kas.ʁɔl/",
+      "example_fr": "Une grande casserole.",
+      "example_vi": "Một chiếc nồi lớn.",
+      "example_en": "A big saucepan."
+    },
+    {
+      "french": "le four",
+      "meaning_vi": "lò nướng",
+      "meaning_en": "oven",
+      "ipa": "/fuʁ/",
+      "example_fr": "Préchauffer le four.",
+      "example_vi": "Làm nóng lò trước.",
+      "example_en": "Preheat the oven."
+    },
+    {
+      "french": "le feu doux",
+      "meaning_vi": "lửa nhỏ",
+      "meaning_en": "low heat",
+      "ipa": "/fø du/",
+      "example_fr": "Cuire à feu doux.",
+      "example_vi": "Nấu trên lửa nhỏ.",
+      "example_en": "Cook over low heat."
+    },
+    {
+      "french": "remuer",
+      "meaning_vi": "khuấy",
+      "meaning_en": "to stir",
+      "ipa": "/ʁə.mɥe/",
+      "example_fr": "Remuer bien la soupe.",
+      "example_vi": "Khuấy đều súp.",
+      "example_en": "Stir the soup well."
+    },
+    {
+      "french": "mijoter",
+      "meaning_vi": "hầm nhỏ lửa",
+      "meaning_en": "to simmer",
+      "ipa": "/mi.ʒɔ.te/",
+      "example_fr": "Laisser mijoter dix minutes.",
+      "example_vi": "Hầm nhỏ lửa mười phút.",
+      "example_en": "Simmer for ten minutes."
+    },
+    {
+      "french": "le plat",
+      "meaning_vi": "món ăn",
+      "meaning_en": "dish",
+      "ipa": "/pla/",
+      "example_fr": "Bien assaisonner le plat.",
+      "example_vi": "Nêm món ăn thật vừa.",
+      "example_en": "Season the dish well."
+    },
+    {
+      "french": "servir",
+      "meaning_vi": "dọn, phục vụ",
+      "meaning_en": "to serve",
+      "ipa": "/sɛʁ.viʁ/",
+      "example_fr": "Servir chaud, s'il vous plaît.",
+      "example_vi": "Dọn nóng giúp tôi.",
+      "example_en": "Serve hot, please."
+    },
+    {
+      "french": "la vaisselle",
+      "meaning_vi": "bát đĩa",
+      "meaning_en": "dishes",
+      "ipa": "/vɛ.sɛl/",
+      "example_fr": "Faire la vaisselle rapidement.",
+      "example_vi": "Rửa bát nhanh.",
+      "example_en": "Wash the dishes quickly."
+    },
+    {
+      "french": "l'essuie-tout",
+      "meaning_vi": "giấy lau bếp",
+      "meaning_en": "paper towel",
+      "ipa": "/e.sɥi tu/",
+      "example_fr": "Un essuie-tout est utile.",
+      "example_vi": "Giấy lau bếp rất tiện.",
+      "example_en": "A paper towel is useful."
+    },
+    {
+      "french": "la gastronomie",
+      "meaning_vi": "ẩm thực",
+      "meaning_en": "gastronomy",
+      "ipa": "/ɡas.tʁɔ.no.mi/",
+      "example_fr": "Une recette traditionnelle.",
+      "example_vi": "Một công thức truyền thống.",
+      "example_en": "A traditional recipe."
+    },
+    {
+      "french": "le tablier",
+      "meaning_vi": "tạp dề",
+      "meaning_en": "apron",
+      "ipa": "/ta.bli.je/",
+      "example_fr": "Le tablier est sale.",
+      "example_vi": "Tạp dề bị bẩn.",
+      "example_en": "The apron is dirty."
+    }
+  ]
+}

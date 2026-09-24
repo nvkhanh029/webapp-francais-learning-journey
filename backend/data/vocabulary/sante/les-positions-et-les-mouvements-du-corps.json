@@ -1,0 +1,190 @@
+{
+  "category": "La santé",
+  "category_key": "sante",
+  "category_sort_order": 30,
+  "category_vi": "Sức khỏe",
+  "category_en": "Health",
+  "topic": "Se soigner, guérir",
+  "topic_slug": "se-soigner-guerir",
+  "topic_sort_order": 20,
+  "topic_vi": "Chữa bệnh, hồi phục",
+  "topic_en": "Getting treatment, healing",
+  "subtopic": "Les positions et les mouvements du corps",
+  "subtopic_key": "les-positions-et-les-mouvements-du-corps",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Tư thế và cử động cơ thể",
+  "subtopic_en": "Body positions and movements",
+  "words": [
+    {
+      "french": "s'asseoir",
+      "meaning_vi": "ngồi xuống",
+      "meaning_en": "to sit down",
+      "ipa": "/saswaʁ/",
+      "example_fr": "Asseyez-vous, s'il vous plaît.",
+      "example_vi": "Xin mời ngồi.",
+      "example_en": "Sit down, please."
+    },
+    {
+      "french": "se lever",
+      "meaning_vi": "đứng dậy, thức dậy",
+      "meaning_en": "to get up, stand up",
+      "ipa": "/sə ləve/",
+      "example_fr": "Il se lève tôt.",
+      "example_vi": "Anh ấy dậy sớm.",
+      "example_en": "He gets up early."
+    },
+    {
+      "french": "se coucher",
+      "meaning_vi": "nằm xuống, đi ngủ",
+      "meaning_en": "to lie down, go to bed",
+      "ipa": "/sə kuʃe/",
+      "example_fr": "Elle se couche sur le lit.",
+      "example_vi": "Cô ấy nằm xuống giường.",
+      "example_en": "She lies down on the bed."
+    },
+    {
+      "french": "se pencher",
+      "meaning_vi": "cúi xuống",
+      "meaning_en": "to bend, lean over",
+      "ipa": "/sə pɑ̃ʃe/",
+      "example_fr": "Il se penche pour ramasser.",
+      "example_vi": "Anh ấy cúi xuống để nhặt.",
+      "example_en": "He bends down to pick it up."
+    },
+    {
+      "french": "debout",
+      "meaning_vi": "đứng",
+      "meaning_en": "standing, upright",
+      "ipa": "/dəbu/",
+      "example_fr": "Tiens-toi debout.",
+      "example_vi": "Hãy đứng thẳng.",
+      "example_en": "Stand up straight."
+    },
+    {
+      "french": "assis",
+      "meaning_vi": "ngồi",
+      "meaning_en": "seated, sitting",
+      "ipa": "/asi/",
+      "example_fr": "Il est assis.",
+      "example_vi": "Anh ấy đang ngồi.",
+      "example_en": "He is sitting."
+    },
+    {
+      "french": "allongé",
+      "meaning_vi": "nằm",
+      "meaning_en": "lying down",
+      "ipa": "/alɔ̃ʒe/",
+      "example_fr": "Elle est allongée.",
+      "example_vi": "Cô ấy đang nằm.",
+      "example_en": "She is lying down."
+    },
+    {
+      "french": "à genoux",
+      "meaning_vi": "quỳ gối",
+      "meaning_en": "kneeling, on one's knees",
+      "ipa": "/a ʒənu/",
+      "example_fr": "Il est à genoux.",
+      "example_vi": "Anh ấy đang quỳ.",
+      "example_en": "He is on his knees."
+    },
+    {
+      "french": "marcher",
+      "meaning_vi": "đi bộ",
+      "meaning_en": "to walk",
+      "ipa": "/maʁʃe/",
+      "example_fr": "Marche lentement.",
+      "example_vi": "Hãy đi chậm thôi.",
+      "example_en": "Walk slowly."
+    },
+    {
+      "french": "courir",
+      "meaning_vi": "chạy",
+      "meaning_en": "to run",
+      "ipa": "/kuʁiʁ/",
+      "example_fr": "Il court tous les matins.",
+      "example_vi": "Anh ấy chạy bộ mỗi sáng.",
+      "example_en": "He runs every morning."
+    },
+    {
+      "french": "sauter",
+      "meaning_vi": "nhảy",
+      "meaning_en": "to jump",
+      "ipa": "/sote/",
+      "example_fr": "L'enfant saute de joie.",
+      "example_vi": "Đứa trẻ nhảy lên vì vui.",
+      "example_en": "The child jumps with joy."
+    },
+    {
+      "french": "tourner",
+      "meaning_vi": "quay, xoay",
+      "meaning_en": "to turn",
+      "ipa": "/tuʁne/",
+      "example_fr": "Elle tourne la tête.",
+      "example_vi": "Cô ấy quay đầu.",
+      "example_en": "She turns her head."
+    },
+    {
+      "french": "lever le bras",
+      "meaning_vi": "giơ tay lên",
+      "meaning_en": "to raise one's arm",
+      "ipa": "/ləve lə bʁa/",
+      "example_fr": "Levez les bras.",
+      "example_vi": "Hãy giơ tay lên.",
+      "example_en": "Raise your arms."
+    },
+    {
+      "french": "baisser",
+      "meaning_vi": "hạ xuống",
+      "meaning_en": "to lower",
+      "ipa": "/bese/",
+      "example_fr": "Baissez les bras.",
+      "example_vi": "Hãy hạ tay xuống.",
+      "example_en": "Lower your arms."
+    },
+    {
+      "french": "étendre",
+      "meaning_vi": "duỗi ra",
+      "meaning_en": "to stretch out, extend",
+      "ipa": "/etɑ̃dʁ/",
+      "example_fr": "Il étend les jambes.",
+      "example_vi": "Anh ấy duỗi chân.",
+      "example_en": "He stretches his legs."
+    },
+    {
+      "french": "plier",
+      "meaning_vi": "gập lại",
+      "meaning_en": "to bend, fold",
+      "ipa": "/plije/",
+      "example_fr": "Elle plie les genoux.",
+      "example_vi": "Cô ấy gập đầu gối.",
+      "example_en": "She bends her knees."
+    },
+    {
+      "french": "respirer",
+      "meaning_vi": "hít thở",
+      "meaning_en": "to breathe",
+      "ipa": "/ʁɛspiʁe/",
+      "example_fr": "Il respire profondément.",
+      "example_vi": "Anh ấy hít thở sâu.",
+      "example_en": "He breathes deeply."
+    },
+    {
+      "french": "fermer les yeux",
+      "meaning_vi": "nhắm mắt",
+      "meaning_en": "to close one's eyes",
+      "ipa": "/fɛʁme lez jø/",
+      "example_fr": "Fermez les yeux.",
+      "example_vi": "Hãy nhắm mắt lại.",
+      "example_en": "Close your eyes."
+    },
+    {
+      "french": "le mouvement",
+      "meaning_vi": "cử động",
+      "meaning_en": "the movement",
+      "ipa": "/lə muvmɑ̃/",
+      "example_fr": "Le patient bouge lentement.",
+      "example_vi": "Bệnh nhân cử động chậm rãi.",
+      "example_en": "The patient moves slowly."
+    }
+  ]
+}

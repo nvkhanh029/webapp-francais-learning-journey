@@ -1,0 +1,190 @@
+{
+  "category": "La vie sociale et économique",
+  "category_key": "vie-sociale-economique",
+  "category_sort_order": 110,
+  "category_vi": "Đời sống xã hội và kinh tế",
+  "category_en": "Social and economic life",
+  "topic": "La vie économique",
+  "topic_slug": "vie-economique",
+  "topic_sort_order": 10,
+  "topic_vi": "Đời sống kinh tế",
+  "topic_en": "Economic life",
+  "subtopic": "L'économie et les secteurs d'activité",
+  "subtopic_key": "l-economie-et-les-secteurs-d-activite",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Kinh tế và các ngành nghề",
+  "subtopic_en": "The economy and sectors of activity",
+  "words": [
+    {
+      "french": "l'économie (f)",
+      "meaning_vi": "kinh tế",
+      "meaning_en": "economy",
+      "ipa": "/le.kɔ.nɔ.mi/",
+      "example_fr": "L'économie française est forte.",
+      "example_vi": "Kinh tế Pháp rất mạnh.",
+      "example_en": "The French economy is strong."
+    },
+    {
+      "french": "la croissance",
+      "meaning_vi": "tăng trưởng",
+      "meaning_en": "growth",
+      "ipa": "/kʁwa.sɑ̃s/",
+      "example_fr": "La croissance augmente cette année.",
+      "example_vi": "Tăng trưởng tăng năm nay.",
+      "example_en": "Growth is rising this year."
+    },
+    {
+      "french": "la récession",
+      "meaning_vi": "suy thoái",
+      "meaning_en": "recession",
+      "ipa": "/ʁe.se.sjɔ̃/",
+      "example_fr": "La récession inquiète les gens.",
+      "example_vi": "Suy thoái làm mọi người lo lắng.",
+      "example_en": "The recession worries people."
+    },
+    {
+      "french": "l'inflation (f)",
+      "meaning_vi": "lạm phát",
+      "meaning_en": "inflation",
+      "ipa": "/ɛ̃.fla.sjɔ̃/",
+      "example_fr": "L'inflation fait monter les prix.",
+      "example_vi": "Lạm phát làm giá tăng.",
+      "example_en": "Inflation raises prices."
+    },
+    {
+      "french": "la faillite",
+      "meaning_vi": "sự phá sản",
+      "meaning_en": "bankruptcy",
+      "ipa": "/la fa.jit/",
+      "example_fr": "L'entreprise est en faillite.",
+      "example_vi": "Công ty bị phá sản.",
+      "example_en": "The company is bankrupt."
+    },
+    {
+      "french": "le pouvoir d'achat",
+      "meaning_vi": "sức mua",
+      "meaning_en": "purchasing power",
+      "ipa": "/pu.vwaʁ da.ʃa/",
+      "example_fr": "Mon pouvoir d'achat baisse.",
+      "example_vi": "Sức mua của tôi giảm.",
+      "example_en": "My purchasing power is falling."
+    },
+    {
+      "french": "une entreprise",
+      "meaning_vi": "doanh nghiệp, công ty",
+      "meaning_en": "company",
+      "ipa": "/ɑ̃.tʁə.pʁiz/",
+      "example_fr": "Il travaille dans une entreprise.",
+      "example_vi": "Anh ấy làm trong một công ty.",
+      "example_en": "He works in a company."
+    },
+    {
+      "french": "le secteur primaire",
+      "meaning_vi": "ngành cấp một (nông nghiệp)",
+      "meaning_en": "primary sector",
+      "ipa": "/sɛk.tœʁ pʁi.mɛʁ/",
+      "example_fr": "Le secteur primaire produit le blé.",
+      "example_vi": "Ngành cấp một sản xuất lúa mì.",
+      "example_en": "The primary sector produces wheat."
+    },
+    {
+      "french": "le secteur secondaire",
+      "meaning_vi": "ngành cấp hai (công nghiệp)",
+      "meaning_en": "secondary sector",
+      "ipa": "/sɛk.tœʁ sə.ɡɔ̃.dɛʁ/",
+      "example_fr": "Le secteur secondaire fabrique des voitures.",
+      "example_vi": "Ngành cấp hai sản xuất ô tô.",
+      "example_en": "The secondary sector makes cars."
+    },
+    {
+      "french": "le secteur tertiaire",
+      "meaning_vi": "ngành cấp ba (dịch vụ)",
+      "meaning_en": "tertiary sector",
+      "ipa": "/sɛk.tœʁ tɛʁ.sjɛʁ/",
+      "example_fr": "Le secteur tertiaire crée des emplois.",
+      "example_vi": "Ngành dịch vụ tạo việc làm.",
+      "example_en": "The tertiary sector creates jobs."
+    },
+    {
+      "french": "l'agriculture (f)",
+      "meaning_vi": "nông nghiệp",
+      "meaning_en": "agriculture",
+      "ipa": "/a.ɡʁi.kyl.tyʁ/",
+      "example_fr": "L'agriculture est importante en France.",
+      "example_vi": "Nông nghiệp quan trọng ở Pháp.",
+      "example_en": "Agriculture is important in France."
+    },
+    {
+      "french": "l'industrie (f)",
+      "meaning_vi": "công nghiệp",
+      "meaning_en": "industry",
+      "ipa": "/ɛ̃.dys.tʁi/",
+      "example_fr": "Il travaille dans l'industrie.",
+      "example_vi": "Anh ấy làm trong công nghiệp.",
+      "example_en": "He works in industry."
+    },
+    {
+      "french": "les services (m)",
+      "meaning_vi": "dịch vụ",
+      "meaning_en": "services",
+      "ipa": "/sɛʁ.vis/",
+      "example_fr": "Les services sont nombreux à Paris.",
+      "example_vi": "Dịch vụ rất nhiều ở Paris.",
+      "example_en": "Services are numerous in Paris."
+    },
+    {
+      "french": "le PIB",
+      "meaning_vi": "GDP (tổng sản phẩm quốc nội)",
+      "meaning_en": "GDP",
+      "ipa": "/lə pe.i.be/",
+      "example_fr": "Le PIB augmente cette année.",
+      "example_vi": "GDP tăng năm nay.",
+      "example_en": "GDP is growing this year."
+    },
+    {
+      "french": "la dette publique",
+      "meaning_vi": "nợ công",
+      "meaning_en": "public debt",
+      "ipa": "/la dɛt py.blik/",
+      "example_fr": "La dette publique augmente.",
+      "example_vi": "Nợ công tăng lên.",
+      "example_en": "Public debt is rising."
+    },
+    {
+      "french": "l'artisanat (m)",
+      "meaning_vi": "nghề thủ công",
+      "meaning_en": "crafts",
+      "ipa": "/aʁ.ti.za.na/",
+      "example_fr": "Il aime l'artisanat local.",
+      "example_vi": "Anh ấy thích đồ thủ công địa phương.",
+      "example_en": "He likes local crafts."
+    },
+    {
+      "french": "la concurrence",
+      "meaning_vi": "cạnh tranh",
+      "meaning_en": "competition",
+      "ipa": "/kɔ̃.ky.ʁɑ̃s/",
+      "example_fr": "La concurrence est forte ici.",
+      "example_vi": "Cạnh tranh rất mạnh ở đây.",
+      "example_en": "Competition is strong here."
+    },
+    {
+      "french": "la production",
+      "meaning_vi": "sản xuất",
+      "meaning_en": "production",
+      "ipa": "/pʁɔ.dyk.sjɔ̃/",
+      "example_fr": "La production de vin augmente.",
+      "example_vi": "Sản xuất rượu vang tăng.",
+      "example_en": "Wine production is increasing."
+    },
+    {
+      "french": "l'emploi (m)",
+      "meaning_vi": "việc làm",
+      "meaning_en": "employment",
+      "ipa": "/ɑ̃.plwa/",
+      "example_fr": "Il cherche un emploi stable.",
+      "example_vi": "Anh ấy tìm việc làm ổn định.",
+      "example_en": "He is looking for a stable job."
+    }
+  ]
+}

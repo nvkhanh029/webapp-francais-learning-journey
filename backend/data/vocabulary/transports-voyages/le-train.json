@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les transports publics",
+  "topic_slug": "transports-publics",
+  "topic_sort_order": 10,
+  "topic_vi": "Giao thông công cộng",
+  "topic_en": "Public transport",
+  "subtopic": "Le train",
+  "subtopic_key": "le-train",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Tàu hỏa",
+  "subtopic_en": "The train",
+  "words": [
+    {
+      "french": "un train",
+      "meaning_vi": "tàu hỏa",
+      "meaning_en": "a train",
+      "ipa": "/œ̃ tʁɛ̃/",
+      "example_fr": "Le train part à huit heures.",
+      "example_vi": "Tàu khởi hành lúc tám giờ.",
+      "example_en": "The train leaves at eight."
+    },
+    {
+      "french": "un TGV",
+      "meaning_vi": "tàu cao tốc TGV",
+      "meaning_en": "a high-speed train",
+      "ipa": "/œ̃ teʒeve/",
+      "example_fr": "Le TGV est très rapide.",
+      "example_vi": "Tàu TGV rất nhanh.",
+      "example_en": "The TGV is very fast."
+    },
+    {
+      "french": "une gare",
+      "meaning_vi": "nhà ga",
+      "meaning_en": "a railway station",
+      "ipa": "/yn ɡaʁ/",
+      "example_fr": "La gare est grande.",
+      "example_vi": "Nhà ga rất lớn.",
+      "example_en": "The station is big."
+    },
+    {
+      "french": "une place",
+      "meaning_vi": "chỗ ngồi",
+      "meaning_en": "a seat",
+      "ipa": "/yn plas/",
+      "example_fr": "Ma place est côté fenêtre.",
+      "example_vi": "Chỗ của tôi cạnh cửa sổ.",
+      "example_en": "My seat is by the window."
+    },
+    {
+      "french": "un wagon",
+      "meaning_vi": "toa tàu",
+      "meaning_en": "a carriage, wagon",
+      "ipa": "/œ̃ vaɡɔ̃/",
+      "example_fr": "Le wagon est plein.",
+      "example_vi": "Toa tàu chật kín.",
+      "example_en": "The carriage is full."
+    },
+    {
+      "french": "une voie",
+      "meaning_vi": "đường ray, ke ga",
+      "meaning_en": "a track, platform",
+      "ipa": "/yn vwa/",
+      "example_fr": "Le départ est voie deux.",
+      "example_vi": "Tàu khởi hành ở đường số hai.",
+      "example_en": "The departure is on platform two."
+    },
+    {
+      "french": "un aller simple",
+      "meaning_vi": "vé một chiều",
+      "meaning_en": "a one-way ticket",
+      "ipa": "/œ̃n ale sɛ̃pl/",
+      "example_fr": "Réserve un aller simple.",
+      "example_vi": "Hãy đặt vé một chiều.",
+      "example_en": "Book a one-way ticket."
+    },
+    {
+      "french": "un aller-retour",
+      "meaning_vi": "vé khứ hồi",
+      "meaning_en": "a return ticket",
+      "ipa": "/œ̃n aleʁətuʁ/",
+      "example_fr": "Je préfère un aller-retour.",
+      "example_vi": "Tôi thích vé khứ hồi.",
+      "example_en": "I prefer a return ticket."
+    },
+    {
+      "french": "à l'heure",
+      "meaning_vi": "đúng giờ",
+      "meaning_en": "on time",
+      "ipa": "/a lœʁ/",
+      "example_fr": "Le train est à l'heure.",
+      "example_vi": "Tàu đến đúng giờ.",
+      "example_en": "The train is on time."
+    },
+    {
+      "french": "une arrivée",
+      "meaning_vi": "sự đến, giờ đến",
+      "meaning_en": "an arrival",
+      "ipa": "/yn aʁive/",
+      "example_fr": "L'arrivée est retardée.",
+      "example_vi": "Tàu đến bị trễ.",
+      "example_en": "The arrival is delayed."
+    },
+    {
+      "french": "un départ",
+      "meaning_vi": "sự khởi hành",
+      "meaning_en": "a departure",
+      "ipa": "/œ̃ depaʁ/",
+      "example_fr": "Le panneau des départs est clair.",
+      "example_vi": "Bảng khởi hành rất rõ.",
+      "example_en": "The departure board is clear."
+    },
+    {
+      "french": "le hall",
+      "meaning_vi": "sảnh ga",
+      "meaning_en": "a station hall",
+      "ipa": "/lə al/",
+      "example_fr": "Le hall est plein de monde.",
+      "example_vi": "Sảnh ga đông người.",
+      "example_en": "The hall is crowded."
+    },
+    {
+      "french": "la première classe",
+      "meaning_vi": "hạng nhất",
+      "meaning_en": "first class",
+      "ipa": "/la pʁəmjɛʁ klas/",
+      "example_fr": "Réserve une place en première.",
+      "example_vi": "Hãy đặt chỗ hạng nhất.",
+      "example_en": "Reserve a first-class seat."
+    },
+    {
+      "french": "la seconde classe",
+      "meaning_vi": "hạng hai",
+      "meaning_en": "second class",
+      "ipa": "/la səɡɔ̃d klas/",
+      "example_fr": "La seconde classe est moins chère.",
+      "example_vi": "Hạng hai rẻ hơn.",
+      "example_en": "Second class is cheaper."
+    },
+    {
+      "french": "un bagage",
+      "meaning_vi": "hành lý",
+      "meaning_en": "luggage",
+      "ipa": "/œ̃ baɡaʒ/",
+      "example_fr": "Mon bagage est lourd.",
+      "example_vi": "Hành lý của tôi nặng.",
+      "example_en": "My luggage is heavy."
+    },
+    {
+      "french": "un compartiment",
+      "meaning_vi": "khoang tàu",
+      "meaning_en": "a train compartment",
+      "ipa": "/œ̃ kɔ̃paʁtimɑ̃/",
+      "example_fr": "Notre compartiment est calme.",
+      "example_vi": "Khoang tàu của chúng tôi yên tĩnh.",
+      "example_en": "Our compartment is quiet."
+    },
+    {
+      "french": "supprimé",
+      "meaning_vi": "bị hủy",
+      "meaning_en": "cancelled",
+      "ipa": "/sypʁime/",
+      "example_fr": "Le train est supprimé.",
+      "example_vi": "Chuyến tàu bị hủy.",
+      "example_en": "The train is cancelled."
+    },
+    {
+      "french": "réserver",
+      "meaning_vi": "đặt trước",
+      "meaning_en": "to book, reserve",
+      "ipa": "/ʁezeʁve/",
+      "example_fr": "Réserve ta place à l'avance.",
+      "example_vi": "Hãy đặt chỗ trước.",
+      "example_en": "Book your seat in advance."
+    },
+    {
+      "french": "direct",
+      "meaning_vi": "trực tiếp",
+      "meaning_en": "direct",
+      "ipa": "/diʁɛkt/",
+      "example_fr": "Les trains directs sont plus rapides.",
+      "example_vi": "Tàu trực tiếp nhanh hơn.",
+      "example_en": "Direct trains are faster."
+    }
+  ]
+}

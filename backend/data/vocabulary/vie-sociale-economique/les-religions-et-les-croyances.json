@@ -1,0 +1,190 @@
+{
+  "category": "La vie sociale et économique",
+  "category_key": "vie-sociale-economique",
+  "category_sort_order": 110,
+  "category_vi": "Đời sống xã hội và kinh tế",
+  "category_en": "Social and economic life",
+  "topic": "La vie associative et religieuse",
+  "topic_slug": "vie-associative-religieuse",
+  "topic_sort_order": 30,
+  "topic_vi": "Đời sống hội đoàn và tôn giáo",
+  "topic_en": "Associative and religious life",
+  "subtopic": "Les religions et les croyances",
+  "subtopic_key": "les-religions-et-les-croyances",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Tôn giáo và tín ngưỡng",
+  "subtopic_en": "Religions and beliefs",
+  "words": [
+    {
+      "french": "la religion",
+      "meaning_vi": "tôn giáo",
+      "meaning_en": "religion",
+      "ipa": "/ʁə.li.ʒjɔ̃/",
+      "example_fr": "Chacun respecte sa religion.",
+      "example_vi": "Mỗi người tôn trọng tôn giáo của mình.",
+      "example_en": "Everyone respects their religion."
+    },
+    {
+      "french": "la croyance",
+      "meaning_vi": "niềm tin",
+      "meaning_en": "belief",
+      "ipa": "/kʁwa.jɑ̃s/",
+      "example_fr": "Les croyances sont différentes.",
+      "example_vi": "Niềm tin rất đa dạng.",
+      "example_en": "Beliefs are different."
+    },
+    {
+      "french": "le catholicisme",
+      "meaning_vi": "Công giáo",
+      "meaning_en": "Catholicism",
+      "ipa": "/ka.tɔ.li.sism/",
+      "example_fr": "Le catholicisme est ancien en France.",
+      "example_vi": "Công giáo có lâu đời ở Pháp.",
+      "example_en": "Catholicism is old in France."
+    },
+    {
+      "french": "le protestantisme",
+      "meaning_vi": "Tin Lành",
+      "meaning_en": "Protestantism",
+      "ipa": "/pʁɔ.tɛs.tɑ̃.tism/",
+      "example_fr": "Le temple est protestant.",
+      "example_vi": "Ngôi đền này của Tin Lành.",
+      "example_en": "The temple is Protestant."
+    },
+    {
+      "french": "l'islam (m)",
+      "meaning_vi": "Hồi giáo",
+      "meaning_en": "Islam",
+      "ipa": "/is.lam/",
+      "example_fr": "La mosquée est pleine vendredi.",
+      "example_vi": "Thánh đường Hồi giáo đông vào thứ sáu.",
+      "example_en": "The mosque is full on Friday."
+    },
+    {
+      "french": "le judaïsme",
+      "meaning_vi": "Do Thái giáo",
+      "meaning_en": "Judaism",
+      "ipa": "/ʒy.da.ism/",
+      "example_fr": "La synagogue est au centre.",
+      "example_vi": "Giáo đường Do Thái ở trung tâm.",
+      "example_en": "The synagogue is downtown."
+    },
+    {
+      "french": "le bouddhisme",
+      "meaning_vi": "Phật giáo",
+      "meaning_en": "Buddhism",
+      "ipa": "/bu.dism/",
+      "example_fr": "Le bouddhisme cherche la paix.",
+      "example_vi": "Phật giáo hướng tới hòa bình.",
+      "example_en": "Buddhism seeks peace."
+    },
+    {
+      "french": "l'église (f)",
+      "meaning_vi": "nhà thờ",
+      "meaning_en": "church",
+      "ipa": "/e.ɡliz/",
+      "example_fr": "L'église sonne le dimanche.",
+      "example_vi": "Nhà thờ đổ chuông chủ nhật.",
+      "example_en": "The church rings on Sunday."
+    },
+    {
+      "french": "la mosquée",
+      "meaning_vi": "thánh đường Hồi giáo",
+      "meaning_en": "mosque",
+      "ipa": "/mɔs.ke/",
+      "example_fr": "La mosquée est près du parc.",
+      "example_vi": "Thánh đường gần công viên.",
+      "example_en": "The mosque is near the park."
+    },
+    {
+      "french": "la synagogue",
+      "meaning_vi": "giáo đường Do Thái",
+      "meaning_en": "synagogue",
+      "ipa": "/si.na.ɡɔɡ/",
+      "example_fr": "La synagogue est très belle.",
+      "example_vi": "Giáo đường Do Thái rất đẹp.",
+      "example_en": "The synagogue is very beautiful."
+    },
+    {
+      "french": "le temple",
+      "meaning_vi": "đền, chùa",
+      "meaning_en": "temple",
+      "ipa": "/tɑ̃pl/",
+      "example_fr": "Le temple est calme et joli.",
+      "example_vi": "Ngôi đền yên tĩnh và đẹp.",
+      "example_en": "The temple is calm and pretty."
+    },
+    {
+      "french": "le prêtre",
+      "meaning_vi": "linh mục",
+      "meaning_en": "priest",
+      "ipa": "/pʁɛtʁ/",
+      "example_fr": "Le prêtre parle aux enfants.",
+      "example_vi": "Linh mục nói chuyện với trẻ em.",
+      "example_en": "The priest talks to children."
+    },
+    {
+      "french": "l'imam (m)",
+      "meaning_vi": "giáo sĩ Hồi giáo",
+      "meaning_en": "imam",
+      "ipa": "/i.mam/",
+      "example_fr": "L'imam guide la prière.",
+      "example_vi": "Giáo sĩ hướng dẫn cầu nguyện.",
+      "example_en": "The imam leads the prayer."
+    },
+    {
+      "french": "le rabbin",
+      "meaning_vi": "giáo sĩ Do Thái",
+      "meaning_en": "rabbi",
+      "ipa": "/ʁa.bɛ̃/",
+      "example_fr": "Le rabbin explique la fête.",
+      "example_vi": "Giáo sĩ giải thích ngày lễ.",
+      "example_en": "The rabbi explains the holiday."
+    },
+    {
+      "french": "le moine",
+      "meaning_vi": "nhà sư",
+      "meaning_en": "monk",
+      "ipa": "/mwan/",
+      "example_fr": "Le moine vit simplement.",
+      "example_vi": "Nhà sư sống giản dị.",
+      "example_en": "The monk lives simply."
+    },
+    {
+      "french": "la prière",
+      "meaning_vi": "lời cầu nguyện",
+      "meaning_en": "prayer",
+      "ipa": "/pʁi.jɛʁ/",
+      "example_fr": "La prière est silencieuse.",
+      "example_vi": "Lời cầu nguyện trong thinh lặng.",
+      "example_en": "The prayer is silent."
+    },
+    {
+      "french": "la fête religieuse",
+      "meaning_vi": "lễ tôn giáo",
+      "meaning_en": "religious holiday",
+      "ipa": "/fɛt ʁə.li.ʒjøz/",
+      "example_fr": "La fête religieuse unit la famille.",
+      "example_vi": "Lễ tôn giáo gắn kết gia đình.",
+      "example_en": "The religious holiday unites the family."
+    },
+    {
+      "french": "Noël (m)",
+      "meaning_vi": "Giáng sinh",
+      "meaning_en": "Christmas",
+      "ipa": "/nɔ.ɛl/",
+      "example_fr": "À Noël, on offre des cadeaux.",
+      "example_vi": "Giáng sinh mọi người tặng quà.",
+      "example_en": "At Christmas, we give gifts."
+    },
+    {
+      "french": "le ramadan",
+      "meaning_vi": "tháng Ramadan",
+      "meaning_en": "Ramadan",
+      "ipa": "/ʁa.ma.dan/",
+      "example_fr": "Le ramadan dure un mois.",
+      "example_vi": "Ramadan kéo dài một tháng.",
+      "example_en": "Ramadan lasts one month."
+    }
+  ]
+}

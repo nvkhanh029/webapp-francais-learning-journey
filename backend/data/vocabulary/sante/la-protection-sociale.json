@@ -1,0 +1,190 @@
+{
+  "category": "La santé",
+  "category_key": "sante",
+  "category_sort_order": 30,
+  "category_vi": "Sức khỏe",
+  "category_en": "Health",
+  "topic": "Se soigner, guérir",
+  "topic_slug": "se-soigner-guerir",
+  "topic_sort_order": 20,
+  "topic_vi": "Chữa bệnh, hồi phục",
+  "topic_en": "Getting treatment, healing",
+  "subtopic": "La protection sociale",
+  "subtopic_key": "la-protection-sociale",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Bảo trợ xã hội",
+  "subtopic_en": "Social protection",
+  "words": [
+    {
+      "french": "la protection sociale",
+      "meaning_vi": "bảo trợ xã hội",
+      "meaning_en": "the social protection",
+      "ipa": "/la pʁɔtɛksjɔ̃ sɔsjal/",
+      "example_fr": "La protection sociale aide tout le monde.",
+      "example_vi": "Bảo trợ xã hội giúp đỡ mọi người.",
+      "example_en": "Social protection helps everyone."
+    },
+    {
+      "french": "la Sécurité sociale",
+      "meaning_vi": "an sinh xã hội",
+      "meaning_en": "the social security",
+      "ipa": "/la sekyʁite sɔsjal/",
+      "example_fr": "Il a une carte de Sécurité sociale.",
+      "example_vi": "Anh ấy có thẻ an sinh xã hội.",
+      "example_en": "He has a social security card."
+    },
+    {
+      "french": "l'assurance maladie",
+      "meaning_vi": "bảo hiểm y tế",
+      "meaning_en": "the health insurance",
+      "ipa": "/lasyʁɑ̃s maladi/",
+      "example_fr": "L'assurance maladie paie les frais.",
+      "example_vi": "Bảo hiểm y tế chi trả chi phí.",
+      "example_en": "Health insurance pays the costs."
+    },
+    {
+      "french": "la mutuelle",
+      "meaning_vi": "bảo hiểm y tế bổ sung",
+      "meaning_en": "the top-up health insurance",
+      "ipa": "/la mytɥɛl/",
+      "example_fr": "Ma mutuelle paie le reste.",
+      "example_vi": "Bảo hiểm bổ sung của tôi trả phần còn lại.",
+      "example_en": "My top-up insurance pays the rest."
+    },
+    {
+      "french": "la cotisation",
+      "meaning_vi": "khoản đóng góp",
+      "meaning_en": "the contribution (payment)",
+      "ipa": "/la kɔtizasjɔ̃/",
+      "example_fr": "Il paie ses cotisations.",
+      "example_vi": "Anh ấy đóng các khoản bảo hiểm.",
+      "example_en": "He pays his contributions."
+    },
+    {
+      "french": "le remboursement",
+      "meaning_vi": "sự hoàn tiền",
+      "meaning_en": "the reimbursement",
+      "ipa": "/lə ʁɑ̃buʁsəmɑ̃/",
+      "example_fr": "Le remboursement est rapide.",
+      "example_vi": "Việc hoàn tiền rất nhanh.",
+      "example_en": "The reimbursement is fast."
+    },
+    {
+      "french": "l'allocation",
+      "meaning_vi": "khoản trợ cấp",
+      "meaning_en": "the allowance, benefit",
+      "ipa": "/lalɔkasjɔ̃/",
+      "example_fr": "Elle touche une allocation.",
+      "example_vi": "Cô ấy nhận một khoản trợ cấp.",
+      "example_en": "She receives an allowance."
+    },
+    {
+      "french": "les indemnités journalières",
+      "meaning_vi": "tiền trợ cấp ngày (khi nghỉ ốm)",
+      "meaning_en": "the daily sickness benefits",
+      "ipa": "/lez ɛ̃dɛmnite ʒuʁnaljɛʁ/",
+      "example_fr": "Elle touche des indemnités journalières.",
+      "example_vi": "Cô ấy nhận tiền trợ cấp ngày.",
+      "example_en": "She receives daily benefits."
+    },
+    {
+      "french": "le chômage",
+      "meaning_vi": "sự thất nghiệp",
+      "meaning_en": "the unemployment",
+      "ipa": "/lə ʃomaʒ/",
+      "example_fr": "Elle est au chômage.",
+      "example_vi": "Cô ấy đang thất nghiệp.",
+      "example_en": "She is unemployed."
+    },
+    {
+      "french": "les allocations familiales",
+      "meaning_vi": "trợ cấp gia đình",
+      "meaning_en": "the family benefits",
+      "ipa": "/lez alɔkasjɔ̃ familjal/",
+      "example_fr": "Il touche les allocations familiales.",
+      "example_vi": "Anh ấy nhận trợ cấp gia đình.",
+      "example_en": "He receives family benefits."
+    },
+    {
+      "french": "le congé maternité",
+      "meaning_vi": "kỳ nghỉ thai sản",
+      "meaning_en": "the maternity leave",
+      "ipa": "/lə kɔ̃ʒe matɛʁnite/",
+      "example_fr": "Elle est en congé maternité.",
+      "example_vi": "Cô ấy đang nghỉ thai sản.",
+      "example_en": "She is on maternity leave."
+    },
+    {
+      "french": "l'arrêt maladie",
+      "meaning_vi": "kỳ nghỉ ốm",
+      "meaning_en": "the sick leave",
+      "ipa": "/laʁɛ maladi/",
+      "example_fr": "Il est en arrêt maladie.",
+      "example_vi": "Anh ấy đang nghỉ ốm.",
+      "example_en": "He is on sick leave."
+    },
+    {
+      "french": "le salarié",
+      "meaning_vi": "người lao động",
+      "meaning_en": "the employee",
+      "ipa": "/lə salaʁje/",
+      "example_fr": "Le salarié signe un contrat.",
+      "example_vi": "Người lao động ký hợp đồng.",
+      "example_en": "The employee signs a contract."
+    },
+    {
+      "french": "l'employeur",
+      "meaning_vi": "người sử dụng lao động",
+      "meaning_en": "the employer",
+      "ipa": "/lɑ̃plwajeʁ/",
+      "example_fr": "L'employeur paie les charges.",
+      "example_vi": "Người sử dụng lao động trả các khoản phí.",
+      "example_en": "The employer pays the charges."
+    },
+    {
+      "french": "le tiers payant",
+      "meaning_vi": "chế độ trả thay (không phải trả trước)",
+      "meaning_en": "the third-party payment (no upfront payment)",
+      "ipa": "/lə tjɛʁ pɛjɑ̃/",
+      "example_fr": "La pharmacie fait le tiers payant.",
+      "example_vi": "Nhà thuốc áp dụng chế độ trả thay.",
+      "example_en": "The pharmacy uses third-party payment."
+    },
+    {
+      "french": "la solidarité",
+      "meaning_vi": "tinh thần đoàn kết",
+      "meaning_en": "the solidarity",
+      "ipa": "/la sɔlidaʁite/",
+      "example_fr": "La solidarité est importante.",
+      "example_vi": "Tinh thần đoàn kết rất quan trọng.",
+      "example_en": "Solidarity is important."
+    },
+    {
+      "french": "l'aide sociale",
+      "meaning_vi": "trợ giúp xã hội",
+      "meaning_en": "the social aid",
+      "ipa": "/lɛd sɔsjal/",
+      "example_fr": "Il reçoit une aide rapidement.",
+      "example_vi": "Anh ấy nhận được trợ giúp nhanh chóng.",
+      "example_en": "He gets help quickly."
+    },
+    {
+      "french": "le congé parental",
+      "meaning_vi": "kỳ nghỉ nuôi con",
+      "meaning_en": "the parental leave",
+      "ipa": "/lə kɔ̃ʒe paʁɑ̃tal/",
+      "example_fr": "Il prend un congé parental.",
+      "example_vi": "Anh ấy nghỉ nuôi con.",
+      "example_en": "He takes parental leave."
+    },
+    {
+      "french": "la carte Vitale",
+      "meaning_vi": "thẻ bảo hiểm y tế (Pháp)",
+      "meaning_en": "the French health insurance card",
+      "ipa": "/la kaʁt vital/",
+      "example_fr": "Gardez votre carte Vitale.",
+      "example_vi": "Hãy giữ thẻ bảo hiểm y tế.",
+      "example_en": "Keep your health card."
+    }
+  ]
+}

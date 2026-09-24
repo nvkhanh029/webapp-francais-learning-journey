@@ -1,0 +1,190 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les caractéristiques physiques",
+  "topic_slug": "caracteristiques-physiques",
+  "topic_sort_order": 10,
+  "topic_vi": "Đặc điểm thể chất",
+  "topic_en": "Physical characteristics",
+  "subtopic": "L'anatomie",
+  "subtopic_key": "l-anatomie",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Giải phẫu học",
+  "subtopic_en": "Anatomy",
+  "words": [
+    {
+      "french": "le squelette",
+      "meaning_vi": "bộ xương",
+      "meaning_en": "skeleton",
+      "ipa": "/skə.lɛt/",
+      "example_fr": "Le squelette soutient le corps.",
+      "example_vi": "Bộ xương nâng đỡ cơ thể.",
+      "example_en": "The skeleton supports the body."
+    },
+    {
+      "french": "l'os",
+      "meaning_vi": "xương",
+      "meaning_en": "bone",
+      "ipa": "/ɔs/",
+      "example_fr": "Il s'est cassé un os.",
+      "example_vi": "Anh ấy bị gãy một chiếc xương.",
+      "example_en": "He broke a bone."
+    },
+    {
+      "french": "le muscle",
+      "meaning_vi": "cơ bắp",
+      "meaning_en": "muscle",
+      "ipa": "/myskl/",
+      "example_fr": "Le muscle permet le mouvement.",
+      "example_vi": "Cơ bắp giúp cử động.",
+      "example_en": "The muscle allows movement."
+    },
+    {
+      "french": "le cœur",
+      "meaning_vi": "trái tim",
+      "meaning_en": "heart",
+      "ipa": "/kœʁ/",
+      "example_fr": "Son cœur bat vite.",
+      "example_vi": "Tim anh ấy đập nhanh.",
+      "example_en": "His heart beats fast."
+    },
+    {
+      "french": "le poumon",
+      "meaning_vi": "lá phổi",
+      "meaning_en": "lung",
+      "ipa": "/pu.mɔ̃/",
+      "example_fr": "Les poumons se remplissent d'air.",
+      "example_vi": "Phổi chứa đầy không khí.",
+      "example_en": "The lungs fill with air."
+    },
+    {
+      "french": "le cerveau",
+      "meaning_vi": "bộ não",
+      "meaning_en": "brain",
+      "ipa": "/sɛʁ.vo/",
+      "example_fr": "Le cerveau contrôle le corps.",
+      "example_vi": "Não điều khiển cơ thể.",
+      "example_en": "The brain controls the body."
+    },
+    {
+      "french": "le sang",
+      "meaning_vi": "máu",
+      "meaning_en": "blood",
+      "ipa": "/sɑ̃/",
+      "example_fr": "Le sang circule dans le corps.",
+      "example_vi": "Máu lưu thông trong cơ thể.",
+      "example_en": "Blood circulates in the body."
+    },
+    {
+      "french": "l'estomac",
+      "meaning_vi": "dạ dày",
+      "meaning_en": "stomach",
+      "ipa": "/ɛs.tɔ.ma/",
+      "example_fr": "L'estomac digère les aliments.",
+      "example_vi": "Dạ dày tiêu hóa thức ăn.",
+      "example_en": "The stomach digests food."
+    },
+    {
+      "french": "le foie",
+      "meaning_vi": "gan",
+      "meaning_en": "liver",
+      "ipa": "/fwa/",
+      "example_fr": "Le foie filtre les toxines.",
+      "example_vi": "Gan lọc độc tố.",
+      "example_en": "The liver filters toxins."
+    },
+    {
+      "french": "le rein",
+      "meaning_vi": "quả thận",
+      "meaning_en": "kidney",
+      "ipa": "/ʁɛ̃/",
+      "example_fr": "Le rein nettoie le sang.",
+      "example_vi": "Thận lọc máu.",
+      "example_en": "The kidney cleans the blood."
+    },
+    {
+      "french": "l'intestin",
+      "meaning_vi": "ruột",
+      "meaning_en": "intestine",
+      "ipa": "/ɛ̃.tɛs.tɛ̃/",
+      "example_fr": "L'intestin absorbe les nutriments.",
+      "example_vi": "Ruột hấp thụ chất dinh dưỡng.",
+      "example_en": "The intestine absorbs nutrients."
+    },
+    {
+      "french": "le nerf",
+      "meaning_vi": "dây thần kinh",
+      "meaning_en": "nerve",
+      "ipa": "/nɛʁ/",
+      "example_fr": "Le nerf envoie un signal.",
+      "example_vi": "Dây thần kinh gửi tín hiệu.",
+      "example_en": "The nerve sends a signal."
+    },
+    {
+      "french": "la veine",
+      "meaning_vi": "tĩnh mạch",
+      "meaning_en": "vein",
+      "ipa": "/vɛn/",
+      "example_fr": "La veine transporte le sang.",
+      "example_vi": "Tĩnh mạch vận chuyển máu.",
+      "example_en": "The vein carries blood."
+    },
+    {
+      "french": "l'artère",
+      "meaning_vi": "động mạch",
+      "meaning_en": "artery",
+      "ipa": "/aʁ.tɛʁ/",
+      "example_fr": "L'artère est importante.",
+      "example_vi": "Động mạch rất quan trọng.",
+      "example_en": "The artery is important."
+    },
+    {
+      "french": "l'articulation",
+      "meaning_vi": "khớp",
+      "meaning_en": "joint",
+      "ipa": "/aʁ.ti.ky.la.sjɔ̃/",
+      "example_fr": "Il s'est blessé à l'articulation du genou.",
+      "example_vi": "Anh ấy bị thương ở khớp gối.",
+      "example_en": "He injured his knee joint."
+    },
+    {
+      "french": "la colonne vertébrale",
+      "meaning_vi": "cột sống",
+      "meaning_en": "spine",
+      "ipa": "/kɔ.lɔn vɛʁ.te.bʁal/",
+      "example_fr": "La colonne vertébrale doit rester droite.",
+      "example_vi": "Cột sống phải giữ thẳng.",
+      "example_en": "The spine must stay straight."
+    },
+    {
+      "french": "l'épiderme",
+      "meaning_vi": "lớp biểu bì",
+      "meaning_en": "epidermis (outer skin)",
+      "ipa": "/e.pi.dɛʁm/",
+      "example_fr": "L'épiderme protège le corps.",
+      "example_vi": "Lớp biểu bì bảo vệ cơ thể.",
+      "example_en": "The skin protects the body."
+    },
+    {
+      "french": "la respiration",
+      "meaning_vi": "sự hô hấp",
+      "meaning_en": "breathing",
+      "ipa": "/ʁɛs.pi.ʁa.sjɔ̃/",
+      "example_fr": "Respirer est vital.",
+      "example_vi": "Hít thở là điều sống còn.",
+      "example_en": "To breathe is vital."
+    },
+    {
+      "french": "la circulation sanguine",
+      "meaning_vi": "tuần hoàn máu",
+      "meaning_en": "blood circulation",
+      "ipa": "/siʁ.ky.la.sjɔ̃ sɑ̃.ɡin/",
+      "example_fr": "La circulation sanguine est essentielle.",
+      "example_vi": "Tuần hoàn máu rất thiết yếu.",
+      "example_en": "Blood circulation is essential."
+    }
+  ]
+}

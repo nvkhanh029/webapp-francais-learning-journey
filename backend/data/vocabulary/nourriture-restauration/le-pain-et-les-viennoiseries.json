@@ -1,0 +1,190 @@
+{
+  "category": "La nourriture et la restauration",
+  "category_key": "nourriture-restauration",
+  "category_sort_order": 80,
+  "category_vi": "Thực phẩm và ẩm thực",
+  "category_en": "Food and dining",
+  "topic": "L'alimentation (1)",
+  "topic_slug": "alimentation-1",
+  "topic_sort_order": 10,
+  "topic_vi": "Thực phẩm (1)",
+  "topic_en": "Food (1)",
+  "subtopic": "Le pain et les viennoiseries",
+  "subtopic_key": "le-pain-et-les-viennoiseries",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Bánh mì và bánh ngọt",
+  "subtopic_en": "Bread and pastries",
+  "words": [
+    {
+      "french": "la baguette",
+      "meaning_vi": "bánh mì baguette",
+      "meaning_en": "baguette",
+      "ipa": "/ba.ɡɛt/",
+      "example_fr": "J'achète une baguette chaque matin.",
+      "example_vi": "Tôi mua một ổ baguette mỗi sáng.",
+      "example_en": "I buy a baguette every morning."
+    },
+    {
+      "french": "le pain de mie",
+      "meaning_vi": "bánh mì sandwich",
+      "meaning_en": "sliced bread",
+      "ipa": "/pɛ̃ də mi/",
+      "example_fr": "Le pain de mie est pratique.",
+      "example_vi": "Bánh mì sandwich rất tiện.",
+      "example_en": "Sliced bread is practical."
+    },
+    {
+      "french": "le pain de campagne",
+      "meaning_vi": "bánh mì đồng quê",
+      "meaning_en": "country bread",
+      "ipa": "/pɛ̃ də kɑ̃.paɲ/",
+      "example_fr": "J'adore le pain de campagne chaud.",
+      "example_vi": "Tôi thích bánh mì đồng quê nóng.",
+      "example_en": "I love warm country bread."
+    },
+    {
+      "french": "le croissant",
+      "meaning_vi": "bánh sừng bò",
+      "meaning_en": "croissant",
+      "ipa": "/kʁwa.sɑ̃/",
+      "example_fr": "Un croissant au petit-déjeuner, s'il vous plaît.",
+      "example_vi": "Một chiếc croissant cho bữa sáng.",
+      "example_en": "A croissant for breakfast, please."
+    },
+    {
+      "french": "le pain au chocolat",
+      "meaning_vi": "bánh mì sô-cô-la",
+      "meaning_en": "chocolate croissant",
+      "ipa": "/pɛ̃ o ʃo.ko.la/",
+      "example_fr": "Elle mange un pain au chocolat.",
+      "example_vi": "Cô ấy ăn một chiếc bánh pain au chocolat.",
+      "example_en": "She eats a chocolate croissant."
+    },
+    {
+      "french": "la brioche",
+      "meaning_vi": "bánh mì brioche",
+      "meaning_en": "brioche",
+      "ipa": "/bʁi.jɔʃ/",
+      "example_fr": "La brioche est très moelleuse.",
+      "example_vi": "Bánh brioche rất mềm.",
+      "example_en": "The brioche is very soft."
+    },
+    {
+      "french": "le croissant aux amandes",
+      "meaning_vi": "bánh sừng bò hạnh nhân",
+      "meaning_en": "almond croissant",
+      "ipa": "/kʁwa.sɑ̃ o.z‿a.mɑ̃d/",
+      "example_fr": "Il achète deux croissants aux amandes.",
+      "example_vi": "Anh ấy mua hai chiếc bánh sừng bò hạnh nhân.",
+      "example_en": "He buys two almond croissants."
+    },
+    {
+      "french": "le bagel",
+      "meaning_vi": "bánh mì vòng bagel",
+      "meaning_en": "bagel",
+      "ipa": "/ba.ɡɛl/",
+      "example_fr": "Le bagel au fromage frais est savoureux.",
+      "example_vi": "Bánh bagel phô mai tươi rất ngon.",
+      "example_en": "The bagel with cream cheese is tasty."
+    },
+    {
+      "french": "le pain complet",
+      "meaning_vi": "bánh mì nguyên cám",
+      "meaning_en": "wholemeal bread",
+      "ipa": "/pɛ̃ kɔ̃.plɛ/",
+      "example_fr": "Je préfère le pain complet.",
+      "example_vi": "Tôi thích bánh mì nguyên cám hơn.",
+      "example_en": "I prefer wholemeal bread."
+    },
+    {
+      "french": "le pain de seigle",
+      "meaning_vi": "bánh mì đen",
+      "meaning_en": "rye bread",
+      "ipa": "/pɛ̃ də sɛɡl/",
+      "example_fr": "Le boulanger vend du pain de seigle.",
+      "example_vi": "Thợ làm bánh bán bánh mì đen.",
+      "example_en": "The baker sells rye bread."
+    },
+    {
+      "french": "la madeleine",
+      "meaning_vi": "bánh madeleine",
+      "meaning_en": "madeleine",
+      "ipa": "/mad.lɛn/",
+      "example_fr": "Une madeleine chaude avec du thé.",
+      "example_vi": "Một chiếc bánh madeleine nóng với trà.",
+      "example_en": "A warm madeleine with tea."
+    },
+    {
+      "french": "la chouquette",
+      "meaning_vi": "bánh su đường",
+      "meaning_en": "sugar puff",
+      "ipa": "/ʃu.kɛt/",
+      "example_fr": "Les chouquettes sont légères et sucrées.",
+      "example_vi": "Bánh chouquette nhẹ và ngọt.",
+      "example_en": "Chouquettes are light and sweet."
+    },
+    {
+      "french": "l'éclair",
+      "meaning_vi": "bánh éclair",
+      "meaning_en": "éclair",
+      "ipa": "/e.klɛʁ/",
+      "example_fr": "L'éclair est fourré au chocolat.",
+      "example_vi": "Bánh éclair nhân sô-cô-la.",
+      "example_en": "The éclair is filled with chocolate."
+    },
+    {
+      "french": "le pain aux raisins",
+      "meaning_vi": "bánh mì nho khô",
+      "meaning_en": "raisin roll",
+      "ipa": "/pɛ̃ o ʁɛ.zɛ̃/",
+      "example_fr": "Il mange un pain aux raisins.",
+      "example_vi": "Anh ấy ăn một chiếc bánh nho khô.",
+      "example_en": "He eats a raisin roll."
+    },
+    {
+      "french": "le chausson aux pommes",
+      "meaning_vi": "bánh táo",
+      "meaning_en": "apple turnover",
+      "ipa": "/ʃo.sɔ̃ o pɔm/",
+      "example_fr": "Le chausson aux pommes est croustillant.",
+      "example_vi": "Bánh táo chausson giòn rụm.",
+      "example_en": "The apple turnover is crisp."
+    },
+    {
+      "french": "la boulangerie",
+      "meaning_vi": "tiệm bánh mì",
+      "meaning_en": "bakery",
+      "ipa": "/bu.lɑ̃ʒ.ʁi/",
+      "example_fr": "La boulangerie sent bon.",
+      "example_vi": "Tiệm bánh mì có mùi thơm.",
+      "example_en": "The bakery smells good."
+    },
+    {
+      "french": "le boulanger",
+      "meaning_vi": "thợ làm bánh",
+      "meaning_en": "baker",
+      "ipa": "/bu.lɑ̃.ʒe/",
+      "example_fr": "Le boulanger se lève tôt.",
+      "example_vi": "Thợ làm bánh dậy sớm.",
+      "example_en": "The baker gets up early."
+    },
+    {
+      "french": "la tarte",
+      "meaning_vi": "bánh tart",
+      "meaning_en": "tart",
+      "ipa": "/taʁt/",
+      "example_fr": "Une tarte fraîche en dessert.",
+      "example_vi": "Một chiếc bánh tart tươi làm tráng miệng.",
+      "example_en": "A fresh tart for dessert."
+    },
+    {
+      "french": "le pain grillé",
+      "meaning_vi": "bánh mì nướng",
+      "meaning_en": "toast",
+      "ipa": "/pɛ̃ ɡʁi.je/",
+      "example_fr": "Le pain grillé est croustillant.",
+      "example_vi": "Bánh mì nướng giòn rụm.",
+      "example_en": "Toasted sandwich bread is crunchy."
+    }
+  ]
+}

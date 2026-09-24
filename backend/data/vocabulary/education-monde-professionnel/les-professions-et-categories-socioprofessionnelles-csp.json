@@ -1,0 +1,190 @@
+{
+  "category": "L'éducation et le monde professionnel",
+  "category_key": "education-monde-professionnel",
+  "category_sort_order": 50,
+  "category_vi": "Giáo dục và thế giới nghề nghiệp",
+  "category_en": "Education and the professional world",
+  "topic": "Les activités professionnelles",
+  "topic_slug": "activites-professionnelles",
+  "topic_sort_order": 20,
+  "topic_vi": "Hoạt động nghề nghiệp",
+  "topic_en": "Professional activities",
+  "subtopic": "Les professions et catégories socioprofessionnelles (CSP)",
+  "subtopic_key": "les-professions-et-categories-socioprofessionnelles-csp",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Nghề nghiệp và nhóm nghề xã hội",
+  "subtopic_en": "Professions and socio-professional categories",
+  "words": [
+    {
+      "french": "le chef d'entreprise",
+      "meaning_vi": "giám đốc công ty",
+      "meaning_en": "company head",
+      "ipa": "/ʃɛf dɑ̃tʁəpʁiz/",
+      "example_fr": "Le chef d'entreprise dirige la société.",
+      "example_vi": "Giám đốc điều hành công ty.",
+      "example_en": "The company head runs the firm."
+    },
+    {
+      "french": "l'agent de maîtrise",
+      "meaning_vi": "quản đốc, tổ trưởng",
+      "meaning_en": "supervisor",
+      "ipa": "/aʒɑ̃ də metʁiz/",
+      "example_fr": "L'agent de maîtrise encadre l'équipe.",
+      "example_vi": "Quản đốc giám sát cả đội.",
+      "example_en": "The supervisor leads the team."
+    },
+    {
+      "french": "l'ouvrier, l'ouvrière",
+      "meaning_vi": "công nhân",
+      "meaning_en": "worker",
+      "ipa": "/uvʁije/",
+      "example_fr": "L'ouvrier travaille à l'usine.",
+      "example_vi": "Công nhân làm việc ở nhà máy.",
+      "example_en": "The worker works in the factory."
+    },
+    {
+      "french": "l'employé, l'employée",
+      "meaning_vi": "nhân viên",
+      "meaning_en": "employee, clerk",
+      "ipa": "/ɑ̃plwaje/",
+      "example_fr": "L'employée travaille au bureau.",
+      "example_vi": "Nhân viên làm việc ở văn phòng.",
+      "example_en": "The employee works at the office."
+    },
+    {
+      "french": "le cadre",
+      "meaning_vi": "khung quản lý, cán bộ",
+      "meaning_en": "executive, manager",
+      "ipa": "/kadʁ/",
+      "example_fr": "Elle est cadre dans une banque.",
+      "example_vi": "Cô ấy là cán bộ trong ngân hàng.",
+      "example_en": "She is an executive in a bank."
+    },
+    {
+      "french": "le cadre supérieur",
+      "meaning_vi": "cán bộ cấp cao",
+      "meaning_en": "senior executive",
+      "ipa": "/kadʁ sypeʁjœʁ/",
+      "example_fr": "Il est cadre supérieur.",
+      "example_vi": "Anh ấy là cán bộ cấp cao.",
+      "example_en": "He is a senior executive."
+    },
+    {
+      "french": "l'entrepreneur",
+      "meaning_vi": "doanh nhân",
+      "meaning_en": "entrepreneur",
+      "ipa": "/ɑ̃tʁəpʁənœʁ/",
+      "example_fr": "L'entrepreneur crée sa société.",
+      "example_vi": "Doanh nhân lập công ty.",
+      "example_en": "The entrepreneur creates his company."
+    },
+    {
+      "french": "le commerçant",
+      "meaning_vi": "thương nhân",
+      "meaning_en": "trader, shopkeeper",
+      "ipa": "/kɔmɛʁsɑ̃/",
+      "example_fr": "Le commerçant vend des fruits.",
+      "example_vi": "Thương nhân bán trái cây.",
+      "example_en": "The trader sells fruit."
+    },
+    {
+      "french": "le libéral (profession libérale)",
+      "meaning_vi": "nghề tự do",
+      "meaning_en": "liberal profession",
+      "ipa": "/libeʁal/",
+      "example_fr": "Le médecin a une profession libérale.",
+      "example_vi": "Bác sĩ làm nghề tự do.",
+      "example_en": "The doctor has a liberal profession."
+    },
+    {
+      "french": "l'indépendant",
+      "meaning_vi": "người làm tự do",
+      "meaning_en": "self-employed person",
+      "ipa": "/ɛ̃depɑ̃dɑ̃/",
+      "example_fr": "Il travaille comme indépendant.",
+      "example_vi": "Anh ấy làm việc tự do.",
+      "example_en": "He works as a self-employed person."
+    },
+    {
+      "french": "le chômeur",
+      "meaning_vi": "người thất nghiệp",
+      "meaning_en": "unemployed person",
+      "ipa": "/ʃomœʁ/",
+      "example_fr": "Le chômeur cherche un emploi.",
+      "example_vi": "Người thất nghiệp tìm việc làm.",
+      "example_en": "The unemployed person looks for a job."
+    },
+    {
+      "french": "le retraité",
+      "meaning_vi": "người về hưu",
+      "meaning_en": "retiree",
+      "ipa": "/ʁətʁete/",
+      "example_fr": "Le retraité touche une pension.",
+      "example_vi": "Người về hưu nhận lương hưu.",
+      "example_en": "The retiree receives a pension."
+    },
+    {
+      "french": "l'apprenti",
+      "meaning_vi": "người học việc",
+      "meaning_en": "apprentice",
+      "ipa": "/apʁɑ̃ti/",
+      "example_fr": "L'apprenti apprend le métier.",
+      "example_vi": "Người học việc học nghề.",
+      "example_en": "The apprentice learns the trade."
+    },
+    {
+      "french": "le stagiaire",
+      "meaning_vi": "thực tập sinh",
+      "meaning_en": "trainee",
+      "ipa": "/staʒjɛʁ/",
+      "example_fr": "La stagiaire observe le travail.",
+      "example_vi": "Thực tập sinh quan sát công việc.",
+      "example_en": "The trainee observes the work."
+    },
+    {
+      "french": "l'intérimaire",
+      "meaning_vi": "nhân viên tạm thời",
+      "meaning_en": "temporary worker",
+      "ipa": "/ɛ̃teʁimɛʁ/",
+      "example_fr": "L'intérimaire remplace un congé.",
+      "example_vi": "Nhân viên tạm thời thay người nghỉ.",
+      "example_en": "The temp replaces someone on leave."
+    },
+    {
+      "french": "le dirigeant",
+      "meaning_vi": "lãnh đạo",
+      "meaning_en": "leader, director",
+      "ipa": "/diʁiʒɑ̃/",
+      "example_fr": "Le dirigeant prend les décisions.",
+      "example_vi": "Lãnh đạo đưa ra quyết định.",
+      "example_en": "The leader makes decisions."
+    },
+    {
+      "french": "le collaborateur",
+      "meaning_vi": "cộng sự",
+      "meaning_en": "colleague, associate",
+      "ipa": "/kɔlabɔʁatœʁ/",
+      "example_fr": "Mon collaborateur m'aide beaucoup.",
+      "example_vi": "Đồng nghiệp giúp tôi rất nhiều.",
+      "example_en": "My colleague helps me a lot."
+    },
+    {
+      "french": "le supérieur hiérarchique",
+      "meaning_vi": "cấp trên",
+      "meaning_en": "line manager",
+      "ipa": "/sypeʁjœʁ jeʁaʁʃik/",
+      "example_fr": "Je parle à mon supérieur hiérarchique.",
+      "example_vi": "Tôi nói chuyện với cấp trên.",
+      "example_en": "I speak to my line manager."
+    },
+    {
+      "french": "le subordonné",
+      "meaning_vi": "cấp dưới",
+      "meaning_en": "subordinate",
+      "ipa": "/sybɔʁdɔne/",
+      "example_fr": "Il gère trois subordonnés.",
+      "example_vi": "Anh ấy quản lý ba cấp dưới.",
+      "example_en": "He manages three subordinates."
+    }
+  ]
+}

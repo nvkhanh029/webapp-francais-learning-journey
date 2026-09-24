@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les voyages et les migrations",
+  "topic_slug": "voyages-migrations",
+  "topic_sort_order": 30,
+  "topic_vi": "Du lịch và di cư",
+  "topic_en": "Travel and migration",
+  "subtopic": "Le tourisme, les voyages",
+  "subtopic_key": "le-tourisme-les-voyages",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Du lịch",
+  "subtopic_en": "Tourism, travel",
+  "words": [
+    {
+      "french": "un voyage",
+      "meaning_vi": "chuyến đi, du lịch",
+      "meaning_en": "a trip, travel",
+      "ipa": "/œ̃ vwajaʒ/",
+      "example_fr": "J'adore le voyage.",
+      "example_vi": "Tôi thích du lịch.",
+      "example_en": "I love travelling."
+    },
+    {
+      "french": "le guide touristique",
+      "meaning_vi": "sách hướng dẫn du lịch",
+      "meaning_en": "a tourist guidebook",
+      "ipa": "/lə ɡid tuʁistik/",
+      "example_fr": "Achète un guide touristique.",
+      "example_vi": "Mua một cuốn sách hướng dẫn du lịch.",
+      "example_en": "Buy a tourist guidebook."
+    },
+    {
+      "french": "un touriste",
+      "meaning_vi": "khách du lịch",
+      "meaning_en": "a tourist",
+      "ipa": "/œ̃ tuʁist/",
+      "example_fr": "C'est un touriste.",
+      "example_vi": "Anh ấy là khách du lịch.",
+      "example_en": "He is a tourist."
+    },
+    {
+      "french": "visiter",
+      "meaning_vi": "thăm, tham quan",
+      "meaning_en": "to visit",
+      "ipa": "/vizite/",
+      "example_fr": "On visite le musée.",
+      "example_vi": "Chúng tôi thăm bảo tàng.",
+      "example_en": "We visit the museum."
+    },
+    {
+      "french": "une visite guidée",
+      "meaning_vi": "chuyến tham quan có hướng dẫn",
+      "meaning_en": "a guided tour",
+      "ipa": "/yn vizit ɡide/",
+      "example_fr": "Fais une visite guidée.",
+      "example_vi": "Hãy đi tour có hướng dẫn.",
+      "example_en": "Take a guided tour."
+    },
+    {
+      "french": "un souvenir",
+      "meaning_vi": "quà lưu niệm",
+      "meaning_en": "a souvenir",
+      "ipa": "/œ̃ suvniʁ/",
+      "example_fr": "Achète un souvenir.",
+      "example_vi": "Hãy mua quà lưu niệm.",
+      "example_en": "Buy a souvenir."
+    },
+    {
+      "french": "un guide",
+      "meaning_vi": "hướng dẫn viên",
+      "meaning_en": "a guide",
+      "ipa": "/œ̃ ɡid/",
+      "example_fr": "Le guide est sympa.",
+      "example_vi": "Hướng dẫn viên thân thiện.",
+      "example_en": "The guide is friendly."
+    },
+    {
+      "french": "l'office de tourisme",
+      "meaning_vi": "văn phòng du lịch",
+      "meaning_en": "the tourist office",
+      "ipa": "/lɔfis də tuʁism/",
+      "example_fr": "Va à l'office de tourisme.",
+      "example_vi": "Đến văn phòng du lịch.",
+      "example_en": "Go to the tourist office."
+    },
+    {
+      "french": "un routard",
+      "meaning_vi": "người du lịch bụi",
+      "meaning_en": "a backpacker",
+      "ipa": "/œ̃ ʁutaʁ/",
+      "example_fr": "Le routard voyage léger.",
+      "example_vi": "Người du lịch bụi đi rất gọn nhẹ.",
+      "example_en": "The backpacker travels light."
+    },
+    {
+      "french": "un séjour",
+      "meaning_vi": "kỳ lưu trú",
+      "meaning_en": "a stay",
+      "ipa": "/œ̃ seʒuʁ/",
+      "example_fr": "Un séjour inoubliable.",
+      "example_vi": "Kỳ nghỉ khó quên.",
+      "example_en": "An unforgettable stay."
+    },
+    {
+      "french": "partir",
+      "meaning_vi": "khởi hành, đi",
+      "meaning_en": "to leave",
+      "ipa": "/paʁtiʁ/",
+      "example_fr": "On part demain.",
+      "example_vi": "Ngày mai chúng ta đi.",
+      "example_en": "We leave tomorrow."
+    },
+    {
+      "french": "revenir",
+      "meaning_vi": "trở về",
+      "meaning_en": "to come back",
+      "ipa": "/ʁəvniʁ/",
+      "example_fr": "On revient dimanche.",
+      "example_vi": "Chúng tôi về chủ nhật.",
+      "example_en": "We return on Sunday."
+    },
+    {
+      "french": "une excursion",
+      "meaning_vi": "chuyến tham quan ngắn",
+      "meaning_en": "an excursion",
+      "ipa": "/yn ɛkskyʁsjɔ̃/",
+      "example_fr": "L'excursion dure un jour.",
+      "example_vi": "Chuyến dã ngoại kéo dài một ngày.",
+      "example_en": "The excursion lasts one day."
+    },
+    {
+      "french": "un monument",
+      "meaning_vi": "tượng đài, di tích",
+      "meaning_en": "a monument",
+      "ipa": "/œ̃ mɔnymɑ̃/",
+      "example_fr": "Le monument est célèbre.",
+      "example_vi": "Tượng đài nổi tiếng.",
+      "example_en": "The monument is famous."
+    },
+    {
+      "french": "une agence de voyages",
+      "meaning_vi": "đại lý du lịch",
+      "meaning_en": "a travel agency",
+      "ipa": "/yn aʒɑ̃s də vwajaʒ/",
+      "example_fr": "L'agence propose de beaux voyages.",
+      "example_vi": "Đại lý có tour đẹp.",
+      "example_en": "The agency offers good trips."
+    },
+    {
+      "french": "à l'étranger",
+      "meaning_vi": "ở nước ngoài",
+      "meaning_en": "abroad",
+      "ipa": "/a letʁɑ̃ʒe/",
+      "example_fr": "Je voyage à l'étranger.",
+      "example_vi": "Tôi đi nước ngoài.",
+      "example_en": "I travel abroad."
+    },
+    {
+      "french": "une assurance voyage",
+      "meaning_vi": "bảo hiểm du lịch",
+      "meaning_en": "travel insurance",
+      "ipa": "/yn asyʁɑ̃s vwajaʒ/",
+      "example_fr": "L'assurance voyage est utile.",
+      "example_vi": "Bảo hiểm du lịch rất hữu ích.",
+      "example_en": "Travel insurance is useful."
+    },
+    {
+      "french": "une photo",
+      "meaning_vi": "ảnh",
+      "meaning_en": "a photo",
+      "ipa": "/yn foto/",
+      "example_fr": "Prends des photos.",
+      "example_vi": "Hãy chụp ảnh.",
+      "example_en": "Take photos."
+    },
+    {
+      "french": "un paysage",
+      "meaning_vi": "phong cảnh",
+      "meaning_en": "a landscape",
+      "ipa": "/œ̃ peizaʒ/",
+      "example_fr": "Le paysage est superbe.",
+      "example_vi": "Phong cảnh tuyệt đẹp.",
+      "example_en": "The landscape is superb."
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "category": "L'éducation et le monde professionnel",
+  "category_key": "education-monde-professionnel",
+  "category_sort_order": 50,
+  "category_vi": "Giáo dục và thế giới nghề nghiệp",
+  "category_en": "Education and the professional world",
+  "topic": "Les études et la formation",
+  "topic_slug": "etudes-formation",
+  "topic_sort_order": 10,
+  "topic_vi": "Học tập và đào tạo",
+  "topic_en": "Studies and education",
+  "subtopic": "L'enseignement primaire et secondaire",
+  "subtopic_key": "l-enseignement-primaire-et-secondaire",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Giáo dục tiểu học và trung học",
+  "subtopic_en": "Primary and secondary education",
+  "words": [
+    {
+      "french": "l'école primaire",
+      "meaning_vi": "trường tiểu học",
+      "meaning_en": "primary school",
+      "ipa": "/ekɔl pʁimɛʁ/",
+      "example_fr": "Mon fils va à l'école primaire.",
+      "example_vi": "Con trai tôi học trường tiểu học.",
+      "example_en": "My son goes to primary school."
+    },
+    {
+      "french": "le collège",
+      "meaning_vi": "trường trung học cơ sở",
+      "meaning_en": "middle school",
+      "ipa": "/kɔlɛʒ/",
+      "example_fr": "Elle entre au collège cette année.",
+      "example_vi": "Cô ấy vào trung học cơ sở năm nay.",
+      "example_en": "She is starting middle school this year."
+    },
+    {
+      "french": "le lycée",
+      "meaning_vi": "trường trung học phổ thông",
+      "meaning_en": "high school",
+      "ipa": "/lise/",
+      "example_fr": "Il est élève au lycée.",
+      "example_vi": "Anh ấy là học sinh trung học phổ thông.",
+      "example_en": "He is a high school student."
+    },
+    {
+      "french": "l'instituteur, l'institutrice",
+      "meaning_vi": "giáo viên tiểu học",
+      "meaning_en": "primary school teacher",
+      "ipa": "/ɛ̃stitytœʁ/",
+      "example_fr": "L'institutrice explique la leçon.",
+      "example_vi": "Cô giáo tiểu học giảng bài.",
+      "example_en": "The primary teacher explains the lesson."
+    },
+    {
+      "french": "le professeur",
+      "meaning_vi": "giáo viên, giảng viên",
+      "meaning_en": "teacher",
+      "ipa": "/pʁɔfesœʁ/",
+      "example_fr": "Le professeur corrige les copies.",
+      "example_vi": "Thầy giáo chấm bài kiểm tra.",
+      "example_en": "The teacher marks the tests."
+    },
+    {
+      "french": "l'élève",
+      "meaning_vi": "học sinh",
+      "meaning_en": "pupil, student",
+      "ipa": "/elɛv/",
+      "example_fr": "Chaque élève a un manuel.",
+      "example_vi": "Mỗi học sinh có một sách giáo khoa.",
+      "example_en": "Each pupil has a textbook."
+    },
+    {
+      "french": "la classe",
+      "meaning_vi": "lớp học",
+      "meaning_en": "class, classroom",
+      "ipa": "/klas/",
+      "example_fr": "La classe commence à huit heures.",
+      "example_vi": "Lớp học bắt đầu lúc tám giờ.",
+      "example_en": "Class starts at eight."
+    },
+    {
+      "french": "le manuel scolaire",
+      "meaning_vi": "sách giáo khoa",
+      "meaning_en": "school textbook",
+      "ipa": "/manɥɛl skɔlɛʁ/",
+      "example_fr": "N'oublie pas ton manuel scolaire.",
+      "example_vi": "Đừng quên sách giáo khoa của bạn.",
+      "example_en": "Don't forget your textbook."
+    },
+    {
+      "french": "le cahier",
+      "meaning_vi": "quyển vở",
+      "meaning_en": "notebook",
+      "ipa": "/kaje/",
+      "example_fr": "J'écris dans mon cahier.",
+      "example_vi": "Tôi viết vào vở.",
+      "example_en": "I write in my notebook."
+    },
+    {
+      "french": "le bulletin scolaire",
+      "meaning_vi": "học bạ, bảng điểm",
+      "meaning_en": "report card",
+      "ipa": "/byltɛ̃ skɔlɛʁ/",
+      "example_fr": "Ses parents signent le bulletin scolaire.",
+      "example_vi": "Bố mẹ cô ấy ký học bạ.",
+      "example_en": "Her parents sign the report card."
+    },
+    {
+      "french": "la récréation",
+      "meaning_vi": "giờ ra chơi",
+      "meaning_en": "break time",
+      "ipa": "/ʁekʁeasjɔ̃/",
+      "example_fr": "Les enfants jouent pendant la récréation.",
+      "example_vi": "Trẻ em chơi đùa trong giờ ra chơi.",
+      "example_en": "The children play during break."
+    },
+    {
+      "french": "le devoir",
+      "meaning_vi": "bài tập về nhà",
+      "meaning_en": "homework",
+      "ipa": "/dəvwaʁ/",
+      "example_fr": "Je fais mes devoirs le soir.",
+      "example_vi": "Tôi làm bài tập về nhà buổi tối.",
+      "example_en": "I do my homework in the evening."
+    },
+    {
+      "french": "l'examen",
+      "meaning_vi": "kỳ thi",
+      "meaning_en": "exam",
+      "ipa": "/ɛɡzamɛ̃/",
+      "example_fr": "Il prépare l'examen de maths.",
+      "example_vi": "Anh ấy ôn thi toán.",
+      "example_en": "He is studying for the maths exam."
+    },
+    {
+      "french": "le baccalauréat",
+      "meaning_vi": "kỳ thi tú tài",
+      "meaning_en": "baccalaureate",
+      "ipa": "/bakaloʁea/",
+      "example_fr": "Elle a obtenu le baccalauréat.",
+      "example_vi": "Cô ấy đã đỗ tú tài.",
+      "example_en": "She passed the baccalaureate."
+    },
+    {
+      "french": "redoubler",
+      "meaning_vi": "học lại, đúp",
+      "meaning_en": "to repeat a year",
+      "ipa": "/ʁəduble/",
+      "example_fr": "Il a dû redoubler sa classe.",
+      "example_vi": "Cậu ấy phải học lại một năm.",
+      "example_en": "He had to repeat the year."
+    },
+    {
+      "french": "la cantine",
+      "meaning_vi": "nhà ăn trường học",
+      "meaning_en": "school canteen",
+      "ipa": "/kɑ̃tin/",
+      "example_fr": "Nous mangeons à la cantine.",
+      "example_vi": "Chúng tôi ăn ở căng-tin trường.",
+      "example_en": "We eat at the school canteen."
+    },
+    {
+      "french": "la matière",
+      "meaning_vi": "môn học",
+      "meaning_en": "subject",
+      "ipa": "/matjɛʁ/",
+      "example_fr": "Ma matière préférée est l'histoire.",
+      "example_vi": "Môn học yêu thích của tôi là lịch sử.",
+      "example_en": "My favourite subject is history."
+    },
+    {
+      "french": "l'emploi du temps",
+      "meaning_vi": "thời khóa biểu",
+      "meaning_en": "timetable",
+      "ipa": "/ɑ̃plwa dy tɑ̃/",
+      "example_fr": "Regarde ton emploi du temps.",
+      "example_vi": "Hãy xem thời khóa biểu của bạn.",
+      "example_en": "Look at your timetable."
+    },
+    {
+      "french": "l'inscription",
+      "meaning_vi": "sự đăng ký nhập học",
+      "meaning_en": "enrolment",
+      "ipa": "/ɛ̃skʁipsjɔ̃/",
+      "example_fr": "L'inscription est obligatoire.",
+      "example_vi": "Đăng ký nhập học là bắt buộc.",
+      "example_en": "Enrolment is compulsory."
+    }
+  ]
+}

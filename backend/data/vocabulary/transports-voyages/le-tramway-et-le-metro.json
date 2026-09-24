@@ -1,0 +1,190 @@
+{
+  "category": "Les transports et les voyages",
+  "category_key": "transports-voyages",
+  "category_sort_order": 70,
+  "category_vi": "Giao thông và du lịch",
+  "category_en": "Transport and travel",
+  "topic": "Les transports publics",
+  "topic_slug": "transports-publics",
+  "topic_sort_order": 10,
+  "topic_vi": "Giao thông công cộng",
+  "topic_en": "Public transport",
+  "subtopic": "Le tramway et le métro",
+  "subtopic_key": "le-tramway-et-le-metro",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Tàu điện và tàu điện ngầm",
+  "subtopic_en": "The tram and the subway",
+  "words": [
+    {
+      "french": "un tramway",
+      "meaning_vi": "tàu điện (tram)",
+      "meaning_en": "a tram",
+      "ipa": "/œ̃ tʁamwɛ/",
+      "example_fr": "Je prends le tram pour aller au travail.",
+      "example_vi": "Tôi đi tàu điện đi làm.",
+      "example_en": "I take the tram to work."
+    },
+    {
+      "french": "un métro",
+      "meaning_vi": "tàu điện ngầm",
+      "meaning_en": "a subway, metro",
+      "ipa": "/œ̃ metʁo/",
+      "example_fr": "Le métro est rapide.",
+      "example_vi": "Tàu điện ngầm rất nhanh.",
+      "example_en": "The metro is fast."
+    },
+    {
+      "french": "une station",
+      "meaning_vi": "ga, trạm",
+      "meaning_en": "a station",
+      "ipa": "/yn stasjɔ̃/",
+      "example_fr": "La station est fermée.",
+      "example_vi": "Ga đóng cửa.",
+      "example_en": "The station is closed."
+    },
+    {
+      "french": "changer",
+      "meaning_vi": "đổi, chuyển tàu",
+      "meaning_en": "to change (trains)",
+      "ipa": "/ʃɑ̃ʒe/",
+      "example_fr": "Change à Châtelet.",
+      "example_vi": "Đổi tàu ở Châtelet.",
+      "example_en": "Change at Châtelet."
+    },
+    {
+      "french": "un quai",
+      "meaning_vi": "sân ga, ke ga",
+      "meaning_en": "a platform",
+      "ipa": "/œ̃ kɛ/",
+      "example_fr": "Le quai est plein.",
+      "example_vi": "Sân ga rất đông.",
+      "example_en": "The platform is crowded."
+    },
+    {
+      "french": "une porte",
+      "meaning_vi": "cửa",
+      "meaning_en": "a door",
+      "ipa": "/yn pɔʁt/",
+      "example_fr": "Attention à la fermeture des portes.",
+      "example_vi": "Cẩn thận cửa đóng.",
+      "example_en": "Mind the closing doors."
+    },
+    {
+      "french": "un escalier mécanique",
+      "meaning_vi": "thang cuốn",
+      "meaning_en": "an escalator",
+      "ipa": "/œ̃n ɛskalje mekanik/",
+      "example_fr": "Prends l'escalier mécanique.",
+      "example_vi": "Hãy đi thang cuốn.",
+      "example_en": "Take the escalator."
+    },
+    {
+      "french": "une sortie",
+      "meaning_vi": "lối ra",
+      "meaning_en": "an exit",
+      "ipa": "/yn sɔʁti/",
+      "example_fr": "Suis la sortie.",
+      "example_vi": "Đi theo lối ra.",
+      "example_en": "Follow the exit signs."
+    },
+    {
+      "french": "un plan",
+      "meaning_vi": "bản đồ",
+      "meaning_en": "a map",
+      "ipa": "/œ̃ plɑ̃/",
+      "example_fr": "J'ai un plan du métro.",
+      "example_vi": "Tôi có bản đồ tàu điện.",
+      "example_en": "I have a metro map."
+    },
+    {
+      "french": "une rame",
+      "meaning_vi": "đoàn tàu",
+      "meaning_en": "a train (metro/tram set)",
+      "ipa": "/yn ʁam/",
+      "example_fr": "La rame arrive.",
+      "example_vi": "Đoàn tàu đang đến.",
+      "example_en": "The train is coming."
+    },
+    {
+      "french": "une heure de pointe",
+      "meaning_vi": "giờ cao điểm",
+      "meaning_en": "rush hour",
+      "ipa": "/yn œʁ də pwɛ̃t/",
+      "example_fr": "L'heure de pointe est stressante.",
+      "example_vi": "Giờ cao điểm rất căng thẳng.",
+      "example_en": "Rush hour is stressful."
+    },
+    {
+      "french": "perturbé",
+      "meaning_vi": "bị gián đoạn",
+      "meaning_en": "disrupted",
+      "ipa": "/pɛʁtyʁbe/",
+      "example_fr": "La ligne est perturbée.",
+      "example_vi": "Tuyến bị gián đoạn.",
+      "example_en": "The line is disrupted."
+    },
+    {
+      "french": "un passe",
+      "meaning_vi": "thẻ đi lại",
+      "meaning_en": "a pass",
+      "ipa": "/œ̃ pas/",
+      "example_fr": "Valide ton passe Navigo.",
+      "example_vi": "Hãy quẹt thẻ Navigo.",
+      "example_en": "Validate your Navigo pass."
+    },
+    {
+      "french": "un tourniquet",
+      "meaning_vi": "cửa xoay",
+      "meaning_en": "a turnstile",
+      "ipa": "/œ̃ tuʁnikɛ/",
+      "example_fr": "Le tourniquet est bloqué.",
+      "example_vi": "Cửa xoay bị kẹt.",
+      "example_en": "The turnstile is blocked."
+    },
+    {
+      "french": "valider",
+      "meaning_vi": "quẹt vé / xác thực vé",
+      "meaning_en": "to validate (a ticket)",
+      "ipa": "/valide/",
+      "example_fr": "Valide ton titre ici.",
+      "example_vi": "Quẹt vé của bạn ở đây.",
+      "example_en": "Validate your ticket here."
+    },
+    {
+      "french": "un terminus",
+      "meaning_vi": "bến cuối",
+      "meaning_en": "a terminus",
+      "ipa": "/œ̃ tɛʁminys/",
+      "example_fr": "Le terminus est La Défense.",
+      "example_vi": "Bến cuối là La Défense.",
+      "example_en": "The terminus is La Défense."
+    },
+    {
+      "french": "en retard",
+      "meaning_vi": "trễ",
+      "meaning_en": "late",
+      "ipa": "/ɑ̃ ʁətaʁ/",
+      "example_fr": "Le métro est en retard.",
+      "example_vi": "Tàu điện ngầm bị trễ.",
+      "example_en": "The train is delayed."
+    },
+    {
+      "french": "une place assise",
+      "meaning_vi": "chỗ ngồi",
+      "meaning_en": "a seat",
+      "ipa": "/yn plas asiz/",
+      "example_fr": "Assieds-toi, il y a une place libre.",
+      "example_vi": "Ngồi đi, còn chỗ trống.",
+      "example_en": "Sit down, there is a free seat."
+    },
+    {
+      "french": "une bouche de métro",
+      "meaning_vi": "lối vào tàu điện ngầm",
+      "meaning_en": "a metro entrance",
+      "ipa": "/yn buʃ də metʁo/",
+      "example_fr": "La bouche de métro est fermée.",
+      "example_vi": "Lối vào tàu điện ngầm đã đóng.",
+      "example_en": "The metro entrance is closed."
+    }
+  ]
+}

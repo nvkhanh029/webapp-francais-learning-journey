@@ -1,0 +1,190 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les caractéristiques physiques",
+  "topic_slug": "caracteristiques-physiques",
+  "topic_sort_order": 10,
+  "topic_vi": "Đặc điểm thể chất",
+  "topic_en": "Physical characteristics",
+  "subtopic": "Le corps humain",
+  "subtopic_key": "le-corps-humain",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Cơ thể con người",
+  "subtopic_en": "The human body",
+  "words": [
+    {
+      "french": "la tête",
+      "meaning_vi": "cái đầu",
+      "meaning_en": "head",
+      "ipa": "/tɛt/",
+      "example_fr": "Elle tourne la tête.",
+      "example_vi": "Cô ấy quay đầu.",
+      "example_en": "She turns her head."
+    },
+    {
+      "french": "l'œil (les yeux)",
+      "meaning_vi": "con mắt",
+      "meaning_en": "eye",
+      "ipa": "/œj / jø/",
+      "example_fr": "Il a les yeux bleus.",
+      "example_vi": "Anh ấy có đôi mắt xanh.",
+      "example_en": "He has blue eyes."
+    },
+    {
+      "french": "le nez",
+      "meaning_vi": "cái mũi",
+      "meaning_en": "nose",
+      "ipa": "/ne/",
+      "example_fr": "Elle a un petit nez.",
+      "example_vi": "Cô ấy có chiếc mũi nhỏ.",
+      "example_en": "She has a small nose."
+    },
+    {
+      "french": "la bouche",
+      "meaning_vi": "cái miệng",
+      "meaning_en": "mouth",
+      "ipa": "/buʃ/",
+      "example_fr": "Ouvre la bouche.",
+      "example_vi": "Hãy mở miệng ra.",
+      "example_en": "Open your mouth."
+    },
+    {
+      "french": "les cheveux",
+      "meaning_vi": "mái tóc",
+      "meaning_en": "hair",
+      "ipa": "/ʃə.vø/",
+      "example_fr": "Elle a les cheveux longs.",
+      "example_vi": "Cô ấy có mái tóc dài.",
+      "example_en": "She has long hair."
+    },
+    {
+      "french": "l'oreille",
+      "meaning_vi": "cái tai",
+      "meaning_en": "ear",
+      "ipa": "/ɔ.ʁɛj/",
+      "example_fr": "Il écoute avec ses oreilles.",
+      "example_vi": "Anh ấy nghe bằng tai.",
+      "example_en": "He listens with his ears."
+    },
+    {
+      "french": "le bras",
+      "meaning_vi": "cánh tay",
+      "meaning_en": "arm",
+      "ipa": "/bʁa/",
+      "example_fr": "Il lève le bras.",
+      "example_vi": "Anh ấy giơ tay lên.",
+      "example_en": "He raises his arm."
+    },
+    {
+      "french": "la main",
+      "meaning_vi": "bàn tay",
+      "meaning_en": "hand",
+      "ipa": "/mɛ̃/",
+      "example_fr": "Elle se lave les mains.",
+      "example_vi": "Cô ấy rửa tay.",
+      "example_en": "She washes her hands."
+    },
+    {
+      "french": "le doigt",
+      "meaning_vi": "ngón tay",
+      "meaning_en": "finger",
+      "ipa": "/dwa/",
+      "example_fr": "Il montre du doigt.",
+      "example_vi": "Anh ấy chỉ bằng ngón tay.",
+      "example_en": "He points with his finger."
+    },
+    {
+      "french": "l'épaule",
+      "meaning_vi": "bờ vai",
+      "meaning_en": "shoulder",
+      "ipa": "/e.pol/",
+      "example_fr": "Elle a mal à l'épaule.",
+      "example_vi": "Cô ấy đau vai.",
+      "example_en": "She has pain in her shoulder."
+    },
+    {
+      "french": "le dos",
+      "meaning_vi": "cái lưng",
+      "meaning_en": "back",
+      "ipa": "/do/",
+      "example_fr": "Il a le dos large.",
+      "example_vi": "Anh ấy có lưng rộng.",
+      "example_en": "He has a wide back."
+    },
+    {
+      "french": "la poitrine",
+      "meaning_vi": "ngực",
+      "meaning_en": "chest",
+      "ipa": "/pwa.tʁin/",
+      "example_fr": "Elle met la main sur sa poitrine.",
+      "example_vi": "Cô ấy đặt tay lên ngực.",
+      "example_en": "She puts her hand on her chest."
+    },
+    {
+      "french": "la jambe",
+      "meaning_vi": "cái chân (đùi + cẳng)",
+      "meaning_en": "leg",
+      "ipa": "/ʒɑ̃b/",
+      "example_fr": "Il plie la jambe.",
+      "example_vi": "Anh ấy co chân.",
+      "example_en": "He bends his leg."
+    },
+    {
+      "french": "le genou",
+      "meaning_vi": "đầu gối",
+      "meaning_en": "knee",
+      "ipa": "/ʒə.nu/",
+      "example_fr": "Elle plie le genou.",
+      "example_vi": "Cô ấy co đầu gối.",
+      "example_en": "She bends her knee."
+    },
+    {
+      "french": "le pied",
+      "meaning_vi": "bàn chân",
+      "meaning_en": "foot",
+      "ipa": "/pje/",
+      "example_fr": "Mes pieds me font mal après la marche.",
+      "example_vi": "Bàn chân tôi đau sau khi đi bộ.",
+      "example_en": "My feet hurt after the walk."
+    },
+    {
+      "french": "la peau",
+      "meaning_vi": "làn da",
+      "meaning_en": "skin",
+      "ipa": "/po/",
+      "example_fr": "Elle a une belle peau.",
+      "example_vi": "Cô ấy có làn da đẹp.",
+      "example_en": "She has beautiful skin."
+    },
+    {
+      "french": "le cou",
+      "meaning_vi": "cái cổ",
+      "meaning_en": "neck",
+      "ipa": "/ku/",
+      "example_fr": "Le cou est raide ce matin.",
+      "example_vi": "Sáng nay cổ bị cứng.",
+      "example_en": "The neck is stiff this morning."
+    },
+    {
+      "french": "la dent",
+      "meaning_vi": "cái răng",
+      "meaning_en": "tooth",
+      "ipa": "/dɑ̃/",
+      "example_fr": "Il sourit avec ses dents.",
+      "example_vi": "Anh ấy cười khoe răng.",
+      "example_en": "He smiles with his teeth."
+    },
+    {
+      "french": "la langue",
+      "meaning_vi": "cái lưỡi",
+      "meaning_en": "tongue",
+      "ipa": "/lɑ̃ɡ/",
+      "example_fr": "Elle parle avec sa langue.",
+      "example_vi": "Cô ấy nói bằng lưỡi.",
+      "example_en": "She speaks with her tongue."
+    }
+  ]
+}

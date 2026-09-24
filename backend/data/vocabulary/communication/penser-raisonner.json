@@ -1,0 +1,190 @@
+{
+  "category": "La communication",
+  "category_key": "communication",
+  "category_sort_order": 130,
+  "category_vi": "Giao tiếp",
+  "category_en": "Communication",
+  "topic": "La pensée et l'argumentation",
+  "topic_slug": "pensee-argumentation",
+  "topic_sort_order": 10,
+  "topic_vi": "Tư duy và lập luận",
+  "topic_en": "Thinking and argumentation",
+  "subtopic": "Penser, raisonner",
+  "subtopic_key": "penser-raisonner",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Suy nghĩ, lập luận",
+  "subtopic_en": "Thinking, reasoning",
+  "words": [
+    {
+      "french": "penser",
+      "meaning_vi": "suy nghĩ, nghĩ",
+      "meaning_en": "to think",
+      "ipa": "/pɑ̃.se/",
+      "example_fr": "Je pense à toi.",
+      "example_vi": "Tôi nghĩ về bạn.",
+      "example_en": "I'm thinking of you."
+    },
+    {
+      "french": "réfléchir",
+      "meaning_vi": "suy ngẫm, suy nghĩ kỹ",
+      "meaning_en": "to reflect, to think carefully",
+      "ipa": "/ʁe.fle.ʃiʁ/",
+      "example_fr": "Réfléchis avant de répondre.",
+      "example_vi": "Hãy suy nghĩ kỹ trước khi trả lời.",
+      "example_en": "Think carefully before answering."
+    },
+    {
+      "french": "raisonner",
+      "meaning_vi": "lập luận, suy luận",
+      "meaning_en": "to reason",
+      "ipa": "/ʁɛ.zɔ.ne/",
+      "example_fr": "Il raisonne avec logique.",
+      "example_vi": "Anh ấy lập luận rất logic.",
+      "example_en": "He reasons logically."
+    },
+    {
+      "french": "imaginer",
+      "meaning_vi": "tưởng tượng",
+      "meaning_en": "to imagine",
+      "ipa": "/i.ma.ʒi.ne/",
+      "example_fr": "Imagine notre vie dans dix ans.",
+      "example_vi": "Hãy tưởng tượng cuộc sống của chúng ta trong mười năm nữa.",
+      "example_en": "Imagine our life in ten years."
+    },
+    {
+      "french": "supposer",
+      "meaning_vi": "giả sử, cho rằng",
+      "meaning_en": "to suppose, to assume",
+      "ipa": "/sy.po.ze/",
+      "example_fr": "Supposons qu'il ne vienne pas.",
+      "example_vi": "Giả sử anh ấy không đến.",
+      "example_en": "Suppose he doesn't come."
+    },
+    {
+      "french": "considérer",
+      "meaning_vi": "xem xét, coi như",
+      "meaning_en": "to consider",
+      "ipa": "/kɔ̃.si.de.ʁe/",
+      "example_fr": "Je considère cette offre intéressante.",
+      "example_vi": "Tôi thấy lời đề nghị này thú vị.",
+      "example_en": "I consider this offer interesting."
+    },
+    {
+      "french": "analyser",
+      "meaning_vi": "phân tích",
+      "meaning_en": "to analyze",
+      "ipa": "/a.na.li.ze/",
+      "example_fr": "Il faut analyser la situation.",
+      "example_vi": "Cần phân tích tình hình.",
+      "example_en": "We need to analyze the situation."
+    },
+    {
+      "french": "comprendre",
+      "meaning_vi": "hiểu",
+      "meaning_en": "to understand",
+      "ipa": "/kɔ̃.pʁɑ̃dʁ/",
+      "example_fr": "Je comprends ton problème.",
+      "example_vi": "Tôi hiểu vấn đề của bạn.",
+      "example_en": "I understand your problem."
+    },
+    {
+      "french": "se souvenir de",
+      "meaning_vi": "nhớ, ghi nhớ",
+      "meaning_en": "to remember",
+      "ipa": "/sə suv.niʁ də/",
+      "example_fr": "Je me souviens de ce jour.",
+      "example_vi": "Tôi nhớ ngày hôm đó.",
+      "example_en": "I remember that day."
+    },
+    {
+      "french": "oublier",
+      "meaning_vi": "quên",
+      "meaning_en": "to forget",
+      "ipa": "/u.bli.je/",
+      "example_fr": "N'oublie pas tes clés.",
+      "example_vi": "Đừng quên chìa khóa của bạn.",
+      "example_en": "Don't forget your keys."
+    },
+    {
+      "french": "deviner",
+      "meaning_vi": "đoán",
+      "meaning_en": "to guess",
+      "ipa": "/də.vi.ne/",
+      "example_fr": "Devine qui m'a appelé !",
+      "example_vi": "Đoán xem ai đã gọi cho tôi!",
+      "example_en": "Guess who called me!"
+    },
+    {
+      "french": "croire",
+      "meaning_vi": "tin, tin rằng",
+      "meaning_en": "to believe",
+      "ipa": "/kʁwaʁ/",
+      "example_fr": "Je crois en toi.",
+      "example_vi": "Tôi tin vào bạn.",
+      "example_en": "I believe in you."
+    },
+    {
+      "french": "douter",
+      "meaning_vi": "nghi ngờ",
+      "meaning_en": "to doubt",
+      "ipa": "/du.te/",
+      "example_fr": "Je doute de sa réponse.",
+      "example_vi": "Tôi nghi ngờ câu trả lời của anh ấy.",
+      "example_en": "I doubt his answer."
+    },
+    {
+      "french": "se tromper",
+      "meaning_vi": "nhầm, sai lầm",
+      "meaning_en": "to be mistaken",
+      "ipa": "/sə tʁɔ̃.pe/",
+      "example_fr": "Tu te trompes de numéro.",
+      "example_vi": "Bạn gọi nhầm số rồi.",
+      "example_en": "You dialed the wrong number."
+    },
+    {
+      "french": "avoir raison",
+      "meaning_vi": "có lý, đúng",
+      "meaning_en": "to be right",
+      "ipa": "/a.vwaʁ ʁɛ.zɔ̃/",
+      "example_fr": "Tu as raison sur ce point.",
+      "example_vi": "Bạn đúng về điểm này.",
+      "example_en": "You are right on this point."
+    },
+    {
+      "french": "avoir tort",
+      "meaning_vi": "sai, không có lý",
+      "meaning_en": "to be wrong",
+      "ipa": "/a.vwaʁ tɔʁ/",
+      "example_fr": "Il a tort de partir.",
+      "example_vi": "Anh ấy sai khi bỏ đi.",
+      "example_en": "He is wrong to leave."
+    },
+    {
+      "french": "la logique",
+      "meaning_vi": "lô-gíc, lẽ phải",
+      "meaning_en": "logic",
+      "ipa": "/la lɔ.ʒik/",
+      "example_fr": "Suis la logique du texte.",
+      "example_vi": "Hãy theo logic của bài viết.",
+      "example_en": "Follow the logic of the text."
+    },
+    {
+      "french": "cohérent",
+      "meaning_vi": "mạch lạc, nhất quán",
+      "meaning_en": "coherent, consistent",
+      "ipa": "/kɔ.e.ʁɑ̃/",
+      "example_fr": "Son discours est cohérent.",
+      "example_vi": "Bài phát biểu của anh ấy rất mạch lạc.",
+      "example_en": "His speech is coherent."
+    },
+    {
+      "french": "absurde",
+      "meaning_vi": "vô lý, phi lý",
+      "meaning_en": "absurd",
+      "ipa": "/ap.syʁd/",
+      "example_fr": "Cette idée est absurde.",
+      "example_vi": "Ý tưởng này thật vô lý.",
+      "example_en": "This idea is absurd."
+    }
+  ]
+}
