@@ -2,9 +2,9 @@
 
 Operational instructions for coding AI working in this repository.
 
-## 0. Current implementation phase: BACKEND + FRONTEND (Part 5 open)
+## 0. Current implementation phase: BACKEND + FRONTEND
 
-- Frontend Design is finalized (`docs/frontend-design.md`) and Vân Khánh has opened frontend implementation (Part 5).
+- Frontend Design is finalized (`docs/frontend-design.md`).
 - Backend work continues in `backend/` following the existing baselines.
 - Frontend work follows `docs/frontend-design.md`. As of this update, `frontend/` still contains only its placeholder README; no React/Vite implementation has been committed yet.
 - Backend work may still be completed and merged without a frontend consumer if it satisfies the backend Definition of Done.
@@ -41,7 +41,7 @@ After the documentation gate is satisfied, use the baselines in this order when 
 3. `docs/database-design.md`
 4. `docs/api-contracts.md`
 5. `docs/backend-structure.md`
-6. `docs/frontend-design.md` - finalized and required for frontend tasks
+6. `docs/frontend-design.md`
 7. `docs/repository-conventions.md`
 
 Authority by concern:
