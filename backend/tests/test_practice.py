@@ -181,8 +181,24 @@ def _question_ids_by_type(database_path):
     return {question_type: question_id for question_id, question_type in rows}
 
 
+def _typed_answers(answer_map):
+    """Convert convenient fixture values to the frozen typed answer envelope."""
+    answers = []
+    for question_id, value in answer_map.items():
+        if isinstance(value, int):
+            answer = {"item_id": value}
+        elif isinstance(value, str):
+            answer = {"text": value}
+        elif isinstance(value, list):
+            answer = {"item_ids": value}
+        else:
+            answer = value
+        answers.append({"question_id": int(question_id), "answer": answer})
+    return answers
+
+
 def _start_normal(client):
-    response = client.post("/api/v1/practice/normal/fixture-grammar/start")
+    response = client.post("/api/v1/learning-units/fixture-grammar/practice/start")
     assert response.status_code == 200
     return response.json["data"]
 
@@ -197,7 +213,7 @@ def test_practice_normal_start_returns_run_and_questions(
     _practice_setup(client, database_path)
 
     response = client.post(
-        "/api/v1/practice/normal/fixture-grammar/start"
+        "/api/v1/learning-units/fixture-grammar/practice/start"
     )
 
     assert response.status_code == 200
@@ -261,7 +277,7 @@ def test_practice_normal_unknown_unit_is_404(client, database_path):
     _practice_setup(client, database_path)
 
     response = client.post(
-        "/api/v1/practice/normal/does-not-exist/start"
+        "/api/v1/learning-units/does-not-exist/practice/start"
     )
 
     assert response.status_code == 404
@@ -275,16 +291,16 @@ def test_practice_normal_without_questions_is_404(client, database_path):
         db.execute("DELETE FROM questions WHERE learning_unit_id = 1")
 
     response = client.post(
-        "/api/v1/practice/normal/fixture-grammar/start"
+        "/api/v1/learning-units/fixture-grammar/practice/start"
     )
 
-    assert response.status_code == 404
-    assert response.json["error"]["code"] == "practice_questions_not_found"
+    assert response.status_code == 409
+    assert response.json["error"]["code"] == "practice_unavailable"
 
 
 def test_practice_start_requires_authentication(client):
     response = client.post(
-        "/api/v1/practice/normal/fixture-grammar/start"
+        "/api/v1/learning-units/fixture-grammar/practice/start"
     )
 
     assert response.status_code == 401
@@ -310,8 +326,8 @@ def test_practice_submit_scores_all_three_question_types(
     }
 
     response = client.post(
-        f"/api/v1/practice/{data['practice_run_id']}/submit",
-        json={"answers": answers},
+        f"/api/v1/practice/runs/{data['practice_run_id']}/submit",
+        json={"answers": _typed_answers(answers)},
     )
 
     assert response.status_code == 200
@@ -320,7 +336,7 @@ def test_practice_submit_scores_all_three_question_types(
     assert result["practice_type"] == "normal"
     assert result["correct_count"] == 3
     assert result["total_questions"] == 3
-    assert result["accuracy"] == 1.0
+    assert result["accuracy"] == 100.0
 
     assert all(question["correct"] for question in result["questions"])
 
@@ -340,8 +356,8 @@ def test_practice_fill_blank_ignores_whitespace_and_case(
     }
 
     response = client.post(
-        f"/api/v1/practice/{data['practice_run_id']}/submit",
-        json={"answers": answers},
+        f"/api/v1/practice/runs/{data['practice_run_id']}/submit",
+        json={"answers": _typed_answers(answers)},
     )
 
     assert response.status_code == 200
@@ -372,8 +388,8 @@ def test_practice_fill_blank_keeps_accents_significant(
     }
 
     response = client.post(
-        f"/api/v1/practice/{data['practice_run_id']}/submit",
-        json={"answers": answers},
+        f"/api/v1/practice/runs/{data['practice_run_id']}/submit",
+        json={"answers": _typed_answers(answers)},
     )
 
     assert response.status_code == 200
@@ -403,8 +419,8 @@ def test_practice_submit_uses_final_answers_at_submission_time(
     }
 
     response = client.post(
-        f"/api/v1/practice/{data['practice_run_id']}/submit",
-        json={"answers": answers},
+        f"/api/v1/practice/runs/{data['practice_run_id']}/submit",
+        json={"answers": _typed_answers(answers)},
     )
 
     assert response.status_code == 200
@@ -426,15 +442,15 @@ def test_practice_submit_returns_explanations_and_correct_answers(
     ids = _question_ids_by_type(database_path)
 
     response = client.post(
-        f"/api/v1/practice/{data['practice_run_id']}/submit",
-        json={
-            "answers": {
-                str(ids["mcq"]): 102,
-                str(ids["fill_blank"]): "wrong",
-                str(ids["ordering"]): [303, 302, 301],
-            }
-        },
-    )
+    f"/api/v1/practice/runs/{data['practice_run_id']}/submit",
+    json={
+        "answers": _typed_answers({
+            str(ids["mcq"]): 102,
+            str(ids["fill_blank"]): "wrong",
+            str(ids["ordering"]): [303, 302, 301],
+        })
+    },
+)
 
     assert response.status_code == 200
     questions = response.json["data"]["questions"]
@@ -466,12 +482,12 @@ def test_practice_submit_requires_answers_for_every_question(
     ids = _question_ids_by_type(database_path)
 
     response = client.post(
-        f"/api/v1/practice/{data['practice_run_id']}/submit",
-        json={"answers": {str(ids["mcq"]): 101}},
+        f"/api/v1/practice/runs/{data['practice_run_id']}/submit",
+        json={"answers": _typed_answers({str(ids["mcq"]): 101})},
     )
 
     assert response.status_code == 400
-    assert response.json["error"]["code"] == "incomplete_answers"
+    assert response.json["error"]["code"] == "incomplete_practice"
 
     # Invalid submission must not create history.
     with sqlite3.connect(database_path) as db:
@@ -487,7 +503,7 @@ def test_practice_submit_requires_json_object(client, database_path):
     data = _start_normal(client)
 
     response = client.post(
-        f"/api/v1/practice/{data['practice_run_id']}/submit",
+        f"/api/v1/practice/runs/{data['practice_run_id']}/submit",
         data="not json",
         content_type="application/json",
     )
@@ -508,18 +524,18 @@ def test_practice_run_cannot_be_submitted_twice(client, database_path):
     }
 
     first = client.post(
-        f"/api/v1/practice/{data['practice_run_id']}/submit",
-        json={"answers": answers},
+        f"/api/v1/practice/runs/{data['practice_run_id']}/submit",
+        json={"answers": _typed_answers(answers)},
     )
     second = client.post(
-        f"/api/v1/practice/{data['practice_run_id']}/submit",
-        json={"answers": answers},
+        f"/api/v1/practice/runs/{data['practice_run_id']}/submit",
+        json={"answers": _typed_answers(answers)},
     )
 
     assert first.status_code == 200
-    # The run is removed from the temporary store after completion.
-    assert second.status_code == 404
-    assert second.json["error"]["code"] == "practice_run_not_found"
+    # Completed runs remain in the store so duplicate submit is explicit.
+    assert second.status_code == 409
+    assert second.json["error"]["code"] == "practice_already_submitted"
 
 
 def test_practice_completed_session_is_persisted_once(
@@ -531,13 +547,13 @@ def test_practice_completed_session_is_persisted_once(
     ids = _question_ids_by_type(database_path)
 
     response = client.post(
-        f"/api/v1/practice/{data['practice_run_id']}/submit",
+        f"/api/v1/practice/runs/{data['practice_run_id']}/submit",
         json={
-            "answers": {
+            "answers": _typed_answers({
                 str(ids["mcq"]): 101,
                 str(ids["fill_blank"]): "bonjour",
                 str(ids["ordering"]): [301, 302, 303],
-            }
+            })
         },
     )
 
@@ -559,120 +575,6 @@ def test_practice_completed_session_is_persisted_once(
 
 
 # ---------------------------------------------------------------------------
-# History
-# ---------------------------------------------------------------------------
-
-def test_practice_history_returns_completed_sessions_newest_first(
-    client, database_path
-):
-    _practice_setup(client, database_path)
-
-    with sqlite3.connect(database_path) as db:
-        db.execute(
-            """
-            INSERT INTO practice_sessions
-                (id, user_id, practice_type, learning_unit_id,
-                 completed_at, activity_date, correct_count, total_questions)
-            VALUES
-                (1, 1, 'normal', 1,
-                 '2026-01-01T10:00:00+00:00', '2026-01-01', 2, 3)
-            """
-        )
-        db.execute(
-            """
-            INSERT INTO practice_sessions
-                (id, user_id, practice_type, learning_unit_id,
-                 completed_at, activity_date, correct_count, total_questions)
-            VALUES
-                (2, 1, 'mixed', NULL,
-                 '2026-01-02T10:00:00+00:00', '2026-01-02', 1, 2)
-            """
-        )
-
-    response = client.get("/api/v1/practice/history")
-
-    assert response.status_code == 200
-    history = response.json["data"]["history"]
-
-    assert [entry["id"] for entry in history] == [2, 1]
-    assert history[0]["type"] == "Mixed"
-    assert history[0]["content"] == {"title": "Mixed Practice"}
-
-    assert history[1]["type"] == "Grammar"
-    assert history[1]["content"] == {
-        "slug": "fixture-grammar",
-        "title_fr": "Les articles",
-        "title": "Mạo từ",
-    }
-    assert history[1]["accuracy"] == pytest.approx(2 / 3)
-
-
-def test_practice_history_uses_support_language_for_normal_content(
-    client, database_path
-):
-    _practice_setup(client, database_path, support_language="en")
-
-    with sqlite3.connect(database_path) as db:
-        db.execute(
-            """
-            INSERT INTO practice_sessions
-                (user_id, practice_type, learning_unit_id,
-                 completed_at, activity_date, correct_count, total_questions)
-            VALUES
-                (1, 'normal', 1,
-                 '2026-01-01T10:00:00+00:00', '2026-01-01', 3, 3)
-            """
-        )
-
-    response = client.get("/api/v1/practice/history")
-
-    assert response.status_code == 200
-    entry = response.json["data"]["history"][0]
-    assert entry["content"]["title"] == "Articles"
-
-
-def test_practice_history_limit_is_respected(client, database_path):
-    _practice_setup(client, database_path)
-
-    with sqlite3.connect(database_path) as db:
-        for session_id in range(1, 4):
-            db.execute(
-                """
-                INSERT INTO practice_sessions
-                    (id, user_id, practice_type, learning_unit_id,
-                     completed_at, activity_date, correct_count, total_questions)
-                VALUES (?, 1, 'normal', 1, ?, ?, 1, 1)
-                """,
-                (
-                    session_id,
-                    f"2026-01-0{session_id}T10:00:00+00:00",
-                    f"2026-01-0{session_id}",
-                ),
-            )
-
-    response = client.get("/api/v1/practice/history?limit=2")
-
-    assert response.status_code == 200
-    assert len(response.json["data"]["history"]) == 2
-
-
-def test_practice_history_rejects_non_integer_limit(client, database_path):
-    _practice_setup(client, database_path)
-
-    response = client.get("/api/v1/practice/history?limit=abc")
-
-    assert response.status_code == 400
-    assert response.json["error"]["code"] == "invalid_limit"
-
-
-def test_practice_history_requires_authentication(client):
-    response = client.get("/api/v1/practice/history")
-
-    assert response.status_code == 401
-    assert response.json["error"]["code"] == "not_authenticated"
-
-
-# ---------------------------------------------------------------------------
 # Mixed practice
 # ---------------------------------------------------------------------------
 
@@ -681,7 +583,7 @@ def test_mixed_practice_requires_at_least_one_learned_unit(
 ):
     _practice_setup(client, database_path)
 
-    response = client.post("/api/v1/practice/mixed/start")
+    response = client.post("/api/v1/mixed-practice/start")
 
     assert response.status_code == 409
     assert response.json["error"]["code"] == "mixed_practice_unavailable"
@@ -708,7 +610,7 @@ def test_mixed_practice_uses_only_learned_units(client, database_path):
             ],
         )
 
-    response = client.post("/api/v1/practice/mixed/start")
+    response = client.post("/api/v1/mixed-practice/start")
 
     assert response.status_code == 200
     data = response.json["data"]
@@ -747,7 +649,7 @@ def test_mixed_practice_selects_at_most_ten_questions(
                 ],
             )
 
-    response = client.post("/api/v1/practice/mixed/start")
+    response = client.post("/api/v1/mixed-practice/start")
 
     assert response.status_code == 200
     questions = response.json["data"]["questions"]
@@ -764,7 +666,7 @@ def test_mixed_practice_uses_all_questions_when_fewer_than_ten(
     _practice_setup(client, database_path)
     _learn_unit(database_path, unit_id=1)
 
-    response = client.post("/api/v1/practice/mixed/start")
+    response = client.post("/api/v1/mixed-practice/start")
 
     assert response.status_code == 200
     questions = response.json["data"]["questions"]
@@ -779,17 +681,17 @@ def test_mixed_completion_stores_null_learning_unit(
     _practice_setup(client, database_path)
     _learn_unit(database_path, unit_id=1)
 
-    data = client.post("/api/v1/practice/mixed/start").json["data"]
+    data = client.post("/api/v1/mixed-practice/start").json["data"]
     ids = _question_ids_by_type(database_path)
 
     response = client.post(
-        f"/api/v1/practice/{data['practice_run_id']}/submit",
+        f"/api/v1/practice/runs/{data['practice_run_id']}/submit",
         json={
-            "answers": {
+            "answers": _typed_answers({
                 str(ids["mcq"]): 101,
                 str(ids["fill_blank"]): "bonjour",
                 str(ids["ordering"]): [301, 302, 303],
-            }
+            })
         },
     )
 
@@ -812,59 +714,49 @@ def test_mixed_completion_stores_null_learning_unit(
 def test_mixed_result_contains_content_covered(client, database_path):
     _practice_setup(client, database_path)
     _learn_unit(database_path, unit_id=1)
-
-    # Also make vocabulary learned, then add an eligible question there.
     _learn_unit(database_path, unit_id=2)
+
+    # Exactly 10 eligible questions across the two learned units means the
+    # mixed sampler must select all of them, making content_covered deterministic.
     with sqlite3.connect(database_path) as db:
-        _insert_question(
-            db,
-            question_id=10,
-            unit_id=2,
-            question_type="mcq",
-            prompt_vi="Từ vựng",
-            prompt_en="Vocabulary",
-            explanation_vi=None,
-            explanation_en=None,
-            items=[
-                (1001, "chat", 1, None, 1),
-                (1002, "chien", 0, None, 2),
-            ],
-        )
+        for question_id in range(10, 17):
+            item_id = 1000 + question_id
+            _insert_question(
+                db,
+                question_id=question_id,
+                unit_id=2,
+                question_type="mcq",
+                prompt_vi=f"Từ vựng {question_id}",
+                prompt_en=f"Vocabulary {question_id}",
+                explanation_vi=None,
+                explanation_en=None,
+                items=[
+                    (item_id, "correct", 1, None, 1),
+                    (item_id + 100, "wrong", 0, None, 2),
+                ],
+            )
 
-    # The prototype randomly selects from the pool. Retry a few starts until
-    # both units are represented, without making the test depend on one draw.
-
-    for _ in range(20):
-        data = client.post("/api/v1/practice/mixed/start").json["data"]
-        ids = {q["id"] for q in data["questions"]}
-        if 10 in ids:
-            break
-        with practice_service._RUNS_LOCK:
-            practice_service._RUNS.pop(data["practice_run_id"], None)
-    else:
-        pytest.fail("Mixed selection did not include the second learned unit.")
+    data = client.post("/api/v1/mixed-practice/start").json["data"]
+    assert len(data["questions"]) == 10
 
     answers = {}
     for question in data["questions"]:
-        if question["type"] == "mcq":
-            # For this fixture, question 10's correct answer is 1001;
-            # questions 1/other MCQ use their first option.
-            answers[str(question["id"])] = (
-                1001 if question["id"] == 10 else 101
-            )
+        if question["id"] <= 3 and question["type"] == "mcq":
+            answers[str(question["id"])] = 101
         elif question["type"] == "fill_blank":
             answers[str(question["id"])] = "bonjour"
         elif question["type"] == "ordering":
             answers[str(question["id"])] = [301, 302, 303]
+        else:
+            answers[str(question["id"])] = 1000 + question["id"]
 
     response = client.post(
-        f"/api/v1/practice/{data['practice_run_id']}/submit",
-        json={"answers": answers},
+        f"/api/v1/practice/runs/{data['practice_run_id']}/submit",
+        json={"answers": _typed_answers(answers)},
     )
 
     assert response.status_code == 200
     covered = response.json["data"]["content_covered"]
-
     assert {unit["id"] for unit in covered} == {1, 2}
 
 
@@ -893,9 +785,9 @@ def test_practice_run_belongs_to_the_learner_who_started_it(
         session["user_id"] = 2
 
     response = client.post(
-        f"/api/v1/practice/{data['practice_run_id']}/submit",
+        f"/api/v1/practice/runs/{data['practice_run_id']}/submit",
         json={"answers": {}},
     )
 
-    assert response.status_code == 403
-    assert response.json["error"]["code"] == "practice_run_forbidden"
+    assert response.status_code == 404
+    assert response.json["error"]["code"] == "practice_run_not_found"

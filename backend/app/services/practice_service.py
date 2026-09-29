@@ -1,9 +1,11 @@
 import random
+from contextlib import contextmanager
+from copy import deepcopy
+from datetime import datetime, timezone
 import threading
 import uuid
-from datetime import datetime, timezone
 
-from flask import g
+from flask import current_app, g
 
 from ..db import transaction
 from ..errors import ApiError
@@ -13,10 +15,71 @@ from ..repositories import practice_repository
 
 MAX_MIXED_QUESTIONS = 10
 
-# Local-MVP temporary run store.
-# This is intentionally not durable and is lost if the Flask process restarts.
-_RUNS = {}
-_RUNS_LOCK = threading.RLock()
+
+class InMemoryPracticeRunStore:
+    """Thread-safe, application-scoped store for temporary Practice runs.
+
+    The store is deliberately non-durable: unfinished/completed runtime state
+    lives only as long as the Flask application instance. Keeping the store
+    here avoids a module-level global while keeping the Practice implementation
+    self-contained in the service layer.
+    """
+
+    def __init__(self):
+        self._runs = {}
+        self._lock = threading.RLock()
+
+    def create(
+        self,
+        *,
+        user_id,
+        practice_type,
+        learning_unit_id,
+        question_ids,
+        content_unit_ids=None,
+    ):
+        run_id = uuid.uuid4().hex
+        run = {
+            "practice_run_id": run_id,
+            "user_id": user_id,
+            "practice_type": practice_type,
+            "learning_unit_id": learning_unit_id,
+            "question_ids": list(question_ids),
+            "content_unit_ids": list(content_unit_ids or []),
+            "submitted": False,
+        }
+        with self._lock:
+            self._runs[run_id] = run
+        return run_id
+
+    def get(self, run_id):
+        with self._lock:
+            run = self._runs.get(run_id)
+            return deepcopy(run) if run is not None else None
+
+    def mark_submitted(self, run_id):
+        with self._lock:
+            run = self._runs.get(run_id)
+            if run is None:
+                return False
+            run["submitted"] = True
+            return True
+
+    @contextmanager
+    def submission_lock(self):
+        """Serialize the check/score/commit/mark-submitted sequence."""
+        with self._lock:
+            yield
+
+
+def _run_store():
+    store = current_app.extensions.get("practice_run_store")
+
+    if not isinstance(store, InMemoryPracticeRunStore):
+        store = InMemoryPracticeRunStore()
+        current_app.extensions["practice_run_store"] = store
+
+    return store
 
 
 def start_normal_practice(slug):
@@ -32,12 +95,12 @@ def start_normal_practice(slug):
     )
     if not questions:
         raise ApiError(
-            404,
-            "practice_questions_not_found",
-            "No practice questions are available for this learning unit.",
+            409,
+            "practice_unavailable",
+            "Practice is not available for this learning unit.",
         )
 
-    run_id = _create_run(
+    run_id = _run_store().create(
         user_id=user_id,
         practice_type="normal",
         learning_unit_id=unit["id"],
@@ -49,7 +112,8 @@ def start_normal_practice(slug):
         "practice_type": "normal",
         "learning_unit": _serialize_unit(unit, language),
         "questions": [
-            _serialize_question_for_client(q, language) for q in questions
+            _serialize_question_for_client(q, language, index)
+            for index, q in enumerate(questions, start=1)
         ],
     }
 
@@ -75,9 +139,9 @@ def start_mixed_practice():
 
     if not eligible:
         raise ApiError(
-            404,
-            "practice_questions_not_found",
-            "No eligible practice questions are available from learned learning units.",
+            409,
+            "mixed_practice_unavailable",
+            "Mixed Practice is not available from the learner's learned content.",
         )
 
     selected = random.sample(
@@ -88,7 +152,7 @@ def start_mixed_practice():
     # Keep the selected question order random as well.
     random.shuffle(selected)
 
-    run_id = _create_run(
+    run_id = _run_store().create(
         user_id=user_id,
         practice_type="mixed",
         learning_unit_id=None,
@@ -100,7 +164,8 @@ def start_mixed_practice():
         "practice_run_id": run_id,
         "practice_type": "mixed",
         "questions": [
-            _serialize_question_for_client(q, language) for q in selected
+            _serialize_question_for_client(q, language, index)
+            for index, q in enumerate(selected, start=1)
         ],
     }
 
@@ -109,13 +174,16 @@ def submit_practice(run_id, answers):
     user_id = g.current_user["id"]
 
     if not isinstance(run_id, str) or not run_id:
-        raise ApiError(400, "invalid_practice_run", "A valid practice_run_id is required.")
+        raise ApiError(
+            400,
+            "invalid_practice_run",
+            "A valid practice_run_id is required.",
+        )
 
-    if not isinstance(answers, dict):
-        raise ApiError(400, "invalid_answers", "Answers must be an object.")
+    store = _run_store()
 
-    with _RUNS_LOCK:
-        run = _RUNS.get(run_id)
+    with store.submission_lock():
+        run = store.get(run_id)
 
         if run is None:
             raise ApiError(
@@ -126,24 +194,34 @@ def submit_practice(run_id, answers):
 
         if run["user_id"] != user_id:
             raise ApiError(
-                403,
-                "practice_run_forbidden",
-                "This practice run does not belong to the current user.",
+                404,
+                "practice_run_not_found",
+                "Practice run was not found or has expired.",
             )
 
         if run["submitted"]:
             raise ApiError(
                 409,
-                "practice_run_submitted",
+                "practice_already_submitted",
                 "This practice run has already been submitted.",
             )
 
-        expected_ids = {str(question_id) for question_id in run["question_ids"]}
-
-        if set(answers.keys()) != expected_ids:
+        # Only validate the answer payload after ownership has been
+        # established.
+        if not isinstance(answers, list):
             raise ApiError(
                 400,
-                "incomplete_answers",
+                "invalid_answers",
+                "answers must be an array.",
+            )
+
+        parsed_answers = _parse_answers(answers)
+        expected_ids = {str(question_id) for question_id in run["question_ids"]}
+
+        if set(parsed_answers) != expected_ids:
+            raise ApiError(
+                400,
+                "incomplete_practice",
                 "Every question in the practice run must have exactly one submitted answer.",
             )
 
@@ -153,24 +231,23 @@ def submit_practice(run_id, answers):
         if set(by_id) != expected_ids:
             raise ApiError(
                 409,
-                "practice_questions_changed",
+                "practice_unavailable" if run["practice_type"] == "normal" else "mixed_practice_unavailable",
                 "The practice questions are no longer available.",
             )
 
-        # Ensure the database still contains exactly the questions issued to this run.
         actual_unit_ids = {q["learning_unit_id"] for q in questions}
         if run["practice_type"] == "normal":
             if actual_unit_ids != {run["learning_unit_id"]}:
                 raise ApiError(
                     409,
-                    "practice_run_invalid",
+                    "practice_unavailable",
                     "The practice run is no longer valid.",
                 )
         else:
             if not actual_unit_ids.issubset(set(run["content_unit_ids"])):
                 raise ApiError(
                     409,
-                    "practice_run_invalid",
+                    "mixed_practice_unavailable",
                     "The practice run is no longer valid.",
                 )
 
@@ -178,9 +255,14 @@ def submit_practice(run_id, answers):
         result_questions = []
         correct_count = 0
 
+        question_number_by_id = {
+            str(question_id): index
+            for index, question_id in enumerate(run["question_ids"], start=1)
+        }
+
         for question_id in run["question_ids"]:
             question = by_id[str(question_id)]
-            user_answer = answers[str(question_id)]
+            user_answer = parsed_answers[str(question_id)]
             correct = _is_answer_correct(question, user_answer)
 
             if correct:
@@ -192,6 +274,7 @@ def submit_practice(run_id, answers):
                     user_answer,
                     correct,
                     language,
+                    question_number_by_id[str(question_id)],
                 )
             )
 
@@ -199,8 +282,6 @@ def submit_practice(run_id, answers):
         completed_at = datetime.now(timezone.utc).isoformat()
         activity_date = datetime.now(timezone.utc).date().isoformat()
 
-        # History is written only after the whole submission has been
-        # validated and scored.
         with transaction():
             session_id = practice_repository.insert_practice_session(
                 user_id=user_id,
@@ -212,34 +293,35 @@ def submit_practice(run_id, answers):
                 total_questions=total_questions,
             )
 
-        run["submitted"] = True
-        del _RUNS[run_id]
+        # Keep the completed run in the store. A second submission therefore
+        # returns 409 practice_already_submitted rather than 404.
+        store.mark_submitted(run_id)
 
-    result = {
-        "session_id": session_id,
-        "practice_run_id": run_id,
-        "practice_type": run["practice_type"],
-        "correct_count": correct_count,
-        "total_questions": total_questions,
-        "accuracy": correct_count / total_questions,
-        "questions": result_questions,
-    }
+        result = {
+            "session_id": session_id,
+            "practice_run_id": run_id,
+            "practice_type": run["practice_type"],
+            "correct_count": correct_count,
+            "total_questions": total_questions,
+            "accuracy": round(100 * correct_count / total_questions, 1),
+            "questions": result_questions,
+        }
 
-    if run["practice_type"] == "normal":
-        unit = practice_repository.get_learning_unit(run["learning_unit_id"])
-        result["learning_unit"] = _serialize_unit(unit, language)
-    else:
-        units = [
-            practice_repository.get_learning_unit(unit_id)
-            for unit_id in run["content_unit_ids"]
-        ]
-        result["content_covered"] = [
-            _serialize_unit(unit, language)
-            for unit in units
-            if unit is not None
-        ]
+        if run["practice_type"] == "normal":
+            unit = practice_repository.get_learning_unit(run["learning_unit_id"])
+            result["learning_unit"] = _serialize_unit(unit, language)
+        else:
+            units = [
+                practice_repository.get_learning_unit(unit_id)
+                for unit_id in run["content_unit_ids"]
+            ]
+            result["content_covered"] = [
+                _serialize_unit(unit, language)
+                for unit in units
+                if unit is not None
+            ]
 
-    return result
+        return result
 
 
 def get_recent_history(limit=10):
@@ -257,7 +339,7 @@ def get_recent_history(limit=10):
 
     history = []
     for row in rows:
-        accuracy = row["correct_count"] / row["total_questions"]
+        accuracy = round(100 * row["correct_count"] / row["total_questions"], 1)
 
         if row["practice_type"] == "mixed":
             content = {"title": "Mixed Practice"}
@@ -290,26 +372,6 @@ def get_recent_history(limit=10):
 
     return {"history": history}
 
-
-def _create_run(
-    *,
-    user_id,
-    practice_type,
-    learning_unit_id,
-    question_ids,
-    content_unit_ids=None,
-):
-    run_id = uuid.uuid4().hex
-    with _RUNS_LOCK:
-        _RUNS[run_id] = {
-            "user_id": user_id,
-            "practice_type": practice_type,
-            "learning_unit_id": learning_unit_id,
-            "question_ids": list(question_ids),
-            "content_unit_ids": list(content_unit_ids or []),
-            "submitted": False,
-        }
-    return run_id
 
 
 def _usable_questions(questions):
@@ -354,9 +416,10 @@ def _serialize_unit(unit, language):
     }
 
 
-def _serialize_question_for_client(question, language):
+def _serialize_question_for_client(question, language, question_number):
     result = {
         "id": question["id"],
+        "question_number": question_number,
         "type": question["question_type"],
         "prompt": question[f"prompt_{language}"],
     }
@@ -399,25 +462,50 @@ def _serialize_question_for_client(question, language):
     return result
 
 
+def _parse_answers(answers):
+    """Validate the frozen typed answer envelope and normalize it by question id."""
+    parsed = {}
+
+    for entry in answers:
+        if not isinstance(entry, dict):
+            raise ApiError(400, "invalid_answers", "Each answer must be an object.")
+
+        question_id = entry.get("question_id")
+        answer = entry.get("answer")
+
+        if type(question_id) is not int or question_id <= 0:
+            raise ApiError(400, "invalid_answers", "Each answer requires a valid question_id.")
+        if not isinstance(answer, dict):
+            raise ApiError(400, "invalid_answers", "Each answer requires a typed answer object.")
+        if str(question_id) in parsed:
+            raise ApiError(400, "invalid_answers", "A question may only be answered once.")
+
+        parsed[str(question_id)] = answer
+
+    return parsed
+
+
 def _is_answer_correct(question, answer):
     question_type = question["question_type"]
 
-    if question_type == "mcq":
-        try:
-            answer_id = int(answer)
-        except (TypeError, ValueError):
-            return False
+    if not isinstance(answer, dict):
+        return False
 
+    if question_type == "mcq":
+        answer_id = answer.get("item_id")
+        if type(answer_id) is not int:
+            return False
         return any(
             item["id"] == answer_id and item["is_correct"] == 1
             for item in question["items"]
         )
 
     if question_type == "fill_blank":
-        if not isinstance(answer, str):
+        text = answer.get("text")
+        if not isinstance(text, str):
             return False
 
-        normalized = answer.strip().casefold()
+        normalized = text.strip().casefold()
         accepted = {
             item["text"].strip().casefold()
             for item in question["items"]
@@ -426,12 +514,10 @@ def _is_answer_correct(question, answer):
         return normalized in accepted
 
     if question_type == "ordering":
-        if not isinstance(answer, list):
+        item_ids = answer.get("item_ids")
+        if not isinstance(item_ids, list):
             return False
-
-        try:
-            answer_ids = [int(item_id) for item_id in answer]
-        except (TypeError, ValueError):
+        if any(type(item_id) is not int for item_id in item_ids):
             return False
 
         canonical = [
@@ -441,14 +527,17 @@ def _is_answer_correct(question, answer):
                 key=lambda item: item["correct_position"],
             )
         ]
-        return answer_ids == canonical
+        return item_ids == canonical
 
     return False
 
 
-def _serialize_result_question(question, user_answer, correct, language):
+def _serialize_result_question(
+    question, user_answer, correct, language, question_number
+):
     result = {
         "id": question["id"],
+        "question_number": question_number,
         "type": question["question_type"],
         "prompt": question[f"prompt_{language}"],
         "submitted_answer": user_answer,
@@ -472,19 +561,14 @@ def _serialize_result_question(question, user_answer, correct, language):
         ]
 
     elif question["question_type"] == "ordering":
-        result["correct_answer"] = [
-            item["id"]
-            for item in sorted(
-                question["items"],
-                key=lambda item: item["correct_position"],
-            )
-        ]
+        ordered = sorted(
+            question["items"],
+            key=lambda item: item["correct_position"],
+        )
+        result["correct_answer"] = [item["id"] for item in ordered]
         result["correct_pieces"] = [
             {"id": item["id"], "text": item["text"]}
-            for item in sorted(
-                question["items"],
-                key=lambda item: item["correct_position"],
-            )
+            for item in ordered
         ]
 
     explanation = localized_value(
