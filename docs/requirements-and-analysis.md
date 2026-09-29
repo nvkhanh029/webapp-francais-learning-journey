@@ -157,7 +157,19 @@ If an authenticated request reaches language-sensitive application content while
 
 Grammar content shall be organized into lessons based on the chapter/topic structure of a selected grammar reference book.
 
-The MVP does not require all book content to be entered. The system shall be designed so additional lessons can be added later without restructuring the application.
+The content hierarchy shall be:
+
+```text
+Grammar
+└── Part
+    └── Chapter
+        └── Lesson
+```
+- A **Part** represents a major section of the grammar reference structure.
+- A **Chapter** represents a grammar topic or chapter within a Part.
+- A **Lesson** represents the individual learning unit presented to the learner.
+
+The MVP does not require all book content to be entered. The system shall preserve this hierarchy so that additional Parts, Chapters, and Lessons can be added later without restructuring the application.
 
 A Grammar lesson should contain:
 
@@ -280,7 +292,7 @@ Search / Browse verb
 
 This reference feature is not a progress unit and should not replace the rule/pattern-based learning structure.
 
-### 6.4 French Basics Reference
+### 6.4 French Alphabet & Accents Reference
 
 The MVP shall provide a lightweight **French Alphabet & Accents** reference for learners who need foundational pronunciation and orthography support.
 
@@ -295,6 +307,8 @@ The reference may include:
 
 The Alphabet & Accents reference is not a progress unit. The MVP does not require **Mark as Learned**, lesson-specific practice, or quiz completion for this reference page.
 
+The Alphabet & Accents reference shall be surfaced at the beginning of the Vocabulary area. Its placement within the Vocabulary UI does not make it a Vocabulary progress unit.
+
 ---
 
 ## 7. Learning Flow
@@ -304,18 +318,26 @@ The application shall support free, non-linear learning.
 ### 7.1 Main Flow
 
 ```text
-Dashboard
-   ├── Continue Learning
-   └── Explore Learning
-          ├── Grammar
-          ├── Vocabulary
-          └── Verb Conjugation
-                 ↓
-          Choose learning unit
-                 ↓
-          View learning content
-                 ↓
-          Mark as Learned and/or Practice
+Authenticated Application
+        |
+        +--> Dashboard
+        |      ├── Continue Learning
+        |      ├── Progress overview
+        |      ├── Review Later
+        |      ├── Mixed Practice
+        |      └── Recent Practice
+        |
+        +--> Navigation Bar
+              ├── Grammar
+              ├── Vocabulary
+              │    └── Alphabet & Accents reference
+              └── Verb Conjugation
+                        ↓
+                Choose learning unit
+                        ↓
+               View learning content
+                        ↓
+            Mark as Learned and/or Practice
 ```
 
 ### 7.2 No Prerequisite Locking
@@ -638,9 +660,13 @@ A public VI/EN language selector is not required.
 ```text
 First-time Language Setup (only when no preference has been saved)
         ↓
-Dashboard
-├── French Basics
-│   └── Alphabet & Accents
+Authenticated Application
+├── Dashboard
+│   ├── Continue Learning
+│   ├── Review Later
+│   ├── Mixed Practice
+│   │   └── Result
+│   └── Recent Practice
 │
 ├── Grammar
 │   └── Grammar Lesson
@@ -648,6 +674,7 @@ Dashboard
 │           └── Result
 │
 ├── Vocabulary
+│   ├── Alphabet & Accents
 │   └── Category
 │       └── Topic
 │           └── Subtopic
@@ -655,26 +682,18 @@ Dashboard
 │                   └── Practice
 │                       └── Result
 │
-├── Verb Conjugation
-│   └── Tense
-│       └── Rule / Pattern Lesson
-│           └── Practice
-│               └── Result
-│
-└── Mixed Practice
-    └── Result
-```
-
-Secondary MVP view:
-
-```text
-Review Later list / filtered view
+└── Verb Conjugation
+    └── Tense
+        └── Rule / Pattern Lesson
+            └── Practice
+                └── Result 
 ```
 
 Optional / Should Have page:
 
 ```text
 Verb Reference
+Review Practice
 ```
 
 ### 14.3 Main Navigation
@@ -692,7 +711,7 @@ Logout
 
 A separate Progress page is not required for the MVP if the Dashboard presents progress clearly.
 
-French Basics may be reached from the Dashboard or contextual links and does not require a permanent main-navigation item.
+French Alphabet & Accents is accessed from the beginning of the Vocabulary area and does not require a separate main-navigation item.
 
 Basic Practice History shall be presented directly on the Dashboard rather than requiring a separate Practice History page for the MVP.
 
@@ -704,14 +723,16 @@ The Dashboard is the primary authenticated home screen.
 
 It should present:
 
-- a short French greeting or welcome state (e.g., `Bienvenue !` for first-time learners and `Bonjour !` for returning learners), while supporting guidance and interface text continue to follow the learner's selected support language (VI/EN);
+- a short French greeting or welcome state:
+  - `Bienvenue !` for a learner entering the Dashboard for the first time;
+  - `Coucou !` for a returning learner whose current streak is at least 30 consecutive days;
+  - `Bonjour !` for other returning learners;
+  while supporting guidance and interface text continue to follow the learner's selected support language (VI/EN);
 - current streak;
 - longest streak;
 - clear guidance that completing a normal Practice or Mixed Practice session maintains the streak;
 - module progress;
 - Continue Learning;
-- entry points to Grammar, Vocabulary, and Verb Conjugation;
-- access to the French Alphabet & Accents reference;
 - Mixed Practice;
 - a Recent Practice section displaying basic Practice History directly on the Dashboard;
 - access to Review Later content;
@@ -743,15 +764,11 @@ Grammar
 Vocabulary
 Conjugation
 
-Explore
-[ French Alphabet & Accents ]
-[ Grammar ] [ Vocabulary ] [ Conjugation ]
+[ Mixed Practice ][Review Later]
 
 Recent Practice
 Type | Content | Result | Date
 ...
-
-[ Mixed Practice ]
 ```
 
 ---
@@ -790,7 +807,7 @@ Vietnamese and English are support languages only.
 ### BR-10 — Completed practice creates a history summary
 Each completed normal Practice or Mixed Practice session shall create one lightweight practice-history summary. Full per-question answer history is not required.
 
-### BR-11 — French Basics is reference content
+### BR-11 — French Alphabet & Accents is reference content
 The French Alphabet & Accents page is foundational reference content and does not contribute to module progress.
 
 ### BR-12 — Activity Calendar uses the same activity source as streak
@@ -1120,8 +1137,8 @@ Load saved language preference
   ↓
 Dashboard
   ├── Continue Learning
-  ├── Explore Learning
-  └── Mixed Practice
+  ├── Mixed Practice
+  └── Review Later
 ```
 
 ### Normal Learning
@@ -1175,7 +1192,7 @@ The MVP can be considered functionally complete when a learner can successfully 
 3. Choose Vietnamese or English as the support language during first-time setup.
 4. Enter the Dashboard using the selected support language.
 5. Browse Grammar, Vocabulary, and Verb Conjugation.
-6. Access the French Alphabet & Accents reference.
+6. Access the French Alphabet & Accents reference from the Vocabulary area.
 7. Open and study representative content from each core learning module.
 8. Mark learning units as learned.
 9. Complete all three supported question types.
