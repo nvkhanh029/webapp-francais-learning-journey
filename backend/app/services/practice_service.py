@@ -1,9 +1,5 @@
 import random
-from contextlib import contextmanager
-from copy import deepcopy
-from datetime import datetime, timezone
-import threading
-import uuid
+from datetime import datetime
 
 from flask import current_app, g
 
@@ -16,70 +12,8 @@ from ..repositories import practice_repository
 MAX_MIXED_QUESTIONS = 10
 
 
-class InMemoryPracticeRunStore:
-    """Thread-safe, application-scoped store for temporary Practice runs.
-
-    The store is deliberately non-durable: unfinished/completed runtime state
-    lives only as long as the Flask application instance. Keeping the store
-    here avoids a module-level global while keeping the Practice implementation
-    self-contained in the service layer.
-    """
-
-    def __init__(self):
-        self._runs = {}
-        self._lock = threading.RLock()
-
-    def create(
-        self,
-        *,
-        user_id,
-        practice_type,
-        learning_unit_id,
-        question_ids,
-        content_unit_ids=None,
-    ):
-        run_id = uuid.uuid4().hex
-        run = {
-            "practice_run_id": run_id,
-            "user_id": user_id,
-            "practice_type": practice_type,
-            "learning_unit_id": learning_unit_id,
-            "question_ids": list(question_ids),
-            "content_unit_ids": list(content_unit_ids or []),
-            "submitted": False,
-        }
-        with self._lock:
-            self._runs[run_id] = run
-        return run_id
-
-    def get(self, run_id):
-        with self._lock:
-            run = self._runs.get(run_id)
-            return deepcopy(run) if run is not None else None
-
-    def mark_submitted(self, run_id):
-        with self._lock:
-            run = self._runs.get(run_id)
-            if run is None:
-                return False
-            run["submitted"] = True
-            return True
-
-    @contextmanager
-    def submission_lock(self):
-        """Serialize the check/score/commit/mark-submitted sequence."""
-        with self._lock:
-            yield
-
-
 def _run_store():
-    store = current_app.extensions.get("practice_run_store")
-
-    if not isinstance(store, InMemoryPracticeRunStore):
-        store = InMemoryPracticeRunStore()
-        current_app.extensions["practice_run_store"] = store
-
-    return store
+    return current_app.extensions["practice_run_store"]
 
 
 def start_normal_practice(slug):
@@ -100,17 +34,18 @@ def start_normal_practice(slug):
             "Practice is not available for this learning unit.",
         )
 
-    run_id = _run_store().create(
+    run = _run_store().create(
         user_id=user_id,
         practice_type="normal",
         learning_unit_id=unit["id"],
-        question_ids=[q["id"] for q in questions],
+        selected_question_ids=[q["id"] for q in questions],
     )
 
     return {
-        "practice_run_id": run_id,
+        "practice_run_id": run["practice_run_id"],
         "practice_type": "normal",
         "learning_unit": _serialize_unit(unit, language),
+        "total_questions": len(questions),
         "questions": [
             _serialize_question_for_client(q, language, index)
             for index, q in enumerate(questions, start=1)
@@ -122,10 +57,7 @@ def start_mixed_practice():
     user_id = g.current_user["id"]
     language = resolve_support_language(g.current_user["support_language"])
 
-    learned_units = list(
-        practice_repository.list_learned_learning_units(user_id)
-    )
-
+    learned_units = list(practice_repository.list_learned_learning_units(user_id))
     if not learned_units:
         raise ApiError(
             409,
@@ -134,9 +66,9 @@ def start_mixed_practice():
         )
 
     unit_ids = [unit["id"] for unit in learned_units]
-    all_questions = practice_repository.list_questions_for_learning_units(unit_ids)
-    eligible = _usable_questions(all_questions)
-
+    eligible = _usable_questions(
+        practice_repository.list_questions_for_learning_units(unit_ids)
+    )
     if not eligible:
         raise ApiError(
             409,
@@ -144,25 +76,20 @@ def start_mixed_practice():
             "Mixed Practice is not available from the learner's learned content.",
         )
 
-    selected = random.sample(
-        eligible,
-        min(MAX_MIXED_QUESTIONS, len(eligible)),
-    )
-
-    # Keep the selected question order random as well.
+    selected = random.sample(eligible, min(MAX_MIXED_QUESTIONS, len(eligible)))
     random.shuffle(selected)
 
-    run_id = _run_store().create(
+    run = _run_store().create(
         user_id=user_id,
         practice_type="mixed",
         learning_unit_id=None,
-        question_ids=[q["id"] for q in selected],
-        content_unit_ids=sorted({q["learning_unit_id"] for q in selected}),
+        selected_question_ids=[q["id"] for q in selected],
     )
 
     return {
-        "practice_run_id": run_id,
+        "practice_run_id": run["practice_run_id"],
         "practice_type": "mixed",
+        "total_questions": len(selected),
         "questions": [
             _serialize_question_for_client(q, language, index)
             for index, q in enumerate(selected, start=1)
@@ -175,14 +102,18 @@ def submit_practice(run_id, answers):
 
     if not isinstance(run_id, str) or not run_id:
         raise ApiError(
-            400,
-            "invalid_practice_run",
-            "A valid practice_run_id is required.",
+            422,
+            "validation_error",
+            "Request fields are invalid.",
+            {"practice_run_id": "Must be a non-empty string."},
         )
 
     store = _run_store()
 
-    with store.submission_lock():
+    # The shared practice_runs file is runtime infrastructure only. The
+    # service owns authorization, validation, scoring, persistence, and the
+    # submitted transition.
+    with store.lock():
         run = store.get(run_id)
 
         if run is None:
@@ -206,65 +137,48 @@ def submit_practice(run_id, answers):
                 "This practice run has already been submitted.",
             )
 
-        # Only validate the answer payload after ownership has been
-        # established.
-        if not isinstance(answers, list):
-            raise ApiError(
-                400,
-                "invalid_answers",
-                "answers must be an array.",
-            )
-
         parsed_answers = _parse_answers(answers)
-        expected_ids = {str(question_id) for question_id in run["question_ids"]}
+        expected_ids = {str(qid) for qid in run["selected_question_ids"]}
 
         if set(parsed_answers) != expected_ids:
             raise ApiError(
-                400,
+                422,
                 "incomplete_practice",
                 "Every question in the practice run must have exactly one submitted answer.",
+                {"answers": "Answers must contain exactly one entry for every question."},
             )
 
-        questions = practice_repository.get_questions_by_ids(run["question_ids"])
+        questions = practice_repository.get_questions_by_ids(
+            run["selected_question_ids"]
+        )
         by_id = {str(question["id"]): question for question in questions}
 
         if set(by_id) != expected_ids:
-            raise ApiError(
-                409,
-                "practice_unavailable" if run["practice_type"] == "normal" else "mixed_practice_unavailable",
-                "The practice questions are no longer available.",
+            code = (
+                "practice_unavailable"
+                if run["practice_type"] == "normal"
+                else "mixed_practice_unavailable"
             )
+            raise ApiError(409, code, "The practice questions are no longer available.")
 
         actual_unit_ids = {q["learning_unit_id"] for q in questions}
-        if run["practice_type"] == "normal":
-            if actual_unit_ids != {run["learning_unit_id"]}:
-                raise ApiError(
-                    409,
-                    "practice_unavailable",
-                    "The practice run is no longer valid.",
-                )
-        else:
-            if not actual_unit_ids.issubset(set(run["content_unit_ids"])):
-                raise ApiError(
-                    409,
-                    "mixed_practice_unavailable",
-                    "The practice run is no longer valid.",
-                )
+        if run["practice_type"] == "normal" and actual_unit_ids != {run["learning_unit_id"]}:
+            raise ApiError(409, "practice_unavailable", "The practice run is no longer valid.")
+
+        _validate_answers(questions, parsed_answers)
 
         language = resolve_support_language(g.current_user["support_language"])
         result_questions = []
         correct_count = 0
-
         question_number_by_id = {
             str(question_id): index
-            for index, question_id in enumerate(run["question_ids"], start=1)
+            for index, question_id in enumerate(run["selected_question_ids"], start=1)
         }
 
-        for question_id in run["question_ids"]:
+        for question_id in run["selected_question_ids"]:
             question = by_id[str(question_id)]
             user_answer = parsed_answers[str(question_id)]
             correct = _is_answer_correct(question, user_answer)
-
             if correct:
                 correct_count += 1
 
@@ -278,12 +192,15 @@ def submit_practice(run_id, answers):
                 )
             )
 
-        total_questions = len(run["question_ids"])
-        completed_at = datetime.now(timezone.utc).isoformat()
-        activity_date = datetime.now(timezone.utc).date().isoformat()
+        total_questions = len(run["selected_question_ids"])
+        now = datetime.now().astimezone()
+        completed_at = now.isoformat()
+        activity_date = now.date().isoformat()
 
+        # No Practice History row is created until all structural validation
+        # succeeds and the final answers have been scored.
         with transaction():
-            session_id = practice_repository.insert_practice_session(
+            practice_repository.insert_practice_session(
                 user_id=user_id,
                 practice_type=run["practice_type"],
                 learning_unit_id=run["learning_unit_id"],
@@ -292,220 +209,122 @@ def submit_practice(run_id, answers):
                 correct_count=correct_count,
                 total_questions=total_questions,
             )
-
-        # Keep the completed run in the store. A second submission therefore
-        # returns 409 practice_already_submitted rather than 404.
-        store.mark_submitted(run_id)
+            store.mark_submitted(run_id)
 
         result = {
-            "session_id": session_id,
             "practice_run_id": run_id,
             "practice_type": run["practice_type"],
             "correct_count": correct_count,
             "total_questions": total_questions,
             "accuracy": round(100 * correct_count / total_questions, 1),
-            "questions": result_questions,
+            "results": result_questions,
         }
 
         if run["practice_type"] == "normal":
             unit = practice_repository.get_learning_unit(run["learning_unit_id"])
+            if unit is None:
+                raise ApiError(
+                    409,
+                    "practice_unavailable",
+                    "The learning unit is no longer available.",
+                )
             result["learning_unit"] = _serialize_unit(unit, language)
         else:
-            units = [
-                practice_repository.get_learning_unit(unit_id)
-                for unit_id in run["content_unit_ids"]
-            ]
+            # Derive content coverage from the selected question IDs. The run
+            # store intentionally does not persist a separate content list.
+            content_unit_ids = []
+            for question_id in run["selected_question_ids"]:
+                unit_id = by_id[str(question_id)]["learning_unit_id"]
+                if unit_id not in content_unit_ids:
+                    content_unit_ids.append(unit_id)
+
             result["content_covered"] = [
                 _serialize_unit(unit, language)
-                for unit in units
+                for unit_id in content_unit_ids
+                for unit in [practice_repository.get_learning_unit(unit_id)]
                 if unit is not None
             ]
 
         return result
 
 
-def get_recent_history(limit=10):
-    user_id = g.current_user["id"]
-    language = resolve_support_language(g.current_user["support_language"])
-
-    try:
-        limit = int(limit)
-    except (TypeError, ValueError):
-        raise ApiError(400, "invalid_limit", "limit must be an integer.")
-
-    limit = max(1, min(limit, 50))
-
-    rows = practice_repository.list_recent_practice_sessions(user_id, limit)
-
-    history = []
-    for row in rows:
-        accuracy = round(100 * row["correct_count"] / row["total_questions"], 1)
-
-        if row["practice_type"] == "mixed":
-            content = {"title": "Mixed Practice"}
-            display_type = "Mixed"
-        else:
-            content = {
-                "slug": row["learning_unit_slug"],
-                "title_fr": row["learning_unit_fr"],
-                "title": localized_value(
-                    row,
-                    "learning_unit",
-                    language,
-                    french_fallback_field="learning_unit_fr",
-                ),
-            }
-            display_type = _display_type(row["learning_unit_type"])
-
-        history.append(
-            {
-                "id": row["id"],
-                "practice_type": row["practice_type"],
-                "type": display_type,
-                "content": content,
-                "completed_at": row["completed_at"],
-                "correct_count": row["correct_count"],
-                "total_questions": row["total_questions"],
-                "accuracy": accuracy,
-            }
-        )
-
-    return {"history": history}
-
-
-
-def _usable_questions(questions):
-    usable = []
-
-    for question in questions:
-        items = question["items"]
-        question_type = question["question_type"]
-
-        if question_type == "mcq":
-            if len(items) >= 2 and any(item["is_correct"] == 1 for item in items):
-                usable.append(question)
-
-        elif question_type == "fill_blank":
-            if any(item["is_correct"] == 1 for item in items):
-                usable.append(question)
-
-        elif question_type == "ordering":
-            positions = [
-                item["correct_position"]
-                for item in items
-                if item["correct_position"] is not None
-            ]
-            if len(items) >= 2 and sorted(positions) == list(range(1, len(items) + 1)):
-                usable.append(question)
-
-    return usable
-
-
-def _serialize_unit(unit, language):
-    return {
-        "id": unit["id"],
-        "slug": unit["slug"],
-        "unit_type": unit["unit_type"],
-        "title_fr": unit["title_fr"],
-        "title": localized_value(
-            unit,
-            "title",
-            language,
-            french_fallback_field="title_fr",
-        ),
-    }
-
-
-def _serialize_question_for_client(question, language, question_number):
-    result = {
-        "id": question["id"],
-        "question_number": question_number,
-        "type": question["question_type"],
-        "prompt": question[f"prompt_{language}"],
-    }
-
-    if question["question_type"] == "mcq":
-        items = list(question["items"])
-        random.shuffle(items)
-        result["options"] = [
-            {"id": item["id"], "text": item["text"]}
-            for item in items
-        ]
-
-    elif question["question_type"] == "fill_blank":
-        # Only the prompt is returned. Accepted answers remain server-side.
-        result["input"] = True
-
-    elif question["question_type"] == "ordering":
-        items = list(question["items"])
-        correct_ids = [
-            item["id"]
-            for item in sorted(items, key=lambda item: item["correct_position"])
-        ]
-        shuffled = list(items)
-
-        # Try until the initial order differs from the canonical order.
-        for _ in range(20):
-            random.shuffle(shuffled)
-            if [item["id"] for item in shuffled] != correct_ids:
-                break
-
-        if [item["id"] for item in shuffled] == correct_ids:
-            # Deterministic fallback for valid questions with >= 2 pieces.
-            shuffled[0], shuffled[1] = shuffled[1], shuffled[0]
-
-        result["pieces"] = [
-            {"id": item["id"], "text": item["text"]}
-            for item in shuffled
-        ]
-
-    return result
-
-
 def _parse_answers(answers):
-    """Validate the frozen typed answer envelope and normalize it by question id."""
-    parsed = {}
+    if not isinstance(answers, list):
+        _validation_error("answers", "Must be an array.")
 
-    for entry in answers:
+    parsed = {}
+    for index, entry in enumerate(answers):
+        field = f"answers[{index}]"
         if not isinstance(entry, dict):
-            raise ApiError(400, "invalid_answers", "Each answer must be an object.")
+            _validation_error(field, "Must be an object.")
 
         question_id = entry.get("question_id")
         answer = entry.get("answer")
 
         if type(question_id) is not int or question_id <= 0:
-            raise ApiError(400, "invalid_answers", "Each answer requires a valid question_id.")
+            _validation_error(f"{field}.question_id", "Must be a positive integer.")
         if not isinstance(answer, dict):
-            raise ApiError(400, "invalid_answers", "Each answer requires a typed answer object.")
-        if str(question_id) in parsed:
-            raise ApiError(400, "invalid_answers", "A question may only be answered once.")
+            _validation_error(f"{field}.answer", "Must be an object.")
 
-        parsed[str(question_id)] = answer
+        key = str(question_id)
+        if key in parsed:
+            _validation_error(
+                f"{field}.question_id", "Question may only be answered once."
+            )
+        parsed[key] = answer
 
     return parsed
 
 
+def _validate_answers(questions, parsed_answers):
+    by_id = {str(question["id"]): question for question in questions}
+
+    for question_id, answer in parsed_answers.items():
+        question = by_id[question_id]
+        field = f"answers[{question_id}]"
+        question_type = question["question_type"]
+
+        if question_type == "mcq":
+            if set(answer) != {"item_id"} or type(answer["item_id"]) is not int:
+                _validation_error(field, "MCQ answer must contain exactly one integer item_id.")
+            if not any(item["id"] == answer["item_id"] for item in question["items"]):
+                _validation_error(field, "item_id does not belong to this question.")
+
+        elif question_type == "fill_blank":
+            if set(answer) != {"text"} or not isinstance(answer["text"], str):
+                _validation_error(field, "Fill-blank answer must contain exactly one string text value.")
+
+        elif question_type == "ordering":
+            item_ids = answer.get("item_ids")
+            expected = [item["id"] for item in question["items"]]
+            if set(answer) != {"item_ids"} or not isinstance(item_ids, list):
+                _validation_error(field, "Ordering answer must contain exactly one item_ids array.")
+            if (
+                len(item_ids) != len(expected)
+                or any(type(item_id) is not int for item_id in item_ids)
+                or len(set(item_ids)) != len(item_ids)
+                or set(item_ids) != set(expected)
+            ):
+                _validation_error(field, "item_ids must be a complete permutation of this question's items.")
+
+        else:
+            _validation_error(field, "Unsupported question type.")
+
+
+def _validation_error(field, message):
+    raise ApiError(422, "validation_error", "Request fields are invalid.", {field: message})
+
+
 def _is_answer_correct(question, answer):
     question_type = question["question_type"]
-
-    if not isinstance(answer, dict):
-        return False
-
     if question_type == "mcq":
-        answer_id = answer.get("item_id")
-        if type(answer_id) is not int:
-            return False
         return any(
-            item["id"] == answer_id and item["is_correct"] == 1
+            item["id"] == answer["item_id"] and item["is_correct"] == 1
             for item in question["items"]
         )
 
     if question_type == "fill_blank":
-        text = answer.get("text")
-        if not isinstance(text, str):
-            return False
-
-        normalized = text.strip().casefold()
+        normalized = answer["text"].strip().casefold()
         accepted = {
             item["text"].strip().casefold()
             for item in question["items"]
@@ -514,77 +333,126 @@ def _is_answer_correct(question, answer):
         return normalized in accepted
 
     if question_type == "ordering":
-        item_ids = answer.get("item_ids")
-        if not isinstance(item_ids, list):
-            return False
-        if any(type(item_id) is not int for item_id in item_ids):
-            return False
-
         canonical = [
             item["id"]
-            for item in sorted(
-                question["items"],
-                key=lambda item: item["correct_position"],
-            )
+            for item in sorted(question["items"], key=lambda item: item["correct_position"])
         ]
-        return item_ids == canonical
+        return answer["item_ids"] == canonical
 
     return False
 
 
-def _serialize_result_question(
-    question, user_answer, correct, language, question_number
-):
+def _serialize_unit(unit, language):
+    return {
+        "slug": unit["slug"],
+        "unit_type": unit["unit_type"],
+        "title_fr": unit["title_fr"],
+        "title": localized_value(unit, "title", language, french_fallback_field="title_fr"),
+    }
+
+
+def _serialize_question_for_client(question, language, question_number):
     result = {
-        "id": question["id"],
+        "question_id": question["id"],
         "question_number": question_number,
-        "type": question["question_type"],
+        "question_type": question["question_type"],
         "prompt": question[f"prompt_{language}"],
-        "submitted_answer": user_answer,
-        "correct": correct,
     }
 
     if question["question_type"] == "mcq":
-        correct_item = next(
-            item for item in question["items"] if item["is_correct"] == 1
-        )
-        result["correct_answer"] = {
-            "id": correct_item["id"],
-            "text": correct_item["text"],
-        }
-
-    elif question["question_type"] == "fill_blank":
-        result["correct_answers"] = [
-            item["text"]
-            for item in question["items"]
-            if item["is_correct"] == 1
+        items = list(question["items"])
+        random.shuffle(items)
+        result["options"] = [
+            {"item_id": item["id"], "text": item["text"]}
+            for item in items
         ]
-
     elif question["question_type"] == "ordering":
-        ordered = sorted(
-            question["items"],
-            key=lambda item: item["correct_position"],
-        )
-        result["correct_answer"] = [item["id"] for item in ordered]
-        result["correct_pieces"] = [
-            {"id": item["id"], "text": item["text"]}
-            for item in ordered
+        items = list(question["items"])
+        correct_ids = [
+            item["id"] for item in sorted(items, key=lambda item: item["correct_position"])
         ]
-
-    explanation = localized_value(
-        question,
-        "explanation",
-        language,
-    )
-    if explanation is not None:
-        result["explanation"] = explanation
+        shuffled = list(items)
+        for _ in range(20):
+            random.shuffle(shuffled)
+            if [item["id"] for item in shuffled] != correct_ids:
+                break
+        if [item["id"] for item in shuffled] == correct_ids:
+            shuffled[0], shuffled[1] = shuffled[1], shuffled[0]
+        result["items"] = [
+            {"item_id": item["id"], "text": item["text"]}
+            for item in shuffled
+        ]
 
     return result
 
 
-def _display_type(unit_type):
-    return {
-        "grammar": "Grammar",
-        "vocabulary": "Vocabulary",
-        "conjugation": "Conjugation",
-    }.get(unit_type, unit_type)
+def _serialize_result_question(question, user_answer, correct, language, question_number):
+    result = {
+        "question_id": question["id"],
+        "question_number": question_number,
+        "question_type": question["question_type"],
+        "prompt": question[f"prompt_{language}"],
+        "submitted_answer": _serialize_submitted_answer(question, user_answer),
+        "correct": correct,
+        "explanation": localized_value(question, "explanation", language),
+    }
+
+    if question["question_type"] == "mcq":
+        correct_item = next(item for item in question["items"] if item["is_correct"] == 1)
+        result["correct_answer"] = {"item_id": correct_item["id"], "text": correct_item["text"]}
+    elif question["question_type"] == "fill_blank":
+        result["correct_answer"] = {
+            "accepted_answers": [
+                item["text"] for item in question["items"] if item["is_correct"] == 1
+            ]
+        }
+    elif question["question_type"] == "ordering":
+        ordered = sorted(question["items"], key=lambda item: item["correct_position"])
+        result["correct_answer"] = {
+            "items": [
+                {"item_id": item["id"], "text": item["text"]}
+                for item in ordered
+            ]
+        }
+
+    return result
+
+
+def _serialize_submitted_answer(question, answer):
+    if question["question_type"] == "mcq":
+        item_id = answer["item_id"]
+        item = next(item for item in question["items"] if item["id"] == item_id)
+        return {"item_id": item_id, "text": item["text"]}
+    if question["question_type"] == "fill_blank":
+        return {"text": answer["text"]}
+    if question["question_type"] == "ordering":
+        items_by_id = {item["id"]: item for item in question["items"]}
+        return {
+            "items": [
+                {"item_id": item_id, "text": items_by_id[item_id]["text"]}
+                for item_id in answer["item_ids"]
+            ]
+        }
+    return answer
+
+
+def _usable_questions(questions):
+    usable = []
+    for question in questions:
+        items = question["items"]
+        question_type = question["question_type"]
+        if question_type == "mcq":
+            if len(items) >= 2 and any(item["is_correct"] == 1 for item in items):
+                usable.append(question)
+        elif question_type == "fill_blank":
+            if any(item["is_correct"] == 1 for item in items):
+                usable.append(question)
+        elif question_type == "ordering":
+            positions = [
+                item["correct_position"]
+                for item in items
+                if item["correct_position"] is not None
+            ]
+            if len(items) >= 2 and sorted(positions) == list(range(1, len(items) + 1)):
+                usable.append(question)
+    return usable

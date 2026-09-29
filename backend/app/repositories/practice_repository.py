@@ -165,32 +165,6 @@ def insert_practice_session(
     return cursor.lastrowid
 
 
-def list_recent_practice_sessions(user_id, limit=10):
-    return get_db().execute(
-        """
-        SELECT
-            ps.id,
-            ps.practice_type,
-            ps.learning_unit_id,
-            ps.completed_at,
-            ps.activity_date,
-            ps.correct_count,
-            ps.total_questions,
-            lu.slug AS learning_unit_slug,
-            lu.title_fr AS learning_unit_fr,
-            lu.title_vi AS learning_unit_vi,
-            lu.title_en AS learning_unit_en,
-            lu.unit_type AS learning_unit_type
-        FROM practice_sessions AS ps
-        LEFT JOIN learning_units AS lu ON lu.id = ps.learning_unit_id
-        WHERE ps.user_id = ?
-        ORDER BY ps.completed_at DESC
-        LIMIT ?
-        """,
-        (user_id, limit),
-    ).fetchall()
-
-
 def _group_questions(rows):
     questions = {}
     order = []
@@ -224,4 +198,4 @@ def _group_questions(rows):
                 }
             )
 
-    return [questions[question_id] for question_id in order]    
+    return [questions[question_id] for question_id in order]  
