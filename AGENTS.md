@@ -2,16 +2,16 @@
 
 Operational instructions for coding AI working in this repository.
 
-## 0. Current implementation phase: BACKEND ONLY
+## 0. Current implementation phase: BACKEND + FRONTEND
 
-- Work on `backend/` only unless Vân Khánh explicitly authorizes frontend work.
-- Do not implement, scaffold, refactor, or "prepare" frontend pages, components, routes, state, API clients, styles, mocks, dependencies, or Vite configuration yet.
-- `frontend-design.md` is not an active implementation baseline until it is finalized.
-- Backend work may be completed and merged without a frontend consumer if it satisfies the backend Definition of Done.
+- Frontend Design is finalized (`docs/frontend-design.md`).
+- Backend work continues in `backend/` following the existing baselines.
+- Frontend work follows `docs/frontend-design.md`. As of this update, `frontend/` still contains only its placeholder README; no React/Vite implementation has been committed yet.
+- Backend work may still be completed and merged without a frontend consumer if it satisfies the backend Definition of Done.
 
 ## 1. Documentation gate: no coding before all required baselines are available and read
 
-For the current backend-only phase, do **not** begin coding until you can access and have read all of these files in full:
+For backend tasks, do **not** begin coding until you can access and have read all of these files in full:
 
 1. `requirements-and-analysis.md`
 2. `system-architecture.md`
@@ -32,7 +32,7 @@ Until the documentation gate is satisfied, do not:
 
 Reading only the document that appears directly related to the assigned feature is not sufficient. The required baselines define cross-cutting constraints and must all be read before the first code change.
 
-`docs/frontend-design.md` is **not** part of the current backend gate because it is not finalized and frontend work is not authorized. Once Vân Khánh declares the Frontend Design finalized and explicitly opens frontend development, it becomes an additional required baseline that must also be provided/read before frontend coding begins.
+`docs/frontend-design.md` is now finalized and frontend implementation is authorized. It is a required baseline, in addition to the six documents above, before any frontend coding begins.
 
 After the documentation gate is satisfied, use the baselines in this order when checking a task:
 
@@ -41,7 +41,7 @@ After the documentation gate is satisfied, use the baselines in this order when 
 3. `docs/database-design.md`
 4. `docs/api-contracts.md`
 5. `docs/backend-structure.md`
-6. `docs/frontend-design.md` - only after finalized and frontend work is authorized
+6. `docs/frontend-design.md`
 7. `docs/repository-conventions.md`
 
 Authority by concern:
@@ -53,7 +53,7 @@ Authority by concern:
 | Schema, constraints, persistence meaning | Database Design |
 | `/api/v1` methods, paths, payloads, status codes, envelopes | API Contracts |
 | Flask internal structure | Backend Structure |
-| Frontend internal structure | Frontend Design once finalized |
+| Frontend internal structure | Frontend Design |
 | Git, repository, ownership, integration workflow | Repository Conventions |
 
 If two baselines genuinely conflict, do not invent a resolution. Report the conflict to Vân Khánh.
@@ -355,7 +355,7 @@ A backend change is ready for handoff/PR only when all applicable checks pass:
 - [ ] Shared/cross-owner changes received required coordination/review.
 - [ ] Merge would keep `main` runnable.
 
-Frontend implementation is **not** required for backend completion during the current backend-only phase.
+Frontend implementation is **not** required for a backend change to be considered done.
 
 ## 11. AI handoff
 
