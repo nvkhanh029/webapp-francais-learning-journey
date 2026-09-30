@@ -1,0 +1,106 @@
+{
+  "learning_unit_slug": "le-nom",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn dạng giống cái đúng của \"un étudiant\".",
+      "prompt_en": "Choose the correct feminine form of \"un étudiant\".",
+      "explanation_vi": "Dạng giống cái được tạo bằng cách thêm -e: un étudiant → une étudiante.",
+      "explanation_en": "The feminine form is created by adding -e: un étudiant → une étudiante.",
+      "options": [
+        {
+          "text": "une étudiante",
+          "is_correct": true
+        },
+        {
+          "text": "une étudiant",
+          "is_correct": false
+        },
+        {
+          "text": "une étudiente",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "mcq",
+      "prompt_vi": "Từ nào có cùng dạng viết cho giống đực và giống cái?",
+      "prompt_en": "Which noun has the same written form for masculine and feminine?",
+      "explanation_vi": "Một số danh từ có cùng dạng viết cho cả hai giới; déterminant cho biết genre.",
+      "explanation_en": "Some nouns have the same written form for both genders; the determiner indicates the gender.",
+      "options": [
+        {
+          "text": "élève",
+          "is_correct": true
+        },
+        {
+          "text": "homme",
+          "is_correct": false
+        },
+        {
+          "text": "roi",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền dạng số nhiều: un animal → des ______.",
+      "prompt_en": "Complete the plural form: un animal → des ______.",
+      "explanation_vi": "Một số danh từ kết thúc bằng -al có số nhiều bằng -aux: animal → animaux.",
+      "explanation_en": "Some nouns ending in -al form their plural with -aux: animal → animaux.",
+      "accepted_answers": [
+        "animaux"
+      ]
+    },
+    {
+      "sort_order": 40,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn dạng số nhiều đúng của \"un bijou\".",
+      "prompt_en": "Choose the correct plural form of \"un bijou\".",
+      "explanation_vi": "Bijou là một trong bảy danh từ kết thúc bằng -ou có số nhiều bằng -x.",
+      "explanation_en": "Bijou is one of the seven nouns ending in -ou that take -x in the plural.",
+      "options": [
+        {
+          "text": "des bijoux",
+          "is_correct": true
+        },
+        {
+          "text": "des bijous",
+          "is_correct": false
+        },
+        {
+          "text": "des bijou",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền từ thích hợp: un homme → une ______.",
+      "prompt_en": "Fill in the blank: un homme → une ______.",
+      "explanation_vi": "Một số danh từ có dạng giống cái hoàn toàn khác với giống đực: homme → femme.",
+      "explanation_en": "Some nouns have a completely different feminine form: homme → femme.",
+      "accepted_answers": [
+        "femme"
+      ]
+    },
+    {
+      "sort_order": 60,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành cặp đúng.",
+      "prompt_en": "Arrange the pieces into the correct pair.",
+      "explanation_vi": "Dạng giống cái của un roi là une reine.",
+      "explanation_en": "The feminine form of un roi is une reine.",
+      "pieces": [
+        "un roi",
+        "→",
+        "une reine"
+      ]
+    }
+  ]
+}
