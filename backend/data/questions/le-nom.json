@@ -10,12 +10,12 @@
       "explanation_en": "The feminine form is created by adding -e: un étudiant → une étudiante.",
       "options": [
         {
-          "text": "une étudiante",
-          "is_correct": true
-        },
-        {
           "text": "une étudiant",
           "is_correct": false
+        },
+        {
+          "text": "une étudiante",
+          "is_correct": true
         },
         {
           "text": "une étudiente",
@@ -26,21 +26,21 @@
     {
       "sort_order": 20,
       "question_type": "mcq",
-      "prompt_vi": "Từ nào có cùng dạng viết cho giống đực và giống cái?",
-      "prompt_en": "Which noun has the same written form for masculine and feminine?",
+      "prompt_vi": "Một số danh từ có cùng dạng viết cho giống đực và giống cái. Chọn ví dụ đúng.",
+      "prompt_en": "Some nouns have the same written form for masculine and feminine. Choose the correct example.",
       "explanation_vi": "Một số danh từ có cùng dạng viết cho cả hai giới; déterminant cho biết genre.",
       "explanation_en": "Some nouns have the same written form for both genders; the determiner indicates the gender.",
       "options": [
         {
-          "text": "élève",
+          "text": "un élève / une élève",
           "is_correct": true
         },
         {
-          "text": "homme",
+          "text": "un homme / une homme",
           "is_correct": false
         },
         {
-          "text": "roi",
+          "text": "un roi / une roi",
           "is_correct": false
         }
       ]
@@ -48,29 +48,436 @@
     {
       "sort_order": 30,
       "question_type": "fill_blank",
-      "prompt_vi": "Điền dạng số nhiều: un animal → des ______.",
-      "prompt_en": "Complete the plural form: un animal → des ______.",
-      "explanation_vi": "Một số danh từ kết thúc bằng -al có số nhiều bằng -aux: animal → animaux.",
-      "explanation_en": "Some nouns ending in -al form their plural with -aux: animal → animaux.",
+      "prompt_vi": "Chuyển sang giống cái: un candidat → ______.",
+      "prompt_en": "Transform into the feminine: un candidat → ______.",
+      "explanation_vi": "Un candidat → une candidate.",
+      "explanation_en": "Un candidat becomes une candidate.",
       "accepted_answers": [
-        "animaux"
+        "candidate"
       ]
     },
     {
       "sort_order": 40,
+      "question_type": "fill_blank",
+      "prompt_vi": "Chuyển sang giống cái: un boulanger → ______.",
+      "prompt_en": "Transform into the feminine: un boulanger → ______.",
+      "explanation_vi": "Un boulanger → une boulangère.",
+      "explanation_en": "Un boulanger becomes une boulangère.",
+      "accepted_answers": [
+        "boulangère"
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "fill_blank",
+      "prompt_vi": "Chuyển sang giống cái: un champion → ______.",
+      "prompt_en": "Transform into the feminine: un champion → ______.",
+      "explanation_vi": "Un champion → une championne.",
+      "explanation_en": "Un champion becomes une championne.",
+      "accepted_answers": [
+        "championne"
+      ]
+    },
+    {
+      "sort_order": 60,
+      "question_type": "fill_blank",
+      "prompt_vi": "Chuyển sang giống cái: un Mexicain → ______.",
+      "prompt_en": "Transform into the feminine: un Mexicain → ______.",
+      "explanation_vi": "Un Mexicain → une Mexicaine.",
+      "explanation_en": "Un Mexicain becomes une Mexicaine.",
+      "accepted_answers": [
+        "Mexicaine"
+      ]
+    },
+    {
+      "sort_order": 70,
       "question_type": "mcq",
-      "prompt_vi": "Chọn dạng số nhiều đúng của \"un bijou\".",
-      "prompt_en": "Choose the correct plural form of \"un bijou\".",
-      "explanation_vi": "Bijou là một trong bảy danh từ kết thúc bằng -ou có số nhiều bằng -x.",
-      "explanation_en": "Bijou is one of the seven nouns ending in -ou that take -x in the plural.",
+      "prompt_vi": "Chọn nhóm dạng giống cái đúng.",
+      "prompt_en": "Choose the correct set of feminine forms.",
+      "explanation_vi": "Acheteur → acheteuse, directeur → directrice, veuf → veuve.",
+      "explanation_en": "Acheteur becomes acheteuse, directeur becomes directrice, and veuf becomes veuve.",
       "options": [
         {
-          "text": "des bijoux",
+          "text": "un acheteur → une acheteuse ; un directeur → une directrice ; un veuf → une veuve",
           "is_correct": true
         },
         {
+          "text": "un acheteur → une achetrice ; un directeur → une directeuse ; un veuf → une veuve",
+          "is_correct": false
+        },
+        {
+          "text": "un acheteur → une acheteure ; un directeur → une directrice ; un veuf → une veufe",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 80,
+      "question_type": "fill_blank",
+      "prompt_vi": "Hoàn thành: un homme → une ______.",
+      "prompt_en": "Complete: un homme → une ______.",
+      "explanation_vi": "Một số danh từ có dạng giống cái hoàn toàn khác: homme → femme.",
+      "explanation_en": "Some nouns have a completely different feminine form: homme → femme.",
+      "accepted_answers": [
+        "femme"
+      ]
+    },
+    {
+      "sort_order": 90,
+      "question_type": "fill_blank",
+      "prompt_vi": "Hoàn thành: un roi → une ______.",
+      "prompt_en": "Complete: un roi → une ______.",
+      "explanation_vi": "Một số danh từ có dạng giống cái hoàn toàn khác: roi → reine.",
+      "explanation_en": "Some nouns have a completely different feminine form: roi → reine.",
+      "accepted_answers": [
+        "reine"
+      ]
+    },
+    {
+      "sort_order": 100,
+      "question_type": "fill_blank",
+      "prompt_vi": "Hoàn thành: un neveu → une ______.",
+      "prompt_en": "Complete: un neveu → une ______.",
+      "explanation_vi": "Một số danh từ có dạng giống cái hoàn toàn khác: neveu → nièce.",
+      "explanation_en": "Some nouns have a completely different feminine form: neveu → nièce.",
+      "accepted_answers": [
+        "nièce"
+      ]
+    },
+    {
+      "sort_order": 110,
+      "question_type": "mcq",
+      "prompt_vi": "Đối với một số tên nghề khi dạng giống cái chưa được dùng theo cách truyền thống, khóa học nêu cách nào?",
+      "prompt_en": "For some professions whose feminine form was not traditionally used, which solution is given in the course?",
+      "explanation_vi": "Có thể dùng một déterminant féminin, ví dụ une juge, une ministre, une cinéaste.",
+      "explanation_en": "A feminine determiner can be used, for example une juge, une ministre, une cinéaste.",
+      "options": [
+        {
+          "text": "utiliser un déterminant féminin",
+          "is_correct": true
+        },
+        {
+          "text": "supprimer le nom",
+          "is_correct": false
+        },
+        {
+          "text": "toujours garder le déterminant masculin",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 120,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn dạng giống cái đúng của un sculpteur.",
+      "prompt_en": "Choose the correct feminine form of un sculpteur.",
+      "explanation_vi": "Một số danh từ nghề nghiệp tạo dạng giống cái riêng: un sculpteur → une sculptrice.",
+      "explanation_en": "Some profession nouns have a specific feminine form: un sculpteur → une sculptrice.",
+      "options": [
+        {
+          "text": "une sculpteuse",
+          "is_correct": false
+        },
+        {
+          "text": "une sculptrice",
+          "is_correct": true
+        },
+        {
+          "text": "une sculpteur",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 130,
+      "question_type": "mcq",
+      "prompt_vi": "Danh sách nào minh họa cho các danh từ chỉ có một genre?",
+      "prompt_en": "Which list illustrates nouns that have only one gender?",
+      "explanation_vi": "Một số danh từ chỉ có một genre, ví dụ une victime, une souris, une grenouille.",
+      "explanation_en": "Some nouns have only one gender, for example une victime, une souris, une grenouille.",
+      "options": [
+        {
+          "text": "une victime, une souris, une grenouille",
+          "is_correct": true
+        },
+        {
+          "text": "un homme, un roi, un cheval",
+          "is_correct": false
+        },
+        {
+          "text": "un acteur, un directeur, un veuf",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 140,
+      "question_type": "mcq",
+      "prompt_vi": "Genre của danh từ inanimé chủ yếu được chỉ ra bởi ________.",
+      "prompt_en": "The gender of an inanimate noun is mainly indicated by ________.",
+      "explanation_vi": "Genre được chỉ ra bởi déterminant.",
+      "explanation_en": "Gender is indicated by the determiner.",
+      "options": [
+        {
+          "text": "le déterminant",
+          "is_correct": true
+        },
+        {
+          "text": "le verbe",
+          "is_correct": false
+        },
+        {
+          "text": "le pluriel",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 150,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn các déterminant đúng: ______ téléphone ; ______ question ; ______ richesse.",
+      "prompt_en": "Choose the correct determiners: ______ téléphone ; ______ question ; ______ richesse.",
+      "explanation_vi": "Le téléphone là giống đực; la question và la richesse là giống cái.",
+      "explanation_en": "Le téléphone is masculine; la question and la richesse are feminine.",
+      "options": [
+        {
+          "text": "le / la / la",
+          "is_correct": true
+        },
+        {
+          "text": "la / le / le",
+          "is_correct": false
+        },
+        {
+          "text": "un / un / un",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 160,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn nhóm ghép đúng suffixe với danh từ trong bài.",
+      "prompt_en": "Choose the correct matching of suffixes with the nouns from the lesson.",
+      "explanation_vi": "-isme → le journalisme ; -ment → le mouvement ; -tion → la question.",
+      "explanation_en": "-isme → le journalisme ; -ment → le mouvement ; -tion → la question.",
+      "options": [
+        {
+          "text": "-isme → le journalisme ; -ment → le mouvement ; -tion → la question",
+          "is_correct": true
+        },
+        {
+          "text": "-isme → la question ; -ment → le journalisme ; -tion → le mouvement",
+          "is_correct": false
+        },
+        {
+          "text": "-isme → le mouvement ; -ment → la question ; -tion → le journalisme",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 170,
+      "question_type": "mcq",
+      "prompt_vi": "Các danh từ chỉ màu sắc, ngôn ngữ và động từ nguyên mẫu được dùng như danh từ thường có genre nào?",
+      "prompt_en": "What gender do nouns of colour, languages, and infinitives used as nouns generally have?",
+      "explanation_vi": "Trong bài, các danh từ này được nêu là giống đực: le vert, le portugais, le pouvoir.",
+      "explanation_en": "In the lesson, these nouns are masculine: le vert, le portugais, le pouvoir.",
+      "options": [
+        {
+          "text": "masculin",
+          "is_correct": true
+        },
+        {
+          "text": "féminin",
+          "is_correct": false
+        },
+        {
+          "text": "toujours variable",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 180,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn cặp homonyme đúng theo genre.",
+      "prompt_en": "Choose the correct homonym pair according to gender.",
+      "explanation_vi": "Le livre de français và une livre de tomates có genre khác nhau và nghĩa khác nhau.",
+      "explanation_en": "Le livre de français and une livre de tomates have different genders and different meanings.",
+      "options": [
+        {
+          "text": "le livre de français / une livre de tomates",
+          "is_correct": true
+        },
+        {
+          "text": "la livre de français / le livre de tomates",
+          "is_correct": false
+        },
+        {
+          "text": "le livre / le livre, toujours même sens",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 190,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn nhóm đúng cho các quốc gia/vùng: France, Italie, Normandie.",
+      "prompt_en": "Choose the correct forms for the countries/region: France, Italie, Normandie.",
+      "explanation_vi": "La France, l'Italie và la Normandie là các danh từ giống cái trong bài.",
+      "explanation_en": "La France, l'Italie and la Normandie are feminine nouns in the lesson.",
+      "options": [
+        {
+          "text": "la France, l'Italie, la Normandie",
+          "is_correct": true
+        },
+        {
+          "text": "le France, le Italie, le Normandie",
+          "is_correct": false
+        },
+        {
+          "text": "la France, le Italie, la Normandie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 200,
+      "question_type": "mcq",
+      "prompt_vi": "Quốc gia nào được nêu là giống đực trong bài?",
+      "prompt_en": "Which country is given as masculine in the lesson?",
+      "explanation_vi": "Le Japon được nêu là danh từ giống đực.",
+      "explanation_en": "Le Japon is given as a masculine noun.",
+      "options": [
+        {
+          "text": "la France",
+          "is_correct": false
+        },
+        {
+          "text": "le Japon",
+          "is_correct": true
+        },
+        {
+          "text": "l'Italie",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 210,
+      "question_type": "mcq",
+      "prompt_vi": "Phát biểu nào đúng về genre của tên thành phố?",
+      "prompt_en": "Which statement about the gender of city names is correct?",
+      "explanation_vi": "Genre của tên thành phố không cố định; tên kết thúc bằng -e thường được xem là giống cái.",
+      "explanation_en": "The gender of city names is not fixed; names ending in -e tend to be considered feminine.",
+      "options": [
+        {
+          "text": "Le genre est toujours féminin.",
+          "is_correct": false
+        },
+        {
+          "text": "Le genre est toujours masculin.",
+          "is_correct": false
+        },
+        {
+          "text": "Le genre n'est pas fixe ; les noms en -e sont souvent considérés comme féminins.",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "sort_order": 220,
+      "question_type": "mcq",
+      "prompt_vi": "Genre của tên núi, sông và dòng sông nói chung là:",
+      "prompt_en": "The gender of mountain, river, and stream names is generally:",
+      "explanation_vi": "Theo bài, genre của các tên này là arbitraire.",
+      "explanation_en": "According to the lesson, the gender of these names is arbitrary.",
+      "options": [
+        {
+          "text": "arbitraire",
+          "is_correct": true
+        },
+        {
+          "text": "toujours féminin",
+          "is_correct": false
+        },
+        {
+          "text": "toujours masculin",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 230,
+      "question_type": "fill_blank",
+      "prompt_vi": "Chuyển sang số nhiều: un enfant → des ______.",
+      "prompt_en": "Transform into the plural: un enfant → des ______.",
+      "explanation_vi": "Quy tắc chung là thêm -s.",
+      "explanation_en": "The general rule is to add -s.",
+      "accepted_answers": [
+        "enfants"
+      ]
+    },
+    {
+      "sort_order": 240,
+      "question_type": "fill_blank",
+      "prompt_vi": "Chuyển sang số nhiều: un pays → des ______.",
+      "prompt_en": "Transform into the plural: un pays → des ______.",
+      "explanation_vi": "Danh từ kết thúc bằng -s không đổi ở dạng số nhiều: un pays → des pays.",
+      "explanation_en": "Nouns ending in -s do not change in the plural: un pays → des pays.",
+      "accepted_answers": [
+        "pays"
+      ]
+    },
+    {
+      "sort_order": 250,
+      "question_type": "fill_blank",
+      "prompt_vi": "Chuyển sang số nhiều: un bateau → des ______.",
+      "prompt_en": "Transform into the plural: un bateau → des ______.",
+      "explanation_vi": "Danh từ kết thúc bằng -eau thường lấy -x: bateau → bateaux.",
+      "explanation_en": "Nouns ending in -eau generally take -x: bateau → bateaux.",
+      "accepted_answers": [
+        "bateaux"
+      ]
+    },
+    {
+      "sort_order": 260,
+      "question_type": "fill_blank",
+      "prompt_vi": "Chuyển sang số nhiều: un cheveu → des ______.",
+      "prompt_en": "Transform into the plural: un cheveu → des ______.",
+      "explanation_vi": "Danh từ kết thúc bằng -eu thường lấy -x: cheveu → cheveux.",
+      "explanation_en": "Nouns ending in -eu generally take -x: cheveu → cheveux.",
+      "accepted_answers": [
+        "cheveux"
+      ]
+    },
+    {
+      "sort_order": 270,
+      "question_type": "fill_blank",
+      "prompt_vi": "Chuyển sang số nhiều: un pneu → des ______.",
+      "prompt_en": "Transform into the plural: un pneu → des ______.",
+      "explanation_vi": "Pneu là ngoại lệ: un pneu → des pneus.",
+      "explanation_en": "Pneu is an exception: un pneu → des pneus.",
+      "accepted_answers": [
+        "pneus"
+      ]
+    },
+    {
+      "sort_order": 280,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn dạng số nhiều đúng của un bijou.",
+      "prompt_en": "Choose the correct plural form of un bijou.",
+      "explanation_vi": "Bijou thuộc nhóm bảy danh từ kết thúc bằng -ou có số nhiều bằng -x.",
+      "explanation_en": "Bijou is one of the seven nouns ending in -ou that take -x in the plural.",
+      "options": [
+        {
           "text": "des bijous",
           "is_correct": false
+        },
+        {
+          "text": "des bijoux",
+          "is_correct": true
         },
         {
           "text": "des bijou",
@@ -79,27 +486,91 @@
       ]
     },
     {
-      "sort_order": 50,
+      "sort_order": 290,
       "question_type": "fill_blank",
-      "prompt_vi": "Điền từ thích hợp: un homme → une ______.",
-      "prompt_en": "Fill in the blank: un homme → une ______.",
-      "explanation_vi": "Một số danh từ có dạng giống cái hoàn toàn khác với giống đực: homme → femme.",
-      "explanation_en": "Some nouns have a completely different feminine form: homme → femme.",
+      "prompt_vi": "Chuyển sang số nhiều: un travail → des ______.",
+      "prompt_en": "Transform into the plural: un travail → des ______.",
+      "explanation_vi": "Một số danh từ kết thúc bằng -ail có số nhiều bằng -aux: travail → travaux.",
+      "explanation_en": "Some nouns ending in -ail form the plural with -aux: travail → travaux.",
       "accepted_answers": [
-        "femme"
+        "travaux"
       ]
     },
     {
-      "sort_order": 60,
-      "question_type": "ordering",
-      "prompt_vi": "Sắp xếp thành cặp đúng.",
-      "prompt_en": "Arrange the pieces into the correct pair.",
-      "explanation_vi": "Dạng giống cái của un roi là une reine.",
-      "explanation_en": "The feminine form of un roi is une reine.",
-      "pieces": [
-        "un roi",
-        "→",
-        "une reine"
+      "sort_order": 300,
+      "question_type": "fill_blank",
+      "prompt_vi": "Chuyển sang số nhiều: un animal → des ______.",
+      "prompt_en": "Transform into the plural: un animal → des ______.",
+      "explanation_vi": "Một số danh từ kết thúc bằng -al có số nhiều bằng -aux: animal → animaux.",
+      "explanation_en": "Some nouns ending in -al form the plural with -aux: animal → animaux.",
+      "accepted_answers": [
+        "animaux"
+      ]
+    },
+    {
+      "sort_order": 310,
+      "question_type": "fill_blank",
+      "prompt_vi": "Chuyển sang số nhiều: un événement → des ______.",
+      "prompt_en": "Transform into the plural: un événement → des ______.",
+      "explanation_vi": "Événement theo quy tắc số nhiều thông thường: thêm -s.",
+      "explanation_en": "Événement follows the general plural rule: add -s.",
+      "accepted_answers": [
+        "événements"
+      ]
+    },
+    {
+      "sort_order": 320,
+      "question_type": "fill_blank",
+      "prompt_vi": "Hoàn thành dạng số nhiều bất quy tắc: un œil → des ______.",
+      "prompt_en": "Complete the irregular plural form: un œil → des ______.",
+      "explanation_vi": "Dạng số nhiều bất quy tắc là œil → yeux.",
+      "explanation_en": "The irregular plural form is œil → yeux.",
+      "accepted_answers": [
+        "yeux"
+      ]
+    },
+    {
+      "sort_order": 330,
+      "question_type": "fill_blank",
+      "prompt_vi": "Hoàn thành dạng số nhiều: un monsieur → des ______.",
+      "prompt_en": "Complete the plural form: un monsieur → des ______.",
+      "explanation_vi": "Monsieur có dạng số nhiều đặc biệt: messieurs.",
+      "explanation_en": "Monsieur has the irregular plural form messieurs.",
+      "accepted_answers": [
+        "messieurs"
+      ]
+    },
+    {
+      "sort_order": 340,
+      "question_type": "fill_blank",
+      "prompt_vi": "Hoàn thành dạng số nhiều bất quy tắc: un ciel → des ______.",
+      "prompt_en": "Complete the irregular plural form: un ciel → des ______.",
+      "explanation_vi": "Dạng số nhiều bất quy tắc là ciel → cieux.",
+      "explanation_en": "The irregular plural form is ciel → cieux.",
+      "accepted_answers": [
+        "cieux"
+      ]
+    },
+    {
+      "sort_order": 350,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn nhóm số nhiều đúng.",
+      "prompt_en": "Choose the correct plural forms.",
+      "explanation_vi": "Tên nghệ sĩ có thể lấy -s khi chỉ tác phẩm; trong danh từ ghép, cách biến đổi phụ thuộc vào cấu tạo của từ.",
+      "explanation_en": "Artist names can take -s when referring to works; for compound nouns, pluralization depends on their formation.",
+      "options": [
+        {
+          "text": "deux Renoirs / des porte-avions / des chou-fleurs / des coffres-forts",
+          "is_correct": true
+        },
+        {
+          "text": "deux Renoirs / des portes-avions / des choux-fleur / des coffre-forts",
+          "is_correct": false
+        },
+        {
+          "text": "deux Renoir / des porte-avions / des chou-fleur / des coffres-fort",
+          "is_correct": false
+        }
       ]
     }
   ]
