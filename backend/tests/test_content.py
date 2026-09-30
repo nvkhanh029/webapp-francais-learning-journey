@@ -181,6 +181,33 @@ def test_lesson_detail_localizes_content_without_persisting_fallback(
     assert _support_language(database_path) == "en"
 
 
+def test_state_fields_reflect_persisted_learner_state(learner, database_path):
+    # Simulate actions taken via Member 2's learning-state endpoints.
+    with sqlite3.connect(database_path) as connection:
+        unit_ids = dict(connection.execute(
+            "SELECT slug, id FROM learning_units WHERE unit_type='conjugation'"))
+        connection.execute(
+            "INSERT INTO user_learning_state(user_id,learning_unit_id,learned_at,review_later) "
+            "VALUES(1,?,'2026-09-30T09:00:00',0)",
+            (unit_ids["fixture-conjugation"],))
+        connection.execute(
+            "INSERT INTO user_learning_state(user_id,learning_unit_id,learned_at,review_later) "
+            "VALUES(1,?,NULL,1)",
+            (unit_ids["fixture-conjugation-b"],))
+
+    detail = learner.get(
+        "/api/v1/conjugation/lessons/fixture-conjugation").json["data"]
+    assert detail["state"] == {"learned": True, "review_later": False}
+
+    tenses = learner.get("/api/v1/conjugation").json["data"]["tenses"]
+    states = {lesson["slug"]: (lesson["learned"], lesson["review_later"])
+              for lesson in tenses[0]["lessons"]}
+    assert states == {
+        "fixture-conjugation": (True, False),
+        "fixture-conjugation-b": (False, True),
+    }
+
+
 def test_lesson_detail_unknown_slug_is_contract_404(learner):
     response = learner.get("/api/v1/conjugation/lessons/no-such-lesson")
     assert response.status_code == 404

@@ -1,14 +1,18 @@
 """Member 5: Conjugation browse/detail response models (API Contracts §11)."""
 from ..errors import ApiError
 from ..localization import localized_value, resolve_support_language
-from ..repositories import conjugation_repository
+from ..repositories import conjugation_repository, learning_state_repository
 
 
 def _learner_state(user_id, learning_unit_id):
-    # TODO(Member 5): placeholder until learning_state_repository exists
-    # (Member 2). Contract shape is already final: swap the body for the
-    # real learned/review_later read without changing this response model.
-    return {"learned": False, "review_later": False}
+    # Read-only view of Member 2's persisted learner state. GET must never
+    # record an open (record_open is deliberately not called here), so a
+    # first visit still reports learned=False, review_later=False until the
+    # learner acts via the learning-state endpoints.
+    row = learning_state_repository.get_state(user_id, learning_unit_id)
+    learned = row is not None and row["learned_at"] is not None
+    review_later = row is not None and row["review_later"] == 1
+    return {"learned": learned, "review_later": review_later}
 
 
 def _localized_title(row, prefix, language):
