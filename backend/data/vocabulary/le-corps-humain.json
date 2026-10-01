@@ -1,0 +1,46 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les caractéristiques physiques",
+  "topic_slug": "caracteristiques-physiques",
+  "topic_sort_order": 10,
+  "topic_vi": "Đặc điểm thể chất",
+  "topic_en": "Physical characteristics",
+  "subtopic": "Le corps humain",
+  "subtopic_key": "le-corps-humain",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Cơ thể con người",
+  "subtopic_en": "The human body",
+  "words": [
+    {
+      "french": "la tête",
+      "meaning_vi": "cái đầu",
+      "meaning_en": "head",
+      "ipa": null,
+      "example_fr": null,
+      "example_vi": null,
+      "example_en": null
+    },
+    {
+      "french": "la main",
+      "meaning_vi": "bàn tay",
+      "meaning_en": "hand",
+      "ipa": null,
+      "example_fr": null,
+      "example_vi": null,
+      "example_en": null
+    },
+    {
+      "french": "sourire",
+      "meaning_vi": "mỉm cười",
+      "meaning_en": "to smile",
+      "ipa": null,
+      "example_fr": null,
+      "example_vi": null,
+      "example_en": null
+    }
+  ]
+}

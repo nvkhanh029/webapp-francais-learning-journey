@@ -1,0 +1,46 @@
+{
+  "learning_unit_slug": "le-corps-humain",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn từ tiếng Pháp đúng cho “bàn tay”.",
+      "prompt_en": "Choose the correct French word for “hand”.",
+      "explanation_vi": null,
+      "explanation_en": null,
+      "options": [
+        {
+          "text": "la main",
+          "is_correct": true
+        },
+        {
+          "text": "la tête",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền từ thích hợp: ___ (cái đầu).",
+      "prompt_en": "Fill in the blank: ___ (head).",
+      "explanation_vi": null,
+      "explanation_en": null,
+      "accepted_answers": [
+        "la tête"
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành cụm đúng.",
+      "prompt_en": "Arrange the pieces into the correct phrase.",
+      "explanation_vi": null,
+      "explanation_en": null,
+      "pieces": [
+        "Je",
+        "souris"
+      ]
+    }
+  ]
+}
