@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-
+from ...errors import ApiError
 from ...auth_session import login_required
 from ...validation import get_json_body
 from ...services import practice_service
@@ -19,10 +19,14 @@ def start_normal_practice(slug):
 @bp.post("/mixed-practice/start")
 @login_required
 def start_mixed_practice():
-    # Mixed Practice currently has no filters. An empty body is accepted,
-    # while a supplied JSON body must still be a JSON object.
-    if request.data:
-        get_json_body()
+    body = get_json_body() if request.data else {}
+
+    if "filters" in body:
+        raise ApiError(
+            422,
+            "invalid_mixed_filters",
+            "Mixed Practice filters are not supported.",
+        )
 
     response = jsonify({"data": practice_service.start_mixed_practice()})
     response.status_code = 201

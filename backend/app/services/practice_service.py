@@ -6,7 +6,7 @@ from flask import current_app, g
 from ..db import transaction
 from ..errors import ApiError
 from ..localization import localized_value, resolve_support_language
-from ..repositories import practice_repository
+from ..repositories import learning_unit_repository, practice_repository
 
 
 MAX_MIXED_QUESTIONS = 10
@@ -20,7 +20,7 @@ def start_normal_practice(slug):
     user_id = g.current_user["id"]
     language = resolve_support_language(g.current_user["support_language"])
 
-    unit = practice_repository.get_learning_unit_by_slug(slug)
+    unit = learning_unit_repository.find_by_slug(slug)
     if unit is None:
         raise ApiError(404, "learning_unit_not_found", "Learning unit not found.")
 
@@ -209,7 +209,7 @@ def submit_practice(run_id, answers):
                 correct_count=correct_count,
                 total_questions=total_questions,
             )
-            store.mark_submitted(run_id)
+        store.mark_submitted(run_id)
 
         result = {
             "practice_run_id": run_id,
@@ -220,29 +220,32 @@ def submit_practice(run_id, answers):
             "results": result_questions,
         }
 
+        # Question retrieval is the source of truth for the units represented
+        # by this run. This avoids duplicating learning-unit ID lookups in the
+        # Practice repository.
+        content_units = []
+        seen_unit_ids = set()
+        for question_id in run["selected_question_ids"]:
+            question = by_id[str(question_id)]
+            unit_id = question["learning_unit_id"]
+            if unit_id in seen_unit_ids:
+                continue
+            seen_unit_ids.add(unit_id)
+            unit = question["learning_unit"]
+            content_units.append(unit)
+
         if run["practice_type"] == "normal":
-            unit = practice_repository.get_learning_unit(run["learning_unit_id"])
-            if unit is None:
+            if len(content_units) != 1:
                 raise ApiError(
                     409,
                     "practice_unavailable",
                     "The learning unit is no longer available.",
                 )
-            result["learning_unit"] = _serialize_unit(unit, language)
+            result["learning_unit"] = _serialize_unit(content_units[0], language)
         else:
-            # Derive content coverage from the selected question IDs. The run
-            # store intentionally does not persist a separate content list.
-            content_unit_ids = []
-            for question_id in run["selected_question_ids"]:
-                unit_id = by_id[str(question_id)]["learning_unit_id"]
-                if unit_id not in content_unit_ids:
-                    content_unit_ids.append(unit_id)
-
             result["content_covered"] = [
                 _serialize_unit(unit, language)
-                for unit_id in content_unit_ids
-                for unit in [practice_repository.get_learning_unit(unit_id)]
-                if unit is not None
+                for unit in content_units
             ]
 
         return result
@@ -291,7 +294,7 @@ def _validate_answers(questions, parsed_answers):
                 _validation_error(field, "item_id does not belong to this question.")
 
         elif question_type == "fill_blank":
-            if set(answer) != {"text"} or not isinstance(answer["text"], str):
+            if set(answer) != {"text"} or not isinstance(answer["text"], str) or not answer["text"].strip():
                 _validation_error(field, "Fill-blank answer must contain exactly one string text value.")
 
         elif question_type == "ordering":
