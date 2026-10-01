@@ -1,4 +1,9 @@
-"""Session mechanics only. Register/login/logout endpoints remain Member 1 tasks."""
+"""Flask session mechanics only; authentication business rules live in auth_service.
+
+Owner: Member 1 (Auth and User Preferences), per docs/repository-conventions.md
+Section 8.3. The auth routes drive these helpers; nothing but the learner id is
+ever stored in the session.
+"""
 from functools import wraps
 
 from flask import g, session

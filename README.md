@@ -4,22 +4,22 @@ A self-paced French-learning web application developed as a Web Application
 Development final project. The planned learner experience combines Grammar,
 Vocabulary and Verb Conjugation, with Vietnamese/English learning support.
 
-**Current phase: backend-only development. This repository is a shared scaffold,
-not the completed application.** Frontend Design and learner-facing feature
-implementation are still team tasks.
+**Current phase: backend development plus authorized frontend implementation.
+This repository is a shared scaffold, not the completed application.** Frontend
+Design is finalized (`docs/frontend-design.md`); learner-facing feature
+implementation on both backend and frontend is still team work in progress.
 
 ## Project status
 
 | Area | What is present |
 |---|---|
-| Repository | Six design baselines, AGENTS.md, ignore/editor settings, PR template and backend CI configuration |
+| Repository | Seven design baselines (including the finalized Frontend Design), AGENTS.md, ignore/editor settings, PR template and backend CI configuration |
 | Backend foundation | Flask application factory, seven Blueprint shells, database/session/error/validation/localization helpers, in-memory Practice run store |
 | SQLite | The 17-table schema and a non-destructive initialization command |
 | Content preparation | Authoring templates, source validation, Vocabulary splitting and transactional fresh-database seed |
 | Feature implementation | Auth, preferences, Dashboard, learner state, content endpoints and Practice business logic are **not implemented** |
 | Curriculum | Templates only. The Content/Data Owner supplies approved demo content |
-| Frontend | Intentionally deferred; `frontend/README.md` only |
-| Verification | See [scaffold status and verification](docs/scaffold-status.md); a passing foundation check is not feature acceptance |
+| Frontend | Design finalized (`docs/frontend-design.md`); no implementation yet, `frontend/README.md` placeholder only |
 
 Existing files must be inspected and extended, not recreated in parallel.
 Coding assistants must follow [AGENTS.md](AGENTS.md).
@@ -75,7 +75,7 @@ Frontend must never read SQLite or decide authoritative scores/learner identity.
 |   |-- seed.py
 |   |-- pytest.ini
 |   `-- requirements.txt
-|-- frontend/                # deferred
+|-- frontend/                # design finalized, implementation not started
 |-- docs/                    # design baselines and operational notes
 |-- .github/                 # PR template and backend-tests workflow
 |-- .gitignore
@@ -99,7 +99,7 @@ For a new clone:
 
 ```bash
 git clone https://github.com/nvkhanh029/webapp-francais-learning-journey.git
-cd francais-learning-journey
+cd webapp-francais-learning-journey
 ```
 
 ### 3. Create and activate a virtual environment
@@ -193,7 +193,7 @@ it is not evidence that demo content is ready.
 
 Once approved source content is added, seeding a fresh initialized database
 loads it. If static content already exists, the seed refuses to replace it.
-**There is no `--reset`, automatic upsert or destructive reseed command in v3.**
+**There is no `--reset`, automatic upsert or destructive reseed command.**
 
 For read-only content checks, use `python seed.py --validate-only`; it does not
 open a database and it prints generated learning-unit slugs for question refs.
@@ -235,8 +235,9 @@ Opening `/` therefore returns JSON **404**, not a landing page. A 404 at an
 unimplemented endpoint does not mean its feature is ready or broken integration;
 check the feature's implementation status first.
 
-Do not run a Vite server or `npm install` yet. Frontend setup will be documented
-when Frontend Design is finalized and implementation is authorized.
+Frontend Design is finalized (`docs/frontend-design.md`) and implementation is
+authorized, but no scaffold has been committed to `frontend/` yet. Do not run a
+Vite server or `npm install` until that scaffold and its `package.json` exist.
 
 ### Setup success checklist
 
