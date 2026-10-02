@@ -1,0 +1,21 @@
+{
+  "slug": "autres-emplois-adjectifs",
+  "title_fr": "Autres emplois des adjectifs qualificatifs",
+  "title_vi": "Các cách dùng khác của tính từ",
+  "title_en": "Other uses of descriptive adjectives",
+  "sort_order": 20,
+  "part": {
+    "key": "le-groupe-du-nom-et-les-pronoms",
+    "title_fr": "Le groupe du nom et les pronoms",
+    "title_vi": "Cụm danh từ và đại từ",
+    "title_en": "Noun Groups and Pronouns",
+    "sort_order": 10
+  },
+  "chapter": {
+    "key": "adjectif-qualificatif",
+    "title_fr": "L'adjectif qualificatif",
+    "title_vi": "Tính từ chỉ tính chất",
+    "title_en": "Descriptive adjectives",
+    "sort_order": 30
+  }
+}

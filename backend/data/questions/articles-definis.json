@@ -1,0 +1,108 @@
+{
+  "learning_unit_slug": "articles-definis",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn mạo từ đúng: ___ table est grande.",
+      "prompt_en": "Choose the correct article: ___ table est grande.",
+      "explanation_vi": "Table là danh từ giống cái số ít nên dùng la: la table.",
+      "explanation_en": "Table is feminine singular, so we use la: la table.",
+      "options": [
+        {
+          "text": "la",
+          "is_correct": true
+        },
+        {
+          "text": "le",
+          "is_correct": false
+        },
+        {
+          "text": "les",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn mạo từ đúng: ___ école est près d'ici.",
+      "prompt_en": "Choose the correct article: ___ école est près d'ici.",
+      "explanation_vi": "Trước nguyên âm, le và la đều thành l': l'école.",
+      "explanation_en": "Before a vowel, both le and la become l': l'école.",
+      "options": [
+        {
+          "text": "le",
+          "is_correct": false
+        },
+        {
+          "text": "l'",
+          "is_correct": true
+        },
+        {
+          "text": "la",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn mạo từ đúng để nói chung về sở thích: J'aime ___ café.",
+      "prompt_en": "Choose the correct article to express a general preference: J'aime ___ café.",
+      "explanation_vi": "Sau aimer, ta dùng mạo từ xác định để nói chung: J'aime le café.",
+      "explanation_en": "After aimer, we use the definite article for a general statement: J'aime le café.",
+      "options": [
+        {
+          "text": "un",
+          "is_correct": false
+        },
+        {
+          "text": "du",
+          "is_correct": false
+        },
+        {
+          "text": "le",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "sort_order": 40,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Je vais ___ marché. (à + le)",
+      "prompt_en": "Fill in the blank: Je vais ___ marché. (à + le)",
+      "explanation_vi": "à + le rút gọn thành au: Je vais au marché.",
+      "explanation_en": "à + le contracts to au: Je vais au marché.",
+      "accepted_answers": [
+        "au"
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Voici les clés ___ enfants. (de + les)",
+      "prompt_en": "Fill in the blank: Voici les clés ___ enfants. (de + les)",
+      "explanation_vi": "de + les rút gọn thành des: les clés des enfants.",
+      "explanation_en": "de + les contracts to des: les clés des enfants.",
+      "accepted_answers": [
+        "des"
+      ]
+    },
+    {
+      "sort_order": 60,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Trật tự: chủ ngữ + động từ + tân ngữ. Sau aimer dùng mạo từ xác định: le chocolat.",
+      "explanation_en": "Word order: subject + verb + object. After aimer we use the definite article: le chocolat.",
+      "pieces": [
+        "Les",
+        "enfants",
+        "aiment",
+        "le",
+        "chocolat"
+      ]
+    }
+  ]
+}

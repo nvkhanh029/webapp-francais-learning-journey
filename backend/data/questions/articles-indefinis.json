@@ -1,0 +1,100 @@
+{
+  "learning_unit_slug": "articles-indefinis",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn mạo từ đúng: Il y a ___ chat dans le jardin.",
+      "prompt_en": "Choose the correct article: Il y a ___ chat dans le jardin.",
+      "explanation_vi": "Chat là danh từ giống đực số ít, nhắc đến lần đầu: un chat.",
+      "explanation_en": "Chat is masculine singular and mentioned for the first time: un chat.",
+      "options": [
+        {
+          "text": "un",
+          "is_correct": true
+        },
+        {
+          "text": "une",
+          "is_correct": false
+        },
+        {
+          "text": "des",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn mạo từ đúng: ___ amie arrive demain.",
+      "prompt_en": "Choose the correct article: ___ amie arrive demain.",
+      "explanation_vi": "Amie là giống cái số ít nên dùng une: une amie.",
+      "explanation_en": "Amie is feminine singular, so we use une: une amie.",
+      "options": [
+        {
+          "text": "des",
+          "is_correct": false
+        },
+        {
+          "text": "une",
+          "is_correct": true
+        },
+        {
+          "text": "un",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn mạo từ đúng: Elle a ___ amis français.",
+      "prompt_en": "Choose the correct article: Elle a ___ amis français.",
+      "explanation_vi": "Amis là số nhiều nên dùng des: des amis.",
+      "explanation_en": "Amis is plural, so we use des: des amis.",
+      "options": [
+        {
+          "text": "un",
+          "is_correct": false
+        },
+        {
+          "text": "une",
+          "is_correct": false
+        },
+        {
+          "text": "des",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "sort_order": 40,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Je n'ai pas ___ voiture.",
+      "prompt_en": "Fill in the blank: Je n'ai pas ___ voiture.",
+      "explanation_vi": "Sau ne … pas, une đổi thành de: Je n'ai pas de voiture.",
+      "explanation_en": "After ne … pas, une becomes de: Je n'ai pas de voiture.",
+      "accepted_answers": [
+        "de"
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Il y a + un livre (lần đầu nhắc đến) + sur la table.",
+      "explanation_en": "Il y a + un livre (first mention) + sur la table.",
+      "pieces": [
+        "Il",
+        "y",
+        "a",
+        "un",
+        "livre",
+        "sur",
+        "la",
+        "table"
+      ]
+    }
+  ]
+}
