@@ -1,15 +1,15 @@
 // Behavior carried over from the raw UI prototype (review-later.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by ReviewLaterPage.jsx.
-export default function init() {
+export default function init({ getLanguage, onLanguageChange } = {}) {
   // UI preview only. No fetching, persistence or routing is added here.
   // Production: ReviewLaterPage gets items from GET /api/v1/me/review-later and removes an
   // item with PATCH /api/v1/me/learning-units/{slug}/state { "review_later": false }.
   (() => {
-      const isEnglish = document.documentElement.lang.startsWith("en");
+      let isEnglish = getLanguage() === "en";
       const preview = new URLSearchParams(window.location.search).get("preview");
 
       // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const COPY = isEnglish
+      const buildCopy = (isEnglish) => isEnglish
           ? {
               total: (n) => `${n} saved lesson${n === 1 ? "" : "s"}`,
               groupCount: (n) => `${n} lesson${n === 1 ? "" : "s"}`,
@@ -34,6 +34,7 @@ export default function init() {
               menuClosed: "Menu điều hướng",
               modules: { grammar: "Ngữ pháp", vocabulary: "Từ vựng", conjugation: "Chia động từ" },
           };
+      let COPY = buildCopy(isEnglish);
 
       // Presentation config. The frontend maps unit_type to a module group and a route.
       // Group order follows the Review Later wireframe (FD §7.14).
@@ -88,7 +89,10 @@ export default function init() {
       const itemTemplate = document.getElementById("item-template");
 
       /* ---------- Rendering: page state first, then groups derived from items[] ---------- */
+      let currentState = "content";
+
       function showState(state) {
+          currentState = state;
           pageStates.forEach((element) => {
               element.hidden = element.dataset.pageState !== state;
           });
@@ -224,6 +228,16 @@ export default function init() {
       });
       window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
           if (event.matches) setMenu(false);
+      });
+      /* ---------- Language change: re-render this page's copy in place ---------- */
+      onLanguageChange((language) => {
+          isEnglish = language === "en";
+          COPY = buildCopy(isEnglish);
+          // Rebuild titles for the new language; keep the rows the learner already removed.
+          const remaining = new Set(items.map((item) => item.slug));
+          items = samplePreview().filter((item) => remaining.has(item.slug));
+          if (currentState === "content" || currentState === "empty") render();
+          setMenu(!mobileNav.hidden);
       });
   })();
 

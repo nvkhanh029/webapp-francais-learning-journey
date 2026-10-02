@@ -1,15 +1,15 @@
 // Behavior carried over from the raw UI prototype (vocabulary-topic-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by VocabularyTopicPage.jsx.
-export default function init() {
+export default function init({ getLanguage, onLanguageChange } = {}) {
   // UI preview only. No fetching, authentication, or routing is added here.
   // Production components receive this data from GET /api/v1/vocabulary/topics/{topic_slug}
   // (API Contract §10.2).
   (() => {
-      const isEnglish = document.documentElement.lang.startsWith("en");
+      let isEnglish = getLanguage() === "en";
       const preview = new URLSearchParams(window.location.search).get("preview");
 
       // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const COPY = isEnglish
+      const buildCopy = (isEnglish) => isEnglish
           ? {
               summary: (s, u) => [`${s} mục`, `${u} bài`],
               menuOpen: "Close navigation menu",
@@ -31,6 +31,7 @@ export default function init() {
               saved: (n) => `${n} bài`,
               progressOf: (title) => `Tiến độ ${title}`,
           };
+      let COPY = buildCopy(isEnglish);
 
       // Sample response in the shape of GET /api/v1/vocabulary/topics/{topic_slug}. Reuses
       // VocabularyPage's own sample Category/Topic (categories[0].topics[0], slug
@@ -250,7 +251,10 @@ export default function init() {
           topicCrumb.hidden = state !== "content";
       }
 
+      let currentTopic = null;
+
       function render(topic) {
+          currentTopic = topic;
           document.title = `Français Learning Journey | ${topic.title_fr || topic.title}`;
 
           setTitles(slot(contextCrumb, "title"), slot(contextCrumb, "support"), topic.context.category, " · ");
@@ -350,6 +354,13 @@ export default function init() {
       });
       window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
           if (event.matches) setMenu(false);
+      });
+      /* ---------- Language change: re-render this page's copy in place ---------- */
+      onLanguageChange((language) => {
+          isEnglish = language === "en";
+          COPY = buildCopy(isEnglish);
+          if (currentTopic) render(currentTopic);
+          setMenu(!mobileNav.hidden);
       });
   })();
 

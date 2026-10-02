@@ -1,14 +1,14 @@
 // Behavior carried over from the raw UI prototype (conjugation-lesson-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by ConjugationLessonPage.jsx.
-export default function init() {
+export default function init({ getLanguage, onLanguageChange } = {}) {
   // UI preview only. No fetching, authentication, persistence, or routing is added here.
   // Production components receive this data from GET /api/v1/conjugation/lessons/{slug}.
   (() => {
-      const isEnglish = document.documentElement.lang.startsWith("en");
+      let isEnglish = getLanguage() === "en";
       const preview = new URLSearchParams(window.location.search).get("preview");
 
       // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const COPY = isEnglish
+      const buildCopy = (isEnglish) => isEnglish
           ? {
               pageTitle: (title) => `Français Learning Journey | ${title}`,
               marked: "Marked as learned.",
@@ -27,6 +27,7 @@ export default function init() {
               menuOpen: "Đóng menu điều hướng",
               menuClosed: "Menu điều hướng",
           };
+      let COPY = buildCopy(isEnglish);
 
       // Sample responses in the shape of GET /api/v1/conjugation/lessons/{slug}. `content` is
       // one localized Markdown string (truncated here); its rendered HTML is in the templates
@@ -157,10 +158,10 @@ export default function init() {
       // Prototype only: production sends PATCH /api/v1/me/learning-units/{slug}/state with the
       // changed field and renders the `state` from the response.
       const ACTIONS = {
-          "mark-learned": { change: { learned: true }, announce: COPY.marked, focus: "unmark-learned" },
-          "unmark-learned": { change: { learned: false }, announce: COPY.unmarked, focus: "mark-learned" },
-          "save-review": { change: { review_later: true }, announce: COPY.saved, focus: "remove-review" },
-          "remove-review": { change: { review_later: false }, announce: COPY.removed, focus: "save-review" },
+          "mark-learned": { change: { learned: true }, get announce() { return COPY.marked; }, focus: "unmark-learned" },
+          "unmark-learned": { change: { learned: false }, get announce() { return COPY.unmarked; }, focus: "mark-learned" },
+          "save-review": { change: { review_later: true }, get announce() { return COPY.saved; }, focus: "remove-review" },
+          "remove-review": { change: { review_later: false }, get announce() { return COPY.removed; }, focus: "save-review" },
       };
 
       actions.addEventListener("click", (event) => {
@@ -174,9 +175,10 @@ export default function init() {
       /* ---------- Previous / Next lesson navigation ---------- */
       // Fills one side. With no neighbor the slot is kept and rendered unavailable: no href
       // (so it is neither focusable nor navigable), aria-disabled, and neutral copy.
-      const UNAVAILABLE_COPY = isEnglish
+      const unavailableCopyFor = (isEnglish) => (isEnglish
           ? { previous: "No previous lesson", next: "No next lesson" }
-          : { previous: "Không có bài trước", next: "Không có bài tiếp theo" };
+          : { previous: "Không có bài trước", next: "Không có bài tiếp theo" });
+      let UNAVAILABLE_COPY = unavailableCopyFor(isEnglish);
 
       function fillNavLink(link, neighbor, side) {
           const title = slot(link, "title");
@@ -312,6 +314,20 @@ export default function init() {
       });
       window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
           if (event.matches) setMenu(false);
+      });
+      /* ---------- Language change: re-render this page's copy in place ---------- */
+      onLanguageChange((language) => {
+          isEnglish = language === "en";
+          COPY = buildCopy(isEnglish);
+          UNAVAILABLE_COPY = unavailableCopyFor(isEnglish);
+          if (!article.hidden) {
+              // Re-render the page copy but keep the learner state toggled on this page.
+              const learnerState = { ...state };
+              showSample();
+              state = learnerState;
+              renderState();
+          }
+          setMenu(!mobileNav.hidden);
       });
   })();
 

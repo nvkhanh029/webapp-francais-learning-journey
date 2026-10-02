@@ -1,6 +1,6 @@
 // Behavior carried over from the raw UI prototype (practice-mix.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by MixedPracticePage.jsx.
-export default function init() {
+export default function init({ getLanguage, onLanguageChange } = {}) {
   // PROTOTYPE ONLY. UI preview: no fetching, scoring, random selection, eligibility logic,
   // authentication, routing or persistence is added here.
   // Production: useMixedPractice() calls POST /api/v1/mixed-practice/start, then owns
@@ -451,9 +451,15 @@ export default function init() {
       const menuButton = $(".menu-button");
       const mobileNav = $("#mobile-nav");
       const menuIcon = $(".material-symbols-outlined", menuButton);
+      // Only the menu label has English copy in this script; the rest of the page copy is Vietnamese.
+      const MENU_LABEL = {
+          vi: { open: "Đóng menu điều hướng", closed: "Menu điều hướng" },
+          en: { open: "Close navigation menu", closed: "Navigation menu" },
+      };
+
       function setMenu(open) {
           menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", open ? "Đóng menu điều hướng" : "Menu điều hướng");
+          menuButton.setAttribute("aria-label", MENU_LABEL[getLanguage()][open ? "open" : "closed"]);
           menuIcon.textContent = open ? "close" : "menu";
           mobileNav.hidden = !open;
       }
@@ -486,6 +492,7 @@ export default function init() {
       };
       setPhase(INITIAL_PHASE[preview] || "prestart", { focus: false });
       if (preview === "submit-error") $("[data-submit-error]").hidden = false;
+      onLanguageChange(() => setMenu(!mobileNav.hidden));
   })();
 
 }

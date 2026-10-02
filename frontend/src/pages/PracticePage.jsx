@@ -59,7 +59,7 @@ import usePageScript from "../hooks/usePageScript.js";
 import init from "./PracticePage.script.js";
 
 export default function PracticePage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Luyện tập", lang: "vi" });
+  const rootRef = usePageScript(init, { title: "Français Learning Journey | Luyện tập" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -93,11 +93,11 @@ export default function PracticePage() {
           </nav>
           <div className="header-actions">
             <div className="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
-              <button className="language-button" type="button" aria-pressed="true" title="Tiếng Việt">
+              <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
                 VI
               </button>
               {" "}
-              <button className="language-button" type="button" aria-pressed="false" title="English">
+              <button className="language-button" type="button" aria-pressed="false" data-lang="en" title="English">
                 EN
               </button>
             </div>

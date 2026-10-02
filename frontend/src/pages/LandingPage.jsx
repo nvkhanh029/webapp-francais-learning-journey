@@ -39,7 +39,7 @@ import styles from "./LandingPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
 
 export default function LandingPage() {
-  const rootRef = usePageScript(null, { title: "Français Learning Journey | Học tiếng Pháp", lang: "vi" });
+  const rootRef = usePageScript(null, { title: "Français Learning Journey | Học tiếng Pháp" });
 
   return (
     <div className={styles.page} ref={rootRef}>

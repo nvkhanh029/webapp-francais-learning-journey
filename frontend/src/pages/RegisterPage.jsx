@@ -52,7 +52,7 @@ import usePageScript from "../hooks/usePageScript.js";
 import init from "./RegisterPage.script.js";
 
 export default function RegisterPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Đăng ký", lang: "vi" });
+  const rootRef = usePageScript(init, { title: "Français Learning Journey | Đăng ký" });
 
   return (
     <div className={styles.page} ref={rootRef}>

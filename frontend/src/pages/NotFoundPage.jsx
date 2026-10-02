@@ -49,7 +49,7 @@ import usePageScript from "../hooks/usePageScript.js";
 import init from "./NotFoundPage.script.js";
 
 export default function NotFoundPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Không tìm thấy trang", lang: "vi" });
+  const rootRef = usePageScript(init, { title: "Français Learning Journey | Không tìm thấy trang" });
 
   return (
     <div className={styles.page} ref={rootRef}>

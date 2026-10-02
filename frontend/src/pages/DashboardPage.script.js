@@ -1,16 +1,18 @@
 // Behavior carried over from the raw UI prototype (dashboard-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by DashboardPage.jsx.
-export default function init() {
+export default function init({ getLanguage, onLanguageChange } = {}) {
   // UI preview only. No fetching, authentication, or application structure is added here.
   // Production components receive this data from the API (API Contract §8.1, §8.2).
   (() => {
-      const locale = document.documentElement.lang.startsWith("en") ? "en-US" : "vi-VN";
-      const isEnglish = locale === "en-US";
+      let locale = getLanguage() === "en" ? "en-US" : "vi-VN";
+      let isEnglish = locale === "en-US";
       const preview = new URLSearchParams(window.location.search).get("preview");
 
       // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const COPY = isEnglish
+      const buildCopy = (isEnglish) => isEnglish
           ? {
+              lessonsCount: (learned, total) => `${learned}/${total} lesson${total === 1 ? "" : "s"}`,
+              streakAlt: { on: "Flame showing the learning streak", off: "Unlit flame, no learning streak yet" },
               currentMonth: "This is the current month",
               nextMonth: "Next month",
               today: "Today",
@@ -25,6 +27,8 @@ export default function init() {
               menuClosed: "Navigation menu",
           }
           : {
+              lessonsCount: (learned, total) => `${learned}/${total} bài`,
+              streakAlt: { on: "Ngọn lửa biểu thị chuỗi ngày học", off: "Ngọn lửa tắt, chưa có chuỗi ngày học" },
               currentMonth: "Đây là tháng hiện tại",
               nextMonth: "Tháng sau",
               today: "Hôm nay",
@@ -38,6 +42,7 @@ export default function init() {
               menuOpen: "Đóng menu điều hướng",
               menuClosed: "Menu điều hướng",
           };
+      let COPY = buildCopy(isEnglish);
 
       // Sample "today" so the May design stays intact.
       const SAMPLE_TODAY = { year: 2026, month: 5, day: 24 };
@@ -73,7 +78,7 @@ export default function init() {
           const track = card.querySelector(".progress-track");
           track.setAttribute("aria-valuenow", String(percent));
           track.style.setProperty("--progress", `${percent}%`);
-          card.querySelector(".skill-detail").textContent = `${learned}/${total} bài`;
+          card.querySelector(".skill-detail").textContent = COPY.lessonsCount(learned, total);
           card.querySelector("[data-total-text]").textContent = total;
       }
 
@@ -130,14 +135,14 @@ export default function init() {
       }
 
       // Lit flame while the current streak is active, unlit flame when streak.current is 0.
-      const STREAK_IMAGE = {
-          on: { src: "/images/streak-on.png", alt: "Ngọn lửa biểu thị chuỗi ngày học" },
-          off: { src: "/images/streak-off.png", alt: "Ngọn lửa tắt, chưa có chuỗi ngày học" },
-      };
-      const streakImage = STREAK_IMAGE[streakCurrent > 0 ? "on" : "off"];
-      const streakImageElement = document.querySelector("[data-streak-image]");
-      streakImageElement.setAttribute("src", streakImage.src);
-      streakImageElement.setAttribute("alt", streakImage.alt);
+      const STREAK_IMAGE_SRC = { on: "/images/streak-on.png", off: "/images/streak-off.png" };
+      function renderStreakImage() {
+          const state = streakCurrent > 0 ? "on" : "off";
+          const streakImageElement = document.querySelector("[data-streak-image]");
+          streakImageElement.setAttribute("src", STREAK_IMAGE_SRC[state]);
+          streakImageElement.setAttribute("alt", COPY.streakAlt[state]);
+      }
+      renderStreakImage();
 
       document.querySelector("[data-greeting]").textContent = getGreeting({ isFirstVisit, streakCurrent });
 
@@ -266,6 +271,18 @@ export default function init() {
       card.querySelector('[data-action="retry-calendar"]').addEventListener("click", () => setCalendarError(false));
       renderMonth();
       if (preview === "calendar-error") setCalendarError(true);
+      /* ---------- Language change: re-render this page's copy in place ---------- */
+      onLanguageChange((language) => {
+          isEnglish = language === "en";
+          locale = isEnglish ? "en-US" : "vi-VN";
+          COPY = buildCopy(isEnglish);
+          renderStreakImage();
+          document.querySelectorAll("[data-module-progress]").forEach((moduleCard) => {
+              renderModuleProgress(moduleCard, Number(moduleCard.dataset.learned), Number(moduleCard.dataset.total));
+          });
+          renderMonth();
+          setMenu(!mobileNav.hidden);
+      });
   })();
 
 

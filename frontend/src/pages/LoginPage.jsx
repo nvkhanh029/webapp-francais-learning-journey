@@ -45,7 +45,7 @@ import usePageScript from "../hooks/usePageScript.js";
 import init from "./LoginPage.script.js";
 
 export default function LoginPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Đăng nhập", lang: "vi" });
+  const rootRef = usePageScript(init, { title: "Français Learning Journey | Đăng nhập" });
 
   return (
     <div className={styles.page} ref={rootRef}>
