@@ -3,7 +3,9 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 
 import useAuth from "../../hooks/useAuth.js";
 import { t, useLanguage } from "../../i18n/index.js";
+import { ApiError } from "../../api/apiClient.js";
 import { loginErrorMessage, normalizeEmail, postAuthPath } from "./authHelpers.js";
+import useRateLimit from "./useRateLimit.js";
 import { FieldError, FormAlert, PasswordField, SubmitButton } from "./AuthFormParts.jsx";
 
 // Login form (FD §5.4.1). Fields map to POST /api/v1/auth/login { email, password } (API §6.2), sent through
@@ -39,6 +41,7 @@ export default function LoginForm() {
   const [flagged, setFlagged] = useState(initial.flagged);
   const [formError, setFormError] = useState(initial.formError);
   const [submitting, setSubmitting] = useState(initial.submitting);
+  const rateLimit = useRateLimit();
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
@@ -49,7 +52,7 @@ export default function LoginForm() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if (submitting) return;
+    if (submitting || rateLimit.blocked) return;
     setFormError(null);
     const missing = { email: email.trim() === "", password: password === "" };
     setFlagged((current) => ({
@@ -65,15 +68,19 @@ export default function LoginForm() {
       navigate(postAuthPath(user), { replace: true });
     } catch (error) {
       // The entered email and password stay in the form (also after a 429).
-      setFormError(loginErrorMessage(error));
+      if (error instanceof ApiError && error.isRateLimited) rateLimit.start(error.retryAfterSeconds);
+      else setFormError(loginErrorMessage(error));
       setSubmitting(false);
     }
   }
 
+  // A 429 countdown replaces any earlier form error while it runs.
+  const shownError = rateLimit.message || formError;
+
   return (
     <form className="login-form" id="login-form" noValidate onSubmit={handleSubmit}>
       {/* Form-level error: generic invalid_credentials or network/server failure. */}
-      <FormAlert message={formError && t(formError.key, formError.params)} />
+      <FormAlert message={shownError && t(shownError.key, shownError.params)} />
       <div className="form-field">
         <label className="form-label" htmlFor="login-email">
           Email
@@ -117,6 +124,7 @@ export default function LoginForm() {
         id="login-submit"
         className="login-submit"
         submitting={submitting}
+        disabled={rateLimit.blocked}
         label={t("auth.loginSubmit")}
         submittingLabel={t("auth.loginSubmitting")}
       />

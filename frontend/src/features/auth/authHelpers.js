@@ -15,18 +15,11 @@ export function postAuthPath(user) {
 
 // Login failure -> { key, params } for t() (API §6.2).
 //   401 invalid_credentials -> generic message (never says whether the email exists)
-//   429 rate_limited        -> "too many attempts", with the wait when Retry-After was sent
+//   429 rate_limited        -> handled by useRateLimit (countdown), not here
 //   anything else (network, 5xx, unexpected) -> the server-error message
 export function loginErrorMessage(error) {
   if (error instanceof ApiError) {
     if (error.status === 401 && error.code === "invalid_credentials") return { key: "auth.invalidCredentials" };
-    if (error.isRateLimited) {
-      const seconds = error.retryAfterSeconds;
-      if (!seconds) return { key: "auth.loginRateLimited" };
-      return seconds >= 60
-        ? { key: "auth.loginRateLimitedMinutes", params: { n: Math.ceil(seconds / 60) } }
-        : { key: "auth.loginRateLimitedSeconds", params: { n: Math.ceil(seconds) } };
-    }
   }
   return { key: "auth.loginServerError" };
 }

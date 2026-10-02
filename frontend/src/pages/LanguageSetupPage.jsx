@@ -19,6 +19,8 @@ import { useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { SubmitButton } from "../features/auth/AuthFormParts.jsx";
+import { ApiError } from "../api/apiClient.js";
+import { rateLimitMessage } from "../features/auth/useRateLimit.js";
 import useAuth from "../hooks/useAuth.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { t, useLanguage } from "../i18n/index.js";
@@ -48,6 +50,8 @@ export default function LanguageSetupPage() {
   // error: null, "validation" (nothing selected) or "server" (the save failed).
   const [error, setError] = useState(initial.error);
   const [submitting, setSubmitting] = useState(initial.submitting);
+  // Set when the save was answered with 429: its message replaces the generic save-error text.
+  const [rateLimit, setRateLimit] = useState(null);
   const optionRefs = useRef([]);
 
   function select(index, { moveFocus = false } = {}) {
@@ -78,13 +82,15 @@ export default function LanguageSetupPage() {
       return;
     }
     setError(null);
+    setRateLimit(null);
     setSubmitting(true);
     try {
       await updateSupportLanguage(selected);
       navigate("/dashboard", { replace: true });
-    } catch {
+    } catch (error) {
       // Any failure keeps the learner here with their choice intact. A 401 also clears the session, and the route
       // guard then sends the learner to Login.
+      if (error instanceof ApiError && error.isRateLimited) setRateLimit(rateLimitMessage(error.retryAfterSeconds));
       setError("server");
       setSubmitting(false);
     }
@@ -120,7 +126,11 @@ export default function LanguageSetupPage() {
               </span>
               <div>
                 <span className="form-alert-title">{error && t(`setup.${error}Title`)}</span>{" "}
-                <span>{error && t(`setup.${error}Text`)}</span>
+                <span>
+                  {error === "server" && rateLimit
+                    ? t(rateLimit.key, rateLimit.params)
+                    : error && t(`setup.${error}Text`)}
+                </span>
                 <div className="form-alert-actions" hidden={error !== "server"}>
                   <button className="button-retry" type="button" onClick={handleSubmit}>
                     {t("common.retry")}

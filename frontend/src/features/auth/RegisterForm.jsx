@@ -4,6 +4,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { ApiError } from "../../api/apiClient.js";
 import useAuth from "../../hooks/useAuth.js";
 import { t, useLanguage } from "../../i18n/index.js";
+import useRateLimit from "./useRateLimit.js";
 import { fieldErrorsFromApi, normalizeEmail, postAuthPath } from "./authHelpers.js";
 import { FieldError, FormAlert, PasswordField, SubmitButton } from "./AuthFormParts.jsx";
 
@@ -40,7 +41,7 @@ function initialState(preview) {
     password: prefilled ? "example-password" : "",
     errors: { email: "", password: "" },
     touched: { email: false, password: false },
-    formError: preview === "server-error" ? "auth.registerServerError" : null,
+    formError: preview === "server-error" ? { key: "auth.registerServerError" } : null,
     submitting: preview === "submitting",
   };
   if (preview === "invalid") {
@@ -73,6 +74,7 @@ export default function RegisterForm() {
   const [touched, setTouched] = useState(initial.touched);
   const [formError, setFormError] = useState(initial.formError);
   const [submitting, setSubmitting] = useState(initial.submitting);
+  const rateLimit = useRateLimit();
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
@@ -94,7 +96,7 @@ export default function RegisterForm() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if (submitting) return;
+    if (submitting || rateLimit.blocked) return;
     setFormError(null);
     // Validate every field so all messages show together.
     const next = { email: checkEmail(values.email), password: checkPassword(values.password) };
@@ -109,14 +111,16 @@ export default function RegisterForm() {
       navigate(postAuthPath(user), { replace: true });
     } catch (error) {
       setSubmitting(false);
-      if (error instanceof ApiError && error.code === "email_already_registered") {
+      if (error instanceof ApiError && error.isRateLimited) {
+        rateLimit.start(error.retryAfterSeconds);
+      } else if (error instanceof ApiError && error.code === "email_already_registered") {
         showFieldErrors({ email: "auth.emailTaken" });
       } else if (error instanceof ApiError && error.status === 422 && error.code === "validation_error") {
         const fieldErrors = fieldErrorsFromApi(error);
         if (Object.keys(fieldErrors).length > 0) showFieldErrors(fieldErrors);
-        else setFormError("auth.invalidRequest");
+        else setFormError({ key: "auth.invalidRequest" });
       } else {
-        setFormError("auth.registerServerError");
+        setFormError({ key: "auth.registerServerError" });
       }
     }
   }
@@ -125,10 +129,13 @@ export default function RegisterForm() {
   const emailError = messageOf(errors.email);
   const passwordError = messageOf(errors.password);
 
+  // A 429 countdown replaces any earlier form error while it runs.
+  const shownError = rateLimit.message || formError;
+
   return (
     <form className="auth-form" id="register-form" noValidate onSubmit={handleSubmit}>
       {/* Form-level error: network/server failure or an unexpected 422. */}
-      <FormAlert message={formError && t(formError)} />
+      <FormAlert message={shownError && t(shownError.key, shownError.params)} />
       <div className="form-field">
         <label className="form-label" htmlFor="register-email">
           Email
@@ -181,6 +188,7 @@ export default function RegisterForm() {
         id="register-submit"
         className="auth-submit"
         submitting={submitting}
+        disabled={rateLimit.blocked}
         label={t("auth.registerSubmit")}
         submittingLabel={t("auth.registerSubmitting")}
       />

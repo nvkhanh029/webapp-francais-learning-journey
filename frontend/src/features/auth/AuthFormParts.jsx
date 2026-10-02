@@ -87,6 +87,7 @@ export function SubmitButton({
   icon = "arrow_forward",
   onClick,
   type = "submit",
+  disabled = false,
 }) {
   return (
     <button
@@ -94,7 +95,7 @@ export function SubmitButton({
       id={id}
       type={type}
       aria-busy={submitting}
-      disabled={submitting}
+      disabled={submitting || disabled}
       onClick={onClick}
     >
       <span>{submitting ? submittingLabel : label}</span>{" "}
