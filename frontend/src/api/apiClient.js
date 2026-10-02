@@ -67,8 +67,30 @@ async function readJson(response) {
   }
 }
 
+const UNSAFE_METHODS = new Set(["POST", "PATCH", "PUT", "DELETE"]);
+
+// ---- CSRF PLACEHOLDER (intentionally a no-op) --------------------------------------------------------------------
+// Single place where a CSRF header/token would be attached to state-changing requests (POST, PATCH, PUT, DELETE).
+//
+// TODO(csrf): nothing is attached today. API §4.7 and FD §6.7 (as of the docs sync on main) say the backend uses a
+// same-origin check (Origin / Sec-Fetch-Site) and "requires nothing extra from the frontend", so with that mechanism
+// this function stays empty and may be deleted. If a token mechanism is chosen instead, the following must be
+// decided and filled in here, and the docs updated first (AGENTS §2):
+//   1. where the token comes from (cookie, <meta>, or a GET endpoint) and where it is cached on the client;
+//   2. the header name (and any value format) the backend expects;
+//   3. the code that sets it: `headers[HEADER_NAME] = token;` for every unsafe method;
+//   4. what happens when the token is missing or stale (fetch it first, refresh and retry once on 403 csrf_failed);
+//   5. the contract/design changes: API §4.7 and §4.4, FD §6.2 and §6.7, plus the backend implementation and tests.
+// The token must never be stored in localStorage/sessionStorage (FD §6.7).
+function applyCsrfProtection(method, headers) {
+  if (!UNSAFE_METHODS.has(method)) return;
+  // TODO(csrf): attach the token/header here once the mechanism needs one. No-op for now.
+  void headers;
+}
+
 export async function request(method, path, { query, body } = {}) {
   const init = { method, credentials: "same-origin", headers: { Accept: "application/json" } };
+  applyCsrfProtection(method, init.headers);
   if (body !== undefined) {
     init.headers["Content-Type"] = "application/json";
     init.body = JSON.stringify(body);
