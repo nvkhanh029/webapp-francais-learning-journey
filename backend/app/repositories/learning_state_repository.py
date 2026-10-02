@@ -121,14 +121,36 @@ def get_continue_learning(user_id):
 
 
 def list_review_later(user_id):
-    """All units currently marked Review Later, ordered deterministically."""
+    """All units currently marked Review Later, in curriculum order (API 13.3).
+
+    Order: module (grammar, vocabulary, conjugation), then the parent
+    `sort_order` chain of that module, then the unit's own `sort_order` - the
+    same order as the corresponding browse endpoint. Nothing here depends on
+    learner state or timestamps, so opening, learning or re-saving a unit never
+    reorders the list. Within one module only that module's join columns are
+    non-NULL, so one ORDER BY covers all three; slug is a final tie-breaker.
+    """
     return get_db().execute(
         "SELECT lu.slug AS slug, lu.unit_type AS unit_type, "
         "lu.title_fr AS title_fr, lu.title_vi AS title_vi, lu.title_en AS title_en, "
         "uls.learned_at AS learned_at "
         "FROM user_learning_state uls "
         "JOIN learning_units lu ON lu.id = uls.learning_unit_id "
+        "LEFT JOIN grammar_lessons gl ON gl.learning_unit_id = lu.id "
+        "LEFT JOIN grammar_chapters gc ON gc.id = gl.chapter_id "
+        "LEFT JOIN grammar_parts gp ON gp.id = gc.part_id "
+        "LEFT JOIN vocabulary_study_units vu ON vu.learning_unit_id = lu.id "
+        "LEFT JOIN vocabulary_subtopics vs ON vs.id = vu.subtopic_id "
+        "LEFT JOIN vocabulary_topics vt ON vt.id = vs.topic_id "
+        "LEFT JOIN vocabulary_categories vc ON vc.id = vt.category_id "
+        "LEFT JOIN conjugation_lessons cl ON cl.learning_unit_id = lu.id "
+        "LEFT JOIN conjugation_tenses ct ON ct.id = cl.tense_id "
         "WHERE uls.user_id = ? AND uls.review_later = 1 "
-        "ORDER BY lu.unit_type, lu.slug",
+        "ORDER BY CASE lu.unit_type "
+        "WHEN 'grammar' THEN 1 WHEN 'vocabulary' THEN 2 ELSE 3 END, "
+        "gp.sort_order, gc.sort_order, gl.sort_order, "
+        "vc.sort_order, vt.sort_order, vs.sort_order, vu.sort_order, "
+        "ct.sort_order, cl.sort_order, "
+        "lu.slug",
         (user_id,),
     ).fetchall()
