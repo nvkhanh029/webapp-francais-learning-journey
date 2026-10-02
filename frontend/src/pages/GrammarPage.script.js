@@ -1,14 +1,14 @@
 // Behavior carried over from the raw UI prototype (grammar-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by GrammarPage.jsx.
-export default function init() {
+export default function init({ getLanguage, onLanguageChange } = {}) {
   // UI preview only. No fetching, authentication, or routing is added here.
   // Production components receive this data from GET /api/v1/grammar (API Contract §9.1).
   (() => {
-      const isEnglish = document.documentElement.lang.startsWith("en");
+      let isEnglish = getLanguage() === "en";
       const preview = new URLSearchParams(window.location.search).get("preview");
 
       // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const COPY = isEnglish
+      const buildCopy = (isEnglish) => isEnglish
           ? {
               lessons: (learned, total) => `${learned}/${total} lesson${total === 1 ? "" : "s"}`,
               saved: (n) => `${n} lesson${n === 1 ? "" : "s"}`,
@@ -37,6 +37,7 @@ export default function init() {
               menuClosed: "Menu điều hướng",
               returnedTo: (title) => `Đã quay lại bài: ${title}`,
           };
+      let COPY = buildCopy(isEnglish);
 
       // Sample response in the shape of GET /api/v1/grammar. Titles are sample curriculum
       // data; the layout must not depend on these particular titles or counts.
@@ -214,7 +215,10 @@ export default function init() {
           overview.hidden = state !== "content";
       }
 
-      function render(data) {
+      let currentData = null;
+
+      function render(data, { restore = true } = {}) {
+          currentData = data;
           const parts = data.parts || [];
           if (parts.length === 0) {
               showPageState("empty");
@@ -242,7 +246,7 @@ export default function init() {
           showPageState("content");
           // Grammar data is now in the DOM: if we arrived here from a lesson's "Quay lại
           // Ngữ pháp" link, restore that lesson's place on the page (see function below).
-          restoreLessonContext();
+          if (restore) restoreLessonContext();
       }
 
       /* ---------- Expand / collapse all chapters (frontend-only UI state) ---------- */
@@ -361,6 +365,20 @@ export default function init() {
       });
       window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
           if (event.matches) setMenu(false);
+      });
+      /* ---------- Language change: re-render this page's copy in place ---------- */
+      onLanguageChange((language) => {
+          isEnglish = language === "en";
+          COPY = buildCopy(isEnglish);
+          const openChapters = Array.from(chapters()).map((chapter) => chapter.open);
+          if (currentData) {
+              render(currentData, { restore: false });
+              chapters().forEach((chapter, index) => {
+                  if (index < openChapters.length) chapter.open = openChapters[index];
+              });
+          }
+          updateToggleAll();
+          setMenu(!mobileNav.hidden);
       });
   })();
 

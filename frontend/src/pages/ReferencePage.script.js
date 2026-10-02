@@ -1,14 +1,14 @@
 // Behavior carried over from the raw UI prototype (reference.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by ReferencePage.jsx.
-export default function init() {
+export default function init({ getLanguage, onLanguageChange } = {}) {
   // UI preview only. No fetching, authentication, or routing is added here.
   // Production components receive this data from GET /api/v1/references/{slug} (API Contract §12.1).
   (() => {
-      const isEnglish = document.documentElement.lang.startsWith("en");
+      let isEnglish = getLanguage() === "en";
       const preview = new URLSearchParams(window.location.search).get("preview");
 
       // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const COPY = isEnglish
+      const buildCopy = (isEnglish) => isEnglish
           ? {
               pageTitle: (title) => `Français Learning Journey | ${title}`,
               menuOpen: "Close navigation menu",
@@ -19,6 +19,7 @@ export default function init() {
               menuOpen: "Đóng menu điều hướng",
               menuClosed: "Menu điều hướng",
           };
+      let COPY = buildCopy(isEnglish);
 
       // Sample responses in the shape of GET /api/v1/references/{slug}: exactly four fields.
       // `content` is one localized Markdown string (truncated here); its rendered HTML is in
@@ -125,6 +126,13 @@ export default function init() {
       });
       window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
           if (event.matches) setMenu(false);
+      });
+      /* ---------- Language change: re-render this page's copy in place ---------- */
+      onLanguageChange((language) => {
+          isEnglish = language === "en";
+          COPY = buildCopy(isEnglish);
+          if (!article.hidden) showSample();
+          setMenu(!mobileNav.hidden);
       });
   })();
 

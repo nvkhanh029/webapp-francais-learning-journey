@@ -1,14 +1,14 @@
 // Behavior carried over from the raw UI prototype (vocabulary-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by VocabularyPage.jsx.
-export default function init() {
+export default function init({ getLanguage, onLanguageChange } = {}) {
   // UI preview only. No fetching, authentication, or routing is added here.
   // Production components receive this data from GET /api/v1/vocabulary (API Contract §10.1).
   (() => {
-      const isEnglish = document.documentElement.lang.startsWith("en");
+      let isEnglish = getLanguage() === "en";
       const preview = new URLSearchParams(window.location.search).get("preview");
 
       // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const COPY = isEnglish
+      const buildCopy = (isEnglish) => isEnglish
           ? {
               topics: (n) => `${n} topic${n === 1 ? "" : "s"}`,
               units: (learned, total) => `${learned}/${total} unit${total === 1 ? "" : "s"}`,
@@ -25,6 +25,7 @@ export default function init() {
               menuOpen: "Đóng menu điều hướng",
               menuClosed: "Menu điều hướng",
           };
+      let COPY = buildCopy(isEnglish);
 
       // Static learner-summary sample for the page-level progress card. Production should
       // source learned/total from GET /api/v1/me/dashboard (progress.vocabulary) and the
@@ -145,7 +146,10 @@ export default function init() {
           overview.hidden = state !== "content";
       }
 
+      let currentView = null;
+
       function render(data, progress = SAMPLE_VOCABULARY_PROGRESS) {
+          currentView = { data, progress };
           const categories = data.categories || [];
           if (categories.length === 0) {
               showPageState("empty");
@@ -219,6 +223,13 @@ export default function init() {
       });
       window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
           if (event.matches) setMenu(false);
+      });
+      /* ---------- Language change: re-render this page's copy in place ---------- */
+      onLanguageChange((language) => {
+          isEnglish = language === "en";
+          COPY = buildCopy(isEnglish);
+          if (currentView) render(currentView.data, currentView.progress);
+          setMenu(!mobileNav.hidden);
       });
   })();
 

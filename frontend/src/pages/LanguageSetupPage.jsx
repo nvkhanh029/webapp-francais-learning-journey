@@ -55,7 +55,7 @@ import usePageScript from "../hooks/usePageScript.js";
 import init from "./LanguageSetupPage.script.js";
 
 export default function LanguageSetupPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Thiết lập ngôn ngữ hỗ trợ", lang: "vi" });
+  const rootRef = usePageScript(init, { title: "Français Learning Journey | Thiết lập ngôn ngữ hỗ trợ" });
 
   return (
     <div className={styles.page} ref={rootRef}>

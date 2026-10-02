@@ -1,6 +1,6 @@
 // Behavior carried over from the raw UI prototype (practice-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by PracticePage.jsx.
-export default function init() {
+export default function init({ getLanguage, onLanguageChange } = {}) {
   // UI preview only. No fetching, scoring, authentication or routing is added here.
   // Production: usePractice() owns questions / answers / phase / result (FD §5.6, §5.8).
   (() => {
@@ -388,9 +388,15 @@ export default function init() {
       const menuButton = $(".menu-button");
       const mobileNav = $("#mobile-nav");
       const menuIcon = $(".material-symbols-outlined", menuButton);
+      // Only the menu label has English copy in this script; the rest of the page copy is Vietnamese.
+      const MENU_LABEL = {
+          vi: { open: "Đóng menu điều hướng", closed: "Menu điều hướng" },
+          en: { open: "Close navigation menu", closed: "Navigation menu" },
+      };
+
       function setMenu(open) {
           menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", open ? "Đóng menu điều hướng" : "Menu điều hướng");
+          menuButton.setAttribute("aria-label", MENU_LABEL[getLanguage()][open ? "open" : "closed"]);
           menuIcon.textContent = open ? "close" : "menu";
           mobileNav.hidden = !open;
       }
@@ -413,6 +419,7 @@ export default function init() {
       if (preview === "submit-error") $("[data-submit-error]").hidden = false;
       if (preview === "loading") showPageState("loading");
       if (preview === "error") showPageState("error");
+      onLanguageChange(() => setMenu(!mobileNav.hidden));
   })();
 
 }

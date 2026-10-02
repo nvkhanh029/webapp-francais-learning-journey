@@ -79,7 +79,7 @@ import usePageScript from "../hooks/usePageScript.js";
 import init from "./VocabularyTopicPage.script.js";
 
 export default function VocabularyTopicPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Từ vựng", lang: "vi" });
+  const rootRef = usePageScript(init, { title: "Français Learning Journey | Từ vựng" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -112,11 +112,11 @@ export default function VocabularyTopicPage() {
           </nav>
           <div className="header-actions">
             <div className="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
-              <button className="language-button" type="button" aria-pressed="true" title="Tiếng Việt">
+              <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
                 VI
               </button>
               {" "}
-              <button className="language-button" type="button" aria-pressed="false" title="English">
+              <button className="language-button" type="button" aria-pressed="false" data-lang="en" title="English">
                 EN
               </button>
             </div>
