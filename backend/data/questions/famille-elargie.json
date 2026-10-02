@@ -1,0 +1,108 @@
+{
+  "learning_unit_slug": "famille-elargie",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn từ tiếng Pháp đúng cho “ông bà”.",
+      "prompt_en": "Choose the correct French word for “grandparents”.",
+      "explanation_vi": "“Ông bà” là “les grands-parents”.",
+      "explanation_en": "“Grandparents” is “les grands-parents”.",
+      "options": [
+        {
+          "text": "les grands-parents",
+          "is_correct": true
+        },
+        {
+          "text": "les parents",
+          "is_correct": false
+        },
+        {
+          "text": "les cousins",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "mcq",
+      "prompt_vi": "“la tante” có nghĩa là gì?",
+      "prompt_en": "What does “la tante” mean?",
+      "explanation_vi": "“La tante” là chị em gái của bố mẹ hoặc vợ của chú, bác.",
+      "explanation_en": "“La tante” is a parent's sister or an uncle's wife.",
+      "options": [
+        {
+          "text": "mẹ chồng, mẹ vợ / mother-in-law",
+          "is_correct": false
+        },
+        {
+          "text": "cô, dì, thím / aunt",
+          "is_correct": true
+        },
+        {
+          "text": "cháu gái / niece",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "mcq",
+      "prompt_vi": "“le neveu” có nghĩa là gì?",
+      "prompt_en": "What does “le neveu” mean?",
+      "explanation_vi": "“Le neveu” là con trai của anh, chị, em mình.",
+      "explanation_en": "“Le neveu” is the son of one's brother or sister.",
+      "options": [
+        {
+          "text": "chú, bác, cậu / uncle",
+          "is_correct": false
+        },
+        {
+          "text": "anh chị em họ / cousin",
+          "is_correct": false
+        },
+        {
+          "text": "cháu trai / nephew",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "sort_order": 40,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Mon ___ travaille à Paris. (chú)",
+      "prompt_en": "Fill in the blank: Mon ___ travaille à Paris. (uncle)",
+      "explanation_vi": "“Chú, bác, cậu” là “l'oncle”.",
+      "explanation_en": "“Uncle” is “l'oncle”.",
+      "accepted_answers": [
+        "oncle"
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Ma ___ adore dessiner. (cháu gái)",
+      "prompt_en": "Fill in the blank: Ma ___ adore dessiner. (niece)",
+      "explanation_vi": "“Cháu gái” là “la nièce”.",
+      "explanation_en": "“Niece” is “la nièce”.",
+      "accepted_answers": [
+        "nièce"
+      ]
+    },
+    {
+      "sort_order": 60,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Dùng avoir để nói tuổi: a douze ans.",
+      "explanation_en": "Use avoir to say age: a douze ans.",
+      "pieces": [
+        "Mon",
+        "cousin",
+        "a",
+        "douze",
+        "ans"
+      ]
+    }
+  ]
+}

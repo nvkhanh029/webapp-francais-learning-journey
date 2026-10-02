@@ -1,0 +1,107 @@
+{
+  "learning_unit_slug": "saluer-prendre-conge",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "Bạn gặp một người lúc 8 giờ tối. Bạn chào thế nào?",
+      "prompt_en": "You meet someone at 8 p.m. How do you greet them?",
+      "explanation_vi": "Buổi tối, ta chào bằng “bonsoir”.",
+      "explanation_en": "In the evening, we greet with “bonsoir”.",
+      "options": [
+        {
+          "text": "Bonsoir",
+          "is_correct": true
+        },
+        {
+          "text": "Bonne journée",
+          "is_correct": false
+        },
+        {
+          "text": "À demain",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "mcq",
+      "prompt_vi": "“à demain” có nghĩa là gì?",
+      "prompt_en": "What does “à demain” mean?",
+      "explanation_vi": "“À demain” nghĩa là hẹn mai gặp lại.",
+      "explanation_en": "“À demain” means see you tomorrow.",
+      "options": [
+        {
+          "text": "chúc ngủ ngon / good night",
+          "is_correct": false
+        },
+        {
+          "text": "hẹn mai gặp lại / see you tomorrow",
+          "is_correct": true
+        },
+        {
+          "text": "hẹn sớm gặp lại / see you soon",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "mcq",
+      "prompt_vi": "Câu nào dùng để hỏi thăm sức khỏe?",
+      "prompt_en": "Which expression is used to ask how someone is?",
+      "explanation_vi": "“Comment ça va ?” nghĩa là “bạn khỏe không?”.",
+      "explanation_en": "“Comment ça va ?” means “how are you?”.",
+      "options": [
+        {
+          "text": "Au revoir",
+          "is_correct": false
+        },
+        {
+          "text": "Bonne nuit",
+          "is_correct": false
+        },
+        {
+          "text": "Comment ça va ?",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "sort_order": 40,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Au revoir, à ___ ! (hẹn sớm gặp lại)",
+      "prompt_en": "Fill in the blank: Au revoir, à ___ ! (see you soon)",
+      "explanation_vi": "“À bientôt” nghĩa là hẹn sớm gặp lại.",
+      "explanation_en": "“À bientôt” means see you soon.",
+      "accepted_answers": [
+        "bientôt"
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Salut, ça ___ ? (khỏe không)",
+      "prompt_en": "Fill in the blank: Salut, ça ___ ? (how are you)",
+      "explanation_vi": "“Ça va ?” là cách hỏi thăm thân mật.",
+      "explanation_en": "“Ça va ?” is an informal way to ask how someone is.",
+      "accepted_answers": [
+        "va"
+      ]
+    },
+    {
+      "sort_order": 60,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Câu trả lời đầy đủ: “Ça va bien, merci.”",
+      "explanation_en": "The full answer: “Ça va bien, merci.”",
+      "pieces": [
+        "Ça",
+        "va",
+        "bien",
+        "merci"
+      ]
+    }
+  ]
+}

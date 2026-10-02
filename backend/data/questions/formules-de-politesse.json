@@ -1,0 +1,108 @@
+{
+  "learning_unit_slug": "formules-de-politesse",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "Bạn muốn nói “cảm ơn”. Bạn nói gì?",
+      "prompt_en": "You want to say “thank you”. What do you say?",
+      "explanation_vi": "“Merci” nghĩa là cảm ơn.",
+      "explanation_en": "“Merci” means thank you.",
+      "options": [
+        {
+          "text": "Merci",
+          "is_correct": true
+        },
+        {
+          "text": "Pardon",
+          "is_correct": false
+        },
+        {
+          "text": "De rien",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "mcq",
+      "prompt_vi": "Ai đó nói “Merci !”. Bạn đáp lại thế nào?",
+      "prompt_en": "Someone says “Merci !”. How do you reply?",
+      "explanation_vi": "“De rien” nghĩa là không có chi.",
+      "explanation_en": "“De rien” means you're welcome.",
+      "options": [
+        {
+          "text": "S'il vous plaît",
+          "is_correct": false
+        },
+        {
+          "text": "De rien",
+          "is_correct": true
+        },
+        {
+          "text": "Pardon",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "mcq",
+      "prompt_vi": "“pardon” có nghĩa là gì?",
+      "prompt_en": "What does “pardon” mean?",
+      "explanation_vi": "“Pardon” dùng để xin lỗi hoặc xin phép đi qua.",
+      "explanation_en": "“Pardon” is used to apologise or to ask to get past.",
+      "options": [
+        {
+          "text": "cảm ơn / thank you",
+          "is_correct": false
+        },
+        {
+          "text": "không có chi / you're welcome",
+          "is_correct": false
+        },
+        {
+          "text": "xin lỗi, xin phép / sorry, pardon",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "sort_order": 40,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Un café, s'il vous ___ ! (làm ơn)",
+      "prompt_en": "Fill in the blank: Un café, s'il vous ___ ! (please)",
+      "explanation_vi": "“S'il vous plaît” nghĩa là xin vui lòng.",
+      "explanation_en": "“S'il vous plaît” means please.",
+      "accepted_answers": [
+        "plaît"
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Bonsoir, ___ ! (bà)",
+      "prompt_en": "Fill in the blank: Bonsoir, ___ ! (madam)",
+      "explanation_vi": "Gọi một người phụ nữ lịch sự là “madame”.",
+      "explanation_en": "Politely addressing a woman: “madame”.",
+      "accepted_answers": [
+        "madame"
+      ]
+    },
+    {
+      "sort_order": 60,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Câu hỏi lịch sự: Excusez-moi, où est la gare ?",
+      "explanation_en": "A polite question: Excusez-moi, où est la gare ?",
+      "pieces": [
+        "Excusez-moi",
+        "où",
+        "est",
+        "la",
+        "gare"
+      ]
+    }
+  ]
+}

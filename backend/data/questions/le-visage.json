@@ -1,0 +1,108 @@
+{
+  "learning_unit_slug": "le-visage",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn từ tiếng Pháp đúng cho “đôi mắt”.",
+      "prompt_en": "Choose the correct French word for “eyes”.",
+      "explanation_vi": "“Đôi mắt” là “les yeux” (số nhiều của l'œil).",
+      "explanation_en": "“Eyes” is “les yeux” (the plural of l'œil).",
+      "options": [
+        {
+          "text": "les yeux",
+          "is_correct": true
+        },
+        {
+          "text": "le nez",
+          "is_correct": false
+        },
+        {
+          "text": "la bouche",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "mcq",
+      "prompt_vi": "“la joue” có nghĩa là gì?",
+      "prompt_en": "What does “la joue” mean?",
+      "explanation_vi": "“La joue” nghĩa là cái má.",
+      "explanation_en": "“La joue” means cheek.",
+      "options": [
+        {
+          "text": "cái tai / ear",
+          "is_correct": false
+        },
+        {
+          "text": "cái má / cheek",
+          "is_correct": true
+        },
+        {
+          "text": "cái miệng / mouth",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn từ tiếng Pháp đúng cho “cái trán”.",
+      "prompt_en": "Choose the correct French word for “forehead”.",
+      "explanation_vi": "“Cái trán” là “le front”.",
+      "explanation_en": "“Forehead” is “le front”.",
+      "options": [
+        {
+          "text": "le nez",
+          "is_correct": false
+        },
+        {
+          "text": "la dent",
+          "is_correct": false
+        },
+        {
+          "text": "le front",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "sort_order": 40,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Ouvre la ___, s'il te plaît. (cái miệng)",
+      "prompt_en": "Fill in the blank: Ouvre la ___, s'il te plaît. (mouth)",
+      "explanation_vi": "“Cái miệng” là “la bouche”.",
+      "explanation_en": "“Mouth” is “la bouche”.",
+      "accepted_answers": [
+        "bouche"
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Il a mal à l'___. (cái tai)",
+      "prompt_en": "Fill in the blank: Il a mal à l'___. (ear)",
+      "explanation_vi": "“Cái tai” là “l'oreille”.",
+      "explanation_en": "“Ear” is “l'oreille”.",
+      "accepted_answers": [
+        "oreille"
+      ]
+    },
+    {
+      "sort_order": 60,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Trật tự: chủ ngữ + động từ + tân ngữ + tính từ.",
+      "explanation_en": "Word order: subject + verb + object + adjective.",
+      "pieces": [
+        "Elle",
+        "a",
+        "les",
+        "cheveux",
+        "longs"
+      ]
+    }
+  ]
+}

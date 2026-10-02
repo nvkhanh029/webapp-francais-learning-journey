@@ -1,0 +1,100 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les caractéristiques physiques",
+  "topic_slug": "caracteristiques-physiques",
+  "topic_sort_order": 10,
+  "topic_vi": "Đặc điểm thể chất",
+  "topic_en": "Physical characteristics",
+  "subtopic": "Le visage",
+  "subtopic_key": "le-visage",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Khuôn mặt",
+  "subtopic_en": "The face",
+  "words": [
+    {
+      "french": "le visage",
+      "meaning_vi": "khuôn mặt",
+      "meaning_en": "face",
+      "ipa": "/lə vi.zaʒ/",
+      "example_fr": "Elle a un visage souriant.",
+      "example_vi": "Cô ấy có khuôn mặt tươi cười.",
+      "example_en": "She has a smiling face."
+    },
+    {
+      "french": "les yeux",
+      "meaning_vi": "đôi mắt",
+      "meaning_en": "eyes",
+      "ipa": "/le.zjø/",
+      "example_fr": "Il a les yeux bleus.",
+      "example_vi": "Anh ấy có đôi mắt xanh.",
+      "example_en": "He has blue eyes."
+    },
+    {
+      "french": "le nez",
+      "meaning_vi": "cái mũi",
+      "meaning_en": "nose",
+      "ipa": "/lə ne/",
+      "example_fr": "Elle a un petit nez.",
+      "example_vi": "Cô ấy có chiếc mũi nhỏ.",
+      "example_en": "She has a small nose."
+    },
+    {
+      "french": "la bouche",
+      "meaning_vi": "cái miệng",
+      "meaning_en": "mouth",
+      "ipa": "/la buʃ/",
+      "example_fr": "Ouvre la bouche, s'il te plaît.",
+      "example_vi": "Làm ơn há miệng ra.",
+      "example_en": "Open your mouth, please."
+    },
+    {
+      "french": "l'oreille",
+      "meaning_vi": "cái tai",
+      "meaning_en": "ear",
+      "ipa": "/lɔ.ʁɛj/",
+      "example_fr": "Il a mal à l'oreille.",
+      "example_vi": "Anh ấy bị đau tai.",
+      "example_en": "His ear hurts."
+    },
+    {
+      "french": "les cheveux",
+      "meaning_vi": "mái tóc",
+      "meaning_en": "hair",
+      "ipa": "/le ʃə.vø/",
+      "example_fr": "Elle a les cheveux longs.",
+      "example_vi": "Cô ấy có mái tóc dài.",
+      "example_en": "She has long hair."
+    },
+    {
+      "french": "la dent",
+      "meaning_vi": "cái răng",
+      "meaning_en": "tooth",
+      "ipa": "/la dɑ̃/",
+      "example_fr": "Cet enfant a une dent cassée.",
+      "example_vi": "Đứa trẻ này có một chiếc răng bị gãy.",
+      "example_en": "This child has a broken tooth."
+    },
+    {
+      "french": "le front",
+      "meaning_vi": "cái trán",
+      "meaning_en": "forehead",
+      "ipa": "/lə fʁɔ̃/",
+      "example_fr": "Il a le front large.",
+      "example_vi": "Anh ấy có vầng trán rộng.",
+      "example_en": "He has a broad forehead."
+    },
+    {
+      "french": "la joue",
+      "meaning_vi": "cái má",
+      "meaning_en": "cheek",
+      "ipa": "/la ʒu/",
+      "example_fr": "Elle a les joues rouges.",
+      "example_vi": "Cô ấy có đôi má đỏ.",
+      "example_en": "She has red cheeks."
+    }
+  ]
+}
