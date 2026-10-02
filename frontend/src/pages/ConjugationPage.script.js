@@ -105,7 +105,8 @@ export default function init() {
           track.style.setProperty("--progress", `${percent}%`);
       }
 
-      // Review Later has priority for the row's status icon; learned is next.
+      // Review Later has priority for the row's status icon; learned is next. In a dual-state
+      // lesson the learned badge becomes the quiet outline variant.
       function renderLesson(lesson) {
           const item = fromTemplate("lesson-template");
           const link = slot(item, "link");
@@ -116,6 +117,7 @@ export default function init() {
               lesson.learned ? "check_circle" : "radio_button_unchecked";
           setTitles(slot(item, "title"), slot(item, "support"), lesson);
           slot(item, "learned").hidden = !lesson.learned;
+          slot(item, "learned").classList.toggle("badge-quiet", lesson.learned && lesson.review_later);
           slot(item, "review-later").hidden = !lesson.review_later;
           slot(item, "meta").hidden = !lesson.learned && !lesson.review_later;
           return item;

@@ -156,7 +156,7 @@ export default function init() {
           slot(item, "status").textContent = lesson.learned ? "check_circle" : "radio_button_unchecked";
           setTitles(slot(item, "title"), slot(item, "support"), lesson);
           slot(item, "learned").hidden = !lesson.learned;
-          // slot(item, "learned").classList.toggle("badge-quiet", lesson.learned && lesson.review_later);
+          slot(item, "learned").classList.toggle("badge-quiet", lesson.learned && lesson.review_later);
           slot(item, "review-later").hidden = !lesson.review_later;
           slot(item, "meta").hidden = !lesson.learned && !lesson.review_later;
           return item;

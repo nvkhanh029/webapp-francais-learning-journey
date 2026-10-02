@@ -800,7 +800,7 @@
          6. Parts > Chapters > Lessons
          Part: white card with a warm cream header band and a solid blue number tile.
          Chapter: divider + disclosure row with a soft blue toggle (no extra box).
-         Lesson: compact row with a state accent strip; the whole row is the link and
+         Lesson: compact row with state surface and border; the whole row is the link and
          the arrow on the far right is the open affordance.
          French title (title_fr) is always primary; the localized title supports it.
          ====================================================================== */
@@ -985,13 +985,10 @@
            default -> learned (sage) -> saved for Review Later (rose). .is-saved is declared
            last, so a lesson that is both learned and saved takes the Review Later look. */
         .page :global(.lesson-item) {
-            --lesson-accent: var(--color-border);
             --lesson-bg: var(--color-background);
             --lesson-border: var(--color-border);
             --lesson-hover-bg: var(--accent-soft);
             --lesson-hover-border: var(--accent-border);
-            --lesson-hover-accent: var(--accent);
-            position: relative;
             display: flex;
             align-items: flex-start;
             gap: 12px;
@@ -1003,32 +1000,18 @@
             transition: background-color 150ms, border-color 150ms, box-shadow 150ms;
         }
 
-        .page :global(.lesson-item::before) {
-            content: "";
-            position: absolute;
-            left: -1px;
-            top: 10px;
-            bottom: 10px;
-            width: 4px;
-            background: var(--lesson-accent);
-        }
-
         .page :global(.lesson-item.is-learned) {
-            --lesson-accent: var(--color-sage);
             --lesson-hover-bg: var(--color-sage-soft);
             --lesson-hover-border: var(--color-sage-border);
-            --lesson-hover-accent: var(--color-sage);
         }
 
         .page :global(.lesson-item.is-saved) {
-            --lesson-accent: var(--color-rose);
             --lesson-bg: color-mix(in srgb,
                     var(--color-rose-soft),
                     var(--color-background));
             --lesson-border: var(--color-rose-border);
             --lesson-hover-bg: var(--color-rose-soft);
             --lesson-hover-border: var(--color-rose);
-            --lesson-hover-accent: var(--color-rose);
         }
 
         .page :global(.lesson-item:hover),
@@ -1036,11 +1019,6 @@
             border-color: var(--lesson-hover-border);
             /* background: var(--lesson-hover-bg); */
             box-shadow: var(--shadow-sm);
-        }
-
-        .page :global(.lesson-item:hover::before),
-        .page :global(.lesson-item:focus-visible::before) {
-            background: var(--lesson-hover-accent);
         }
 
         /* Soft, brief return-from-lesson highlight (FD §7.11 / navigation refinement): a ring in

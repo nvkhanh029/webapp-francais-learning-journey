@@ -40,7 +40,7 @@
                                  on lessons without a state, one decorative glyph
         Every state also has an icon and a text label; color is never the only signal.
       - Lesson state priority: Review Later > Learned. A lesson that is both keeps both
-        badges, but the rose surface, accent strip, status icon, and first badge belong to
+        badges, but the rose surface, border, status icon, and first badge belong to
         Review Later; the learned badge switches to a quieter outline style.
       - Expanding/collapsing Chapters is frontend-only UI state (API §9.1, FD §5.7).
       - Returning from a lesson: GrammarLessonPage's "Quay lại Ngữ pháp" control links back here

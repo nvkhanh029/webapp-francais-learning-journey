@@ -266,6 +266,12 @@
             color: var(--color-rose-dark);
         }
 
+        /* Supporting state in a dual-state lesson: outline only, same label and icon. */
+        .page :global(.badge-quiet) {
+            background: transparent;
+            font-weight: 600;
+        }
+
         .page :global(.button) {
             display: inline-flex;
             align-items: center;

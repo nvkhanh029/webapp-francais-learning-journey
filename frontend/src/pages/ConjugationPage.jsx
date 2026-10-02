@@ -40,8 +40,8 @@
           sage                   learned          rose   Review Later
         Every state also has an icon and a text label; color is never the only signal.
       - Lesson state priority: Review Later > Learned. A lesson that is both keeps both badges;
-        the rose surface, accent strip and status icon belong to Review Later, and the Review
-        Later badge comes first.
+        the rose surface, accent strip and status icon belong to Review Later, the Review
+        Later badge comes first, and the learned badge switches to a quieter outline style.
       - Opening/closing a Tense is frontend-only UI state (no request, no persistence).
       - Returning from a lesson: a URL hash such as #lesson-present-regular-er opens the parent
         Tense if collapsed, scrolls the lesson into view and highlights it briefly (same
@@ -302,8 +302,8 @@ export default function ConjugationPage() {
     ` }} />
       {/* Lesson: the whole row is the link to /conjugation/lessons/:slug.
          State classes: is-learned (sage), is-saved (rose, whenever review_later is true).
-         Review Later has priority: its badge comes first and its styling wins; a lesson that is
-         both keeps both badges.
+         Review Later has priority: its badge comes first and its styling wins; in a dual-state
+         lesson the learned badge becomes the quiet outline variant.
       */}
       <template id="lesson-template" dangerouslySetInnerHTML={{ __html: `
         <li>
