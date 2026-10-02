@@ -61,6 +61,11 @@
       5. Tense sections > Lessons (rendered from templates)
       6. Footer
 */
+import EmptyState from "../components/common/EmptyState.jsx";
+import ErrorState from "../components/common/ErrorState.jsx";
+import LoadingState from "../components/common/LoadingState.jsx";
+import ProgressBar from "../components/common/ProgressBar.jsx";
+import PageHeader from "../components/common/PageHeader.jsx";
 import styles from "./ConjugationPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
 import { t } from "../i18n/index.js";
@@ -70,81 +75,8 @@ export default function ConjugationPage() {
   const rootRef = usePageScript(init, { title: "title.conjugation" });
 
   return (
-    <div className={`app-page ${styles.page}`} ref={rootRef}>
+    <div className={`page-body ${styles.page}`} ref={rootRef}>
       {/* 1. Header (same component as the Dashboard, Conjugation active) */}
-      <header className="site-header">
-        <div className="page-container header-content">
-          <div className="brand">
-            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
-            {" "}
-            <span className="brand-name">
-              Français Learning Journey
-            </span>
-          </div>
-          <nav className="main-nav" aria-label={t("common.mainNav")}>
-            <a className="nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/grammar">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/conjugation" aria-current="page">
-              {t("common.conjugation")}
-            </a>
-          </nav>
-          <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
-              <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
-                VI
-              </button>
-              {" "}
-              <button className="language-button" type="button" aria-pressed="false" data-lang="en" title="English">
-                EN
-              </button>
-            </div>
-            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                logout
-              </span>
-              {" "}
-              <span className="logout-label">
-                {t("common.logout")}
-              </span>
-            </button>
-            {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                menu
-              </span>
-            </button>
-          </div>
-        </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
-          <div className="page-container mobile-nav-list">
-            <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/grammar">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/conjugation" aria-current="page">
-              {t("common.conjugation")}
-            </a>
-          </div>
-        </nav>
-      </header>
       <main className="page-container conjugation-page subject-conjugation" id="main-content">
         {/* Announces context restored after returning from a lesson (see restoreLessonContext()). */}
         <p className="visually-hidden" role="status" aria-live="polite" data-live-region />
@@ -152,34 +84,9 @@ export default function ConjugationPage() {
              derived from the lesson booleans, the same way GrammarPage derives them.
         */}
         <section className="card page-hero page-section" aria-labelledby="page-title">
-          <div className="hero-intro">
-            <div className="icon-tile icon-tile-solid" aria-hidden="true">
-              <span className="material-symbols-outlined">
-                schedule
-              </span>
-            </div>
-            <div>
-              <h1 className="page-title" id="page-title">
-                {t("common.conjugation")}
-              </h1>
-              <p className="page-description">
-                {t("conj.description")}
-              </p>
-            </div>
-          </div>
+          <PageHeader icon="schedule" title={t("common.conjugation")} description={t("conj.description")} />
           <div className="overview-panel" data-overview hidden>
-            <div className="progress-labels">
-              <span>
-                {t("common.progress")}
-              </span>
-              {" "}
-              <span className="progress-value" data-slot="percent">
-                0%
-              </span>
-            </div>
-            <div className="progress-track" role="progressbar" aria-label={t("common.progressConjugation")} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-slot="track">
-              <div className="progress-fill" />
-            </div>
+            <ProgressBar label={t("common.progress")} percent={0} ariaLabel={t("common.progressConjugation")} valueProps={{ "data-slot": "percent" }} trackProps={{ "data-slot": "track" }} />
             <ul className="overview-states" aria-label={t("common.lessonStatus")}>
               <li className="badge badge-learned">
                 <span className="material-symbols-outlined icon-filled" aria-hidden="true">
@@ -211,36 +118,9 @@ export default function ConjugationPage() {
           </div>
         </section>
         {/* 3. Page states (FD §6.6). Shown instead of the Conjugation content. */}
-        <div className="card page-state" data-page-state="loading" role="status" hidden>
-          <div className="spinner" aria-hidden="true" />
-          <p>
-            {t("conj.loading")}
-          </p>
-        </div>
-        <div className="card page-state" data-page-state="error" role="alert" hidden>
-          <span className="material-symbols-outlined" aria-hidden="true">
-            cloud_off
-          </span>
-          <h2 className="page-state-title">
-            {t("conj.loadError")}
-          </h2>
-          <p>
-            {t("common.loadError")}
-          </p>
-          <button className="button button-secondary button-compact" type="button" data-action="retry">
-            {t("common.retry")}
-          </button>
-        </div>
-        <div className="card page-state" data-page-state="empty" hidden>
-          <span className="material-symbols-outlined" aria-hidden="true">
-            schedule
-          </span>
-          <h2 className="page-state-title">
-            {t("conj.emptyTitle")}
-          </h2>
-          <p>
-            {t("conj.emptyText")}
-          </p>
+        <LoadingState hidden message={t("conj.loading")} />
+        <ErrorState hidden headingLevel={2} title={t("conj.loadError")} retryAction="retry" />
+        <EmptyState hidden icon="schedule" headingLevel={2} title={t("conj.emptyTitle")} message={t("conj.emptyText")}>
           <div className="explore-links">
             <a className="lesson-link subject-vocabulary" href="#" data-route="/vocabulary">
               {t("common.vocabulary")}
@@ -256,7 +136,7 @@ export default function ConjugationPage() {
               </span>
             </a>
           </div>
-        </div>
+        </EmptyState>
         <div data-conjugation-content hidden>
           {/* 4. Toolbar */}
           <div className="toolbar">
@@ -332,18 +212,6 @@ export default function ConjugationPage() {
             </a>
         </li>
     ` }} />
-      {/* 6. Footer */}
-      <footer className="site-footer">
-        <div className="page-container footer-content">
-          <span className="material-symbols-outlined" aria-hidden="true">
-            auto_stories
-          </span>
-          {" "}
-          <span>
-            {t("common.footer")}
-          </span>
-        </div>
-      </footer>
     </div>
   );
 }

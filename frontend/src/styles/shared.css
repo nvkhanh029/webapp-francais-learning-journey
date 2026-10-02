@@ -378,3 +378,10 @@
     transition: none !important;
   }
 }
+
+/* Wrapper a layout puts around the routed page: it takes the space between header and footer. */
+.page-body {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}

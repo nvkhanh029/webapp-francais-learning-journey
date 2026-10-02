@@ -67,6 +67,11 @@
       5. Parts > Chapters > Lessons (rendered from templates)
       6. Footer
 */
+import EmptyState from "../components/common/EmptyState.jsx";
+import ErrorState from "../components/common/ErrorState.jsx";
+import LoadingState from "../components/common/LoadingState.jsx";
+import ProgressBar from "../components/common/ProgressBar.jsx";
+import PageHeader from "../components/common/PageHeader.jsx";
 import styles from "./GrammarPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
 import { t } from "../i18n/index.js";
@@ -76,81 +81,7 @@ export default function GrammarPage() {
   const rootRef = usePageScript(init, { title: "title.grammar" });
 
   return (
-    <div className={`app-page ${styles.page}`} ref={rootRef}>
-      {/* 1. Header */}
-      <header className="site-header">
-        <div className="page-container header-content">
-          <div className="brand">
-            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
-            {" "}
-            <span className="brand-name">
-              Français Learning Journey
-            </span>
-          </div>
-          <nav className="main-nav" aria-label={t("common.mainNav")}>
-            <a className="nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/grammar" aria-current="page">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </nav>
-          <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
-              <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
-                VI
-              </button>
-              {" "}
-              <button className="language-button" type="button" aria-pressed="false" data-lang="en" title="English">
-                EN
-              </button>
-            </div>
-            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                logout
-              </span>
-              {" "}
-              <span className="logout-label">
-                {t("common.logout")}
-              </span>
-            </button>
-            {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                menu
-              </span>
-            </button>
-          </div>
-        </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
-          <div className="page-container mobile-nav-list">
-            <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/grammar" aria-current="page">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </div>
-        </nav>
-      </header>
+    <div className={`page-body ${styles.page}`} ref={rootRef}>
       <main className="page-container grammar-page subject-grammar" id="main-content">
         {/* Announces context restored after returning from a lesson (see restoreLessonContext()).
              Scrolling and the highlight below are visual only, so this is the non-visual signal
@@ -161,47 +92,9 @@ export default function GrammarPage() {
              are derived from the data.
         */}
         <section className="card page-hero page-section" aria-labelledby="page-title">
-          <div className="hero-intro">
-            <div className="icon-tile icon-tile-solid" aria-hidden="true">
-              <span className="material-symbols-outlined">
-                draw
-              </span>
-            </div>
-            <div>
-              <h1 className="page-title" id="page-title">
-                {t("common.grammar")}
-                <span className="title-glyphs" lang="fr" aria-hidden="true">
-                  <span>
-                    é
-                  </span>
-                  {" "}
-                  <span>
-                    ç
-                  </span>
-                  {" "}
-                  <span>
-                    à
-                  </span>
-                </span>
-              </h1>
-              <p className="page-description">
-                {t("grammar.description")}
-              </p>
-            </div>
-          </div>
+          <PageHeader icon="draw" title={t("common.grammar")} description={t("grammar.description")} glyphs={["é", "ç", "à"]} />
           <div className="overview-panel" data-overview hidden>
-            <div className="progress-labels">
-              <span>
-                {t("common.progress")}
-              </span>
-              {" "}
-              <span className="progress-value" data-slot="percent">
-                0%
-              </span>
-            </div>
-            <div className="progress-track" role="progressbar" aria-label={t("common.progressGrammar")} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-slot="track">
-              <div className="progress-fill" />
-            </div>
+            <ProgressBar label={t("common.progress")} percent={0} ariaLabel={t("common.progressGrammar")} valueProps={{ "data-slot": "percent" }} trackProps={{ "data-slot": "track" }} />
             <ul className="overview-states" aria-label={t("common.lessonStatus")}>
               <li className="badge badge-learned">
                 <span className="material-symbols-outlined icon-filled" aria-hidden="true">
@@ -233,36 +126,9 @@ export default function GrammarPage() {
           </div>
         </section>
         {/* 3. Page states (FD §6.6). Shown instead of the Grammar content. */}
-        <div className="card page-state" data-page-state="loading" role="status" hidden>
-          <div className="spinner" aria-hidden="true" />
-          <p>
-            {t("grammar.loading")}
-          </p>
-        </div>
-        <div className="card page-state" data-page-state="error" role="alert" hidden>
-          <span className="material-symbols-outlined" aria-hidden="true">
-            cloud_off
-          </span>
-          <h2 className="page-state-title">
-            {t("grammar.loadError")}
-          </h2>
-          <p>
-            {t("common.loadError")}
-          </p>
-          <button className="button button-secondary button-compact" type="button" data-action="retry">
-            {t("common.retry")}
-          </button>
-        </div>
-        <div className="card page-state" data-page-state="empty" hidden>
-          <span className="material-symbols-outlined" aria-hidden="true">
-            menu_book
-          </span>
-          <h2 className="page-state-title">
-            {t("grammar.emptyTitle")}
-          </h2>
-          <p>
-            {t("grammar.emptyText")}
-          </p>
+        <LoadingState hidden message={t("grammar.loading")} />
+        <ErrorState hidden headingLevel={2} title={t("grammar.loadError")} retryAction="retry" />
+        <EmptyState hidden icon="menu_book" headingLevel={2} title={t("grammar.emptyTitle")} message={t("grammar.emptyText")}>
           <div className="explore-links">
             <a className="lesson-link subject-vocabulary" href="#" data-route="/vocabulary">
               {t("common.vocabulary")}
@@ -278,7 +144,7 @@ export default function GrammarPage() {
               </span>
             </a>
           </div>
-        </div>
+        </EmptyState>
         <div data-grammar-content hidden>
           {/* 4. Toolbar */}
           <div className="toolbar">
@@ -379,18 +245,6 @@ export default function GrammarPage() {
             </a>
         </li>
     ` }} />
-      {/* 6. Footer */}
-      <footer className="site-footer">
-        <div className="page-container footer-content">
-          <span className="material-symbols-outlined" aria-hidden="true">
-            auto_stories
-          </span>
-          {" "}
-          <span>
-            {t("common.footer")}
-          </span>
-        </div>
-      </footer>
     </div>
   );
 }

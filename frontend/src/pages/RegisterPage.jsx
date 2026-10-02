@@ -56,24 +56,7 @@ export default function RegisterPage() {
   const rootRef = usePageScript(init, { title: "title.register" });
 
   return (
-    <div className={`app-page ${styles.page}`} ref={rootRef}>
-      {/* 1. Header */}
-      <header className="site-header">
-        <div className="page-container header-content">
-          <a className="brand" href="#" data-route="/">
-            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
-            {" "}
-            <span className="brand-name">
-              Français Learning Journey
-            </span>
-          </a>
-          <nav className="header-actions" aria-label={t("common.account")}>
-            <a className="button button-secondary button-compact" href="#" data-route="/login">
-              {t("common.loginAction")}
-            </a>
-          </nav>
-        </div>
-      </header>
+    <div className={`page-body ${styles.page}`} ref={rootRef}>
       <main className="auth-main" id="main-content">
         <div className="page-container auth-layout">
           {/* 2. Register card */}
@@ -209,18 +192,6 @@ export default function RegisterPage() {
           </div>
         </div>
       </main>
-      {/* 3. Footer */}
-      <footer className="site-footer">
-        <div className="page-container footer-content">
-          <span className="material-symbols-outlined" aria-hidden="true">
-            auto_stories
-          </span>
-          {" "}
-          <span>
-            {t("common.footer")}
-          </span>
-        </div>
-      </footer>
     </div>
   );
 }

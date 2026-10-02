@@ -238,33 +238,6 @@
          3. Header (identical to DashboardPage)
          ====================================================================== */
 
-        .page :global(.header-content) {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--space-sm);
-            height: 80px;
-        }
-
-        .page :global(.brand) {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            min-width: 0;
-        }
-
-        .page :global(.brand-name) {
-            color: var(--color-primary);
-            font-size: var(--text-body);
-            font-weight: 700;
-            line-height: var(--leading-heading);
-            letter-spacing: var(--tracking-heading);
-        }
-
-        .page :global(.logout-button .material-symbols-outlined) {
-            font-size: 16px;
-        }
-
         /* ======================================================================
          4. Vocabulary Topic page layout
          ====================================================================== */
@@ -683,34 +656,11 @@
         /* ======================================================================
          6. Footer and responsive layout (FD §8)
          ====================================================================== */
-        .page :global(.site-footer) {
-            width: 100%;
-            margin-top: var(--space-xl);
-            border-top: 1px solid var(--color-border);
-            background: var(--color-background);
-        }
-
-        .page :global(.footer-content .material-symbols-outlined) {
-            color: var(--color-primary);
-        }
 
         @media (min-width: 640px) {
 
             .page :global(.card) {
                 padding: var(--space-lg);
-            }
-
-            .page :global(.header-content) {
-                gap: var(--space-lg);
-            }
-
-            .page :global(.brand) {
-                gap: var(--space-md);
-            }
-
-            .page :global(.brand-name) {
-                font-size: var(--text-brand);
-                white-space: nowrap;
             }
 
             /* Indent Study Units under the Subtopic marker (matches the blue bar's inset). */
@@ -733,21 +683,4 @@
         }
 
         /* Compact header for tablets and smaller laptops (same as Dashboard, FD §8.5). */
-        @media (min-width: 768px) and (max-width: 1199px) {
-
-            .page :global(.header-content),
-            .page :global(.header-actions) {
-                gap: var(--space-sm);
-            }
-
-            .page :global(.brand-name) {
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                margin: -1px;
-                overflow: hidden;
-                clip: rect(0 0 0 0);
-                white-space: nowrap;
-            }
-        }
     

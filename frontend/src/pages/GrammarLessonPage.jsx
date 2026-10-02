@@ -87,6 +87,8 @@
       6. Previous / Next lesson navigation (global curriculum order)
       7. Footer
 */
+import ErrorState from "../components/common/ErrorState.jsx";
+import LoadingState from "../components/common/LoadingState.jsx";
 import styles from "./GrammarLessonPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
 import { t } from "../i18n/index.js";
@@ -96,81 +98,8 @@ export default function GrammarLessonPage() {
   const rootRef = usePageScript(init, { title: "title.grammar" });
 
   return (
-    <div className={`app-page ${styles.page}`} ref={rootRef}>
+    <div className={`page-body ${styles.page}`} ref={rootRef}>
       {/* 1. Header (same component as the Dashboard; Grammar stays active on lesson pages) */}
-      <header className="site-header">
-        <div className="page-container header-content">
-          <div className="brand">
-            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
-            {" "}
-            <span className="brand-name">
-              Français Learning Journey
-            </span>
-          </div>
-          <nav className="main-nav" aria-label={t("common.mainNav")}>
-            <a className="nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/grammar" aria-current="page">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </nav>
-          <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
-              <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
-                VI
-              </button>
-              {" "}
-              <button className="language-button" type="button" aria-pressed="false" data-lang="en" title="English">
-                EN
-              </button>
-            </div>
-            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                logout
-              </span>
-              {" "}
-              <span className="logout-label">
-                {t("common.logout")}
-              </span>
-            </button>
-            {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                menu
-              </span>
-            </button>
-          </div>
-        </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
-          <div className="page-container mobile-nav-list">
-            <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/grammar" aria-current="page">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </div>
-        </nav>
-      </header>
       <main className="page-container lesson-page subject-grammar" id="main-content">
         <div className="lesson" data-lesson>
           {/* 2. Breadcrumbs. Only "Ngữ pháp" is a link; Part and Chapter have no route (FD §4.5). */}
@@ -229,26 +158,8 @@ export default function GrammarLessonPage() {
             </ol>
           </nav>
           {/* 3. Page states (FD §6.6). Shown instead of the lesson; no sample data behind them. */}
-          <div className="card page-state" data-page-state="loading" role="status" hidden>
-            <div className="spinner" aria-hidden="true" />
-            <p>
-              {t("common.loadingLesson")}
-            </p>
-          </div>
-          <div className="card page-state" data-page-state="error" role="alert" hidden>
-            <span className="material-symbols-outlined" aria-hidden="true">
-              cloud_off
-            </span>
-            <h1 className="page-state-title">
-              {t("common.loadLessonError")}
-            </h1>
-            <p>
-              {t("common.loadError")}
-            </p>
-            <button className="button button-secondary button-compact" type="button" data-action="retry">
-              {t("common.retry")}
-            </button>
-          </div>
+          <LoadingState hidden message={t("common.loadingLesson")} />
+          <ErrorState hidden headingLevel={1} title={t("common.loadLessonError")} retryAction="retry" />
           <article className="lesson-article" aria-labelledby="lesson-title" data-lesson-content>
             {/* 4. Lesson header: French title first, localized title second, learner state. */}
             <header className="card lesson-header">
@@ -411,18 +322,6 @@ export default function GrammarLessonPage() {
           </article>
         </div>
       </main>
-      {/* 8. Footer */}
-      <footer className="site-footer">
-        <div className="page-container footer-content">
-          <span className="material-symbols-outlined" aria-hidden="true">
-            auto_stories
-          </span>
-          {" "}
-          <span>
-            {t("common.footer")}
-          </span>
-        </div>
-      </footer>
       {/*      Rendered Markdown samples (prototype only). Each template is what LearningContent outputs for
       one lesson's `content` string. Everything inside is plain Markdown output (headings,
       paragraphs, emphasis, lists, blockquotes, a table, a rule, inline code) plus the .table-scroll

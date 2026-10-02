@@ -124,31 +124,6 @@ export default function init({ onLanguageChange } = {}) {
       if (preview === "error") showPageState("error");
       document.querySelector('[data-action="retry-page"]').addEventListener("click", () => showPageState("content"));
 
-      /* ---------- Compact navigation menu (FD §8.5) ---------- */
-      const menuButton = document.querySelector(".menu-button");
-      const mobileNav = document.getElementById("mobile-nav");
-      const menuIcon = menuButton.querySelector(".material-symbols-outlined");
-
-      function setMenu(open) {
-          menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
-          menuIcon.textContent = open ? "close" : "menu";
-          mobileNav.hidden = !open;
-      }
-
-      menuButton.addEventListener("click", () => setMenu(mobileNav.hidden));
-      mobileNav.addEventListener("click", (event) => {
-          if (event.target.closest("a")) setMenu(false);
-      });
-      document.addEventListener("keydown", (event) => {
-          if (event.key === "Escape" && !mobileNav.hidden) {
-              setMenu(false);
-              menuButton.focus();
-          }
-      });
-      window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
-          if (event.matches) setMenu(false);
-      });
 
       /* ---------- Practice calendar (FD §7.7) ---------- */
       const card = document.querySelector(".activity-card");
@@ -259,7 +234,6 @@ export default function init({ onLanguageChange } = {}) {
               renderModuleProgress(moduleCard, Number(moduleCard.dataset.learned), Number(moduleCard.dataset.total));
           });
           renderMonth();
-          setMenu(!mobileNav.hidden);
       });
   })();
 

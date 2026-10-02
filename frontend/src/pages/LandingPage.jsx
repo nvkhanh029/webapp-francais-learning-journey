@@ -35,6 +35,7 @@
       6. Final call to action
       7. Footer
 */
+import ProgressBar from "../components/common/ProgressBar.jsx";
 import styles from "./LandingPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
 import { t } from "../i18n/index.js";
@@ -43,28 +44,7 @@ export default function LandingPage() {
   const rootRef = usePageScript(null, { title: "title.landing" });
 
   return (
-    <div className={`app-page ${styles.page}`} ref={rootRef}>
-      {/* 1. Header */}
-      <header className="site-header">
-        <div className="page-container header-content">
-          <a className="brand" href="#" data-route="/">
-            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
-            {" "}
-            <span className="brand-name">
-              Français Learning Journey
-            </span>
-          </a>
-          <nav className="header-actions" aria-label={t("common.account")}>
-            <a className="button button-secondary button-compact" href="#" data-route="/login">
-              {t("common.loginAction")}
-            </a>
-            {" "}
-            <a className="button button-primary button-compact header-start" href="#" data-route="/register">
-              {t("landing.start")}
-            </a>
-          </nav>
-        </div>
-      </header>
+    <div className={`page-body ${styles.page}`} ref={rootRef}>
       <main className="landing" id="main-content">
         {/* 2. Hero */}
         <section className="page-container landing-section hero" aria-labelledby="hero-title">
@@ -489,46 +469,13 @@ export default function LandingPage() {
               </figcaption>
               <div className="preview-progress-list">
                 <div className="subject-vocabulary">
-                  <div className="progress-labels">
-                    <span>
-                      {t("common.vocabulary")}
-                    </span>
-                    {" "}
-                    <span className="progress-value">
-                      72%
-                    </span>
-                  </div>
-                  <div className="progress-track" role="progressbar" aria-label={t("common.progressVocabulary")} aria-valuemax="100" aria-valuemin="0" aria-valuenow="72" style={{ "--progress": "72%" }}>
-                    <div className="progress-fill" />
-                  </div>
+                  <ProgressBar label={t("common.vocabulary")} percent={72} ariaLabel={t("common.progressVocabulary")} />
                 </div>
                 <div className="subject-grammar">
-                  <div className="progress-labels">
-                    <span>
-                      {t("common.grammar")}
-                    </span>
-                    {" "}
-                    <span className="progress-value">
-                      62%
-                    </span>
-                  </div>
-                  <div className="progress-track" role="progressbar" aria-label={t("common.progressGrammar")} aria-valuemax="100" aria-valuemin="0" aria-valuenow="62" style={{ "--progress": "62%" }}>
-                    <div className="progress-fill" />
-                  </div>
+                  <ProgressBar label={t("common.grammar")} percent={62} ariaLabel={t("common.progressGrammar")} />
                 </div>
                 <div className="subject-conjugation">
-                  <div className="progress-labels">
-                    <span>
-                      {t("common.conjugation")}
-                    </span>
-                    {" "}
-                    <span className="progress-value">
-                      48%
-                    </span>
-                  </div>
-                  <div className="progress-track" role="progressbar" aria-label={t("common.progressConjugation")} aria-valuemax="100" aria-valuemin="0" aria-valuenow="48" style={{ "--progress": "48%" }}>
-                    <div className="progress-fill" />
-                  </div>
+                  <ProgressBar label={t("common.conjugation")} percent={48} ariaLabel={t("common.progressConjugation")} />
                 </div>
               </div>
               <p className="preview-streak">
@@ -592,18 +539,6 @@ export default function LandingPage() {
           </div>
         </section>
       </main>
-      {/* 7. Footer */}
-      <footer className="site-footer">
-        <div className="page-container footer-content">
-          <span className="material-symbols-outlined" aria-hidden="true">
-            auto_stories
-          </span>
-          {" "}
-          <span>
-            {t("common.footer")}
-          </span>
-        </div>
-      </footer>
     </div>
   );
 }

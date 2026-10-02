@@ -1,0 +1,143 @@
+/* Header and footer styles of PublicLayout. Moved from the page CSS Modules (the rules were identical on every page that used it). */
+.layout :global(.material-symbols-outlined) {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  font-family: "Material Symbols Outlined";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "liga";
+}
+
+/* Header buttons (Login / Register / Start). */
+
+/* Header buttons (Login / Register / Start). */
+.layout :global(.button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  border: 0;
+  border-radius: var(--radius-small);
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  transition:
+    background-color 150ms,
+    color 150ms,
+    box-shadow 150ms,
+    transform 150ms;
+}
+
+.layout :global(.button-primary) {
+  padding: 12px var(--space-lg);
+  background: var(--color-heading);
+  color: #ffffff;
+  font-size: var(--text-body);
+  line-height: var(--leading-label);
+  box-shadow: var(--shadow-sm);
+}
+
+.layout :global(.button-primary:hover) {
+  background: #1f1711;
+  box-shadow: var(--shadow-md);
+}
+
+.layout :global(.button-primary:active) {
+  transform: translateY(2px);
+}
+
+.layout :global(.button:hover .material-symbols-outlined) {
+  transform: translateX(4px);
+}
+
+.layout :global(.button-secondary) {
+  width: 100%;
+  padding: 12px var(--space-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-heading);
+  font-size: var(--text-body);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+}
+
+.layout :global(.button-secondary:hover) {
+  background: var(--color-heading);
+  color: #ffffff;
+}
+
+.layout :global(.button-compact) {
+  width: auto;
+  padding: var(--space-sm) var(--space-lg);
+}
+
+.layout :global(.header-content) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  height: 80px;
+}
+
+.layout :global(.brand) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-width: 0;
+  border-radius: var(--radius-small);
+}
+
+.layout :global(.brand-name) {
+  min-width: 0;
+  color: var(--color-primary);
+  font-size: var(--text-body);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+}
+
+.layout :global(.header-start) {
+  display: none;
+}
+
+.layout :global(.site-footer) {
+  width: 100%;
+  margin-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-background);
+}
+
+.layout :global(.footer-content .material-symbols-outlined) {
+  color: var(--color-primary);
+}
+
+@media (min-width: 640px) {
+  .layout :global(.header-content) {
+    gap: var(--space-lg);
+  }
+  .layout :global(.brand) {
+    gap: var(--space-md);
+  }
+  .layout :global(.brand-name) {
+    font-size: var(--text-brand);
+    white-space: nowrap;
+  }
+  .layout :global(.header-start) {
+    display: inline-flex;
+  }
+}
+
+.layout :global(.site-footer).footerFlush {
+  margin-top: 0;
+}

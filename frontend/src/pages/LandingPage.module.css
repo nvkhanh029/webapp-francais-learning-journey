@@ -244,35 +244,7 @@
          3. Header (public): brand + Login / Start. No app navigation.
          ====================================================================== */
 
-        .page :global(.header-content) {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--space-sm);
-            height: 80px;
-        }
-
-        .page :global(.brand) {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            min-width: 0;
-            border-radius: var(--radius-small);
-        }
-
-        .page :global(.brand-name) {
-            min-width: 0;
-            color: var(--color-primary);
-            font-size: var(--text-body);
-            font-weight: 700;
-            line-height: var(--leading-heading);
-            letter-spacing: var(--tracking-heading);
-        }
-
         /* The hero repeats this CTA directly below, so it is hidden on phones. */
-        .page :global(.header-start) {
-            display: none;
-        }
 
         /* ======================================================================
          4. Landing sections
@@ -692,38 +664,11 @@
         /* ======================================================================
          5. Footer (same as DashboardPage) and responsive layout (FD §8)
          ====================================================================== */
-        .page :global(.site-footer) {
-            width: 100%;
-            margin-top: var(--space-xl);
-            border-top: 1px solid var(--color-border);
-            background: var(--color-background);
-        }
-
-        .page :global(.footer-content .material-symbols-outlined) {
-            color: var(--color-primary);
-        }
 
         @media (min-width: 640px) {
 
             .page :global(.card) {
                 padding: var(--space-lg);
-            }
-
-            .page :global(.header-content) {
-                gap: var(--space-lg);
-            }
-
-            .page :global(.brand) {
-                gap: var(--space-md);
-            }
-
-            .page :global(.brand-name) {
-                font-size: var(--text-brand);
-                white-space: nowrap;
-            }
-
-            .page :global(.header-start) {
-                display: inline-flex;
             }
 
             .page :global(.feature-list) {

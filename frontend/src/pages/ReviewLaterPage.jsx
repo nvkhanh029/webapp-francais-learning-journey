@@ -48,6 +48,10 @@
       5. Module groups (Grammar, Vocabulary, Conjugation), each a card of saved rows
       6. Footer
 */
+import EmptyState from "../components/common/EmptyState.jsx";
+import ErrorState from "../components/common/ErrorState.jsx";
+import LoadingState from "../components/common/LoadingState.jsx";
+import Breadcrumbs from "../components/common/Breadcrumbs.jsx";
 import styles from "./ReviewLaterPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
 import { t } from "../i18n/index.js";
@@ -57,107 +61,11 @@ export default function ReviewLaterPage() {
   const rootRef = usePageScript(init, { title: "title.reviewLater" });
 
   return (
-    <div className={`app-page ${styles.page}`} ref={rootRef}>
+    <div className={`page-body ${styles.page}`} ref={rootRef}>
       {/* 1. Header (same component as the Dashboard; Review Later has no main-nav item, so none is current) */}
-      <header className="site-header">
-        <div className="page-container header-content">
-          <div className="brand">
-            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
-            {" "}
-            <span className="brand-name">
-              Français Learning Journey
-            </span>
-          </div>
-          <nav className="main-nav" aria-label={t("common.mainNav")}>
-            <a className="nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/grammar">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </nav>
-          <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
-              <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
-                VI
-              </button>
-              {" "}
-              <button className="language-button" type="button" aria-pressed="false" data-lang="en" title="English">
-                EN
-              </button>
-            </div>
-            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                logout
-              </span>
-              {" "}
-              <span className="logout-label">
-                {t("common.logout")}
-              </span>
-            </button>
-            {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                menu
-              </span>
-            </button>
-          </div>
-        </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
-          <div className="page-container mobile-nav-list">
-            <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/grammar">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </div>
-        </nav>
-      </header>
       <main className="page-container review-page" id="main-content">
         {/* 2. Breadcrumbs: the way back to the Dashboard card this page is opened from. */}
-        <nav className="breadcrumbs" aria-label={t("common.breadcrumb")}>
-          <ol className="breadcrumb-list">
-            <li>
-              <a className="crumb-link" href="#" data-route="/dashboard">
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  arrow_back
-                </span>
-                {" "}
-                <span>
-                  {t("common.dashboard")}
-                </span>
-              </a>
-            </li>
-            <li>
-              <span className="material-symbols-outlined crumb-separator" aria-hidden="true">
-                chevron_right
-              </span>
-              {" "}
-              <span className="crumb-current" aria-current="page">
-                {t("common.reviewLater")}
-              </span>
-            </li>
-          </ol>
-        </nav>
+        <Breadcrumbs items={[{ label: t("common.dashboard"), to: "/dashboard", icon: "arrow_back" }, { label: t("common.reviewLater") }]} />
         {/* 3. Page header. The count is derived from items.length; no new API field. */}
         <header className="review-header">
           <div className="icon-tile" aria-hidden="true">
@@ -178,37 +86,10 @@ export default function ReviewLaterPage() {
           </div>
         </header>
         {/* 4. Page-level states (FD §6.6). Shown instead of the list; no sample data behind them. */}
-        <div className="card page-state" data-page-state="loading" role="status" hidden>
-          <div className="spinner" aria-hidden="true" />
-          <p>
-            {t("review.loading")}
-          </p>
-        </div>
-        <div className="card page-state" data-page-state="error" role="alert" hidden>
-          <span className="material-symbols-outlined" aria-hidden="true">
-            cloud_off
-          </span>
-          <h2 className="page-state-title">
-            {t("review.loadError")}
-          </h2>
-          <p>
-            {t("common.loadError")}
-          </p>
-          <button className="button button-secondary button-compact" type="button" data-action="retry-page">
-            {t("common.retry")}
-          </button>
-        </div>
+        <LoadingState hidden message={t("review.loading")} />
+        <ErrorState hidden headingLevel={2} title={t("review.loadError")} retryAction="retry-page" />
         {/* items: [] — one page-level empty state instead of empty module sections. */}
-        <div className="card page-state" data-page-state="empty" hidden>
-          <span className="material-symbols-outlined" aria-hidden="true">
-            bookmark_added
-          </span>
-          <h2 className="page-state-title" tabIndex="-1">
-            {t("review.emptyTitle")}
-          </h2>
-          <p>
-            {t("review.emptyText")}
-          </p>
+        <EmptyState hidden icon="bookmark_added" headingLevel={2} titleTabIndex={-1} title={t("review.emptyTitle")} message={t("review.emptyText")}>
           <div className="explore-links">
             <a className="lesson-link subject-vocabulary" href="#" data-route="/vocabulary">
               {t("common.vocabulary")}
@@ -231,7 +112,7 @@ export default function ReviewLaterPage() {
               </span>
             </a>
           </div>
-        </div>
+        </EmptyState>
         {/* 5. Module groups, rendered from items[] (script below). Groups with no items are omitted. */}
         <div className="review-groups" data-review-content hidden />
         {/* One group card per module. Unit rows are cloned into [data-slot="items"]. */}
@@ -286,18 +167,6 @@ export default function ReviewLaterPage() {
         {" "}
         <span id="toast-message" />
       </div>
-      {/* 6. Footer */}
-      <footer className="site-footer">
-        <div className="page-container footer-content">
-          <span className="material-symbols-outlined" aria-hidden="true">
-            auto_stories
-          </span>
-          {" "}
-          <span>
-            {t("common.footer")}
-          </span>
-        </div>
-      </footer>
     </div>
   );
 }

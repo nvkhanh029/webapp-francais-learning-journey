@@ -47,6 +47,9 @@
       7. Recent practice
       8. Footer
 */
+import ErrorState from "../components/common/ErrorState.jsx";
+import LoadingState from "../components/common/LoadingState.jsx";
+import ProgressBar from "../components/common/ProgressBar.jsx";
 import styles from "./DashboardPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
 import { t, monthName, dayMonth } from "../i18n/index.js";
@@ -56,103 +59,11 @@ export default function DashboardPage() {
   const rootRef = usePageScript(init, { title: "title.dashboard" });
 
   return (
-    <div className={`app-page ${styles.page}`} ref={rootRef}>
-      {/* 1. Header */}
-      <header className="site-header">
-        <div className="page-container header-content">
-          <div className="brand">
-            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
-            {" "}
-            <span className="brand-name">
-              Français Learning Journey
-            </span>
-          </div>
-          <nav className="main-nav" aria-label={t("common.mainNav")}>
-            <a className="nav-link" href="#" data-route="/dashboard" aria-current="page">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/grammar">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </nav>
-          <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
-              <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
-                VI
-              </button>
-              {" "}
-              <button className="language-button" type="button" aria-pressed="false" data-lang="en" title="English">
-                EN
-              </button>
-            </div>
-            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                logout
-              </span>
-              {" "}
-              <span className="logout-label">
-                {t("common.logout")}
-              </span>
-            </button>
-            {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                menu
-              </span>
-            </button>
-          </div>
-        </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
-          <div className="page-container mobile-nav-list">
-            <a className="mobile-nav-link" href="#" data-route="/dashboard" aria-current="page">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/grammar">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </div>
-        </nav>
-      </header>
+    <div className={`page-body ${styles.page}`} ref={rootRef}>
       <main className="page-container dashboard" id="main-content">
         {/* Page-level states (FD §7.7). Shown instead of the content while loading or on error. */}
-        <div className="card page-state" data-page-state="loading" role="status" hidden>
-          <div className="spinner" aria-hidden="true" />
-          <p>
-            {t("dashboard.loading")}
-          </p>
-        </div>
-        <div className="card page-state" data-page-state="error" role="alert" hidden>
-          <span className="material-symbols-outlined" aria-hidden="true">
-            cloud_off
-          </span>
-          <h1 className="page-state-title">
-            {t("dashboard.loadError")}
-          </h1>
-          <p>
-            {t("common.loadError")}
-          </p>
-          <button className="button button-secondary button-compact" type="button" data-action="retry-page">
-            {t("common.retry")}
-          </button>
-        </div>
+        <LoadingState hidden message={t("dashboard.loading")} />
+        <ErrorState hidden headingLevel={1} title={t("dashboard.loadError")} retryAction="retry-page" />
         <div data-dashboard-content>
           {/* 2. Greeting: Coucou for a streak of 30+ days, Bienvenue on first visit, otherwise Bonjour. */}
           <section className="welcome dashboard-section" aria-labelledby="welcome-title">
@@ -455,18 +366,7 @@ export default function DashboardPage() {
                   </p>
                 </div>
                 <div className="skill-progress">
-                  <div className="progress-labels">
-                    <span>
-                      {t("common.progress")}
-                    </span>
-                    {" "}
-                    <span className="progress-value">
-                      72%
-                    </span>
-                  </div>
-                  <div className="progress-track" role="progressbar" aria-label={t("common.progressVocabulary")} aria-valuemax="100" aria-valuemin="0" aria-valuenow="72" style={{ "--progress": "72%" }}>
-                    <div className="progress-fill" />
-                  </div>
+                  <ProgressBar label={t("common.progress")} percent={72} ariaLabel={t("common.progressVocabulary")} />
                   <div className="skill-footer">
                     <span className="skill-detail">
                       {t("common.lessonsOf", { learned: 18, total: 25, n: 25 })}
@@ -509,18 +409,7 @@ export default function DashboardPage() {
                   </p>
                 </div>
                 <div className="skill-progress">
-                  <div className="progress-labels">
-                    <span>
-                      {t("common.progress")}
-                    </span>
-                    {" "}
-                    <span className="progress-value">
-                      62%
-                    </span>
-                  </div>
-                  <div className="progress-track" role="progressbar" aria-label={t("common.progressGrammar")} aria-valuemax="100" aria-valuemin="0" aria-valuenow="62" style={{ "--progress": "62%" }}>
-                    <div className="progress-fill" />
-                  </div>
+                  <ProgressBar label={t("common.progress")} percent={62} ariaLabel={t("common.progressGrammar")} />
                   <div className="skill-footer">
                     <span className="skill-detail">
                       {t("common.lessonsOf", { learned: 8, total: 13, n: 13 })}
@@ -563,18 +452,7 @@ export default function DashboardPage() {
                   </p>
                 </div>
                 <div className="skill-progress">
-                  <div className="progress-labels">
-                    <span>
-                      {t("common.progress")}
-                    </span>
-                    {" "}
-                    <span className="progress-value">
-                      48%
-                    </span>
-                  </div>
-                  <div className="progress-track" role="progressbar" aria-label={t("common.progressConjugation")} aria-valuemax="100" aria-valuemin="0" aria-valuenow="48" style={{ "--progress": "48%" }}>
-                    <div className="progress-fill" />
-                  </div>
+                  <ProgressBar label={t("common.progress")} percent={48} ariaLabel={t("common.progressConjugation")} />
                   <div className="skill-footer">
                     <span className="skill-detail">
                       {t("common.lessonsOf", { learned: 12, total: 25, n: 25 })}
@@ -868,18 +746,6 @@ export default function DashboardPage() {
           </section>
         </div>
       </main>
-      {/* 8. Footer */}
-      <footer className="site-footer">
-        <div className="page-container footer-content">
-          <span className="material-symbols-outlined" aria-hidden="true">
-            auto_stories
-          </span>
-          {" "}
-          <span>
-            {t("common.footer")}
-          </span>
-        </div>
-      </footer>
     </div>
   );
 }
