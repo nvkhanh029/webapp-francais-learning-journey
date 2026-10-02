@@ -21,6 +21,7 @@ export const strings = {
   "common.menuNav": { vi: "Menu điều hướng", en: "Navigation menu" },
   "common.menuNavClose": { vi: "Đóng menu điều hướng", en: "Close navigation menu" },
   "common.breadcrumb": { vi: "Đường dẫn trang", en: "Breadcrumb" },
+  "common.actionError": { vi: "Không thể hoàn tất thao tác. Vui lòng thử lại.", en: "Could not complete the action. Please try again." },
   "common.retry": { vi: "Thử lại", en: "Try again" },
   "common.loadError": { vi: "Đã có lỗi khi tải dữ liệu. Vui lòng thử lại.", en: "Something went wrong while loading the data. Please try again." },
   "common.reviewLater": { vi: "Xem lại sau", en: "Review Later" },

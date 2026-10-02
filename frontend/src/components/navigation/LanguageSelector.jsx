@@ -12,7 +12,8 @@ const OPTIONS = [
   { code: "en", title: "English" },
 ];
 
-export default function LanguageSelector() {
+// onError (optional) is called when saving the preference fails, so the host can show a message.
+export default function LanguageSelector({ onError }) {
   const language = useLanguage();
   const { currentUser, updateSupportLanguage } = useAuth();
   const hasNoSavedLanguage = currentUser !== null && currentUser.support_language === null;
@@ -28,7 +29,7 @@ export default function LanguageSelector() {
           data-lang={option.code}
           title={option.title}
           onClick={() =>
-            hasNoSavedLanguage ? setLanguage(option.code) : updateSupportLanguage(option.code).catch(() => {})
+            hasNoSavedLanguage ? setLanguage(option.code) : updateSupportLanguage(option.code).catch(() => onError?.())
           }
         >
           {option.code.toUpperCase()}

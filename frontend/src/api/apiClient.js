@@ -32,6 +32,12 @@ export class ApiError extends Error {
   get isRateLimited() {
     return this.status === 429;
   }
+
+  // 403 csrf_failed (API §4.7): a generic request failure. The session is still valid, so it is neither a sign-out
+  // nor a reason to redirect (FD §6.7).
+  get isCsrfFailed() {
+    return this.status === 403 && this.code === "csrf_failed";
+  }
 }
 
 // AuthContext registers a handler so an expired or missing session (401 not_authenticated) clears the current user

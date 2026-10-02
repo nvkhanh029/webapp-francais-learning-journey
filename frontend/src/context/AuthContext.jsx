@@ -38,7 +38,7 @@ export function AuthProvider({ children }) {
         .then((user) => !isCancelled() && setAuthenticated(user))
         .catch((error) => {
           if (isCancelled()) return;
-          if (error instanceof ApiError && error.status === 401) clearSession();
+          if (error instanceof ApiError && error.isUnauthorized) clearSession();
           else setState(UNAVAILABLE);
         }),
     [setAuthenticated, clearSession],
@@ -90,14 +90,18 @@ export function AuthProvider({ children }) {
     [setAuthenticated],
   );
 
-  // Logout is idempotent on the server; the learner is signed out locally even if the request fails.
+  // Logout is idempotent on the server; the learner is signed out locally even if the request fails. The one
+  // exception is 403 csrf_failed: the request was rejected, so the server session is still valid and stays
+  // untouched. Resolves to true when the learner was signed out locally, false when the session was kept.
   const logout = useCallback(async () => {
     try {
       await authApi.logout();
-    } catch {
-      // Nothing to recover: the local session state is cleared below either way.
+    } catch (error) {
+      if (error instanceof ApiError && error.isCsrfFailed) return false;
+      // Anything else: nothing to recover, the local session state is cleared below either way.
     }
     clearSession();
+    return true;
   }, [clearSession]);
 
   const refreshUser = useCallback(async () => {
