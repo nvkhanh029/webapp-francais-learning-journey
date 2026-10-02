@@ -16,7 +16,7 @@ Chỉ ngôi `nous` thay đổi.
 
 ## 3. Nhóm e/é + phụ âm (acheter, préférer)
 
-- `acheter`: je achète, tu achètes, il achète, nous achetons, vous achetez, ils achètent.
+- `acheter`: j'achète, tu achètes, il achète, nous achetons, vous achetez, ils achètent.
 - `préférer`: je préfère, tu préfères, il préfère, nous préférons, vous préférez, ils préfèrent.
 
 Quy tắc nhớ: đổi thành `è` ở các ngôi số ít và `ils/elles`, giữ nguyên ở `nous/vous`.
