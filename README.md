@@ -6,8 +6,9 @@ Vocabulary and Verb Conjugation, with Vietnamese/English learning support.
 
 **Current phase: backend development plus authorized frontend implementation.
 This repository is a shared scaffold, not the completed application.** Frontend
-Design is finalized (`docs/frontend-design.md`); learner-facing feature
-implementation on both backend and frontend is still team work in progress.
+Design is finalized (`docs/frontend-design.md`) and the frontend UI exists in
+`frontend/` (React + Vite). Backend feature implementation and the integration of
+the UI with it are still work in progress.
 
 ## Project status
 
@@ -19,7 +20,7 @@ implementation on both backend and frontend is still team work in progress.
 | Content preparation | Authoring templates, source validation, Vocabulary splitting and transactional fresh-database seed |
 | Feature implementation | Auth, preferences, Dashboard, learner state, content endpoints and Practice business logic are **not implemented** |
 | Curriculum | Templates only. The Content/Data Owner supplies approved demo content |
-| Frontend | Design finalized (`docs/frontend-design.md`); no implementation yet, `frontend/README.md` placeholder only |
+| Frontend | Design finalized (`docs/frontend-design.md`); the React + Vite UI is implemented in `frontend/` (`package.json`, committed `package-lock.json`, `src/`); wherever a backend endpoint is not implemented yet, the matching screen cannot show real data |
 
 Existing files must be inspected and extended, not recreated in parallel.
 Coding assistants must follow [AGENTS.md](AGENTS.md).
@@ -40,7 +41,7 @@ Optional/Future features remain excluded unless the project lead opens them.
 
 | Concern | Approved direction |
 |---|---|
-| Frontend (later) | React + Vite, HTML/CSS/JavaScript |
+| Frontend | React + Vite, HTML/CSS/JavaScript |
 | Backend | Python + Flask |
 | Persistence | SQLite through Python `sqlite3`, no ORM |
 | Interface | REST-style HTTP/JSON under `/api/v1` |
@@ -48,7 +49,7 @@ Optional/Future features remain excluded unless the project lead opens them.
 | Demonstration | Local development/local demonstration |
 
 ```text
-React (later) -> /api/v1 HTTP/JSON -> Flask -> SQLite
+React -> /api/v1 HTTP/JSON -> Flask -> SQLite
                                       ^
 backend/data/ -> load / validate / seed |
 ```
@@ -75,7 +76,7 @@ Frontend must never read SQLite or decide authoritative scores/learner identity.
 |   |-- seed.py
 |   |-- pytest.ini
 |   `-- requirements.txt
-|-- frontend/                # design finalized, implementation not started
+|-- frontend/                # React + Vite UI (package.json, package-lock.json, src/)
 |-- docs/                    # design baselines and operational notes
 |-- .github/                 # PR template and backend-tests workflow
 |-- .gitignore
@@ -90,7 +91,7 @@ Frontend must never read SQLite or decide authoritative scores/learner identity.
 
 Use Git and Python **3.12** for the team/CI baseline. The supplied foundation
 also has partial verification on Python 3.13; see the verification note.
-Node.js/npm and a running frontend are **not required in this phase**.
+Node.js/npm and a running frontend are **not required for backend-only work**.
 SQLite is provided by Python's standard library; no separate DB server is needed.
 
 ### 2. Clone or open the repository
@@ -235,9 +236,19 @@ Opening `/` therefore returns JSON **404**, not a landing page. A 404 at an
 unimplemented endpoint does not mean its feature is ready or broken integration;
 check the feature's implementation status first.
 
-Frontend Design is finalized (`docs/frontend-design.md`) and implementation is
-authorized, but no scaffold has been committed to `frontend/` yet. Do not run a
-Vite server or `npm install` until that scaffold and its `package.json` exist.
+The frontend UI exists in `frontend/` and follows `docs/frontend-design.md`.
+It is not needed for backend-only work. To run it, use a second terminal with
+Node.js/npm installed:
+
+```bash
+cd frontend
+npm ci
+npm run dev
+```
+
+The Vite dev server proxies `/api` to Flask at `http://127.0.0.1:5000`, so start
+the backend first. Screens that depend on an endpoint the backend has not
+implemented yet will show their error state.
 
 ### Setup success checklist
 
@@ -279,6 +290,9 @@ python -m pytest -q
 
 Each member continues through their backend, tests, later frontend and real
 integration. Shared files are coordinated, not independently reimplemented.
+
+> The table is kept as project history. One person now implements everything and
+> approves all baseline changes (see the note in [AGENTS.md](AGENTS.md) §5).
 
 Use `main` plus short-lived task branches. New work starts from current `main`;
 normal changes enter through a reviewed PR and **Squash and merge**. No permanent

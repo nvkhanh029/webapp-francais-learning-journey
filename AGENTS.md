@@ -6,8 +6,9 @@ Operational instructions for coding AI working in this repository.
 
 - Frontend Design is finalized (`docs/frontend-design.md`).
 - Backend work continues in `backend/` following the existing baselines.
-- Frontend work follows `docs/frontend-design.md`. As of this update, `frontend/` still contains only its placeholder README; no React/Vite implementation has been committed yet.
+- Frontend work follows `docs/frontend-design.md`. The frontend UI exists: `frontend/` contains a React + Vite implementation (`package.json`, committed `package-lock.json`, `src/`, `vite.config.js`). Continue it by inspecting and extending the existing code, not by scaffolding a parallel app.
 - Backend work may still be completed and merged without a frontend consumer if it satisfies the backend Definition of Done.
+- Frontend dependency approved in the baseline: `react-markdown` with `remark-gfm`, raw HTML disabled (`docs/frontend-design.md` §9.3). Any other new dependency still needs approval.
 
 ## 1. Documentation gate: no coding before all required baselines are available and read
 
@@ -32,7 +33,7 @@ Until the documentation gate is satisfied, do not:
 
 Reading only the document that appears directly related to the assigned feature is not sufficient. The required baselines define cross-cutting constraints and must all be read before the first code change.
 
-`docs/frontend-design.md` is now finalized and frontend implementation is authorized. It is a required baseline, in addition to the six documents above, before any frontend coding begins.
+`docs/frontend-design.md` is finalized and the frontend UI is implemented. It is a required baseline, in addition to the six documents above, before any frontend coding begins.
 
 After the documentation gate is satisfied, use the baselines in this order when checking a task:
 
@@ -205,6 +206,8 @@ Ownership is by vertical feature slice, not by Flask layer. It defines primary r
 | Member 5 | Conjugation + Reference |
 | Member 6 | Practice + Mixed Practice |
 
+> **Note (current state).** The table above is kept as project history. One person now implements everything and approves all baseline changes, so the per-owner coordination and review steps in this section and in §2 are satisfied by that person's approval. Where this file says to ask or report to Vân Khánh, that approval is the one that counts. Ownership names no longer limit who may edit a feature area.
+
 A feature owner may change the route, service, repository/runtime state, and tests required by that feature.
 
 Coordinate shared areas:
@@ -240,6 +243,8 @@ Core rules:
 - Passwords are hashed; never store plaintext or expose password hashes.
 - Keep `SECRET_KEY` outside committed source.
 - Do not trust client-calculated Practice score, streak, completion time, activity date, or learner identity.
+- Use one server clock fixed to `Asia/Ho_Chi_Minh` for `completed_at`, `activity_date`, the Dashboard `today` value, and streaks (API §4.10); the frontend never decides "today" from the browser clock.
+- Session expiry, a `Secure` cookie under HTTPS, CSRF protection for state-changing requests, and login rate limiting are required, not optional (API §4.7).
 - In-progress Practice run metadata stays in the server-side in-memory store for the MVP.
 - Starting Practice creates no Practice History; persist history only after valid final submission.
 - Prevent duplicate completed history for one Practice run.
