@@ -3,6 +3,9 @@
   support_language is still null: inside RequireAuth but outside RequireLanguage -> AppLayout, so it uses a
   lightweight brand-only header instead of the full app shell.
 
+  Continue saves the choice with AuthContext.updateSupportLanguage() (PATCH /api/v1/me/preferences, API §7.1) and
+  then goes to the Dashboard; a failed save shows a recoverable error with a retry button.
+
   One explicit choice: Vietnamese (vi) or English (en) as the SUPPORT language. French remains the target language
   (FR-LANG-03). Neither option is preselected, and the vi read-time fallback (FR-LANG-07) is never presented as an
   already-saved choice: Continue without a selection shows a validation message.
@@ -16,6 +19,7 @@ import { useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { SubmitButton } from "../features/auth/AuthFormParts.jsx";
+import useAuth from "../hooks/useAuth.js";
 import useDocumentTitle from "../hooks/useDocumentTitle.js";
 import { t, useLanguage } from "../i18n/index.js";
 import styles from "./LanguageSetupPage.module.css";
@@ -36,13 +40,14 @@ function initialState(preview) {
 export default function LanguageSetupPage() {
   useLanguage();
   useDocumentTitle("title.languageSetup");
+  const { updateSupportLanguage } = useAuth();
   const navigate = useNavigate();
   const preview = useSearchParams()[0].get("preview");
   const [initial] = useState(() => initialState(preview));
   const [selected, setSelected] = useState(initial.selected);
   // error: null, "validation" (nothing selected) or "server" (the save failed).
   const [error, setError] = useState(initial.error);
-  const [submitting] = useState(initial.submitting);
+  const [submitting, setSubmitting] = useState(initial.submitting);
   const optionRefs = useRef([]);
 
   function select(index, { moveFocus = false } = {}) {
@@ -65,7 +70,7 @@ export default function LanguageSetupPage() {
     }
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (submitting) return;
     if (!selected) {
       setError("validation");
@@ -73,7 +78,16 @@ export default function LanguageSetupPage() {
       return;
     }
     setError(null);
-    navigate("/dashboard");
+    setSubmitting(true);
+    try {
+      await updateSupportLanguage(selected);
+      navigate("/dashboard", { replace: true });
+    } catch {
+      // Any failure keeps the learner here with their choice intact. A 401 also clears the session, and the route
+      // guard then sends the learner to Login.
+      setError("server");
+      setSubmitting(false);
+    }
   }
 
   return (

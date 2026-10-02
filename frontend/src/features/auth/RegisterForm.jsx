@@ -1,10 +1,15 @@
 import { useRef, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
+import { ApiError } from "../../api/apiClient.js";
+import useAuth from "../../hooks/useAuth.js";
 import { t, useLanguage } from "../../i18n/index.js";
+import { fieldErrorsFromApi, normalizeEmail, postAuthPath } from "./authHelpers.js";
 import { FieldError, FormAlert, PasswordField, SubmitButton } from "./AuthFormParts.jsx";
 
-// Register form (FD §5.4.1). Fields map to POST /api/v1/auth/register { email, password } (API §6.1).
+// Register form (FD §5.4.1). Fields map to POST /api/v1/auth/register { email, password } (API §6.1), sent through
+// AuthContext.register(). The email is trimmed and lowercased; the password is sent exactly as typed. A successful
+// registration signs the learner in, so they go straight to Language Setup (support_language is null).
 //
 // Preview states (UI review aid): ?preview=validation | invalid | email-taken | server-error | submitting.
 // They only set the initial state of the form; nothing is sent to the API.
@@ -55,16 +60,19 @@ function initialState(preview) {
 
 export default function RegisterForm() {
   useLanguage();
+  const { register } = useAuth();
+  const navigate = useNavigate();
   const preview = useSearchParams()[0].get("preview");
   const [initial] = useState(() => initialState(preview));
   const [values, setValues] = useState({ email: initial.email, password: initial.password });
-  // errors hold string-table keys, translated at render so they follow a language change.
+  // errors hold string-table keys (or { text } for an API message with no matching key), translated at render so
+  // they follow a language change.
   const [errors, setErrors] = useState(initial.errors);
   // A field is touched once a submit validated it; from then on it is re-checked as the learner types, so a
   // message updates (required -> too short) and a server message (email taken) clears on the next edit.
   const [touched, setTouched] = useState(initial.touched);
   const [formError, setFormError] = useState(initial.formError);
-  const [submitting] = useState(initial.submitting);
+  const [submitting, setSubmitting] = useState(initial.submitting);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
@@ -73,7 +81,18 @@ export default function RegisterForm() {
     if (touched[name]) setErrors((current) => ({ ...current, [name]: CHECKS[name](value) }));
   }
 
-  function handleSubmit(event) {
+  function showFieldErrors(next) {
+    setErrors((current) => ({ ...current, ...next }));
+    setTouched((current) => ({
+      ...current,
+      email: current.email || "email" in next,
+      password: current.password || "password" in next,
+    }));
+    if (next.email) emailRef.current.focus();
+    else if (next.password) passwordRef.current.focus();
+  }
+
+  async function handleSubmit(event) {
     event.preventDefault();
     if (submitting) return;
     setFormError(null);
@@ -81,12 +100,30 @@ export default function RegisterForm() {
     const next = { email: checkEmail(values.email), password: checkPassword(values.password) };
     setErrors(next);
     setTouched({ email: true, password: true });
-    if (next.email) emailRef.current.focus();
-    else if (next.password) passwordRef.current.focus();
+    if (next.email) return emailRef.current.focus();
+    if (next.password) return passwordRef.current.focus();
+
+    setSubmitting(true);
+    try {
+      const user = await register(normalizeEmail(values.email), values.password);
+      navigate(postAuthPath(user), { replace: true });
+    } catch (error) {
+      setSubmitting(false);
+      if (error instanceof ApiError && error.code === "email_already_registered") {
+        showFieldErrors({ email: "auth.emailTaken" });
+      } else if (error instanceof ApiError && error.status === 422 && error.code === "validation_error") {
+        const fieldErrors = fieldErrorsFromApi(error);
+        if (Object.keys(fieldErrors).length > 0) showFieldErrors(fieldErrors);
+        else setFormError("auth.invalidRequest");
+      } else {
+        setFormError("auth.registerServerError");
+      }
+    }
   }
 
-  const emailError = errors.email ? t(errors.email) : null;
-  const passwordError = errors.password ? t(errors.password) : null;
+  const messageOf = (error) => (!error ? null : typeof error === "string" ? t(error) : error.text);
+  const emailError = messageOf(errors.email);
+  const passwordError = messageOf(errors.password);
 
   return (
     <form className="auth-form" id="register-form" noValidate onSubmit={handleSubmit}>

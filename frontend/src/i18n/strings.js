@@ -220,6 +220,16 @@ export const strings = {
   "auth.emailTaken": { vi: "Email này đã được đăng ký.", en: "This email is already registered." },
   "auth.invalidRequest": { vi: "Thông tin đăng ký chưa hợp lệ. Vui lòng kiểm tra lại.", en: "The registration details are not valid. Please check and try again." },
   "auth.registerServerError": { vi: "Không thể đăng ký lúc này. Vui lòng thử lại.", en: "Could not sign up right now. Please try again." },
+  "auth.passwordInvalid": { vi: "Mật khẩu không hợp lệ.", en: "The password is not valid." },
+  "auth.loginRateLimited": { vi: "Bạn đã thử đăng nhập quá nhiều lần. Vui lòng thử lại sau.", en: "Too many login attempts. Please try again later." },
+  "auth.loginRateLimitedSeconds": {
+    vi: "Bạn đã thử đăng nhập quá nhiều lần. Vui lòng thử lại sau {n} giây.",
+    en: { one: "Too many login attempts. Please try again in {n} second.", other: "Too many login attempts. Please try again in {n} seconds." },
+  },
+  "auth.loginRateLimitedMinutes": {
+    vi: "Bạn đã thử đăng nhập quá nhiều lần. Vui lòng thử lại sau {n} phút.",
+    en: { one: "Too many login attempts. Please try again in {n} minute.", other: "Too many login attempts. Please try again in {n} minutes." },
+  },
   // ---- notFound ----
   "notFound.code": { vi: "Lỗi 404", en: "Error 404" },
   "notFound.title": { vi: "Không tìm thấy trang", en: "Page not found" },

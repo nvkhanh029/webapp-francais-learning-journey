@@ -30,7 +30,17 @@ export function FieldError({ id, message }) {
 }
 
 // Password input with the show / hide toggle. The password is passed through untouched (never trimmed).
-export function PasswordField({ id, value, onChange, autoComplete, placeholder, invalid, describedBy, minLength, inputRef }) {
+export function PasswordField({
+  id,
+  value,
+  onChange,
+  autoComplete,
+  placeholder,
+  invalid,
+  describedBy,
+  minLength,
+  inputRef,
+}) {
   const [visible, setVisible] = useState(false);
   const label = t(visible ? "common.hidePassword" : "common.showPassword");
   return (
@@ -68,7 +78,16 @@ export function PasswordField({ id, value, onChange, autoComplete, placeholder, 
 }
 
 // Primary submit button with the pending state (spinner, busy, disabled).
-export function SubmitButton({ id, className, submitting, label, submittingLabel, icon = "arrow_forward", onClick, type = "submit" }) {
+export function SubmitButton({
+  id,
+  className,
+  submitting,
+  label,
+  submittingLabel,
+  icon = "arrow_forward",
+  onClick,
+  type = "submit",
+}) {
   return (
     <button
       className={`button button-primary ${className}`.trim()}
