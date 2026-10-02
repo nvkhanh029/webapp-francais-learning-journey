@@ -1,8 +1,8 @@
 import random
-from datetime import datetime
 
 from flask import current_app, g
 
+from .. import clock
 from ..db import transaction
 from ..errors import ApiError
 from ..localization import localized_value, resolve_support_language
@@ -193,7 +193,7 @@ def submit_practice(run_id, answers):
             )
 
         total_questions = len(run["selected_question_ids"])
-        now = datetime.now().astimezone()
+        now = clock.now()
         completed_at = now.isoformat()
         activity_date = now.date().isoformat()
 

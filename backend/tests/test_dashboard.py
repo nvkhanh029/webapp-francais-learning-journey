@@ -12,6 +12,7 @@ from datetime import date, timedelta
 
 import pytest
 
+from app import clock
 from app.services.dashboard_service import calculate_streak
 
 pytestmark = pytest.mark.flask
@@ -267,7 +268,7 @@ def test_dashboard_streak_wiring_uses_real_today_and_yesterday(client, database_
     """End-to-end check that activity_date round-trips through the real DB/HTTP
     path; edge cases themselves are covered above by the pure-function tests.
     """
-    today = date.today()
+    today = clock.today()
     yesterday = today - timedelta(days=1)
     _insert_session(database_path, session_id=1, completed_at=f"{yesterday.isoformat()}T09:00:00+00:00",
                      activity_date=yesterday.isoformat())

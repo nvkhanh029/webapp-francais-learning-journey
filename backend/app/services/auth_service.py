@@ -9,10 +9,9 @@ Flask session creation and clearing stay in auth_session.py and are driven by
 the route (Backend Structure Section 7.2), so this service stays independent
 of the HTTP layer.
 """
-from datetime import datetime, timezone
-
 from werkzeug.security import check_password_hash, generate_password_hash
 
+from .. import clock
 from ..db import transaction
 from ..errors import ApiError
 from ..repositories import user_repository
@@ -22,7 +21,7 @@ MINIMUM_PASSWORD_LENGTH = 8
 
 def _now_iso():
     """Backend-authoritative creation timestamp; never trust a client-supplied time."""
-    return datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
+    return clock.now().isoformat(timespec="seconds")
 
 
 def register(email, password):

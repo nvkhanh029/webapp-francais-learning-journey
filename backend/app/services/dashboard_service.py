@@ -11,8 +11,9 @@ calendar date string ("YYYY-MM-DD"), consistent with `completed_at` using
 ISO 8601. Member 6 owns the write path that produces this value; coordinate
 before changing the assumed format.
 """
-from datetime import date, datetime, timedelta
+from datetime import datetime, timedelta
 
+from .. import clock
 from ..localization import localized_value
 from ..repositories import learning_state_repository, learning_unit_repository, practice_repository
 
@@ -32,7 +33,7 @@ def calculate_streak(activity_dates, today=None):
     depending on the real current date (Backend Structure Section 15.8).
     """
     if today is None:
-        today = date.today()
+        today = clock.today()
 
     days = sorted({_parse_activity_date(value) for value in activity_dates})
     if not days:
