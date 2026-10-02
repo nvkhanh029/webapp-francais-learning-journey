@@ -32,6 +32,7 @@
       Preview states (prototype only), via the URL query string:
         ?preview=new-learner     new-learner response: Bienvenue greeting, empty states
         ?preview=long-streak     streak of 30 days: Coucou greeting
+        ?preview=streak-off      current streak is 0: unlit flame illustration (sample data otherwise unchanged)
         ?preview=loading         Dashboard loading state
         ?preview=error           Dashboard error state
         ?preview=calendar-error  calendar month request failed
@@ -171,7 +172,7 @@ export default function DashboardPage() {
           <section className="activity-overview dashboard-section" aria-label="Chuỗi ngày học và lịch luyện tập">
             <article className="card streak-card" aria-labelledby="streak-title">
               <div className="streak-illustration">
-                <img alt="Ngọn lửa biểu thị chuỗi ngày học" src="/images/streak-on.png" />
+                <img alt="Ngọn lửa biểu thị chuỗi ngày học" data-streak-image src="/images/streak-on.png" />
               </div>
               <div>
                 <p className="streak-count">

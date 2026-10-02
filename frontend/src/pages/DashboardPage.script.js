@@ -123,6 +123,22 @@ export default function init() {
           document.querySelector("[data-streak-longest]").textContent = "30";
       }
 
+      if (preview === "streak-off") {
+          // Off state only: the current streak is 0 (streak.current === 0); everything else stays sample data.
+          streakCurrent = 0;
+          document.querySelector("[data-streak-current]").textContent = "0";
+      }
+
+      // Lit flame while the current streak is active, unlit flame when streak.current is 0.
+      const STREAK_IMAGE = {
+          on: { src: "/images/streak-on.png", alt: "Ngọn lửa biểu thị chuỗi ngày học" },
+          off: { src: "/images/streak-off.png", alt: "Ngọn lửa tắt, chưa có chuỗi ngày học" },
+      };
+      const streakImage = STREAK_IMAGE[streakCurrent > 0 ? "on" : "off"];
+      const streakImageElement = document.querySelector("[data-streak-image]");
+      streakImageElement.setAttribute("src", streakImage.src);
+      streakImageElement.setAttribute("alt", streakImage.alt);
+
       document.querySelector("[data-greeting]").textContent = getGreeting({ isFirstVisit, streakCurrent });
 
       if (preview === "loading") showPageState("loading");
