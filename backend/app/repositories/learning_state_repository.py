@@ -1,8 +1,7 @@
 """Learner/unit state persistence: learned_at, review_later, last_opened_at.
 
-Owner: Member 2 (Dashboard and Learning State), per docs/repository-conventions.md
-Section 8.4. Use app.db.get_db() and parameter-bound SQL. The service owns
-transactions; repository writes must not commit independently.
+Parameter-bound SQL via get_db(); the service owns transactions and repository
+writes must not commit independently.
 """
 from ..db import get_db
 
@@ -89,6 +88,7 @@ def count_learned_by_type(user_id):
 
 
 def count_review_later(user_id):
+    """Return how many units the learner currently marked Review Later."""
     row = get_db().execute(
         "SELECT COUNT(*) AS total FROM user_learning_state "
         "WHERE user_id = ? AND review_later = 1",
@@ -108,7 +108,7 @@ def has_any_learned(user_id):
 
 
 def get_continue_learning(user_id):
-    """Most recently opened unfinished unit, or None. See Database Design Section 11.1."""
+    """Return the most recently opened unfinished unit, or None."""
     return get_db().execute(
         "SELECT lu.slug AS slug, lu.unit_type AS unit_type, "
         "lu.title_fr AS title_fr, lu.title_vi AS title_vi, lu.title_en AS title_en "

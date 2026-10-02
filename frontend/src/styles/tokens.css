@@ -1,1 +1,2 @@
-/* TODO: Design tokens. */
+/* Design tokens: core colors, module accent families, spacing, radius, and type scale. */
+/* Components consume these variables instead of hard-coding values. */

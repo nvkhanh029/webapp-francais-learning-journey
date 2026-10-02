@@ -1,6 +1,10 @@
+-- Français Learning Journey schema (SQLite).
+-- Applied idempotently by init_db.py: CREATE IF NOT EXISTS never drops existing rows.
+-- Static curriculum tables are seeded from backend/data/; runtime tables hold learner state.
 
 PRAGMA foreign_keys = ON;
 
+-- Accounts plus the chosen VI/EN support language.
 CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY,
     email TEXT NOT NULL UNIQUE,
@@ -9,6 +13,7 @@ CREATE TABLE IF NOT EXISTS users (
     created_at TEXT NOT NULL
 );
 
+-- Slug-addressed catalogue entry shared by every learning module.
 CREATE TABLE IF NOT EXISTS learning_units (
     id INTEGER PRIMARY KEY,
     unit_type TEXT NOT NULL CHECK (unit_type IN ('grammar', 'vocabulary', 'conjugation')),
@@ -18,6 +23,7 @@ CREATE TABLE IF NOT EXISTS learning_units (
     title_en TEXT NULL
 );
 
+-- Reference-only pages (e.g. Alphabet & Accents); not learning_units.
 CREATE TABLE IF NOT EXISTS reference_pages (
     id INTEGER PRIMARY KEY,
     slug TEXT NOT NULL UNIQUE,
@@ -30,6 +36,7 @@ CREATE TABLE IF NOT EXISTS reference_pages (
     UNIQUE (sort_order)
 );
 
+-- Grammar hierarchy: parts -> chapters -> lessons (lesson is a learning_unit).
 CREATE TABLE IF NOT EXISTS grammar_parts (
     id INTEGER PRIMARY KEY,
     title_fr TEXT NOT NULL,
@@ -58,6 +65,7 @@ CREATE TABLE IF NOT EXISTS grammar_lessons (
     UNIQUE (chapter_id, sort_order)
 );
 
+-- Vocabulary hierarchy: categories -> topics -> subtopics -> study units -> words.
 CREATE TABLE IF NOT EXISTS vocabulary_categories (
     id INTEGER PRIMARY KEY,
     title_fr TEXT NOT NULL,
@@ -109,6 +117,7 @@ CREATE TABLE IF NOT EXISTS vocabulary_words (
     UNIQUE (study_unit_id, sort_order)
 );
 
+-- Conjugation hierarchy: tenses -> lessons (lesson is a learning_unit).
 CREATE TABLE IF NOT EXISTS conjugation_tenses (
     id INTEGER PRIMARY KEY,
     title_fr TEXT NOT NULL,
@@ -127,6 +136,8 @@ CREATE TABLE IF NOT EXISTS conjugation_lessons (
     UNIQUE (tense_id, sort_order)
 );
 
+-- Quiz questions and their answer items (mcq / fill_blank / ordering).
+-- Explanations are optional and never exposed at Practice start.
 CREATE TABLE IF NOT EXISTS questions (
     id INTEGER PRIMARY KEY,
     learning_unit_id INTEGER NOT NULL REFERENCES learning_units(id),
@@ -149,6 +160,7 @@ CREATE TABLE IF NOT EXISTS question_items (
     UNIQUE (question_id, sort_order)
 );
 
+-- Per-learner progress: learned date, review-later flag, last opened.
 CREATE TABLE IF NOT EXISTS user_learning_state (
     user_id INTEGER NOT NULL REFERENCES users(id),
     learning_unit_id INTEGER NOT NULL REFERENCES learning_units(id),
@@ -158,6 +170,8 @@ CREATE TABLE IF NOT EXISTS user_learning_state (
     PRIMARY KEY (user_id, learning_unit_id)
 );
 
+-- Completed Practice summaries; written only on a valid final submission.
+-- normal rows carry a learning_unit_id, mixed rows must not.
 CREATE TABLE IF NOT EXISTS practice_sessions (
     id INTEGER PRIMARY KEY,
     user_id INTEGER NOT NULL REFERENCES users(id),
@@ -175,6 +189,7 @@ CREATE TABLE IF NOT EXISTS practice_sessions (
     )
 );
 
+-- Query indexes for Continue Learning, dashboard/streak and lesson ordering.
 CREATE INDEX IF NOT EXISTS idx_user_learning_state_last_opened
     ON user_learning_state(user_id, last_opened_at);
 

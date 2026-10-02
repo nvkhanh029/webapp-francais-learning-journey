@@ -1,8 +1,7 @@
 """Open, Mark as Learned and Review Later transitions.
 
-Owner: Member 2 (Dashboard and Learning State). Follows docs/api-contracts.md
-Section 13 and docs/database-design.md Section 11.1. Learner identity is
-always the authenticated user_id from the route/session, never a client value.
+Learner identity is always the authenticated user_id from the route/session,
+never a client value; the service owns each write transaction.
 """
 from datetime import datetime, timezone
 
@@ -18,6 +17,7 @@ def _now_iso():
 
 
 def _find_unit_or_404(slug):
+    """Return the learning unit for a slug or raise ApiError(404)."""
     unit = learning_unit_repository.find_by_slug(slug)
     if unit is None:
         raise ApiError(404, "learning_unit_not_found", "This learning unit does not exist.")
@@ -33,8 +33,8 @@ def record_open(user_id, slug):
 
 
 def update_state(user_id, slug, *, learned=None, review_later=None):
-    """Apply Mark as Learned and/or Review Later. The two fields stay independent
-    and neither one creates or removes streak activity (Requirements Section 11.1).
+    """Apply Mark as Learned and/or Review Later inside one service transaction.
+    The two fields stay independent and neither creates nor removes streak activity.
     """
     unit = _find_unit_or_404(slug)
     with transaction():
@@ -53,8 +53,8 @@ def update_state(user_id, slug, *, learned=None, review_later=None):
 
 
 def get_review_later(user_id, support_language):
-    """Build the Review Later list. `review_later` itself is not repeated per item
-    because membership in this list already implies review_later = true.
+    """Build the Review Later list. `review_later` is not repeated per item because
+    membership already implies review_later = true.
     """
     rows = learning_state_repository.list_review_later(user_id)
     items = [

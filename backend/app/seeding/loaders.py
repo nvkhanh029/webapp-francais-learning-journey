@@ -8,10 +8,12 @@ GROUPS = ("grammar", "vocabulary", "conjugation", "reference", "questions")
 
 
 def _is_template_path(path):
+    """Return True when any path part is a template (starts with underscore)."""
     return any(part.startswith("_") for part in path.parts)
 
 
 def _unique_pairs(pairs):
+    """Build a dict from JSON pairs, rejecting duplicate keys."""
     result = {}
     for key, value in pairs:
         if key in result:
@@ -21,10 +23,12 @@ def _unique_pairs(pairs):
 
 
 def _reject_constant(value):
+    """Reject non-standard JSON constants such as NaN and Infinity."""
     raise ValueError(f"{value} is not a valid JSON constant")
 
 
 def _read_text(path, root):
+    """Read UTF-8 text after confirming the path stays inside the data root."""
     if not path.resolve().is_relative_to(root.resolve()):
         raise SeedValidationError(f"{path}: source must remain inside the data root")
     try:
@@ -34,6 +38,7 @@ def _read_text(path, root):
 
 
 def _load_json(path, root):
+    """Parse one JSON object file, rejecting duplicates and invalid constants."""
     try:
         data = json.loads(_read_text(path, root), object_pairs_hook=_unique_pairs,
                           parse_constant=_reject_constant)
@@ -45,6 +50,7 @@ def _load_json(path, root):
 
 
 def load_all_content(data_root):
+    """Read all content groups under the data root into raw source records."""
     root = Path(data_root)
     if not root.is_dir():
         raise SeedValidationError(f"{root}: data root must be an existing directory")

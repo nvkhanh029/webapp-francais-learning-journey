@@ -1,12 +1,8 @@
-"""Member 1: user persistence.
+"""User persistence.
 
 Covers session-safe lookup, registration, the authentication-only lookup and
-support-language preference writes. The authentication lookup is the only
-function that returns password_hash; normal current-user reads must not carry
-it through the application (Backend Structure Section 8.5).
-
-Use app.db.get_db() and parameter-bound SQL. The service owns transactions;
-repository writes must not commit independently.
+support-language writes; only the authentication lookup returns password_hash.
+Parameter-bound SQL via get_db(); the service owns transactions.
 """
 from ..db import get_db
 

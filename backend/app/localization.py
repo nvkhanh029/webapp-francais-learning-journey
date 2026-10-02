@@ -3,6 +3,7 @@ SUPPORTED_LANGUAGES = {"vi", "en"}
 
 
 def resolve_support_language(value):
+    """Return a valid support language, defaulting None to 'vi'."""
     if value is None:
         return "vi"
     if not isinstance(value, str) or value not in SUPPORTED_LANGUAGES:

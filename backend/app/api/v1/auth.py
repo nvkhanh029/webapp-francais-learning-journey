@@ -1,8 +1,7 @@
-"""Registration, login and logout.
+"""Registration, login and logout HTTP routes.
 
-Owner: Member 1 (Auth and User Preferences), docs/api-contracts.md Section 6.
-Routes stay thin: validate the request shape, call the service, establish or
-clear the Flask session through auth_session, return the contract envelope.
+Routes stay thin: validate the request shape, call auth_service, drive the
+session through auth_session, and return the contract envelope.
 """
 from flask import Blueprint, jsonify
 
@@ -10,12 +9,12 @@ from ...auth_session import end_user_session, start_user_session
 from ...services import auth_service, user_service
 from ...validation import get_json_body, normalize_email, require_string, validate_email
 
-# Member 1: registration, login, logout.
 bp = Blueprint("auth", __name__, url_prefix="/api/v1/auth")
 
 
 @bp.post("/register")
 def register():
+    """Create an account, start its session, and return the new user model."""
     body = get_json_body()
     # strip=False: a password is a credential and must never be silently altered.
     email = validate_email(body.get("email"))
@@ -29,6 +28,7 @@ def register():
 
 @bp.post("/login")
 def login():
+    """Authenticate credentials, start the session, and return the user model."""
     body = get_json_body()
     # Login only normalizes the email: a badly formatted value must fail as
     # invalid credentials, not as a validation error that hints at the format.
@@ -41,6 +41,7 @@ def login():
 
 @bp.post("/logout")
 def logout():
+    """End the current session idempotently and report the logout result."""
     # Idempotent by contract: no authenticated session is required.
     end_user_session()
     return jsonify({"data": {"logged_out": True}})

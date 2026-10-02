@@ -1,4 +1,8 @@
-"""Grammar browse/detail application behavior and localized response models."""
+"""Grammar browse/detail response shaping and localization.
+
+Read-only service: SQL stays in grammar_repository, and learner state is read
+without recording an open.
+"""
 
 from ..errors import ApiError
 from ..localization import localized_value, resolve_support_language

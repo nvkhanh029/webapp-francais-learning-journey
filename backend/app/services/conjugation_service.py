@@ -1,14 +1,17 @@
-"""Member 5: Conjugation browse/detail response models (API Contracts §11)."""
+"""Shape Conjugation browse and detail responses for the API.
+
+Read-only service: no transaction is opened here and repository SQL stays in
+conjugation_repository. Missing slugs surface as the contract's 404 error.
+"""
 from ..errors import ApiError
 from ..localization import localized_value, resolve_support_language
 from ..repositories import conjugation_repository, learning_state_repository
 
 
 def _learner_state(user_id, learning_unit_id):
-    # Read-only view of Member 2's persisted learner state. GET must never
-    # record an open (record_open is deliberately not called here), so a
-    # first visit still reports learned=False, review_later=False until the
-    # learner acts via the learning-state endpoints.
+    """Return learned/review_later flags without recording an open on GET."""
+    # Read-only learner state: record_open is deliberately not called on GET, so
+    # a first visit still reports learned=False/review_later=False.
     row = learning_state_repository.get_state(user_id, learning_unit_id)
     learned = row is not None and row["learned_at"] is not None
     review_later = row is not None and row["review_later"] == 1
@@ -16,6 +19,7 @@ def _learner_state(user_id, learning_unit_id):
 
 
 def _localized_title(row, prefix, language):
+    """Return the localized title for a prefixed field with French fallback."""
     return localized_value(
         row,
         prefix,
@@ -25,7 +29,7 @@ def _localized_title(row, prefix, language):
 
 
 def list_conjugation(user):
-    """Tense-grouped browse metadata; no lesson Markdown (Contract §11.1)."""
+    """Return tense-grouped browse metadata without lesson Markdown."""
     language = resolve_support_language(user["support_language"])
     tenses = []
     current = None
@@ -52,7 +56,7 @@ def list_conjugation(user):
 
 
 def get_lesson(user, slug):
-    """One rule/pattern lesson with localized Markdown (Contract §11.2)."""
+    """Return one rule/pattern lesson with localized Markdown."""
     row = conjugation_repository.get_lesson_by_slug(slug)
     if row is None:
         raise ApiError(404, "learning_unit_not_found", "Learning content was not found.")

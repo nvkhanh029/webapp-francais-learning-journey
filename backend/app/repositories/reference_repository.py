@@ -1,4 +1,4 @@
-"""Member 5: reference-page SQL. Read-only; services own transactions."""
+"""Reference-page SQL. Read-only; services own transactions."""
 from ..db import get_db
 
 

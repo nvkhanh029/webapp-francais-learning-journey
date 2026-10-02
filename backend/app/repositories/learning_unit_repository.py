@@ -1,12 +1,8 @@
-"""Shared learning-unit identity, lookup and counts.
+"""Shared learning_units identity, lookup and counts across modules.
 
-Coordinate meaningful changes through Member 2/lead per Repository Conventions
-Section 8.12. Grammar/Vocabulary/Conjugation-specific content stays in their
-own module repositories; this file only covers the cross-module identity that
-Dashboard, Learning State and Practice all rely on.
-
-Use app.db.get_db() and parameter-bound SQL. The service owns transactions;
-repository writes must not commit independently.
+Grammar/Vocabulary/Conjugation content stays in its own repository; this file
+covers only the cross-module identity used by Dashboard, Learning State and
+Practice. Parameter-bound SQL via get_db(); the service owns transactions.
 """
 from ..db import get_db
 

@@ -1,3 +1,10 @@
+"""Load, validate, and seed authored static content into an initialized DB.
+
+All sources are read, transformed, and validated before any write, and the
+writes run in a single transaction that refuses to start when any static table
+already holds rows. Existing static content and learner data are never replaced;
+there is no destructive reset or content upsert path.
+"""
 import argparse
 import sqlite3
 from pathlib import Path
@@ -30,6 +37,7 @@ STATIC_TABLES = (
 
 
 def _table_exists(connection, table):
+    """Return True when the named table exists in the connection."""
     return connection.execute(
         "SELECT 1 FROM sqlite_master WHERE type = 'table' AND name = ?",
         (table,),
@@ -37,6 +45,7 @@ def _table_exists(connection, table):
 
 
 def _ensure_empty_static_store(connection):
+    """Abort unless every static table exists and holds zero rows."""
     for table in STATIC_TABLES:
         if not _table_exists(connection, table):
             raise RuntimeError("Database schema is missing. Run `python init_db.py` first.")
@@ -50,6 +59,7 @@ def _ensure_empty_static_store(connection):
 
 
 def prepare_content(data_root):
+    """Load, transform, and fully validate content before any DB write."""
     content = load_all_content(data_root)
     validate_source_shapes(content)
     content["vocabulary"] = generate_vocabulary_study_units(content["vocabulary"])
@@ -58,6 +68,7 @@ def prepare_content(data_root):
 
 
 def seed_database(database_path=DEFAULT_DATABASE, data_root=DEFAULT_DATA_ROOT):
+    """Validate all sources, then seed an empty database in one transaction."""
     database_path = Path(database_path)
     if not database_path.is_file():
         raise RuntimeError("Database does not exist. Run `python init_db.py` first.")
@@ -69,6 +80,7 @@ def seed_database(database_path=DEFAULT_DATABASE, data_root=DEFAULT_DATA_ROOT):
     try:
         connection.execute("PRAGMA foreign_keys = ON")
         try:
+            # Take the write lock up front so a concurrent seeder cannot interleave.
             connection.execute("BEGIN IMMEDIATE")
             _ensure_empty_static_store(connection)
             summary = write_all(connection, content)
@@ -83,6 +95,7 @@ def seed_database(database_path=DEFAULT_DATABASE, data_root=DEFAULT_DATA_ROOT):
 
 
 def _print_summary(summary):
+    """Print a human-readable summary of seeded content counts."""
     if sum(summary[key] for key in ("grammar_lessons", "vocabulary_study_units", "conjugation_lessons", "reference_pages")) == 0:
         print("No authored content found; only empty/template directories may exist.\n")
     else:
@@ -110,6 +123,7 @@ def _print_summary(summary):
 
 
 def parse_args():
+    """Parse command-line arguments for validation and seeding options."""
     parser = argparse.ArgumentParser(description="Validate and seed static learning content.")
     parser.add_argument("--validate-only", action="store_true", help="Validate all sources without opening or writing a database.")
     parser.add_argument("--database", default=str(DEFAULT_DATABASE), help="Optional database path override.")
@@ -118,6 +132,7 @@ def parse_args():
 
 
 def main():
+    """Run validation-only or full seeding from the command line."""
     args = parse_args()
     try:
         if args.validate_only:

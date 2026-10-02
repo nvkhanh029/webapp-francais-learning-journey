@@ -10,7 +10,10 @@ from seed import prepare_content
 from tests.support import empty_sources, lesson, read_json, write_json, vocabulary
 
 
+# --- Source discovery and template exclusion --------------------------------
+
 def test_templates_excluded_but_valid_content_retained(tmp_path):
+    """Confirm template sources are skipped while valid content is kept."""
     root = empty_sources(tmp_path/"sources")
     good = lesson(root, "reference", "fixture-reference")
     shutil.copytree(good.parent, good.parent.parent/"_template")
@@ -23,12 +26,16 @@ def test_templates_excluded_but_valid_content_retained(tmp_path):
 
 def test_repository_sources_validate_without_assuming_empty():
     # Intended read-only check of real authored sources, independent of counts.
+    """Confirm the real authored sources validate regardless of counts."""
     prepare_content(Path(__file__).resolve().parents[1]/"data")
 
+
+# --- Malformed JSON and non-object roots ------------------------------------
 
 @pytest.mark.parametrize("group", ["grammar", "conjugation", "reference", "vocabulary", "questions"])
 @pytest.mark.parametrize("bad", [[], None, "text", 12, True])
 def test_non_object_json_rejected_before_transform(tmp_path, group, bad):
+    """Confirm non-object JSON roots are rejected before transformation."""
     root = empty_sources(tmp_path/"sources")
     target = root/group/("broken/meta.json" if group in ("grammar", "conjugation", "reference") else "broken.json")
     write_json(target, bad)
@@ -38,18 +45,23 @@ def test_non_object_json_rejected_before_transform(tmp_path, group, bad):
 
 @pytest.mark.parametrize("text", ['{broken', '{"words": [], "words": []}', '{"words": NaN}'])
 def test_invalid_json_and_duplicate_json_keys(tmp_path, text):
+    """Confirm malformed JSON and duplicate keys are rejected."""
     root = empty_sources(tmp_path/"sources")
     (root/"vocabulary"/"broken.json").write_text(text)
     with pytest.raises(SeedValidationError, match="invalid JSON"):
         prepare_content(root)
 
 
+# --- Structural and directory-layout errors ---------------------------------
+
 def test_missing_root_is_not_successful_empty_import(tmp_path):
+    """Confirm a missing data root is an error, not an empty import."""
     with pytest.raises(SeedValidationError, match="data root"):
         load_all_content(tmp_path/"does-not-exist")
 
 
 def test_missing_group_is_a_clear_error(tmp_path):
+    """Confirm a missing group directory raises a clear error."""
     root = empty_sources(tmp_path/"sources")
     (root/"questions").rmdir()
     with pytest.raises(SeedValidationError, match="questions"):
@@ -57,6 +69,7 @@ def test_missing_group_is_a_clear_error(tmp_path):
 
 
 def test_orphan_markdown_is_not_silently_ignored(tmp_path):
+    """Confirm markdown without meta.json is reported, not ignored."""
     root = empty_sources(tmp_path/"sources")
     (root/"grammar"/"orphan").mkdir()
     (root/"grammar"/"orphan"/"vi.md").write_text("Fixture")
@@ -67,14 +80,18 @@ def test_orphan_markdown_is_not_silently_ignored(tmp_path):
 @pytest.mark.parametrize("group", ["grammar", "conjugation", "reference"])
 @pytest.mark.parametrize("language", ["vi", "en"])
 def test_missing_translation(content_root, group, language):
+    """Confirm a missing VI or EN translation is rejected."""
     folder = next((content_root/group).iterdir())
     (folder/f"{language}.md").unlink()
     with pytest.raises(SeedValidationError, match=language + r".md"):
         prepare_content(content_root)
 
 
+# --- Slug, order, and parent consistency ------------------------------------
+
 @pytest.mark.parametrize("bad_slug", ["Bad-Slug", "bad slug", "a/b", "../outside", "two--hyphens", "-leading", "trailing-", "accent-\u00e9"])
 def test_invalid_slug_rejected(content_root, bad_slug):
+    """Confirm non-kebab-case slugs are rejected."""
     p = content_root/"grammar"/"fixture-grammar"/"meta.json"
     meta = read_json(p); meta["slug"] = bad_slug; write_json(p, meta)
     with pytest.raises(SeedValidationError, match="kebab-case"):
@@ -83,6 +100,7 @@ def test_invalid_slug_rejected(content_root, bad_slug):
 
 @pytest.mark.parametrize("bad", [0, -1, True, 1.2, "10", 2**64])
 def test_invalid_order(content_root, bad):
+    """Confirm non-positive or non-integer sort orders are rejected."""
     p = content_root/"grammar"/"fixture-grammar"/"meta.json"
     meta = read_json(p); meta["sort_order"] = bad; write_json(p, meta)
     with pytest.raises(SeedValidationError, match="integer"):
@@ -90,6 +108,7 @@ def test_invalid_order(content_root, bad):
 
 
 def test_duplicate_learning_slug_across_modules(content_root):
+    """Confirm a slug reused across modules is rejected."""
     p = content_root/"conjugation"/"fixture-conjugation"/"meta.json"
     meta = read_json(p); meta["slug"] = "fixture-grammar"; write_json(p, meta)
     with pytest.raises(SeedValidationError, match="duplicate learning-unit"):
@@ -97,12 +116,14 @@ def test_duplicate_learning_slug_across_modules(content_root):
 
 
 def test_duplicate_sibling_order(content_root):
+    """Confirm duplicate sibling sort orders are rejected."""
     lesson(content_root, "grammar", "fixture-grammar-two", order=10)
     with pytest.raises(SeedValidationError, match="sort_order"):
         prepare_content(content_root)
 
 
 def test_inconsistent_repeated_parent(content_root):
+    """Confirm conflicting repeated parent metadata is rejected."""
     p = lesson(content_root, "grammar", "fixture-grammar-two", order=20)
     meta = read_json(p); meta["part"]["title_fr"] = "Conflicting parent"; write_json(p, meta)
     with pytest.raises(SeedValidationError, match="inconsistent"):
@@ -110,12 +131,16 @@ def test_inconsistent_repeated_parent(content_root):
 
 
 def test_missing_and_null_optional_parent_titles_are_equivalent(content_root):
+    """Confirm omitted and null optional parent titles are equivalent."""
     p = lesson(content_root, "grammar", "fixture-grammar-two", order=20)
     meta = read_json(p); meta["part"]["title_vi"] = None; write_json(p, meta)
     assert len(prepare_content(content_root)["grammar"]) == 2
 
 
+# --- Vocabulary authoring format --------------------------------------------
+
 def test_vocabulary_flat_format_and_top_level_topic_slug(content_root):
+    """Confirm the flat vocabulary format keeps its top-level topic slug."""
     raw = read_json(content_root/"vocabulary"/"fixture-words.json")
     assert isinstance(raw["category"], str) and isinstance(raw["topic"], str)
     normalized = prepare_content(content_root)["vocabulary"][0]
@@ -124,6 +149,7 @@ def test_vocabulary_flat_format_and_top_level_topic_slug(content_root):
 
 
 def test_legacy_nested_vocabulary_not_a_second_authoring_format(content_root):
+    """Confirm nested topic objects are rejected as an invalid format."""
     p = content_root/"vocabulary"/"fixture-words.json"
     raw = read_json(p); raw["topic"] = {"slug": "fixture-topic"}; write_json(p, raw)
     with pytest.raises(SeedValidationError, match="topic.*text"):
@@ -131,6 +157,7 @@ def test_legacy_nested_vocabulary_not_a_second_authoring_format(content_root):
 
 
 def test_conceptual_vocabulary_example_reports_missing_metadata(tmp_path):
+    """Confirm a vocabulary example missing keys reports the missing field."""
     root = empty_sources(tmp_path/"sources")
     raw = {"category": "Fixture", "topic": "Fixture", "topic_slug": "fixture-topic",
            "subtopic": "Fixture", "words": vocabulary()["words"]}
@@ -139,7 +166,10 @@ def test_conceptual_vocabulary_example_reports_missing_metadata(tmp_path):
         prepare_content(root)
 
 
+# --- Question source and item validation ------------------------------------
+
 def test_duplicate_question_files_rejected_before_write(content_root):
+    """Confirm two question files for one unit are rejected before writing."""
     src = content_root/"questions"/"fixture-grammar.json"
     shutil.copyfile(src, src.with_name("duplicate.json"))
     with pytest.raises(SeedValidationError, match="one question source file"):
@@ -147,6 +177,7 @@ def test_duplicate_question_files_rejected_before_write(content_root):
 
 
 def test_question_order_unique_within_unit(content_root):
+    """Confirm duplicate question sort orders within a unit are rejected."""
     p = content_root/"questions"/"fixture-grammar.json"
     raw = read_json(p); raw["questions"][1]["sort_order"] = 10; write_json(p, raw)
     with pytest.raises(SeedValidationError, match="question sort_order"):
@@ -154,6 +185,7 @@ def test_question_order_unique_within_unit(content_root):
 
 
 def test_unknown_question_reference(content_root):
+    """Confirm a question referencing an unknown unit is rejected."""
     p = content_root/"questions"/"fixture-grammar.json"
     raw = read_json(p); raw["learning_unit_slug"] = "unknown-unit"; write_json(p, raw)
     with pytest.raises(SeedValidationError, match="unknown learning_unit_slug"):
@@ -162,6 +194,7 @@ def test_unknown_question_reference(content_root):
 
 @pytest.mark.parametrize("bad", [[], {}, None, "multiple_choice"])
 def test_invalid_question_type_has_contextual_error(content_root, bad):
+    """Confirm unsupported question types raise a contextual error."""
     p = content_root/"questions"/"fixture-grammar.json"
     raw = read_json(p); raw["questions"][0]["question_type"] = bad; write_json(p, raw)
     with pytest.raises(SeedValidationError, match="question_type"):
@@ -176,6 +209,7 @@ def test_invalid_question_type_has_contextual_error(content_root, bad):
     (2,"pieces",["a"]), (2,"pieces",["a",{}]),
 ])
 def test_bad_question_items(content_root, index, field, value):
+    """Confirm malformed question items are rejected."""
     p = content_root/"questions"/"fixture-grammar.json"
     raw = read_json(p); raw["questions"][index][field] = value; write_json(p, raw)
     with pytest.raises(SeedValidationError):
@@ -183,6 +217,7 @@ def test_bad_question_items(content_root, index, field, value):
 
 
 def test_unapproved_fields_not_silently_ignored(content_root):
+    """Confirm unknown question fields are rejected, not ignored."""
     p = content_root/"questions"/"fixture-grammar.json"
     raw = read_json(p); raw["questions"][0]["difficulty"] = "hard"; write_json(p, raw)
     with pytest.raises(SeedValidationError, match="unknown field"):

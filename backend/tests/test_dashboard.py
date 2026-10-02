@@ -1,11 +1,7 @@
-"""Dashboard aggregation: docs/api-contracts.md Section 8; streak rules in
-docs/requirements-and-analysis.md Section 11 and docs/database-design.md
-Section 11.2/13.3.
+"""Dashboard aggregation and streak derivation.
 
-Streak edge cases are exercised as the pure `dashboard_service.calculate_streak`
-function with fixed calendar dates so they do not depend on the real current
-date (Backend Structure Section 15.8). One end-to-end HTTP test additionally
-checks the real `today`/`yesterday` wiring through the full aggregate read.
+Streak edge cases run against the pure ``calculate_streak`` with fixed calendar
+dates; one HTTP test checks the real today/yesterday wiring end to end.
 """
 import sqlite3
 from datetime import date, timedelta
@@ -22,12 +18,14 @@ pytestmark = pytest.mark.flask
 # ---------------------------------------------------------------------------
 
 def test_streak_empty_history():
+    """Confirm an empty history yields zero current and longest streaks."""
     assert calculate_streak([], today=date(2026, 1, 10)) == {
         "current": 0, "longest": 0, "active_today": False,
     }
 
 
 def test_streak_active_today_counts_consecutive_run():
+    """Confirm consecutive days ending today form a current streak."""
     today = date(2026, 1, 10)
     dates = ["2026-01-08", "2026-01-09", "2026-01-10"]
     assert calculate_streak(dates, today=today) == {
@@ -36,6 +34,7 @@ def test_streak_active_today_counts_consecutive_run():
 
 
 def test_streak_not_active_today_but_active_yesterday_keeps_current():
+    """Confirm a streak ending yesterday stays current but inactive today."""
     today = date(2026, 1, 10)
     dates = ["2026-01-08", "2026-01-09"]
     assert calculate_streak(dates, today=today) == {
@@ -44,6 +43,7 @@ def test_streak_not_active_today_but_active_yesterday_keeps_current():
 
 
 def test_streak_gap_resets_current_but_preserves_longest():
+    """Confirm a gap resets the current streak but keeps the longest."""
     today = date(2026, 1, 10)
     dates = ["2026-01-01", "2026-01-02", "2026-01-03", "2026-01-04", "2026-01-05"]
     assert calculate_streak(dates, today=today) == {
@@ -52,6 +52,7 @@ def test_streak_gap_resets_current_but_preserves_longest():
 
 
 def test_streak_multiple_sessions_same_day_count_as_one_active_day():
+    """Confirm multiple same-day sessions count as one active day."""
     today = date(2026, 1, 10)
     dates = ["2026-01-10", "2026-01-10", "2026-01-09"]
     assert calculate_streak(dates, today=today) == {
@@ -60,6 +61,7 @@ def test_streak_multiple_sessions_same_day_count_as_one_active_day():
 
 
 def test_streak_current_can_be_shorter_than_longest():
+    """Confirm the current streak can be shorter than the longest."""
     today = date(2026, 1, 20)
     dates = ["2026-01-01", "2026-01-02", "2026-01-03", "2026-01-19", "2026-01-20"]
     assert calculate_streak(dates, today=today) == {
@@ -72,11 +74,13 @@ def test_streak_current_can_be_shorter_than_longest():
 # ---------------------------------------------------------------------------
 
 def _login(client, user_id):
+    """Store the given user id in the client session."""
     with client.session_transaction() as session:
         session["user_id"] = user_id
 
 
 def _insert_user(database_path, *, user_id=1, support_language="vi"):
+    """Insert one fixture user row with the given id and language."""
     with sqlite3.connect(database_path) as db:
         db.execute(
             "INSERT INTO users (id, email, password_hash, support_language, created_at) "
@@ -86,6 +90,7 @@ def _insert_user(database_path, *, user_id=1, support_language="vi"):
 
 
 def _insert_learning_unit(database_path, *, unit_id, unit_type, slug):
+    """Insert one fixture learning unit of the given type and slug."""
     with sqlite3.connect(database_path) as db:
         db.execute(
             "INSERT INTO learning_units (id, unit_type, slug, title_fr, title_vi, title_en) "
@@ -95,6 +100,7 @@ def _insert_learning_unit(database_path, *, unit_id, unit_type, slug):
 
 
 def _insert_state(database_path, *, unit_id, user_id=1, learned=False, review_later=False, last_opened_at=None):
+    """Insert one learning-state row with the given flags and timestamp."""
     with sqlite3.connect(database_path) as db:
         db.execute(
             "INSERT INTO user_learning_state "
@@ -111,6 +117,7 @@ def _insert_state(database_path, *, unit_id, user_id=1, learned=False, review_la
 
 def _insert_session(database_path, *, session_id, completed_at, activity_date, user_id=1,
                      practice_type="mixed", learning_unit_id=None, correct_count=8, total_questions=10):
+    """Insert one practice-session row with counts and dates."""
     with sqlite3.connect(database_path) as db:
         db.execute(
             "INSERT INTO practice_sessions "
@@ -123,12 +130,14 @@ def _insert_session(database_path, *, session_id, completed_at, activity_date, u
 
 @pytest.fixture
 def learner(client, database_path):
+    """Create a logged-in learner and return the user id."""
     _insert_user(database_path)
     _login(client, 1)
     return 1
 
 
 def test_new_learner_dashboard_state(client, database_path, learner):
+    """Confirm a new learner sees zeroed progress and an empty dashboard."""
     _insert_learning_unit(database_path, unit_id=1, unit_type="grammar", slug="articles-definis")
     response = client.get("/api/v1/me/dashboard")
     assert response.status_code == 200
@@ -147,12 +156,14 @@ def test_new_learner_dashboard_state(client, database_path, learner):
 
 
 def test_dashboard_requires_authentication(client):
+    """Confirm the dashboard requires authentication."""
     response = client.get("/api/v1/me/dashboard")
     assert response.status_code == 401
     assert response.json["error"]["code"] == "not_authenticated"
 
 
 def test_progress_counts_learned_and_total_per_module(client, database_path, learner):
+    """Confirm progress counts learned and total units per module."""
     _insert_learning_unit(database_path, unit_id=1, unit_type="grammar", slug="grammar-1")
     _insert_learning_unit(database_path, unit_id=2, unit_type="grammar", slug="grammar-2")
     _insert_learning_unit(database_path, unit_id=3, unit_type="vocabulary", slug="vocab-1")
@@ -169,6 +180,7 @@ def test_progress_counts_learned_and_total_per_module(client, database_path, lea
 
 
 def test_continue_learning_uses_most_recently_opened_unfinished_unit(client, database_path, learner):
+    """Confirm continue_learning picks the most recently opened unfinished unit."""
     _insert_learning_unit(database_path, unit_id=1, unit_type="grammar", slug="grammar-1")
     _insert_learning_unit(database_path, unit_id=2, unit_type="grammar", slug="grammar-2")
     _insert_state(database_path, unit_id=1, last_opened_at="2026-01-01T10:00:00+00:00")
@@ -183,6 +195,7 @@ def test_continue_learning_uses_most_recently_opened_unfinished_unit(client, dat
 
 
 def test_continue_learning_excludes_units_already_learned(client, database_path, learner):
+    """Confirm learned units are excluded from continue_learning."""
     _insert_learning_unit(database_path, unit_id=1, unit_type="grammar", slug="grammar-1")
     _insert_state(database_path, unit_id=1, learned=True, last_opened_at="2026-01-01T10:00:00+00:00")
 
@@ -192,12 +205,14 @@ def test_continue_learning_excludes_units_already_learned(client, database_path,
 
 
 def test_continue_learning_null_when_nothing_opened(client, database_path, learner):
+    """Confirm continue_learning is null when nothing was opened."""
     _insert_learning_unit(database_path, unit_id=1, unit_type="grammar", slug="grammar-1")
     response = client.get("/api/v1/me/dashboard")
     assert response.json["data"]["continue_learning"] is None
 
 
 def test_review_later_count_reflects_marked_units(client, database_path, learner):
+    """Confirm review_later_count counts only marked units."""
     _insert_learning_unit(database_path, unit_id=1, unit_type="grammar", slug="grammar-1")
     _insert_learning_unit(database_path, unit_id=2, unit_type="vocabulary", slug="vocab-1")
     _insert_state(database_path, unit_id=1, review_later=True)
@@ -209,6 +224,7 @@ def test_review_later_count_reflects_marked_units(client, database_path, learner
 
 
 def test_mixed_practice_available_only_after_a_learned_unit(client, database_path, learner):
+    """Confirm mixed practice unlocks after any unit is learned."""
     _insert_learning_unit(database_path, unit_id=1, unit_type="grammar", slug="grammar-1")
 
     response = client.get("/api/v1/me/dashboard")
@@ -220,6 +236,7 @@ def test_mixed_practice_available_only_after_a_learned_unit(client, database_pat
 
 
 def test_recent_practice_orders_most_recent_first_and_limits_results(client, database_path, learner):
+    """Confirm recent practice is newest-first and capped at ten."""
     _insert_learning_unit(database_path, unit_id=1, unit_type="grammar", slug="grammar-1")
     for i in range(12):
         _insert_session(
@@ -237,6 +254,7 @@ def test_recent_practice_orders_most_recent_first_and_limits_results(client, dat
 
 
 def test_recent_practice_normal_vs_mixed_representation(client, database_path, learner):
+    """Confirm normal and mixed sessions serialize with the right unit fields."""
     _insert_learning_unit(database_path, unit_id=1, unit_type="vocabulary", slug="vocab-1")
     _insert_session(
         database_path, session_id=1, practice_type="normal", learning_unit_id=1,

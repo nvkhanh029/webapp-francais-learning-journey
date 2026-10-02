@@ -4,6 +4,7 @@ from math import ceil
 
 
 def balanced_sizes(total, *, preferred_max=15):
+    """Split a total into balanced chunk sizes no larger than preferred_max."""
     if type(total) is not int or total < 0:
         raise ValueError("total must be a non-negative integer")
     if type(preferred_max) is not int or preferred_max < 1:
@@ -16,10 +17,9 @@ def balanced_sizes(total, *, preferred_max=15):
 
 
 def generate_vocabulary_study_units(records):
-    """Normalize the ONE flat authored format, then split without reordering.
-
-    The nested nodes in the return value are internal writer models, NOT a
-    second accepted authoring format. See backend/data/README.md.
+    """Normalize the one flat authored vocabulary format, then split words into
+    study units without reordering. The nested nodes in the return value are
+    internal writer models, not a second accepted authoring format.
     """
     result = []
     for record in records:

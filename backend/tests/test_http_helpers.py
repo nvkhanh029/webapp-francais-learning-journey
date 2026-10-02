@@ -7,43 +7,53 @@ pytestmark = pytest.mark.flask
 
 
 def add_test_routes(app):
+    """Register test-only routes that exercise the shared helpers."""
     from flask import g, jsonify
     from app.auth_session import login_required, start_user_session, end_user_session
     from app.validation import get_json_body, validate_support_language
 
     @app.post("/__foundation_test/json")
     def json_input():
+        """Return the validated support language from the request body."""
         body = get_json_body()
         return jsonify({"data": {"support_language":validate_support_language(body.get("support_language"))}})
 
     @app.get("/__foundation_test/protected")
     @login_required
     def protected():
+        """Return the current user's email for authenticated requests."""
         return jsonify({"data":{"email":g.current_user["email"]}})
 
     @app.post("/__foundation_test/start")
     def start():
+        """Start a session for user one and return a null payload."""
         start_user_session(1)
         return jsonify({"data":None})
 
     @app.post("/__foundation_test/end")
     def end():
+        """End the current session and return a null payload."""
         end_user_session()
         return jsonify({"data":None})
 
     @app.get("/__foundation_test/failure")
     def failure():
+        """Raise an error to exercise the JSON error handler."""
         raise RuntimeError("INTERNAL-SQL-PATH-DETAIL")
 
 
 @pytest.fixture
 def http_client(app):
+    """Return a test client with test routes and no exception propagation."""
     add_test_routes(app)
     app.config["PROPAGATE_EXCEPTIONS"] = False
     return app.test_client()
 
 
+# --- Shared JSON, session, and error-envelope behavior ----------------------
+
 def test_valid_json(http_client):
+    """Confirm a valid JSON body returns the expected success payload."""
     response=http_client.post("/__foundation_test/json",json={"support_language":"en"})
     assert response.status_code == 200
     assert response.json == {"data":{"support_language":"en"}}
@@ -51,6 +61,7 @@ def test_valid_json(http_client):
 
 @pytest.mark.parametrize("body,content_type", [('{broken','application/json'),('{"support_language":"vi"}','text/plain'),('x',None),('', 'application/json')])
 def test_bad_body_or_content_type_is_json_400(http_client,body,content_type):
+    """Confirm bad JSON or content type returns a JSON 400 error."""
     response=http_client.post("/__foundation_test/json",data=body,content_type=content_type)
     assert response.status_code == 400
     assert response.json["error"]["code"] == "invalid_json"
@@ -58,6 +69,7 @@ def test_bad_body_or_content_type_is_json_400(http_client,body,content_type):
 
 @pytest.mark.parametrize("value",[[],{},None,True,12,"fr"])
 def test_invalid_language_http_error_not_500(http_client,value):
+    """Confirm invalid language values return 422, not 500."""
     response=http_client.post("/__foundation_test/json",json={"support_language":value})
     assert response.status_code == 422
     assert response.json["error"]["code"] == "validation_error"
@@ -65,12 +77,14 @@ def test_invalid_language_http_error_not_500(http_client,value):
 
 @pytest.mark.parametrize("body",['[]','null','"text"','1'])
 def test_parsed_non_object_json_is_422(http_client,body):
+    """Confirm parsed non-object JSON returns 422 with empty details."""
     response=http_client.post("/__foundation_test/json",data=body,content_type='application/json')
     assert response.status_code == 422
     assert response.json["error"]["details"] == {}
 
 
 def test_framework_errors_use_json_and_preserve_allow(http_client):
+    """Confirm 404 and 405 errors use the JSON envelope and keep Allow."""
     missing=http_client.get("/__foundation_test/no-such-route")
     assert missing.status_code==404 and missing.json["error"]["code"]=="not_found"
     method=http_client.get("/__foundation_test/json")
@@ -79,6 +93,7 @@ def test_framework_errors_use_json_and_preserve_allow(http_client):
 
 
 def test_unexpected_failure_has_no_internals(http_client):
+    """Confirm unexpected failures hide internal details."""
     response=http_client.get("/__foundation_test/failure")
     assert response.status_code==500
     assert response.json["error"]["code"]=="internal_error"
@@ -86,12 +101,14 @@ def test_unexpected_failure_has_no_internals(http_client):
 
 
 def test_no_session_gets_json_401(http_client):
+    """Confirm a protected route without a session returns a JSON 401."""
     response=http_client.get("/__foundation_test/protected")
     assert response.status_code==401
     assert response.json["error"]["code"]=="not_authenticated"
 
 
 def test_session_safe_lookup_and_cookie_flow(http_client,app,database_path):
+    """Confirm the session cookie flow and safe user lookup."""
     with sqlite3.connect(database_path) as db:
         db.execute("INSERT INTO users(id,email,password_hash,created_at) VALUES(1,'fixture@example.test','test-only-hash','test')")
     with http_client.session_transaction() as session:
@@ -114,6 +131,7 @@ def test_session_safe_lookup_and_cookie_flow(http_client,app,database_path):
 
 @pytest.mark.parametrize("user_id",[999,"1",True,[],{}])
 def test_stale_or_bad_identity_clears_session(http_client,user_id):
+    """Confirm stale or invalid identities are cleared from the session."""
     with http_client.session_transaction() as session:
         session["user_id"]=user_id
     response=http_client.get("/__foundation_test/protected")
@@ -123,6 +141,7 @@ def test_stale_or_bad_identity_clears_session(http_client,user_id):
 
 
 def test_debug_mode_does_not_expose_api_tracebacks(http_client,app):
+    """Confirm debug mode still hides API tracebacks."""
     app.config["DEBUG"] = True
     response = http_client.get("/__foundation_test/failure")
     assert response.status_code == 500

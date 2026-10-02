@@ -1,3 +1,4 @@
+# Backend runtime and test dependencies (Python 3.12 baseline).
 Flask>=3.1,<4
 python-dotenv>=1,<2
 pytest>=8,<10

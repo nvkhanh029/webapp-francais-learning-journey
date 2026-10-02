@@ -1,13 +1,8 @@
 """Registration and login business rules.
 
-Owner: Member 1 (Auth and User Preferences). Follows docs/api-contracts.md
-Section 6 and docs/repository-conventions.md Section 8.3. Email normalization
-happens in validation before this service is reached; duplicate detection,
-password hashing and password verification belong here.
-
-Flask session creation and clearing stay in auth_session.py and are driven by
-the route (Backend Structure Section 7.2), so this service stays independent
-of the HTTP layer.
+Owns duplicate detection and password hashing/verification; email normalization
+happens earlier in validation and Flask session handling stays in auth_session.py,
+keeping this service independent of the HTTP layer.
 """
 from datetime import datetime, timezone
 
@@ -26,10 +21,9 @@ def _now_iso():
 
 
 def register(email, password):
-    """Create one learner account from an already normalized/validated email.
-
-    The account starts with support_language = NULL so the frontend routes the
-    learner to first-time language setup (FR-LANG-02).
+    """Create one learner from an already normalized/validated email, raising
+    ApiError(409) if it is registered. support_language starts NULL so the frontend
+    routes the learner to first-time language setup.
     """
     if user_repository.exists_by_email(email):
         raise ApiError(409, "email_already_registered", "This email is already registered.")
@@ -40,10 +34,9 @@ def register(email, password):
 
 
 def authenticate(email, password):
-    """Verify credentials for an already normalized email.
-
-    Unknown email and wrong password deliberately produce the same error so the
-    API does not reveal whether an account exists (API Contract Section 6.2).
+    """Verify credentials for an already normalized email, raising ApiError(401)
+    on failure. Unknown email and wrong password deliberately share one error so the
+    API never reveals whether an account exists.
     """
     row = user_repository.get_user_by_email_for_authentication(email)
     if row is None or not check_password_hash(row["password_hash"], password):

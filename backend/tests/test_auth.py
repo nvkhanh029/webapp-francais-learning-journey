@@ -1,9 +1,7 @@
-"""Auth and User Preferences: docs/api-contracts.md Sections 6 and 7,
-docs/requirements-and-analysis.md Sections 5.1 and 5.2, and Backend Structure
-Section 15.5.
+"""Registration, login, logout, current user, and support-language preference.
 
 Failure paths assert both the HTTP status and the contract error code, never
-only the human-readable message (Backend Structure Section 15.10).
+only the human-readable message.
 """
 import sqlite3
 
@@ -15,10 +13,12 @@ REGISTRATION = {"email": "learner@example.test", "password": "correct-horse"}
 
 
 def _register(client, **overrides):
+    """POST the registration payload with any field overrides."""
     return client.post("/api/v1/auth/register", json={**REGISTRATION, **overrides})
 
 
 def _read_user(database_path, email):
+    """Return the stored id, email, password hash, and language for an email."""
     with sqlite3.connect(database_path) as db:
         return db.execute(
             """
@@ -33,6 +33,7 @@ def _read_user(database_path, email):
 # --- Registration -----------------------------------------------------------
 
 def test_register_creates_account_with_unset_support_language(client):
+    """Confirm a new account starts with no support language."""
     response = _register(client)
     assert response.status_code == 201
     assert response.json["data"] == {
@@ -41,6 +42,7 @@ def test_register_creates_account_with_unset_support_language(client):
 
 
 def test_register_signs_the_learner_in_automatically(client):
+    """Confirm registration immediately signs the learner in."""
     _register(client)
     response = client.get("/api/v1/me")
     assert response.status_code == 200
@@ -48,6 +50,7 @@ def test_register_signs_the_learner_in_automatically(client):
 
 
 def test_register_stores_a_hashed_password(client, database_path):
+    """Confirm the stored password is hashed, never plaintext."""
     _register(client)
     row = _read_user(database_path, "learner@example.test")
     assert row is not None
@@ -56,6 +59,7 @@ def test_register_stores_a_hashed_password(client, database_path):
 
 
 def test_register_normalizes_email_before_storing(client, database_path):
+    """Confirm email is normalized before storage and response."""
     response = _register(client, email="  LEARNER@Example.TEST  ")
     assert response.status_code == 201
     assert response.json["data"]["user"]["email"] == "learner@example.test"
@@ -63,6 +67,7 @@ def test_register_normalizes_email_before_storing(client, database_path):
 
 
 def test_register_rejects_duplicate_normalized_email(client):
+    """Confirm a duplicate normalized email is rejected."""
     _register(client)
     response = _register(client, email="LEARNER@example.test")
     assert response.status_code == 409
@@ -70,6 +75,7 @@ def test_register_rejects_duplicate_normalized_email(client):
 
 
 def test_register_rejects_short_password(client):
+    """Confirm a too-short password is rejected."""
     response = _register(client, password="1234567")
     assert response.status_code == 422
     assert response.json["error"]["code"] == "validation_error"
@@ -78,18 +84,21 @@ def test_register_rejects_short_password(client):
 @pytest.mark.parametrize("email", ["", "   ", "no-at-sign", "two@@example.test",
                                    "@example.test", "learner@", "spa ce@example.test"])
 def test_register_rejects_invalid_email(client, email):
+    """Confirm malformed emails are rejected."""
     response = _register(client, email=email)
     assert response.status_code == 422
     assert response.json["error"]["code"] == "validation_error"
 
 
 def test_register_rejects_missing_fields(client):
+    """Confirm an empty registration body is rejected."""
     response = client.post("/api/v1/auth/register", json={})
     assert response.status_code == 422
     assert response.json["error"]["code"] == "validation_error"
 
 
 def test_register_rejects_malformed_json(client):
+    """Confirm malformed JSON returns the invalid_json error."""
     response = client.post(
         "/api/v1/auth/register", data="not json", content_type="application/json",
     )
@@ -98,6 +107,7 @@ def test_register_rejects_malformed_json(client):
 
 
 def test_register_never_exposes_the_password_hash(client):
+    """Confirm responses never expose password material."""
     response = _register(client)
     assert "password" not in response.get_data(as_text=True)
     assert "password_hash" not in response.get_data(as_text=True)
@@ -106,6 +116,7 @@ def test_register_never_exposes_the_password_hash(client):
 # --- Login ------------------------------------------------------------------
 
 def test_login_returns_the_user_and_starts_a_session(client):
+    """Confirm login returns the user and starts a session."""
     _register(client)
     client.post("/api/v1/auth/logout")
 
@@ -119,6 +130,7 @@ def test_login_returns_the_user_and_starts_a_session(client):
 
 
 def test_login_normalizes_the_email(client):
+    """Confirm login normalizes the email before matching."""
     _register(client)
     response = client.post(
         "/api/v1/auth/login",
@@ -128,6 +140,7 @@ def test_login_normalizes_the_email(client):
 
 
 def test_login_restores_a_saved_support_language(client):
+    """Confirm login returns the saved support language."""
     _register(client)
     client.patch("/api/v1/me/preferences", json={"support_language": "en"})
     client.post("/api/v1/auth/logout")
@@ -138,6 +151,7 @@ def test_login_restores_a_saved_support_language(client):
 
 
 def test_login_with_wrong_password_is_generic_401(client):
+    """Confirm a wrong password returns the generic 401 error."""
     _register(client)
     response = client.post(
         "/api/v1/auth/login",
@@ -148,6 +162,7 @@ def test_login_with_wrong_password_is_generic_401(client):
 
 
 def test_login_with_unknown_email_uses_the_same_generic_error(client):
+    """Confirm an unknown email returns the same generic error."""
     response = client.post(
         "/api/v1/auth/login",
         json={"email": "nobody@example.test", "password": REGISTRATION["password"]},
@@ -157,12 +172,14 @@ def test_login_with_unknown_email_uses_the_same_generic_error(client):
 
 
 def test_login_requires_non_empty_credentials(client):
+    """Confirm empty credentials are rejected."""
     response = client.post("/api/v1/auth/login", json={"email": "", "password": ""})
     assert response.status_code == 422
     assert response.json["error"]["code"] == "validation_error"
 
 
 def test_failed_login_does_not_create_a_session(client):
+    """Confirm a failed login creates no session."""
     _register(client)
     client.post("/api/v1/auth/logout")
     client.post(
@@ -175,6 +192,7 @@ def test_failed_login_does_not_create_a_session(client):
 # --- Logout -----------------------------------------------------------------
 
 def test_logout_clears_the_session(client):
+    """Confirm logout clears the session and reports success."""
     _register(client)
     response = client.post("/api/v1/auth/logout")
     assert response.status_code == 200
@@ -183,6 +201,7 @@ def test_logout_clears_the_session(client):
 
 
 def test_logout_is_idempotent_without_a_session(client):
+    """Confirm logout succeeds with no active session."""
     first = client.post("/api/v1/auth/logout")
     second = client.post("/api/v1/auth/logout")
     assert first.status_code == 200
@@ -193,12 +212,14 @@ def test_logout_is_idempotent_without_a_session(client):
 # --- Current user -----------------------------------------------------------
 
 def test_current_user_requires_authentication(client):
+    """Confirm the current-user endpoint requires authentication."""
     response = client.get("/api/v1/me")
     assert response.status_code == 401
     assert response.json["error"]["code"] == "not_authenticated"
 
 
 def test_current_user_exposes_only_the_contract_fields(client):
+    """Confirm the current user exposes only the contract fields."""
     _register(client)
     response = client.get("/api/v1/me")
     assert response.json["data"]["user"] == {
@@ -207,6 +228,7 @@ def test_current_user_exposes_only_the_contract_fields(client):
 
 
 def test_session_for_a_deleted_user_is_rejected(client, database_path):
+    """Confirm a session for a deleted user is rejected."""
     _register(client)
     with sqlite3.connect(database_path) as db:
         db.execute("DELETE FROM users WHERE email = ?", ("learner@example.test",))
@@ -219,6 +241,7 @@ def test_session_for_a_deleted_user_is_rejected(client, database_path):
 
 @pytest.mark.parametrize("language", ["vi", "en"])
 def test_preferences_persist_the_selected_language(client, database_path, language):
+    """Confirm the selected language is stored and returned."""
     _register(client)
 
     response = client.patch("/api/v1/me/preferences", json={"support_language": language})
@@ -230,6 +253,7 @@ def test_preferences_persist_the_selected_language(client, database_path, langua
 
 
 def test_preferences_can_be_changed_again(client):
+    """Confirm the support language can be changed repeatedly."""
     _register(client)
     client.patch("/api/v1/me/preferences", json={"support_language": "vi"})
     response = client.patch("/api/v1/me/preferences", json={"support_language": "en"})
@@ -238,6 +262,7 @@ def test_preferences_can_be_changed_again(client):
 
 @pytest.mark.parametrize("value", ["fr", "", "VI", None, 1, True])
 def test_preferences_reject_unsupported_values(client, value):
+    """Confirm unsupported language values are rejected."""
     _register(client)
     response = client.patch("/api/v1/me/preferences", json={"support_language": value})
     assert response.status_code == 422
@@ -245,6 +270,7 @@ def test_preferences_reject_unsupported_values(client, value):
 
 
 def test_preferences_reject_a_missing_field(client):
+    """Confirm a missing support_language field is rejected."""
     _register(client)
     response = client.patch("/api/v1/me/preferences", json={})
     assert response.status_code == 422
@@ -252,13 +278,14 @@ def test_preferences_reject_a_missing_field(client):
 
 
 def test_preferences_require_authentication(client):
+    """Confirm preference updates require authentication."""
     response = client.patch("/api/v1/me/preferences", json={"support_language": "vi"})
     assert response.status_code == 401
     assert response.json["error"]["code"] == "not_authenticated"
 
 
 def test_changing_language_preserves_learner_state(client, database_path):
-    """FR-LANG-06: switching support language must not reset learner state."""
+    """Switching support language must not reset learner state."""
     _register(client)
     user_id = _read_user(database_path, "learner@example.test")[0]
     with sqlite3.connect(database_path) as db:
@@ -312,6 +339,7 @@ def test_changing_language_preserves_learner_state(client, database_path):
 # --- Learner isolation ------------------------------------------------------
 
 def test_one_learner_cannot_change_another_learners_preference(client, database_path):
+    """Confirm a learner only changes their own preference."""
     _register(client)
     _register(client, email="other@example.test")
     # The second registration replaced the session; it must only affect that account.

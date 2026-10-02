@@ -5,10 +5,12 @@ SUPPORTED_LANGUAGES = {"vi", "en"}
 
 
 def _invalid(field, message):
+    """Raise a 422 validation ApiError tied to the given field."""
     raise ApiError(422, "validation_error", "Request fields are invalid.", {field: message})
 
 
 def get_json_body():
+    """Parse the request body as a JSON object or raise ApiError(400)."""
     from flask import request
     from werkzeug.exceptions import BadRequest
 
@@ -36,6 +38,7 @@ def require_string(body, field, *, min_length=1, strip=True):
 
 
 def require_boolean(body, field):
+    """Return the field when it is a boolean, else raise validation_error."""
     value = body.get(field)
     if not isinstance(value, bool):
         _invalid(field, "Must be a boolean.")
@@ -54,12 +57,14 @@ def require_optional_boolean(body, field):
 
 
 def normalize_email(value):
+    """Return a trimmed lowercase email string, else raise validation_error."""
     if not isinstance(value, str):
         _invalid("email", "Must be a string.")
     return value.strip().lower()
 
 
 def validate_email(value):
+    """Return a normalized email, or raise validation_error if malformed."""
     email = normalize_email(value)
     if any(character.isspace() for character in email) or email.count("@") != 1:
         _invalid("email", "Invalid email.")
@@ -70,6 +75,7 @@ def validate_email(value):
 
 
 def validate_support_language(value):
+    """Return 'vi' or 'en', else raise a support_language validation_error."""
     if not isinstance(value, str) or value not in SUPPORTED_LANGUAGES:
         _invalid("support_language", "Must be 'vi' or 'en'.")
     return value

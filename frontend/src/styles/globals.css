@@ -1,1 +1,2 @@
-/* TODO: Global styles. */
+/* Global baseline: reset, typography defaults, and shared element styles. */
+/* Design tokens live in tokens.css; component styles stay colocated with their owner. */

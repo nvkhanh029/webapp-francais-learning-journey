@@ -17,10 +17,12 @@ class SeedValidationError(ValueError):
 
 
 def _fail(source, message):
+    """Raise a contextual SeedValidationError for one source location."""
     raise SeedValidationError(f"{source}: {message}")
 
 
 def _object(value, source, label, allowed=None):
+    """Require an object and, when given, reject unknown fields."""
     if not isinstance(value, dict):
         _fail(source, f"'{label}' must be an object")
     if allowed is not None:
@@ -30,6 +32,7 @@ def _object(value, source, label, allowed=None):
 
 
 def _text(value, source, field, *, optional=False):
+    """Require non-empty text, allowing None only when optional."""
     if optional and value is None:
         return
     if not isinstance(value, str) or not value.strip():
@@ -37,17 +40,20 @@ def _text(value, source, field, *, optional=False):
 
 
 def _slug(value, source, field):
+    """Require a value that matches the lowercase kebab-case slug pattern."""
     _text(value, source, field)
     if not SLUG_PATTERN.fullmatch(value):
         _fail(source, f"'{field}' must be lowercase kebab-case (letters, digits, hyphens)")
 
 
 def _positive(value, source, field):
+    """Require a positive integer within the SQLite integer range."""
     if type(value) is not int or not 0 < value <= 9223372036854775807:
         _fail(source, f"'{field}' must be a positive SQLite-range integer")
 
 
 def _titles(node, source):
+    """Validate title_fr and normalize optional title_vi/title_en fields."""
     _text(node.get("title_fr"), source, "title_fr")
     for field in ("title_vi", "title_en"):
         _text(node.get(field), source, field, optional=True)
@@ -55,6 +61,7 @@ def _titles(node, source):
 
 
 def _named_node(node, source, label):
+    """Validate a parent node's key, sort_order and localized titles."""
     _object(node, source, label, TITLE_FIELDS | {"key", "sort_order"})
     _slug(node.get("key"), source, label + ".key")
     _positive(node.get("sort_order"), source, label + ".sort_order")
@@ -149,6 +156,7 @@ def validate_all(content):
     topic_slugs = set()
 
     def register(kind, key, node, parent, source):
+        """Record one entity's metadata and reject inconsistent duplicates."""
         identity = (kind, key)
         value = (parent, node)
         if identity in entities and entities[identity] != value:
@@ -160,6 +168,7 @@ def validate_all(content):
         orders[scope] = identity
 
     def unit(slug, source):
+        """Validate a learning-unit slug and reject duplicates."""
         _slug(slug, source, "learning-unit slug")
         if slug in learning_slugs:
             _fail(source, f"duplicate learning-unit slug '{slug}'")

@@ -1,7 +1,7 @@
-"""Learner-owned routes shared by Auth/User Preferences and Dashboard/Learning State.
+"""Learner-owned routes: current user, preferences, dashboard, learning state.
 
-Routes stay thin: parse input, call a service, return the contract envelope;
-business rules live in the services.
+Routes stay thin: parse input, call the owning service, return the contract
+envelope; business rules live in the services.
 """
 
 from flask import Blueprint, g, jsonify
@@ -15,21 +15,22 @@ from ...validation import (
     validate_support_language,
 )
 
-# Members 1-2: current user, preferences, dashboard, learner-owned state.
 bp = Blueprint("me", __name__, url_prefix="/api/v1/me")
 
 
-# --- Member 1: current user and support-language preference -----------------
+# Current user and support-language preference.
 
 @bp.get("")
 @login_required
 def get_current_user():
+    """Return the authenticated learner's user model."""
     return jsonify({"data": {"user": user_service.current_user_model(g.current_user)}})
 
 
 @bp.patch("/preferences")
 @login_required
 def update_preferences():
+    """Validate and persist the learner's support-language preference."""
     body = get_json_body()
     support_language = validate_support_language(body.get("support_language"))
     result = user_service.update_support_language(
@@ -39,17 +40,19 @@ def update_preferences():
     return jsonify({"data": result})
 
 
-# --- Member 2: dashboard and learning state ---------------------------------
+# Dashboard and learning state.
 
 @bp.get("/dashboard")
 @login_required
 def get_dashboard():
+    """Return the learner's dashboard summary."""
     return jsonify({"data": dashboard_service.get_dashboard(g.current_user)})
 
 
 @bp.post("/learning-units/<slug>/open")
 @login_required
 def open_learning_unit(slug):
+    """Record that the learner opened the addressed learning unit."""
     result = learning_state_service.record_open(g.current_user["id"], slug)
     return jsonify({"data": result})
 
@@ -57,6 +60,7 @@ def open_learning_unit(slug):
 @bp.patch("/learning-units/<slug>/state")
 @login_required
 def update_learning_unit_state(slug):
+    """Patch the learner's learned/review-later state for a learning unit."""
     body = get_json_body()
     learned = require_optional_boolean(body, "learned")
     review_later = require_optional_boolean(body, "review_later")
@@ -84,6 +88,7 @@ def update_learning_unit_state(slug):
 @bp.get("/review-later")
 @login_required
 def get_review_later():
+    """Return the learner's review-later items in their support language."""
     result = learning_state_service.get_review_later(
         g.current_user["id"],
         g.current_user["support_language"],

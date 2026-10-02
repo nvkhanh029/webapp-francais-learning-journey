@@ -1,5 +1,11 @@
 
+"""Static-content insert executor for the seed pipeline.
+
+The caller supplies the connection and owns the transaction; this module only runs
+parameter-bound INSERTs and returns per-area summary counts.
+"""
 def _insert_learning_unit(connection, unit_type, unit):
+    """Insert one learning unit and return its new id."""
     cursor = connection.execute(
         """
         INSERT INTO learning_units (unit_type, slug, title_fr, title_vi, title_en)
@@ -11,6 +17,7 @@ def _insert_learning_unit(connection, unit_type, unit):
 
 
 def write_all(connection, content):
+    """Insert all validated content and return per-area summary counts."""
     summary = {
         "grammar_parts": 0,
         "grammar_chapters": 0,

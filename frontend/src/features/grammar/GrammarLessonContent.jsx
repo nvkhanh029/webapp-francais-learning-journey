@@ -1,1 +1,2 @@
-// TODO: Grammar lesson content.
+// Renders one Grammar lesson's localized Markdown content.
+// Content comes from grammarApi.getGrammarLesson.

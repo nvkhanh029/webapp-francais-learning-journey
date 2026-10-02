@@ -1,4 +1,8 @@
-"""Grammar hierarchy/content SQL for the Grammar feature."""
+"""Grammar hierarchy/content SQL, parameter-bound and read-only.
+
+Rows are returned raw for the service to localize; writes, if ever added, must
+not commit here because the service owns the transaction boundary.
+"""
 
 from ..db import get_db
 

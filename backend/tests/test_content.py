@@ -1,12 +1,7 @@
-"""Content endpoints: docs/api-contracts.md Sections 9-12.
+"""Content endpoints for Vocabulary, Conjugation, and Reference.
 
-Ownership per docs/repository-conventions.md Section 8:
-- Grammar (Section 9) ............. Member 3 (TODO)
-- Vocabulary (Section 10) ......... Member 4 (this block)
-- Conjugation + Reference (§11-12)  Member 5 (last block)
-
-Each block uses its own `vocab_`/`grammar_`/`conjugation_`-prefixed helpers and
-tests so the three owners can extend this file without name collisions.
+Each module block keeps its own helper/test name prefix to avoid collisions;
+Grammar lives in its own module file.
 """
 import sqlite3
 import pytest
@@ -17,7 +12,7 @@ pytestmark = pytest.mark.flask
 
 
 # ---------------------------------------------------------------------------
-# Vocabulary block (Member 4): Section 10 browse / topic / study-unit.
+# Vocabulary: browse, topic and study-unit.
 # ---------------------------------------------------------------------------
 
 def _vocab_setup(client, database_path, content_root, *, support_language="vi"):
@@ -34,7 +29,7 @@ def _vocab_setup(client, database_path, content_root, *, support_language="vi"):
 
 
 def _vocab_set_state(database_path, slug, *, learned=False, review_later=False):
-    """Insert learned / review-later state directly, without Member 2's endpoints."""
+    """Insert learned / review-later state directly, bypassing the endpoints."""
     with sqlite3.connect(database_path) as db:
         unit_id = db.execute(
             "SELECT id FROM learning_units WHERE slug = ?", (slug,)
@@ -48,7 +43,7 @@ def _vocab_set_state(database_path, slug, *, learned=False, review_later=False):
         )
 
 
-# -- Browse: GET /api/v1/vocabulary (contract §10.1) ------------------------
+# -- Browse: GET /api/v1/vocabulary ------------------------------------------
 
 def test_vocab_browse_returns_categories_with_topics(client, database_path, content_root):
     """Browse payload is category -> topic metadata only."""
@@ -83,7 +78,7 @@ def test_vocab_browse_requires_authentication(client):
     assert response.json["error"]["code"] == "not_authenticated"
 
 
-# -- Topic: GET /api/v1/vocabulary/topics/{slug} (contract §10.2) -------------
+# -- Topic: GET /api/v1/vocabulary/topics/{slug} -----------------------------
 
 def test_vocab_topic_detail_shape(client, database_path, content_root):
     """Topic page: category context + subtopics carrying study units."""
@@ -157,7 +152,7 @@ def test_vocab_topic_requires_authentication(client):
     assert response.json["error"]["code"] == "not_authenticated"
 
 
-# -- Study unit: GET /api/v1/vocabulary/study-units/{slug} (§10.3) ------------
+# -- Study unit: GET /api/v1/vocabulary/study-units/{slug} -------------------
 
 def test_vocab_study_unit_shape_vi(client, database_path, content_root):
     """Study-unit shape: breadcrumb context, VI meanings, optional fields null."""
@@ -236,7 +231,7 @@ def test_vocab_study_unit_requires_authentication(client):
 
 
 # ---------------------------------------------------------------------------
-# Conjugation + Reference block (Member 5): Sections 11-12.
+# Conjugation + Reference block.
 # Fixture data is synthetic structural material from tests/support.py,
 # never curriculum.
 # ---------------------------------------------------------------------------
@@ -279,6 +274,7 @@ def _localize_sources(root):
 
 
 def _authenticate(client, database_path):
+    """Insert one fixture user row and store that user id in the session."""
     with sqlite3.connect(database_path) as connection:
         connection.execute(
             "INSERT INTO users(id,email,password_hash,created_at) "
@@ -289,11 +285,13 @@ def _authenticate(client, database_path):
 
 
 def _set_support_language(database_path, value):
+    """Update the stored support language for the fixture user."""
     with sqlite3.connect(database_path) as connection:
         connection.execute("UPDATE users SET support_language=? WHERE id=1", (value,))
 
 
 def _support_language(database_path):
+    """Return the stored support language for the fixture user."""
     with sqlite3.connect(database_path) as connection:
         return connection.execute(
             "SELECT support_language FROM users WHERE id=1"
@@ -316,6 +314,7 @@ def learner(client, database_path, content_root):
 
 @pytest.fixture
 def localized_learner(client, database_path, content_root):
+    """Return a client with localized seeded content and an authenticated learner."""
     _localize_sources(content_root)
     seed.seed_database(database_path, content_root)
     _authenticate(client, database_path)
@@ -326,12 +325,14 @@ def localized_learner(client, database_path, content_root):
                                   "/api/v1/conjugation/lessons/fixture-conjugation",
                                   "/api/v1/references/fixture-reference"])
 def test_content_endpoints_require_authentication(client, path):
+    """Confirm conjugation and reference endpoints require authentication."""
     response = client.get(path)
     assert response.status_code == 401
     assert response.json["error"]["code"] == "not_authenticated"
 
 
 def test_browse_groups_lessons_under_ordered_tenses(learner):
+    """Confirm browse groups lessons under tenses ordered by sort_order."""
     response = learner.get("/api/v1/conjugation")
     assert response.status_code == 200
     assert set(response.json) == {"data"}
@@ -345,6 +346,7 @@ def test_browse_groups_lessons_under_ordered_tenses(learner):
 
 
 def test_browse_returns_metadata_only_with_learner_state_fields(learner):
+    """Confirm browse returns metadata with learner-state fields only."""
     tenses = learner.get("/api/v1/conjugation").json["data"]["tenses"]
     for tense in tenses:
         assert set(tense) == {"title_fr", "title", "lessons"}
@@ -357,14 +359,16 @@ def test_browse_returns_metadata_only_with_learner_state_fields(learner):
 
 
 def test_browse_title_falls_back_to_french_when_unlocalized(learner):
+    """Confirm unlocalized titles fall back to French."""
     tenses = learner.get("/api/v1/conjugation").json["data"]["tenses"]
-    # Fixture sources intentionally omit title_vi/title_en (API Contract §4.9).
+    # Fixture sources intentionally omit title_vi/title_en.
     assert all(t["title"] == t["title_fr"] for t in tenses)
     assert all(l["title"] == l["title_fr"]
                for t in tenses for l in t["lessons"])
 
 
 def test_browse_titles_follow_support_language(localized_learner, database_path):
+    """Confirm localized titles follow the learner's support language."""
     tenses = localized_learner.get("/api/v1/conjugation").json["data"]["tenses"]
     # Unset preference reads Vietnamese as the documented temporary fallback.
     assert tenses[0]["title"] == "Thì hiện tại"
@@ -377,6 +381,7 @@ def test_browse_titles_follow_support_language(localized_learner, database_path)
 
 
 def test_lesson_detail_returns_context_content_and_state(learner):
+    """Confirm lesson detail returns context, content, and state."""
     response = learner.get("/api/v1/conjugation/lessons/fixture-conjugation")
     assert response.status_code == 200
     data = response.json["data"]
@@ -393,12 +398,13 @@ def test_lesson_detail_returns_context_content_and_state(learner):
 
 def test_lesson_detail_localizes_content_without_persisting_fallback(
         localized_learner, database_path):
+    """Confirm lesson detail localizes content without persisting the fallback."""
     response = localized_learner.get("/api/v1/conjugation/lessons/fixture-conjugation")
     data = response.json["data"]
     assert data["content"] == VI_LESSON_CONTENT
     assert data["title"] == "Động từ có quy tắc"
     assert data["context"]["tense"]["title"] == "Thì hiện tại"
-    # FR-LANG-07: the null -> vi read fallback must never be written back.
+    # The null -> vi read fallback must never be written back.
     assert _support_language(database_path) is None
 
     _set_support_language(database_path, "en")
@@ -411,7 +417,8 @@ def test_lesson_detail_localizes_content_without_persisting_fallback(
 
 
 def test_state_fields_reflect_persisted_learner_state(learner, database_path):
-    # Simulate actions taken via Member 2's learning-state endpoints.
+    # Simulate actions taken via the learning-state endpoints.
+    """Confirm state fields reflect persisted learned and review-later rows."""
     with sqlite3.connect(database_path) as connection:
         unit_ids = dict(connection.execute(
             "SELECT slug, id FROM learning_units WHERE unit_type='conjugation'"))
@@ -438,6 +445,7 @@ def test_state_fields_reflect_persisted_learner_state(learner, database_path):
 
 
 def test_lesson_detail_unknown_slug_is_contract_404(learner):
+    """Confirm an unknown lesson slug returns the contract 404 shape."""
     response = learner.get("/api/v1/conjugation/lessons/no-such-lesson")
     assert response.status_code == 404
     assert set(response.json) == {"error"}
@@ -447,17 +455,19 @@ def test_lesson_detail_unknown_slug_is_contract_404(learner):
 
 def test_lesson_detail_rejects_another_modules_slug(learner):
     # fixture-grammar exists as a learning unit but not as a Conjugation lesson.
+    """Confirm a non-conjugation slug is treated as not found."""
     response = learner.get("/api/v1/conjugation/lessons/fixture-grammar")
     assert response.status_code == 404
     assert response.json["error"]["code"] == "learning_unit_not_found"
 
 
 def test_reference_detail_is_reference_only_content(learner):
+    """Confirm reference detail returns content without learner state."""
     response = learner.get("/api/v1/references/fixture-reference")
     assert response.status_code == 200
     assert set(response.json) == {"data"}
     data = response.json["data"]
-    # No learner state object: reference pages are not learning units (BR-11).
+    # No learner state object: reference pages are not learning units.
     assert set(data) == {"slug", "title_fr", "title", "content"}
     assert data["slug"] == "fixture-reference"
     assert data["title"] == "Fixture title"
@@ -466,6 +476,7 @@ def test_reference_detail_is_reference_only_content(learner):
 
 def test_reference_detail_localizes_without_persisting_fallback(
         localized_learner, database_path):
+    """Confirm reference detail localizes content without persisting the fallback."""
     data = localized_learner.get(
         "/api/v1/references/fixture-reference").json["data"]
     assert data["content"] == VI_REFERENCE_CONTENT
@@ -483,12 +494,14 @@ def test_reference_detail_localizes_without_persisting_fallback(
                                   # A Conjugation slug is not a reference slug.
                                   "/api/v1/references/fixture-conjugation"])
 def test_reference_detail_unknown_slug_is_contract_404(learner, path):
+    """Confirm an unknown or wrong-module reference slug returns 404."""
     response = learner.get(path)
     assert response.status_code == 404
     assert response.json["error"]["code"] == "reference_not_found"
 
 
 def test_content_reads_create_no_learner_state_or_history(learner, database_path):
+    """Confirm content reads create no learner state or practice history."""
     assert learner.get("/api/v1/conjugation").status_code == 200
     assert learner.get(
         "/api/v1/conjugation/lessons/fixture-conjugation").status_code == 200

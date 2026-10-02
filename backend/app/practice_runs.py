@@ -4,6 +4,7 @@ from uuid import uuid4
 
 
 def _snapshot(run):
+    """Return a shallow copy of a run with its id list duplicated."""
     if run is None:
         return None
     return {**run, "selected_question_ids": list(run["selected_question_ids"])}
@@ -18,10 +19,12 @@ class InMemoryPracticeRunStore:
     """
 
     def __init__(self):
+        """Initialize the empty run map and its reentrant lock."""
         self._runs = {}
         self._lock = RLock()
 
     def create(self, *, user_id, practice_type, learning_unit_id, selected_question_ids):
+        """Validate the run inputs and store a new unsubmitted run."""
         if type(user_id) is not int or user_id <= 0:
             raise ValueError("A positive integer user_id is required.")
         if practice_type not in ("normal", "mixed"):
@@ -44,6 +47,7 @@ class InMemoryPracticeRunStore:
             return _snapshot(run)
 
     def get(self, run_id):
+        """Return a snapshot of the run, or None when it is unknown."""
         with self._lock:
             return _snapshot(self._runs.get(run_id))
 
@@ -57,4 +61,5 @@ class InMemoryPracticeRunStore:
             return _snapshot(run)
 
     def lock(self):
+        """Return the lock guarding run ownership and submission checks."""
         return self._lock

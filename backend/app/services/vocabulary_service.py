@@ -1,9 +1,6 @@
-"""Vocabulary response shaping (Member 4).
-
-Converts repository rows into the localized response models of
-docs/api-contracts.md §10: support-language selection, hierarchy grouping, and
-learner-state enrichment. No HTTP parsing and no SQL here; a missing resource
-raises ApiError(404) with the contract's error code.
+"""Vocabulary response shaping: support-language selection, hierarchy grouping
+and learner-state enrichment. No HTTP parsing or SQL here; a missing resource
+raises ApiError(404) with the appropriate error code.
 """
 from flask import g
 
@@ -14,7 +11,7 @@ from ..repositories import vocabulary_repository
 
 def _title(row, prefix, support_language):
     """Localize an entity title, falling back to title_fr when the
-    support-language title is absent (docs/api-contracts.md §4.9)."""
+    support-language title is absent."""
     return localized_value(
         {
             "title_fr": row[f"{prefix}_fr"],

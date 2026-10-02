@@ -1,14 +1,14 @@
-"""Member 5: reference-only content response model (API Contract §12)."""
+"""Shape reference-only content responses for the API."""
 from ..errors import ApiError
 from ..localization import localized_value, resolve_support_language
 from ..repositories import reference_repository
 
 
 def get_page(user, slug):
-    """Localized reference page.
+    """Return a localized reference page, raising ApiError(404) for an unknown slug.
 
-    Reference pages are not learning units (BR-11), so the response never
-    contains a learner `state` object and reading one changes no learner state.
+    Reference pages are not learning units: the response carries no learner
+    `state`, and reading one changes no learner state.
     """
     row = reference_repository.get_page_by_slug(slug)
     if row is None:

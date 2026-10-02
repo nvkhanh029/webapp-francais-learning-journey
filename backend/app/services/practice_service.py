@@ -1,3 +1,8 @@
+"""Practice run start, validation, scoring and persistence.
+
+In-progress runs live in the server-side run store; this service owns
+authorization, structural validation, scoring and the write transaction.
+"""
 import random
 from datetime import datetime
 
@@ -13,10 +18,12 @@ MAX_MIXED_QUESTIONS = 10
 
 
 def _run_store():
+    """Return the in-memory practice run store from app extensions."""
     return current_app.extensions["practice_run_store"]
 
 
 def start_normal_practice(slug):
+    """Start a normal practice run for one unit, raising ApiError if unavailable."""
     user_id = g.current_user["id"]
     language = resolve_support_language(g.current_user["support_language"])
 
@@ -54,6 +61,7 @@ def start_normal_practice(slug):
 
 
 def start_mixed_practice():
+    """Start a mixed practice run from learned units, raising ApiError if none."""
     user_id = g.current_user["id"]
     language = resolve_support_language(g.current_user["support_language"])
 
@@ -98,6 +106,7 @@ def start_mixed_practice():
 
 
 def submit_practice(run_id, answers):
+    """Validate, score and persist one submitted practice run."""
     user_id = g.current_user["id"]
 
     if not isinstance(run_id, str) or not run_id:
@@ -110,9 +119,8 @@ def submit_practice(run_id, answers):
 
     store = _run_store()
 
-    # The shared practice_runs file is runtime infrastructure only. The
-    # service owns authorization, validation, scoring, persistence, and the
-    # submitted transition.
+    # The run store is runtime infrastructure only; this service owns
+    # authorization, validation, scoring, persistence and the submitted flag.
     with store.lock():
         run = store.get(run_id)
 
@@ -220,9 +228,8 @@ def submit_practice(run_id, answers):
             "results": result_questions,
         }
 
-        # Question retrieval is the source of truth for the units represented
-        # by this run. This avoids duplicating learning-unit ID lookups in the
-        # Practice repository.
+        # Question rows are the source of truth for the units represented by this
+        # run, avoiding duplicate learning-unit lookups in the repository.
         content_units = []
         seen_unit_ids = set()
         for question_id in run["selected_question_ids"]:
@@ -252,6 +259,7 @@ def submit_practice(run_id, answers):
 
 
 def _parse_answers(answers):
+    """Normalize submitted answers into a question_id-keyed mapping."""
     if not isinstance(answers, list):
         _validation_error("answers", "Must be an array.")
 
@@ -280,6 +288,7 @@ def _parse_answers(answers):
 
 
 def _validate_answers(questions, parsed_answers):
+    """Validate each submitted answer against its question type and items."""
     by_id = {str(question["id"]): question for question in questions}
 
     for question_id, answer in parsed_answers.items():
@@ -315,10 +324,12 @@ def _validate_answers(questions, parsed_answers):
 
 
 def _validation_error(field, message):
+    """Raise an ApiError(422) carrying a single field validation message."""
     raise ApiError(422, "validation_error", "Request fields are invalid.", {field: message})
 
 
 def _is_answer_correct(question, answer):
+    """Return whether a submitted answer is correct for the question type."""
     question_type = question["question_type"]
     if question_type == "mcq":
         return any(
@@ -346,6 +357,7 @@ def _is_answer_correct(question, answer):
 
 
 def _serialize_unit(unit, language):
+    """Shape a learning unit for API output with a localized title."""
     return {
         "slug": unit["slug"],
         "unit_type": unit["unit_type"],
@@ -355,6 +367,7 @@ def _serialize_unit(unit, language):
 
 
 def _serialize_question_for_client(question, language, question_number):
+    """Shape a practice question for the client without exposing answers."""
     result = {
         "question_id": question["id"],
         "question_number": question_number,
@@ -390,6 +403,7 @@ def _serialize_question_for_client(question, language, question_number):
 
 
 def _serialize_result_question(question, user_answer, correct, language, question_number):
+    """Shape one graded question with the submitted and correct answers."""
     result = {
         "question_id": question["id"],
         "question_number": question_number,
@@ -422,6 +436,7 @@ def _serialize_result_question(question, user_answer, correct, language, questio
 
 
 def _serialize_submitted_answer(question, answer):
+    """Shape the learner's submitted answer for display in the result."""
     if question["question_type"] == "mcq":
         item_id = answer["item_id"]
         item = next(item for item in question["items"] if item["id"] == item_id)
@@ -440,6 +455,7 @@ def _serialize_submitted_answer(question, answer):
 
 
 def _usable_questions(questions):
+    """Filter to questions with enough valid items to be answered and scored."""
     usable = []
     for question in questions:
         items = question["items"]

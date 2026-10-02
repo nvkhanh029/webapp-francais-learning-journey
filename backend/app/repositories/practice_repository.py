@@ -1,11 +1,13 @@
-"""Practice question reads and completed-Practice persistence/query SQL
-Owner: Member 6 (Practice and Mixed Practice), per docs/repository-conventions.md
-Section 8.9. Use app.db.get_db() and parameter-bound SQL. The service owns
-transactions; repository writes must not commit independently."""
+"""Practice question reads and completed-Practice persistence/query SQL.
+
+Parameter-bound SQL via get_db(); the service owns transactions and repository
+writes must not commit independently.
+"""
 from ..db import get_db
 
 
 def list_questions_for_learning_unit(learning_unit_id):
+    """Return grouped questions for one learning unit in curriculum order."""
     rows = get_db().execute(
         """
         SELECT
@@ -38,6 +40,7 @@ def list_questions_for_learning_unit(learning_unit_id):
 
 
 def list_questions_for_learning_units(learning_unit_ids):
+    """Return grouped questions for several learning units, or [] when empty."""
     if not learning_unit_ids:
         return []
 
@@ -74,6 +77,7 @@ def list_questions_for_learning_units(learning_unit_ids):
 
 
 def list_learned_learning_units(user_id):
+    """Return learning units the learner has explicitly marked learned."""
     return get_db().execute(
         """
         SELECT
@@ -95,6 +99,7 @@ def list_learned_learning_units(user_id):
 
 
 def get_questions_by_ids(question_ids):
+    """Return grouped questions for the given ids, or [] when empty."""
     if not question_ids:
         return []
 
@@ -139,6 +144,7 @@ def insert_practice_session(
     correct_count,
     total_questions,
 ):
+    """Insert one completed practice session and return its new row id."""
     cursor = get_db().execute(
         """
         INSERT INTO practice_sessions (
@@ -166,6 +172,7 @@ def insert_practice_session(
 
 
 def _group_questions(rows):
+    """Fold flat question/item JOIN rows into one dict per question, in row order."""
     questions = {}
     order = []
 
@@ -213,7 +220,7 @@ def get_recent_sessions(user_id, limit):
 
     Mixed Practice rows have no related learning unit, so the join columns
     (slug/unit_type/title_fr) come back NULL for them; the caller distinguishes
-    normal vs. mixed using `practice_type`, matching the API Contract shape.
+    normal vs. mixed using `practice_type`, matching the response shape.
     """
     return get_db().execute(
         "SELECT ps.practice_type AS practice_type, ps.completed_at AS completed_at, "

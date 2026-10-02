@@ -1,15 +1,8 @@
-"""Dashboard aggregation: progress, streak, Continue Learning, Recent Practice.
+"""Dashboard aggregation: progress, streak, Continue Learning and Recent Practice.
 
-Owner: Member 2 (Dashboard and Learning State). Follows docs/api-contracts.md
-Section 8 and docs/database-design.md Sections 11.2/12. There is intentionally
-no dashboard_repository.py (Backend Structure Section 7.2); this service only
-coordinates the existing learning-unit, learning-state and practice
-repositories.
-
-`practice_sessions.activity_date` is assumed to be stored as an ISO 8601
-calendar date string ("YYYY-MM-DD"), consistent with `completed_at` using
-ISO 8601. Member 6 owns the write path that produces this value; coordinate
-before changing the assumed format.
+Coordinates the learning-unit, learning-state and practice repositories only
+(no dashboard_repository.py). `activity_date` is the ISO 8601 "YYYY-MM-DD" value
+written by the Practice service.
 """
 from datetime import date, datetime, timedelta
 
@@ -21,15 +14,14 @@ MODULE_TYPES = ("grammar", "vocabulary", "conjugation")
 
 
 def _parse_activity_date(value):
+    """Parse a YYYY-MM-DD activity_date string into a date object."""
     return datetime.strptime(value, "%Y-%m-%d").date()
 
 
 def calculate_streak(activity_dates, today=None):
-    """Pure derivation from distinct activity_date values (Requirements Section 11).
-
-    Kept as a standalone pure function (no repository/session access) so tests
-    can exercise streak edge cases with deterministic dates instead of
-    depending on the real current date (Backend Structure Section 15.8).
+    """Derive current/longest streak purely from activity_date values, with no
+    repository or session access. Kept standalone so tests can exercise streak
+    edge cases with deterministic dates.
     """
     if today is None:
         today = date.today()
@@ -61,6 +53,7 @@ def calculate_streak(activity_dates, today=None):
 
 
 def _build_progress(user_id):
+    """Return learned and total unit counts per module for Dashboard progress."""
     totals = learning_unit_repository.count_by_type()
     learned = learning_state_repository.count_learned_by_type(user_id)
     return {
@@ -70,6 +63,7 @@ def _build_progress(user_id):
 
 
 def _build_continue_learning(user_id, support_language):
+    """Return the most recently opened unfinished unit, or None."""
     row = learning_state_repository.get_continue_learning(user_id)
     if row is None:
         return None
@@ -82,13 +76,14 @@ def _build_continue_learning(user_id, support_language):
 
 
 def _build_recent_practice(user_id):
+    """Return the most recent completed Practice summaries for Dashboard."""
     rows = practice_repository.get_recent_sessions(user_id, RECENT_PRACTICE_LIMIT)
     entries = []
     for row in rows:
         learning_unit = None
         if row["practice_type"] == "normal":
-            # Matches the API Contract example shape exactly: slug/unit_type/title_fr
-            # only. No localized "title" field appears here (unlike continue_learning).
+            # Matches the response shape exactly: slug/unit_type/title_fr only.
+            # Unlike continue_learning, no localized "title" field appears here.
             learning_unit = {
                 "slug": row["slug"],
                 "unit_type": row["unit_type"],

@@ -1,12 +1,7 @@
-"""Contract-focused Practice API tests.
+"""Practice API contract tests.
 
-These tests are written against the current Practice implementation:
-- the application-owned ``practice_run_store`` from practice_runs.py;
-- shared JSON validation from validation.py;
-- the Flask application composition in __init__.py.
-
-The tests intentionally do not depend on learning_unit_repository.py or
-Dashboard services, which are not part of the currently available files.
+Covers start/submit/scoring, submission validation and history safety, run
+ownership, and Mixed Practice. Uses the app-owned run store and shared helpers.
 """
 
 import sqlite3
@@ -68,6 +63,7 @@ def _practice_setup(client, database_path, *, support_language="vi"):
 def _insert_question(db, *, question_id, unit_id, question_type,
                      prompt_vi, prompt_en, explanation_vi, explanation_en,
                      items, sort_order=None):
+    """Insert one question and its items into the database."""
     db.execute(
         """
         INSERT INTO questions
@@ -91,6 +87,7 @@ def _insert_question(db, *, question_id, unit_id, question_type,
 
 
 def _learn_unit(database_path, unit_id=1, *, user_id=1):
+    """Insert a learned-state row for the given unit and user."""
     with sqlite3.connect(database_path) as db:
         db.execute(
             """
@@ -103,6 +100,7 @@ def _learn_unit(database_path, unit_id=1, *, user_id=1):
 
 
 def _question_ids_by_type(database_path):
+    """Return a mapping of question type to question id."""
     with sqlite3.connect(database_path) as db:
         rows = db.execute(
             "SELECT id, question_type FROM questions ORDER BY id"
@@ -111,6 +109,7 @@ def _question_ids_by_type(database_path):
 
 
 def _answers(mcq=101, fill="bonjour", ordering=None):
+    """Build a full set of answers with optional overrides."""
     return [
         {"question_id": 1, "answer": {"item_id": mcq}},
         {"question_id": 2, "answer": {"text": fill}},
@@ -119,12 +118,14 @@ def _answers(mcq=101, fill="bonjour", ordering=None):
 
 
 def _start_normal(client):
+    """Start a normal practice run and return its data payload."""
     response = client.post("/api/v1/learning-units/fixture-grammar/practice/start")
     assert response.status_code == 201
     return response.json["data"]
 
 
 def _submit(client, run_id, answers):
+    """Submit answers for a run and return the response."""
     return client.post(
         f"/api/v1/practice/runs/{run_id}/submit",
         json={"answers": answers},
@@ -136,6 +137,7 @@ def _submit(client, run_id, answers):
 # ---------------------------------------------------------------------------
 
 def test_practice_uses_application_owned_run_store(client):
+    """Confirm practice uses the app-owned in-memory run store."""
     store = client.application.extensions["practice_run_store"]
     assert store.__class__.__name__ == "InMemoryPracticeRunStore"
     assert hasattr(store, "create")
@@ -145,6 +147,7 @@ def test_practice_uses_application_owned_run_store(client):
 
 
 def test_practice_run_store_uses_contract_fields(client):
+    """Confirm a created run exposes exactly the contract fields."""
     store = client.application.extensions["practice_run_store"]
     run = store.create(
         user_id=1,
@@ -166,6 +169,7 @@ def test_practice_run_store_uses_contract_fields(client):
 # ---------------------------------------------------------------------------
 
 def test_normal_start_returns_201_total_questions_and_contract_shape(client, database_path):
+    """Confirm start returns 201 with the full question set and shape."""
     _practice_setup(client, database_path)
     response = client.post("/api/v1/learning-units/fixture-grammar/practice/start")
 
@@ -187,6 +191,7 @@ def test_normal_start_returns_201_total_questions_and_contract_shape(client, dat
 
 
 def test_normal_start_uses_support_language_for_prompts(client, database_path):
+    """Confirm start localizes question prompts to the support language."""
     _practice_setup(client, database_path, support_language="en")
     data = _start_normal(client)
     prompts = {q["question_type"]: q["prompt"] for q in data["questions"]}
@@ -198,6 +203,7 @@ def test_normal_start_uses_support_language_for_prompts(client, database_path):
 
 
 def test_normal_start_hides_correct_answer_information(client, database_path):
+    """Confirm start never reveals correct answers or positions."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     for question in data["questions"]:
@@ -210,6 +216,7 @@ def test_normal_start_hides_correct_answer_information(client, database_path):
 
 
 def test_normal_start_ordering_is_not_canonical(client, database_path):
+    """Confirm ordering items are shuffled, not returned in canonical order."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     ordering = next(q for q in data["questions"] if q["question_type"] == "ordering")
@@ -217,6 +224,7 @@ def test_normal_start_ordering_is_not_canonical(client, database_path):
 
 
 def test_normal_unknown_unit_is_404(client, database_path):
+    """Confirm starting an unknown unit returns a 404 error."""
     _practice_setup(client, database_path)
     response = client.post("/api/v1/learning-units/does-not-exist/practice/start")
     assert response.status_code == 404
@@ -224,6 +232,7 @@ def test_normal_unknown_unit_is_404(client, database_path):
 
 
 def test_normal_without_usable_questions_is_409(client, database_path):
+    """Confirm a unit without questions returns practice_unavailable."""
     _practice_setup(client, database_path)
     with sqlite3.connect(database_path) as db:
         db.execute("DELETE FROM questions WHERE learning_unit_id = 1")
@@ -233,6 +242,7 @@ def test_normal_without_usable_questions_is_409(client, database_path):
 
 
 def test_normal_start_requires_authentication(client):
+    """Confirm starting practice requires authentication."""
     response = client.post("/api/v1/learning-units/fixture-grammar/practice/start")
     assert response.status_code == 401
     assert response.json["error"]["code"] == "not_authenticated"
@@ -243,6 +253,7 @@ def test_normal_start_requires_authentication(client):
 # ---------------------------------------------------------------------------
 
 def test_submit_scores_all_three_question_types(client, database_path):
+    """Confirm submit scores MCQ, fill-blank, and ordering answers."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     response = _submit(client, data["practice_run_id"], _answers(fill="  BoNjOuR  "))
@@ -259,6 +270,7 @@ def test_submit_scores_all_three_question_types(client, database_path):
 
 
 def test_submit_result_has_contract_answer_shapes(client, database_path):
+    """Confirm submit returns the contract answer shapes per question type."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     response = _submit(
@@ -299,6 +311,7 @@ def test_submit_result_has_contract_answer_shapes(client, database_path):
 
 
 def test_submit_always_includes_explanation_key(client, database_path):
+    """Confirm results always include the explanation key, even when null."""
     _practice_setup(client, database_path)
     with sqlite3.connect(database_path) as db:
         db.execute("UPDATE questions SET explanation_vi = NULL WHERE id = 2")
@@ -310,6 +323,7 @@ def test_submit_always_includes_explanation_key(client, database_path):
 
 
 def test_fill_blank_ignores_whitespace_and_case_but_not_accents(client, database_path):
+    """Confirm fill-blank matching ignores case and spaces but not accents."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     ok = _submit(client, data["practice_run_id"], _answers(fill="  BoNjOuR  "))
@@ -327,6 +341,7 @@ def test_fill_blank_ignores_whitespace_and_case_but_not_accents(client, database
 
 
 def test_submit_uses_final_answers_at_submission_time(client, database_path):
+    """Confirm scoring uses the answers given at submission time."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     response = _submit(client, data["practice_run_id"], _answers(mcq=102))
@@ -339,11 +354,13 @@ def test_submit_uses_final_answers_at_submission_time(client, database_path):
 # ---------------------------------------------------------------------------
 
 def _history_count(database_path):
+    """Return the number of persisted practice session rows."""
     with sqlite3.connect(database_path) as db:
         return db.execute("SELECT COUNT(*) FROM practice_sessions").fetchone()[0]
 
 
 def test_incomplete_practice_is_422_and_writes_no_history(client, database_path):
+    """Confirm an incomplete submission is rejected and writes no history."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     response = _submit(
@@ -356,6 +373,7 @@ def test_incomplete_practice_is_422_and_writes_no_history(client, database_path)
 
 
 def test_malformed_json_uses_shared_invalid_json_error(client, database_path):
+    """Confirm malformed submit JSON returns the shared invalid_json error."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     response = client.post(
@@ -368,6 +386,7 @@ def test_malformed_json_uses_shared_invalid_json_error(client, database_path):
 
 
 def test_non_object_submit_body_is_422_validation_error(client, database_path):
+    """Confirm a non-object submit body is a validation error."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     response = client.post(
@@ -379,6 +398,7 @@ def test_non_object_submit_body_is_422_validation_error(client, database_path):
 
 
 def test_answers_must_be_an_array(client, database_path):
+    """Confirm a non-array answers field is rejected."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     response = _submit(client, data["practice_run_id"], {"1": {"item_id": 101}})
@@ -388,6 +408,7 @@ def test_answers_must_be_an_array(client, database_path):
 
 
 def test_mcq_rejects_foreign_item_id(client, database_path):
+    """Confirm an MCQ item from another question is rejected."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     response = _submit(client, data["practice_run_id"], [
@@ -401,6 +422,7 @@ def test_mcq_rejects_foreign_item_id(client, database_path):
 
 
 def test_fill_blank_rejects_non_string_answer(client, database_path):
+    """Confirm a non-string fill-blank answer is rejected."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     response = _submit(client, data["practice_run_id"], [
@@ -417,6 +439,7 @@ def test_fill_blank_rejects_non_string_answer(client, database_path):
 def test_ordering_rejects_incomplete_duplicate_or_foreign_permutation(
     client, database_path, item_ids
 ):
+    """Confirm invalid ordering permutations are rejected."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     response = _submit(client, data["practice_run_id"], [
@@ -430,6 +453,7 @@ def test_ordering_rejects_incomplete_duplicate_or_foreign_permutation(
 
 
 def test_duplicate_question_answer_is_rejected(client, database_path):
+    """Confirm two answers for one question are rejected."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     response = _submit(client, data["practice_run_id"], [
@@ -448,6 +472,7 @@ def test_duplicate_question_answer_is_rejected(client, database_path):
 # ---------------------------------------------------------------------------
 
 def test_unknown_run_is_404(client, database_path):
+    """Confirm submitting an unknown run returns a 404 error."""
     _practice_setup(client, database_path)
     response = _submit(client, "does-not-exist", _answers())
     assert response.status_code == 404
@@ -455,6 +480,7 @@ def test_unknown_run_is_404(client, database_path):
 
 
 def test_run_ownership_is_checked_before_answer_validation(client, database_path):
+    """Confirm run ownership is checked before answer validation."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     with sqlite3.connect(database_path) as db:
@@ -474,6 +500,7 @@ def test_run_ownership_is_checked_before_answer_validation(client, database_path
 
 
 def test_run_cannot_be_submitted_twice(client, database_path):
+    """Confirm a completed run cannot be submitted again."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     first = _submit(client, data["practice_run_id"], _answers())
@@ -487,6 +514,7 @@ def test_run_cannot_be_submitted_twice(client, database_path):
 def test_completed_practice_persists_one_summary_without_exposing_session_id(
     client, database_path
 ):
+    """Confirm a completed run persists one summary without a session id."""
     _practice_setup(client, database_path)
     data = _start_normal(client)
     response = _submit(client, data["practice_run_id"], _answers())
@@ -509,6 +537,7 @@ def test_completed_practice_persists_one_summary_without_exposing_session_id(
 # ---------------------------------------------------------------------------
 
 def test_mixed_start_returns_201_and_requires_learned_content(client, database_path):
+    """Confirm mixed start fails until at least one unit is learned."""
     _practice_setup(client, database_path)
     response = client.post("/api/v1/mixed-practice/start")
     assert response.status_code == 409
@@ -516,6 +545,7 @@ def test_mixed_start_returns_201_and_requires_learned_content(client, database_p
 
 
 def test_mixed_start_accepts_empty_json_object(client, database_path):
+    """Confirm mixed start accepts an empty JSON object."""
     _practice_setup(client, database_path)
     _learn_unit(database_path, unit_id=1)
     response = client.post("/api/v1/mixed-practice/start", json={})
@@ -524,6 +554,7 @@ def test_mixed_start_accepts_empty_json_object(client, database_path):
 
 
 def test_mixed_start_accepts_no_body(client, database_path):
+    """Confirm mixed start accepts a request with no body."""
     _practice_setup(client, database_path)
     _learn_unit(database_path, unit_id=1)
     response = client.post("/api/v1/mixed-practice/start")
@@ -531,6 +562,7 @@ def test_mixed_start_accepts_no_body(client, database_path):
 
 
 def test_mixed_uses_only_learned_units(client, database_path):
+    """Confirm mixed practice selects questions from learned units only."""
     _practice_setup(client, database_path)
     _learn_unit(database_path, unit_id=1)
     with sqlite3.connect(database_path) as db:
@@ -548,6 +580,7 @@ def test_mixed_uses_only_learned_units(client, database_path):
 
 
 def test_mixed_selects_at_most_ten_distinct_questions(client, database_path):
+    """Confirm mixed practice selects at most ten distinct questions."""
     _practice_setup(client, database_path)
     _learn_unit(database_path, unit_id=1)
     _learn_unit(database_path, unit_id=2)
@@ -571,6 +604,7 @@ def test_mixed_selects_at_most_ten_distinct_questions(client, database_path):
 
 
 def test_mixed_uses_all_available_questions_when_fewer_than_ten(client, database_path):
+    """Confirm mixed practice uses all questions when fewer than ten exist."""
     _practice_setup(client, database_path)
     _learn_unit(database_path, unit_id=1)
     response = client.post("/api/v1/mixed-practice/start")
@@ -581,6 +615,7 @@ def test_mixed_uses_all_available_questions_when_fewer_than_ten(client, database
 
 
 def test_mixed_result_derives_content_covered_from_selected_questions(client, database_path):
+    """Confirm mixed results list the units covered by selected questions."""
     _practice_setup(client, database_path)
     _learn_unit(database_path, unit_id=1)
     _learn_unit(database_path, unit_id=2)
@@ -619,6 +654,7 @@ def test_mixed_result_derives_content_covered_from_selected_questions(client, da
 
 
 def test_mixed_completion_persists_null_learning_unit(client, database_path):
+    """Confirm a completed mixed run persists a null learning unit."""
     _practice_setup(client, database_path)
     _learn_unit(database_path, unit_id=1)
     data = client.post("/api/v1/mixed-practice/start").json["data"]

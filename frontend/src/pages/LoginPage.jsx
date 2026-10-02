@@ -1,1 +1,2 @@
-// TODO: Login page.
+// Guest route /login rendering LoginForm.
+// Redirects authenticated learners to /dashboard.

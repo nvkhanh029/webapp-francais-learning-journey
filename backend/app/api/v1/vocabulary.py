@@ -1,8 +1,8 @@
-"""Vocabulary HTTP boundary (Member 4).
+"""Vocabulary HTTP boundary.
 
-Thin routes for the contract in docs/api-contracts.md §10: read the path,
-delegate to the service, and return the shared success envelope. Every endpoint
-is session-authenticated; no SQL or business rules belong here.
+Thin routes for the vocabulary contract: read the path, delegate to the
+service, and return the shared success envelope. Every endpoint is
+session-authenticated; no SQL or business rules belong here.
 """
 from flask import Blueprint, jsonify
 

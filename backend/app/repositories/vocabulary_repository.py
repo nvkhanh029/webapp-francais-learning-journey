@@ -1,8 +1,7 @@
-"""Vocabulary hierarchy and content SQL (Member 4).
+"""Vocabulary hierarchy and content SQL, parameter-bound and read-only.
 
-Read-only queries via app.db.get_db() with parameter binding; rows are returned
-raw for the service to localize. Writes, if ever added, must not commit here:
-the service owns the transaction boundary (docs/backend-structure.md §8).
+Rows are returned raw for the service to localize; writes, if ever added, must
+not commit here because the service owns the transaction boundary.
 """
 from ..db import get_db
 

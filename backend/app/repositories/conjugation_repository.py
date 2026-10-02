@@ -1,4 +1,4 @@
-"""Member 5: Conjugation tense/lesson SQL. Read-only; services own transactions."""
+"""Conjugation tense and lesson SQL. Read-only; services own transactions."""
 from ..db import get_db
 
 

@@ -1,1 +1,2 @@
-// TODO: Vocabulary overview page.
+// Route /vocabulary — browse vocabulary categories and topics.
+// Loads via vocabularyApi.getVocabulary.
