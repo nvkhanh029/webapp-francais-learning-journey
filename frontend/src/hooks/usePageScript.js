@@ -278,6 +278,8 @@ export default function usePageScript(init, { title } = {}) {
   useEffect(() => {
     const el = rootRef.current;
     if (!el) return undefined;
+    // Page scripts' own click handlers run first (bubbling). A handler that fully handles a click on an
+    // element with data-route must call event.preventDefault(); this delegated handler then skips navigation.
     const onClick = (event) => {
       if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       const languageButton = event.target.closest(".language-button[data-lang]");
@@ -287,6 +289,8 @@ export default function usePageScript(init, { title } = {}) {
       }
       const target = event.target.closest("a[href], [data-route]");
       if (!target || !el.contains(target) || target.getAttribute("aria-disabled") === "true") return;
+      // A submit button inside a form belongs to the form's own submit handling, never to navigation.
+      if (target.matches('button[type="submit"], input[type="submit"]') && target.closest("form")) return;
       const href = target.getAttribute("href");
       if (href && href.startsWith("/")) {
         event.preventDefault();

@@ -72,9 +72,11 @@ export default function init() {
           submitButton.querySelector("[data-submit-spinner]").hidden = !isSubmitting;
       }
 
-      function handleSubmit() {
+      function handleSubmit(event) {
           if (submitButton.disabled) return;
           if (!selectedLang) {
+              // Handled here: tell usePageScript not to follow the button's data-route.
+              event.preventDefault();
               showFormError("validation");
               document.getElementById("language-options").focus();
               options[0].focus();

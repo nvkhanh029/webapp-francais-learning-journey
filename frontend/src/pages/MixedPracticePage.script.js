@@ -389,7 +389,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           // Content Covered is distinct per learning unit (slug), grouped by unit_type. Empty groups are omitted.
           const seen = new Set();
           const distinct = units.filter((u) => !seen.has(u.slug) && seen.add(u.slug));
-          $("[data-covered-groups]").innerHTML = UNIT_GROUPS.map((group) => {
+          const groupsHtml = UNIT_GROUPS.map((group) => {
               const items = distinct.filter((u) => u.unit_type === group.type);
               if (!items.length) return "";
               return `<div class="covered-group ${group.cls}">
@@ -404,6 +404,10 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
                       </a></li>`).join("")}</ul>
               </div>`;
           }).join("");
+          // No unit to show (empty content_covered, or only unit types this page does not group): say so
+          // instead of leaving the card blank. New Vietnamese copy; no English version exists for this page yet.
+          $("[data-covered-groups]").innerHTML = groupsHtml
+              || '<p class="card-subtitle">Không có nội dung nào để hiển thị.</p>';
       }
 
       function renderResult() {

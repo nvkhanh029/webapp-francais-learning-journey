@@ -189,9 +189,10 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
       }
 
       function setProgress(track, percentElement, learned, total) {
+          // Floor with integer math and clamp to 0-100: "100%" appears only when every unit is learned.
           const percent =
               total > 0
-                  ? Math.round((learned / total) * 100)
+                  ? Math.min(100, Math.max(0, Math.floor((learned * 100) / total)))
                   : 0;
 
           percentElement.textContent = `${percent}%`;

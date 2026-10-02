@@ -106,7 +106,11 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           const set = (slot, text) => { row.querySelector(`[data-slot="${slot}"]`).textContent = text; };
           row.dataset.slug = item.slug;
           set("title-fr", item.title_fr);
-          set("title", item.title);
+          // API §4.9: when the localized title equals title_fr (fallback) it is hidden, not repeated.
+          const supportLine = row.querySelector('[data-slot="title"]');
+          const hasSupport = Boolean(item.title_fr && item.title && item.title !== item.title_fr);
+          supportLine.hidden = !hasSupport;
+          supportLine.textContent = hasSupport ? item.title : "";
           row.querySelector('[data-slot="learned"]').hidden = !item.learned;
           set("learned-text", COPY.learned);
 

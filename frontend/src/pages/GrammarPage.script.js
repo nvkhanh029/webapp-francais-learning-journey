@@ -142,7 +142,8 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       // Keep displayed text, aria-valuenow, and --progress equal.
       function setProgress(track, percentElement, learned, total) {
-          const percent = total > 0 ? Math.round((learned / total) * 100) : 0;
+          // Floor with integer math and clamp to 0-100: "100%" appears only when every unit is learned.
+          const percent = total > 0 ? Math.min(100, Math.max(0, Math.floor((learned * 100) / total))) : 0;
           percentElement.textContent = `${percent}%`;
           track.setAttribute("aria-valuenow", String(percent));
           track.style.setProperty("--progress", `${percent}%`);
@@ -182,7 +183,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       function renderPart(part, index) {
           const section = fromTemplate("part-template");
-          const lessons = part.chapters.flatMap((chapter) => chapter.lessons || []);
+          const lessons = (part.chapters || []).flatMap((chapter) => chapter.lessons || []);
           const learned = lessons.filter((lesson) => lesson.learned).length;
           const headingId = `part-${index + 1}-title`;
           section.querySelector(".part-progress")
@@ -197,7 +198,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           const track = slot(section, "track");
           track.setAttribute("aria-label", COPY.progressOf(part.title_fr || part.title));
           setProgress(track, slot(section, "percent"), learned, lessons.length);
-          slot(section, "chapters").append(...part.chapters.map(renderChapter));
+          slot(section, "chapters").append(...(part.chapters || []).map(renderChapter));
           return section;
       }
 
@@ -220,12 +221,13 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
       function render(data, { restore = true } = {}) {
           currentData = data;
           const parts = data.parts || [];
-          if (parts.length === 0) {
+          const chapters = parts.flatMap((part) => part.chapters || []);
+          const lessons = chapters.flatMap((chapter) => chapter.lessons || []);
+          // Same rule as ConjugationPage: no parts or no lessons at all is the empty state.
+          if (parts.length === 0 || lessons.length === 0) {
               showPageState("empty");
               return;
           }
-          const chapters = parts.flatMap((part) => part.chapters);
-          const lessons = chapters.flatMap((chapter) => chapter.lessons || []);
           const learned = lessons.filter((lesson) => lesson.learned).length;
 
           setProgress(slot(overview, "track"), slot(overview, "percent"), learned, lessons.length);

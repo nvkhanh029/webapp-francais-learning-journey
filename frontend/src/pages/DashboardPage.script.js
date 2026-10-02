@@ -71,7 +71,8 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       /* ---------- Module progress: percentages derived from learned / total ---------- */
       function renderModuleProgress(card, learned, total) {
-          const percent = total > 0 ? Math.round((learned / total) * 100) : 0;
+          // Floor with integer math and clamp to 0-100: "100%" appears only when every unit is learned.
+          const percent = total > 0 ? Math.min(100, Math.max(0, Math.floor((learned * 100) / total))) : 0;
           card.dataset.learned = learned;
           card.dataset.total = total;
           card.querySelector(".progress-value").textContent = `${percent}%`;
@@ -218,9 +219,19 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           nextButton.disabled = isCurrentMonth;
           nextButton.title = isCurrentMonth ? COPY.currentMonth : COPY.nextMonth;
 
-          const activeDays = new Set(
-              hasData ? calendarData.active_dates.map((date) => Number(date.slice(8, 10))) : []
-          );
+          // Unique practice days of the displayed month that are not in the future. The grid and the
+          // summary below both read this set, so they always agree.
+          const activeDays = new Set();
+          if (hasData) {
+              calendarData.active_dates.forEach((date) => {
+                  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
+                  if (!match || Number(match[1]) !== year || Number(match[2]) !== month + 1) return;
+                  const day = Number(match[3]);
+                  if (day < 1 || day > dayCount) return;
+                  if (isCurrentMonth && day > SAMPLE_TODAY.day) return;
+                  activeDays.add(day);
+              });
+          }
           const fragment = document.createDocumentFragment();
           for (let day = 1; day <= dayCount; day += 1) {
               const isToday = isCurrentMonth && day === SAMPLE_TODAY.day;
@@ -247,10 +258,10 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
           if (!hasData) {
               summary.textContent = COPY.noSampleSummary;
-          } else if (calendarData.active_dates.length === 0) {
+          } else if (activeDays.size === 0) {
               summary.textContent = COPY.emptyMonth;
           } else {
-              summary.innerHTML = COPY.daysWithPractice(calendarData.active_dates.length);
+              summary.innerHTML = COPY.daysWithPractice(activeDays.size);
           }
       }
 

@@ -19,8 +19,9 @@ export default function init() {
       const formErrorText = formError.querySelector("[data-form-error-text]");
       const submitButton = document.getElementById("login-submit");
       const fields = [
-          { input: document.getElementById("login-email"), error: document.getElementById("email-error") },
-          { input: document.getElementById("login-password"), error: document.getElementById("password-error") },
+          { input: document.getElementById("login-email"), error: document.getElementById("email-error"), trim: true },
+          // The password is never trimmed: leading/trailing spaces are part of it.
+          { input: document.getElementById("login-password"), error: document.getElementById("password-error"), trim: false },
       ];
 
       // Required-field validation (client-side only). aria-describedby is set only while
@@ -49,12 +50,16 @@ export default function init() {
           submitButton.querySelector("[data-submit-spinner]").hidden = !isSubmitting;
       }
 
+      function isFieldEmpty(field) {
+          return (field.trim ? field.input.value.trim() : field.input.value) === "";
+      }
+
       // The API only requires non-empty email and password; format and credentials are
       // checked by Flask.
       function validate() {
           let firstInvalid = null;
           fields.forEach((field) => {
-              const isEmpty = !field.input.value.trim();
+              const isEmpty = isFieldEmpty(field);
               if (isEmpty) field.touched = true;
               setFieldError(field, isEmpty);
               if (isEmpty && !firstInvalid) firstInvalid = field.input;
@@ -84,7 +89,7 @@ export default function init() {
       fields.forEach((field) => {
           field.input.addEventListener("input", () => {
               if (!field.touched) return;
-              setFieldError(field, !field.input.value.trim());
+              setFieldError(field, isFieldEmpty(field));
           });
       });
 

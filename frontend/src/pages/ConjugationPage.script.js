@@ -100,7 +100,8 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       // Keep displayed text, aria-valuenow, and --progress equal.
       function setProgress(track, percentElement, learned, total) {
-          const percent = total > 0 ? Math.round((learned / total) * 100) : 0;
+          // Floor with integer math and clamp to 0-100: "100%" appears only when every unit is learned.
+          const percent = total > 0 ? Math.min(100, Math.max(0, Math.floor((learned * 100) / total))) : 0;
           percentElement.textContent = `${percent}%`;
           track.setAttribute("aria-valuenow", String(percent));
           track.style.setProperty("--progress", `${percent}%`);
