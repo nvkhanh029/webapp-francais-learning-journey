@@ -1,0 +1,110 @@
+{
+  "learning_unit_slug": "se-presenter",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "“Je m'appelle Linh.” có nghĩa là gì?",
+      "prompt_en": "What does “Je m'appelle Linh.” mean?",
+      "explanation_vi": "“Je m'appelle …” dùng để nói tên của mình.",
+      "explanation_en": "“Je m'appelle …” is used to say your name.",
+      "options": [
+        {
+          "text": "Tôi tên là Linh. / My name is Linh.",
+          "is_correct": true
+        },
+        {
+          "text": "Tôi hai mươi tuổi. / I am twenty years old.",
+          "is_correct": false
+        },
+        {
+          "text": "Tôi sống ở Linh. / I live in Linh.",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "mcq",
+      "prompt_vi": "“Comment tu t'appelles ?” có nghĩa là gì?",
+      "prompt_en": "What does “Comment tu t'appelles ?” mean?",
+      "explanation_vi": "“Comment tu t'appelles ?” hỏi tên người đối diện (thân mật).",
+      "explanation_en": "“Comment tu t'appelles ?” asks someone's name (informal).",
+      "options": [
+        {
+          "text": "Bạn sống ở đâu? / Where do you live?",
+          "is_correct": false
+        },
+        {
+          "text": "Bạn tên là gì? / What is your name?",
+          "is_correct": true
+        },
+        {
+          "text": "Bạn bao nhiêu tuổi? / How old are you?",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn câu đúng để nói tuổi.",
+      "prompt_en": "Choose the correct sentence to say your age.",
+      "explanation_vi": "Tiếng Pháp dùng avoir để nói tuổi: J'ai vingt ans.",
+      "explanation_en": "French uses avoir to say your age: J'ai vingt ans.",
+      "options": [
+        {
+          "text": "Je suis vingt ans",
+          "is_correct": false
+        },
+        {
+          "text": "Je m'appelle vingt ans",
+          "is_correct": false
+        },
+        {
+          "text": "J'ai vingt ans",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "sort_order": 40,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: J'___ à Paris. (tôi sống ở)",
+      "prompt_en": "Fill in the blank: J'___ à Paris. (I live in)",
+      "explanation_vi": "Với je, động từ habiter chia thành j'habite.",
+      "explanation_en": "With je, the verb habiter becomes j'habite.",
+      "accepted_answers": [
+        "habite"
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Mon ___ de famille est Nguyen. (họ)",
+      "prompt_en": "Fill in the blank: Mon ___ de famille est Nguyen. (surname)",
+      "explanation_vi": "“Họ” là “le nom de famille”.",
+      "explanation_en": "“Surname” is “le nom de famille”.",
+      "accepted_answers": [
+        "nom"
+      ]
+    },
+    {
+      "sort_order": 60,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Hai mệnh đề nối với nhau bằng et.",
+      "explanation_en": "Two clauses joined by et.",
+      "pieces": [
+        "Je",
+        "m'appelle",
+        "Linh",
+        "et",
+        "j'habite",
+        "à",
+        "Hanoï"
+      ]
+    }
+  ]
+}

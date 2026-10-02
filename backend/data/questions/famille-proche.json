@@ -1,0 +1,109 @@
+{
+  "learning_unit_slug": "famille-proche",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn từ tiếng Pháp đúng cho “bố, cha”.",
+      "prompt_en": "Choose the correct French word for “father”.",
+      "explanation_vi": "“Bố, cha” là “le père”.",
+      "explanation_en": "“Father” is “le père”.",
+      "options": [
+        {
+          "text": "le père",
+          "is_correct": true
+        },
+        {
+          "text": "la mère",
+          "is_correct": false
+        },
+        {
+          "text": "le frère",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn từ tiếng Pháp đúng cho “chị gái hoặc em gái”.",
+      "prompt_en": "Choose the correct French word for “sister”.",
+      "explanation_vi": "“Chị gái, em gái” là “la sœur”.",
+      "explanation_en": "“Sister” is “la sœur”.",
+      "options": [
+        {
+          "text": "la fille",
+          "is_correct": false
+        },
+        {
+          "text": "la sœur",
+          "is_correct": true
+        },
+        {
+          "text": "la mère",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "mcq",
+      "prompt_vi": "“les parents” có nghĩa là gì?",
+      "prompt_en": "What does “les parents” mean?",
+      "explanation_vi": "Trong tiếng Pháp, “les parents” chỉ bố mẹ, không phải họ hàng.",
+      "explanation_en": "In French, “les parents” means a person's mother and father, not relatives in general.",
+      "options": [
+        {
+          "text": "họ hàng / relatives",
+          "is_correct": false
+        },
+        {
+          "text": "anh chị em / brothers and sisters",
+          "is_correct": false
+        },
+        {
+          "text": "bố mẹ / parents",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "sort_order": 40,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Ma ___ cuisine très bien. (mẹ)",
+      "prompt_en": "Fill in the blank: Ma ___ cuisine très bien. (mother)",
+      "explanation_vi": "“Mẹ” là “la mère”.",
+      "explanation_en": "“Mother” is “la mère”.",
+      "accepted_answers": [
+        "mère"
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Leur ___ étudie à Lyon. (con trai)",
+      "prompt_en": "Fill in the blank: Leur ___ étudie à Lyon. (son)",
+      "explanation_vi": "“Con trai” là “le fils”.",
+      "explanation_en": "“Son” is “le fils”.",
+      "accepted_answers": [
+        "fils"
+      ]
+    },
+    {
+      "sort_order": 60,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Dùng avoir để nói về các thành viên trong gia đình.",
+      "explanation_en": "Use avoir to talk about family members.",
+      "pieces": [
+        "J'ai",
+        "un",
+        "frère",
+        "et",
+        "une",
+        "sœur"
+      ]
+    }
+  ]
+}

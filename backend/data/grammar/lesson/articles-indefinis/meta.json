@@ -1,0 +1,21 @@
+{
+  "slug": "articles-indefinis",
+  "title_fr": "Les articles indéfinis",
+  "title_vi": "Mạo từ bất định",
+  "title_en": "Indefinite articles",
+  "sort_order": 20,
+  "part": {
+    "key": "le-groupe-du-nom-et-les-pronoms",
+    "title_fr": "Le groupe du nom et les pronoms",
+    "title_vi": "Cụm danh từ và đại từ",
+    "title_en": "Noun Groups and Pronouns",
+    "sort_order": 10
+  },
+  "chapter": {
+    "key": "les-determinants",
+    "title_fr": "Les déterminants",
+    "title_vi": "Từ hạn định",
+    "title_en": "Determiners",
+    "sort_order": 20
+  }
+}

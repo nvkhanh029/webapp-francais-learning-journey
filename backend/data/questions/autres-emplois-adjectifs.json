@@ -1,0 +1,107 @@
+{
+  "learning_unit_slug": "autres-emplois-adjectifs",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "Câu nào có tính từ đóng vai trò attribut (đứng sau động từ être)?",
+      "prompt_en": "Which sentence has an adjective used as an attribut (after the verb être)?",
+      "explanation_vi": "Trong La maison est petite, tính từ petite đứng sau être nên là attribut. Hai cụm kia là épithète.",
+      "explanation_en": "In La maison est petite, the adjective petite comes after être, so it is an attribut. The other two are épithète.",
+      "options": [
+        {
+          "text": "La maison est petite.",
+          "is_correct": true
+        },
+        {
+          "text": "Une petite maison",
+          "is_correct": false
+        },
+        {
+          "text": "Un grand arbre",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn từ đúng: Ce pull coûte ___.",
+      "prompt_en": "Choose the correct word: Ce pull coûte ___.",
+      "explanation_vi": "Sau coûter, cher dùng như trạng từ nên không biến đổi.",
+      "explanation_en": "After coûter, cher is used as an adverb, so it does not change.",
+      "options": [
+        {
+          "text": "chers",
+          "is_correct": false
+        },
+        {
+          "text": "cher",
+          "is_correct": true
+        },
+        {
+          "text": "chère",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn từ đúng: Il y a quelque chose ___ intéressant.",
+      "prompt_en": "Choose the correct word: Il y a quelque chose ___ intéressant.",
+      "explanation_vi": "Sau quelque chose, tính từ đi với de; trước nguyên âm viết d': d'intéressant.",
+      "explanation_en": "After quelque chose, the adjective is introduced by de; before a vowel it is written d': d'intéressant.",
+      "options": [
+        {
+          "text": "de",
+          "is_correct": false
+        },
+        {
+          "text": "du",
+          "is_correct": false
+        },
+        {
+          "text": "d'",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "sort_order": 40,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Les ___ aiment la musique. (jeune, dùng như danh từ)",
+      "prompt_en": "Fill in the blank: Les ___ aiment la musique. (jeune, used as a noun)",
+      "explanation_vi": "Jeune dùng như danh từ, số nhiều thêm -s: les jeunes.",
+      "explanation_en": "Jeune used as a noun takes -s in the plural: les jeunes.",
+      "accepted_answers": [
+        "jeunes"
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Cette fleur sent ___. (thơm)",
+      "prompt_en": "Fill in the blank: Cette fleur sent ___. (nice)",
+      "explanation_vi": "Sentir bon: tính từ bon dùng như trạng từ, không biến đổi.",
+      "explanation_en": "Sentir bon: the adjective bon is used as an adverb and does not change.",
+      "accepted_answers": [
+        "bon"
+      ]
+    },
+    {
+      "sort_order": 60,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Fort dùng như trạng từ nên đứng sau động từ: Il parle trop fort.",
+      "explanation_en": "Fort is used as an adverb, so it comes after the verb: Il parle trop fort.",
+      "pieces": [
+        "Il",
+        "parle",
+        "trop",
+        "fort"
+      ]
+    }
+  ]
+}
