@@ -111,9 +111,13 @@ def get_dashboard(user):
     support_language = user["support_language"]
 
     activity_dates = practice_repository.get_activity_dates(user_id)
+    # One reading of the clock feeds both `today` and the streak, so
+    # `today.date` and `streak.active_today` can never disagree (API 8.1).
+    today = clock.today()
 
     return {
-        "streak": calculate_streak(activity_dates),
+        "today": {"date": today.isoformat(), "timezone": clock.TIMEZONE_NAME},
+        "streak": calculate_streak(activity_dates, today=today),
         "progress": _build_progress(user_id),
         "continue_learning": _build_continue_learning(user_id, support_language),
         "review_later_count": learning_state_repository.count_review_later(user_id),

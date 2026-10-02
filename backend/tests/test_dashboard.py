@@ -8,7 +8,7 @@ date (Backend Structure Section 15.8). One end-to-end HTTP test additionally
 checks the real `today`/`yesterday` wiring through the full aggregate read.
 """
 import sqlite3
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 
 import pytest
 
@@ -16,6 +16,8 @@ from app import clock
 from app.services.dashboard_service import calculate_streak
 
 pytestmark = pytest.mark.flask
+
+VN = timezone(timedelta(hours=7))
 
 
 # ---------------------------------------------------------------------------
@@ -129,11 +131,13 @@ def learner(client, database_path):
     return 1
 
 
-def test_new_learner_dashboard_state(client, database_path, learner):
+def test_new_learner_dashboard_state(client, database_path, learner, monkeypatch):
+    monkeypatch.setattr(clock, "now", lambda: datetime(2026, 9, 20, 10, 0, tzinfo=VN))
     _insert_learning_unit(database_path, unit_id=1, unit_type="grammar", slug="articles-definis")
     response = client.get("/api/v1/me/dashboard")
     assert response.status_code == 200
     assert response.json["data"] == {
+        "today": {"date": "2026-09-20", "timezone": "Asia/Ho_Chi_Minh"},
         "streak": {"current": 0, "longest": 0, "active_today": False},
         "progress": {
             "grammar": {"learned": 0, "total": 1},
@@ -278,3 +282,50 @@ def test_dashboard_streak_wiring_uses_real_today_and_yesterday(client, database_
     response = client.get("/api/v1/me/dashboard")
 
     assert response.json["data"]["streak"] == {"current": 2, "longest": 2, "active_today": True}
+
+
+# ---------------------------------------------------------------------------
+# today {date, timezone} and active_today share one clock (API 8.1, 4.10)
+# ---------------------------------------------------------------------------
+
+def test_dashboard_today_is_the_server_date_in_ho_chi_minh(client, learner, monkeypatch):
+    # 2026-09-30 20:00 UTC is already 2026-10-01 03:00 in Asia/Ho_Chi_Minh.
+    monkeypatch.setattr(clock, "now",
+                        lambda: datetime(2026, 9, 30, 20, 0, tzinfo=timezone.utc).astimezone(VN))
+    data = client.get("/api/v1/me/dashboard").json["data"]
+    assert data["today"] == {"date": "2026-10-01", "timezone": "Asia/Ho_Chi_Minh"}
+
+
+def test_dashboard_today_ignores_the_browser_clock(client, learner, monkeypatch):
+    monkeypatch.setattr(clock, "now", lambda: datetime(2030, 1, 2, 23, 59, tzinfo=VN))
+    response = client.get("/api/v1/me/dashboard", headers={"Date": "Mon, 01 Jan 1990 00:00:00 GMT"})
+    assert response.json["data"]["today"]["date"] == "2030-01-02"
+
+
+def test_active_today_agrees_with_today_date(client, database_path, learner, monkeypatch):
+    monkeypatch.setattr(clock, "now", lambda: datetime(2026, 10, 1, 0, 5, tzinfo=VN))
+    _insert_session(database_path, session_id=1, completed_at="2026-10-01T00:01:00+07:00",
+                    activity_date="2026-10-01")
+    _insert_session(database_path, session_id=2, completed_at="2026-09-30T23:50:00+07:00",
+                    activity_date="2026-09-30")
+    data = client.get("/api/v1/me/dashboard").json["data"]
+    assert data["today"]["date"] == "2026-10-01"
+    assert data["streak"] == {"current": 2, "longest": 2, "active_today": True}
+
+
+def test_not_active_today_when_the_last_session_was_yesterday(client, database_path, learner, monkeypatch):
+    monkeypatch.setattr(clock, "now", lambda: datetime(2026, 10, 1, 0, 5, tzinfo=VN))
+    _insert_session(database_path, session_id=1, completed_at="2026-09-30T23:50:00+07:00",
+                    activity_date="2026-09-30")
+    data = client.get("/api/v1/me/dashboard").json["data"]
+    assert data["streak"] == {"current": 1, "longest": 1, "active_today": False}
+
+
+def test_dashboard_reads_the_clock_once_per_request(client, learner, monkeypatch):
+    calls = []
+    def tick():
+        calls.append(1)
+        return datetime(2026, 10, 1, 12, 0, tzinfo=VN)
+    monkeypatch.setattr(clock, "now", tick)
+    client.get("/api/v1/me/dashboard")
+    assert len(calls) == 1
