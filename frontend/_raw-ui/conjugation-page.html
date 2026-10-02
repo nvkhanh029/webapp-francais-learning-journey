@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="web_standard" name="shell-type">
+    <title>Français Learning Journey | Chia động từ</title>
+
+    <!-- Fonts and the logo still require an internet connection. -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" crossorigin="" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300..800;1,6..12,300..800&amp;display=swap"
+        rel="stylesheet">
+
+    <!--
+      Static Conjugation browse prototype (ConjugationPage, route /conjugation). Visual system,
+      app shell, and shared patterns are the same implementation as the approved Dashboard and
+      the normalized GrammarPage (grammar-page.html), following frontend-design.md (FD) §4.5,
+      §7.6, §7.10, §8.6, §9 and stitch-ui-guidelines.md. Plain CSS, no build step, no Tailwind.
+
+      Data:
+      - The page is rendered from SAMPLE_CONJUGATION in the script below, which has the shape of
+        GET /api/v1/conjugation: tenses[] > lessons[], each lesson
+        { slug, title_fr, title, learned, review_later }. Nothing else is shown.
+      - Hierarchy is Tense > Rule / Pattern Lesson. A Tense is only a grouping section: it has no
+        route, no progress, no state. Only lessons are learning units and link anywhere
+        (data-route="/conjugation/lessons/:slug"). Individual verbs are never lessons.
+      - Progress is the one aggregate the page shows, derived from the lesson booleans exactly
+        as GrammarPage does (learned / total lessons). There is no per-Tense progress; a Tense
+        only shows how many lessons it contains.
+      - French is the target language, so title_fr is the primary title of every Tense and
+        Lesson (lang="fr") and the localized title is the support line below it. When the API
+        falls back to title_fr for a missing translation, the support line is omitted.
+      - Color by role (same as GrammarPage):
+          cream / white          structural surfaces
+          dark brown             text and strong controls
+          orange (Conjugation)   feature accent only: page icon tile, Tense icon tiles, progress
+                                 fill, hover tint on lessons without a state
+          blue                   structure and information: count badges, Tense toggle
+          sage                   learned          rose   Review Later
+        Every state also has an icon and a text label; color is never the only signal.
+      - Lesson state priority: Review Later > Learned. A lesson that is both keeps both badges;
+        the rose surface, accent strip and status icon belong to Review Later, and the Review
+        Later badge comes first.
+      - Opening/closing a Tense is frontend-only UI state (no request, no persistence).
+      - Returning from a lesson: a URL hash such as #lesson-present-regular-er opens the parent
+        Tense if collapsed, scrolls the lesson into view and highlights it briefly (same
+        behavior as GrammarPage).
+
+      Preview states (prototype only), via the URL query string:
+        ?preview=loading       Conjugation request loading
+        ?preview=error         Conjugation request failed
+        ?preview=empty         tenses is an empty array
+        ?preview=not-started   no lesson learned or saved yet
+
+      Page sections:
+      1. Header (same component as the Dashboard, Conjugation active)
+      2. Page header: title, description, overall progress
+      3. Page states: loading, error, empty
+      4. Toolbar: content summary, expand/collapse all Tenses
+      5. Tense sections > Lessons (rendered from templates)
+      6. Footer
+    -->
+    <style>
+        /* ======================================================================
+         1. Theme and base styles (identical to dashboard.html; FD §7.3, §7.4)
+         ====================================================================== */
+        :root {
+            --font-body: "Nunito Sans", sans-serif;
+            --font-heading: "Be Vietnam Pro", sans-serif;
+
+            --text-caption: 0.75rem;
+            --text-label: 0.8125rem;
+            --text-small: 0.875rem;
+            --text-body: 0.9375rem;
+            --text-practice: 1rem;
+            --text-card-title: 1.0625rem;
+            --text-brand: 1.125rem;
+            --text-section: 1.125rem;
+            --text-feature: 1.25rem;
+            --text-display: 1.75rem;
+            --leading-body: 1.6;
+            --leading-heading: 1.4;
+            --leading-label: 1.5;
+            --tracking-heading: -0.015em;
+            --tracking-label: 0.01em;
+
+            --color-background: #faf7f2;
+            --color-card: #ffffff;
+            --color-border: #eadbcc;
+            --color-heading: #2b2118;
+            --color-text: #231918;
+            --color-muted: #554336;
+            --color-description: #4e453e;
+
+            --color-primary: #8d4b00;
+            --color-primary-dark: #6b3700;
+            --color-primary-soft: #fff5e6;
+            --color-primary-border: #f0dec0;
+
+            --color-blue: #0058be;
+            --color-blue-strong: #085ac0;
+            --color-blue-dark: #004395;
+            --color-blue-soft: #f0f5ff;
+            --color-blue-border: #c5d7ff;
+
+            --color-orange: #b84824;
+            --color-orange-strong: #c2410c;
+            --color-orange-dark: #9a3412;
+            --color-orange-soft: #fff0ed;
+            --color-orange-border: #fdcac1;
+
+            --color-gold: #9a6b12;
+            --color-gold-dark: #80570d;
+
+            /* Learner-state roles, same values as GrammarPage. Soft tints only, always paired
+               with an icon and a text label. */
+            --color-sage: #3d7a52;
+            --color-sage-dark: #2e5f3f;
+            --color-sage-soft: #eef6ef;
+            --color-sage-border: #c9e1cf;
+            --color-rose: #a3445c;
+            --color-rose-dark: #8a3349;
+            --color-rose-soft: #fdf1f3;
+            --color-rose-border: #f9cad0;
+
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2.25rem;
+            --page-padding: var(--space-md);
+            --radius-card: 1.5rem;
+            --radius-small: 1rem;
+
+            --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+            --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background: var(--color-background);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: var(--text-body);
+            line-height: var(--leading-body);
+            overscroll-behavior: none;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            margin: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .brand-name {
+            font-family: var(--font-heading);
+        }
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+
+        ::selection {
+            background: #ffdcc3;
+            color: #2f1500;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .material-symbols-outlined {
+            display: inline-block;
+            flex-shrink: 0;
+            width: 1em;
+            height: 1em;
+            overflow: hidden;
+            font-family: "Material Symbols Outlined";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "liga";
+        }
+
+        .icon-filled {
+            font-variation-settings: "FILL" 1;
+        }
+
+        /* ======================================================================
+         2. Shared layout and components (same values as dashboard.html; FD §7.6)
+         ====================================================================== */
+        .page-container {
+            width: 100%;
+            max-width: 1280px;
+            margin-inline: auto;
+            padding-inline: var(--page-padding);
+        }
+
+        .card {
+            min-width: 0;
+            padding: var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-card);
+            background: var(--color-card);
+        }
+
+        .icon-tile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--accent-border, var(--color-primary-border));
+            border-radius: 12px;
+            background: var(--accent-soft, var(--color-primary-soft));
+            color: var(--accent, var(--color-primary));
+        }
+
+        /* Compact tile for a title + subtitle header (FD §7.6). */
+        .icon-tile-compact {
+            width: 36px;
+            height: 36px;
+        }
+
+        .icon-tile-compact .material-symbols-outlined {
+            font-size: 20px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 2px 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+            color: var(--color-primary-dark);
+            font-size: var(--text-caption);
+            font-weight: 700;
+            line-height: var(--leading-label);
+        }
+
+        .badge .material-symbols-outlined {
+            font-size: 16px;
+        }
+
+        /* Badge color roles: info = counts (blue), learned = sage, review = Review Later (rose). */
+        .badge-info {
+            border-color: var(--color-blue-border);
+            background: var(--color-blue-soft);
+            color: var(--color-blue-dark);
+        }
+
+        .badge-learned {
+            border-color: var(--color-sage-border);
+            background: var(--color-sage-soft);
+            color: var(--color-sage-dark);
+        }
+
+        .badge-review {
+            border-color: var(--color-rose-border);
+            background: var(--color-rose-soft);
+            color: var(--color-rose-dark);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            border: 0;
+            border-radius: var(--radius-small);
+            font-weight: 700;
+            text-align: center;
+            transition: background-color 150ms, color 150ms, box-shadow 150ms, transform 150ms;
+        }
+
+        .button .material-symbols-outlined {
+            transition: transform 150ms;
+        }
+
+        .button-secondary {
+            width: 100%;
+            padding: 12px var(--space-md);
+            border: 1px solid var(--color-border);
+            background: var(--color-background);
+            color: var(--color-heading);
+            font-size: var(--text-body);
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .button-compact {
+            width: auto;
+            padding: var(--space-sm) var(--space-lg);
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xs);
+            color: var(--color-description);
+            font-size: var(--text-caption);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .progress-value {
+            flex-shrink: 0;
+            color: var(--skill-value-color, var(--color-primary-dark));
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .progress-track {
+            height: 8px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+        }
+
+        .progress-fill {
+            width: var(--progress, 0%);
+            height: 100%;
+            border-radius: inherit;
+            background: var(--progress-color, var(--color-primary));
+            transition: width 500ms;
+        }
+
+        .empty-text {
+            padding: var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-background);
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            line-height: var(--leading-body);
+            text-align: center;
+        }
+
+        /* Page-level loading, error, and empty states (FD §6.6). */
+        .page-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xl) var(--space-lg);
+            text-align: center;
+        }
+
+        .page-state>.material-symbols-outlined {
+            color: var(--color-primary);
+            font-size: 32px;
+        }
+
+        .page-state-title {
+            color: var(--color-heading);
+            font-size: var(--text-section);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .page-state p {
+            max-width: 36rem;
+            color: var(--color-muted);
+        }
+
+        .page-state .button {
+            margin-top: var(--space-sm);
+        }
+
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--color-primary-border);
+            border-top-color: var(--color-primary);
+            border-radius: 50%;
+            animation: spin 900ms linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Text-link CTA with trailing arrow (used by the empty state). */
+        .explore-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-sm) var(--space-lg);
+            margin-top: var(--space-sm);
+            font-size: var(--text-small);
+            line-height: var(--leading-label);
+        }
+
+        .lesson-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            border-radius: 2px;
+            color: var(--link-color);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .lesson-link:hover {
+            text-decoration: underline;
+        }
+
+        .lesson-link:focus-visible {
+            outline-color: var(--link-color);
+        }
+
+        .lesson-link .material-symbols-outlined {
+            font-size: 14px;
+        }
+
+        /* Subject accent families (FD §7.3). Components read only the generic variables. */
+        .subject-conjugation {
+            --accent: var(--color-orange);
+            --accent-soft: var(--color-orange-soft);
+            --accent-border: var(--color-orange-border);
+            --progress-color: var(--color-orange);
+            --skill-value-color: var(--color-orange-dark);
+            --badge-color: var(--color-orange-dark);
+            --link-color: var(--color-orange-dark);
+        }
+
+        .subject-vocabulary {
+            --link-color: var(--color-blue-strong);
+        }
+
+        .subject-grammar {
+            --link-color: var(--color-gold);
+        }
+
+        /* ======================================================================
+         3. Header (identical to dashboard.html)
+         ====================================================================== */
+        .site-header {
+            position: fixed;
+            z-index: 50;
+            top: 0;
+            width: 100%;
+            border-bottom: 1px solid var(--color-border);
+            background: rgb(255 255 255 / 92%);
+            box-shadow: 0 2px 12px -2px rgb(50 30 10 / 4%);
+            backdrop-filter: blur(24px);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-sm);
+            height: 80px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            min-width: 0;
+        }
+
+        .brand-logo {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            color: var(--color-primary);
+            font-size: var(--text-body);
+            font-weight: 700;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .main-nav {
+            display: none;
+            align-items: center;
+            flex-shrink: 0;
+            gap: var(--space-sm);
+            padding: var(--space-xs);
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+        }
+
+        .nav-link {
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 9999px;
+            color: var(--color-muted);
+            font-size: var(--text-body);
+            font-weight: 500;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            white-space: nowrap;
+            transition: color 150ms, background-color 150ms;
+        }
+
+        .nav-link:hover {
+            color: var(--color-text);
+        }
+
+        .nav-link[aria-current="page"] {
+            background: rgb(255 255 255 / 80%);
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            gap: var(--space-sm);
+        }
+
+        .language-switcher {
+            display: inline-flex;
+            padding: 2px;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+        }
+
+        .language-button {
+            padding: 2px 8px;
+            border: 0;
+            border-radius: 9999px;
+            background: transparent;
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 500;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            transition: color 150ms, background-color 150ms;
+        }
+
+        .language-button[aria-pressed="true"] {
+            background: #ffffff;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .language-button:hover {
+            color: var(--color-text);
+        }
+
+        .logout-button,
+        .menu-button {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: #ffffff;
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 500;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            white-space: nowrap;
+            transition: color 150ms, border-color 150ms;
+        }
+
+        .logout-button {
+            padding: var(--space-xs) var(--space-sm);
+        }
+
+        .logout-button:hover {
+            border-color: #f9cad0;
+            color: var(--color-orange-dark);
+        }
+
+        .logout-button .material-symbols-outlined {
+            font-size: 16px;
+        }
+
+        .logout-label {
+            display: none;
+        }
+
+        .menu-button {
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+        }
+
+        .menu-button:hover {
+            color: var(--color-text);
+        }
+
+        .mobile-nav {
+            border-top: 1px solid var(--color-border);
+            background: rgb(255 255 255 / 96%);
+        }
+
+        .mobile-nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            padding-block: var(--space-sm) var(--space-md);
+        }
+
+        .mobile-nav-link {
+            padding: 10px var(--space-md);
+            border-radius: var(--radius-small);
+            color: var(--color-muted);
+            font-size: var(--text-body);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            transition: color 150ms, background-color 150ms;
+        }
+
+        .mobile-nav-link:hover {
+            background: var(--color-primary-soft);
+            color: var(--color-text);
+        }
+
+        .mobile-nav-link[aria-current="page"] {
+            background: var(--color-primary-soft);
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        /* ======================================================================
+         4. Conjugation page: page header and overall progress
+         Conjugation identity comes only from the existing orange subject family
+         (--accent, --accent-soft, --accent-border): icon tiles, the progress fill and a
+         hover tint. Text on light surfaces stays dark brown or orange-dark for contrast.
+         ====================================================================== */
+        .conjugation-page {
+            flex: 1;
+            padding-top: 112px;
+            padding-bottom: var(--space-xl);
+        }
+
+        .page-section {
+            margin-bottom: var(--space-lg);
+        }
+
+        .page-hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-md) var(--space-lg);
+            align-items: center;
+            margin-top: 12px;
+        }
+
+        .hero-intro {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            min-width: 0;
+        }
+
+        .icon-tile-solid {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .page-title {
+            color: var(--color-heading);
+            font-size: var(--text-display);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .page-description {
+            max-width: 28rem;
+            margin-top: var(--space-xs);
+            color: var(--color-muted);
+            font-size: var(--text-body);
+            line-height: var(--leading-body);
+            overflow-wrap: anywhere;
+        }
+
+        .overview-panel {
+            padding: 12px var(--space-md);
+            border: 1px solid var(--color-primary-border);
+            border-radius: var(--radius-small);
+            background: var(--color-background);
+        }
+
+        .overview-panel .progress-track {
+            background: var(--color-card);
+        }
+
+        .overview-panel .progress-labels {
+            margin-bottom: var(--space-sm);
+        }
+
+        /* State totals double as the page's color legend (sage = learned, rose = Review Later). */
+        .overview-states {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm) var(--space-md);
+            margin: var(--space-lg) 0 0;
+            padding: 0;
+            list-style: none;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .is-complete {
+            --progress-color: var(--color-sage);
+            --skill-value-color: var(--color-sage-dark);
+        }
+
+        /* ======================================================================
+         5. Toolbar
+         ====================================================================== */
+        .toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-sm) var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .toolbar-summary {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .toggle-all {
+            font-size: var(--text-small);
+        }
+
+        /* ======================================================================
+         6. Tenses > Lessons
+         Tense: one white card. Its header is a single disclosure button (icon tile, French
+         title with localized support line, lesson count, toggle). It is a grouping section,
+         so it shows no progress and no state.
+         Lesson: compact row with a state accent strip; the whole row is the link and the
+         arrow on the far right is the open affordance. Rows sit in a 1 -> 2 column grid.
+         ====================================================================== */
+        .tense-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+
+        .card.tense {
+            overflow: hidden;
+            padding: 0;
+
+        }
+
+        .tense-heading {
+            font-size: inherit;
+        }
+
+        .tense-summary {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            width: 100%;
+            padding: var(--space-md);
+
+            border: 0;
+            background: var(--color-orange-soft);
+            color: inherit;
+            font-family: inherit;
+            text-align: left;
+            transition: background-color 150ms;
+        }
+
+        .tense-summary .icon-tile {
+            background: var(--color-card);
+            border-color: var(--color-orange-border);
+            color: var(--color-orange-dark);
+        }
+
+        .tense-summary::after {
+            content: "";
+            position: absolute;
+            left: -1px;
+            right: -1px;
+            bottom: 0;
+
+            height: 4px;
+            border-radius: 999px;
+
+            background: var(--color-orange);
+        }
+
+        .tense-summary:focus-visible {
+            outline-offset: -2px;
+        }
+
+        .tense-summary[aria-expanded="true"] {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .tense-titles {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .tense-title {
+            display: block;
+            color: var(--color-heading);
+            font-family: var(--font-heading);
+            font-size: var(--text-feature);
+            font-weight: 700;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+            overflow-wrap: anywhere;
+        }
+
+        /* Localized (VI/EN) title under a French title: subordinate but fully readable. */
+        .title-support {
+            display: block;
+            margin-top: 2px;
+            color: var(--color-muted);
+            font-family: var(--font-body);
+            font-size: var(--text-small);
+            font-weight: 400;
+            line-height: var(--leading-label);
+            letter-spacing: normal;
+            overflow-wrap: anywhere;
+        }
+
+        .tense-titles .title-support {
+            font-size: var(--text-body);
+        }
+
+        .tense-count {
+            flex-shrink: 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .tense-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--color-blue-border);
+            border-radius: 50%;
+            background: var(--color-blue-soft);
+            color: var(--color-blue-dark);
+            transition: background-color 150ms, color 150ms, border-color 150ms;
+        }
+
+        .tense-toggle .material-symbols-outlined {
+            transition: transform 150ms;
+        }
+
+        .tense-summary[aria-expanded="true"] .tense-toggle .material-symbols-outlined {
+            transform: rotate(180deg);
+        }
+
+        .lesson-list {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-sm);
+            margin: 0;
+            padding: var(--space-md);
+            list-style: none;
+        }
+
+        .tense-body .empty-text {
+            margin: var(--space-md);
+        }
+
+        /* Lesson states are set with variables so the priority rule lives in one place:
+           default -> learned (sage) -> saved for Review Later (rose). .is-saved is declared
+           last, so a lesson that is both learned and saved takes the Review Later look. */
+        .lesson-item {
+            --lesson-bg: var(--color-background);
+            --lesson-border: var(--color-border);
+            --lesson-hover-border: var(--accent-border);
+            --lesson-hover-accent: var(--accent);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            height: 100%;
+            padding: 12px 12px 12px var(--space-md);
+            border: 1px solid var(--lesson-border);
+            border-radius: var(--radius-small);
+            background: var(--lesson-bg);
+            transition: background-color 150ms, border-color 150ms, box-shadow 150ms;
+        }
+
+        .lesson-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            border-radius: 0;
+            background: var(--lesson-accent);
+            transition: background-color 150ms;
+        }
+
+        .lesson-item.is-learned {
+            --lesson-hover-border: var(--color-sage-border);
+            --lesson-hover-accent: var(--color-sage);
+        }
+
+        .lesson-item.is-saved {
+            --lesson-bg: color-mix(in srgb, var(--color-rose-soft), var(--color-background));
+            --lesson-border: var(--color-rose-border);
+            --lesson-hover-border: var(--color-rose);
+            --lesson-hover-accent: var(--color-rose);
+        }
+
+        /* Brief return-from-lesson highlight: a ring in the Conjugation accent (never used for
+           learned / Review Later) that fades in and out through the transition above. */
+        .lesson-item.is-returned {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-border), var(--shadow-sm);
+        }
+
+        .lesson-status,
+        .lesson-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--color-border);
+            border-radius: 50%;
+            background: var(--color-card);
+        }
+
+        .lesson-status {
+            color: rgb(85 67 54 / 80%);
+            background: var(--color-card);
+            border-color: var(--color-border);
+        }
+
+        .lesson-item.is-learned .lesson-status {
+            border-color: var(--color-sage-border);
+            background: var(--color-card);
+            color: var(--color-sage);
+        }
+
+        .lesson-item.is-saved .lesson-status {
+            border-color: var(--color-rose-border);
+            background: var(--color-card);
+            color: var(--color-rose);
+        }
+
+        .lesson-item:is(.is-learned, .is-saved) .lesson-status .material-symbols-outlined {
+            font-variation-settings: "FILL" 1;
+        }
+
+        .lesson-body {
+            flex: 1;
+            min-width: 0;
+            padding-top: 4px;
+        }
+
+        .lesson-title {
+            display: block;
+            color: var(--color-heading);
+            font-size: var(--text-practice);
+            font-weight: 700;
+            line-height: var(--leading-label);
+            overflow-wrap: anywhere;
+        }
+
+        .lesson-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-top: var(--space-sm);
+        }
+
+        /* Open affordance, always on the far right. Dark brown = strong control. */
+        .lesson-arrow {
+            align-self: center;
+            color: var(--color-heading);
+            transition: background-color 150ms, color 150ms, border-color 150ms;
+        }
+
+        .lesson-arrow .material-symbols-outlined {
+            transition: transform 150ms;
+        }
+
+        /* Keyboard focus mirrors hover; hover-only effects are limited to hover-capable
+           pointers so touch screens get no sticky hover. */
+        .lesson-item:focus-visible {
+            border-color: var(--lesson-hover-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .lesson-item:focus-visible::before {
+            background: var(--lesson-hover-accent);
+        }
+
+        .lesson-item:focus-visible .lesson-arrow {
+            border-color: var(--color-heading);
+            background: var(--color-heading);
+            color: #ffffff;
+        }
+
+        @media (hover: hover) {
+
+            .tense-summary:hover .tense-toggle {
+                border-color: var(--color-blue);
+                background: var(--color-blue);
+                color: #ffffff;
+            }
+
+            .lesson-item:hover {
+                border-color: var(--lesson-hover-border);
+                box-shadow: var(--shadow-sm);
+            }
+
+            .lesson-item:hover::before {
+                background: var(--lesson-hover-accent);
+            }
+
+            .lesson-item:hover .lesson-arrow {
+                border-color: var(--color-heading);
+                background: var(--color-heading);
+                color: #ffffff;
+            }
+
+            .lesson-item:hover .lesson-arrow .material-symbols-outlined {
+                transform: translateX(2px);
+            }
+
+            .button-secondary:hover {
+                background: var(--color-heading);
+                color: #ffffff;
+            }
+
+            .button:hover .material-symbols-outlined {
+                transform: translateX(4px);
+            }
+
+            /* Expand/collapse icons do not point forward, so they do not use the arrow motion. */
+            .toggle-all:hover .material-symbols-outlined {
+                transform: none;
+            }
+        }
+
+        /* ======================================================================
+         7. Footer and responsive layout (FD §8)
+         ====================================================================== */
+        .site-footer {
+            width: 100%;
+            margin-top: var(--space-xl);
+            border-top: 1px solid var(--color-border);
+            background: var(--color-background);
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding-block: var(--space-lg);
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .footer-content .material-symbols-outlined {
+            color: var(--color-primary);
+        }
+
+        @media (min-width: 640px) {
+            :root {
+                --page-padding: var(--space-lg);
+                --text-section: 1.25rem;
+                --text-feature: 1.375rem;
+                --text-display: 2rem;
+            }
+
+            .card {
+                padding: var(--space-lg);
+            }
+
+            .tense-summary {
+                padding: var(--space-md) var(--space-lg);
+            }
+
+            .lesson-list {
+                padding-block: var(--space-lg);
+                padding-inline: calc(var(--space-lg) + 18px);
+            }
+
+            .tense-body .empty-text {
+                margin: var(--space-lg);
+            }
+
+            .header-content {
+                gap: var(--space-lg);
+            }
+
+            .brand {
+                gap: var(--space-md);
+            }
+
+            .brand-logo {
+                width: 36px;
+                height: 36px;
+            }
+
+            .brand-name {
+                font-size: var(--text-brand);
+                white-space: nowrap;
+            }
+
+            .header-actions {
+                gap: var(--space-md);
+            }
+
+            .logout-label {
+                display: inline;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .main-nav {
+                display: flex;
+            }
+
+            .menu-button,
+            .mobile-nav {
+                display: none !important;
+            }
+
+            .lesson-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            :root {
+                --page-padding: 2.5rem;
+            }
+
+            .page-hero {
+                grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+                padding: var(--space-xl);
+            }
+        }
+
+        /* Compact header for tablets and smaller laptops (same as Dashboard, FD §8.5). */
+        @media (min-width: 768px) and (max-width: 1199px) {
+
+            .header-content,
+            .header-actions {
+                gap: var(--space-sm);
+            }
+
+            .brand-name {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0 0 0 0);
+                white-space: nowrap;
+            }
+
+            .logout-label {
+                display: none;
+            }
+
+            .main-nav {
+                gap: var(--space-xs);
+            }
+
+            .nav-link {
+                padding-inline: var(--space-sm);
+            }
+        }
+
+        /* Narrow phones: the count badge drops under the title so long titles keep their width. */
+        @media (max-width: 479px) {
+            .tense-summary {
+                flex-wrap: wrap;
+            }
+
+            .tense-titles {
+                flex-basis: calc(100% - 36px - 32px - 2 * var(--space-md));
+            }
+
+            .tense-count {
+                margin-left: calc(36px + var(--space-md));
+                order: 3;
+            }
+
+            .tense-toggle {
+                order: 2;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. Header (same component as the Dashboard, Conjugation active) -->
+    <header class="site-header">
+        <div class="page-container header-content">
+            <div class="brand">
+                <img class="brand-logo"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgWt9pRunIXVtG0B6JvfhoCJ5io4tHLn_61ZNuF0BAfzmsMVAEg_8wG3kpnezQaaBbtylHFmC-2l2XDeNOus5u1d3-F9R67TK_wYgdsQW5Kgxz4QxhEJOBmSjPwFjEVkePSXmBpSSQNmvGIZORFN8x1fZIoe_5jKewqlocXfrymAv1c9OzwZBO7Uh5E2dRbnhrQH6Nb9-3uQcOw1gpTd5zbpPKhjGLPTS1qKrcOr_HPxbkG6k7PPkjwWoKIxsMk9jh-w"
+                    alt="">
+                <span class="brand-name">Français Learning Journey</span>
+            </div>
+            <nav class="main-nav" aria-label="Điều hướng chính">
+                <a class="nav-link" href="#" data-route="/dashboard">Bảng điều khiển</a>
+                <a class="nav-link" href="#" data-route="/vocabulary">Từ vựng</a>
+                <a class="nav-link" href="#" data-route="/grammar">Ngữ pháp</a>
+                <a class="nav-link" href="#" data-route="/conjugation" aria-current="page">Chia động từ</a>
+            </nav>
+            <div class="header-actions">
+                <div class="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
+                    <button class="language-button" type="button" aria-pressed="true" title="Tiếng Việt">VI</button>
+                    <button class="language-button" type="button" aria-pressed="false" title="English">EN</button>
+                </div>
+                <button class="logout-button" type="button" aria-label="Đăng xuất" title="Đăng xuất">
+                    <span class="material-symbols-outlined" aria-hidden="true">logout</span>
+                    <span class="logout-label">Đăng xuất</span>
+                </button>
+                <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav"
+                    aria-label="Menu điều hướng">
+                    <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+                </button>
+            </div>
+        </div>
+        <nav class="mobile-nav" id="mobile-nav" aria-label="Điều hướng chính" hidden>
+            <div class="page-container mobile-nav-list">
+                <a class="mobile-nav-link" href="#" data-route="/dashboard">Bảng điều khiển</a>
+                <a class="mobile-nav-link" href="#" data-route="/vocabulary">Từ vựng</a>
+                <a class="mobile-nav-link" href="#" data-route="/grammar">Ngữ pháp</a>
+                <a class="mobile-nav-link" href="#" data-route="/conjugation" aria-current="page">Chia động từ</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-container conjugation-page subject-conjugation" id="main-content">
+
+        <!-- Announces context restored after returning from a lesson (see restoreLessonContext()). -->
+        <p class="visually-hidden" role="status" aria-live="polite" data-live-region></p>
+
+        <!-- 2. Page header: fixed UI label (not a curriculum title). Progress and state totals are
+             derived from the lesson booleans, the same way GrammarPage derives them. -->
+        <section class="card page-hero page-section" aria-labelledby="page-title">
+            <div class="hero-intro">
+                <div class="icon-tile icon-tile-solid" aria-hidden="true">
+                    <span class="material-symbols-outlined">schedule</span>
+                </div>
+                <div>
+                    <h1 class="page-title" id="page-title">Chia động từ</h1>
+                    <p class="page-description">Học quy tắc và mẫu chia động từ theo từng thì, bắt đầu từ bất kỳ bài nào
+                        bạn muốn.</p>
+                </div>
+            </div>
+            <div class="overview-panel" data-overview hidden>
+                <div class="progress-labels">
+                    <span>Tiến độ</span>
+                    <span class="progress-value" data-slot="percent">0%</span>
+                </div>
+                <div class="progress-track" role="progressbar" aria-label="Tiến độ Chia động từ" aria-valuemin="0"
+                    aria-valuemax="100" aria-valuenow="0" data-slot="track">
+                    <div class="progress-fill"></div>
+                </div>
+                <ul class="overview-states" aria-label="Trạng thái bài học">
+                    <li class="badge badge-learned">
+                        <span class="material-symbols-outlined icon-filled" aria-hidden="true">check_circle</span>
+                        <span>Đã học: <span data-slot="count">0/0 bài</span></span>
+                    </li>
+                    <li class="badge badge-review">
+                        <span class="material-symbols-outlined icon-filled" aria-hidden="true">bookmark</span>
+                        <span>Xem lại sau: <span data-slot="review-count">0 bài</span></span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3. Page states (FD §6.6). Shown instead of the Conjugation content. -->
+        <div class="card page-state" data-page-state="loading" role="status" hidden>
+            <div class="spinner" aria-hidden="true"></div>
+            <p>Đang tải chia động từ…</p>
+        </div>
+        <div class="card page-state" data-page-state="error" role="alert" hidden>
+            <span class="material-symbols-outlined" aria-hidden="true">cloud_off</span>
+            <h2 class="page-state-title">Không thể tải chia động từ</h2>
+            <p>Đã có lỗi khi tải dữ liệu. Vui lòng thử lại.</p>
+            <button class="button button-secondary button-compact" type="button" data-action="retry">Thử lại</button>
+        </div>
+        <div class="card page-state" data-page-state="empty" hidden>
+            <span class="material-symbols-outlined" aria-hidden="true">schedule</span>
+            <h2 class="page-state-title">Chưa có bài chia động từ nào</h2>
+            <p>Các bài chia động từ sẽ xuất hiện ở đây khi được bổ sung. Trong lúc chờ, bạn có thể học từ vựng hoặc
+                ngữ pháp.</p>
+            <div class="explore-links">
+                <a class="lesson-link subject-vocabulary" href="#" data-route="/vocabulary">Từ vựng<span
+                        class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+                <a class="lesson-link subject-grammar" href="#" data-route="/grammar">Ngữ pháp<span
+                        class="material-symbols-outlined" aria-hidden="true">arrow_forward</span></a>
+            </div>
+        </div>
+
+        <div data-conjugation-content hidden>
+            <!-- 4. Toolbar -->
+            <div class="toolbar">
+                <ul class="toolbar-summary" data-summary aria-label="Nội dung"></ul>
+                <button class="button button-secondary button-compact toggle-all" type="button"
+                    data-action="toggle-all">
+                    <span class="material-symbols-outlined" aria-hidden="true" data-slot="icon">unfold_less</span>
+                    <span data-slot="label">Thu gọn tất cả</span>
+                </button>
+            </div>
+
+            <!-- 5. Tenses, rendered from the API data with the templates below. -->
+            <div class="tense-list" data-tense-list></div>
+        </div>
+    </main>
+
+    <!-- Tense: one card per tenses[] item. Title order: title_fr (primary), then title.
+         The heading holds the disclosure button; the lessons live in the controlled region. -->
+    <template id="tense-template">
+        <section class="card tense">
+            <h2 class="tense-heading">
+                <button class="tense-summary" type="button" aria-expanded="true" data-slot="button">
+                    <span class="icon-tile icon-tile-compact" aria-hidden="true">
+                        <span class="material-symbols-outlined">schedule</span>
+                    </span>
+                    <span class="tense-titles">
+                        <span class="tense-title" data-slot="title" lang="fr"></span>
+                        <span class="title-support" data-slot="support"></span>
+                    </span>
+                    <span class="badge badge-info tense-count" data-slot="count"></span>
+                    <span class="tense-toggle" aria-hidden="true">
+                        <span class="material-symbols-outlined">expand_more</span>
+                    </span>
+                </button>
+            </h2>
+            <div class="tense-body" data-slot="body">
+                <ul class="lesson-list" data-slot="lessons"></ul>
+                <p class="empty-text" data-slot="empty" hidden>Thì này chưa có bài học nào.</p>
+            </div>
+        </section>
+    </template>
+
+    <!-- Lesson: the whole row is the link to /conjugation/lessons/:slug.
+         State classes: is-learned (sage), is-saved (rose, whenever review_later is true).
+         Review Later has priority: its badge comes first and its styling wins; a lesson that is
+         both keeps both badges. -->
+    <template id="lesson-template">
+        <li>
+            <a class="lesson-item" href="#" data-slot="link">
+                <span class="lesson-status" aria-hidden="true">
+                    <span class="material-symbols-outlined" data-slot="status">radio_button_unchecked</span>
+                </span>
+                <span class="lesson-body">
+                    <span class="lesson-title" data-slot="title" lang="fr"></span>
+                    <span class="title-support" data-slot="support"></span>
+                    <span class="lesson-meta" data-slot="meta">
+                        <span class="badge badge-review" data-slot="review-later" hidden>
+                            <span class="material-symbols-outlined icon-filled" aria-hidden="true">bookmark</span>
+                            <span>Xem lại sau</span>
+                        </span>
+                        <span class="badge badge-learned" data-slot="learned" hidden>
+                            <span class="material-symbols-outlined icon-filled" aria-hidden="true">check_circle</span>
+                            <span>Đã học</span>
+                        </span>
+                    </span>
+                </span>
+                <span class="lesson-arrow" aria-hidden="true">
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </span>
+            </a>
+        </li>
+    </template>
+
+    <!-- 6. Footer -->
+    <footer class="site-footer">
+        <div class="page-container footer-content">
+            <span class="material-symbols-outlined" aria-hidden="true">auto_stories</span>
+            <span>Français Learning Journey • Hành trình chinh phục tiếng Pháp</span>
+        </div>
+    </footer>
+
+    <script>
+        // UI preview only. No fetching, authentication, or routing is added here.
+        // Production components receive this data from GET /api/v1/conjugation.
+        (() => {
+            const isEnglish = document.documentElement.lang.startsWith("en");
+            const preview = new URLSearchParams(window.location.search).get("preview");
+
+            // Fixed copy used by the script; production copy lives in the i18n dictionaries.
+            const COPY = isEnglish
+                ? {
+                    lessons: (learned, total) => `${learned}/${total} lesson${total === 1 ? "" : "s"}`,
+                    lessonCount: (n) => `${n} lesson${n === 1 ? "" : "s"}`,
+                    summary: (t, l) => [`${t} tense${t === 1 ? "" : "s"}`, `${l} lesson${l === 1 ? "" : "s"}`],
+                    collapseAll: "Collapse all",
+                    expandAll: "Expand all",
+                    menuOpen: "Close navigation menu",
+                    menuClosed: "Navigation menu",
+                    returnedTo: (title) => `Back to lesson: ${title}`,
+                }
+                : {
+                    lessons: (learned, total) => `${learned}/${total} bài`,
+                    lessonCount: (n) => `${n} bài`,
+                    summary: (t, l) => [`${t} thì`, `${l} bài`],
+                    collapseAll: "Thu gọn tất cả",
+                    expandAll: "Mở rộng tất cả",
+                    menuOpen: "Đóng menu điều hướng",
+                    menuClosed: "Menu điều hướng",
+                    returnedTo: (title) => `Đã quay lại bài: ${title}`,
+                };
+
+            // Sample response in the shape of GET /api/v1/conjugation. Titles are sample curriculum
+            // data, not the final curriculum; the layout must not depend on these titles or counts.
+            const SAMPLE_CONJUGATION = {
+                tenses: [
+                    {
+                        title_fr: "Le présent de l'indicatif",
+                        title: "Thì hiện tại",
+                        lessons: [
+                            { slug: "present-regular-er", title_fr: "Les verbes réguliers en -ER", title: "Động từ có quy tắc đuôi -ER", learned: true, review_later: false },
+                            { slug: "present-regular-ir", title_fr: "Les verbes réguliers en -IR", title: "Động từ có quy tắc đuôi -IR", learned: true, review_later: false },
+                            { slug: "present-regular-re", title_fr: "Les verbes réguliers en -RE", title: "Động từ có quy tắc đuôi -RE", learned: false, review_later: true },
+                            { slug: "present-spelling-changes", title_fr: "Les verbes en -ER avec changements orthographiques : -cer, -ger, -yer, e/é + consonne", title: "Động từ đuôi -ER có biến đổi chính tả: -cer, -ger, -yer, e/é + phụ âm", learned: true, review_later: true },
+                            { slug: "present-irregular-patterns", title_fr: "Les verbes irréguliers fréquents", title: "Các động từ bất quy tắc thông dụng", learned: false, review_later: false },
+                        ],
+                    },
+                    {
+                        title_fr: "Le passé composé",
+                        title: "Thì quá khứ kép",
+                        lessons: [
+                            { slug: "passe-compose-avoir", title_fr: "La formation avec l'auxiliaire avoir", title: "Cách thành lập với trợ động từ avoir", learned: true, review_later: false },
+                            { slug: "passe-compose-etre", title_fr: "La formation avec l'auxiliaire être", title: "Cách thành lập với trợ động từ être", learned: true, review_later: true },
+                            { slug: "passe-compose-accord", title_fr: "L'accord du participe passé", title: "Sự hợp giống và số của quá khứ phân từ", learned: false, review_later: false },
+                        ],
+                    },
+                    {
+                        title_fr: "L'imparfait",
+                        title: "Thì quá khứ chưa hoàn thành",
+                        lessons: [
+                            { slug: "imparfait-formation", title_fr: "La formation de l'imparfait", title: "Cách thành lập thì imparfait", learned: true, review_later: false },
+                            { slug: "imparfait-passe-compose", title_fr: "L'imparfait et le passé composé", title: "Phân biệt imparfait và passé composé", learned: false, review_later: true },
+                        ],
+                    },
+                    {
+                        title_fr: "Le futur simple",
+                        title: "Thì tương lai đơn",
+                        lessons: [
+                            { slug: "futur-simple-formation", title_fr: "La formation du futur simple", title: "Cách thành lập thì futur simple", learned: false, review_later: false },
+                            { slug: "futur-simple-irregular-stems", title_fr: "Les radicaux irréguliers du futur simple", title: "Gốc bất quy tắc của futur simple", learned: false, review_later: false },
+                            // No localized title yet: the backend falls back to title_fr.
+                            { slug: "futur-simple-futur-proche", title_fr: "Futur simple ou futur proche ?", title: "Futur simple ou futur proche ?", learned: false, review_later: false },
+                        ],
+                    },
+                ],
+            };
+
+            /* ---------- Rendering helpers ---------- */
+            function slot(root, name) {
+                return root.querySelector(`[data-slot="${name}"]`);
+            }
+
+            function fromTemplate(id) {
+                return document.getElementById(id).content.firstElementChild.cloneNode(true);
+            }
+
+            // French is the target language: title_fr is the primary title (lang="fr") and the
+            // localized title sits underneath as support. When the API has fallen back to
+            // title_fr for a missing translation, the support line is omitted.
+            function setTitles(primaryElement, supportElement, item) {
+                primaryElement.textContent = item.title_fr || item.title;
+                if (!item.title_fr) primaryElement.removeAttribute("lang");
+                if (!item.title_fr || !item.title || item.title === item.title_fr) {
+                    supportElement.remove();
+                } else {
+                    supportElement.textContent = item.title;
+                }
+            }
+
+            // Keep displayed text, aria-valuenow, and --progress equal.
+            function setProgress(track, percentElement, learned, total) {
+                const percent = total > 0 ? Math.round((learned / total) * 100) : 0;
+                percentElement.textContent = `${percent}%`;
+                track.setAttribute("aria-valuenow", String(percent));
+                track.style.setProperty("--progress", `${percent}%`);
+            }
+
+            // Review Later has priority for the row's status icon; learned is next.
+            function renderLesson(lesson) {
+                const item = fromTemplate("lesson-template");
+                const link = slot(item, "link");
+                link.dataset.route = `/conjugation/lessons/${lesson.slug}`;
+                link.classList.toggle("is-learned", lesson.learned);
+                link.classList.toggle("is-saved", lesson.review_later);
+                slot(item, "status").textContent =
+                    lesson.learned ? "check_circle" : "radio_button_unchecked";
+                setTitles(slot(item, "title"), slot(item, "support"), lesson);
+                slot(item, "learned").hidden = !lesson.learned;
+                slot(item, "review-later").hidden = !lesson.review_later;
+                slot(item, "meta").hidden = !lesson.learned && !lesson.review_later;
+                return item;
+            }
+
+            function renderTense(tense, index) {
+                const section = fromTemplate("tense-template");
+                const lessons = tense.lessons || [];
+                const learned = lessons.filter((lesson) => lesson.learned).length;
+                const button = slot(section, "button");
+                const body = slot(section, "body");
+                const titleId = `tense-${index + 1}-title`;
+                const bodyId = `tense-${index + 1}-lessons`;
+
+                section.setAttribute("aria-labelledby", titleId);
+                section.querySelector(".tense-heading").id = titleId;
+                body.id = bodyId;
+                button.setAttribute("aria-controls", bodyId);
+                setTitles(slot(section, "title"), slot(section, "support"), tense);
+                slot(section, "count").textContent = COPY.lessons(learned, lessons.length);
+                const list = slot(section, "lessons");
+                list.append(...lessons.map(renderLesson));
+                list.hidden = lessons.length === 0;
+                slot(section, "empty").hidden = lessons.length > 0;
+                return section;
+            }
+
+            /* ---------- Page states ---------- */
+            const content = document.querySelector("[data-conjugation-content]");
+            const overview = document.querySelector("[data-overview]");
+            const tenseList = document.querySelector("[data-tense-list]");
+            const pageStates = document.querySelectorAll("[data-page-state]");
+
+            function showPageState(state) {
+                pageStates.forEach((element) => {
+                    element.hidden = element.dataset.pageState !== state;
+                });
+                content.hidden = state !== "content";
+                overview.hidden = state !== "content";
+            }
+
+            function render(data) {
+                const tenses = data.tenses || [];
+                const lessons = tenses.flatMap((tense) => tense.lessons || []);
+                if (tenses.length === 0 || lessons.length === 0) {
+                    showPageState("empty");
+                    return;
+                }
+                const learned = lessons.filter((lesson) => lesson.learned).length;
+
+                setProgress(slot(overview, "track"), slot(overview, "percent"), learned, lessons.length);
+                slot(overview, "count").textContent = COPY.lessons(learned, lessons.length);
+                slot(overview, "review-count").textContent =
+                    COPY.lessonCount(lessons.filter((lesson) => lesson.review_later).length);
+                overview.classList.toggle("is-complete", learned === lessons.length);
+                document.querySelector("[data-summary]").replaceChildren(
+                    ...COPY.summary(tenses.length, lessons.length).map((text) => {
+                        const chip = document.createElement("li");
+                        chip.className = "badge badge-info";
+                        chip.textContent = text;
+                        return chip;
+                    })
+                );
+                tenseList.replaceChildren(...tenses.map(renderTense));
+                updateToggleAll();
+                showPageState("content");
+                // Conjugation data is now in the DOM: if we arrived from a lesson's "back" link,
+                // restore that lesson's place on the page.
+                restoreLessonContext();
+            }
+
+            /* ---------- Open / close Tenses (frontend-only UI state, no request) ---------- */
+            const toggleAll = document.querySelector('[data-action="toggle-all"]');
+
+            function tenseButtons() {
+                return Array.from(tenseList.querySelectorAll(".tense-summary"));
+            }
+
+            function setTenseOpen(button, open) {
+                button.setAttribute("aria-expanded", String(open));
+                document.getElementById(button.getAttribute("aria-controls")).hidden = !open;
+            }
+
+            function updateToggleAll() {
+                const anyOpen = tenseButtons().some((button) => button.getAttribute("aria-expanded") === "true");
+                slot(toggleAll, "label").textContent = anyOpen ? COPY.collapseAll : COPY.expandAll;
+                slot(toggleAll, "icon").textContent = anyOpen ? "unfold_less" : "unfold_more";
+            }
+
+            tenseList.addEventListener("click", (event) => {
+                const button = event.target.closest(".tense-summary");
+                if (!button) return;
+                setTenseOpen(button, button.getAttribute("aria-expanded") !== "true");
+                updateToggleAll();
+            });
+
+            toggleAll.addEventListener("click", () => {
+                const buttons = tenseButtons();
+                const open = !buttons.some((button) => button.getAttribute("aria-expanded") === "true");
+                buttons.forEach((button) => setTenseOpen(button, open));
+                updateToggleAll();
+            });
+
+            /* ---------- Return-from-lesson context restore ----------
+               Triggered by a URL hash of the form #lesson-<slug> (the slug already comes from
+               GET /api/v1/conjugation). Reading it from the URL means a direct load or refresh
+               on that hash still works. */
+            const liveRegion = document.querySelector("[data-live-region]");
+
+            function restoreLessonContext() {
+                const match = /^#lesson-(.+)$/.exec(window.location.hash);
+                if (!match) return;
+                let slug;
+                try {
+                    slug = decodeURIComponent(match[1]);
+                } catch {
+                    slug = match[1];
+                }
+                const escapedSlug = window.CSS && CSS.escape ? CSS.escape(slug) : slug;
+                const link = tenseList.querySelector(`[data-route="/conjugation/lessons/${escapedSlug}"]`);
+                if (!link) return;
+
+                // Open the parent Tense only if it was collapsed; leave the others as they are.
+                const body = link.closest(".tense-body");
+                const button = body && tenseList.querySelector(`[aria-controls="${body.id}"]`);
+                if (button && button.getAttribute("aria-expanded") !== "true") {
+                    setTenseOpen(button, true);
+                    updateToggleAll();
+                }
+
+                requestAnimationFrame(() => {
+                    link.scrollIntoView({ behavior: "smooth", block: "center" });
+                    link.classList.add("is-returned");
+                    link.focus({ preventScroll: true });
+                    const title = slot(link, "title");
+                    if (liveRegion) liveRegion.textContent = COPY.returnedTo(title ? title.textContent.trim() : "");
+                    window.setTimeout(() => link.classList.remove("is-returned"), 1800);
+                });
+            }
+
+            window.addEventListener("hashchange", restoreLessonContext);
+
+            /* ---------- Preview states ---------- */
+            let data = SAMPLE_CONJUGATION;
+            if (preview === "not-started") {
+                data = {
+                    tenses: SAMPLE_CONJUGATION.tenses.map((tense) => ({
+                        ...tense,
+                        lessons: tense.lessons.map((lesson) => ({ ...lesson, learned: false, review_later: false })),
+                    })),
+                };
+            }
+            if (preview === "empty") data = { tenses: [] };
+
+            if (preview === "loading") {
+                showPageState("loading");
+            } else if (preview === "error") {
+                showPageState("error");
+            } else {
+                render(data);
+            }
+            document.querySelector('[data-action="retry"]').addEventListener("click", () => render(SAMPLE_CONJUGATION));
+
+            /* ---------- Compact navigation menu (same behavior as Dashboard, FD §8.5) ---------- */
+            const menuButton = document.querySelector(".menu-button");
+            const mobileNav = document.getElementById("mobile-nav");
+            const menuIcon = menuButton.querySelector(".material-symbols-outlined");
+
+            function setMenu(open) {
+                menuButton.setAttribute("aria-expanded", String(open));
+                menuButton.setAttribute("aria-label", open ? COPY.menuOpen : COPY.menuClosed);
+                menuIcon.textContent = open ? "close" : "menu";
+                mobileNav.hidden = !open;
+            }
+
+            menuButton.addEventListener("click", () => setMenu(mobileNav.hidden));
+            mobileNav.addEventListener("click", (event) => {
+                if (event.target.closest("a")) setMenu(false);
+            });
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape" && !mobileNav.hidden) {
+                    setMenu(false);
+                    menuButton.focus();
+                }
+            });
+            window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
+                if (event.matches) setMenu(false);
+            });
+        })();
+    </script>
+</body>
+
+</html>

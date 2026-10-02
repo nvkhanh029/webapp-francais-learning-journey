@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="web_standard" name="shell-type">
+    <title>Français Learning Journey | Học tiếng Pháp</title>
+
+    <!-- Fonts and original illustrations still require an internet connection. -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" crossorigin="" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300..800;1,6..12,300..800&amp;display=swap"
+        rel="stylesheet">
+
+    <!--
+      Static public Landing page prototype (route "/"), normalized against the approved
+      Dashboard (dashboard.html) and frontend-design.md (FD) §7. Plain CSS, no build step,
+      no script.
+
+      Data and routing:
+      - Links use href="#" with the target React route in data-route (FD §4.2).
+        No routing, authentication, or API logic.
+      - The lesson and progress previews are illustrative sample UI. Their values reuse
+        the Dashboard sample data and the API Contract example lesson; they are not
+        product claims and must not be backed by invented logic.
+
+      Page-specific values (no shared token applies) are marked "Landing-only" below.
+
+      Page sections:
+      1. Header (public: brand + Login / Start)
+      2. Hero with lesson preview
+      3. Learning areas (Vocabulary, Grammar, Conjugation)
+      4. Learning flow
+      5. Tracking progress
+      6. Final call to action
+      7. Footer
+    -->
+    <style>
+        /* ======================================================================
+         1. Theme and base styles
+         Tokens are identical to dashboard.html (FD §7.3, §7.4).
+         ====================================================================== */
+        :root {
+            --font-body: "Nunito Sans", sans-serif;
+            --font-heading: "Be Vietnam Pro", sans-serif;
+
+            --text-caption: 0.75rem;
+            --text-label: 0.8125rem;
+            --text-small: 0.875rem;
+            --text-body: 0.9375rem;
+            --text-card-title: 1.0625rem;
+            --text-brand: 1.125rem;
+            --text-section: 1.125rem;
+            --text-feature: 1.25rem;
+            --text-display: 1.75rem;
+            --leading-body: 1.6;
+            --leading-heading: 1.4;
+            --leading-label: 1.5;
+            --tracking-heading: -0.015em;
+            --tracking-label: 0.01em;
+
+            --color-background: #faf7f2;
+            --color-card: #ffffff;
+            --color-border: #eadbcc;
+            --color-heading: #2b2118;
+            --color-text: #231918;
+            --color-muted: #554336;
+            --color-description: #4e453e;
+
+            --color-primary: #8d4b00;
+            --color-primary-dark: #6b3700;
+            --color-primary-soft: #fff5e6;
+            --color-primary-border: #f0dec0;
+
+            --color-blue: #0058be;
+            --color-blue-strong: #085ac0;
+            --color-blue-dark: #004395;
+            --color-blue-soft: #f0f5ff;
+            --color-blue-border: #c5d7ff;
+
+            --color-orange: #b84824;
+            --color-orange-strong: #c2410c;
+            --color-orange-dark: #9a3412;
+            --color-orange-soft: #fff0ed;
+            --color-orange-border: #fdcac1;
+
+            --color-gold: #9a6b12;
+            --color-gold-dark: #80570d;
+            --color-gold-soft: #fff8e1;
+            --color-gold-border: #ead79a;
+
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2.25rem;
+            --page-padding: var(--space-md);
+            --radius-card: 1.5rem;
+            --radius-small: 1rem;
+
+            --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+            --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background: var(--color-background);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: var(--text-body);
+            line-height: var(--leading-body);
+            overscroll-behavior: none;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        figure {
+            margin: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .brand-name,
+        .preview-title,
+        .preview-form,
+        .preview-card-title {
+            font-family: var(--font-heading);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+
+        ::selection {
+            background: #ffdcc3;
+            color: #2f1500;
+        }
+
+        .plain-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /* Google Material Symbols are decorative; their labels stay in the HTML. */
+        .material-symbols-outlined {
+            display: inline-block;
+            flex-shrink: 0;
+            /* Reserve icon space even while the external icon font is loading. */
+            width: 1em;
+            height: 1em;
+            overflow: hidden;
+            font-family: "Material Symbols Outlined";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "liga";
+        }
+
+        /* ======================================================================
+         2. Shared layout and components (same rules as dashboard.html, FD §7.6)
+         ====================================================================== */
+        .page-container {
+            width: 100%;
+            max-width: 1280px;
+            margin-inline: auto;
+            padding-inline: var(--page-padding);
+        }
+
+        .card {
+            min-width: 0;
+            padding: var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-card);
+            background: var(--color-card);
+        }
+
+        .card-heading {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .card-subtitle {
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            line-height: var(--leading-body);
+        }
+
+        .icon-tile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--accent-border, var(--color-primary-border));
+            border-radius: 12px;
+            background: var(--accent-soft, var(--color-primary-soft));
+            color: var(--accent, var(--color-primary));
+        }
+
+        .icon-tile .material-symbols-outlined {
+            font-size: 22px;
+        }
+
+        /* Compact 36px tile for in-card headers and list rows. */
+        .icon-tile-compact {
+            width: 36px;
+            height: 36px;
+        }
+
+        .icon-tile-compact .material-symbols-outlined {
+            font-size: 20px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 2px 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+            color: var(--badge-color, var(--color-primary-dark));
+            font-size: var(--text-caption);
+            font-weight: 700;
+            line-height: var(--leading-label);
+        }
+
+        .badge .material-symbols-outlined {
+            font-size: 16px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            border: 0;
+            border-radius: var(--radius-small);
+            font-weight: 700;
+            text-align: center;
+            white-space: nowrap;
+            transition: background-color 150ms, color 150ms, box-shadow 150ms, transform 150ms;
+        }
+
+        .button-primary {
+            padding: 12px var(--space-lg);
+            background: var(--color-heading);
+            color: #ffffff;
+            font-size: var(--text-body);
+            line-height: var(--leading-label);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .button-primary:hover {
+            background: #1f1711;
+            box-shadow: var(--shadow-md);
+        }
+
+        .button-primary:active {
+            transform: translateY(2px);
+        }
+
+        .button .material-symbols-outlined {
+            transition: transform 150ms;
+        }
+
+        .button:hover .material-symbols-outlined {
+            transform: translateX(4px);
+        }
+
+        .button-secondary {
+            width: 100%;
+            padding: 12px var(--space-md);
+            border: 1px solid var(--color-border);
+            background: var(--color-background);
+            color: var(--color-heading);
+            font-size: var(--text-body);
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .button-secondary:hover {
+            background: var(--color-heading);
+            color: #ffffff;
+        }
+
+        /* Button sized to its label, for lower-emphasis placements (header). */
+        .button-compact {
+            width: auto;
+            padding: var(--space-sm) var(--space-lg);
+        }
+
+        /* Text-link CTA (FD §7.6). */
+        .text-link {
+            border-radius: 2px;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .text-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Progress bar (FD §7.6). Keep --progress equal to aria-valuenow. */
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xs);
+            color: var(--color-description);
+            font-size: var(--text-caption);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .progress-value {
+            flex-shrink: 0;
+            color: var(--skill-value-color, var(--color-primary-dark));
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .progress-track {
+            height: 8px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+        }
+
+        .progress-fill {
+            width: var(--progress, 0%);
+            height: 100%;
+            border-radius: inherit;
+            background: var(--progress-color, var(--color-primary));
+        }
+
+        /* Subject accent families (feature-specific pattern, same as dashboard.html). */
+        .subject-grammar {
+            --accent: var(--color-gold);
+            --accent-soft: var(--color-gold-soft);
+            --accent-border: var(--color-gold-border);
+            --progress-color: var(--color-gold);
+            --skill-value-color: var(--color-gold-dark);
+            --badge-color: var(--color-gold-dark);
+        }
+
+        .subject-vocabulary {
+            --accent: var(--color-blue);
+            --accent-soft: var(--color-blue-soft);
+            --accent-border: var(--color-blue-border);
+            --progress-color: var(--color-blue-strong);
+            --skill-value-color: var(--color-blue-strong);
+            --badge-color: var(--color-blue-dark);
+        }
+
+        .subject-conjugation {
+            --accent: var(--color-orange);
+            --accent-soft: var(--color-orange-soft);
+            --accent-border: var(--color-orange-border);
+            --progress-color: var(--color-orange-strong);
+            --skill-value-color: var(--color-orange-strong);
+            --badge-color: var(--color-orange-dark);
+        }
+
+        /* ======================================================================
+         3. Header (public): brand + Login / Start. No app navigation.
+         ====================================================================== */
+        .site-header {
+            position: fixed;
+            z-index: 50;
+            top: 0;
+            width: 100%;
+            border-bottom: 1px solid var(--color-border);
+            background: rgb(255 255 255 / 92%);
+            box-shadow: 0 2px 12px -2px rgb(50 30 10 / 4%);
+            backdrop-filter: blur(24px);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-sm);
+            height: 80px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            min-width: 0;
+            border-radius: var(--radius-small);
+        }
+
+        .brand-logo {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            min-width: 0;
+            color: var(--color-primary);
+            font-size: var(--text-body);
+            font-weight: 700;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            gap: var(--space-sm);
+        }
+
+        /* The hero repeats this CTA directly below, so it is hidden on phones. */
+        .header-start {
+            display: none;
+        }
+
+        /* ======================================================================
+         4. Landing sections
+         ====================================================================== */
+        .landing {
+            flex: 1;
+            padding-top: 80px;
+        }
+
+        .landing-section {
+            padding-block: var(--space-xl);
+        }
+
+        .section-intro {
+            max-width: 42rem;
+            margin-bottom: var(--space-lg);
+        }
+
+        .section-intro .badge {
+            margin-bottom: var(--space-sm);
+        }
+
+        /* Landing section headings use the display role: each opens a page-level topic. */
+        .landing-heading {
+            color: var(--color-heading);
+            font-size: var(--text-display);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .section-description {
+            margin-top: var(--space-sm);
+            color: var(--color-muted);
+            font-size: var(--text-body);
+            line-height: var(--leading-body);
+        }
+
+        .section-note {
+            margin-top: var(--space-xs);
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            line-height: var(--leading-body);
+        }
+
+        /* ---------- Hero ---------- */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            min-width: 0;
+        }
+
+        .hero-title {
+            max-width: 22ch;
+            margin-top: var(--space-md);
+            color: var(--color-heading);
+            font-size: var(--text-display);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .hero-lead {
+            max-width: 36rem;
+            margin-top: var(--space-md);
+            color: var(--color-description);
+            font-size: var(--text-body);
+            line-height: var(--leading-body);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm) var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        /* Hero secondary matches the primary's height instead of spanning full width. */
+        .hero-actions .button-secondary {
+            width: auto;
+            padding-inline: var(--space-lg);
+        }
+
+        .hero-note {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            line-height: var(--leading-label);
+        }
+
+        .hero-note .material-symbols-outlined {
+            color: var(--color-primary);
+            font-size: 18px;
+        }
+
+        /* Lesson preview: illustrative, non-interactive sample of a lesson page. */
+        .lesson-preview {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .preview-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .preview-caption {
+            color: var(--color-muted);
+            font-size: var(--text-caption);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .preview-title {
+            color: var(--color-heading);
+            font-size: var(--text-feature);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .preview-subtitle {
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            line-height: var(--leading-body);
+        }
+
+        .preview-rules {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .preview-rule {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-sm) var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-background);
+            color: var(--color-description);
+            font-size: var(--text-small);
+            line-height: var(--leading-label);
+        }
+
+        .preview-form {
+            min-width: 2.5rem;
+            color: var(--accent);
+            font-size: var(--text-body);
+            font-weight: 700;
+        }
+
+        .preview-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .preview-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: 6px 12px;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-background);
+            color: var(--color-heading);
+            font-size: var(--text-label);
+            font-weight: 700;
+            line-height: var(--leading-label);
+        }
+
+        .preview-chip .material-symbols-outlined {
+            color: var(--color-primary);
+            font-size: 16px;
+        }
+
+        /* ---------- Learning areas ---------- */
+        .module-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-md);
+        }
+
+        .module-title {
+            margin-top: var(--space-md);
+            color: var(--color-heading);
+            font-size: var(--text-feature);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .module-description {
+            margin-top: var(--space-xs);
+            color: var(--color-description);
+            font-size: var(--text-small);
+            line-height: var(--leading-body);
+        }
+
+        .module-points {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .module-points li {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            color: var(--color-text);
+            font-size: var(--text-small);
+            line-height: var(--leading-body);
+        }
+
+        .module-points .material-symbols-outlined {
+            margin-top: 2px;
+            color: var(--accent);
+            font-size: 18px;
+        }
+
+        /* ---------- Learning flow ---------- */
+        .steps {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-sm);
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            align-items: start;
+            column-gap: var(--space-md);
+            padding: var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-card);
+        }
+
+        .step-number {
+            color: var(--color-primary-dark);
+            font-size: var(--text-caption);
+            font-weight: 700;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .step-title {
+            margin-top: 2px;
+            color: var(--color-heading);
+            font-size: var(--text-card-title);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .step-description {
+            margin-top: var(--space-xs);
+            color: var(--color-description);
+            font-size: var(--text-small);
+            line-height: var(--leading-body);
+        }
+
+        /* ---------- Tracking progress ---------- */
+        .tracking-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-lg);
+            align-items: start;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-lg);
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+        }
+
+        .feature-title {
+            color: var(--color-heading);
+            font-size: var(--text-card-title);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .feature-description {
+            margin-top: var(--space-xs);
+            color: var(--color-description);
+            font-size: var(--text-small);
+            line-height: var(--leading-body);
+        }
+
+        .progress-preview {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .preview-card-title {
+            color: var(--color-heading);
+            font-size: var(--text-card-title);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .preview-progress-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .preview-streak {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--color-border);
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            line-height: var(--leading-label);
+        }
+
+        .preview-streak .material-symbols-outlined {
+            color: var(--color-orange);
+        }
+
+        /* ---------- Final call to action ---------- */
+        .cta-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-xl) var(--space-md);
+            border: 1px solid var(--color-primary-border);
+            border-radius: var(--radius-card);
+            background: var(--color-primary-soft);
+            text-align: center;
+        }
+
+        /* Landing-only: croissant mascot size. */
+        .cta-mascot {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            user-select: none;
+        }
+
+        .cta-panel .landing-heading {
+            max-width: 35rem;
+        }
+
+        .cta-description {
+            max-width: 21rem;
+            color: var(--color-description);
+            font-size: var(--text-body);
+            line-height: var(--leading-body);
+        }
+
+        .cta-login {
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            line-height: var(--leading-label);
+        }
+
+        .cta-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-xs) var(--space-lg);
+            color: var(--color-muted);
+            font-size: var(--text-caption);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .cta-highlights li {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .cta-highlights .material-symbols-outlined {
+            color: var(--color-primary);
+            font-size: 16px;
+        }
+
+        /* ======================================================================
+         5. Footer (same as dashboard.html) and responsive layout (FD §8)
+         ====================================================================== */
+        .site-footer {
+            width: 100%;
+            margin-top: var(--space-xl);
+            border-top: 1px solid var(--color-border);
+            background: var(--color-background);
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding-block: var(--space-lg);
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .footer-content .material-symbols-outlined {
+            color: var(--color-primary);
+        }
+
+        @media (min-width: 640px) {
+            :root {
+                --page-padding: var(--space-lg);
+                --text-section: 1.25rem;
+                --text-feature: 1.375rem;
+                --text-display: 2rem;
+            }
+
+            .card {
+                padding: var(--space-lg);
+            }
+
+            .header-content {
+                gap: var(--space-lg);
+            }
+
+            .brand {
+                gap: var(--space-md);
+            }
+
+            .brand-logo {
+                width: 36px;
+                height: 36px;
+            }
+
+            .brand-name {
+                font-size: var(--text-brand);
+                white-space: nowrap;
+            }
+
+            .header-actions {
+                gap: var(--space-md);
+            }
+
+            .header-start {
+                display: inline-flex;
+            }
+
+            .feature-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .cta-panel {
+                padding-inline: var(--space-lg);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .module-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                column-gap: var(--space-md);
+                row-gap: 0;
+            }
+
+            .module-grid>.card {
+                display: grid;
+                grid-template-rows: subgrid;
+                grid-row: span 4;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            :root {
+                --page-padding: 2.5rem;
+            }
+
+            /* Landing-only: extra hero breathing room, derived from --space-xl. */
+            .hero {
+                padding-block: calc(var(--space-xl) * 2);
+            }
+
+            .hero-grid {
+                grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+                gap: calc(var(--space-xl) * 2);
+            }
+
+            /* Landing-only: hero headline and lead are larger than any shared role. */
+            .hero-title {
+                font-size: 3rem;
+                line-height: 1.2;
+            }
+
+            .hero-lead {
+                font-size: 1.125rem;
+            }
+
+            .lesson-preview {
+                padding: var(--space-xl);
+            }
+
+            .steps {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+                gap: var(--space-md);
+            }
+
+            .step {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .step .icon-tile {
+                margin-bottom: var(--space-md);
+            }
+
+            .tracking-grid {
+                grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+                gap: calc(var(--space-xl) * 2);
+                align-items: center;
+            }
+
+            .cta-panel {
+                padding: calc(var(--space-xl) * 1.5) var(--space-xl);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .module-description {
+                min-height: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. Header -->
+    <header class="site-header">
+        <div class="page-container header-content">
+            <a class="brand" href="#" data-route="/">
+                <img class="brand-logo"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgWt9pRunIXVtG0B6JvfhoCJ5io4tHLn_61ZNuF0BAfzmsMVAEg_8wG3kpnezQaaBbtylHFmC-2l2XDeNOus5u1d3-F9R67TK_wYgdsQW5Kgxz4QxhEJOBmSjPwFjEVkePSXmBpSSQNmvGIZORFN8x1fZIoe_5jKewqlocXfrymAv1c9OzwZBO7Uh5E2dRbnhrQH6Nb9-3uQcOw1gpTd5zbpPKhjGLPTS1qKrcOr_HPxbkG6k7PPkjwWoKIxsMk9jh-w"
+                    alt="">
+                <span class="brand-name">Français Learning Journey</span>
+            </a>
+            <nav class="header-actions" aria-label="Tài khoản">
+                <a class="button button-secondary button-compact" href="#" data-route="/login">Đăng nhập</a>
+                <a class="button button-primary button-compact header-start" href="#" data-route="/register">Bắt đầu
+                    học</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="landing" id="main-content">
+
+        <!-- 2. Hero -->
+        <section class="page-container landing-section hero" aria-labelledby="hero-title">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <p class="badge">Học tiếng Pháp theo cách của bạn</p>
+                    <h1 class="hero-title" id="hero-title">Học tiếng Pháp tự do, rõ ràng và có hệ thống</h1>
+                    <p class="hero-lead">Học Từ vựng, Ngữ pháp và Chia động từ theo từng bài, luyện tập sau khi học
+                        và theo dõi tiến độ của bạn.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#" data-route="/register">
+                            <span>Bắt đầu học</span>
+                            <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                        </a>
+                        <a class="button button-secondary" href="#" data-route="/login">Đăng nhập</a>
+                    </div>
+                    <p class="hero-note">
+                        <span class="material-symbols-outlined" aria-hidden="true">check_circle</span>
+                        <span>Không khóa bài học. Học theo nhịp của riêng bạn.</span>
+                    </p>
+                </div>
+
+                <!-- Illustrative lesson preview. Title and forms follow the API Contract example lesson. -->
+                <figure class="card lesson-preview subject-grammar">
+                    <figcaption class="preview-header">
+                        <span class="badge">Ngữ pháp</span>
+                        <span class="preview-caption">Bài học mẫu</span>
+                    </figcaption>
+                    <div>
+                        <p class="preview-title" lang="fr">Les articles définis</p>
+                        <p class="preview-subtitle">Mạo từ xác định</p>
+                    </div>
+                    <ul class="plain-list preview-rules">
+                        <li class="preview-rule"><span class="preview-form" lang="fr">le</span><span>Giống đực, số
+                                ít</span></li>
+                        <li class="preview-rule"><span class="preview-form" lang="fr">la</span><span>Giống cái, số
+                                ít</span></li>
+                        <li class="preview-rule"><span class="preview-form" lang="fr">les</span><span>Số nhiều</span>
+                        </li>
+                    </ul>
+                    <div class="preview-actions">
+                        <span class="preview-chip"><span class="material-symbols-outlined"
+                                aria-hidden="true">task_alt</span>Đánh dấu đã học</span>
+                        <span class="preview-chip"><span class="material-symbols-outlined"
+                                aria-hidden="true">bookmark</span>Xem lại sau</span>
+                        <span class="preview-chip"><span class="material-symbols-outlined"
+                                aria-hidden="true">edit_note</span>Luyện tập</span>
+                    </div>
+                </figure>
+            </div>
+        </section>
+
+        <!-- 3. Learning areas: same module order, icons, and accents as the Dashboard. -->
+        <section class="page-container landing-section" aria-labelledby="modules-title">
+            <div class="section-intro">
+                <h2 class="landing-heading" id="modules-title">Bạn có thể học gì?</h2>
+                <p class="section-description">Ba kỹ năng học chính, mỗi kỹ năng có nội dung học và bài luyện tập
+                    riêng.</p>
+            </div>
+            <ul class="plain-list module-grid">
+                <li class="card subject-vocabulary">
+                    <div class="icon-tile" aria-hidden="true">
+                        <span class="material-symbols-outlined">style</span>
+                    </div>
+                    <h3 class="module-title">Từ vựng</h3>
+                    <p class="module-description">Mở rộng vốn từ theo chủ đề, ngữ cảnh và các nhóm từ thường gặp.</p>
+                    <ul class="plain-list module-points">
+                        <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Đa dạng chủ đề từ
+                            vựng.</li>
+                        <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Bảng chữ cái và dấu
+                            tiếng Pháp</li>
+                        <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Luyện tập sau mỗi
+                            bài</li>
+                    </ul>
+                </li>
+                <li class="card subject-grammar">
+                    <div class="icon-tile" aria-hidden="true">
+                        <span class="material-symbols-outlined">draw</span>
+                    </div>
+                    <h3 class="module-title">Ngữ pháp</h3>
+                    <p class="module-description">Học các quy tắc và cấu trúc ngữ pháp theo từng nhóm. </p>
+                    <ul class="plain-list module-points">
+                        <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Bài học sắp xếp theo
+                            phần và chương</li>
+                        <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Lý thuyết kèm ví dụ
+                            trong từng bài</li>
+                        <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Luyện tập sau mỗi
+                            bài</li>
+                    </ul>
+                </li>
+                <li class="card subject-conjugation">
+                    <div class="icon-tile" aria-hidden="true">
+                        <span class="material-symbols-outlined">schedule</span>
+                    </div>
+                    <h3 class="module-title">Chia động từ</h3>
+                    <p class="module-description">Học cách chia động từ theo thì, nhóm và các mẫu chia phổ biến.</p>
+                    <ul class="plain-list module-points">
+                        <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Bài học sắp xếp theo
+                            từng thì</li>
+                        <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Quy tắc và mẫu chia
+                            động từ trong từng bài</li>
+                        <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Luyện tập sau mỗi
+                            bài</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 4. Learning flow -->
+        <section class="page-container landing-section" aria-labelledby="flow-title">
+            <div class="section-intro">
+                <p class="badge">Lộ trình mở</p>
+                <h2 class="landing-heading" id="flow-title">Học theo nhịp của riêng bạn</h2>
+                <p class="section-description">Bạn có thể học bất kỳ nội dung nào mà không cần hoàn thành bài trước.
+                </p>
+                <p class="section-note">Không có bài học bị khóa và không cần đạt điểm tối thiểu để mở nội dung tiếp
+                    theo.</p>
+            </div>
+            <ol class="plain-list steps">
+                <li class="step">
+                    <div class="icon-tile icon-tile-compact" aria-hidden="true">
+                        <span class="material-symbols-outlined">touch_app</span>
+                    </div>
+                    <div>
+                        <p class="step-number">Bước 1</p>
+                        <h3 class="step-title">Chọn nội dung muốn học</h3>
+                        <p class="step-description">Chọn Từ vựng, Ngữ pháp hoặc Chia động từ theo nhu cầu của bạn.</p>
+                    </div>
+                </li>
+                <li class="step">
+                    <div class="icon-tile icon-tile-compact" aria-hidden="true">
+                        <span class="material-symbols-outlined">article</span>
+                    </div>
+                    <div>
+                        <p class="step-number">Bước 2</p>
+                        <h3 class="step-title">Xem lý thuyết và ví dụ</h3>
+                        <p class="step-description">Đọc nội dung bài học với phần giải thích và ví dụ.</p>
+                    </div>
+                </li>
+                <li class="step">
+                    <div class="icon-tile icon-tile-compact" aria-hidden="true">
+                        <span class="material-symbols-outlined">quiz</span>
+                    </div>
+                    <div>
+                        <p class="step-number">Bước 3</p>
+                        <h3 class="step-title">Làm bài luyện tập</h3>
+                        <p class="step-description">Trả lời câu hỏi trắc nghiệm, điền vào chỗ trống hoặc sắp xếp câu.
+                        </p>
+                    </div>
+                </li>
+                <li class="step">
+                    <div class="icon-tile icon-tile-compact" aria-hidden="true">
+                        <span class="material-symbols-outlined">fact_check</span>
+                    </div>
+                    <div>
+                        <p class="step-number">Bước 4</p>
+                        <h3 class="step-title">Xem kết quả và đáp án</h3>
+                        <p class="step-description">Sau khi nộp bài, xem câu nào đúng, câu nào sai và đáp án đúng.</p>
+                    </div>
+                </li>
+                <li class="step">
+                    <div class="icon-tile icon-tile-compact" aria-hidden="true">
+                        <span class="material-symbols-outlined">insights</span>
+                    </div>
+                    <div>
+                        <p class="step-number">Bước 5</p>
+                        <h3 class="step-title">Theo dõi tiến độ</h3>
+                        <p class="step-description">Đánh dấu bài đã học, lưu bài để xem lại sau và giữ chuỗi ngày học.
+                        </p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <!-- 5. Tracking progress -->
+        <section class="page-container landing-section" aria-labelledby="tracking-title">
+            <div class="tracking-grid">
+                <div>
+                    <div class="section-intro">
+                        <h2 class="landing-heading" id="tracking-title">Theo dõi quá trình học</h2>
+                        <p class="section-description">Theo dõi tiến độ, tiếp tục nội dung đang học và duy trì thói
+                            quen luyện tập.</p>
+                    </div>
+                    <ul class="plain-list feature-list">
+                        <li class="feature-item">
+                            <div class="icon-tile" aria-hidden="true">
+                                <span class="material-symbols-outlined">auto_stories</span>
+                            </div>
+                            <div>
+                                <h3 class="feature-title">Tiến độ học tập</h3>
+                                <p class="feature-description">Xem tiến độ Từ vựng, Ngữ pháp và Chia động từ theo số bài
+                                    bạn đã đánh dấu đã học.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="icon-tile" aria-hidden="true">
+                                <span class="material-symbols-outlined">menu_book</span>
+                            </div>
+                            <div>
+                                <h3 class="feature-title">Tiếp tục học</h3>
+                                <p class="feature-description">Quay lại bài bạn mở gần nhất nhưng chưa đánh dấu đã học.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="icon-tile" aria-hidden="true">
+                                <span class="material-symbols-outlined">local_fire_department</span>
+                            </div>
+                            <div>
+                                <h3 class="feature-title">Chuỗi ngày học</h3>
+                                <p class="feature-description">Hoàn thành một bài luyện tập hoặc luyện tập tổng hợp mỗi
+                                    ngày để giữ chuỗi ngày học.</p>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="icon-tile" aria-hidden="true">
+                                <span class="material-symbols-outlined">casino</span>
+                            </div>
+                            <div>
+                                <h3 class="feature-title">Luyện tập tổng hợp</h3>
+                                <p class="feature-description">Luyện tập với câu hỏi từ các bài bạn đã đánh dấu là đã
+                                    học.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Illustrative progress preview; values mirror the Dashboard sample data. -->
+                <figure class="card progress-preview">
+                    <figcaption class="card-heading">
+                        <div class="icon-tile icon-tile-compact" aria-hidden="true">
+                            <span class="material-symbols-outlined">auto_stories</span>
+                        </div>
+                        <div>
+                            <p class="preview-card-title">Tiến độ học tập</p>
+                            <p class="card-subtitle">Dữ liệu minh họa</p>
+                        </div>
+                    </figcaption>
+                    <div class="preview-progress-list">
+                        <div class="subject-vocabulary">
+                            <div class="progress-labels">
+                                <span>Từ vựng</span>
+                                <span class="progress-value">72%</span>
+                            </div>
+                            <div class="progress-track" role="progressbar" aria-label="Tiến độ Từ vựng"
+                                aria-valuemax="100" aria-valuemin="0" aria-valuenow="72" style="--progress: 72%;">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                        <div class="subject-grammar">
+                            <div class="progress-labels">
+                                <span>Ngữ pháp</span>
+                                <span class="progress-value">62%</span>
+                            </div>
+                            <div class="progress-track" role="progressbar" aria-label="Tiến độ Ngữ pháp"
+                                aria-valuemax="100" aria-valuemin="0" aria-valuenow="62" style="--progress: 62%;">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                        <div class="subject-conjugation">
+                            <div class="progress-labels">
+                                <span>Chia động từ</span>
+                                <span class="progress-value">48%</span>
+                            </div>
+                            <div class="progress-track" role="progressbar" aria-label="Tiến độ Chia động từ"
+                                aria-valuemax="100" aria-valuemin="0" aria-valuenow="48" style="--progress: 48%;">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="preview-streak">
+                        <span>Chuỗi ngày học</span>
+                        <span class="badge">
+                            <span class="material-symbols-outlined" aria-hidden="true">local_fire_department</span>
+                            <span>14 ngày liên tiếp</span>
+                        </span>
+                    </p>
+                </figure>
+            </div>
+        </section>
+
+        <!-- 6. Final call to action -->
+        <section class="page-container landing-section" aria-labelledby="cta-title">
+            <div class="cta-panel">
+                <img class="cta-mascot"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgWt9pRunIXVtG0B6JvfhoCJ5io4tHLn_61ZNuF0BAfzmsMVAEg_8wG3kpnezQaaBbtylHFmC-2l2XDeNOus5u1d3-F9R67TK_wYgdsQW5Kgxz4QxhEJOBmSjPwFjEVkePSXmBpSSQNmvGIZORFN8x1fZIoe_5jKewqlocXfrymAv1c9OzwZBO7Uh5E2dRbnhrQH6Nb9-3uQcOw1gpTd5zbpPKhjGLPTS1qKrcOr_HPxbkG6k7PPkjwWoKIxsMk9jh-w">
+                <h2 class="landing-heading" id="cta-title">Sẵn sàng bắt đầu học tiếng Pháp?</h2>
+                <p class="cta-description">Tạo tài khoản và bắt đầu với nội dung bạn muốn học ngay hôm nay.</p>
+                <a class="button button-primary" href="#" data-route="/register">
+                    <span>Bắt đầu học</span>
+                    <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                </a>
+                <p class="cta-login">Đã có tài khoản? <a class="text-link" href="#" data-route="/login">Đăng nhập</a>
+                </p>
+                <ul class="plain-list cta-highlights">
+                    <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Tự do chọn nội dung</li>
+                    <li><span class="material-symbols-outlined" aria-hidden="true">check</span>Không khóa bài học</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <!-- 7. Footer -->
+    <footer class="site-footer">
+        <div class="page-container footer-content">
+            <span class="material-symbols-outlined" aria-hidden="true">auto_stories</span>
+            <span>Français Learning Journey • Hành trình chinh phục tiếng Pháp</span>
+        </div>
+    </footer>
+</body>
+
+</html>

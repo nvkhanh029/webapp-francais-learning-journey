@@ -1,0 +1,2729 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="web_standard" name="shell-type">
+    <title>Français Learning Journey | Luyện tập tổng hợp</title>
+
+    <!-- Fonts and original illustrations still require an internet connection. -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" crossorigin="" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300..800;1,6..12,300..800&amp;display=swap"
+        rel="stylesheet">
+
+    <!--
+      Static Mixed Practice page prototype (route /mixed-practice).
+      Sources: Requirements §8.3, §9 (Mixed Practice), frontend-design.md §4.6, §4.7, §5.8, §7.12, §8.7,
+      the CURRENT normalized practice-page.html (active answering / review / result interaction) and the
+      CURRENT dashboard-page.html (Mixed Practice entry identity, app shell, tokens).
+
+      One page, one route. Practice Result is NOT a separate route: pre-start, starting, answering,
+      reviewing and result are phases of this same page (FD §4.7). There is no /mixed-practice/result.
+
+      Decisions against the raw Stitch draft:
+      - Optional Mixed Practice filters are REMOVED. They are "Should Have" (Requirements §9.4, §18.2), no
+        CURRENT Project file selects them for implementation, so Mixed Practice must start without any
+        configuration. (No difficulty / CEFR / weak-area / lesson selection either.)
+      - No hard-coded 10 questions. The session size is data-driven (total_questions may be < 10); the
+        prototype sample uses 7 questions. The stepper, progress and review all follow the real count.
+      - No per-question source labels (Grammar / Vocabulary / Conjugation). The Start response does not
+        expose them; the backend derives Content Covered after submit.
+      - No fixed module / question-type quotas are implied anywhere in the copy.
+      - Answering, Review, incomplete Review, submit error and Result reuse the practice-page patterns.
+        "Hoàn thành bài" opens Review from ANY question; it is not the final submit.
+      - Result adds "Nội dung đã luyện tập" (Content Covered): distinct learning units of THIS session
+        (slug, unit_type, title_fr, localized title). French title is primary. Links only use supported
+        routes (/grammar/lessons/{slug}, /vocabulary/study-units/{slug}, /conjugation/lessons/{slug}).
+      - No pass/fail, no minimum score, no module-progress or "Mixed progress" copy, no timer / XP / hearts.
+      - Mixed Practice is not a main navigation item, so no nav link is marked current.
+      - Unavailable (no learned content) is an informational state, separate from the start error state.
+
+      Data:
+      - Question and result values below are SAMPLE data shaped like the Mixed Practice Start / Submit
+        responses. Production components receive them from the API. The prototype never scores anything,
+        never selects questions and never decides eligibility (backend is authoritative, FD §3.3, §13.17).
+      - Links and buttons that navigate use href="#" with the target React route in data-route.
+        No API, authentication, routing or persistence logic (FD §5.8: Practice state is temporary).
+
+      Preview states (prototype only), via the URL query string:
+        (none)                       pre-start, available
+        ?preview=unavailable         no learned content, Mixed Practice not available
+        ?preview=starting            session is being generated
+        ?preview=start-error         session generation failed
+        ?preview=answering           generated session, empty answers
+        ?preview=answering-partial   generated session with some answers filled in
+        ?preview=reviewing           review before final submit (all answered)
+        ?preview=reviewing-incomplete  review with unanswered questions (final submit blocked)
+        ?preview=submit-error        review with a failed final submit
+        ?preview=result              submitted result + Content Covered
+
+      Page sections:
+      1. Header (with compact menu below 768px)
+      2. Breadcrumbs
+      3. Practice header (title, progress, question stepper)
+      4. Pre-start and page states (available / unavailable / starting / start error)
+      5. Answering phase
+      6. Reviewing phase
+      7. Result phase (summary, Content Covered, question review)
+      8. Footer
+    -->
+    <style>
+        /* ======================================================================
+         1. Theme and base styles (same tokens as the Dashboard and Practice, FD §7.3, §7.4)
+         ====================================================================== */
+        :root {
+            --font-body: "Nunito Sans", sans-serif;
+            --font-heading: "Be Vietnam Pro", sans-serif;
+
+            --text-caption: 0.75rem;
+            --text-label: 0.8125rem;
+            --text-small: 0.875rem;
+            --text-body: 0.9375rem;
+            --text-practice: 1rem;
+            --text-card-title: 1.0625rem;
+            --text-brand: 1.125rem;
+            --text-section: 1.125rem;
+            --text-feature: 1.25rem;
+            --text-display: 1.75rem;
+            --text-streak: 1.75rem;
+            --leading-body: 1.6;
+            --leading-heading: 1.4;
+            --leading-label: 1.5;
+            --tracking-heading: -0.015em;
+            --tracking-label: 0.01em;
+
+            --color-background: #faf7f2;
+            --color-card: #ffffff;
+            --color-border: #eadbcc;
+            --color-heading: #2b2118;
+            --color-text: #231918;
+            --color-muted: #554336;
+            --color-description: #4e453e;
+
+            --color-primary: #8d4b00;
+            --color-primary-dark: #6b3700;
+            --color-primary-soft: #fff5e6;
+            --color-primary-border: #f0dec0;
+
+            --color-blue: #0058be;
+            --color-blue-strong: #085ac0;
+            --color-blue-dark: #004395;
+            --color-blue-soft: #f0f5ff;
+            --color-blue-border: #c5d7ff;
+
+            --color-orange: #b84824;
+            --color-orange-strong: #c2410c;
+            --color-orange-dark: #9a3412;
+            --color-orange-soft: #fff0ed;
+            --color-orange-border: #fdcac1;
+
+            --color-gold: #9a6b12;
+            --color-gold-dark: #80570d;
+            --color-gold-soft: #fff8e1;
+            --color-gold-border: #ead79a;
+
+            /* Practice Result status roles (same as practice-page). Always paired with an icon, a text
+               label and a border style, never color alone. */
+            --color-success: #2e6b3f;
+            --color-success-soft: #eef7f0;
+            --color-success-border: #c3e0cb;
+            --color-danger: #ba1a1a;
+            --color-danger-soft: #fff0ef;
+            --color-danger-border: #f3c4c0;
+
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2.25rem;
+            --page-padding: var(--space-md);
+            --radius-card: 1.5rem;
+            --radius-small: 1rem;
+
+            --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+            --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background: var(--color-background);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: var(--text-body);
+            line-height: var(--leading-body);
+            overscroll-behavior: none;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        dl,
+        dd {
+            margin: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .brand-name {
+            font-family: var(--font-heading);
+        }
+
+        button,
+        input,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            opacity: 0.35;
+            cursor: default;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+
+        /* Phase headings receive programmatic focus after a phase change; no ring needed for that. */
+        [tabindex="-1"]:focus {
+            outline: none;
+        }
+
+        ::selection {
+            background: #ffdcc3;
+            color: #2f1500;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .material-symbols-outlined {
+            display: inline-block;
+            flex-shrink: 0;
+            width: 1em;
+            height: 1em;
+            overflow: hidden;
+            font-family: "Material Symbols Outlined";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "liga";
+        }
+
+        .icon-filled {
+            font-variation-settings: "FILL" 1;
+        }
+
+        /* ======================================================================
+         2. Shared layout and reusable components (FD §7.6)
+         ====================================================================== */
+        .page-container {
+            width: 100%;
+            max-width: 1280px;
+            margin-inline: auto;
+            padding-inline: var(--page-padding);
+        }
+
+        .practice-page {
+            flex: 1;
+            padding-top: 112px;
+            padding-bottom: var(--space-xl);
+        }
+
+        /* Practice-specific: a focused, single reading column (FD §7.12, §8.7). */
+        .practice-shell {
+            max-width: 52rem;
+            margin-inline: auto;
+        }
+
+        .practice-section {
+            margin-top: var(--space-lg);
+        }
+
+        .card {
+            min-width: 0;
+            padding: var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-card);
+            background: var(--color-card);
+        }
+
+        .card-heading {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .section-title {
+            color: var(--color-heading);
+            font-size: var(--text-section);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            overflow-wrap: anywhere;
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .card-subtitle {
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            line-height: var(--leading-body);
+        }
+
+        .icon-tile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--accent-border, var(--color-primary-border));
+            border-radius: 12px;
+            background: var(--accent-soft, var(--color-primary-soft));
+            color: var(--accent, var(--color-primary));
+        }
+
+        .icon-tile .material-symbols-outlined {
+            font-size: 22px;
+        }
+
+        .icon-tile-solid {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 2px 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+            color: var(--badge-color, var(--color-primary-dark));
+            font-size: var(--text-caption);
+            font-weight: 700;
+            line-height: var(--leading-label);
+        }
+
+        .badge .material-symbols-outlined {
+            font-size: 14px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            border: 0;
+            border-radius: var(--radius-small);
+            font-weight: 700;
+            text-align: center;
+            transition: background-color 150ms, color 150ms, box-shadow 150ms, transform 150ms;
+        }
+
+        .button-primary {
+            font-family: var(--font-body);
+            padding: 12px var(--space-lg);
+            background: var(--color-heading);
+            color: #ffffff;
+            font-size: var(--text-body);
+            line-height: var(--leading-label);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .button-primary:hover:not(:disabled) {
+            background: #1f1711;
+            box-shadow: var(--shadow-md);
+        }
+
+        .button-primary:active:not(:disabled) {
+            transform: translateY(2px);
+        }
+
+        .button .material-symbols-outlined {
+            transition: transform 150ms;
+        }
+
+        .button:hover:not(:disabled) .material-symbols-outlined {
+            transform: translateX(4px);
+        }
+
+        .button-secondary {
+            width: 100%;
+            padding: 12px var(--space-md);
+            border: 1px solid var(--color-border);
+            background: var(--color-background);
+            color: var(--color-heading);
+            font-size: var(--text-body);
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .button-secondary:hover:not(:disabled) {
+            background: var(--color-heading);
+            color: #ffffff;
+        }
+
+        /* Secondary button sized to its label (retry, edit, reset). */
+        .button-compact {
+            width: auto;
+            padding: var(--space-sm) var(--space-md);
+        }
+
+        /* Back arrows move left, not right (same as the breadcrumb back link on learning pages). */
+        .button-back:hover:not(:disabled) .material-symbols-outlined {
+            transform: translateX(-4px);
+        }
+
+        .progress-labels {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xs);
+            color: var(--color-description);
+            font-size: var(--text-caption);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .progress-value {
+            flex-shrink: 0;
+            color: var(--progress-color, var(--color-primary-dark));
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .progress-track {
+            height: 8px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+        }
+
+        .progress-fill {
+            width: var(--progress, 0%);
+            height: 100%;
+            border-radius: inherit;
+            background: var(--progress-color, var(--color-primary));
+            transition: width 500ms;
+        }
+
+        /* Inline notice for explanatory states (FD §7.6). */
+        .state-note {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            padding: var(--space-sm) 12px;
+            border: 1px solid var(--color-primary-border);
+            border-radius: 12px;
+            background: var(--color-primary-soft);
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            line-height: var(--leading-body);
+        }
+
+        .state-note .material-symbols-outlined {
+            margin-top: 2px;
+            color: var(--color-primary);
+            font-size: 18px;
+        }
+
+        .state-note-danger {
+            border-color: var(--color-danger-border);
+            background: var(--color-danger-soft);
+        }
+
+        .state-note-danger .material-symbols-outlined {
+            color: var(--color-danger);
+        }
+
+        .state-note-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .state-note-body strong {
+            display: block;
+            color: var(--color-heading);
+        }
+
+        .state-note-body .button {
+            margin-top: var(--space-sm);
+        }
+
+        /* Page-level loading, error and unavailable states (FD §6.6). */
+        .page-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+            padding: var(--space-xl) var(--space-lg);
+            text-align: center;
+        }
+
+        .page-state>.material-symbols-outlined {
+            color: var(--color-primary);
+            font-size: 32px;
+        }
+
+        .page-state-title {
+            color: var(--color-heading);
+            font-size: var(--text-section);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .page-state p {
+            max-width: 46ch;
+            color: var(--color-muted);
+        }
+
+        .page-state .button {
+            margin-top: var(--space-sm);
+        }
+
+        .page-state-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-sm);
+        }
+
+        .page-state-actions .button {
+            margin-top: 0;
+        }
+
+        .page-state-label {
+            margin-top: var(--space-sm);
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 700;
+            letter-spacing: var(--tracking-label);
+        }
+
+        .spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--color-primary-border);
+            border-top-color: var(--color-primary);
+            border-radius: 50%;
+            animation: spin 900ms linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Subject accents (feature-level pattern, FD §7.3). Used for the Mixed Practice identity and,
+           in the Result, for Content Covered groups. */
+        .subject-grammar {
+            --accent: var(--color-gold);
+            --accent-soft: var(--color-gold-soft);
+            --accent-border: var(--color-gold-border);
+            --badge-color: var(--color-gold-dark);
+        }
+
+        .subject-vocabulary {
+            --accent: var(--color-blue);
+            --accent-soft: var(--color-blue-soft);
+            --accent-border: var(--color-blue-border);
+            --badge-color: var(--color-blue-strong);
+        }
+
+        .subject-conjugation {
+            --accent: var(--color-orange);
+            --accent-soft: var(--color-orange-soft);
+            --accent-border: var(--color-orange-border);
+            --badge-color: var(--color-orange-dark);
+        }
+
+        .subject-mixed {
+            --accent: var(--color-primary);
+            --accent-soft: var(--color-primary-soft);
+            --accent-border: var(--color-primary-border);
+            --badge-color: var(--color-primary-dark);
+        }
+
+        /* ======================================================================
+         3. Header: brand, navigation, language controls, logout, compact menu
+            (identical to the Dashboard header)
+         ====================================================================== */
+        .site-header {
+            position: fixed;
+            z-index: 50;
+            top: 0;
+            width: 100%;
+            border-bottom: 1px solid var(--color-border);
+            background: rgb(255 255 255 / 92%);
+            box-shadow: 0 2px 12px -2px rgb(50 30 10 / 4%);
+            backdrop-filter: blur(24px);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-sm);
+            height: 80px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            min-width: 0;
+        }
+
+        .brand-logo {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .brand-name {
+            color: var(--color-primary);
+            font-size: var(--text-body);
+            font-weight: 700;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .main-nav {
+            display: none;
+            align-items: center;
+            flex-shrink: 0;
+            gap: var(--space-sm);
+            padding: var(--space-xs);
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+        }
+
+        .nav-link {
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 9999px;
+            color: var(--color-muted);
+            font-size: var(--text-body);
+            font-weight: 500;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            white-space: nowrap;
+            transition: color 150ms, background-color 150ms;
+        }
+
+        .nav-link:hover {
+            color: var(--color-text);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            gap: var(--space-sm);
+        }
+
+        .language-switcher {
+            display: inline-flex;
+            padding: 2px;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+        }
+
+        .language-button {
+            padding: 2px 8px;
+            border: 0;
+            border-radius: 9999px;
+            background: transparent;
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 500;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            transition: color 150ms, background-color 150ms;
+        }
+
+        .language-button[aria-pressed="true"] {
+            background: #ffffff;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .language-button:hover {
+            color: var(--color-text);
+        }
+
+        .logout-button,
+        .menu-button {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: #ffffff;
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 500;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            white-space: nowrap;
+            transition: color 150ms, border-color 150ms;
+        }
+
+        .logout-button {
+            padding: var(--space-xs) var(--space-sm);
+        }
+
+        .logout-button:hover {
+            border-color: #f9cad0;
+            color: var(--color-orange-dark);
+        }
+
+        .logout-button .material-symbols-outlined {
+            font-size: 16px;
+        }
+
+        .logout-label {
+            display: none;
+        }
+
+        .menu-button {
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+        }
+
+        .menu-button:hover {
+            color: var(--color-text);
+        }
+
+        .mobile-nav {
+            border-top: 1px solid var(--color-border);
+            background: rgb(255 255 255 / 96%);
+        }
+
+        .mobile-nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            padding-block: var(--space-sm) var(--space-md);
+        }
+
+        .mobile-nav-link {
+            padding: 10px var(--space-md);
+            border-radius: var(--radius-small);
+            color: var(--color-muted);
+            font-size: var(--text-body);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            transition: color 150ms, background-color 150ms;
+        }
+
+        .mobile-nav-link:hover {
+            background: var(--color-primary-soft);
+            color: var(--color-text);
+        }
+
+        /* ======================================================================
+         4. Breadcrumbs (Mixed Practice has no learning unit: the trail returns to the Dashboard)
+         ====================================================================== */
+        .breadcrumbs {
+            margin-bottom: var(--space-md);
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-xs);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            line-height: var(--leading-label);
+        }
+
+        .breadcrumb-list li {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .crumb-separator {
+            color: var(--color-primary-border);
+            font-size: 16px;
+        }
+
+        .crumb-link {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            min-height: 44px;
+            padding-inline: var(--space-sm);
+            margin-inline-start: calc(-1 * var(--space-sm));
+            border-radius: var(--radius-small);
+            color: var(--color-primary);
+            font-weight: 700;
+            transition: background-color 150ms;
+        }
+
+        .crumb-link:hover {
+            background: var(--color-primary-soft);
+        }
+
+        .crumb-link .material-symbols-outlined {
+            font-size: 18px;
+            transition: transform 150ms;
+        }
+
+        .crumb-link:hover .material-symbols-outlined {
+            transform: translateX(-4px);
+        }
+
+        .crumb-current {
+            color: var(--color-heading);
+            font-weight: 600;
+        }
+
+        /* ======================================================================
+         5. Practice header: title, answered progress, question stepper
+         ====================================================================== */
+        .practice-header {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .practice-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+        }
+
+        .practice-heading-text {
+            min-width: 0;
+        }
+
+        .practice-title {
+            color: var(--color-heading);
+            font-size: var(--text-display);
+            font-weight: 700;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .practice-description {
+            max-width: 60ch;
+            margin-top: var(--space-sm);
+            color: var(--color-description);
+            font-size: var(--text-small);
+            line-height: var(--leading-body);
+        }
+
+        .practice-progress {
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--color-border);
+        }
+
+        /* Question numbers + the global "Hoàn thành bài" action share one wrapping row. */
+        .stepper-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-sm) var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .stepper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .step {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            min-width: 44px;
+            height: 44px;
+            padding: 0 var(--space-sm);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-background);
+            color: var(--color-muted);
+            font-family: var(--font-heading);
+            font-size: var(--text-body);
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+            transition: background-color 150ms, color 150ms, border-color 150ms;
+        }
+
+        .step:hover {
+            background: var(--color-primary-soft);
+        }
+
+        .step .material-symbols-outlined {
+            font-size: 14px;
+        }
+
+        .step.is-answered {
+            border-color: var(--color-primary-border);
+            background: var(--color-primary-soft);
+            color: var(--color-primary-dark);
+        }
+
+        /* Unanswered: dashed border (a non-color cue); the hidden label says "chưa trả lời". */
+        .step:not(.is-answered):not([aria-current="step"]) {
+            border-style: dashed;
+        }
+
+        /* Current question: dark fill (same role as the primary button fill) plus aria-current. */
+        .step[aria-current="step"] {
+            border-color: var(--color-heading);
+            background: var(--color-heading);
+            color: #ffffff;
+        }
+
+        .finish-button {
+            width: 100%;
+            min-height: 44px;
+        }
+
+        /* ======================================================================
+         6. Pre-start: focused introduction to a Mixed Practice session
+         ====================================================================== */
+        .prestart-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            margin: var(--space-lg) 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .prestart-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+        }
+
+        .prestart-item .material-symbols-outlined {
+            margin-top: 2px;
+            color: var(--color-primary);
+            font-size: 22px;
+        }
+
+        .prestart-item-title {
+            color: var(--color-heading);
+            font-size: var(--text-practice);
+            font-weight: 700;
+        }
+
+        .prestart-item-text {
+            color: var(--color-muted);
+            font-size: var(--text-small);
+        }
+
+        .prestart-note {
+            margin-top: var(--space-lg);
+        }
+
+        /* ======================================================================
+         7. Answering: question card and the three answer patterns (same as practice-page)
+         ====================================================================== */
+        .question-card {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .question-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .question-number {
+            color: var(--color-primary-dark);
+            font-size: var(--text-card-title);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .question-instruction {
+            color: var(--color-muted);
+            font-size: var(--text-small);
+        }
+
+        /* Question prompt: body font (long French text is always body font, FD §7.4). */
+        .question-prompt {
+            padding: var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-background);
+            color: var(--color-heading);
+            font-size: var(--text-feature);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            overflow-wrap: anywhere;
+        }
+
+        .question-prompt .prompt-translation {
+            display: block;
+            margin-bottom: var(--space-xs);
+            color: var(--color-muted);
+            font-size: var(--text-caption);
+            font-weight: 700;
+            letter-spacing: var(--tracking-label);
+        }
+
+        .blank {
+            display: inline-block;
+            min-width: 4ch;
+            border-bottom: 2px solid var(--color-primary);
+        }
+
+        .question-nav {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: var(--space-sm);
+            margin-top: var(--space-md);
+        }
+
+        /* Multiple choice: large selectable cards with native radio semantics. */
+        .option-list {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-sm);
+            min-width: 0;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        .option {
+            position: relative;
+            display: block;
+        }
+
+        .option input {
+            position: absolute;
+            opacity: 0;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .option-box {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            min-height: 56px;
+            padding: 10px var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-card);
+            transition: background-color 150ms, border-color 150ms, box-shadow 150ms;
+        }
+
+        .option:hover .option-box {
+            background: var(--color-primary-soft);
+        }
+
+        .option input:focus-visible+.option-box {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+
+        .option-letter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            background: var(--color-background);
+            color: var(--color-muted);
+            font-family: var(--font-heading);
+            font-size: var(--text-small);
+            font-weight: 700;
+        }
+
+        .option-text {
+            flex: 1;
+            min-width: 0;
+            color: var(--color-heading);
+            font-size: var(--text-card-title);
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        /* Selected state is not color-only: heavier ring, filled letter tile, and a check mark. */
+        .option-check {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--color-border);
+            border-radius: 50%;
+            color: transparent;
+        }
+
+        .option-check .material-symbols-outlined {
+            font-size: 16px;
+        }
+
+        .option input:checked+.option-box {
+            border-color: var(--color-primary);
+            background: var(--color-primary-soft);
+            box-shadow: inset 0 0 0 1px var(--color-primary);
+        }
+
+        .option input:checked+.option-box .option-letter {
+            border-color: var(--color-primary);
+            background: var(--color-primary);
+            color: #ffffff;
+        }
+
+        .option input:checked+.option-box .option-check {
+            border-color: var(--color-primary);
+            background: var(--color-primary);
+            color: #ffffff;
+        }
+
+        /* Fill blank: labeled input with a French character helper. */
+        .field-label {
+            display: block;
+            margin-bottom: var(--space-sm);
+            color: var(--color-heading);
+            font-size: var(--text-body);
+            font-weight: 700;
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 12px var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-card);
+            color: var(--color-heading);
+            font-family: var(--font-body);
+            font-size: var(--text-card-title);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            transition: border-color 150ms;
+        }
+
+        .text-input::placeholder {
+            color: var(--color-muted);
+            font-weight: 400;
+            opacity: 0.7;
+        }
+
+        .text-input:focus-visible {
+            border-color: var(--color-primary);
+        }
+
+        .text-input[aria-invalid="true"] {
+            border-color: var(--color-danger);
+        }
+
+        .field-error {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            margin-top: var(--space-sm);
+            color: var(--color-danger);
+            font-size: var(--text-small);
+            font-weight: 600;
+        }
+
+        .field-error .material-symbols-outlined {
+            font-size: 18px;
+        }
+
+        .char-helper {
+            margin-top: var(--space-md);
+        }
+
+        .char-helper-label {
+            margin-bottom: var(--space-xs);
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 600;
+            letter-spacing: var(--tracking-label);
+        }
+
+        .char-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .char-button {
+            min-width: 44px;
+            height: 44px;
+            padding: 0;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-background);
+            color: var(--color-heading);
+            font-size: var(--text-card-title);
+            font-weight: 700;
+            transition: background-color 150ms, color 150ms;
+        }
+
+        .char-button:hover {
+            background: var(--color-heading);
+            color: #ffffff;
+        }
+
+        /* Sentence ordering: tap chips to place / remove. Drag-and-drop is not required. */
+        .ordering-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .ordering-title {
+            color: var(--color-heading);
+            font-size: var(--text-body);
+            font-weight: 700;
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .ordering-slots,
+        .ordering-pool {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-sm);
+            margin: 0;
+            padding: var(--space-md);
+            list-style: none;
+            border-radius: var(--radius-small);
+        }
+
+        .ordering-slots {
+            min-height: 76px;
+            border: 2px dashed var(--color-primary-border);
+            background: var(--color-primary-soft);
+        }
+
+        .ordering-pool {
+            min-height: 76px;
+            border: 1px solid var(--color-border);
+            background: var(--color-background);
+        }
+
+        .ordering-empty {
+            color: var(--color-muted);
+            font-size: var(--text-small);
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            min-height: 44px;
+            padding: 8px var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-card);
+            color: var(--color-heading);
+            font-size: var(--text-card-title);
+            font-weight: 600;
+            transition: background-color 150ms, color 150ms, box-shadow 150ms;
+        }
+
+        .chip:hover {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .chip .material-symbols-outlined {
+            font-size: 16px;
+            color: var(--color-muted);
+        }
+
+        .chip-order {
+            color: var(--color-primary-dark);
+            font-size: var(--text-caption);
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .chip-placed {
+            border-color: var(--color-primary);
+            background: var(--color-card);
+        }
+
+        .answer-area {
+            margin-top: var(--space-md);
+        }
+
+        .ordering-title-pool {
+            margin-block: var(--space-md) var(--space-sm);
+        }
+
+        /* ======================================================================
+         8. Reviewing: neutral answer summary (no correctness)
+         ====================================================================== */
+        .review-note {
+            margin-block: var(--space-md);
+        }
+
+        .submit-error {
+            margin-top: var(--space-md);
+        }
+
+        .review-list,
+        .result-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .review-row {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            padding: var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-background);
+        }
+
+        .review-row-main {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            min-width: 0;
+        }
+
+        .review-number {
+            color: var(--color-primary-dark);
+            font-family: var(--font-heading);
+            font-size: var(--text-card-title);
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .review-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .review-type {
+            color: var(--color-muted);
+            font-size: var(--text-caption);
+            font-weight: 600;
+            letter-spacing: var(--tracking-label);
+        }
+
+        .review-prompt {
+            display: -webkit-box;
+            overflow: hidden;
+            color: var(--color-text);
+            font-size: var(--text-practice);
+            font-weight: 500;
+            line-height: var(--leading-label);
+            overflow-wrap: anywhere;
+            -webkit-box-orient: vertical;
+            line-clamp: 2;
+            -webkit-line-clamp: 2;
+        }
+
+        .review-answer {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-top: var(--space-xs);
+            color: var(--color-description);
+            font-size: var(--text-small);
+            overflow-wrap: anywhere;
+        }
+
+        .review-answer strong {
+            color: var(--color-heading);
+            font-size: var(--text-practice);
+        }
+
+        .review-answer .material-symbols-outlined {
+            color: var(--color-primary);
+            font-size: 18px;
+        }
+
+        /* Unanswered review row: dashed border + "Chưa trả lời" text + icon. */
+        .review-row.is-missing {
+            border: 2px dashed var(--color-primary);
+            padding: calc(var(--space-md) - 1px);
+        }
+
+        .review-answer.is-missing {
+            color: var(--color-muted);
+            font-weight: 600;
+        }
+
+        .review-submit-hint {
+            margin-top: var(--space-lg);
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            text-align: right;
+        }
+
+        .review-submit-hint+.review-actions {
+            margin-top: var(--space-sm);
+        }
+
+        .review-actions,
+        .action-bar {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+        }
+
+        /* ======================================================================
+         9. Result: summary, Content Covered, question review
+         ====================================================================== */
+        .result-summary {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .result-score {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .result-count {
+            color: var(--color-heading);
+            font-family: var(--font-heading);
+            font-size: var(--text-streak);
+            font-weight: 700;
+            line-height: 1.15;
+            letter-spacing: var(--tracking-heading);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .result-count-label {
+            color: var(--color-primary-dark);
+            font-family: var(--font-heading);
+            font-size: var(--text-body);
+            font-weight: 600;
+        }
+
+        .result-list-heading {
+            margin-bottom: var(--space-md);
+        }
+
+        /* Content Covered: distinct learning units of THIS session, grouped by module.
+           Secondary to the Result summary: compact, reflowing groups, no progress numbers. */
+        .covered-groups {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-md);
+            margin-top: var(--space-md);
+        }
+
+        .covered-group {
+            min-width: 0;
+            padding: var(--space-md);
+            border: 1px solid var(--accent-border);
+            border-radius: var(--radius-small);
+            background: var(--accent-soft);
+        }
+
+        .covered-group-title {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+            color: var(--badge-color);
+            font-size: var(--text-small);
+            font-weight: 700;
+        }
+
+        .covered-group-title .material-symbols-outlined {
+            font-size: 18px;
+        }
+
+        .covered-items {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .covered-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-sm);
+            min-height: 44px;
+            padding: var(--space-sm) 12px;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            background: var(--color-card);
+            transition: box-shadow 150ms;
+        }
+
+        .covered-link:hover {
+            box-shadow: var(--shadow-sm);
+        }
+
+        .covered-link .material-symbols-outlined {
+            color: var(--color-muted);
+            font-size: 16px;
+        }
+
+        .covered-link-text {
+            min-width: 0;
+        }
+
+        .covered-title-fr {
+            display: block;
+            color: var(--color-heading);
+            font-size: var(--text-body);
+            font-weight: 700;
+            line-height: var(--leading-label);
+            overflow-wrap: anywhere;
+        }
+
+        .covered-title-local {
+            display: block;
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            line-height: var(--leading-label);
+            overflow-wrap: anywhere;
+        }
+
+        /* Result row: correct = solid thin border + check icon + "Đúng";
+           incorrect = thicker dashed border + cancel icon + "Chưa đúng". */
+        .result-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-card);
+        }
+
+        .result-item.is-correct {
+            border-color: var(--color-success-border);
+        }
+
+        .result-item.is-incorrect {
+            border: 2px dashed var(--color-danger);
+            padding: calc(var(--space-md) - 1px);
+        }
+
+        .result-item-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .result-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 2px 10px;
+            border: 1px solid transparent;
+            border-radius: 9999px;
+            font-size: var(--text-caption);
+            font-weight: 700;
+            line-height: var(--leading-label);
+        }
+
+        .result-status .material-symbols-outlined {
+            font-size: 16px;
+        }
+
+        .is-correct .result-status {
+            border-color: var(--color-success-border);
+            background: var(--color-success-soft);
+            color: var(--color-success);
+        }
+
+        .is-incorrect .result-status {
+            border-color: var(--color-danger-border);
+            background: var(--color-danger-soft);
+            color: var(--color-danger);
+        }
+
+        .result-prompt {
+            color: var(--color-heading);
+            font-size: var(--text-card-title);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            overflow-wrap: anywhere;
+        }
+
+        .answer-facts {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-sm);
+        }
+
+        .answer-fact {
+            min-width: 0;
+            padding: var(--space-sm) 12px;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            background: var(--color-background);
+        }
+
+        .answer-fact dt {
+            color: var(--color-muted);
+            font-size: var(--text-caption);
+            font-weight: 700;
+            letter-spacing: var(--tracking-label);
+        }
+
+        .answer-fact dd {
+            color: var(--color-heading);
+            font-size: var(--text-practice);
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        .explanation {
+            color: var(--color-description);
+        }
+
+        .explanation strong {
+            color: var(--color-heading);
+        }
+
+        /* ======================================================================
+         10. Footer and responsive layout (FD §8)
+         ====================================================================== */
+        .site-footer {
+            width: 100%;
+            margin-top: var(--space-xl);
+            border-top: 1px solid var(--color-border);
+            background: var(--color-background);
+        }
+
+        .footer-content {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding-block: var(--space-lg);
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .footer-content .material-symbols-outlined {
+            color: var(--color-primary);
+        }
+
+        @media (min-width: 640px) {
+            :root {
+                --page-padding: var(--space-lg);
+                --text-section: 1.25rem;
+                --text-feature: 1.375rem;
+                --text-display: 2rem;
+                --text-streak: 1.875rem;
+            }
+
+            .card {
+                padding: var(--space-lg);
+            }
+
+            .header-content {
+                gap: var(--space-lg);
+            }
+
+            .brand {
+                gap: var(--space-md);
+            }
+
+            .brand-logo {
+                width: 36px;
+                height: 36px;
+            }
+
+            .brand-name {
+                font-size: var(--text-brand);
+                white-space: nowrap;
+            }
+
+            .header-actions {
+                gap: var(--space-md);
+            }
+
+            .logout-label {
+                display: inline;
+            }
+
+            .option-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .question-nav {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .finish-button {
+                width: auto;
+                margin-left: auto;
+            }
+
+            .question-nav .button,
+            .review-actions .button,
+            .action-bar .button {
+                width: auto;
+            }
+
+            .review-actions,
+            .action-bar {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+            }
+
+            .covered-groups {
+                grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+            }
+
+            .answer-facts {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .result-item {
+                padding: var(--space-lg);
+            }
+
+            .result-item.is-incorrect {
+                padding: calc(var(--space-lg) - 1px);
+            }
+        }
+
+        @media (min-width: 768px) {
+            .main-nav {
+                display: flex;
+            }
+
+            .menu-button,
+            .mobile-nav {
+                display: none !important;
+            }
+
+            .review-row {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .review-row .button {
+                flex-shrink: 0;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            :root {
+                --page-padding: 2.5rem;
+            }
+        }
+
+        /* Compact header layout for tablets and smaller laptops (same as the Dashboard). */
+        @media (min-width: 768px) and (max-width: 1199px) {
+
+            .header-content,
+            .header-actions {
+                gap: var(--space-sm);
+            }
+
+            .brand-name {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0 0 0 0);
+                white-space: nowrap;
+            }
+
+            .logout-label {
+                display: none;
+            }
+
+            .main-nav {
+                gap: var(--space-xs);
+            }
+
+            .nav-link {
+                padding-inline: var(--space-sm);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 1. Header. Mixed Practice is not a main navigation item (FD §4.4): no link is marked current. -->
+    <header class="site-header">
+        <div class="page-container header-content">
+            <div class="brand">
+                <img class="brand-logo"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgWt9pRunIXVtG0B6JvfhoCJ5io4tHLn_61ZNuF0BAfzmsMVAEg_8wG3kpnezQaaBbtylHFmC-2l2XDeNOus5u1d3-F9R67TK_wYgdsQW5Kgxz4QxhEJOBmSjPwFjEVkePSXmBpSSQNmvGIZORFN8x1fZIoe_5jKewqlocXfrymAv1c9OzwZBO7Uh5E2dRbnhrQH6Nb9-3uQcOw1gpTd5zbpPKhjGLPTS1qKrcOr_HPxbkG6k7PPkjwWoKIxsMk9jh-w"
+                    alt="">
+                <span class="brand-name">Français Learning Journey</span>
+            </div>
+            <nav class="main-nav" aria-label="Điều hướng chính">
+                <a class="nav-link" href="#" data-route="/dashboard">Bảng điều khiển</a>
+                <a class="nav-link" href="#" data-route="/vocabulary">Từ vựng</a>
+                <a class="nav-link" href="#" data-route="/grammar">Ngữ pháp</a>
+                <a class="nav-link" href="#" data-route="/conjugation">Chia động từ</a>
+            </nav>
+            <div class="header-actions">
+                <div class="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
+                    <button class="language-button" type="button" aria-pressed="true" title="Tiếng Việt">VI</button>
+                    <button class="language-button" type="button" aria-pressed="false" title="English">EN</button>
+                </div>
+                <button class="logout-button" type="button" aria-label="Đăng xuất" title="Đăng xuất">
+                    <span class="material-symbols-outlined" aria-hidden="true">logout</span>
+                    <span class="logout-label">Đăng xuất</span>
+                </button>
+                <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav"
+                    aria-label="Menu điều hướng">
+                    <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+                </button>
+            </div>
+        </div>
+        <nav class="mobile-nav" id="mobile-nav" aria-label="Điều hướng chính" hidden>
+            <div class="page-container mobile-nav-list">
+                <a class="mobile-nav-link" href="#" data-route="/dashboard">Bảng điều khiển</a>
+                <a class="mobile-nav-link" href="#" data-route="/vocabulary">Từ vựng</a>
+                <a class="mobile-nav-link" href="#" data-route="/grammar">Ngữ pháp</a>
+                <a class="mobile-nav-link" href="#" data-route="/conjugation">Chia động từ</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-container practice-page" id="main-content">
+        <div class="practice-shell">
+
+            <!-- 2. Breadcrumbs: Mixed Practice has no learning unit, so the trail returns to the Dashboard. -->
+            <nav class="breadcrumbs" aria-label="Đường dẫn trang">
+                <ol class="breadcrumb-list">
+                    <li>
+                        <a class="crumb-link" href="#" data-route="/dashboard">
+                            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+                            <span>Bảng điều khiển</span>
+                        </a>
+                    </li>
+                    <li>
+                        <span class="material-symbols-outlined crumb-separator" aria-hidden="true">chevron_right</span>
+                        <span class="crumb-current" aria-current="page">Luyện tập tổng hợp</span>
+                    </li>
+                </ol>
+            </nav>
+
+            <!-- 3. Practice header. The progress block and question stepper are shown only while answering
+                 (stepper) and answering / reviewing (progress). Their length follows total_questions. -->
+            <section class="card practice-header" aria-labelledby="practice-title">
+                <div class="practice-heading">
+                    <div class="icon-tile icon-tile-solid subject-mixed" aria-hidden="true">
+                        <span class="material-symbols-outlined">casino</span>
+                    </div>
+                    <div class="practice-heading-text">
+                        <h1 class="practice-title" id="practice-title">Luyện tập tổng hợp</h1>
+                        <p class="practice-description" data-practice-description>Tối đa 10 câu hỏi ngẫu nhiên từ các
+                            bài
+                            bạn đã đánh dấu là đã học.</p>
+                    </div>
+                </div>
+
+                <div class="practice-progress" data-progress-block hidden>
+                    <div class="progress-labels">
+                        <span id="progress-label">Đã trả lời</span>
+                        <span class="progress-value" data-answered-text>0/0 câu</span>
+                    </div>
+                    <div class="progress-track" role="progressbar" aria-labelledby="progress-label" aria-valuemin="0"
+                        aria-valuemax="0" aria-valuenow="0" data-progressbar>
+                        <div class="progress-fill"></div>
+                    </div>
+                    <nav class="stepper-row" aria-label="Danh sách câu hỏi" data-stepper-nav>
+                        <ol class="stepper" data-stepper></ol>
+                        <!-- Global action: ends the answering phase from ANY question and opens Review.
+                             It is not the final submission (that stays in the Review phase). -->
+                        <button class="button button-secondary button-compact finish-button" type="button"
+                            data-action="finish">
+                            <span>Hoàn thành bài</span>
+                            <span class="material-symbols-outlined" aria-hidden="true">fact_check</span>
+                        </button>
+                    </nav>
+                </div>
+            </section>
+
+            <!-- 4a. Pre-start, available: a focused introduction. No configuration, no filters. -->
+            <section class="card practice-section" data-phase="prestart" aria-labelledby="prestart-title">
+                <div class="card-heading">
+                    <div class="icon-tile" aria-hidden="true">
+                        <span class="material-symbols-outlined">bolt</span>
+                    </div>
+                    <div>
+                        <h2 class="section-title" id="prestart-title" tabindex="-1">Sẵn sàng luyện tập</h2>
+                        <p class="card-subtitle">Một thử thách nhỏ để củng cố kiến thức!</p>
+                    </div>
+                </div>
+                <ul class="prestart-list">
+                    <li class="prestart-item">
+                        <span class="material-symbols-outlined" aria-hidden="true">task_alt</span>
+                        <div>
+                            <p class="prestart-item-title">Chỉ từ bài đã học</p>
+                            <p class="prestart-item-text">Câu hỏi chỉ lấy từ các bài bạn đã đánh dấu là đã học.</p>
+                        </div>
+                    </li>
+                    <li class="prestart-item">
+                        <span class="material-symbols-outlined" aria-hidden="true">quiz</span>
+                        <div>
+                            <p class="prestart-item-title">Tối đa 10 câu hỏi</p>
+                            <p class="prestart-item-text">Nếu chưa có đủ câu hỏi phù hợp, bạn sẽ nhận ít hơn 10 câu và
+                                không có câu nào bị lặp lại.</p>
+                        </div>
+                    </li>
+                    <li class="prestart-item">
+                        <span class="material-symbols-outlined" aria-hidden="true">category</span>
+                        <div>
+                            <p class="prestart-item-title">Nhiều dạng nội dung</p>
+                            <p class="prestart-item-text">Câu hỏi có thể thuộc Ngữ pháp, Từ vựng và Chia động từ, tùy
+                                vào những bài bạn đã học.</p>
+                        </div>
+                    </li>
+                </ul>
+                <p class="state-note prestart-note">
+                    <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                    <span>Không cần đạt điểm tối thiểu. Hoàn thành bài luyện tập là đủ để tính vào chuỗi ngày
+                        học.</span>
+                </p>
+                <div class="action-bar">
+                    <button class="button button-primary" type="button" data-action="start">
+                        <span>Bắt đầu luyện tập</span>
+                        <span class="material-symbols-outlined" aria-hidden="true">bolt</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 4b. Unavailable: normal informational state (mixed_practice.available is false). Not an error.
+                 Eligibility is decided by the backend; this state is only a preview. -->
+            <section class="card page-state" data-phase="unavailable" aria-labelledby="unavailable-title" hidden>
+                <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                <h2 class="page-state-title" id="unavailable-title" tabindex="-1">Chưa thể luyện tập tổng hợp</h2>
+                <p>Hãy đánh dấu ít nhất một bài là đã học để bắt đầu luyện tập tổng hợp.</p>
+                <p class="page-state-label" id="unavailable-links-label">Xem bài học</p>
+                <div class="page-state-actions" role="group" aria-labelledby="unavailable-links-label">
+                    <a class="button button-secondary button-compact" href="#" data-route="/grammar">
+                        <span class="material-symbols-outlined" aria-hidden="true">draw</span>
+                        <span>Ngữ pháp</span>
+                    </a>
+                    <a class="button button-secondary button-compact" href="#" data-route="/vocabulary">
+                        <span class="material-symbols-outlined" aria-hidden="true">style</span>
+                        <span>Từ vựng</span>
+                    </a>
+                    <a class="button button-secondary button-compact" href="#" data-route="/conjugation">
+                        <span class="material-symbols-outlined" aria-hidden="true">schedule</span>
+                        <span>Chia động từ</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- 4c. Starting: the Start request is in flight (session generation). -->
+            <section class="card page-state" data-phase="starting" role="status" aria-live="polite" hidden>
+                <div class="spinner" aria-hidden="true"></div>
+                <p>Đang tạo bài luyện tập…</p>
+            </section>
+
+            <!-- 4d. Start error: a real request failure, distinct from "unavailable". -->
+            <section class="card page-state" data-phase="start-error" role="alert" hidden>
+                <span class="material-symbols-outlined" aria-hidden="true">cloud_off</span>
+                <h2 class="page-state-title" tabindex="-1">Không thể tải bài luyện tập</h2>
+                <p>Đã có lỗi khi tạo bài luyện tập. Vui lòng thử lại.</p>
+                <button class="button button-secondary button-compact" type="button" data-action="start">Thử
+                    lại</button>
+            </section>
+
+            <!-- 5. Answering phase: one question at a time (markup generated by the script below).
+                 Same structure as practice-page. No per-question source labels: the Start response does not
+                 provide them. -->
+            <section class="practice-section" data-phase="answering" aria-label="Làm bài luyện tập" hidden>
+                <article class="card question-card" aria-labelledby="question-heading">
+                    <div class="question-meta">
+                        <h2 class="question-number" id="question-heading" tabindex="-1" data-question-heading>Câu 1</h2>
+                        <span class="badge" data-question-type></span>
+                    </div>
+                    <p class="question-instruction" data-question-instruction></p>
+                    <div data-question-body></div>
+                    <p class="badge" role="status" data-answer-status></p>
+                </article>
+                <div class="question-nav">
+                    <button class="button button-secondary button-back" type="button" data-action="previous">
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+                        <span>Câu trước</span>
+                    </button>
+                    <button class="button button-primary" type="button" data-action="next">
+                        <span data-next-label>Câu tiếp theo</span>
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- 6. Reviewing phase: neutral summary of answers. Correctness is NOT revealed here. -->
+            <section class="practice-section" data-phase="reviewing" aria-labelledby="review-title" hidden>
+                <div class="card">
+                    <div class="card-heading">
+                        <div class="icon-tile" aria-hidden="true">
+                            <span class="material-symbols-outlined">fact_check</span>
+                        </div>
+                        <div>
+                            <h2 class="section-title" id="review-title" tabindex="-1">Xem lại câu trả lời</h2>
+                            <p class="card-subtitle">Kiểm tra lại trước khi nộp. Bạn vẫn có thể sửa từng câu.</p>
+                        </div>
+                    </div>
+                    <p class="state-note review-note">
+                        <span class="material-symbols-outlined" aria-hidden="true">info</span>
+                        <span>Đáp án đúng và giải thích chỉ hiện sau khi bạn nộp bài. Nộp bài xong, kết quả sẽ được ghi
+                            lại trong lịch sử luyện tập.</span>
+                    </p>
+                    <!-- Shown while some questions are unanswered; final submit stays blocked. -->
+                    <div class="state-note review-note" role="status" data-review-incomplete hidden>
+                        <span class="material-symbols-outlined" aria-hidden="true">edit_note</span>
+                        <div class="state-note-body">
+                            <strong data-incomplete-text></strong>
+                            Hãy trả lời các câu còn thiếu để có thể nộp bài.
+                            <button class="button button-secondary button-compact" type="button"
+                                data-action="answer-missing"><span data-missing-label>Trả lời câu chưa
+                                    làm</span></button>
+                        </div>
+                    </div>
+                    <ol class="review-list" data-review-list></ol>
+
+                    <!-- Final submit failed (FD §7.12): answers are kept, retry submits again. -->
+                    <div class="state-note state-note-danger submit-error" role="alert" data-submit-error hidden>
+                        <span class="material-symbols-outlined" aria-hidden="true">error</span>
+                        <div class="state-note-body">
+                            <strong>Không thể nộp bài luyện tập</strong>
+                            Câu trả lời của bạn vẫn được giữ lại. Vui lòng thử lại.
+                            <button class="button button-secondary button-compact" type="button"
+                                data-action="submit">Thử lại</button>
+                        </div>
+                    </div>
+
+                    <p class="review-submit-hint" id="submit-hint" data-submit-hint hidden>Trả lời hết các câu để nộp
+                        bài.</p>
+                    <div class="review-actions">
+                        <button class="button button-secondary button-back" type="button"
+                            data-action="continue-editing">
+                            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+                            <span>Tiếp tục làm bài</span>
+                        </button>
+                        <button class="button button-primary" type="button" data-action="submit" data-submit-main
+                            aria-describedby="submit-hint">
+                            <span data-submit-label>Nộp bài luyện tập</span>
+                            <span class="material-symbols-outlined" aria-hidden="true">send</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 7. Result phase: rendered from the (sample) Submit response. Not a separate route. -->
+            <section class="practice-section" data-phase="result" aria-labelledby="result-title" hidden>
+                <div class="card result-summary">
+                    <div class="card-heading">
+                        <div class="icon-tile" aria-hidden="true">
+                            <span class="material-symbols-outlined">emoji_events</span>
+                        </div>
+                        <div>
+                            <h2 class="section-title" id="result-title" tabindex="-1">Kết quả luyện tập</h2>
+                            <p class="card-subtitle">Bạn đã hoàn thành bài luyện tập. Xem lại từng câu bên dưới để nắm
+                                chắc hơn nhé!</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="result-score">
+                            <span class="result-count" data-result-count></span>
+                            <span class="result-count-label">câu đúng</span>
+                        </p>
+                    </div>
+                    <div>
+                        <div class="progress-labels">
+                            <span id="accuracy-label">Độ chính xác</span>
+                            <span class="progress-value" data-result-accuracy></span>
+                        </div>
+                        <div class="progress-track" role="progressbar" aria-labelledby="accuracy-label"
+                            aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-result-bar>
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Covered (Requirements §9.2): distinct learning units represented by THIS session,
+                     from the Submit response. Not all learned units, not the filters, not a guessed mix. -->
+                <div class="card practice-section" aria-labelledby="covered-title">
+                    <div class="card-heading">
+                        <div class="icon-tile subject-mixed" aria-hidden="true">
+                            <span class="material-symbols-outlined">category</span>
+                        </div>
+                        <div>
+                            <h2 class="section-title" id="covered-title">Nội dung đã luyện tập</h2>
+                            <p class="card-subtitle">Các bài có câu hỏi trong lần luyện tập này.</p>
+                        </div>
+                    </div>
+                    <div class="covered-groups" data-covered-groups></div>
+                </div>
+
+                <div class="card practice-section" aria-labelledby="question-review-title">
+                    <div class="card-heading result-list-heading">
+                        <div class="icon-tile" aria-hidden="true">
+                            <span class="material-symbols-outlined">rule</span>
+                        </div>
+                        <div>
+                            <h2 class="section-title" id="question-review-title">Xem lại từng câu</h2>
+                            <p class="card-subtitle">Câu trả lời của bạn, đáp án đúng và giải thích.</p>
+                        </div>
+                    </div>
+                    <ol class="result-list" data-result-list></ol>
+                </div>
+
+                <!-- No single source lesson exists, so there is no "Quay lại bài học" action. -->
+                <div class="action-bar">
+                    <a class="button button-secondary" href="#" data-route="/dashboard">
+                        <span>Về bảng điều khiển</span>
+                        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                    </a>
+                    <button class="button button-primary" type="button" data-action="practice-again">
+                        <span>Luyện tập lại</span>
+                        <span class="material-symbols-outlined" aria-hidden="true">replay</span>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- 8. Footer -->
+    <footer class="site-footer">
+        <div class="page-container footer-content">
+            <span class="material-symbols-outlined" aria-hidden="true">auto_stories</span>
+            <span>Français Learning Journey • Hành trình chinh phục tiếng Pháp</span>
+        </div>
+    </footer>
+
+    <script>
+        // PROTOTYPE ONLY. UI preview: no fetching, scoring, random selection, eligibility logic,
+        // authentication, routing or persistence is added here.
+        // Production: useMixedPractice() calls POST /api/v1/mixed-practice/start, then owns
+        // questions / answers / phase / result (FD §5.6, §5.8). The backend is authoritative for eligibility,
+        // question selection, scoring, streak and Content Covered.
+        (() => {
+            const preview = new URLSearchParams(window.location.search).get("preview");
+            const $ = (selector, root = document) => root.querySelector(selector);
+            const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+            const esc = (text) => String(text).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+            /* ---------- Fixed copy (production: i18n dictionaries) ---------- */
+            const TYPE_LABEL = { mcq: "Trắc nghiệm", fill_blank: "Điền vào chỗ trống", ordering: "Sắp xếp câu" };
+            const INSTRUCTION = {
+                mcq: "Chọn một đáp án.",
+                fill_blank: "Nhập dạng đúng bằng tiếng Pháp.",
+                ordering: "Nhấn vào các từ để xếp thành câu hoàn chỉnh.",
+            };
+            const DESCRIPTION = {
+                intro: "Tối đa 10 câu hỏi ngẫu nhiên từ các bài bạn đã đánh dấu là đã học.",
+                session: "Trả lời tất cả câu hỏi, xem lại rồi nộp bài. Bạn có thể sửa câu trả lời bất cứ lúc nào trước khi nộp; đáp án đúng chỉ hiện sau khi bạn nộp bài.",
+            };
+            const FRENCH_CHARS = ["é", "è", "ê", "à", "â", "ç", "î", "ô", "œ"];
+
+            /* ---------- Sample Mixed Practice Start response: practice_type "mixed", total_questions and
+                 questions[]. The session size is data-driven: this sample has 7 questions, not 10, and
+                 the UI below follows QUESTIONS.length. Question objects carry no source unit and no
+                 correct answers, as in the real Start response. ---------- */
+            const QUESTIONS = [
+                { type: "mcq", prompt: "Je ______ français avec mes amis tous les jours.", options: ["parle", "parles", "parlons", "parlent"] },
+                { type: "fill_blank", prompt: "Nous ______ (habiter) à Paris depuis deux ans." },
+                { type: "ordering", translation: "Tôi thích học tiếng Pháp.", pieces: ["le", "J'", "français", "apprendre", "aime"] },
+                { type: "fill_blank", prompt: "Il y a ______ fleurs dans le jardin. (un / une / des)" },
+                { type: "mcq", prompt: "Vous ______ le dîner à quelle heure ? (manger)", options: ["mangez", "manges", "mangent", "mangeons"] },
+                { type: "mcq", prompt: "Je prends le ______ pour aller au travail.", options: ["métro", "stylo", "fromage", "jardin"] },
+                { type: "ordering", translation: "Chúng tôi đi đến nhà ga bằng xe khách.", pieces: ["gare", "Nous", "en", "allons", "autocar", "à", "la"] },
+            ];
+
+            /* ---------- Sample Submit response, rendered as-is. The prototype never scores answers (FD §3.3).
+                 content_covered lists the DISTINCT learning units represented by this session:
+                 { slug, unit_type, title_fr, title (localized) }. ---------- */
+            const SAMPLE_RESULT = {
+                correct_count: 5,
+                total_questions: 7,
+                accuracy: 71,
+                content_covered: [
+                    { slug: "present-regular-er", unit_type: "conjugation", title_fr: "Les verbes réguliers en -ER", title: "Động từ có quy tắc đuôi -ER" },
+                    { slug: "articles-definis", unit_type: "grammar", title_fr: "Les articles définis", title: "Mạo từ xác định" },
+                    { slug: "articles-indefinis", unit_type: "grammar", title_fr: "Les articles indéfinis", title: "Mạo từ bất định" },
+                    { slug: "transports-1", unit_type: "vocabulary", title_fr: "Les transports en ville", title: "Phương tiện giao thông trong thành phố" },
+                ],
+                questions: [
+                    { is_correct: true, learner_answer: "parle", correct_answer: "parle", explanation: "Với je, động từ đuôi -ER bỏ -er và thêm -e: je parle." },
+                    { is_correct: true, learner_answer: "habitons", correct_answer: "habitons", explanation: "Với nous, thêm -ons vào gốc động từ: nous habitons." },
+                    { is_correct: true, learner_answer: "J'aime apprendre le français", correct_answer: "J'aime apprendre le français", explanation: "Chủ ngữ J' đứng đầu, sau đó là động từ aimer và động từ nguyên mẫu apprendre." },
+                    { is_correct: false, learner_answer: "les", correct_answer: "des", explanation: "Fleurs là danh từ số nhiều, nên mạo từ bất định là des: il y a des fleurs." },
+                    { is_correct: true, learner_answer: "mangez", correct_answer: "mangez", explanation: "Với vous, thêm -ez: vous mangez." },
+                    { is_correct: true, learner_answer: "métro", correct_answer: "métro", explanation: "Le métro là phương tiện giao thông công cộng đi lại trong thành phố." },
+                    { is_correct: false, learner_answer: "Nous allons en autocar à la gare", correct_answer: "Nous allons à la gare en autocar", explanation: "Địa điểm đến (à la gare) đứng trước phương tiện (en autocar)." },
+                ],
+            };
+
+            /* Content Covered grouping and supported learning routes (no Mixed-specific routes exist). */
+            const UNIT_GROUPS = [
+                { type: "grammar", label: "Ngữ pháp", icon: "draw", cls: "subject-grammar", route: (slug) => `/grammar/lessons/${slug}` },
+                { type: "vocabulary", label: "Từ vựng", icon: "style", cls: "subject-vocabulary", route: (slug) => `/vocabulary/study-units/${slug}` },
+                { type: "conjugation", label: "Chia động từ", icon: "schedule", cls: "subject-conjugation", route: (slug) => `/conjugation/lessons/${slug}` },
+            ];
+
+            /* ---------- Temporary Practice state (never persisted, FD §5.8) ---------- */
+            // answers[i]: mcq -> option text; fill_blank -> string; ordering -> array of placed piece indexes.
+            let answers = {};
+            let current = 0;
+            let phase = "prestart";
+            let touched = {};
+            let startTimer = null;
+            const total = QUESTIONS.length;
+
+            // Demo answers that match SAMPLE_RESULT.learner_answer (ordering: indexes into pieces).
+            const DEMO_ANSWERS = {
+                0: "parle", 1: "habitons",
+                2: [1, 4, 3, 0, 2], // J' aime apprendre le français
+                3: "les", 4: "mangez", 5: "métro",
+                6: [1, 3, 2, 4, 5, 6, 0], // Nous allons en autocar à la gare
+            };
+
+            function isAnswered(i) {
+                const q = QUESTIONS[i];
+                const a = answers[i];
+                if (q.type === "ordering") return Array.isArray(a) && a.length === q.pieces.length;
+                if (q.type === "fill_blank") return typeof a === "string" && a.trim() !== "";
+                return Boolean(a);
+            }
+            const answeredCount = () => QUESTIONS.reduce((n, _, i) => n + (isAnswered(i) ? 1 : 0), 0);
+
+            function answerText(i) {
+                const q = QUESTIONS[i];
+                const a = answers[i];
+                if (q.type === "ordering") return (a || []).map((p) => q.pieces[p]).join(" ").replace(/' /g, "'");
+                return a || "";
+            }
+
+            // "______" in an API prompt becomes a visible blank with a text alternative.
+            function promptHtml(q) {
+                if (q.type === "ordering") {
+                    return `<span class="prompt-translation">Dịch sang tiếng Pháp</span>${esc(q.translation)}`;
+                }
+                return esc(q.prompt).replace("______", '<span class="blank"><span class="visually-hidden">chỗ trống</span></span>');
+            }
+
+            /* ---------- Phase handling ---------- */
+            // Phases: prestart | unavailable | starting | start-error | answering | reviewing | result.
+            function setPhase(next, { focus = true } = {}) {
+                phase = next;
+                $$("[data-phase]").forEach((el) => { el.hidden = el.dataset.phase !== next; });
+                const inSession = next === "answering" || next === "reviewing";
+                $("[data-progress-block]").hidden = !inSession;
+                $("[data-stepper-nav]").hidden = next !== "answering";
+                const description = $("[data-practice-description]");
+                description.textContent = inSession ? DESCRIPTION.session : DESCRIPTION.intro;
+                description.hidden = next === "result";
+                if (next === "reviewing") renderReview();
+                if (next === "result") renderResult();
+                if (next === "answering") renderQuestion();
+                updateChrome();
+                if (focus) {
+                    window.scrollTo({ top: 0 });
+                    const heading = $(`[data-phase="${next}"] [tabindex="-1"]`);
+                    if (heading) heading.focus({ preventScroll: true });
+                }
+            }
+
+            /* ---------- Start (prototype: a short fake "generating" delay, then the sample session) ---------- */
+            function resetSession() { answers = {}; touched = {}; current = 0; }
+            function startSession() {
+                window.clearTimeout(startTimer);
+                setPhase("starting", { focus: false });
+                startTimer = window.setTimeout(() => {
+                    resetSession();
+                    setPhase("answering");
+                }, 700);
+            }
+            $$("[data-action='start']").forEach((button) => button.addEventListener("click", startSession));
+
+            /* ---------- Progress and stepper (both follow the real question count) ---------- */
+            function updateChrome() {
+                const count = answeredCount();
+                $("[data-answered-text]").textContent = `${count}/${total} câu`;
+                const bar = $("[data-progressbar]");
+                bar.setAttribute("aria-valuemax", String(total));
+                bar.setAttribute("aria-valuenow", String(count));
+                bar.style.setProperty("--progress", `${(count / total) * 100}%`);
+
+                $("[data-stepper]").innerHTML = QUESTIONS.map((_, i) => {
+                    const answered = isAnswered(i);
+                    const isCurrent = i === current;
+                    return `<li><button class="step${answered ? " is-answered" : ""}" type="button" data-step="${i}"${isCurrent ? ' aria-current="step"' : ""}>
+                        <span aria-hidden="true">${i + 1}</span>${answered ? '<span class="material-symbols-outlined" aria-hidden="true">check</span>' : ""}
+                        <span class="visually-hidden">Câu ${i + 1}, ${answered ? "đã trả lời" : "chưa trả lời"}</span></button></li>`;
+                }).join("");
+
+                if (phase !== "answering") return;
+                const status = $("[data-answer-status]");
+                const done = isAnswered(current);
+                status.innerHTML = done
+                    ? '<span class="material-symbols-outlined icon-filled" aria-hidden="true">check_circle</span>Đã trả lời câu này'
+                    : '<span class="material-symbols-outlined" aria-hidden="true">radio_button_unchecked</span>Chưa trả lời câu này';
+
+                // The last question's button is just a second entry to the same transition as "Hoàn thành bài".
+                const isLast = current === total - 1;
+                $("[data-action='previous']").disabled = current === 0;
+                $("[data-next-label]").textContent = isLast ? "Xem lại câu trả lời" : "Câu tiếp theo";
+            }
+
+            /* ---------- Answering: question markup by type ---------- */
+            function renderQuestion() {
+                const q = QUESTIONS[current];
+                $("[data-question-heading]").textContent = `Câu ${current + 1}/${total}`;
+                $("[data-question-type]").textContent = TYPE_LABEL[q.type];
+                $("[data-question-instruction]").textContent = INSTRUCTION[q.type];
+                const body = $("[data-question-body]");
+                const prompt = `<p class="question-prompt" id="prompt" lang="fr">${promptHtml(q)}</p>`;
+                let html = "";
+
+                if (q.type === "mcq") {
+                    // Native radios in a fieldset: arrow keys move the selection, Space selects.
+                    html = `<fieldset class="option-list" aria-describedby="prompt">
+                        <legend class="visually-hidden">Đáp án câu ${current + 1}</legend>
+                        ${q.options.map((opt, k) => `<label class="option">
+                            <input type="radio" name="q${current}" value="${esc(opt)}"${answers[current] === opt ? " checked" : ""}>
+                            <span class="option-box">
+                                <span class="option-letter" aria-hidden="true">${String.fromCharCode(65 + k)}</span>
+                                <span class="option-text" lang="fr">${esc(opt)}</span>
+                                <span class="option-check" aria-hidden="true"><span class="material-symbols-outlined">check</span></span>
+                            </span></label>`).join("")}
+                    </fieldset>`;
+                } else if (q.type === "fill_blank") {
+                    const value = answers[current] || "";
+                    const showError = touched[current] && value.trim() === "";
+                    html = `<div>
+                        <label class="field-label" for="fill-input">Câu trả lời của bạn</label>
+                        <input class="text-input" id="fill-input" type="text" lang="fr" autocomplete="off" autocapitalize="off" spellcheck="false"
+                            placeholder="Nhập bằng tiếng Pháp" value="${esc(value)}" aria-describedby="prompt fill-error"${showError ? ' aria-invalid="true"' : ""}>
+                        <p class="field-error" id="fill-error"${showError ? "" : " hidden"}><span class="material-symbols-outlined" aria-hidden="true">error</span>Chưa nhập câu trả lời.</p>
+                        <div class="char-helper" role="group" aria-label="Ký tự tiếng Pháp">
+                            <p class="char-helper-label">Ký tự tiếng Pháp</p>
+                            <div class="char-list">${FRENCH_CHARS.map((c) => `<button class="char-button" type="button" data-char="${c}" lang="fr" aria-label="Chèn ký tự ${c}">${c}</button>`).join("")}</div>
+                        </div>
+                    </div>`;
+                } else {
+                    html = `<div data-ordering></div>`;
+                }
+                body.innerHTML = prompt + `<div class="answer-area">${html}</div>`;
+                if (q.type === "ordering") renderOrdering();
+            }
+
+            // Ordering: tap a word to place it, tap a placed word to return it. Buttons, not drag-and-drop.
+            function renderOrdering(focusPiece = null) {
+                const q = QUESTIONS[current];
+                const placed = answers[current] || [];
+                const pool = q.pieces.map((_, p) => p).filter((p) => !placed.includes(p));
+                $("[data-ordering]").innerHTML = `
+                    <div class="ordering-heading">
+                        <h3 class="ordering-title" id="slots-title">Câu của bạn</h3>
+                        <button class="button button-secondary button-compact" type="button" data-reset-order${placed.length ? "" : " disabled"}>
+                            <span class="material-symbols-outlined" aria-hidden="true">refresh</span><span>Đặt lại</span></button>
+                    </div>
+                    <ol class="ordering-slots" aria-labelledby="slots-title" lang="fr">
+                        ${placed.length ? placed.map((p, pos) => `<li><button class="chip chip-placed" type="button" data-piece="${p}" data-action-order="remove">
+                            <span class="chip-order" aria-hidden="true">${pos + 1}</span><span>${esc(q.pieces[p])}</span>
+                            <span class="material-symbols-outlined" aria-hidden="true">close</span>
+                            <span class="visually-hidden">, vị trí ${pos + 1}. Nhấn để bỏ khỏi câu</span></button></li>`).join("")
+                        : '<li class="ordering-empty" lang="vi">Nhấn vào các từ bên dưới để xếp thành câu.</li>'}
+                    </ol>
+                    <h3 class="ordering-title ordering-title-pool" id="pool-title">Các từ có sẵn</h3>
+                    <ul class="ordering-pool" aria-labelledby="pool-title" lang="fr">
+                        ${pool.length ? pool.map((p) => `<li><button class="chip" type="button" data-piece="${p}" data-action-order="add">
+                            <span>${esc(q.pieces[p])}</span><span class="visually-hidden">. Nhấn để thêm vào câu</span></button></li>`).join("")
+                        : '<li class="ordering-empty" lang="vi">Bạn đã dùng hết các từ.</li>'}
+                    </ul>
+                    <p class="visually-hidden" role="status">${placed.length ? `Câu hiện tại: ${esc(answerText(current))}` : "Chưa chọn từ nào"}</p>`;
+                if (focusPiece !== null) {
+                    const el = $(`[data-ordering] [data-piece="${focusPiece}"]`);
+                    if (el) el.focus();
+                }
+            }
+
+            /* ---------- Answering events (delegated) ---------- */
+            const questionCard = $(".question-card");
+            questionCard.addEventListener("change", (event) => {
+                if (event.target.matches('input[type="radio"]')) {
+                    answers[current] = event.target.value;
+                    updateChrome();
+                }
+            });
+            questionCard.addEventListener("input", (event) => {
+                if (event.target.id === "fill-input") {
+                    answers[current] = event.target.value;
+                    touched[current] = true;
+                    event.target.removeAttribute("aria-invalid");
+                    $("#fill-error").hidden = true;
+                    updateChrome();
+                }
+            });
+            questionCard.addEventListener("focusout", (event) => {
+                if (event.target.id === "fill-input" && touched[current] && event.target.value.trim() === "") {
+                    event.target.setAttribute("aria-invalid", "true");
+                    $("#fill-error").hidden = false;
+                }
+            });
+            questionCard.addEventListener("click", (event) => {
+                const charButton = event.target.closest("[data-char]");
+                if (charButton) {
+                    const input = $("#fill-input");
+                    const start = input.selectionStart ?? input.value.length;
+                    const end = input.selectionEnd ?? input.value.length;
+                    input.value = input.value.slice(0, start) + charButton.dataset.char + input.value.slice(end);
+                    input.focus();
+                    input.setSelectionRange(start + 1, start + 1);
+                    input.dispatchEvent(new Event("input", { bubbles: true }));
+                    return;
+                }
+                const chip = event.target.closest("[data-action-order]");
+                if (chip) {
+                    const piece = Number(chip.dataset.piece);
+                    const placed = answers[current] || [];
+                    answers[current] = chip.dataset.actionOrder === "add" ? [...placed, piece] : placed.filter((p) => p !== piece);
+                    renderOrdering(piece);
+                    updateChrome();
+                    return;
+                }
+                if (event.target.closest("[data-reset-order]")) {
+                    answers[current] = [];
+                    renderOrdering();
+                    updateChrome();
+                    $("[data-ordering] .chip")?.focus();
+                }
+            });
+
+            function goToQuestion(index) {
+                current = index;
+                renderQuestion();
+                updateChrome();
+                $("[data-question-heading]").focus({ preventScroll: true });
+            }
+            $("[data-stepper]").addEventListener("click", (event) => {
+                const step = event.target.closest("[data-step]");
+                if (step) goToQuestion(Number(step.dataset.step));
+            });
+            $("[data-action='previous']").addEventListener("click", () => {
+                if (current > 0) goToQuestion(current - 1);
+            });
+            $("[data-action='next']").addEventListener("click", () => {
+                if (current < total - 1) { goToQuestion(current + 1); return; }
+                finishAnswering();
+            });
+
+            // Single prototype-only transition: answering -> reviewing, from any question, with or without
+            // unanswered questions. It is NOT the final submission (that happens from the Review phase).
+            function finishAnswering() { setPhase("reviewing"); }
+            $("[data-action='finish']").addEventListener("click", finishAnswering);
+
+            /* ---------- Reviewing (neutral: no correctness, no correct answers) ---------- */
+            function renderReview() {
+                $("[data-review-list]").innerHTML = QUESTIONS.map((q, i) => {
+                    const answered = isAnswered(i);
+                    const promptText = q.type === "ordering" ? q.translation : q.prompt;
+                    return `<li class="review-row${answered ? "" : " is-missing"}">
+                        <div class="review-row-main">
+                            <span class="review-number">${i + 1}</span>
+                            <div class="review-details">
+                                <p class="review-type">Câu ${i + 1} · ${TYPE_LABEL[q.type]}</p>
+                                <p class="review-prompt" lang="${q.type === "ordering" ? "vi" : "fr"}">${esc(promptText)}</p>
+                                ${answered
+                            ? `<p class="review-answer"><span class="material-symbols-outlined icon-filled" aria-hidden="true">check_circle</span>Câu trả lời của bạn: <strong lang="fr">${esc(answerText(i))}</strong></p>`
+                            : '<p class="review-answer is-missing"><span class="material-symbols-outlined" aria-hidden="true">radio_button_unchecked</span>Chưa trả lời</p>'}
+                            </div>
+                        </div>
+                        <button class="button button-secondary button-compact" type="button" data-edit="${i}">
+                            <span>${answered ? "Sửa" : "Trả lời"}</span><span class="visually-hidden"> câu ${i + 1}</span></button>
+                    </li>`;
+                }).join("");
+                // Final submit stays blocked until every question is answered (prototype-only guard).
+                const missing = QUESTIONS.map((_, i) => i).filter((i) => !isAnswered(i));
+                const incomplete = missing.length > 0;
+                $("[data-submit-main]").disabled = incomplete;
+                $("[data-submit-hint]").hidden = !incomplete;
+                $("[data-review-incomplete]").hidden = !incomplete;
+                if (incomplete) {
+                    $("[data-incomplete-text]").textContent = `Còn ${missing.length} câu chưa trả lời`;
+                    $("[data-missing-label]").textContent = `Trả lời câu ${missing[0] + 1}`;
+                }
+            }
+            $("[data-action='answer-missing']").addEventListener("click", () => {
+                const first = QUESTIONS.findIndex((_, i) => !isAnswered(i));
+                if (first === -1) return;
+                current = first;
+                setPhase("answering");
+            });
+            $("[data-review-list]").addEventListener("click", (event) => {
+                const edit = event.target.closest("[data-edit]");
+                if (!edit) return;
+                current = Number(edit.dataset.edit);
+                setPhase("answering");
+            });
+            $("[data-action='continue-editing']").addEventListener("click", () => setPhase("answering"));
+
+            // Prototype only: a short fake "submitting" delay, then the sample result. No request is made.
+            function submit() {
+                if (answeredCount() !== total) return;
+                const main = $("[data-submit-main]");
+                $("[data-submit-error]").hidden = true;
+                main.disabled = true;
+                main.setAttribute("aria-busy", "true");
+                $("[data-submit-label]").textContent = "Đang nộp bài…";
+                window.setTimeout(() => {
+                    main.removeAttribute("aria-busy");
+                    $("[data-submit-label]").textContent = "Nộp bài luyện tập";
+                    setPhase("result");
+                }, 600);
+            }
+            $$("[data-action='submit']").forEach((button) => button.addEventListener("click", submit));
+
+            /* ---------- Result (renders the sample Submit response as-is) ---------- */
+            function renderCovered(units) {
+                // Content Covered is distinct per learning unit (slug), grouped by unit_type. Empty groups are omitted.
+                const seen = new Set();
+                const distinct = units.filter((u) => !seen.has(u.slug) && seen.add(u.slug));
+                $("[data-covered-groups]").innerHTML = UNIT_GROUPS.map((group) => {
+                    const items = distinct.filter((u) => u.unit_type === group.type);
+                    if (!items.length) return "";
+                    return `<div class="covered-group ${group.cls}">
+                        <h3 class="covered-group-title"><span class="material-symbols-outlined" aria-hidden="true">${group.icon}</span>${group.label}</h3>
+                        <ul class="covered-items">${items.map((u) => `<li>
+                            <a class="covered-link" href="#" data-route="${group.route(u.slug)}">
+                                <span class="covered-link-text">
+                                    <span class="covered-title-fr" lang="fr">${esc(u.title_fr)}</span>
+                                    <span class="covered-title-local">${esc(u.title)}</span>
+                                </span>
+                                <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+                            </a></li>`).join("")}</ul>
+                    </div>`;
+                }).join("");
+            }
+
+            function renderResult() {
+                const r = SAMPLE_RESULT;
+                $("[data-result-count]").textContent = `${r.correct_count}/${r.total_questions}`;
+                $("[data-result-accuracy]").textContent = `${r.accuracy}%`;
+                const bar = $("[data-result-bar]");
+                bar.setAttribute("aria-valuenow", String(r.accuracy));
+                bar.style.setProperty("--progress", `${r.accuracy}%`);
+                renderCovered(r.content_covered);
+                $("[data-result-list]").innerHTML = r.questions.map((item, i) => {
+                    const q = QUESTIONS[i];
+                    const ok = item.is_correct;
+                    const promptText = q.type === "ordering" ? q.translation : q.prompt;
+                    return `<li class="result-item ${ok ? "is-correct" : "is-incorrect"}">
+                        <div class="result-item-header">
+                            <div>
+                                <h3 class="question-number">Câu ${i + 1}</h3>
+                                <p class="review-type">${TYPE_LABEL[q.type]}</p>
+                            </div>
+                            <span class="result-status">
+                                <span class="material-symbols-outlined icon-filled" aria-hidden="true">${ok ? "check_circle" : "cancel"}</span>
+                                ${ok ? "Đúng" : "Chưa đúng"}</span>
+                        </div>
+                        <p class="result-prompt" lang="${q.type === "ordering" ? "vi" : "fr"}">${esc(promptText)}</p>
+                        <dl class="answer-facts">
+                            <div class="answer-fact"><dt>Câu trả lời của bạn</dt><dd lang="fr">${esc(item.learner_answer)}</dd></div>
+                            <div class="answer-fact"><dt>Đáp án đúng</dt><dd lang="fr">${esc(item.correct_answer)}</dd></div>
+                        </dl>
+                        <p class="state-note explanation"><span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
+                            <span><strong>Giải thích:</strong> ${esc(item.explanation)}</span></p>
+                    </li>`;
+                }).join("");
+            }
+            // "Luyện tập lại" starts a NEW Mixed Practice session (new random selection on the backend).
+            $("[data-action='practice-again']").addEventListener("click", startSession);
+
+            /* ---------- Prototype-only: keep href="#" placeholders from jumping the page ---------- */
+            document.addEventListener("click", (event) => {
+                const link = event.target.closest('a[href="#"]');
+                if (link) event.preventDefault();
+            });
+
+            /* ---------- Compact navigation menu (FD §8.5) ---------- */
+            const menuButton = $(".menu-button");
+            const mobileNav = $("#mobile-nav");
+            const menuIcon = $(".material-symbols-outlined", menuButton);
+            function setMenu(open) {
+                menuButton.setAttribute("aria-expanded", String(open));
+                menuButton.setAttribute("aria-label", open ? "Đóng menu điều hướng" : "Menu điều hướng");
+                menuIcon.textContent = open ? "close" : "menu";
+                mobileNav.hidden = !open;
+            }
+            menuButton.addEventListener("click", () => setMenu(mobileNav.hidden));
+            mobileNav.addEventListener("click", (event) => { if (event.target.closest("a")) setMenu(false); });
+            document.addEventListener("keydown", (event) => {
+                if (event.key === "Escape" && !mobileNav.hidden) { setMenu(false); menuButton.focus(); }
+            });
+            window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => { if (event.matches) setMenu(false); });
+
+            /* ---------- Initial preview state ---------- */
+            if (preview === "answering-partial") answers = { 0: "parle", 1: "habitons", 2: [1, 4] };
+            if (["reviewing", "submit-error", "result"].includes(preview)) answers = { ...DEMO_ANSWERS };
+            if (preview === "reviewing-incomplete") {
+                answers = { ...DEMO_ANSWERS };
+                delete answers[3];
+                delete answers[5];
+            }
+
+            const INITIAL_PHASE = {
+                unavailable: "unavailable",
+                starting: "starting",
+                "start-error": "start-error",
+                answering: "answering",
+                "answering-partial": "answering",
+                reviewing: "reviewing",
+                "reviewing-incomplete": "reviewing",
+                "submit-error": "reviewing",
+                result: "result",
+            };
+            setPhase(INITIAL_PHASE[preview] || "prestart", { focus: false });
+            if (preview === "submit-error") $("[data-submit-error]").hidden = false;
+        })();
+    </script>
+</body>
+
+</html>
