@@ -47,9 +47,12 @@ export default function usePageScript(init, { title } = {}) {
   const language = useLanguage();
 
   // The document language and title follow the shared language state. Layout effect: set before paint.
+  // A page whose script sets its own title (lesson, topic, reference pages) keeps that title: the script
+  // re-renders it on language change.
   useLayoutEffect(() => {
     document.documentElement.lang = language;
-    if (title) document.title = t(title);
+    const record = rootRef.current && registry.get(rootRef.current);
+    if (title && !(record && record.ownsTitle)) document.title = t(title);
   }, [language, title]);
 
   // The page script. It reads getLanguage() and registers onLanguageChange(callback) to re-render.
@@ -60,13 +63,15 @@ export default function usePageScript(init, { title } = {}) {
     // only tear it down when the element has really left the document.
     let record = registry.get(el);
     if (!record) {
-      record = { cleanup: null, languageListeners: new Set(), language: getLanguage() };
+      record = { cleanup: null, languageListeners: new Set(), language: getLanguage(), ownsTitle: false };
       registry.set(el, record);
+      const hookTitle = document.title;
       const context = {
         getLanguage,
         onLanguageChange: (callback) => record.languageListeners.add(callback),
       };
       record.cleanup = runTracked(init, context);
+      record.ownsTitle = document.title !== hookTitle;
     }
     return () => {
       window.setTimeout(() => {
