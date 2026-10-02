@@ -379,6 +379,10 @@ The Dashboard endpoint remains in `me.py` because it is a learner-owned `/me/das
 
 Its business logic belongs in `dashboard_service.py`.
 
+The Activity Calendar endpoint (`GET /api/v1/me/activity-calendar`, API §8.2) is also a learner-owned `/me/...` route and lives in `me.py`. Its logic (unique active dates for one month, future-month rejection) belongs in `dashboard_service.py` and reads `practice_sessions` through the existing Practice-history repository; no calendar repository or activity table is created.
+
+The Reference index endpoint (`GET /api/v1/references`, API §12.1) lives in `references.py` with the Reference page endpoint and uses `reference_service.py` and `reference_repository.py`.
+
 Route placement and service responsibility do not need to be one-to-one.
 
 ### 6.4 Practice placement
@@ -467,7 +471,12 @@ Responsibilities:
 - derive Mixed Practice availability;
 - derive current streak;
 - derive longest streak;
-- build Recent Practice output.
+- build Recent Practice output;
+- return the server `today` value (date and timezone) from the same clock used for `activity_date` and streaks;
+- build `continue_learning` with `parent` and `position` (API §8.1);
+- derive unique active dates for the Activity Calendar month (API §8.2).
+
+All date-sensitive code (`completed_at`, `activity_date`, `today`, streaks, calendar month validation) obtains the current time from one clock helper fixed to `Asia/Ho_Chi_Minh` (API §4.10), so tests can replace that single helper. Code must not call the process-local timezone directly.
 
 There is intentionally no `dashboard_repository.py`. The Dashboard is an aggregate application view and should coordinate existing repositories instead of creating a repository tied to one screen.
 
@@ -836,6 +845,16 @@ session.clear()
 Logout does not require an active session.
 
 Repeated logout requests remain successful from the client's perspective so the operation is idempotent.
+
+### 9.6.1 Session hardening (required)
+
+These are required by API §4.7 and are not optional hardening:
+
+- the session has an expiry; the lifetime is an app configuration value and an expired session yields the standard `401 not_authenticated`;
+- `SESSION_COOKIE_SECURE` is enabled whenever the app is served over HTTPS and may be disabled only for local HTTP;
+- state-changing requests (`POST`, `PATCH`) are protected against CSRF; the mechanism is chosen here at implementation time, must be applied in one shared place (not per route), and must not change the API request/response shapes;
+- failed login attempts are rate limited (`429 rate_limited`); the counter is server-side in-memory state for the MVP (no Redis), with configurable threshold and window, and it never reveals whether an email exists;
+- `validation_error` responses carry `details.fields` field-level codes (API §4.4) built in the service/validation layer, never raw exception text.
 
 ### 9.7 Password handling
 
@@ -1285,6 +1304,8 @@ Test/demo fixtures, if needed, must remain separate from the canonical curriculu
 During local development, destructive recreate-and-reseed is acceptable only as an explicit developer action.
 
 Once learner progress exists against frozen content, automated reseeding must not silently rebalance or redefine existing published Study Units.
+
+**Accepted for now (G19):** when `schema.sql` or the authored content changes, recreating the database and reseeding is the accepted workflow. No migration framework is introduced. Because that wipes learner data, it remains an explicit developer action (never automatic) and is acceptable only for local development and demonstration data.
 
 ### 12.12 Seed output
 

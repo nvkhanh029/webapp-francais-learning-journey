@@ -58,7 +58,7 @@ The frontend supports the agreed learner-facing MVP:
 - basic Practice History shown on the Dashboard;
 - current and longest streak presentation;
 - module progress presentation;
-- Learning Activity Calendar on the Dashboard (a Should Have feature that has been selected for implementation; its contract is API §8.2).
+- Learning Activity Calendar on the Dashboard (a Should Have feature that has been selected for implementation; its contract is API §8.2, Get Activity Calendar).
 
 The frontend intentionally does not introduce:
 
@@ -514,8 +514,7 @@ frontend/src/
 │   ├── useDashboard.js
 │   ├── useActivityCalendar.js
 │   ├── useLearningUnitState.js
-│   ├── usePractice.js
-│   └── useTranslation.js
+│   └── usePractice.js
 │
 ├── api/
 │   ├── apiClient.js
@@ -529,8 +528,9 @@ frontend/src/
 │   └── practiceApi.js
 │
 ├── i18n/
-│   ├── vi.js
-│   └── en.js
+│   ├── strings.js
+│   ├── index.js
+│   └── language.js
 │
 ├── utils/
 │   ├── dateUtils.js
@@ -596,6 +596,12 @@ Owns browser-to-Flask HTTP integration.
 ### `i18n/`
 
 Owns fixed frontend interface copy for Vietnamese and English, using the terminology in §9.4.
+
+- `strings.js` is the single string table: one entry per key, each holding its `vi` and `en` text (plural entries hold `one` / `other`). There are no separate `vi.js` / `en.js` dictionaries.
+- `index.js` exports `t(key, params)`, which returns the string for the current language, fills `{name}` placeholders, and returns the key itself when a key is missing so gaps stay visible. Date and month helpers live beside it.
+- `language.js` holds the current language and its subscription (see §5.5 for where the language preference lives).
+
+Components call `t()` directly; there is no `useTranslation()` hook.
 
 Dynamic curriculum content is not duplicated here; it comes from the backend already localized for the learner.
 
@@ -769,6 +775,8 @@ ordering
 
 This avoids hard-coding every question type directly inside `PracticePage` and allows future question types to be added without rewriting the full Practice screen.
 
+**Mixed Practice availability.** There is no separate availability endpoint. The Dashboard's `mixed_practice.available` decides whether the Mixed Practice card shows its Start button or the unavailable notice. `MixedPracticePage` does not pre-check availability: it calls start and treats `409 mixed_practice_unavailable` as the authoritative answer, showing the same inline notice.
+
 ---
 
 ## 5.5 Context Design
@@ -793,6 +801,13 @@ updateSupportLanguage()
 ```
 
 `support_language` remains part of the authenticated learner state and should not be duplicated into a separate independent language source of truth.
+
+**Where the language preference lives.**
+
+- For an authenticated learner the preference lives in `AuthContext` (`currentUser.support_language`) and is changed only through `updateSupportLanguage()`, which calls `PATCH /api/v1/me/preferences`. The `i18n` language value follows `currentUser.support_language`.
+- Public pages (Landing, Login, Register) have no learner yet. They may read and write the language code in `localStorage` as a per-browser convenience, falling back to `vi` (Requirements §14.1). That stored value stores only the language code, never a token or user data.
+- On login or session restore, the value from `currentUser.support_language` replaces the `localStorage` value. `localStorage` never overrides the server preference and is never sent to the API.
+- A `null` `support_language` still routes to first-time Language Setup (§4.3.2) regardless of any stored value.
 
 Do not create separate global contexts for Dashboard data, Grammar content, Practice answers, filters, or temporary form state.
 
@@ -886,11 +901,7 @@ result
 error
 ```
 
-### `useTranslation()`
-
-Provides fixed interface text from the selected frontend locale dictionary.
-
-It must not become a duplicate localization engine for curriculum content returned by Flask.
+Fixed interface text is provided by `t()` from `src/i18n` (§5.2). It must not become a duplicate localization engine for curriculum content returned by Flask.
 
 ---
 
@@ -1016,6 +1027,8 @@ details
 
 It should not own feature-specific UI messages or rendering decisions.
 
+**Field naming.** The API client keeps the wire `snake_case` field names exactly as the API Contract defines them, in both request bodies and parsed responses. It does not convert keys to `camelCase`; feature code reads `title_fr`, `support_language`, `practice_run_id`, and so on directly. Local variables may use `camelCase` (Repository Conventions §4).
+
 ---
 
 ## 6.3 Feature API Modules
@@ -1038,6 +1051,8 @@ updateSupportLanguage()
 getDashboard()
 getActivityCalendar(year, month)
 ```
+
+`getActivityCalendar` calls `GET /api/v1/me/activity-calendar?year=&month=` and returns `{ year, month, days }`, where `days` is the list of unique active dates (`YYYY-MM-DD`) in that month (API §8.2). The response has no per-day count or intensity.
 
 ### `grammarApi.js`
 
@@ -1064,8 +1079,11 @@ getConjugationLesson(slug)
 ### `referenceApi.js`
 
 ```text
+getReferences()
 getReference(slug)
 ```
+
+`getReferences` calls `GET /api/v1/references` (API §12.1) so entry points such as the Vocabulary page's Alphabet & Accents link take their slug and title from data rather than hard-coding them.
 
 ### `learningStateApi.js`
 
@@ -1131,6 +1149,8 @@ and error form:
 
 The API client should normalize these once rather than requiring every page to parse them differently.
 
+**Field-level validation codes.** For `422 validation_error` the API returns `details.fields`, a map from field name to a field-level code such as `required`, `invalid_format`, `too_short`, `invalid_value`, or `future_month` (API §4.4). The frontend translates each code into a localized message through `t()` and shows it next to its field. An unknown code falls back to the response `message`. The frontend never matches on the English `message` text, and its own convenience validation never replaces the backend result.
+
 ---
 
 ## 6.6 Loading / Error / Empty / Data States
@@ -1172,7 +1192,13 @@ If a protected API request returns an authentication failure, the frontend shoul
 
 The UI must not silently treat a `401` authentication error as an empty data response.
 
-No auth token is stored in `localStorage` or `sessionStorage`; authentication is based on the Flask session cookie.
+No auth token is stored in `localStorage` or `sessionStorage`; authentication is based on the Flask session cookie. (The only value the frontend keeps in `localStorage` is the public-page language code described in §5.5.)
+
+Sessions expire on the server (API §4.7). The frontend treats an expired session like any other `401 not_authenticated`: it clears `currentUser` and routes the learner to Login without presenting stale data as current.
+
+A login attempt rejected with `429 rate_limited` shows a localized "too many attempts, try again later" message on the form and does not clear the entered email.
+
+State-changing requests rely on the CSRF protection chosen by the backend (API §4.7); the API client adds nothing the API Contract does not define.
 
 ---
 
@@ -1182,12 +1208,13 @@ When the learner changes support language:
 
 ```text
 LanguageSelector
+-> AuthContext.updateSupportLanguage()
 -> PATCH /api/v1/me/preferences
 -> update currentUser.support_language
 -> refresh language-sensitive page data as needed
 ```
 
-Fixed interface copy switches using the frontend locale dictionary.
+Fixed interface copy switches using the frontend string table (`src/i18n/strings.js`).
 
 Dynamic curriculum content is refetched from the backend so that generic fields such as `title`, `content`, `meaning`, `prompt`, and `explanation` match the newly selected support language.
 
@@ -1250,7 +1277,7 @@ French blue and red appear as module accents, not as large tricolor blocks. The 
 
 ## 7.3 Design Tokens
 
-These are the approved baseline values. `styles/tokens.css` defines them; components consume tokens rather than hard-coding values. Values used by only one component (for example calendar intensity colors or the streak illustration tint) stay component-local until a second use appears.
+These are the approved baseline values. `styles/tokens.css` defines them; components consume tokens rather than hard-coding values. Values used by only one component (for example the calendar active-day color or the streak illustration tint) stay component-local until a second use appears.
 
 ### Core colors
 
@@ -1437,6 +1464,7 @@ A public support-language selector is not required for the MVP.
 | Text-link CTA | Accent color, 700, trailing arrow; underline on hover |
 | Arrow motion | Trailing arrow icons shift 4px on hover |
 | Badge | Pill, 1px border, page-background fill, caption size, 700, `--badge-color` text |
+| Quiet badge (`badge-quiet`) | Reduced-emphasis variant of the Learned badge. It is applied when a unit is both learned and saved for Review Later, so the two state badges do not compete. The rule is identical on all three modules: the Grammar lesson list, the Vocabulary Topic Study Unit list, and the Conjugation lesson list (`learned && review_later`) |
 | Progress bar | 8px pill track (border, page-background fill), `--progress-color` fill; label row with caption label on the left and a right-aligned 700 tabular value; `aria-valuenow` always matches the displayed value |
 | Section heading | (a) page-level group: 24px primary icon + `h2`; (b) card-level header: icon tile + `h2` + muted subtitle. A control may sit on the right; the row wraps |
 | Icon tile | 40×40px (36×36px compact), 12px radius, `--accent-soft` fill, `--accent-border`, `--accent` glyph |
@@ -1493,9 +1521,9 @@ Column spans apply from 1024px; narrower behavior is defined in §8.4.
 | Section | Shows | Data source |
 |---|---|---|
 | Greeting | `Bienvenue !` / `Coucou !` / `Bonjour !` (French, `lang="fr"`) + welcome message in the support language | Greeting rule below |
-| Streak card | "N days in a row", longest streak badge, tip that completing a Practice or Mixed Practice session keeps the streak | `streak.current`, `streak.longest` |
-| Learning Activity Calendar | Month grid with intensity, summary, legend | `GET /api/v1/me/activity-calendar` |
-| Continue Learning | Module, parent section, lesson position, unit `title_fr`, CTA to the unit route | `continue_learning.unit_type`, `slug`, `title_fr`; parent section and position pending (§15) |
+| Streak card | "N days in a row", flame, longest streak badge, tip that completing a Practice or Mixed Practice session keeps the streak | `streak.current`, `streak.longest`, `streak.active_today` |
+| Learning Activity Calendar | Month grid of active days, summary, legend | `GET /api/v1/me/activity-calendar` (`days`); `today.date` from the Dashboard |
+| Continue Learning | Module, parent section, lesson position, unit `title_fr`, CTA to the unit route | `continue_learning.unit_type`, `slug`, `title_fr`, `parent`, `position` |
 | Learning progress | One card per module in order Vocabulary, Grammar, Conjugation: total badge, learned/total, percentage bar, link to the module page | `progress.vocabulary`, `progress.grammar`, `progress.conjugation` |
 | Mixed Practice | Description and Start CTA, or unavailable notice | `mixed_practice.available` |
 | Review Later | Saved-unit count and link to `/review-later` | `review_later_count` |
@@ -1503,8 +1531,10 @@ Column spans apply from 1024px; narrower behavior is defined in §8.4.
 
 ### Display rules
 
-- **Greeting.** `Coucou !` when `streak.current >= 30`; `Bienvenue !` for a learner entering the Dashboard for the first time; otherwise `Bonjour !`. Until the API exposes a first-visit signal (§15), the frontend treats the Dashboard response as a first visit when it matches the new-learner state: no learned units, `streak.longest === 0`, `continue_learning === null`, `review_later_count === 0`, and `recent_practice` empty.
-- **Percentages** are derived in the frontend: module progress `round(learned / total × 100)`, shown as 0% when `total` is 0; accuracy `round(correct_count / total_questions × 100)`.
+- **Greeting.** `Coucou !` when `streak.current >= 30`; `Bienvenue !` for a learner entering the Dashboard for the first time; otherwise `Bonjour !`. The API has no first-visit field and gets none (API §8.1); the frontend derives it from Dashboard data: the sum of `progress.vocabulary.learned`, `progress.grammar.learned`, and `progress.conjugation.learned` is `0` and `streak.longest === 0`. No other signal is used.
+- **Streak flame.** The flame in the Streak card is lit only when `streak.active_today` is `true`; otherwise it is shown unlit, even when `streak.current > 0` (a retained run ending yesterday). It is never lit from `streak.current` alone, from the browser clock, or from the calendar.
+- **Percentages** are derived in the frontend. Module progress is `floor(learned / total × 100)` clamped to 0–100, shown as 0% when `total` is 0, so "100%" appears only when every unit is learned. Do not round progress. Practice accuracy is derived by rounding to a whole percent for display (`round(correct_count / total_questions × 100)` in Recent Practice; the API `accuracy` value, rounded, on the Result screen).
+- **Continue Learning context.** The card shows `continue_learning.parent.title_fr` (or `title`) as the parent section and `position.index` / `position.total` as "Lesson x/y". The parent kind (`chapter`, `subtopic`, `tense`) selects the module-specific wording; `parent` and `position` are always present when `continue_learning` is not `null`.
 - **Vocabulary** progress counts Study Units, never individual words.
 - **Continue Learning** shows no completion percentage: learning units are either learned or not, and no in-unit progress exists.
 - **Recent Practice Type** is derived from `practice_type` and `unit_type`. Normal rows show `Type: title_fr` where `title_fr` links to the unit route built from `unit_type` + `slug`. Mixed rows show the single label "Mixed Practice" with no link.
@@ -1515,14 +1545,15 @@ Column spans apply from 1024px; narrower behavior is defined in §8.4.
 
 ### Learning Activity Calendar presentation
 
-The API returns only dates with activity (API §8.2). The frontend derives the grid:
+The API returns only the unique active dates of the requested month, as a list of `YYYY-MM-DD` strings (`days`, API §8.2). It returns no per-day count and no intensity. The frontend derives the grid:
 
-- month view with weeks starting on Monday; the calendar opens on the current month;
+- month view with weeks starting on Monday; the calendar opens on the current month, where "current" and "today" come from `today.date` in the Dashboard response (server clock, `Asia/Ho_Chi_Minh`), not from the browser clock;
 - a previous-month button; the next-month button is disabled on the current month because future months are rejected by the API;
-- intensity from `activity_count`: 1–2 low, 3 medium, 4 or more high; dates with no entry show "no practice"; dates after today show "not yet"; both use the neutral swatch;
-- each day has a text alternative (date and count or state); today carries `aria-current="date"`;
+- each date is in one of three states: **active** (the date is in `days`), **no practice** (a past or current date that is not in `days`), and **not yet** (a date after `today.date`); there is no intensity scale, so a day with several sessions looks the same as a day with one;
+- active days use the module-neutral active swatch; "no practice" and "not yet" use the neutral swatch;
+- each day has a text alternative (date and state: practiced, no practice, or not yet); today carries `aria-current="date"`;
 - the summary reads "N days with practice this month", from the length of `days`; an empty month shows "No practice days this month yet.";
-- the legend reads "Less [low][medium][high] More" plus the neutral swatch for "No practice / Not yet";
+- the legend shows the active swatch as "Practiced" and the neutral swatch as "No practice / Not yet";
 - a month request has its own loading and inline error state with a retry action, without blocking the rest of the Dashboard;
 - the calendar is informational only and uses the same completed-Practice activity concept as the streak.
 
@@ -1553,7 +1584,7 @@ The API returns only dates with activity (API §8.2). The frontend derives the g
 
 ### Dashboard-only visual elements
 
-These belong to the Dashboard and are not application-wide rules: the welcome divider, the streak illustration, the calendar intensity colors, the Continue Learning accent bar, the 4/8 and 7/5 desktop column splits, the large counters, and the perfect-score color.
+These belong to the Dashboard and are not application-wide rules: the welcome divider, the streak illustration, the calendar active-day color, the Continue Learning accent bar, the 4/8 and 7/5 desktop column splits, the large counters, and the perfect-score color.
 
 ---
 
@@ -1587,6 +1618,8 @@ Each lesson item should support:
 
 Part and Chapter titles come from API data rather than hard-coded frontend text.
 
+Grammar lesson cards carry no vertical accent bar on their leading edge; the module accent appears through the icon tile, badges, and hover tint only (the accent bar is a Dashboard-only element, §7.7).
+
 ---
 
 ## 7.9 Vocabulary Browse Wireframe
@@ -1604,6 +1637,10 @@ Category
 Reference entry
   Alphabet & Accents
 ```
+
+The overall Vocabulary progress in the header (learned / total Study Units and its percentage) comes from the `progress` object of `GET /api/v1/vocabulary` (API §10.1). The browse payload lists Topics only, so the frontend cannot count Study Units itself and must not estimate it.
+
+The Reference entry takes its slug and title from `GET /api/v1/references` (API §12.1) and links to `/basics/:referenceSlug`; the page does not hard-code `french-alphabet-accents`.
 
 ### Vocabulary Topic
 
@@ -1688,6 +1725,8 @@ Contextual actions
 
 This creates a consistent learner mental model even when each module renders different content.
 
+**Previous / Next navigation.** The API has no previous/next field or endpoint (API §23). The frontend computes the neighbours of the current unit from the sibling lists it already has: the lesson list of the same Chapter and its neighbours for Grammar, the Study Unit list of the same Topic for Vocabulary, and the lesson list of the same Tense for Conjugation, always in the order the API returns them. The first unit has no Previous and the last has no Next within that list; navigation does not cross into another Chapter, Topic, or Tense in the MVP. If the sibling list is not available (for example on a direct deep link before the browse data is loaded), the frontend fetches the relevant browse endpoint rather than guessing.
+
 Learning content may use Markdown where defined by the backend content model.
 
 ---
@@ -1740,11 +1779,13 @@ Do not make drag-and-drop the only available interaction if a keyboard/tap-frien
 - final submission is sent once to the backend;
 - duplicate or invalid submissions surface an appropriate error state.
 
+**Ordering questions have no source sentence (known limitation).** Practice keeps the single localized `prompt` field for every question type (API §14). An Ordering question's `prompt` is an instruction, and the contract has no field for a native-language source sentence, so `OrderingQuestion` shows the instruction and the French item chips only. This is a documented limitation for the demo. The frontend must not invent, translate, or reconstruct a source sentence.
+
 ---
 
 ## 7.13 Result Wireframe
 
-Result is rendered from the final Practice submission response.
+Result is rendered from the final Practice submission response. The frontend adapts to the backend shapes exactly as the API Contract defines them (API §17.2, §17.3): the per-question verdict is `correct`, the per-question list is `results[]`, the counts are `correct_count` and `total_questions`, and the overall `accuracy` is a number the UI rounds to a whole percent for display. The frontend does not request different field names or recompute the score.
 
 ```text
 +----------------------------------------------------+
@@ -1791,6 +1832,8 @@ Vocabulary
 Conjugation
   [saved learning unit]
 ```
+
+The list comes from the API already ordered by curriculum order (module order Grammar, Vocabulary, Conjugation, then the unit's position in its module; API §13.3), not by when the unit was saved. The frontend groups it by `unit_type` for display without re-sorting, so removing and re-adding a unit does not change its place.
 
 Each item should:
 
@@ -1960,7 +2003,7 @@ Loading
 Try again
 ```
 
-These belong to frontend VI/EN locale dictionaries and use the terminology in §9.4.
+These belong to the frontend VI/EN string table (`src/i18n/strings.js`, read through `t()`) and use the terminology in §9.4.
 
 ### Dynamic learning/content copy
 
@@ -2017,7 +2060,11 @@ The design must support:
 
 ## 9.3 Markdown Content
 
-Where backend content is authored as Markdown, the frontend should render the returned Markdown through one approved Markdown-rendering component.
+Where backend content is authored as Markdown, the frontend renders the returned Markdown through one approved Markdown-rendering component.
+
+**Approved dependencies.** The component uses `react-markdown` with the `remark-gfm` plugin (GitHub-flavored Markdown, needed for the tables in Grammar and Conjugation content). Both are approved additions to `frontend/package.json`; install them with npm and commit the resulting `package-lock.json` with the dependency change (Repository Conventions §6.10). No other Markdown library or custom parser is approved.
+
+**Raw HTML is disabled.** Raw HTML inside Markdown is not rendered: `react-markdown` is used with its default behaviour, `rehype-raw` (or any equivalent plugin) is not added, and `dangerouslySetInnerHTML` is not used for content. HTML-looking text in content is shown as text. Authored content that needs a structure beyond GFM must be reworked in `backend/data/` rather than by enabling HTML.
 
 Recommended ownership:
 
@@ -2027,7 +2074,6 @@ features/learning/LearningContent.jsx
 
 Do not implement separate Markdown parsing in Grammar, Vocabulary, and Conjugation pages.
 
-Raw HTML inside Markdown should not be enabled by default unless a concrete content requirement justifies it and the safety implications are understood.
 
 ---
 
@@ -2082,7 +2128,7 @@ Avoid near-synonyms for these concepts (for example "hỗn hợp" for Mixed Prac
 - **Supporting text** is one short, friendly sentence ending with a period. Emoji are decorative only and marked `aria-hidden="true"`.
 - **Scope.** Copy never mentions activities outside the MVP (listening, speaking, pronunciation scoring). Streak and calendar copy refer only to completed Practice and Mixed Practice.
 - **French text** in the UI is marked `lang="fr"`. French greetings are not translated.
-- **API content** (titles, content, meanings, prompts) is displayed as returned and never rewritten or duplicated in the dictionaries.
+- **API content** (titles, content, meanings, prompts) is displayed as returned and never rewritten or duplicated in the string table.
 - The brand name "Français Learning Journey" is not translated.
 
 ---
@@ -2248,7 +2294,7 @@ All frontend contributors and AI-assisted coding workflows should preserve the f
 19. **Use relative `/api/v1/...` URLs through the Vite proxy; do not hard-code the Flask origin.**
 20. **Render loading, error, empty, and data states explicitly; do not use blank pages as error handling.**
 21. **Do not hard-code curriculum Part/Chapter/Lesson/Topic/Study Unit titles into React components.**
-22. **Fixed UI text may be localized in frontend VI/EN dictionaries; dynamic learning content comes from the API.**
+22. **Fixed UI text may be localized in the frontend VI/EN string table; dynamic learning content comes from the API.**
 23. **Use CSS Modules for component/page styles and shared global design tokens for consistent visual language.**
 24. **Allow normal vertical page scrolling; do not clip long pages with global fixed-height/hidden-overflow rules.**
 25. **Responsive layouts must reflow content rather than scale the full desktop UI down as an image.**
@@ -2256,7 +2302,10 @@ All frontend contributors and AI-assisted coding workflows should preserve the f
 27. **Use the approved visual language (§7) consistently; keep the mascot and decoration secondary to learning content.**
 28. **When implementation conflicts with frozen requirements, API behavior, or architecture boundaries, resolve the design conflict before creating a competing frontend behavior.**
 29. **Use the EN/VI terminology in §9.4 for fixed UI copy; do not introduce near-synonyms for existing concepts.**
-30. **Do not display data the API does not provide; UI that depends on pending API fields is listed in §15 and must not be backed by invented frontend logic.**
+30. **Do not display data the API does not provide; UI that needs a field the contract does not define waits for a contract update (the ones already added are listed in §15) and must not be backed by invented frontend logic.**
+31. **Keep wire `snake_case` field names in the API client; do not convert keys.**
+32. **Take "today" for the calendar and streak display from the Dashboard `today` value, never from the browser clock.**
+33. **Render Markdown only through the single `react-markdown` + `remark-gfm` component with raw HTML disabled.**
 
 ---
 
@@ -2335,12 +2384,21 @@ The implementation should remain data-driven, readable, responsive, and easy to 
 
 ---
 
-# 15. Pending API Dependencies
+# 15. API Dependencies Added to the Contract
 
-The approved UI uses the following data that the current API Contract does not yet expose. Until the contract is updated, the frontend shows placeholder/sample values only in the static Dashboard prototype and must not derive these values from invented logic.
+The approved UI uses data that the original API Contract did not expose. Each item below is now defined in `docs/api-contracts.md`; none is backed by invented frontend logic.
 
-| # | UI element | Data needed | Status |
-|---|---|---|---|
-| 1 | Continue Learning — parent section | `continue_learning.parent` with `title_fr` / `title` (Grammar Chapter, Vocabulary Subtopic, Conjugation Tense) | Pending contract change |
-| 2 | Continue Learning — lesson position ("Bài 4/6") | `continue_learning.position` with the unit's 1-based index and the total number of units in that parent | Pending contract change |
-| 3 | Greeting `Bienvenue !` | A first-visit signal for the Dashboard | Interim frontend rule in §7.7; an explicit signal needs a contract decision |
+| # | UI element | Contract |
+|---|---|---|
+| 1 | Continue Learning: parent section | `continue_learning.parent` (`kind`, `title_fr`, `title`), API §8.1 |
+| 2 | Continue Learning: lesson position ("Bài 4/6") | `continue_learning.position` (`index`, `total`), API §8.1 |
+| 3 | Greeting `Bienvenue !` | No new field; derived from Dashboard data (§7.7, API §8.1) |
+| 4 | Dashboard "today" and streak day | `today` (`date`, `timezone`), API §8.1 and §4.10 |
+| 5 | Learning Activity Calendar | `GET /api/v1/me/activity-calendar`, unique active dates, API §8.2 |
+| 6 | Vocabulary overall progress | `progress` on `GET /api/v1/vocabulary`, API §10.1 |
+| 7 | Reference entry point | `GET /api/v1/references`, API §12.1 |
+| 8 | Review Later order | Curriculum order, API §13.3 |
+
+Items that stay frontend-only by decision: Previous/Next lesson links (§7.11), Mixed Practice availability read from the Dashboard (§5.4.7), and percentage/accuracy display (§7.7).
+
+Known limitation, not an API dependency: Ordering questions have no source sentence (§7.12).

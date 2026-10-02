@@ -571,7 +571,7 @@ The interface should clearly communicate which activities count toward maintaini
 - If the learner is active today, the current streak is the consecutive run of active days ending today.
 - If the learner has not yet been active today but was active yesterday, the current streak remains the consecutive run ending yesterday and can still be maintained by completing practice today.
 - If the learner was active neither today nor yesterday, the current streak is `0` until a new valid learning day is recorded.
-- For the local MVP, streak day boundaries use the backend application's local calendar date. A user-configurable timezone is outside scope.
+- For the local MVP, streak day boundaries use the calendar date of one server clock fixed to `Asia/Ho_Chi_Minh`; the same clock supplies the Dashboard "today" value and activity dates. A user-configurable timezone is outside scope.
 
 ### 11.3 Longest Streak
 
@@ -586,13 +586,13 @@ Rules:
 
 ### 11.4 Learning Activity Calendar
 
-A GitHub-style **Learning Activity Calendar** is a **Should Have** feature.
+A **Learning Activity Calendar** is a **Should Have** feature. It has been selected for implementation and is presented as a monthly view on the Dashboard.
 
-If implemented:
+Rules:
 
-- it shall visualize recent active learning days using the same completed-practice activity definition used by the streak;
-- daily intensity may represent the number of completed Practice and Mixed Practice sessions on that date;
-- it should show a manageable recent period (for example, several recent weeks) rather than requiring a full one-year view;
+- it shall visualize active learning days using the same completed-practice activity definition used by the streak;
+- it shows which dates of a month had at least one completed Practice or Mixed Practice session (unique active dates); it does not show per-day session counts or intensity;
+- it shows one calendar month at a time, opens on the current month, and lets the learner move to earlier months but not to future months;
 - it shall be informational only and shall not independently change progress or streak values.
 
 ---
@@ -853,7 +853,13 @@ At minimum:
 - passwords shall be securely hashed by the backend;
 - protected learner data shall require authentication;
 - backend endpoints shall validate incoming data;
-- one learner shall not be able to update another learner's progress or account data.
+- one learner shall not be able to update another learner's progress or account data;
+- authenticated sessions shall expire;
+- the session cookie shall be `Secure` when the application is served over HTTPS;
+- state-changing requests shall be protected against cross-site request forgery;
+- repeated failed login attempts shall be rate limited.
+
+API §4.7 holds the contract-level detail; thresholds and lifetimes are backend configuration.
 
 The following are outside MVP scope:
 
