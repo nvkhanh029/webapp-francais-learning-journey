@@ -755,7 +755,7 @@
         }
 
         .page-description {
-            max-width: 28rem;
+            max-width: 27rem;
             margin-top: var(--space-xs);
             color: var(--color-muted);
             font-size: var(--text-body);
@@ -965,6 +965,7 @@
            default -> learned (sage) -> saved for Review Later (rose). .is-saved is declared
            last, so a lesson that is both learned and saved takes the Review Later look. */
         .lesson-item {
+            --lesson-accent: var(--color-border);
             --lesson-bg: var(--color-background);
             --lesson-border: var(--color-border);
             --lesson-hover-border: var(--accent-border);
@@ -995,11 +996,13 @@
         }
 
         .lesson-item.is-learned {
+            --lesson-accent: var(--color-sage);
             --lesson-hover-border: var(--color-sage-border);
             --lesson-hover-accent: var(--color-sage);
         }
 
         .lesson-item.is-saved {
+            --lesson-accent: var(--color-rose);
             --lesson-bg: color-mix(in srgb, var(--color-rose-soft), var(--color-background));
             --lesson-border: var(--color-rose-border);
             --lesson-hover-border: var(--color-rose);

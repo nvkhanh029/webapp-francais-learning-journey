@@ -1015,6 +1015,18 @@
                 box-shadow 150ms;
         }
 
+        .study-unit-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            border-radius: 0;
+            background: var(--unit-accent);
+            transition: background-color 150ms;
+        }
+
         /* Đã học = sage */
         .study-unit-card.is-learned {
             --unit-accent: var(--color-sage);

@@ -23,7 +23,7 @@
     <!--
       Static Practice page prototype (frontend-design.md (FD) §4.6, §4.7, §5.8, §7.12, §7.13, §8.7).
       One page, one route (/practice/:unitSlug). Practice Result is NOT a separate route: answering,
-      reviewing and result are phases of this same page (FD §4.7). Normal and Mixed Practice share it.
+      reviewing and result are phases of this same page (FD §4.7). Mixed Practice lives in practice-mix.html.
 
       Normalized against the Dashboard baseline and stitch-ui-guidelines.md: shared tokens, container,
       page-padding scale, card / button / badge / progress / icon-tile / state-note / page-state
@@ -49,7 +49,6 @@
         ?preview=reviewing-incomplete  review with unanswered questions (final submit blocked)
         ?preview=submit-error     review with a failed final submit
         ?preview=result           submitted result (normal Practice)
-        ?preview=result-mixed     submitted result (Mixed Practice, with "Nội dung đã luyện tập")
         ?preview=loading          Practice loading state
         ?preview=error            Practice load error state
 
@@ -123,9 +122,9 @@
             --color-success: #2e6b3f;
             --color-success-soft: #eef7f0;
             --color-success-border: #c3e0cb;
-            --color-danger: #ba1a1a;
-            --color-danger-soft: #fff0ef;
-            --color-danger-border: #f3c4c0;
+            --color-danger: #ba0035;
+            --color-danger-soft: #fff4f5;
+            --color-danger-border: #f9cad0;
 
             --space-xs: 0.25rem;
             --space-sm: 0.5rem;
@@ -568,7 +567,7 @@
             --accent: var(--color-blue);
             --accent-soft: var(--color-blue-soft);
             --accent-border: var(--color-blue-border);
-            --badge-color: var(--color-blue-strong);
+            --badge-color: var(--color-blue-dark);
         }
 
         .subject-conjugation {
@@ -1821,8 +1820,7 @@
     <main class="page-container practice-page" id="main-content">
         <div class="practice-shell">
 
-            <!-- 2. Breadcrumbs. Normal Practice: module (link) > unit (link) > current page.
-                 Mixed Practice has no learning unit, so its trail returns to the Dashboard. -->
+            <!-- 2. Breadcrumbs. Normal Practice: module (link) > unit (link) > current page. -->
             <nav class="breadcrumbs" aria-label="Đường dẫn trang">
                 <ol class="breadcrumb-list" data-crumbs="normal">
                     <li>
@@ -1840,18 +1838,6 @@
                     <li>
                         <span class="material-symbols-outlined crumb-separator" aria-hidden="true">chevron_right</span>
                         <span class="crumb-current" aria-current="page">Luyện tập</span>
-                    </li>
-                </ol>
-                <ol class="breadcrumb-list" data-crumbs="mixed" hidden>
-                    <li>
-                        <a class="crumb-link" href="#" data-route="/dashboard">
-                            <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
-                            <span>Bảng điều khiển</span>
-                        </a>
-                    </li>
-                    <li>
-                        <span class="material-symbols-outlined crumb-separator" aria-hidden="true">chevron_right</span>
-                        <span class="crumb-current" aria-current="page">Luyện tập tổng hợp</span>
                     </li>
                 </ol>
             </nav>
@@ -1901,7 +1887,7 @@
             </div>
             <div class="card page-state" data-page-state="error" role="alert" hidden>
                 <span class="material-symbols-outlined" aria-hidden="true">cloud_off</span>
-                <h2 class="page-state-title">Không thể tải bài luyện tập</h2>
+                <h1 class="page-state-title">Không thể tải bài luyện tập</h1>
                 <p>Đã có lỗi khi tải dữ liệu. Vui lòng thử lại.</p>
                 <button class="button button-secondary button-compact" type="button" data-action="retry-page">Thử
                     lại</button>
@@ -2019,42 +2005,6 @@
                             <div class="progress-track" role="progressbar" aria-labelledby="accuracy-label"
                                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="67" data-result-bar>
                                 <div class="progress-fill"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mixed Practice only: distinct learning units in this session (Requirements §9.2). -->
-                    <div class="card practice-section" data-mixed-only aria-labelledby="covered-title" hidden>
-                        <div class="card-heading">
-                            <div class="icon-tile subject-mixed" aria-hidden="true">
-                                <span class="material-symbols-outlined">category</span>
-                            </div>
-                            <div>
-                                <h2 class="section-title" id="covered-title">Nội dung đã luyện tập</h2>
-                                <p class="card-subtitle">Các bài có câu hỏi trong lần luyện tập này.</p>
-                            </div>
-                        </div>
-                        <div class="covered-groups">
-                            <div class="subject-conjugation">
-                                <h3 class="covered-group-title"><span class="material-symbols-outlined"
-                                        aria-hidden="true">schedule</span>Chia động từ</h3>
-                                <ul class="covered-items">
-                                    <li lang="fr">Les verbes réguliers en -ER</li>
-                                </ul>
-                            </div>
-                            <div class="subject-grammar">
-                                <h3 class="covered-group-title"><span class="material-symbols-outlined"
-                                        aria-hidden="true">draw</span>Ngữ pháp</h3>
-                                <ul class="covered-items">
-                                    <li lang="fr">Les articles définis</li>
-                                </ul>
-                            </div>
-                            <div class="subject-vocabulary">
-                                <h3 class="covered-group-title"><span class="material-symbols-outlined"
-                                        aria-hidden="true">style</span>Từ vựng</h3>
-                                <ul class="covered-items">
-                                    <li lang="fr">Le pain et les viennoiseries — Partie 1</li>
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -2475,21 +2425,6 @@
                 setPhase("answering");
             });
 
-            /* ---------- Mixed Practice variant (prototype preview) ---------- */
-            function applyMixed() {
-                $("[data-crumbs='normal']").hidden = true;
-                $("[data-crumbs='mixed']").hidden = false;
-                $("[data-header-tile]").className = "icon-tile subject-mixed";
-                $("[data-header-icon]").textContent = "casino";
-                $("[data-header-badge]").className = "badge subject-mixed";
-                $("[data-header-module]").textContent = "Tổng hợp";
-                const title = $("[data-practice-title]");
-                title.textContent = "Luyện tập tổng hợp";
-                title.removeAttribute("lang");
-                $("[data-action='back-to-learning']").hidden = true;
-                $("[data-mixed-only]").hidden = false;
-            }
-
             /* ---------- Page states ---------- */
             const pageStates = $$("[data-page-state]");
             function showPageState(name) {
@@ -2518,12 +2453,11 @@
 
             /* ---------- Initial preview state ---------- */
             if (preview === "answering-partial") answers = { 0: "parle", 1: "habitons", 4: [1, 4] };
-            if (["reviewing", "submit-error", "result", "result-mixed"].includes(preview)) answers = { ...DEMO_ANSWERS };
+            if (["reviewing", "submit-error", "result"].includes(preview)) answers = { ...DEMO_ANSWERS };
             if (preview === "reviewing-incomplete") answers = { ...DEMO_ANSWERS, 3: "", 5: undefined };
-            if (preview === "result-mixed") applyMixed();
 
             if (preview === "reviewing" || preview === "reviewing-incomplete" || preview === "submit-error") setPhase("reviewing", { focus: false });
-            else if (preview === "result" || preview === "result-mixed") setPhase("result", { focus: false });
+            else if (preview === "result") setPhase("result", { focus: false });
             else setPhase("answering", { focus: false });
 
             if (preview === "submit-error") $("[data-submit-error]").hidden = false;
