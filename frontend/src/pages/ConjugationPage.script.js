@@ -266,31 +266,6 @@ export default function init({ onLanguageChange } = {}) {
       }
       document.querySelector('[data-action="retry"]').addEventListener("click", () => render(SAMPLE_CONJUGATION));
 
-      /* ---------- Compact navigation menu (same behavior as Dashboard, FD §8.5) ---------- */
-      const menuButton = document.querySelector(".menu-button");
-      const mobileNav = document.getElementById("mobile-nav");
-      const menuIcon = menuButton.querySelector(".material-symbols-outlined");
-
-      function setMenu(open) {
-          menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
-          menuIcon.textContent = open ? "close" : "menu";
-          mobileNav.hidden = !open;
-      }
-
-      menuButton.addEventListener("click", () => setMenu(mobileNav.hidden));
-      mobileNav.addEventListener("click", (event) => {
-          if (event.target.closest("a")) setMenu(false);
-      });
-      document.addEventListener("keydown", (event) => {
-          if (event.key === "Escape" && !mobileNav.hidden) {
-              setMenu(false);
-              menuButton.focus();
-          }
-      });
-      window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
-          if (event.matches) setMenu(false);
-      });
       /* ---------- Language change: re-render this page's copy in place ---------- */
       onLanguageChange(() => {
           const openTenses = tenseButtons().map((button) => button.getAttribute("aria-expanded") === "true");
@@ -301,7 +276,6 @@ export default function init({ onLanguageChange } = {}) {
               });
               if (tenseButtons().length) updateToggleAll();
           }
-          setMenu(!mobileNav.hidden);
       });
   })();
 

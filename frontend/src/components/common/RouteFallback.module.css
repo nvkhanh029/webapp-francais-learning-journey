@@ -1,0 +1,46 @@
+/* Placeholder shown while a lazily loaded page downloads. It mirrors the page-state card of the pages. */
+.fallback {
+  flex: 1;
+  padding-top: 112px;
+  padding-bottom: var(--space-xl);
+}
+
+.fallback :global(.page-state) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  min-width: 0;
+  margin-top: var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+  text-align: center;
+}
+
+.fallback :global(.page-state p) {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.fallback :global(.spinner) {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-primary-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 900ms linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fallback :global(.spinner) {
+    animation: none;
+  }
+}

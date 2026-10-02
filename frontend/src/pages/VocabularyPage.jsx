@@ -67,6 +67,11 @@
       5. Categories > Topics (rendered from templates)
       6. Footer
 */
+import EmptyState from "../components/common/EmptyState.jsx";
+import ErrorState from "../components/common/ErrorState.jsx";
+import LoadingState from "../components/common/LoadingState.jsx";
+import ProgressBar from "../components/common/ProgressBar.jsx";
+import PageHeader from "../components/common/PageHeader.jsx";
 import styles from "./VocabularyPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
 import { t } from "../i18n/index.js";
@@ -76,126 +81,15 @@ export default function VocabularyPage() {
   const rootRef = usePageScript(init, { title: "title.vocabulary" });
 
   return (
-    <div className={styles.page} ref={rootRef}>
+    <div className={`page-body ${styles.page}`} ref={rootRef}>
       {/* 1. Header (same component as the Dashboard; Vocabulary active) */}
-      <header className="site-header">
-        <div className="page-container header-content">
-          <div className="brand">
-            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
-            {" "}
-            <span className="brand-name">
-              Français Learning Journey
-            </span>
-          </div>
-          <nav className="main-nav" aria-label={t("common.mainNav")}>
-            <a className="nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/vocabulary" aria-current="page">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/grammar">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </nav>
-          <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
-              <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
-                VI
-              </button>
-              {" "}
-              <button className="language-button" type="button" aria-pressed="false" data-lang="en" title="English">
-                EN
-              </button>
-            </div>
-            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                logout
-              </span>
-              {" "}
-              <span className="logout-label">
-                {t("common.logout")}
-              </span>
-            </button>
-            {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                menu
-              </span>
-            </button>
-          </div>
-        </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
-          <div className="page-container mobile-nav-list">
-            <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/vocabulary" aria-current="page">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/grammar">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </div>
-        </nav>
-      </header>
       <main className="page-container vocabulary-page subject-vocabulary" id="main-content">
         {/* 2. Page header: fixed UI copy (not curriculum titles) + the reference entry. */}
         <section className="card page-hero page-section" aria-labelledby="page-title">
           <div className="hero-main">
-            <div className="hero-intro">
-              <div className="icon-tile icon-tile-solid" aria-hidden="true">
-                <span className="material-symbols-outlined">
-                  style
-                </span>
-              </div>
-              <div>
-                <h1 className="page-title" id="page-title">
-                  {t("common.vocabulary")}
-                  <span className="title-glyphs" lang="fr" aria-hidden="true">
-                    <span>
-                      à
-                    </span>
-                    {" "}
-                    <span>
-                      ê
-                    </span>
-                    {" "}
-                    <span>
-                      ô
-                    </span>
-                  </span>
-                </h1>
-                <p className="page-description">
-                  {t("vocab.description")}
-                </p>
-              </div>
-            </div>
+            <PageHeader icon="style" title={t("common.vocabulary")} description={t("vocab.description")} glyphs={["à", "ê", "ô"]} />
             <div className="overview-panel" data-overview hidden>
-              <div className="progress-labels">
-                <span>
-                  {t("common.progress")}
-                </span>
-                {" "}
-                <span className="progress-value" data-slot="percent">
-                  0%
-                </span>
-              </div>
-              <div className="progress-track" role="progressbar" aria-label={t("common.progressVocabulary")} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-slot="track">
-                <div className="progress-fill" />
-              </div>
+              <ProgressBar label={t("common.progress")} percent={0} ariaLabel={t("common.progressVocabulary")} valueProps={{ "data-slot": "percent" }} trackProps={{ "data-slot": "track" }} />
               <ul className="overview-states" aria-label={t("common.learningStatus")}>
                 <li className="badge badge-learned">
                   <span className="material-symbols-outlined icon-filled" aria-hidden="true">
@@ -266,36 +160,9 @@ export default function VocabularyPage() {
         {/* 3. Page states (FD §6.6). Shown instead of the Vocabulary content; the reference entry
              above stays available because it does not depend on this request.
         */}
-        <div className="card page-state" data-page-state="loading" role="status" hidden>
-          <div className="spinner" aria-hidden="true" />
-          <p>
-            {t("vocab.loading")}
-          </p>
-        </div>
-        <div className="card page-state" data-page-state="error" role="alert" hidden>
-          <span className="material-symbols-outlined" aria-hidden="true">
-            cloud_off
-          </span>
-          <h2 className="page-state-title">
-            {t("vocab.loadError")}
-          </h2>
-          <p>
-            {t("common.loadError")}
-          </p>
-          <button className="button button-secondary button-compact" type="button" data-action="retry">
-            {t("common.retry")}
-          </button>
-        </div>
-        <div className="card page-state" data-page-state="empty" hidden>
-          <span className="material-symbols-outlined" aria-hidden="true">
-            style
-          </span>
-          <h2 className="page-state-title">
-            {t("vocab.emptyTitle")}
-          </h2>
-          <p>
-            {t("vocab.emptyText")}
-          </p>
+        <LoadingState hidden message={t("vocab.loading")} />
+        <ErrorState hidden headingLevel={2} title={t("vocab.loadError")} retryAction="retry" />
+        <EmptyState hidden icon="style" headingLevel={2} title={t("vocab.emptyTitle")} message={t("vocab.emptyText")}>
           <div className="explore-links">
             <a className="lesson-link subject-grammar" href="#" data-route="/grammar">
               {t("common.grammar")}
@@ -311,7 +178,7 @@ export default function VocabularyPage() {
               </span>
             </a>
           </div>
-        </div>
+        </EmptyState>
         <div data-vocabulary-content hidden>
           {/* 4. Content summary: array lengths of the response, nothing else. */}
           <ul className="toolbar-summary" data-summary aria-label={t("common.contentRegion")} />
@@ -347,18 +214,6 @@ export default function VocabularyPage() {
             </a>
         </li>
     ` }} />
-      {/* 6. Footer */}
-      <footer className="site-footer">
-        <div className="page-container footer-content">
-          <span className="material-symbols-outlined" aria-hidden="true">
-            auto_stories
-          </span>
-          {" "}
-          <span>
-            {t("common.footer")}
-          </span>
-        </div>
-      </footer>
     </div>
   );
 }

@@ -80,6 +80,8 @@
       6. Learning actions
       7. Footer
 */
+import ErrorState from "../components/common/ErrorState.jsx";
+import LoadingState from "../components/common/LoadingState.jsx";
 import styles from "./VocabularyStudyUnitPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
 import { t } from "../i18n/index.js";
@@ -89,81 +91,8 @@ export default function VocabularyStudyUnitPage() {
   const rootRef = usePageScript(init, { title: "title.vocabulary" });
 
   return (
-    <div className={styles.page} ref={rootRef}>
+    <div className={`page-body ${styles.page}`} ref={rootRef}>
       {/* 1. Header (same component as the Dashboard; Vocabulary stays active on Study Unit pages) */}
-      <header className="site-header">
-        <div className="page-container header-content">
-          <div className="brand">
-            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
-            {" "}
-            <span className="brand-name">
-              Français Learning Journey
-            </span>
-          </div>
-          <nav className="main-nav" aria-label={t("common.mainNav")}>
-            <a className="nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/vocabulary" aria-current="page">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/grammar">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </nav>
-          <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
-              <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
-                VI
-              </button>
-              {" "}
-              <button className="language-button" type="button" aria-pressed="false" data-lang="en" title="English">
-                EN
-              </button>
-            </div>
-            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                logout
-              </span>
-              {" "}
-              <span className="logout-label">
-                {t("common.logout")}
-              </span>
-            </button>
-            {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                menu
-              </span>
-            </button>
-          </div>
-        </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
-          <div className="page-container mobile-nav-list">
-            <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/vocabulary" aria-current="page">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/grammar">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </div>
-        </nav>
-      </header>
       <main className="page-container unit-page subject-vocabulary" id="main-content">
         <div className="unit" data-unit>
           {/* 2. Breadcrumbs. Từ vựng and the Topic are links (real routes); Category is context
@@ -212,26 +141,8 @@ export default function VocabularyStudyUnitPage() {
             </ol>
           </nav>
           {/* 3. Page states (FD §6.6). Shown instead of the Study Unit; no sample data behind them. */}
-          <div className="card page-state" data-page-state="loading" role="status" hidden>
-            <div className="spinner" aria-hidden="true" />
-            <p>
-              {t("common.loadingLesson")}
-            </p>
-          </div>
-          <div className="card page-state" data-page-state="error" role="alert" hidden>
-            <span className="material-symbols-outlined" aria-hidden="true">
-              cloud_off
-            </span>
-            <h1 className="page-state-title">
-              {t("common.loadLessonError")}
-            </h1>
-            <p>
-              {t("common.loadError")}
-            </p>
-            <button className="button button-secondary button-compact" type="button" data-action="retry">
-              {t("common.retry")}
-            </button>
-          </div>
+          <LoadingState hidden message={t("common.loadingLesson")} />
+          <ErrorState hidden headingLevel={1} title={t("common.loadLessonError")} retryAction="retry" />
           <article aria-labelledby="unit-title" data-unit-content>
             {/* 4. Study Unit header: French title first, localized title second, context, count,
                      learner state. The count is entries.length, not an API field.
@@ -434,18 +345,6 @@ export default function VocabularyStudyUnitPage() {
             </div>
         </li>
     ` }} />
-      {/* 7. Footer */}
-      <footer className="site-footer">
-        <div className="page-container footer-content">
-          <span className="material-symbols-outlined" aria-hidden="true">
-            auto_stories
-          </span>
-          {" "}
-          <span>
-            {t("common.footer")}
-          </span>
-        </div>
-      </footer>
     </div>
   );
 }

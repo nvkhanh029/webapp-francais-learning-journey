@@ -384,24 +384,6 @@ export default function init({ onLanguageChange } = {}) {
       }
       $("[data-action='retry-page']").addEventListener("click", () => showPageState("content"));
 
-      /* ---------- Compact navigation menu (FD §8.5) ---------- */
-      const menuButton = $(".menu-button");
-      const mobileNav = $("#mobile-nav");
-      const menuIcon = $(".material-symbols-outlined", menuButton);
-
-      function setMenu(open) {
-          menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
-          menuIcon.textContent = open ? "close" : "menu";
-          mobileNav.hidden = !open;
-      }
-      menuButton.addEventListener("click", () => setMenu(mobileNav.hidden));
-      mobileNav.addEventListener("click", (event) => { if (event.target.closest("a")) setMenu(false); });
-      document.addEventListener("keydown", (event) => {
-          if (event.key === "Escape" && !mobileNav.hidden) { setMenu(false); menuButton.focus(); }
-      });
-      window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => { if (event.matches) setMenu(false); });
-
       /* ---------- Initial preview state ---------- */
       if (preview === "answering-partial") answers = { 0: "parle", 1: "habitons", 4: [1, 4] };
       if (["reviewing", "submit-error", "result"].includes(preview)) answers = { ...DEMO_ANSWERS };
@@ -416,7 +398,6 @@ export default function init({ onLanguageChange } = {}) {
       if (preview === "error") showPageState("error");
       // Language change: re-render the copy this script writes, for the current phase, keeping answers.
       onLanguageChange(() => {
-          setMenu(!mobileNav.hidden);
           if (phase === "answering") renderQuestion();
           if (phase === "reviewing") renderReview();
           if (phase === "result") renderResult();

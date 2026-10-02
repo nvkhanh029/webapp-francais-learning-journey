@@ -1,1 +1,122 @@
-/* TODO: Design tokens. */
+/* Design tokens (FD §7.3, §7.4). */
+
+:root {
+  --font-body: "Nunito Sans", sans-serif;
+  --font-heading: "Be Vietnam Pro", sans-serif;
+  --text-caption: 0.75rem;
+  --text-label: 0.8125rem;
+  --text-small: 0.875rem;
+  --text-body: 0.9375rem;
+  --text-practice: 1rem;
+  --text-card-title: 1.0625rem;
+  --text-brand: 1.125rem;
+  --text-section: 1.125rem;
+  --text-feature: 1.25rem;
+  --text-display: 1.75rem;
+  --leading-body: 1.6;
+  --leading-heading: 1.4;
+  --leading-label: 1.5;
+  --tracking-heading: -0.015em;
+  --tracking-label: 0.01em;
+  --color-background: #faf7f2;
+  --color-card: #ffffff;
+  --color-border: #eadbcc;
+  --color-heading: #2b2118;
+  --color-text: #231918;
+  --color-muted: #554336;
+  --color-description: #4e453e;
+  --color-primary: #8d4b00;
+  --color-primary-dark: #6b3700;
+  --color-primary-soft: #fff5e6;
+  --color-primary-border: #f0dec0;
+  --color-blue: #0058be;
+  --color-blue-strong: #085ac0;
+  --color-blue-dark: #004395;
+  --color-blue-soft: #f0f5ff;
+  --color-blue-border: #c5d7ff;
+  --color-orange: #b84824;
+  --color-orange-strong: #c2410c;
+  --color-orange-dark: #9a3412;
+  --color-orange-soft: #fff0ed;
+  --color-orange-border: #fdcac1;
+  --color-sage: #3d7a52;
+  --color-sage-dark: #2e5f3f;
+  --color-sage-soft: #eef6ef;
+  --color-sage-border: #c9e1cf;
+  --color-rose: #a3445c;
+  --color-rose-dark: #8a3349;
+  --color-rose-soft: #fdf1f3;
+  --color-rose-border: #f9cad0;
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.25rem;
+  --page-padding: var(--space-md);
+  --radius-card: 1.5rem;
+  --radius-small: 1rem;
+  --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+  --color-gold: #9a6b12;
+  --color-gold-dark: #80570d;
+  --color-gold-soft: #fff8e1;
+  --color-gold-border: #ead79a;
+  --color-muted-rgb: 85 67 54;
+  --color-danger: #ba0035;
+  --color-danger-border: #f9cad0;
+  --color-danger-soft: #fff4f5;
+  --color-success: #2e6b3f;
+  --color-success-soft: #eef7f0;
+  --color-success-border: #c3e0cb;
+}
+
+.subject-conjugation {
+  --accent: var(--color-orange);
+  --accent-soft: var(--color-orange-soft);
+  --accent-border: var(--color-orange-border);
+  --progress-color: var(--color-orange-strong);
+  --badge-color: var(--color-orange-dark);
+  --link-color: var(--color-orange-dark);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --page-padding: var(--space-lg);
+    --text-section: 1.25rem;
+    --text-feature: 1.375rem;
+    --text-display: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-padding: 2.5rem;
+  }
+}
+
+.subject-vocabulary {
+  --link-color: var(--color-blue-strong);
+  --accent: var(--color-blue);
+  --accent-soft: var(--color-blue-soft);
+  --accent-border: var(--color-blue-border);
+  --progress-color: var(--color-blue-strong);
+  --badge-color: var(--color-blue-dark);
+}
+
+.subject-grammar {
+  --link-color: var(--color-gold);
+  --accent: var(--color-gold);
+  --accent-soft: var(--color-gold-soft);
+  --accent-border: var(--color-gold-border);
+  --progress-color: var(--color-gold);
+  --badge-color: var(--color-gold-dark);
+}
+
+.subject-mixed {
+  --accent: var(--color-primary);
+  --accent-soft: var(--color-primary-soft);
+  --accent-border: var(--color-primary-border);
+  --progress-color: var(--color-primary);
+  --badge-color: var(--color-primary-dark);
+  --link-color: var(--color-primary);
+}

@@ -64,6 +64,8 @@ export default function init({ onLanguageChange } = {}) {
       }
 
       let streakCurrent = Number(document.querySelector("[data-streak-current]").textContent);
+      // Sample streak.active_today (API §8.1): true while the learner has completed a Practice today.
+      let streakActiveToday = true;
       let isFirstVisit = false;
       let calendarData = SAMPLE_CALENDAR;
 
@@ -75,6 +77,7 @@ export default function init({ onLanguageChange } = {}) {
           // Mirrors the API's New Learner State. First visit is inferred from it (FD §7.7).
           isFirstVisit = true;
           streakCurrent = 0;
+          streakActiveToday = false;
           document.querySelector("[data-streak-current]").textContent = "0";
           document.querySelector("[data-streak-longest]").textContent = "0";
           document.querySelectorAll("[data-module-progress]").forEach((card) => {
@@ -94,8 +97,10 @@ export default function init({ onLanguageChange } = {}) {
       }
 
       if (preview === "streak-off") {
-          // Off state only: the current streak is 0 (streak.current === 0); everything else stays sample data.
+          // Off state only: no Practice completed today (streak.active_today === false) and the current streak is 0;
+          // everything else stays sample data.
           streakCurrent = 0;
+          streakActiveToday = false;
           document.querySelector("[data-streak-current]").textContent = "0";
       }
 
@@ -108,10 +113,11 @@ export default function init({ onLanguageChange } = {}) {
       }
       renderStreakUnits();
 
-      // Lit flame while the current streak is active, unlit flame when streak.current is 0.
+      // The flame is lit only when streak.active_today is true (FD §7.7); never from streak.current alone, so a
+      // retained run that ended yesterday shows the unlit flame.
       const STREAK_IMAGE_SRC = { on: "/images/streak-on.png", off: "/images/streak-off.png" };
       function renderStreakImage() {
-          const state = streakCurrent > 0 ? "on" : "off";
+          const state = streakActiveToday ? "on" : "off";
           const streakImageElement = document.querySelector("[data-streak-image]");
           streakImageElement.setAttribute("src", STREAK_IMAGE_SRC[state]);
           streakImageElement.setAttribute("alt", t(state === "on" ? "dashboard.streakAltOn" : "dashboard.streakAltOff"));
@@ -124,31 +130,6 @@ export default function init({ onLanguageChange } = {}) {
       if (preview === "error") showPageState("error");
       document.querySelector('[data-action="retry-page"]').addEventListener("click", () => showPageState("content"));
 
-      /* ---------- Compact navigation menu (FD §8.5) ---------- */
-      const menuButton = document.querySelector(".menu-button");
-      const mobileNav = document.getElementById("mobile-nav");
-      const menuIcon = menuButton.querySelector(".material-symbols-outlined");
-
-      function setMenu(open) {
-          menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
-          menuIcon.textContent = open ? "close" : "menu";
-          mobileNav.hidden = !open;
-      }
-
-      menuButton.addEventListener("click", () => setMenu(mobileNav.hidden));
-      mobileNav.addEventListener("click", (event) => {
-          if (event.target.closest("a")) setMenu(false);
-      });
-      document.addEventListener("keydown", (event) => {
-          if (event.key === "Escape" && !mobileNav.hidden) {
-              setMenu(false);
-              menuButton.focus();
-          }
-      });
-      window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
-          if (event.matches) setMenu(false);
-      });
 
       /* ---------- Practice calendar (FD §7.7) ---------- */
       const card = document.querySelector(".activity-card");
@@ -259,7 +240,6 @@ export default function init({ onLanguageChange } = {}) {
               renderModuleProgress(moduleCard, Number(moduleCard.dataset.learned), Number(moduleCard.dataset.total));
           });
           renderMonth();
-          setMenu(!mobileNav.hidden);
       });
   })();
 

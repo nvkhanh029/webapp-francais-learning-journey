@@ -59,7 +59,7 @@ export default function LanguageSetupPage() {
   const rootRef = usePageScript(init, { title: "title.languageSetup" });
 
   return (
-    <div className={styles.page} ref={rootRef}>
+    <div className={`app-page ${styles.page}`} ref={rootRef}>
       {/* 1. Header: brand only (see the note in section 3 of the stylesheet above). */}
       <header className="site-header">
         <div className="page-container header-content">

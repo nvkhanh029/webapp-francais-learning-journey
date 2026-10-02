@@ -11,9 +11,8 @@ let currentLanguage = null;
 const subscribers = new Set();
 
 function readStoredLanguage() {
-  // PROTOTYPE STORAGE: the final source of the support language (learner profile / API,
-  // AuthContext.currentUser.support_language, FD §5.5) is not decided yet. Replace this read
-  // and the write in setLanguage() when it is.
+  // Per-browser convenience for public pages (FD §5.5): only the language code is stored. For a signed-in learner
+  // AuthContext applies currentUser.support_language on top of it, so this value never overrides the server.
   try {
     const stored = window.localStorage.getItem(STORAGE_KEY);
     return LANGUAGES.includes(stored) ? stored : DEFAULT_LANGUAGE;
@@ -35,7 +34,7 @@ export function setLanguage(next) {
   currentLanguage = next;
   document.documentElement.lang = next;
   try {
-    // PROTOTYPE STORAGE: see readStoredLanguage(). Replace with the preference update call later.
+    // See readStoredLanguage(). Saving the preference to the API is AuthContext.updateSupportLanguage().
     window.localStorage.setItem(STORAGE_KEY, next);
   } catch {
     // Storage can be blocked (private mode); the choice still applies for this session.

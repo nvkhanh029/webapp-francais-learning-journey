@@ -514,7 +514,8 @@ frontend/src/
 │   ├── useDashboard.js
 │   ├── useActivityCalendar.js
 │   ├── useLearningUnitState.js
-│   └── usePractice.js
+│   ├── usePractice.js
+│   └── usePageScript.js        (temporary)
 │
 ├── api/
 │   ├── apiClient.js
@@ -588,6 +589,8 @@ Owns application-wide React Context state only.
 ### `hooks/`
 
 Owns reusable React stateful logic.
+
+`usePageScript.js` is **temporary**. While the pages still run their companion `<Page>.script.js` files against the rendered DOM, it runs the script once per mounted page, turns in-page links into React Router navigation, and connects the page to the language state. It is removed, together with the page scripts, when the pages are rewritten into data-driven React (§3.4, §6.6); new pages must not use it.
 
 ### `api/`
 

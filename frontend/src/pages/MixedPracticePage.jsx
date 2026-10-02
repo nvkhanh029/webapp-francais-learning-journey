@@ -68,6 +68,7 @@
       7. Result phase (summary, Content Covered, question review)
       8. Footer
 */
+import Breadcrumbs from "../components/common/Breadcrumbs.jsx";
 import styles from "./MixedPracticePage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
 import { t } from "../i18n/index.js";
@@ -77,108 +78,12 @@ export default function MixedPracticePage() {
   const rootRef = usePageScript(init, { title: "title.mixedPractice" });
 
   return (
-    <div className={styles.page} ref={rootRef}>
+    <div className={`page-body ${styles.page}`} ref={rootRef}>
       {/* 1. Header. Mixed Practice is not a main navigation item (FD §4.4): no link is marked current. */}
-      <header className="site-header">
-        <div className="page-container header-content">
-          <div className="brand">
-            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
-            {" "}
-            <span className="brand-name">
-              Français Learning Journey
-            </span>
-          </div>
-          <nav className="main-nav" aria-label={t("common.mainNav")}>
-            <a className="nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/grammar">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </nav>
-          <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
-              <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
-                VI
-              </button>
-              {" "}
-              <button className="language-button" type="button" aria-pressed="false" data-lang="en" title="English">
-                EN
-              </button>
-            </div>
-            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                logout
-              </span>
-              {" "}
-              <span className="logout-label">
-                {t("common.logout")}
-              </span>
-            </button>
-            {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
-              <span className="material-symbols-outlined" aria-hidden="true">
-                menu
-              </span>
-            </button>
-          </div>
-        </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
-          <div className="page-container mobile-nav-list">
-            <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              {t("common.dashboard")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/grammar">
-              {t("common.grammar")}
-            </a>
-            {" "}
-            <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-            </a>
-          </div>
-        </nav>
-      </header>
       <main className="page-container practice-page" id="main-content">
         <div className="practice-shell">
           {/* 2. Breadcrumbs: Mixed Practice has no learning unit, so the trail returns to the Dashboard. */}
-          <nav className="breadcrumbs" aria-label={t("common.breadcrumb")}>
-            <ol className="breadcrumb-list">
-              <li>
-                <a className="crumb-link" href="#" data-route="/dashboard">
-                  <span className="material-symbols-outlined" aria-hidden="true">
-                    arrow_back
-                  </span>
-                  {" "}
-                  <span>
-                    {t("common.dashboard")}
-                  </span>
-                </a>
-              </li>
-              <li>
-                <span className="material-symbols-outlined crumb-separator" aria-hidden="true">
-                  chevron_right
-                </span>
-                {" "}
-                <span className="crumb-current" aria-current="page">
-                  {t("common.mixedPractice")}
-                </span>
-              </li>
-            </ol>
-          </nav>
+          <Breadcrumbs items={[{ label: t("common.dashboard"), to: "/dashboard", icon: "arrow_back" }, { label: t("common.mixedPractice") }]} />
           {/* 3. Practice header. The progress block and question stepper are shown only while answering
                  (stepper) and answering / reviewing (progress). Their length follows total_questions.
           */}
@@ -607,18 +512,6 @@ export default function MixedPracticePage() {
           </section>
         </div>
       </main>
-      {/* 8. Footer */}
-      <footer className="site-footer">
-        <div className="page-container footer-content">
-          <span className="material-symbols-outlined" aria-hidden="true">
-            auto_stories
-          </span>
-          {" "}
-          <span>
-            {t("common.footer")}
-          </span>
-        </div>
-      </footer>
     </div>
   );
 }

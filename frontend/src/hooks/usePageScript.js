@@ -31,7 +31,8 @@ function runTracked(init, context) {
   } finally {
     EventTarget.prototype.addEventListener = original;
   }
-  return () => records.forEach(([target, type, listener, options]) => target.removeEventListener(type, listener, options));
+  return () =>
+    records.forEach(([target, type, listener, options]) => target.removeEventListener(type, listener, options));
 }
 
 // Header switcher: both buttons reflect the current language.
@@ -103,7 +104,15 @@ export default function usePageScript(init, { title } = {}) {
     // Page scripts' own click handlers run first (bubbling). A handler that fully handles a click on an
     // element with data-route must call event.preventDefault(); this delegated handler then skips navigation.
     const onClick = (event) => {
-      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey
+      )
+        return;
       const languageButton = event.target.closest(".language-button[data-lang]");
       if (languageButton && el.contains(languageButton)) {
         setLanguage(languageButton.dataset.lang);

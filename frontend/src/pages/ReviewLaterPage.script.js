@@ -171,38 +171,12 @@ export default function init({ onLanguageChange } = {}) {
       else if (preview === "error") showState("error");
       else render();
 
-      /* ---------- Compact navigation menu (FD §8.5), same behavior as the Dashboard ---------- */
-      const menuButton = document.querySelector(".menu-button");
-      const mobileNav = document.getElementById("mobile-nav");
-      const menuIcon = menuButton.querySelector(".material-symbols-outlined");
-
-      function setMenu(open) {
-          menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
-          menuIcon.textContent = open ? "close" : "menu";
-          mobileNav.hidden = !open;
-      }
-
-      menuButton.addEventListener("click", () => setMenu(mobileNav.hidden));
-      mobileNav.addEventListener("click", (event) => {
-          if (event.target.closest("a")) setMenu(false);
-      });
-      document.addEventListener("keydown", (event) => {
-          if (event.key === "Escape" && !mobileNav.hidden) {
-              setMenu(false);
-              menuButton.focus();
-          }
-      });
-      window.matchMedia("(min-width: 768px)").addEventListener("change", (event) => {
-          if (event.matches) setMenu(false);
-      });
       /* ---------- Language change: re-render this page's copy in place ---------- */
       onLanguageChange(() => {
           // Rebuild titles for the new language; keep the rows the learner already removed.
           const remaining = new Set(items.map((item) => item.slug));
           items = samplePreview().filter((item) => remaining.has(item.slug));
           if (currentState === "content" || currentState === "empty") render();
-          setMenu(!mobileNav.hidden);
       });
   })();
 
