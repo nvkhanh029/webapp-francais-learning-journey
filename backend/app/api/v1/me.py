@@ -7,11 +7,13 @@ business rules live in the services.
 from flask import Blueprint, g, jsonify
 
 from ...auth_session import login_required
-from ...errors import ApiError
 from ...services import dashboard_service, learning_state_service, user_service
 from ...validation import (
+    NO_FIELDS,
+    field_errors,
     get_json_body,
     require_optional_boolean,
+    validate_fields,
     validate_support_language,
 )
 
@@ -58,19 +60,15 @@ def open_learning_unit(slug):
 @login_required
 def update_learning_unit_state(slug):
     body = get_json_body()
-    learned = require_optional_boolean(body, "learned")
-    review_later = require_optional_boolean(body, "review_later")
+    values = validate_fields({
+        "learned": lambda: require_optional_boolean(body, "learned"),
+        "review_later": lambda: require_optional_boolean(body, "review_later"),
+    })
+    learned, review_later = values["learned"], values["review_later"]
 
     if learned is None and review_later is None:
-        raise ApiError(
-            422,
-            "validation_error",
-            "At least one of learned or review_later is required.",
-            {
-                "learned": "At least one of learned or review_later must be supplied.",
-                "review_later": "At least one of learned or review_later must be supplied.",
-            },
-        )
+        # No single field is at fault, so every allowed field carries the code.
+        field_errors({"learned": NO_FIELDS, "review_later": NO_FIELDS})
 
     result = learning_state_service.update_state(
         g.current_user["id"],

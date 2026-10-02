@@ -7,6 +7,12 @@ from ..db import transaction
 from ..errors import ApiError
 from ..localization import localized_value, resolve_support_language
 from ..repositories import learning_unit_repository, practice_repository
+from ..validation import (
+    INVALID_TYPE,
+    INVALID_VALUE,
+    REQUIRED,
+    field_error,
+)
 
 
 MAX_MIXED_QUESTIONS = 10
@@ -101,12 +107,7 @@ def submit_practice(run_id, answers):
     user_id = g.current_user["id"]
 
     if not isinstance(run_id, str) or not run_id:
-        raise ApiError(
-            422,
-            "validation_error",
-            "Request fields are invalid.",
-            {"practice_run_id": "Must be a non-empty string."},
-        )
+        field_error("practice_run_id", INVALID_VALUE)
 
     store = _run_store()
 
@@ -252,28 +253,34 @@ def submit_practice(run_id, answers):
 
 
 def _parse_answers(answers):
+    if answers is None:
+        field_error("answers", REQUIRED)
     if not isinstance(answers, list):
-        _validation_error("answers", "Must be an array.")
+        field_error("answers", INVALID_TYPE)
 
     parsed = {}
     for index, entry in enumerate(answers):
         field = f"answers[{index}]"
         if not isinstance(entry, dict):
-            _validation_error(field, "Must be an object.")
+            field_error(field, INVALID_TYPE)
 
         question_id = entry.get("question_id")
         answer = entry.get("answer")
 
-        if type(question_id) is not int or question_id <= 0:
-            _validation_error(f"{field}.question_id", "Must be a positive integer.")
+        if question_id is None:
+            field_error(f"{field}.question_id", REQUIRED)
+        if type(question_id) is not int:
+            field_error(f"{field}.question_id", INVALID_TYPE)
+        if question_id <= 0:
+            field_error(f"{field}.question_id", INVALID_VALUE)
+        if answer is None:
+            field_error(f"{field}.answer", REQUIRED)
         if not isinstance(answer, dict):
-            _validation_error(f"{field}.answer", "Must be an object.")
+            field_error(f"{field}.answer", INVALID_TYPE)
 
         key = str(question_id)
         if key in parsed:
-            _validation_error(
-                f"{field}.question_id", "Question may only be answered once."
-            )
+            field_error(f"{field}.question_id", INVALID_VALUE)
         parsed[key] = answer
 
     return parsed
@@ -288,34 +295,44 @@ def _validate_answers(questions, parsed_answers):
         question_type = question["question_type"]
 
         if question_type == "mcq":
-            if set(answer) != {"item_id"} or type(answer["item_id"]) is not int:
-                _validation_error(field, "MCQ answer must contain exactly one integer item_id.")
+            _require_only_key(answer, field, "item_id")
+            if type(answer["item_id"]) is not int:
+                field_error(f"{field}.item_id", INVALID_TYPE)
             if not any(item["id"] == answer["item_id"] for item in question["items"]):
-                _validation_error(field, "item_id does not belong to this question.")
+                field_error(f"{field}.item_id", INVALID_VALUE)
 
         elif question_type == "fill_blank":
-            if set(answer) != {"text"} or not isinstance(answer["text"], str) or not answer["text"].strip():
-                _validation_error(field, "Fill-blank answer must contain exactly one string text value.")
+            _require_only_key(answer, field, "text")
+            if not isinstance(answer["text"], str):
+                field_error(f"{field}.text", INVALID_TYPE)
+            if not answer["text"].strip():
+                field_error(f"{field}.text", REQUIRED)
 
         elif question_type == "ordering":
-            item_ids = answer.get("item_ids")
+            _require_only_key(answer, field, "item_ids")
+            item_ids = answer["item_ids"]
             expected = [item["id"] for item in question["items"]]
-            if set(answer) != {"item_ids"} or not isinstance(item_ids, list):
-                _validation_error(field, "Ordering answer must contain exactly one item_ids array.")
+            if not isinstance(item_ids, list):
+                field_error(f"{field}.item_ids", INVALID_TYPE)
+            if any(type(item_id) is not int for item_id in item_ids):
+                field_error(f"{field}.item_ids", INVALID_TYPE)
             if (
                 len(item_ids) != len(expected)
-                or any(type(item_id) is not int for item_id in item_ids)
                 or len(set(item_ids)) != len(item_ids)
                 or set(item_ids) != set(expected)
             ):
-                _validation_error(field, "item_ids must be a complete permutation of this question's items.")
+                field_error(f"{field}.item_ids", INVALID_VALUE)
 
         else:
-            _validation_error(field, "Unsupported question type.")
+            field_error(field, INVALID_VALUE)
 
 
-def _validation_error(field, message):
-    raise ApiError(422, "validation_error", "Request fields are invalid.", {field: message})
+def _require_only_key(answer, field, key):
+    """The answer object must be exactly {key: ...} (API Contract 17.1 answer shapes)."""
+    if key not in answer:
+        field_error(f"{field}.{key}", REQUIRED)
+    if set(answer) != {key}:
+        field_error(field, INVALID_VALUE)
 
 
 def _is_answer_correct(question, answer):
