@@ -1,7 +1,8 @@
-import { setLanguage, t, useLanguage } from "../../i18n/index.js";
+import useAuth from "../../hooks/useAuth.js";
+import { t, useLanguage } from "../../i18n/index.js";
 
-// VI / EN segmented control (FD §6.8, §7.6). It writes the shared language state; once AuthContext exists the
-// write goes through updateSupportLanguage().
+// VI / EN segmented control (FD §6.8, §7.6). The choice goes through AuthContext.updateSupportLanguage(): a saved
+// preference for a signed-in learner, a per-browser value otherwise. A failed save leaves the language unchanged.
 const OPTIONS = [
   { code: "vi", title: "Tiếng Việt" },
   { code: "en", title: "English" },
@@ -9,6 +10,7 @@ const OPTIONS = [
 
 export default function LanguageSelector() {
   const language = useLanguage();
+  const { updateSupportLanguage } = useAuth();
 
   return (
     <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
@@ -20,7 +22,7 @@ export default function LanguageSelector() {
           aria-pressed={language === option.code}
           data-lang={option.code}
           title={option.title}
-          onClick={() => setLanguage(option.code)}
+          onClick={() => updateSupportLanguage(option.code).catch(() => {})}
         >
           {option.code.toUpperCase()}
         </button>

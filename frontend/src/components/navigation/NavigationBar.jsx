@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
+import useAuth from "../../hooks/useAuth.js";
 import { t, useLanguage } from "../../i18n/index.js";
 import { navSectionForPath } from "../../utils/routeHelpers.js";
 import LanguageSelector from "./LanguageSelector.jsx";
@@ -18,6 +19,8 @@ const NAV_ITEMS = [
 export default function NavigationBar() {
   useLanguage();
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+  const { logout } = useAuth();
   const currentPath = navSectionForPath(pathname);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef(null);
@@ -25,6 +28,11 @@ export default function NavigationBar() {
 
   useMobileNavDismiss(menuOpen, closeMenu, menuButtonRef);
   useEffect(() => setMenuOpen(false), [pathname]);
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/login", { replace: true });
+  };
 
   return (
     <header className="site-header">
@@ -42,8 +50,7 @@ export default function NavigationBar() {
         </nav>
         <div className="header-actions">
           <LanguageSelector />
-          {/* Logout is wired to AuthContext.logout() with the auth integration step. */}
-          <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
+          <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")} onClick={handleLogout}>
             <span className="material-symbols-outlined" aria-hidden="true">
               logout
             </span>

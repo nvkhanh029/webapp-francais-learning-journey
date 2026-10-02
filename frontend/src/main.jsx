@@ -7,11 +7,14 @@ import "./styles/tokens.css";
 import "./styles/shared.css";
 import "./styles/globals.css";
 import App from "./app/App.jsx";
+import AppProviders from "./app/providers.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <AppProviders>
+        <App />
+      </AppProviders>
     </BrowserRouter>
   </StrictMode>,
 );
