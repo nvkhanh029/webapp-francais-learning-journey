@@ -1,33 +1,12 @@
 // Behavior carried over from the raw UI prototype (conjugation-lesson-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by ConjugationLessonPage.jsx.
-export default function init({ getLanguage, onLanguageChange } = {}) {
+import { t } from "../i18n/index.js";
+
+export default function init({ onLanguageChange } = {}) {
   // UI preview only. No fetching, authentication, persistence, or routing is added here.
   // Production components receive this data from GET /api/v1/conjugation/lessons/{slug}.
   (() => {
-      let isEnglish = getLanguage() === "en";
       const preview = new URLSearchParams(window.location.search).get("preview");
-
-      // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const buildCopy = (isEnglish) => isEnglish
-          ? {
-              pageTitle: (title) => `Français Learning Journey | ${title}`,
-              marked: "Marked as learned.",
-              unmarked: "Removed the learned mark.",
-              saved: "Added to Review Later.",
-              removed: "Removed from Review Later.",
-              menuOpen: "Close navigation menu",
-              menuClosed: "Navigation menu",
-          }
-          : {
-              pageTitle: (title) => `Français Learning Journey | ${title}`,
-              marked: "Đã đánh dấu đã học.",
-              unmarked: "Đã bỏ đánh dấu đã học.",
-              saved: "Đã thêm vào Xem lại sau.",
-              removed: "Đã bỏ khỏi Xem lại sau.",
-              menuOpen: "Đóng menu điều hướng",
-              menuClosed: "Menu điều hướng",
-          };
-      let COPY = buildCopy(isEnglish);
 
       // Sample responses in the shape of GET /api/v1/conjugation/lessons/{slug}. `content` is
       // one localized Markdown string (truncated here); its rendered HTML is in the templates
@@ -158,10 +137,10 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
       // Prototype only: production sends PATCH /api/v1/me/learning-units/{slug}/state with the
       // changed field and renders the `state` from the response.
       const ACTIONS = {
-          "mark-learned": { change: { learned: true }, get announce() { return COPY.marked; }, focus: "unmark-learned" },
-          "unmark-learned": { change: { learned: false }, get announce() { return COPY.unmarked; }, focus: "mark-learned" },
-          "save-review": { change: { review_later: true }, get announce() { return COPY.saved; }, focus: "remove-review" },
-          "remove-review": { change: { review_later: false }, get announce() { return COPY.removed; }, focus: "save-review" },
+          "mark-learned": { change: { learned: true }, get announce() { return t("lesson.marked"); }, focus: "unmark-learned" },
+          "unmark-learned": { change: { learned: false }, get announce() { return t("lesson.unmarked"); }, focus: "mark-learned" },
+          "save-review": { change: { review_later: true }, get announce() { return t("lesson.savedMessage"); }, focus: "remove-review" },
+          "remove-review": { change: { review_later: false }, get announce() { return t("lesson.removedMessage"); }, focus: "save-review" },
       };
 
       actions.addEventListener("click", (event) => {
@@ -175,10 +154,6 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
       /* ---------- Previous / Next lesson navigation ---------- */
       // Fills one side. With no neighbor the slot is kept and rendered unavailable: no href
       // (so it is neither focusable nor navigable), aria-disabled, and neutral copy.
-      const unavailableCopyFor = (isEnglish) => (isEnglish
-          ? { previous: "No previous lesson", next: "No next lesson" }
-          : { previous: "Không có bài trước", next: "Không có bài tiếp theo" });
-      let UNAVAILABLE_COPY = unavailableCopyFor(isEnglish);
 
       function fillNavLink(link, neighbor, side) {
           const title = slot(link, "title");
@@ -189,7 +164,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
               link.setAttribute("role", "link");
               link.setAttribute("aria-disabled", "true");
               title.removeAttribute("lang");
-              title.textContent = UNAVAILABLE_COPY[side];
+              title.textContent = t(side === "previous" ? "lesson.noPrevious" : "lesson.noNext");
               support.hidden = true;
               support.textContent = "";
               return;
@@ -213,7 +188,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       /* ---------- Lesson ---------- */
       function renderLesson(lesson, contentTemplateId) {
-          document.title = COPY.pageTitle(lesson.title_fr || lesson.title);
+          document.title = t("common.pageTitle", { title: lesson.title_fr || lesson.title });
 
           const header = article.querySelector(".lesson-header");
           setTitles(slot(header, "title"), slot(header, "support"), lesson);
@@ -297,7 +272,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       function setMenu(open) {
           menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", open ? COPY.menuOpen : COPY.menuClosed);
+          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
           menuIcon.textContent = open ? "close" : "menu";
           mobileNav.hidden = !open;
       }
@@ -316,10 +291,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           if (event.matches) setMenu(false);
       });
       /* ---------- Language change: re-render this page's copy in place ---------- */
-      onLanguageChange((language) => {
-          isEnglish = language === "en";
-          COPY = buildCopy(isEnglish);
-          UNAVAILABLE_COPY = unavailableCopyFor(isEnglish);
+      onLanguageChange(() => {
           if (!article.hidden) {
               // Re-render the page copy but keep the learner state toggled on this page.
               const learnerState = { ...state };

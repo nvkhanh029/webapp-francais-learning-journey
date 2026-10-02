@@ -1,23 +1,26 @@
 // Behavior carried over from the raw UI prototype (register-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by RegisterPage.jsx.
+import { t } from "../i18n/index.js";
+
 export default function init() {
   // UI prototype only. No API request, session, or redirect is made here.
   (() => {
-      // Fixed copy used by the script; production copy lives in the i18n dictionaries.
+      // Copy read from the central string table (src/i18n/strings.js) each time it is used, so it
+      // always follows the current language.
       const COPY = {
-          submit: "Đăng ký",
-          submitting: "Đang tạo tài khoản…",
-          showPassword: "Hiện mật khẩu",
-          hidePassword: "Ẩn mật khẩu",
-          emailRequired: "Vui lòng nhập email.",
-          emailInvalid: "Vui lòng nhập email hợp lệ.",
-          passwordRequired: "Vui lòng nhập mật khẩu.",
-          passwordTooShort: "Mật khẩu phải có ít nhất 8 ký tự.",
+          get submit() { return t("auth.registerSubmit"); },
+          get submitting() { return t("auth.registerSubmitting"); },
+          get showPassword() { return t("common.showPassword"); },
+          get hidePassword() { return t("common.hidePassword"); },
+          get emailRequired() { return t("common.emailRequired"); },
+          get emailInvalid() { return t("auth.emailInvalid"); },
+          get passwordRequired() { return t("common.passwordRequired"); },
+          get passwordTooShort() { return t("auth.passwordTooShort"); },
           // 409 email_already_registered (API Contract §6.1).
-          emailTaken: "Email này đã được đăng ký.",
+          get emailTaken() { return t("auth.emailTaken"); },
           // Unexpected 422 validation_error (client checks mirror the backend, so rare).
-          invalidRequest: "Thông tin đăng ký chưa hợp lệ. Vui lòng kiểm tra lại.",
-          serverError: "Không thể đăng ký lúc này. Vui lòng thử lại.",
+          get invalidRequest() { return t("auth.invalidRequest"); },
+          get serverError() { return t("auth.registerServerError"); },
       };
 
       const MIN_PASSWORD_LENGTH = 8;

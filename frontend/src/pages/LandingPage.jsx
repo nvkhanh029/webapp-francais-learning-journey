@@ -37,9 +37,10 @@
 */
 import styles from "./LandingPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 
 export default function LandingPage() {
-  const rootRef = usePageScript(null, { title: "Français Learning Journey | Học tiếng Pháp" });
+  const rootRef = usePageScript(null, { title: "title.landing" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -47,19 +48,19 @@ export default function LandingPage() {
       <header className="site-header">
         <div className="page-container header-content">
           <a className="brand" href="#" data-route="/">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
             </span>
           </a>
-          <nav className="header-actions" aria-label="Tài khoản">
+          <nav className="header-actions" aria-label={t("common.account")}>
             <a className="button button-secondary button-compact" href="#" data-route="/login">
-              Đăng nhập
+              {t("common.loginAction")}
             </a>
             {" "}
             <a className="button button-primary button-compact header-start" href="#" data-route="/register">
-              Bắt đầu học
+              {t("landing.start")}
             </a>
           </nav>
         </div>
@@ -70,18 +71,18 @@ export default function LandingPage() {
           <div className="hero-grid">
             <div className="hero-content">
               <p className="badge">
-                Học tiếng Pháp theo cách của bạn
+                {t("landing.heroEyebrow")}
               </p>
               <h1 className="hero-title" id="hero-title">
-                Học tiếng Pháp tự do, rõ ràng và có hệ thống
+                {t("landing.heroTitle")}
               </h1>
               <p className="hero-lead">
-                Học Từ vựng, Ngữ pháp và Chia động từ theo từng bài, luyện tập sau khi học và theo dõi tiến độ của bạn.
+                {t("landing.heroText")}
               </p>
               <div className="hero-actions">
                 <a className="button button-primary" href="#" data-route="/register">
                   <span>
-                    Bắt đầu học
+                    {t("landing.start")}
                   </span>
                   {" "}
                   <span className="material-symbols-outlined" aria-hidden="true">
@@ -90,7 +91,7 @@ export default function LandingPage() {
                 </a>
                 {" "}
                 <a className="button button-secondary" href="#" data-route="/login">
-                  Đăng nhập
+                  {t("common.loginAction")}
                 </a>
               </div>
               <p className="hero-note">
@@ -99,7 +100,7 @@ export default function LandingPage() {
                 </span>
                 {" "}
                 <span>
-                  Không khóa bài học. Học theo nhịp của riêng bạn.
+                  {t("landing.heroNote")}
                 </span>
               </p>
             </div>
@@ -107,11 +108,11 @@ export default function LandingPage() {
             <figure className="card lesson-preview subject-grammar">
               <figcaption className="preview-header">
                 <span className="badge">
-                  Ngữ pháp
+                  {t("common.grammar")}
                 </span>
                 {" "}
                 <span className="preview-caption">
-                  Bài học mẫu
+                  {t("landing.sampleLesson")}
                 </span>
               </figcaption>
               <div>
@@ -119,7 +120,7 @@ export default function LandingPage() {
                   Les articles définis
                 </p>
                 <p className="preview-subtitle">
-                  Mạo từ xác định
+                  {t("landing.definiteArticles")}
                 </p>
               </div>
               <ul className="plain-list preview-rules">
@@ -128,7 +129,7 @@ export default function LandingPage() {
                     le
                   </span>
                   <span>
-                    Giống đực, số ít
+                    {t("landing.masculineSingular")}
                   </span>
                 </li>
                 <li className="preview-rule">
@@ -136,7 +137,7 @@ export default function LandingPage() {
                     la
                   </span>
                   <span>
-                    Giống cái, số ít
+                    {t("landing.feminineSingular")}
                   </span>
                 </li>
                 <li className="preview-rule">
@@ -144,7 +145,7 @@ export default function LandingPage() {
                     les
                   </span>
                   <span>
-                    Số nhiều
+                    {t("landing.plural")}
                   </span>
                 </li>
               </ul>
@@ -153,21 +154,21 @@ export default function LandingPage() {
                   <span className="material-symbols-outlined" aria-hidden="true">
                     task_alt
                   </span>
-                  Đánh dấu đã học
+                  {t("common.markLearned")}
                 </span>
                 {" "}
                 <span className="preview-chip">
                   <span className="material-symbols-outlined" aria-hidden="true">
                     bookmark
                   </span>
-                  Xem lại sau
+                  {t("common.reviewLater")}
                 </span>
                 {" "}
                 <span className="preview-chip">
                   <span className="material-symbols-outlined" aria-hidden="true">
                     edit_note
                   </span>
-                  Luyện tập
+                  {t("common.practice")}
                 </span>
               </div>
             </figure>
@@ -177,10 +178,10 @@ export default function LandingPage() {
         <section className="page-container landing-section" aria-labelledby="modules-title">
           <div className="section-intro">
             <h2 className="landing-heading" id="modules-title">
-              Bạn có thể học gì?
+              {t("landing.whatTitle")}
             </h2>
             <p className="section-description">
-              Ba phần học chính, mỗi phần có nội dung học và bài luyện tập riêng.
+              {t("landing.whatText")}
             </p>
           </div>
           <ul className="plain-list module-grid">
@@ -191,29 +192,29 @@ export default function LandingPage() {
                 </span>
               </div>
               <h3 className="module-title">
-                Từ vựng
+                {t("common.vocabulary")}
               </h3>
               <p className="module-description">
-                Mở rộng vốn từ theo chủ đề, ngữ cảnh và các nhóm từ thường gặp.
+                {t("dashboard.vocabularyText")}
               </p>
               <ul className="plain-list module-points">
                 <li>
                   <span className="material-symbols-outlined" aria-hidden="true">
                     check
                   </span>
-                  Đa dạng chủ đề từ vựng.
+                  {t("landing.vocabularyVariety")}
                 </li>
                 <li>
                   <span className="material-symbols-outlined" aria-hidden="true">
                     check
                   </span>
-                  Bảng chữ cái và dấu tiếng Pháp
+                  {t("common.alphabetTitle")}
                 </li>
                 <li>
                   <span className="material-symbols-outlined" aria-hidden="true">
                     check
                   </span>
-                  Luyện tập sau mỗi bài
+                  {t("landing.practiceAfterEach")}
                 </li>
               </ul>
             </li>
@@ -224,29 +225,29 @@ export default function LandingPage() {
                 </span>
               </div>
               <h3 className="module-title">
-                Ngữ pháp
+                {t("common.grammar")}
               </h3>
               <p className="module-description">
-                Học các quy tắc và cấu trúc ngữ pháp theo từng nhóm.
+                {t("dashboard.grammarText")}
               </p>
               <ul className="plain-list module-points">
                 <li>
                   <span className="material-symbols-outlined" aria-hidden="true">
                     check
                   </span>
-                  Bài học sắp xếp theo phần và chương
+                  {t("landing.grammarOrder")}
                 </li>
                 <li>
                   <span className="material-symbols-outlined" aria-hidden="true">
                     check
                   </span>
-                  Lý thuyết kèm ví dụ trong từng bài
+                  {t("landing.grammarTheory")}
                 </li>
                 <li>
                   <span className="material-symbols-outlined" aria-hidden="true">
                     check
                   </span>
-                  Luyện tập sau mỗi bài
+                  {t("landing.practiceAfterEach")}
                 </li>
               </ul>
             </li>
@@ -257,29 +258,29 @@ export default function LandingPage() {
                 </span>
               </div>
               <h3 className="module-title">
-                Chia động từ
+                {t("common.conjugation")}
               </h3>
               <p className="module-description">
-                Học cách chia động từ theo thì, nhóm và các mẫu chia phổ biến.
+                {t("dashboard.conjugationText")}
               </p>
               <ul className="plain-list module-points">
                 <li>
                   <span className="material-symbols-outlined" aria-hidden="true">
                     check
                   </span>
-                  Bài học sắp xếp theo từng thì
+                  {t("landing.conjugationOrder")}
                 </li>
                 <li>
                   <span className="material-symbols-outlined" aria-hidden="true">
                     check
                   </span>
-                  Quy tắc và mẫu chia động từ trong từng bài
+                  {t("landing.conjugationRules")}
                 </li>
                 <li>
                   <span className="material-symbols-outlined" aria-hidden="true">
                     check
                   </span>
-                  Luyện tập sau mỗi bài
+                  {t("landing.practiceAfterEach")}
                 </li>
               </ul>
             </li>
@@ -289,16 +290,16 @@ export default function LandingPage() {
         <section className="page-container landing-section" aria-labelledby="flow-title">
           <div className="section-intro">
             <p className="badge">
-              Lộ trình mở
+              {t("landing.openPathTag")}
             </p>
             <h2 className="landing-heading" id="flow-title">
-              Học theo nhịp của riêng bạn
+              {t("landing.openPathTitle")}
             </h2>
             <p className="section-description">
-              Bạn có thể học bất kỳ nội dung nào mà không cần hoàn thành bài trước.
+              {t("landing.openPathText")}
             </p>
             <p className="section-note">
-              Không có bài học bị khóa và không cần đạt điểm tối thiểu để mở nội dung tiếp theo.
+              {t("landing.openPathNote")}
             </p>
           </div>
           <ol className="plain-list steps">
@@ -310,13 +311,13 @@ export default function LandingPage() {
               </div>
               <div>
                 <p className="step-number">
-                  Bước 1
+                  {t("landing.step1")}
                 </p>
                 <h3 className="step-title">
-                  Chọn nội dung muốn học
+                  {t("landing.step1Title")}
                 </h3>
                 <p className="step-description">
-                  Chọn Từ vựng, Ngữ pháp hoặc Chia động từ theo nhu cầu của bạn.
+                  {t("landing.step1Text")}
                 </p>
               </div>
             </li>
@@ -328,13 +329,13 @@ export default function LandingPage() {
               </div>
               <div>
                 <p className="step-number">
-                  Bước 2
+                  {t("landing.step2")}
                 </p>
                 <h3 className="step-title">
-                  Xem lý thuyết và ví dụ
+                  {t("landing.step2Title")}
                 </h3>
                 <p className="step-description">
-                  Đọc nội dung bài học với phần giải thích và ví dụ.
+                  {t("landing.step2Text")}
                 </p>
               </div>
             </li>
@@ -346,13 +347,13 @@ export default function LandingPage() {
               </div>
               <div>
                 <p className="step-number">
-                  Bước 3
+                  {t("landing.step3")}
                 </p>
                 <h3 className="step-title">
-                  Làm bài luyện tập
+                  {t("landing.step3Title")}
                 </h3>
                 <p className="step-description">
-                  Trả lời câu hỏi trắc nghiệm, điền vào chỗ trống hoặc sắp xếp câu.
+                  {t("landing.step3Text")}
                 </p>
               </div>
             </li>
@@ -364,13 +365,13 @@ export default function LandingPage() {
               </div>
               <div>
                 <p className="step-number">
-                  Bước 4
+                  {t("landing.step4")}
                 </p>
                 <h3 className="step-title">
-                  Xem kết quả và đáp án
+                  {t("landing.step4Title")}
                 </h3>
                 <p className="step-description">
-                  Sau khi nộp bài, xem câu nào đúng, câu nào sai và đáp án đúng.
+                  {t("landing.step4Text")}
                 </p>
               </div>
             </li>
@@ -382,13 +383,13 @@ export default function LandingPage() {
               </div>
               <div>
                 <p className="step-number">
-                  Bước 5
+                  {t("landing.step5")}
                 </p>
                 <h3 className="step-title">
-                  Theo dõi tiến độ
+                  {t("landing.step5Title")}
                 </h3>
                 <p className="step-description">
-                  Đánh dấu bài đã học, lưu bài để xem lại sau và giữ chuỗi ngày học.
+                  {t("landing.step5Text")}
                 </p>
               </div>
             </li>
@@ -400,10 +401,10 @@ export default function LandingPage() {
             <div>
               <div className="section-intro">
                 <h2 className="landing-heading" id="tracking-title">
-                  Theo dõi quá trình học
+                  {t("landing.trackTitle")}
                 </h2>
                 <p className="section-description">
-                  Theo dõi tiến độ, tiếp tục nội dung đang học và duy trì thói quen luyện tập.
+                  {t("landing.trackText")}
                 </p>
               </div>
               <ul className="plain-list feature-list">
@@ -415,10 +416,10 @@ export default function LandingPage() {
                   </div>
                   <div>
                     <h3 className="feature-title">
-                      Tiến độ học tập
+                      {t("common.learningProgress")}
                     </h3>
                     <p className="feature-description">
-                      Xem tiến độ Từ vựng, Ngữ pháp và Chia động từ theo số bài bạn đã đánh dấu đã học.
+                      {t("landing.trackProgress")}
                     </p>
                   </div>
                 </li>
@@ -430,10 +431,10 @@ export default function LandingPage() {
                   </div>
                   <div>
                     <h3 className="feature-title">
-                      Tiếp tục học
+                      {t("common.continueLearning")}
                     </h3>
                     <p className="feature-description">
-                      Quay lại bài bạn mở gần nhất nhưng chưa đánh dấu đã học.
+                      {t("landing.trackContinue")}
                     </p>
                   </div>
                 </li>
@@ -445,10 +446,10 @@ export default function LandingPage() {
                   </div>
                   <div>
                     <h3 className="feature-title">
-                      Chuỗi ngày học
+                      {t("landing.trackStreak")}
                     </h3>
                     <p className="feature-description">
-                      Hoàn thành một bài luyện tập hoặc luyện tập tổng hợp mỗi ngày để giữ chuỗi ngày học.
+                      {t("dashboard.tipText")}
                     </p>
                   </div>
                 </li>
@@ -460,10 +461,10 @@ export default function LandingPage() {
                   </div>
                   <div>
                     <h3 className="feature-title">
-                      Luyện tập tổng hợp
+                      {t("common.mixedPractice")}
                     </h3>
                     <p className="feature-description">
-                      Luyện tập với câu hỏi từ các bài bạn đã đánh dấu là đã học.
+                      {t("landing.trackMixed")}
                     </p>
                   </div>
                 </li>
@@ -479,10 +480,10 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <p className="preview-card-title">
-                    Tiến độ học tập
+                    {t("common.learningProgress")}
                   </p>
                   <p className="card-subtitle">
-                    Dữ liệu minh họa
+                    {t("common.dataPending")}
                   </p>
                 </div>
               </figcaption>
@@ -490,49 +491,49 @@ export default function LandingPage() {
                 <div className="subject-vocabulary">
                   <div className="progress-labels">
                     <span>
-                      Từ vựng
+                      {t("common.vocabulary")}
                     </span>
                     {" "}
                     <span className="progress-value">
                       72%
                     </span>
                   </div>
-                  <div className="progress-track" role="progressbar" aria-label="Tiến độ Từ vựng" aria-valuemax="100" aria-valuemin="0" aria-valuenow="72" style={{ "--progress": "72%" }}>
+                  <div className="progress-track" role="progressbar" aria-label={t("common.progressVocabulary")} aria-valuemax="100" aria-valuemin="0" aria-valuenow="72" style={{ "--progress": "72%" }}>
                     <div className="progress-fill" />
                   </div>
                 </div>
                 <div className="subject-grammar">
                   <div className="progress-labels">
                     <span>
-                      Ngữ pháp
+                      {t("common.grammar")}
                     </span>
                     {" "}
                     <span className="progress-value">
                       62%
                     </span>
                   </div>
-                  <div className="progress-track" role="progressbar" aria-label="Tiến độ Ngữ pháp" aria-valuemax="100" aria-valuemin="0" aria-valuenow="62" style={{ "--progress": "62%" }}>
+                  <div className="progress-track" role="progressbar" aria-label={t("common.progressGrammar")} aria-valuemax="100" aria-valuemin="0" aria-valuenow="62" style={{ "--progress": "62%" }}>
                     <div className="progress-fill" />
                   </div>
                 </div>
                 <div className="subject-conjugation">
                   <div className="progress-labels">
                     <span>
-                      Chia động từ
+                      {t("common.conjugation")}
                     </span>
                     {" "}
                     <span className="progress-value">
                       48%
                     </span>
                   </div>
-                  <div className="progress-track" role="progressbar" aria-label="Tiến độ Chia động từ" aria-valuemax="100" aria-valuemin="0" aria-valuenow="48" style={{ "--progress": "48%" }}>
+                  <div className="progress-track" role="progressbar" aria-label={t("common.progressConjugation")} aria-valuemax="100" aria-valuemin="0" aria-valuenow="48" style={{ "--progress": "48%" }}>
                     <div className="progress-fill" />
                   </div>
                 </div>
               </div>
               <p className="preview-streak">
                 <span>
-                  Chuỗi ngày học
+                  {t("landing.trackStreak")}
                 </span>
                 {" "}
                 <span className="badge">
@@ -541,7 +542,7 @@ export default function LandingPage() {
                   </span>
                   {" "}
                   <span>
-                    14 ngày liên tiếp
+                    {t("common.daysInARowN", { n: 14 })}
                   </span>
                 </span>
               </p>
@@ -551,16 +552,16 @@ export default function LandingPage() {
         {/* 6. Final call to action */}
         <section className="page-container landing-section" aria-labelledby="cta-title">
           <div className="cta-panel">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="cta-mascot" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="cta-mascot" src="/images/logo.png" />
             <h2 className="landing-heading" id="cta-title">
-              Sẵn sàng bắt đầu học tiếng Pháp?
+              {t("landing.ctaTitle")}
             </h2>
             <p className="cta-description">
-              Tạo tài khoản và bắt đầu với nội dung bạn muốn học ngay hôm nay.
+              {t("landing.ctaText")}
             </p>
             <a className="button button-primary" href="#" data-route="/register">
               <span>
-                Bắt đầu học
+                {t("landing.start")}
               </span>
               {" "}
               <span className="material-symbols-outlined" aria-hidden="true">
@@ -568,10 +569,10 @@ export default function LandingPage() {
               </span>
             </a>
             <p className="cta-login">
-              Đã có tài khoản?
+              {t("common.hasAccount")}
               {" "}
               <a className="text-link" href="#" data-route="/login">
-                Đăng nhập
+                {t("common.loginAction")}
               </a>
             </p>
             <ul className="plain-list cta-highlights">
@@ -579,13 +580,13 @@ export default function LandingPage() {
                 <span className="material-symbols-outlined" aria-hidden="true">
                   check
                 </span>
-                Tự do chọn nội dung
+                {t("landing.freeChoice")}
               </li>
               <li>
                 <span className="material-symbols-outlined" aria-hidden="true">
                   check
                 </span>
-                Không khóa bài học
+                {t("landing.noLocks")}
               </li>
             </ul>
           </div>
@@ -599,7 +600,7 @@ export default function LandingPage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

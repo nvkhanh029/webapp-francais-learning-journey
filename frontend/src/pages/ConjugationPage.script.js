@@ -1,35 +1,12 @@
 // Behavior carried over from the raw UI prototype (conjugation-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by ConjugationPage.jsx.
-export default function init({ getLanguage, onLanguageChange } = {}) {
+import { t } from "../i18n/index.js";
+
+export default function init({ onLanguageChange } = {}) {
   // UI preview only. No fetching, authentication, or routing is added here.
   // Production components receive this data from GET /api/v1/conjugation.
   (() => {
-      let isEnglish = getLanguage() === "en";
       const preview = new URLSearchParams(window.location.search).get("preview");
-
-      // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const buildCopy = (isEnglish) => isEnglish
-          ? {
-              lessons: (learned, total) => `${learned}/${total} lesson${total === 1 ? "" : "s"}`,
-              lessonCount: (n) => `${n} lesson${n === 1 ? "" : "s"}`,
-              summary: (t, l) => [`${t} tense${t === 1 ? "" : "s"}`, `${l} lesson${l === 1 ? "" : "s"}`],
-              collapseAll: "Collapse all",
-              expandAll: "Expand all",
-              menuOpen: "Close navigation menu",
-              menuClosed: "Navigation menu",
-              returnedTo: (title) => `Back to lesson: ${title}`,
-          }
-          : {
-              lessons: (learned, total) => `${learned}/${total} bài`,
-              lessonCount: (n) => `${n} bài`,
-              summary: (t, l) => [`${t} thì`, `${l} bài`],
-              collapseAll: "Thu gọn tất cả",
-              expandAll: "Mở rộng tất cả",
-              menuOpen: "Đóng menu điều hướng",
-              menuClosed: "Menu điều hướng",
-              returnedTo: (title) => `Đã quay lại bài: ${title}`,
-          };
-      let COPY = buildCopy(isEnglish);
 
       // Sample response in the shape of GET /api/v1/conjugation. Titles are sample curriculum
       // data, not the final curriculum; the layout must not depend on these titles or counts.
@@ -139,7 +116,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           body.id = bodyId;
           button.setAttribute("aria-controls", bodyId);
           setTitles(slot(section, "title"), slot(section, "support"), tense);
-          slot(section, "count").textContent = COPY.lessons(learned, lessons.length);
+          slot(section, "count").textContent = t("common.lessonsOf", { learned, total: lessons.length, n: lessons.length });
           const list = slot(section, "lessons");
           list.append(...lessons.map(renderLesson));
           list.hidden = lessons.length === 0;
@@ -174,12 +151,15 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           const learned = lessons.filter((lesson) => lesson.learned).length;
 
           setProgress(slot(overview, "track"), slot(overview, "percent"), learned, lessons.length);
-          slot(overview, "count").textContent = COPY.lessons(learned, lessons.length);
+          slot(overview, "count").textContent = t("common.lessonsOf", { learned, total: lessons.length, n: lessons.length });
           slot(overview, "review-count").textContent =
-              COPY.lessonCount(lessons.filter((lesson) => lesson.review_later).length);
+              t("common.lessonsN", { n: lessons.filter((lesson) => lesson.review_later).length });
           overview.classList.toggle("is-complete", learned === lessons.length);
           document.querySelector("[data-summary]").replaceChildren(
-              ...COPY.summary(tenses.length, lessons.length).map((text) => {
+              ...[
+                  t("conj.tensesCount", { n: tenses.length }),
+                  t("common.lessonsN", { n: lessons.length }),
+              ].map((text) => {
                   const chip = document.createElement("li");
                   chip.className = "badge badge-info";
                   chip.textContent = text;
@@ -208,7 +188,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       function updateToggleAll() {
           const anyOpen = tenseButtons().some((button) => button.getAttribute("aria-expanded") === "true");
-          slot(toggleAll, "label").textContent = anyOpen ? COPY.collapseAll : COPY.expandAll;
+          slot(toggleAll, "label").textContent = t(anyOpen ? "common.collapseAll" : "common.expandAll");
           slot(toggleAll, "icon").textContent = anyOpen ? "unfold_less" : "unfold_more";
       }
 
@@ -258,7 +238,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
               link.classList.add("is-returned");
               link.focus({ preventScroll: true });
               const title = slot(link, "title");
-              if (liveRegion) liveRegion.textContent = COPY.returnedTo(title ? title.textContent.trim() : "");
+              if (liveRegion) liveRegion.textContent = t("conj.returnedTo", { title: title ? title.textContent.trim() : "" });
               window.setTimeout(() => link.classList.remove("is-returned"), 1800);
           });
       }
@@ -293,7 +273,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       function setMenu(open) {
           menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", open ? COPY.menuOpen : COPY.menuClosed);
+          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
           menuIcon.textContent = open ? "close" : "menu";
           mobileNav.hidden = !open;
       }
@@ -312,9 +292,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           if (event.matches) setMenu(false);
       });
       /* ---------- Language change: re-render this page's copy in place ---------- */
-      onLanguageChange((language) => {
-          isEnglish = language === "en";
-          COPY = buildCopy(isEnglish);
+      onLanguageChange(() => {
           const openTenses = tenseButtons().map((button) => button.getAttribute("aria-expanded") === "true");
           if (currentData) {
               render(currentData, { restore: false });

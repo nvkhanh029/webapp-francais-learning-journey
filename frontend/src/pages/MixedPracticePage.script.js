@@ -1,6 +1,8 @@
 // Behavior carried over from the raw UI prototype (practice-mix.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by MixedPracticePage.jsx.
-export default function init({ getLanguage, onLanguageChange } = {}) {
+import { t } from "../i18n/index.js";
+
+export default function init({ onLanguageChange } = {}) {
   // PROTOTYPE ONLY. UI preview: no fetching, scoring, random selection, eligibility logic,
   // authentication, routing or persistence is added here.
   // Production: useMixedPractice() calls POST /api/v1/mixed-practice/start, then owns
@@ -10,19 +12,13 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
       const preview = new URLSearchParams(window.location.search).get("preview");
       const $ = (selector, root = document) => root.querySelector(selector);
       const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+      const langAttr = () => document.documentElement.lang;
       const esc = (text) => String(text).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-      /* ---------- Fixed copy (production: i18n dictionaries) ---------- */
-      const TYPE_LABEL = { mcq: "Trắc nghiệm", fill_blank: "Điền vào chỗ trống", ordering: "Sắp xếp câu" };
-      const INSTRUCTION = {
-          mcq: "Chọn một đáp án.",
-          fill_blank: "Nhập dạng đúng bằng tiếng Pháp.",
-          ordering: "Nhấn vào các từ để xếp thành câu hoàn chỉnh.",
-      };
-      const DESCRIPTION = {
-          intro: "Tối đa 10 câu hỏi ngẫu nhiên từ các bài bạn đã đánh dấu là đã học.",
-          session: "Trả lời tất cả câu hỏi, xem lại rồi nộp bài. Bạn có thể sửa câu trả lời bất cứ lúc nào trước khi nộp; đáp án đúng chỉ hiện sau khi bạn nộp bài.",
-      };
+      /* ---------- Fixed copy: read from src/i18n/strings.js each time it is used ---------- */
+      const TYPE_LABEL_KEY = { mcq: "practice.typeMcq", fill_blank: "practice.typeFill", ordering: "practice.typeOrdering" };
+      const INSTRUCTION_KEY = { mcq: "practice.instructionMcq", fill_blank: "practice.instructionFill", ordering: "practice.instructionOrdering" };
+      const typeLabel = (type) => t(TYPE_LABEL_KEY[type]);
       const FRENCH_CHARS = ["é", "è", "ê", "à", "â", "ç", "î", "ô", "œ"];
 
       /* ---------- Sample Mixed Practice Start response: practice_type "mixed", total_questions and
@@ -65,9 +61,9 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       /* Content Covered grouping and supported learning routes (no Mixed-specific routes exist). */
       const UNIT_GROUPS = [
-          { type: "grammar", label: "Ngữ pháp", icon: "draw", cls: "subject-grammar", route: (slug) => `/grammar/lessons/${slug}` },
-          { type: "vocabulary", label: "Từ vựng", icon: "style", cls: "subject-vocabulary", route: (slug) => `/vocabulary/study-units/${slug}` },
-          { type: "conjugation", label: "Chia động từ", icon: "schedule", cls: "subject-conjugation", route: (slug) => `/conjugation/lessons/${slug}` },
+          { type: "grammar", labelKey: "common.grammar", icon: "draw", cls: "subject-grammar", route: (slug) => `/grammar/lessons/${slug}` },
+          { type: "vocabulary", labelKey: "common.vocabulary", icon: "style", cls: "subject-vocabulary", route: (slug) => `/vocabulary/study-units/${slug}` },
+          { type: "conjugation", labelKey: "common.conjugation", icon: "schedule", cls: "subject-conjugation", route: (slug) => `/conjugation/lessons/${slug}` },
       ];
 
       /* ---------- Temporary Practice state (never persisted, FD §5.8) ---------- */
@@ -106,9 +102,9 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
       // "______" in an API prompt becomes a visible blank with a text alternative.
       function promptHtml(q) {
           if (q.type === "ordering") {
-              return `<span class="prompt-translation">Dịch sang tiếng Pháp</span>${esc(q.translation)}`;
+              return `<span class="prompt-translation">${t("practice.translateToFrench")}</span>${esc(q.translation)}`;
           }
-          return esc(q.prompt).replace("______", '<span class="blank"><span class="visually-hidden">chỗ trống</span></span>');
+          return esc(q.prompt).replace("______", `<span class="blank"><span class="visually-hidden">${t("practice.blank")}</span></span>`);
       }
 
       /* ---------- Phase handling ---------- */
@@ -120,7 +116,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           $("[data-progress-block]").hidden = !inSession;
           $("[data-stepper-nav]").hidden = next !== "answering";
           const description = $("[data-practice-description]");
-          description.textContent = inSession ? DESCRIPTION.session : DESCRIPTION.intro;
+          description.textContent = t(inSession ? "practice.sessionIntro" : "practice.mixedIntro");
           description.hidden = next === "result";
           if (next === "reviewing") renderReview();
           if (next === "result") renderResult();
@@ -148,7 +144,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
       /* ---------- Progress and stepper (both follow the real question count) ---------- */
       function updateChrome() {
           const count = answeredCount();
-          $("[data-answered-text]").textContent = `${count}/${total} câu`;
+          $("[data-answered-text]").textContent = t("practice.answeredCount", { answered: count, total, n: total });
           const bar = $("[data-progressbar]");
           bar.setAttribute("aria-valuemax", String(total));
           bar.setAttribute("aria-valuenow", String(count));
@@ -159,28 +155,28 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
               const isCurrent = i === current;
               return `<li><button class="step${answered ? " is-answered" : ""}" type="button" data-step="${i}"${isCurrent ? ' aria-current="step"' : ""}>
                   <span aria-hidden="true">${i + 1}</span>${answered ? '<span class="material-symbols-outlined" aria-hidden="true">check</span>' : ""}
-                  <span class="visually-hidden">Câu ${i + 1}, ${answered ? "đã trả lời" : "chưa trả lời"}</span></button></li>`;
+                  <span class="visually-hidden">${t("practice.stepLabel", { n: i + 1, state: t(answered ? "practice.answeredState" : "practice.unansweredState") })}</span></button></li>`;
           }).join("");
 
           if (phase !== "answering") return;
           const status = $("[data-answer-status]");
           const done = isAnswered(current);
           status.innerHTML = done
-              ? '<span class="material-symbols-outlined icon-filled" aria-hidden="true">check_circle</span>Đã trả lời câu này'
-              : '<span class="material-symbols-outlined" aria-hidden="true">radio_button_unchecked</span>Chưa trả lời câu này';
+              ? `<span class="material-symbols-outlined icon-filled" aria-hidden="true">check_circle</span>${t("practice.answeredThis")}`
+              : `<span class="material-symbols-outlined" aria-hidden="true">radio_button_unchecked</span>${t("practice.unansweredThis")}`;
 
           // The last question's button is just a second entry to the same transition as "Hoàn thành bài".
           const isLast = current === total - 1;
           $("[data-action='previous']").disabled = current === 0;
-          $("[data-next-label]").textContent = isLast ? "Xem lại câu trả lời" : "Câu tiếp theo";
+          $("[data-next-label]").textContent = t(isLast ? "practice.reviewAnswers" : "practice.next");
       }
 
       /* ---------- Answering: question markup by type ---------- */
       function renderQuestion() {
           const q = QUESTIONS[current];
-          $("[data-question-heading]").textContent = `Câu ${current + 1}/${total}`;
-          $("[data-question-type]").textContent = TYPE_LABEL[q.type];
-          $("[data-question-instruction]").textContent = INSTRUCTION[q.type];
+          $("[data-question-heading]").textContent = t("practice.questionOf", { n: current + 1, total });
+          $("[data-question-type]").textContent = typeLabel(q.type);
+          $("[data-question-instruction]").textContent = t(INSTRUCTION_KEY[q.type]);
           const body = $("[data-question-body]");
           const prompt = `<p class="question-prompt" id="prompt" lang="fr">${promptHtml(q)}</p>`;
           let html = "";
@@ -188,7 +184,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           if (q.type === "mcq") {
               // Native radios in a fieldset: arrow keys move the selection, Space selects.
               html = `<fieldset class="option-list" aria-describedby="prompt">
-                  <legend class="visually-hidden">Đáp án câu ${current + 1}</legend>
+                  <legend class="visually-hidden">${t("practice.optionsLegend", { n: current + 1 })}</legend>
                   ${q.options.map((opt, k) => `<label class="option">
                       <input type="radio" name="q${current}" value="${esc(opt)}"${answers[current] === opt ? " checked" : ""}>
                       <span class="option-box">
@@ -201,13 +197,13 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
               const value = answers[current] || "";
               const showError = touched[current] && value.trim() === "";
               html = `<div>
-                  <label class="field-label" for="fill-input">Câu trả lời của bạn</label>
+                  <label class="field-label" for="fill-input">${t("practice.yourAnswerLabel")}</label>
                   <input class="text-input" id="fill-input" type="text" lang="fr" autocomplete="off" autocapitalize="off" spellcheck="false"
-                      placeholder="Nhập bằng tiếng Pháp" value="${esc(value)}" aria-describedby="prompt fill-error"${showError ? ' aria-invalid="true"' : ""}>
-                  <p class="field-error" id="fill-error"${showError ? "" : " hidden"}><span class="material-symbols-outlined" aria-hidden="true">error</span>Chưa nhập câu trả lời.</p>
-                  <div class="char-helper" role="group" aria-label="Ký tự tiếng Pháp">
-                      <p class="char-helper-label">Ký tự tiếng Pháp</p>
-                      <div class="char-list">${FRENCH_CHARS.map((c) => `<button class="char-button" type="button" data-char="${c}" lang="fr" aria-label="Chèn ký tự ${c}">${c}</button>`).join("")}</div>
+                      placeholder="${t("practice.typeInFrench")}" value="${esc(value)}" aria-describedby="prompt fill-error"${showError ? ' aria-invalid="true"' : ""}>
+                  <p class="field-error" id="fill-error"${showError ? "" : " hidden"}><span class="material-symbols-outlined" aria-hidden="true">error</span>${t("practice.fillEmptyError")}</p>
+                  <div class="char-helper" role="group" aria-label="${t("practice.frenchChars")}">
+                      <p class="char-helper-label">${t("practice.frenchChars")}</p>
+                      <div class="char-list">${FRENCH_CHARS.map((c) => `<button class="char-button" type="button" data-char="${c}" lang="fr" aria-label="${t("practice.insertChar", { char: c })}">${c}</button>`).join("")}</div>
                   </div>
               </div>`;
           } else {
@@ -224,24 +220,24 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           const pool = q.pieces.map((_, p) => p).filter((p) => !placed.includes(p));
           $("[data-ordering]").innerHTML = `
               <div class="ordering-heading">
-                  <h3 class="ordering-title" id="slots-title">Câu của bạn</h3>
+                  <h3 class="ordering-title" id="slots-title">${t("practice.orderYourSentence")}</h3>
                   <button class="button button-secondary button-compact" type="button" data-reset-order${placed.length ? "" : " disabled"}>
-                      <span class="material-symbols-outlined" aria-hidden="true">refresh</span><span>Đặt lại</span></button>
+                      <span class="material-symbols-outlined" aria-hidden="true">refresh</span><span>${t("practice.orderReset")}</span></button>
               </div>
               <ol class="ordering-slots" aria-labelledby="slots-title" lang="fr">
                   ${placed.length ? placed.map((p, pos) => `<li><button class="chip chip-placed" type="button" data-piece="${p}" data-action-order="remove">
                       <span class="chip-order" aria-hidden="true">${pos + 1}</span><span>${esc(q.pieces[p])}</span>
                       <span class="material-symbols-outlined" aria-hidden="true">close</span>
-                      <span class="visually-hidden">, vị trí ${pos + 1}. Nhấn để bỏ khỏi câu</span></button></li>`).join("")
-                  : '<li class="ordering-empty" lang="vi">Nhấn vào các từ bên dưới để xếp thành câu.</li>'}
+                      <span class="visually-hidden">${t("practice.orderPosition", { n: pos + 1 })}</span></button></li>`).join("")
+                  : `<li class="ordering-empty" lang="${langAttr()}">${t("practice.orderEmpty")}</li>`}
               </ol>
-              <h3 class="ordering-title ordering-title-pool" id="pool-title">Các từ có sẵn</h3>
+              <h3 class="ordering-title ordering-title-pool" id="pool-title">${t("practice.orderPool")}</h3>
               <ul class="ordering-pool" aria-labelledby="pool-title" lang="fr">
                   ${pool.length ? pool.map((p) => `<li><button class="chip" type="button" data-piece="${p}" data-action-order="add">
-                      <span>${esc(q.pieces[p])}</span><span class="visually-hidden">. Nhấn để thêm vào câu</span></button></li>`).join("")
-                  : '<li class="ordering-empty" lang="vi">Bạn đã dùng hết các từ.</li>'}
+                      <span>${esc(q.pieces[p])}</span><span class="visually-hidden">${t("practice.orderAdd")}</span></button></li>`).join("")
+                  : `<li class="ordering-empty" lang="${langAttr()}">${t("practice.orderUsedAll")}</li>`}
               </ul>
-              <p class="visually-hidden" role="status">${placed.length ? `Câu hiện tại: ${esc(answerText(current))}` : "Chưa chọn từ nào"}</p>`;
+              <p class="visually-hidden" role="status">${placed.length ? t("practice.orderCurrent", { sentence: esc(answerText(current)) }) : t("practice.orderNone")}</p>`;
           if (focusPiece !== null) {
               const el = $(`[data-ordering] [data-piece="${focusPiece}"]`);
               if (el) el.focus();
@@ -332,15 +328,15 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
                   <div class="review-row-main">
                       <span class="review-number">${i + 1}</span>
                       <div class="review-details">
-                          <p class="review-type">Câu ${i + 1} · ${TYPE_LABEL[q.type]}</p>
+                          <p class="review-type">${t("practice.reviewTypeLine", { n: i + 1, type: typeLabel(q.type) })}</p>
                           <p class="review-prompt" lang="${q.type === "ordering" ? "vi" : "fr"}">${esc(promptText)}</p>
                           ${answered
-                      ? `<p class="review-answer"><span class="material-symbols-outlined icon-filled" aria-hidden="true">check_circle</span>Câu trả lời của bạn: <strong lang="fr">${esc(answerText(i))}</strong></p>`
-                      : '<p class="review-answer is-missing"><span class="material-symbols-outlined" aria-hidden="true">radio_button_unchecked</span>Chưa trả lời</p>'}
+                      ? `<p class="review-answer"><span class="material-symbols-outlined icon-filled" aria-hidden="true">check_circle</span>${t("practice.reviewYourAnswer")}<strong lang="fr">${esc(answerText(i))}</strong></p>`
+                      : `<p class="review-answer is-missing"><span class="material-symbols-outlined" aria-hidden="true">radio_button_unchecked</span>${t("practice.reviewMissing")}</p>`}
                       </div>
                   </div>
                   <button class="button button-secondary button-compact" type="button" data-edit="${i}">
-                      <span>${answered ? "Sửa" : "Trả lời"}</span><span class="visually-hidden"> câu ${i + 1}</span></button>
+                      <span>${t(answered ? "practice.edit" : "practice.answerAction")}</span><span class="visually-hidden">${t("practice.reviewActionContext", { n: i + 1 })}</span></button>
               </li>`;
           }).join("");
           // Final submit stays blocked until every question is answered (prototype-only guard).
@@ -350,8 +346,8 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           $("[data-submit-hint]").hidden = !incomplete;
           $("[data-review-incomplete]").hidden = !incomplete;
           if (incomplete) {
-              $("[data-incomplete-text]").textContent = `Còn ${missing.length} câu chưa trả lời`;
-              $("[data-missing-label]").textContent = `Trả lời câu ${missing[0] + 1}`;
+              $("[data-incomplete-text]").textContent = t("practice.unansweredCount", { n: missing.length });
+              $("[data-missing-label]").textContent = t("practice.answerQuestion", { n: missing[0] + 1 });
           }
       }
       $("[data-action='answer-missing']").addEventListener("click", () => {
@@ -375,10 +371,10 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           $("[data-submit-error]").hidden = true;
           main.disabled = true;
           main.setAttribute("aria-busy", "true");
-          $("[data-submit-label]").textContent = "Đang nộp bài…";
+          $("[data-submit-label]").textContent = t("practice.submitting");
           window.setTimeout(() => {
               main.removeAttribute("aria-busy");
-              $("[data-submit-label]").textContent = "Nộp bài luyện tập";
+              $("[data-submit-label]").textContent = t("practice.submit");
               setPhase("result");
           }, 600);
       }
@@ -393,7 +389,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
               const items = distinct.filter((u) => u.unit_type === group.type);
               if (!items.length) return "";
               return `<div class="covered-group ${group.cls}">
-                  <h3 class="covered-group-title"><span class="material-symbols-outlined" aria-hidden="true">${group.icon}</span>${group.label}</h3>
+                  <h3 class="covered-group-title"><span class="material-symbols-outlined" aria-hidden="true">${group.icon}</span>${t(group.labelKey)}</h3>
                   <ul class="covered-items">${items.map((u) => `<li>
                       <a class="covered-link" href="#" data-route="${group.route(u.slug)}">
                           <span class="covered-link-text">
@@ -405,9 +401,9 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
               </div>`;
           }).join("");
           // No unit to show (empty content_covered, or only unit types this page does not group): say so
-          // instead of leaving the card blank. New Vietnamese copy; no English version exists for this page yet.
+          // instead of leaving the card blank.
           $("[data-covered-groups]").innerHTML = groupsHtml
-              || '<p class="card-subtitle">Không có nội dung nào để hiển thị.</p>';
+              || `<p class="card-subtitle">${t("practice.noCovered")}</p>`;
       }
 
       function renderResult() {
@@ -425,20 +421,20 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
               return `<li class="result-item ${ok ? "is-correct" : "is-incorrect"}">
                   <div class="result-item-header">
                       <div>
-                          <h3 class="question-number">Câu ${i + 1}</h3>
-                          <p class="review-type">${TYPE_LABEL[q.type]}</p>
+                          <h3 class="question-number">${t("practice.questionNumber", { n: i + 1 })}</h3>
+                          <p class="review-type">${typeLabel(q.type)}</p>
                       </div>
                       <span class="result-status">
                           <span class="material-symbols-outlined icon-filled" aria-hidden="true">${ok ? "check_circle" : "cancel"}</span>
-                          ${ok ? "Đúng" : "Chưa đúng"}</span>
+                          ${t(ok ? "practice.resultCorrect" : "practice.resultIncorrect")}</span>
                   </div>
                   <p class="result-prompt" lang="${q.type === "ordering" ? "vi" : "fr"}">${esc(promptText)}</p>
                   <dl class="answer-facts">
-                      <div class="answer-fact"><dt>Câu trả lời của bạn</dt><dd lang="fr">${esc(item.learner_answer)}</dd></div>
-                      <div class="answer-fact"><dt>Đáp án đúng</dt><dd lang="fr">${esc(item.correct_answer)}</dd></div>
+                      <div class="answer-fact"><dt>${t("practice.yourAnswerLabel")}</dt><dd lang="fr">${esc(item.learner_answer)}</dd></div>
+                      <div class="answer-fact"><dt>${t("practice.correctAnswer")}</dt><dd lang="fr">${esc(item.correct_answer)}</dd></div>
                   </dl>
                   <p class="state-note explanation"><span class="material-symbols-outlined" aria-hidden="true">lightbulb</span>
-                      <span><strong>Giải thích:</strong> ${esc(item.explanation)}</span></p>
+                      <span><strong>${t("practice.explanation")}</strong> ${esc(item.explanation)}</span></p>
               </li>`;
           }).join("");
       }
@@ -455,15 +451,10 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
       const menuButton = $(".menu-button");
       const mobileNav = $("#mobile-nav");
       const menuIcon = $(".material-symbols-outlined", menuButton);
-      // Only the menu label has English copy in this script; the rest of the page copy is Vietnamese.
-      const MENU_LABEL = {
-          vi: { open: "Đóng menu điều hướng", closed: "Menu điều hướng" },
-          en: { open: "Close navigation menu", closed: "Navigation menu" },
-      };
 
       function setMenu(open) {
           menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", MENU_LABEL[getLanguage()][open ? "open" : "closed"]);
+          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
           menuIcon.textContent = open ? "close" : "menu";
           mobileNav.hidden = !open;
       }
@@ -496,7 +487,17 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
       };
       setPhase(INITIAL_PHASE[preview] || "prestart", { focus: false });
       if (preview === "submit-error") $("[data-submit-error]").hidden = false;
-      onLanguageChange(() => setMenu(!mobileNav.hidden));
+      // Language change: re-render the copy this script writes, for the current phase, keeping answers.
+      onLanguageChange(() => {
+          setMenu(!mobileNav.hidden);
+          const inSession = phase === "answering" || phase === "reviewing";
+          $("[data-practice-description]").textContent = t(inSession ? "practice.sessionIntro" : "practice.mixedIntro");
+          if (phase === "answering") renderQuestion();
+          if (phase === "reviewing") renderReview();
+          if (phase === "result") renderResult();
+          updateChrome();
+          $("[data-submit-label]").textContent = t($("[data-submit-main]").hasAttribute("aria-busy") ? "practice.submitting" : "practice.submit");
+      });
   })();
 
 }

@@ -75,10 +75,11 @@
 */
 import styles from "./ReferencePage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 import init from "./ReferencePage.script.js";
 
 export default function ReferencePage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Alphabet français et accents" });
+  const rootRef = usePageScript(init, { title: "title.reference" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -88,31 +89,31 @@ export default function ReferencePage() {
       <header className="site-header">
         <div className="page-container header-content">
           <div className="brand">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
             </span>
           </div>
-          <nav className="main-nav" aria-label="Điều hướng chính">
+          <nav className="main-nav" aria-label={t("common.mainNav")}>
             <a className="nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/vocabulary" aria-current="page">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </nav>
           <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
+            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
               <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
                 VI
               </button>
@@ -121,39 +122,39 @@ export default function ReferencePage() {
                 EN
               </button>
             </div>
-            <button className="logout-button" type="button" aria-label="Đăng xuất" title="Đăng xuất">
+            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 logout
               </span>
               {" "}
               <span className="logout-label">
-                Đăng xuất
+                {t("common.logout")}
               </span>
             </button>
             {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu điều hướng">
+            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 menu
               </span>
             </button>
           </div>
         </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label="Điều hướng chính" hidden>
+        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
           <div className="page-container mobile-nav-list">
             <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/vocabulary" aria-current="page">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </div>
         </nav>
@@ -161,7 +162,7 @@ export default function ReferencePage() {
       <main className="page-container reference-page reference-role" id="main-content">
         <div className="reference" data-reference>
           {/* 2. Breadcrumbs. Only "Từ vựng" is a link (/vocabulary). */}
-          <nav className="breadcrumbs" aria-label="Đường dẫn trang">
+          <nav className="breadcrumbs" aria-label={t("common.breadcrumb")}>
             <ol className="breadcrumb-list">
               <li>
                 <a className="crumb-link" href="#" data-route="/vocabulary">
@@ -170,7 +171,7 @@ export default function ReferencePage() {
                   </span>
                   {" "}
                   <span>
-                    Từ vựng
+                    {t("common.vocabulary")}
                   </span>
                 </a>
               </li>
@@ -189,7 +190,7 @@ export default function ReferencePage() {
           <div className="card page-state" data-page-state="loading" role="status" hidden>
             <div className="spinner" aria-hidden="true" />
             <p>
-              Đang tải tài liệu tham khảo…
+              {t("reference.loading")}
             </p>
           </div>
           <div className="card page-state" data-page-state="error" role="alert" hidden>
@@ -197,13 +198,13 @@ export default function ReferencePage() {
               cloud_off
             </span>
             <h1 className="page-state-title">
-              Không thể tải tài liệu tham khảo
+              {t("reference.loadError")}
             </h1>
             <p>
-              Đã có lỗi khi tải dữ liệu. Vui lòng thử lại.
+              {t("common.loadError")}
             </p>
             <button className="button button-secondary button-compact" type="button" data-action="retry">
-              Thử lại
+              {t("common.retry")}
             </button>
           </div>
           <article aria-labelledby="reference-title" data-reference-content>
@@ -222,7 +223,7 @@ export default function ReferencePage() {
                     </span>
                     {" "}
                     <span>
-                      Tài liệu tham khảo
+                      {t("common.referenceTitle")}
                     </span>
                   </span>
                 </p>
@@ -230,10 +231,10 @@ export default function ReferencePage() {
                   Alphabet français et accents
                 </h1>
                 <p className="title-support" data-slot="support">
-                  Bảng chữ cái và dấu trong tiếng Pháp
+                  {t("reference.title")}
                 </p>
                 <p className="reference-note">
-                  Kiến thức nền tảng để tra cứu bất cứ lúc nào, không tính vào tiến độ học tập.
+                  {t("common.referenceDescription")}
                 </p>
               </div>
             </header>
@@ -247,7 +248,7 @@ export default function ReferencePage() {
                 </span>
                 {" "}
                 <span>
-                  Quay lại Từ vựng
+                  {t("reference.backToVocabulary")}
                 </span>
               </a>
             </div>
@@ -262,7 +263,7 @@ export default function ReferencePage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

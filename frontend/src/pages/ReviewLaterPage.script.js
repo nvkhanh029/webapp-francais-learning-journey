@@ -1,40 +1,13 @@
 // Behavior carried over from the raw UI prototype (review-later.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by ReviewLaterPage.jsx.
-export default function init({ getLanguage, onLanguageChange } = {}) {
+import { t } from "../i18n/index.js";
+
+export default function init({ onLanguageChange } = {}) {
   // UI preview only. No fetching, persistence or routing is added here.
   // Production: ReviewLaterPage gets items from GET /api/v1/me/review-later and removes an
   // item with PATCH /api/v1/me/learning-units/{slug}/state { "review_later": false }.
   (() => {
-      let isEnglish = getLanguage() === "en";
       const preview = new URLSearchParams(window.location.search).get("preview");
-
-      // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const buildCopy = (isEnglish) => isEnglish
-          ? {
-              total: (n) => `${n} saved lesson${n === 1 ? "" : "s"}`,
-              groupCount: (n) => `${n} lesson${n === 1 ? "" : "s"}`,
-              learned: "Learned",
-              open: "View lesson",
-              remove: "Remove",
-              removeContext: (title) => ` ${title} from Review Later`,
-              removed: "Removed from Review Later",
-              menuOpen: "Close navigation menu",
-              menuClosed: "Navigation menu",
-              modules: { grammar: "Grammar", vocabulary: "Vocabulary", conjugation: "Conjugation" },
-          }
-          : {
-              total: (n) => `${n} bài đã lưu`,
-              groupCount: (n) => `${n} bài`,
-              learned: "Đã học",
-              open: "Xem bài học",
-              remove: "Bỏ lưu",
-              removeContext: (title) => ` ${title} khỏi Xem lại sau`,
-              removed: "Đã bỏ khỏi Xem lại sau",
-              menuOpen: "Đóng menu điều hướng",
-              menuClosed: "Menu điều hướng",
-              modules: { grammar: "Ngữ pháp", vocabulary: "Từ vựng", conjugation: "Chia động từ" },
-          };
-      let COPY = buildCopy(isEnglish);
 
       // Presentation config. The frontend maps unit_type to a module group and a route.
       // Group order follows the Review Later wireframe (FD §7.14).
@@ -54,18 +27,8 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           { slug: "passe-compose-avoir", unit_type: "conjugation", title_fr: "Le passé composé avec l'auxiliaire avoir", title: "Thì quá khứ kép với trợ động từ avoir", learned: false },
       ];
 
-      // Prototype-only English titles, standing in for the API's localized `title` when lang="en".
-      const EN_TITLES = {
-          "articles-definis": "Definite articles",
-          "adjectifs-qualificatifs-accord": "Descriptive adjectives and their agreement",
-          "bus-autocar-1": "City buses and coaches — Part 1",
-          "pain-viennoiseries-1": "Bread and viennoiseries — Part 1",
-          "present-regular-er": "Regular -ER verbs in the present tense",
-          "passe-compose-avoir": "The passé composé with the auxiliary avoir",
-      };
-
       function samplePreview() {
-          let items = SAMPLE_ITEMS.map((item) => ({ ...item, title: isEnglish ? EN_TITLES[item.slug] : item.title }));
+          let items = SAMPLE_ITEMS.map((item) => ({ ...item, title: t(`sampleReview.${item.slug}`) }));
           if (preview === "single") items = items.slice(3, 4);
           if (preview === "empty") items = [];
           if (preview === "long-titles") {
@@ -74,7 +37,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
                   title_fr: index === 0
                       ? "Les articles définis, indéfinis et partitifs : emploi, accord et cas particuliers après la négation"
                       : `${item.title_fr} : Supercalifragilisticexpialidocieusement-long-mot-sans-espaces`,
-                  title: `${item.title} — ${isEnglish ? "an intentionally long localized title that must wrap without clipping or pushing the actions off screen" : "một tiêu đề bản địa hóa cố ý rất dài, cần xuống dòng tự nhiên mà không bị cắt hay đẩy nút thao tác ra ngoài"}`,
+                  title: `${item.title} — ${t("sampleReview.longTitle")}`,
               }));
           }
           return items;
@@ -112,11 +75,11 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           supportLine.hidden = !hasSupport;
           supportLine.textContent = hasSupport ? item.title : "";
           row.querySelector('[data-slot="learned"]').hidden = !item.learned;
-          set("learned-text", COPY.learned);
+          set("learned-text", t("common.learned"));
 
           const open = row.querySelector('[data-slot="open"]');
           open.dataset.route = module.route(item.slug);
-          set("open-text", COPY.open);
+          set("open-text", t("review.openLesson"));
           // Repeated link text needs context; the French title keeps its own language.
           const openContext = row.querySelector('[data-slot="open-context"]');
           openContext.append(" ");
@@ -125,9 +88,9 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           frOpen.textContent = item.title_fr;
           openContext.append(frOpen);
 
-          set("remove-text", COPY.remove);
+          set("remove-text", t("review.remove"));
           const removeContext = row.querySelector('[data-slot="remove-context"]');
-          const [before, after = ""] = COPY.removeContext("\u0000").split("\u0000");
+          const [before, after = ""] = t("review.removeContext", { title: "\u0000" }).split("\u0000");
           removeContext.append(before);
           const frRemove = document.createElement("span");
           frRemove.lang = "fr";
@@ -137,7 +100,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
       }
 
       function render() {
-          total.textContent = COPY.total(items.length);
+          total.textContent = t("review.total", { n: items.length });
           if (items.length === 0) {
               content.replaceChildren();
               showState("empty");
@@ -155,8 +118,8 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
               group.querySelector('[data-slot="icon"]').textContent = module.icon;
               const title = group.querySelector('[data-slot="title"]');
               title.id = titleId;
-              title.textContent = COPY.modules[module.type];
-              group.querySelector('[data-slot="count"]').textContent = COPY.groupCount(moduleItems.length);
+              title.textContent = t(`common.${module.type}`);
+              group.querySelector('[data-slot="count"]').textContent = t("review.groupCount", { n: moduleItems.length });
               group.querySelector('[data-slot="items"]').append(...moduleItems.map((item) => renderItem(item, module)));
               fragment.append(group);
           });
@@ -187,7 +150,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
           items = items.filter((item) => item.slug !== row.dataset.slug);
           render();
-          showToast(COPY.removed);
+          showToast(t("review.removed"));
 
           if (items.length === 0) {
               document.querySelector('[data-page-state="empty"] .page-state-title').focus();
@@ -215,7 +178,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       function setMenu(open) {
           menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", open ? COPY.menuOpen : COPY.menuClosed);
+          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
           menuIcon.textContent = open ? "close" : "menu";
           mobileNav.hidden = !open;
       }
@@ -234,9 +197,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           if (event.matches) setMenu(false);
       });
       /* ---------- Language change: re-render this page's copy in place ---------- */
-      onLanguageChange((language) => {
-          isEnglish = language === "en";
-          COPY = buildCopy(isEnglish);
+      onLanguageChange(() => {
           // Rebuild titles for the new language; keep the rows the learner already removed.
           const remaining = new Set(items.map((item) => item.slug));
           items = samplePreview().filter((item) => remaining.has(item.slug));

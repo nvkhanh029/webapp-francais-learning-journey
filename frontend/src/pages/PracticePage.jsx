@@ -56,10 +56,11 @@
 */
 import styles from "./PracticePage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 import init from "./PracticePage.script.js";
 
 export default function PracticePage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Luyện tập" });
+  const rootRef = usePageScript(init, { title: "title.practice" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -67,32 +68,32 @@ export default function PracticePage() {
       <header className="site-header">
         <div className="page-container header-content">
           <div className="brand">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
             </span>
           </div>
           {/* Practice is not a main navigation item (FD §4.4), so no link is marked current. */}
-          <nav className="main-nav" aria-label="Điều hướng chính">
+          <nav className="main-nav" aria-label={t("common.mainNav")}>
             <a className="nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </nav>
           <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
+            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
               <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
                 VI
               </button>
@@ -101,39 +102,39 @@ export default function PracticePage() {
                 EN
               </button>
             </div>
-            <button className="logout-button" type="button" aria-label="Đăng xuất" title="Đăng xuất">
+            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 logout
               </span>
               {" "}
               <span className="logout-label">
-                Đăng xuất
+                {t("common.logout")}
               </span>
             </button>
             {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu điều hướng">
+            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 menu
               </span>
             </button>
           </div>
         </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label="Điều hướng chính" hidden>
+        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
           <div className="page-container mobile-nav-list">
             <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </div>
         </nav>
@@ -141,7 +142,7 @@ export default function PracticePage() {
       <main className="page-container practice-page" id="main-content">
         <div className="practice-shell">
           {/* 2. Breadcrumbs. Normal Practice: module (link) > unit (link) > current page. */}
-          <nav className="breadcrumbs" aria-label="Đường dẫn trang">
+          <nav className="breadcrumbs" aria-label={t("common.breadcrumb")}>
             <ol className="breadcrumb-list" data-crumbs="normal">
               <li>
                 <a className="crumb-link subject-conjugation" href="#" data-route="/conjugation">
@@ -150,7 +151,7 @@ export default function PracticePage() {
                   </span>
                   {" "}
                   <span>
-                    Chia động từ
+                    {t("common.conjugation")}
                   </span>
                 </a>
               </li>
@@ -169,7 +170,7 @@ export default function PracticePage() {
                 </span>
                 {" "}
                 <span className="crumb-current" aria-current="page">
-                  Luyện tập
+                  {t("common.practice")}
                 </span>
               </li>
             </ol>
@@ -188,31 +189,31 @@ export default function PracticePage() {
                   Les verbes réguliers en -ER
                 </h1>
                 <p className="practice-description" data-practice-description>
-                  Trả lời tất cả câu hỏi, xem lại rồi nộp bài. Bạn có thể sửa câu trả lời bất cứ lúc nào trước khi nộp; đáp án đúng chỉ hiện sau khi bạn nộp bài.
+                  {t("practice.sessionIntro")}
                 </p>
               </div>
             </div>
             <div className="practice-progress" data-progress-block>
               <div className="progress-labels">
                 <span id="progress-label">
-                  Đã trả lời
+                  {t("practice.answered")}
                 </span>
                 {" "}
                 <span className="progress-value" data-answered-text>
-                  0/6 câu
+                  {t("practice.answeredCount", { answered: 0, total: 6 })}
                 </span>
               </div>
               <div className="progress-track" role="progressbar" aria-labelledby="progress-label" aria-valuemin="0" aria-valuemax="6" aria-valuenow="0" data-progressbar>
                 <div className="progress-fill" data-progress-fill />
               </div>
-              <nav className="stepper-row" aria-label="Danh sách câu hỏi" data-stepper-nav>
+              <nav className="stepper-row" aria-label={t("practice.questionList")} data-stepper-nav>
                 <ol className="stepper" data-stepper />
                 {/* Global action: ends the answering phase from ANY question and opens Review.
                              It is not the final submission (that stays in the Review phase).
                 */}
                 <button className="button button-secondary button-compact finish-button" type="button" data-action="finish">
                   <span>
-                    Hoàn thành bài
+                    {t("practice.finish")}
                   </span>
                   {" "}
                   <span className="material-symbols-outlined" aria-hidden="true">
@@ -226,7 +227,7 @@ export default function PracticePage() {
           <div className="card page-state" data-page-state="loading" role="status" hidden>
             <div className="spinner" aria-hidden="true" />
             <p>
-              Đang tải bài luyện tập…
+              {t("practice.loading")}
             </p>
           </div>
           <div className="card page-state" data-page-state="error" role="alert" hidden>
@@ -234,22 +235,22 @@ export default function PracticePage() {
               cloud_off
             </span>
             <h1 className="page-state-title">
-              Không thể tải bài luyện tập
+              {t("practice.loadError")}
             </h1>
             <p>
-              Đã có lỗi khi tải dữ liệu. Vui lòng thử lại.
+              {t("common.loadError")}
             </p>
             <button className="button button-secondary button-compact" type="button" data-action="retry-page">
-              Thử lại
+              {t("common.retry")}
             </button>
           </div>
           <div data-practice-content>
             {/* 5. Answering phase: one question at a time (markup generated by the script below). */}
-            <section className="practice-section" data-phase="answering" aria-label="Làm bài luyện tập">
+            <section className="practice-section" data-phase="answering" aria-label={t("landing.step3Title")}>
               <article className="card question-card" aria-labelledby="question-heading">
                 <div className="question-meta">
                   <h2 className="question-number" id="question-heading" tabIndex="-1" data-question-heading>
-                    Câu 1/6
+                    {t("practice.questionOf", { n: 1, total: 6 })}
                   </h2>
                   <span className="badge" data-question-type />
                 </div>
@@ -264,13 +265,13 @@ export default function PracticePage() {
                   </span>
                   {" "}
                   <span>
-                    Câu trước
+                    {t("practice.previous")}
                   </span>
                 </button>
                 {" "}
                 <button className="button button-primary" type="button" data-action="next">
                   <span data-next-label>
-                    Câu tiếp theo
+                    {t("practice.next")}
                   </span>
                   {" "}
                   <span className="material-symbols-outlined" aria-hidden="true">
@@ -290,10 +291,10 @@ export default function PracticePage() {
                   </div>
                   <div>
                     <h2 className="section-title" id="review-title" tabIndex="-1">
-                      Xem lại câu trả lời
+                      {t("practice.reviewAnswers")}
                     </h2>
                     <p className="card-subtitle">
-                      Kiểm tra lại trước khi nộp. Bạn vẫn có thể sửa từng câu.
+                      {t("practice.reviewHint")}
                     </p>
                   </div>
                 </div>
@@ -303,7 +304,7 @@ export default function PracticePage() {
                   </span>
                   {" "}
                   <span>
-                    Đáp án đúng và giải thích chỉ hiện sau khi bạn nộp bài. Nộp bài xong, kết quả sẽ được ghi lại trong lịch sử luyện tập.
+                    {t("practice.submitNote")}
                   </span>
                 </p>
                 {/* Shown while some questions are unanswered; final submit stays blocked. */}
@@ -314,11 +315,11 @@ export default function PracticePage() {
                   <div className="state-note-body">
                     <strong data-incomplete-text />
                     {" "}
-                    Hãy trả lời các câu còn thiếu để có thể nộp bài.
+                    {t("practice.missingNote")}
                     {" "}
                     <button className="button button-secondary button-compact" type="button" data-action="answer-missing">
                       <span data-missing-label>
-                        Trả lời câu chưa làm
+                        {t("practice.answerMissing")}
                       </span>
                     </button>
                   </div>
@@ -331,18 +332,18 @@ export default function PracticePage() {
                   </span>
                   <div className="state-note-body">
                     <strong>
-                      Không thể nộp bài luyện tập
+                      {t("practice.submitErrorTitle")}
                     </strong>
                     {" "}
-                    Câu trả lời của bạn vẫn được giữ lại. Vui lòng thử lại.
+                    {t("practice.submitErrorText")}
                     {" "}
                     <button className="button button-secondary button-compact" type="button" data-action="submit">
-                      Thử lại
+                      {t("common.retry")}
                     </button>
                   </div>
                 </div>
                 <p className="review-submit-hint" id="submit-hint" data-submit-hint hidden>
-                  Trả lời hết các câu để nộp bài.
+                  {t("practice.submitDisabledHint")}
                 </p>
                 <div className="review-actions">
                   <button className="button button-secondary button-back" type="button" data-action="continue-editing">
@@ -351,13 +352,13 @@ export default function PracticePage() {
                     </span>
                     {" "}
                     <span>
-                      Tiếp tục làm bài
+                      {t("practice.keepGoing")}
                     </span>
                   </button>
                   {" "}
                   <button className="button button-primary" type="button" data-action="submit" data-submit-main aria-describedby="submit-hint">
                     <span data-submit-label>
-                      Nộp bài luyện tập
+                      {t("practice.submit")}
                     </span>
                     {" "}
                     <span className="material-symbols-outlined" aria-hidden="true">
@@ -378,10 +379,10 @@ export default function PracticePage() {
                   </div>
                   <div>
                     <h2 className="section-title" id="result-title" tabIndex="-1">
-                      Kết quả luyện tập
+                      {t("practice.resultTitle")}
                     </h2>
                     <p className="card-subtitle">
-                      Bạn đã hoàn thành bài luyện tập. Xem lại từng câu bên dưới để nắm chắc hơn nhé!
+                      {t("practice.resultText")}
                     </p>
                   </div>
                 </div>
@@ -392,14 +393,14 @@ export default function PracticePage() {
                     </span>
                     {" "}
                     <span className="result-count-label">
-                      câu đúng
+                      {t("practice.correctLabel")}
                     </span>
                   </p>
                 </div>
                 <div>
                   <div className="progress-labels">
                     <span id="accuracy-label">
-                      Độ chính xác
+                      {t("practice.accuracy")}
                     </span>
                     {" "}
                     <span className="progress-value" data-result-accuracy>
@@ -420,10 +421,10 @@ export default function PracticePage() {
                   </div>
                   <div>
                     <h2 className="section-title" id="question-review-title">
-                      Xem lại từng câu
+                      {t("practice.reviewEach")}
                     </h2>
                     <p className="card-subtitle">
-                      Câu trả lời của bạn, đáp án đúng và giải thích.
+                      {t("practice.reviewEachText")}
                     </p>
                   </div>
                 </div>
@@ -436,13 +437,13 @@ export default function PracticePage() {
                   </span>
                   {" "}
                   <span>
-                    Quay lại bài học
+                    {t("practice.backToLesson")}
                   </span>
                 </a>
                 {" "}
                 <a className="button button-secondary" href="#" data-route="/dashboard">
                   <span>
-                    Về bảng điều khiển
+                    {t("common.backToDashboard")}
                   </span>
                   {" "}
                   <span className="material-symbols-outlined" aria-hidden="true">
@@ -452,7 +453,7 @@ export default function PracticePage() {
                 {" "}
                 <button className="button button-primary" type="button" data-action="practice-again">
                   <span>
-                    Luyện tập lại
+                    {t("practice.retry")}
                   </span>
                   {" "}
                   <span className="material-symbols-outlined" aria-hidden="true">
@@ -472,7 +473,7 @@ export default function PracticePage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

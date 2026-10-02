@@ -69,10 +69,11 @@
 */
 import styles from "./GrammarPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 import init from "./GrammarPage.script.js";
 
 export default function GrammarPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Ngữ pháp" });
+  const rootRef = usePageScript(init, { title: "title.grammar" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -80,31 +81,31 @@ export default function GrammarPage() {
       <header className="site-header">
         <div className="page-container header-content">
           <div className="brand">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
             </span>
           </div>
-          <nav className="main-nav" aria-label="Điều hướng chính">
+          <nav className="main-nav" aria-label={t("common.mainNav")}>
             <a className="nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/grammar" aria-current="page">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </nav>
           <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
+            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
               <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
                 VI
               </button>
@@ -113,39 +114,39 @@ export default function GrammarPage() {
                 EN
               </button>
             </div>
-            <button className="logout-button" type="button" aria-label="Đăng xuất" title="Đăng xuất">
+            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 logout
               </span>
               {" "}
               <span className="logout-label">
-                Đăng xuất
+                {t("common.logout")}
               </span>
             </button>
             {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu điều hướng">
+            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 menu
               </span>
             </button>
           </div>
         </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label="Điều hướng chính" hidden>
+        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
           <div className="page-container mobile-nav-list">
             <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/grammar" aria-current="page">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </div>
         </nav>
@@ -168,7 +169,7 @@ export default function GrammarPage() {
             </div>
             <div>
               <h1 className="page-title" id="page-title">
-                Ngữ pháp
+                {t("common.grammar")}
                 <span className="title-glyphs" lang="fr" aria-hidden="true">
                   <span>
                     é
@@ -184,34 +185,34 @@ export default function GrammarPage() {
                 </span>
               </h1>
               <p className="page-description">
-                Học các quy tắc và cấu trúc ngữ pháp theo từng phần và chương, bắt đầu từ bất kỳ bài nào bạn muốn.
+                {t("grammar.description")}
               </p>
             </div>
           </div>
           <div className="overview-panel" data-overview hidden>
             <div className="progress-labels">
               <span>
-                Tiến độ
+                {t("common.progress")}
               </span>
               {" "}
               <span className="progress-value" data-slot="percent">
                 0%
               </span>
             </div>
-            <div className="progress-track" role="progressbar" aria-label="Tiến độ Ngữ pháp" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-slot="track">
+            <div className="progress-track" role="progressbar" aria-label={t("common.progressGrammar")} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-slot="track">
               <div className="progress-fill" />
             </div>
-            <ul className="overview-states" aria-label="Trạng thái bài học">
+            <ul className="overview-states" aria-label={t("common.lessonStatus")}>
               <li className="badge badge-learned">
                 <span className="material-symbols-outlined icon-filled" aria-hidden="true">
                   check_circle
                 </span>
                 {" "}
                 <span>
-                  Đã học:
+                  {t("common.learnedColon")}
                   {" "}
                   <span data-slot="count">
-                    0/0 bài
+                    {t("common.lessonsOf", { learned: 0, total: 0, n: 0 })}
                   </span>
                 </span>
               </li>
@@ -221,10 +222,10 @@ export default function GrammarPage() {
                 </span>
                 {" "}
                 <span>
-                  Xem lại sau:
+                  {t("common.reviewLaterColon")}
                   {" "}
                   <span data-slot="review-count">
-                    0 bài
+                    {t("common.lessonsN", { n: 0 })}
                   </span>
                 </span>
               </li>
@@ -235,7 +236,7 @@ export default function GrammarPage() {
         <div className="card page-state" data-page-state="loading" role="status" hidden>
           <div className="spinner" aria-hidden="true" />
           <p>
-            Đang tải ngữ pháp…
+            {t("grammar.loading")}
           </p>
         </div>
         <div className="card page-state" data-page-state="error" role="alert" hidden>
@@ -243,13 +244,13 @@ export default function GrammarPage() {
             cloud_off
           </span>
           <h2 className="page-state-title">
-            Không thể tải ngữ pháp
+            {t("grammar.loadError")}
           </h2>
           <p>
-            Đã có lỗi khi tải dữ liệu. Vui lòng thử lại.
+            {t("common.loadError")}
           </p>
           <button className="button button-secondary button-compact" type="button" data-action="retry">
-            Thử lại
+            {t("common.retry")}
           </button>
         </div>
         <div className="card page-state" data-page-state="empty" hidden>
@@ -257,21 +258,21 @@ export default function GrammarPage() {
             menu_book
           </span>
           <h2 className="page-state-title">
-            Chưa có bài ngữ pháp nào
+            {t("grammar.emptyTitle")}
           </h2>
           <p>
-            Các bài ngữ pháp sẽ xuất hiện ở đây khi được bổ sung. Trong lúc chờ, bạn có thể học từ vựng hoặc chia động từ.
+            {t("grammar.emptyText")}
           </p>
           <div className="explore-links">
             <a className="lesson-link subject-vocabulary" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
               <span className="material-symbols-outlined" aria-hidden="true">
                 arrow_forward
               </span>
             </a>
             {" "}
             <a className="lesson-link subject-conjugation" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
               <span className="material-symbols-outlined" aria-hidden="true">
                 arrow_forward
               </span>
@@ -281,14 +282,14 @@ export default function GrammarPage() {
         <div data-grammar-content hidden>
           {/* 4. Toolbar */}
           <div className="toolbar">
-            <ul className="toolbar-summary" data-summary aria-label="Nội dung" />
+            <ul className="toolbar-summary" data-summary aria-label={t("common.contentRegion")} />
             <button className="button button-secondary button-compact toggle-all" type="button" data-action="toggle-all">
               <span className="material-symbols-outlined" aria-hidden="true" data-slot="icon">
                 unfold_less
               </span>
               {" "}
               <span data-slot="label">
-                Thu gọn tất cả
+                {t("common.collapseAll")}
               </span>
             </button>
           </div>
@@ -305,13 +306,13 @@ export default function GrammarPage() {
                         data-slot="number">1</div>
                     <div class="part-titles">
                         <h2 class="part-title" data-slot="heading"><span class="visually-hidden"
-                                data-slot="position">Phần 1: </span><span data-slot="title" lang="fr"></span></h2>
+                                data-slot="position">${t("grammar.partPosition", { n: 1 }).trim()} </span><span data-slot="title" lang="fr"></span></h2>
                         <span class="title-support" data-slot="support"></span>
                     </div>
                 </div>
                 <div class="part-progress">
                     <div class="progress-labels">
-                        <span data-slot="count">0/0 bài</span>
+                        <span data-slot="count">${t("common.lessonsOf", { learned: 0, total: 0, n: 0 })}</span>
                         <span class="progress-value" data-slot="percent">0%</span>
                     </div>
                     <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
@@ -339,11 +340,11 @@ export default function GrammarPage() {
                     </span>
                     <span class="badge badge-info chapter-count" data-slot="count-badge"><span
                             class="material-symbols-outlined icon-filled" aria-hidden="true" data-slot="count-icon"
-                            hidden>check_circle</span><span data-slot="count">0/0 bài</span><span
-                            class="visually-hidden"> đã học</span></span>
+                            hidden>check_circle</span><span data-slot="count">${t("common.lessonsOf", { learned: 0, total: 0, n: 0 })}</span><span
+                            class="visually-hidden"> ${t("common.learnedLower")}</span></span>
                 </summary>
                 <ul class="lesson-list" data-slot="lessons"></ul>
-                <p class="empty-text" data-slot="empty" hidden>Chương này chưa có bài học nào.</p>
+                <p class="empty-text" data-slot="empty" hidden>${t("grammar.emptyChapter")}</p>
             </details>
         </li>
     ` }} />
@@ -364,11 +365,11 @@ export default function GrammarPage() {
                     <span class="lesson-meta" data-slot="meta">
                         <span class="badge badge-review" data-slot="review-later" hidden>
                             <span class="material-symbols-outlined icon-filled" aria-hidden="true">bookmark</span>
-                            <span>Xem lại sau</span>
+                            <span>${t("common.reviewLater")}</span>
                         </span>
                         <span class="badge badge-learned" data-slot="learned" hidden>
                             <span class="material-symbols-outlined icon-filled" aria-hidden="true">check_circle</span>
-                            <span>Đã học</span>
+                            <span>${t("common.learned")}</span>
                         </span>
                     </span>
                 </span>
@@ -386,7 +387,7 @@ export default function GrammarPage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

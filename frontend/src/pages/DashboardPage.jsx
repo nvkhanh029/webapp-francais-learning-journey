@@ -49,10 +49,11 @@
 */
 import styles from "./DashboardPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t, monthName, dayMonth } from "../i18n/index.js";
 import init from "./DashboardPage.script.js";
 
 export default function DashboardPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Bảng điều khiển" });
+  const rootRef = usePageScript(init, { title: "title.dashboard" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -60,31 +61,31 @@ export default function DashboardPage() {
       <header className="site-header">
         <div className="page-container header-content">
           <div className="brand">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
             </span>
           </div>
-          <nav className="main-nav" aria-label="Điều hướng chính">
+          <nav className="main-nav" aria-label={t("common.mainNav")}>
             <a className="nav-link" href="#" data-route="/dashboard" aria-current="page">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </nav>
           <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
+            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
               <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
                 VI
               </button>
@@ -93,39 +94,39 @@ export default function DashboardPage() {
                 EN
               </button>
             </div>
-            <button className="logout-button" type="button" aria-label="Đăng xuất" title="Đăng xuất">
+            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 logout
               </span>
               {" "}
               <span className="logout-label">
-                Đăng xuất
+                {t("common.logout")}
               </span>
             </button>
             {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu điều hướng">
+            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 menu
               </span>
             </button>
           </div>
         </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label="Điều hướng chính" hidden>
+        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
           <div className="page-container mobile-nav-list">
             <a className="mobile-nav-link" href="#" data-route="/dashboard" aria-current="page">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </div>
         </nav>
@@ -135,7 +136,7 @@ export default function DashboardPage() {
         <div className="card page-state" data-page-state="loading" role="status" hidden>
           <div className="spinner" aria-hidden="true" />
           <p>
-            Đang tải bảng điều khiển…
+            {t("dashboard.loading")}
           </p>
         </div>
         <div className="card page-state" data-page-state="error" role="alert" hidden>
@@ -143,13 +144,13 @@ export default function DashboardPage() {
             cloud_off
           </span>
           <h1 className="page-state-title">
-            Không thể tải bảng điều khiển
+            {t("dashboard.loadError")}
           </h1>
           <p>
-            Đã có lỗi khi tải dữ liệu. Vui lòng thử lại.
+            {t("common.loadError")}
           </p>
           <button className="button button-secondary button-compact" type="button" data-action="retry-page">
-            Thử lại
+            {t("common.retry")}
           </button>
         </div>
         <div data-dashboard-content>
@@ -165,14 +166,14 @@ export default function DashboardPage() {
               </span>
             </h1>
             <p className="welcome-description">
-              Sẵn sàng cùng chiếc bánh sừng bò học thêm tiếng Pháp hôm nay nào!
+              {t("dashboard.welcome")}
             </p>
           </section>
           {/* 3. Learning streak and practice calendar */}
-          <section className="activity-overview dashboard-section" aria-label="Chuỗi ngày học và lịch luyện tập">
+          <section className="activity-overview dashboard-section" aria-label={t("dashboard.activityRegion")}>
             <article className="card streak-card" aria-labelledby="streak-title">
               <div className="streak-illustration">
-                <img alt="Ngọn lửa biểu thị chuỗi ngày học" data-streak-image src="/images/streak-on.png" />
+                <img alt={t("dashboard.streakAltOn")} data-streak-image src="/images/streak-on.png" />
               </div>
               <div>
                 <p className="streak-count">
@@ -180,7 +181,7 @@ export default function DashboardPage() {
                     14
                   </span>
                   {" "}
-                  ngày liên tiếp
+                  <span data-streak-unit>{t("common.daysInARow", { n: 14 })}</span>
                 </p>
                 <p className="badge streak-record">
                   <span className="material-symbols-outlined icon-filled" aria-hidden="true">
@@ -188,13 +189,13 @@ export default function DashboardPage() {
                   </span>
                   {" "}
                   <span>
-                    Kỷ lục:
+                    {t("dashboard.record")}
                     {" "}
                     <span data-streak-longest>
                       28
                     </span>
                     {" "}
-                    ngày
+                    <span data-streak-longest-unit>{t("dashboard.recordDays", { n: 28 })}</span>
                   </span>
                 </p>
               </div>
@@ -205,10 +206,10 @@ export default function DashboardPage() {
                 </span>
                 <p>
                   <span>
-                    Mẹo nhỏ:
+                    {t("dashboard.tip")}
                   </span>
                   {" "}
-                  Hoàn thành một bài luyện tập hoặc luyện tập tổng hợp mỗi ngày để giữ chuỗi ngày học.
+                  {t("dashboard.tipText")}
                 </p>
               </div>
             </article>
@@ -222,25 +223,25 @@ export default function DashboardPage() {
                   </div>
                   <div>
                     <h2 className="section-title" id="activity-title">
-                      Lịch luyện tập
+                      {t("dashboard.calendarTitle")}
                     </h2>
                     <p className="card-subtitle">
-                      Những ngày bạn đã luyện tập để giữ chuỗi
+                      {t("dashboard.calendarSubtitle")}
                     </p>
                   </div>
                 </div>
-                <div className="month-navigation" role="group" aria-label="Chọn tháng">
-                  <button className="month-button" id="previous-month" type="button" aria-label="Tháng trước" aria-controls="activity-calendar-days" title="Tháng trước">
+                <div className="month-navigation" role="group" aria-label={t("dashboard.chooseMonth")}>
+                  <button className="month-button" id="previous-month" type="button" aria-label={t("dashboard.previousMonth")} aria-controls="activity-calendar-days" title={t("dashboard.previousMonth")}>
                     <span aria-hidden="true">
                       &lsaquo;
                     </span>
                   </button>
                   {" "}
                   <span className="month-badge" id="calendar-month" aria-live="polite" aria-atomic="true">
-                    Tháng 5
+                    {monthName(4)}
                   </span>
                   {" "}
-                  <button className="month-button" id="next-month" type="button" aria-label="Tháng sau" aria-controls="activity-calendar-days" title="Đây là tháng hiện tại" disabled>
+                  <button className="month-button" id="next-month" type="button" aria-label={t("dashboard.nextMonth")} aria-controls="activity-calendar-days" title={t("dashboard.currentMonth")} disabled>
                     <span aria-hidden="true">
                       &rsaquo;
                     </span>
@@ -249,10 +250,10 @@ export default function DashboardPage() {
               </div>
               <div className="calendar-state" data-calendar-state="error" role="alert" hidden>
                 <p>
-                  Không thể tải lịch luyện tập của tháng này.
+                  {t("dashboard.calendarError")}
                 </p>
                 <button className="button button-secondary button-compact" type="button" data-action="retry-calendar">
-                  Thử lại
+                  {t("common.retry")}
                 </button>
               </div>
               <div className="calendar-layout">
@@ -292,24 +293,24 @@ export default function DashboardPage() {
                 <div className="calendar-summary">
                   <p data-calendar-summary>
                     <span>
-                      23 ngày
+                      {t("dashboard.daysCount", { n: 23 })}
                     </span>
                     {" "}
-                    có luyện tập trong tháng này.
+                    {t("dashboard.daysWithPracticeText")}
                   </p>
                   <div className="calendar-legend">
                     <div className="legend-row">
                       <span className="legend-swatch activity-active" aria-hidden="true" />
                       {" "}
                       <span>
-                        Đã luyện tập
+                        {t("dashboard.legendPracticed")}
                       </span>
                     </div>
                     <div className="legend-row legend-row-muted">
                       <span className="legend-swatch activity-inactive" aria-hidden="true" />
                       {" "}
                       <span>
-                        Chưa luyện tập / Chưa tới
+                        {t("dashboard.legendNone")}
                       </span>
                     </div>
                   </div>
@@ -318,7 +319,7 @@ export default function DashboardPage() {
             </article>
           </section>
           {/* 4. Continue learning */}
-          <section className="card continue-card dashboard-section" aria-label="Tiếp tục học">
+          <section className="card continue-card dashboard-section" aria-label={t("common.continueLearning")}>
             <div className="continue-content" data-view="populated">
               <div className="continue-details">
                 <p className="continue-eyebrow">
@@ -327,7 +328,7 @@ export default function DashboardPage() {
                   </span>
                   {" "}
                   <span>
-                    Tiếp tục học
+                    {t("common.continueLearning")}
                   </span>
                   {" "}
                   <span aria-hidden="true">
@@ -337,8 +338,7 @@ export default function DashboardPage() {
                 {/* Parent section and position are pending API fields (FD §15). */}
                 <h2 className="continue-title">
                   <span>
-                    Ngữ pháp •
-                    &nbsp;
+                    {t("dashboard.continueModule")}                &nbsp;
                   </span>
                   <span lang="fr" data-pending-api="continue_learning.parent">
                     L'adjectif qualificatif et l'adjectif numéral
@@ -350,7 +350,7 @@ export default function DashboardPage() {
                 </h2>
                 <p className="continue-lesson">
                   <span data-pending-api="continue_learning.position">
-                    Bài 4/6:
+                    {t("dashboard.continueLesson", { n: 4, total: 6 })}
                   </span>
                   {" "}
                   <span className="continue-lesson-title" lang="fr">
@@ -364,7 +364,7 @@ export default function DashboardPage() {
               </div>
               <a className="button button-primary continue-button" href="#" data-route="/grammar/lessons/:lessonSlug">
                 <span>
-                  Tiếp tục học
+                  {t("common.continueLearning")}
                 </span>
                 {" "}
                 <span className="material-symbols-outlined" aria-hidden="true">
@@ -381,32 +381,32 @@ export default function DashboardPage() {
                   </span>
                   {" "}
                   <span>
-                    Tiếp tục học
+                    {t("common.continueLearning")}
                   </span>
                 </p>
                 <h2 className="continue-title">
-                  Chưa có bài học đang học dở
+                  {t("dashboard.continueEmptyTitle")}
                 </h2>
                 <p className="continue-lesson">
-                  Hãy chọn một bài để bắt đầu. Bài bạn mở gần nhất sẽ xuất hiện ở đây.
+                  {t("dashboard.continueEmptyText")}
                 </p>
                 <div className="explore-links">
                   <a className="lesson-link subject-vocabulary" href="#" data-route="/vocabulary">
-                    Từ vựng
+                    {t("common.vocabulary")}
                     <span className="material-symbols-outlined" aria-hidden="true">
                       arrow_forward
                     </span>
                   </a>
                   {" "}
                   <a className="lesson-link subject-grammar" href="#" data-route="/grammar">
-                    Ngữ pháp
+                    {t("common.grammar")}
                     <span className="material-symbols-outlined" aria-hidden="true">
                       arrow_forward
                     </span>
                   </a>
                   {" "}
                   <a className="lesson-link subject-conjugation" href="#" data-route="/conjugation">
-                    Chia động từ
+                    {t("common.conjugation")}
                     <span className="material-symbols-outlined" aria-hidden="true">
                       arrow_forward
                     </span>
@@ -425,7 +425,7 @@ export default function DashboardPage() {
                   auto_stories
                 </span>
                 <h2 className="section-title" id="skills-title">
-                  Tiến độ học tập
+                  {t("common.learningProgress")}
                 </h2>
               </div>
             </div>
@@ -444,38 +444,38 @@ export default function DashboardPage() {
                         25
                       </span>
                       {" "}
-                      bài
+                      {t("common.lessonWord", { n: 25 })}
                     </span>
                   </div>
                   <h3 className="skill-title" id="vocabulary-title">
-                    Từ vựng
+                    {t("common.vocabulary")}
                   </h3>
                   <p className="skill-description">
-                    Mở rộng vốn từ theo chủ đề, ngữ cảnh và các nhóm từ thường gặp.
+                    {t("dashboard.vocabularyText")}
                   </p>
                 </div>
                 <div className="skill-progress">
                   <div className="progress-labels">
                     <span>
-                      Tiến độ
+                      {t("common.progress")}
                     </span>
                     {" "}
                     <span className="progress-value">
                       72%
                     </span>
                   </div>
-                  <div className="progress-track" role="progressbar" aria-label="Tiến độ Từ vựng" aria-valuemax="100" aria-valuemin="0" aria-valuenow="72" style={{ "--progress": "72%" }}>
+                  <div className="progress-track" role="progressbar" aria-label={t("common.progressVocabulary")} aria-valuemax="100" aria-valuemin="0" aria-valuenow="72" style={{ "--progress": "72%" }}>
                     <div className="progress-fill" />
                   </div>
                   <div className="skill-footer">
                     <span className="skill-detail">
-                      18/25 bài
+                      {t("common.lessonsOf", { learned: 18, total: 25, n: 25 })}
                     </span>
                     {" "}
                     <a className="lesson-link" href="#" data-route="/vocabulary">
-                      Xem bài học
+                      {t("common.viewLessons")}
                       <span className="visually-hidden">
-                        Từ vựng
+                        {t("common.vocabulary")}
                       </span>
                       <span className="material-symbols-outlined" aria-hidden="true">
                         arrow_forward
@@ -498,38 +498,38 @@ export default function DashboardPage() {
                         13
                       </span>
                       {" "}
-                      bài
+                      {t("common.lessonWord", { n: 13 })}
                     </span>
                   </div>
                   <h3 className="skill-title" id="grammar-title">
-                    Ngữ pháp
+                    {t("common.grammar")}
                   </h3>
                   <p className="skill-description">
-                    Học các quy tắc và cấu trúc ngữ pháp theo từng nhóm.
+                    {t("dashboard.grammarText")}
                   </p>
                 </div>
                 <div className="skill-progress">
                   <div className="progress-labels">
                     <span>
-                      Tiến độ
+                      {t("common.progress")}
                     </span>
                     {" "}
                     <span className="progress-value">
                       62%
                     </span>
                   </div>
-                  <div className="progress-track" role="progressbar" aria-label="Tiến độ Ngữ pháp" aria-valuemax="100" aria-valuemin="0" aria-valuenow="62" style={{ "--progress": "62%" }}>
+                  <div className="progress-track" role="progressbar" aria-label={t("common.progressGrammar")} aria-valuemax="100" aria-valuemin="0" aria-valuenow="62" style={{ "--progress": "62%" }}>
                     <div className="progress-fill" />
                   </div>
                   <div className="skill-footer">
                     <span className="skill-detail">
-                      8/13 bài
+                      {t("common.lessonsOf", { learned: 8, total: 13, n: 13 })}
                     </span>
                     {" "}
                     <a className="lesson-link" href="#" data-route="/grammar">
-                      Xem bài học
+                      {t("common.viewLessons")}
                       <span className="visually-hidden">
-                        Ngữ pháp
+                        {t("common.grammar")}
                       </span>
                       <span className="material-symbols-outlined" aria-hidden="true">
                         arrow_forward
@@ -552,38 +552,38 @@ export default function DashboardPage() {
                         25
                       </span>
                       {" "}
-                      bài
+                      {t("common.lessonWord", { n: 25 })}
                     </span>
                   </div>
                   <h3 className="skill-title" id="conjugation-title">
-                    Chia động từ
+                    {t("common.conjugation")}
                   </h3>
                   <p className="skill-description">
-                    Học cách chia động từ theo thì, nhóm và các mẫu chia phổ biến.
+                    {t("dashboard.conjugationText")}
                   </p>
                 </div>
                 <div className="skill-progress">
                   <div className="progress-labels">
                     <span>
-                      Tiến độ
+                      {t("common.progress")}
                     </span>
                     {" "}
                     <span className="progress-value">
                       48%
                     </span>
                   </div>
-                  <div className="progress-track" role="progressbar" aria-label="Tiến độ Chia động từ" aria-valuemax="100" aria-valuemin="0" aria-valuenow="48" style={{ "--progress": "48%" }}>
+                  <div className="progress-track" role="progressbar" aria-label={t("common.progressConjugation")} aria-valuemax="100" aria-valuemin="0" aria-valuenow="48" style={{ "--progress": "48%" }}>
                     <div className="progress-fill" />
                   </div>
                   <div className="skill-footer">
                     <span className="skill-detail">
-                      12/25 bài
+                      {t("common.lessonsOf", { learned: 12, total: 25, n: 25 })}
                     </span>
                     {" "}
                     <a className="lesson-link" href="#" data-route="/conjugation">
-                      Xem bài học
+                      {t("common.viewLessons")}
                       <span className="visually-hidden">
-                        Chia động từ
+                        {t("common.conjugation")}
                       </span>
                       <span className="material-symbols-outlined" aria-hidden="true">
                         arrow_forward
@@ -602,7 +602,7 @@ export default function DashboardPage() {
                   category
                 </span>
                 <h2 className="section-title" id="practice-title">
-                  Củng cố kiến thức
+                  {t("dashboard.strengthen")}
                 </h2>
               </div>
             </div>
@@ -611,10 +611,10 @@ export default function DashboardPage() {
                 <div className="mixed-card-header">
                   <div>
                     <h3 className="mixed-title" id="mixed-title">
-                      Luyện tập tổng hợp
+                      {t("common.mixedPractice")}
                     </h3>
                     <p className="mixed-description">
-                      Tối đa 10 câu hỏi ngẫu nhiên từ các bài bạn đã đánh dấu là đã học. Một thử thách nhỏ để củng cố kiến thức!
+                      {t("dashboard.mixedText")}
                     </p>
                   </div>
                   <div className="icon-tile" aria-hidden="true">
@@ -626,7 +626,7 @@ export default function DashboardPage() {
                 <div className="mixed-actions" data-view="populated">
                   <button className="button button-primary" type="button" data-route="/mixed-practice">
                     <span>
-                      Bắt đầu luyện tập
+                      {t("common.startPractice")}
                     </span>
                     {" "}
                     <span className="material-symbols-outlined" aria-hidden="true">
@@ -641,7 +641,7 @@ export default function DashboardPage() {
                   </span>
                   {" "}
                   <span>
-                    Hãy đánh dấu ít nhất một bài là đã học để bắt đầu luyện tập tổng hợp.
+                    {t("dashboard.mixedEmpty")}
                   </span>
                 </p>
               </article>
@@ -650,10 +650,10 @@ export default function DashboardPage() {
                   <div className="review-card-header">
                     <div>
                       <h3 className="review-title" id="review-title">
-                        Xem lại sau
+                        {t("common.reviewLater")}
                       </h3>
                       <p className="review-description">
-                        Các bài bạn đã lưu để xem lại khi cần.
+                        {t("dashboard.reviewText")}
                       </p>
                     </div>
                     <div className="icon-tile" aria-hidden="true">
@@ -668,18 +668,18 @@ export default function DashboardPage() {
                     </span>
                     {" "}
                     <span className="review-count-label">
-                      bài đã lưu
+                      {t("dashboard.savedLessons", { n: 12 })}
                     </span>
                   </p>
                   {/* Shown when review_later_count is 0. */}
                   <p className="empty-text review-empty" data-view="empty" hidden>
-                    Chưa có bài nào. Chọn “Xem lại sau” trong một bài học để lưu bài đó vào đây.
+                    {t("dashboard.reviewEmpty")}
                   </p>
                 </div>
                 <div className="review-action">
                   <a className="button button-secondary" href="#" data-route="/review-later">
                     <span>
-                      Mở danh sách xem lại
+                      {t("dashboard.openReviewList")}
                     </span>
                     {" "}
                     <span className="material-symbols-outlined" aria-hidden="true">
@@ -703,10 +703,10 @@ export default function DashboardPage() {
                 </div>
                 <div>
                   <h2 className="section-title" id="recent-title">
-                    Luyện tập gần đây
+                    {t("dashboard.recentTitle")}
                   </h2>
                   <p className="card-subtitle">
-                    Kết quả các lần luyện tập mới nhất
+                    {t("dashboard.recentSubtitle")}
                   </p>
                 </div>
               </div>
@@ -720,9 +720,9 @@ export default function DashboardPage() {
                     </span>
                   </div>
                   <div className="practice-details">
-                    <h3 className="practice-title" title="Từ vựng: Le pain et les viennoiseries — Partie 1">
+                    <h3 className="practice-title" title={t("dashboard.recentModule", { module: t("common.vocabulary"), title: "Le pain et les viennoiseries — Partie 1" })}>
                       <span className="practice-type">
-                        Từ vựng:
+                        {t("dashboard.moduleLabel", { module: t("common.vocabulary") })}
                       </span>
                       {" "}
                       <a className="practice-link" href="#" data-route="/vocabulary/study-units/pain-viennoiseries-1" lang="fr">
@@ -735,7 +735,7 @@ export default function DashboardPage() {
                       </span>
                       {" "}
                       <time dateTime="2026-05-24T09:30:00+07:00">
-                        Hôm nay lúc 09:30
+                        {t("time.todayAt", { time: "09:30" })}
                       </time>
                     </p>
                   </div>
@@ -746,7 +746,7 @@ export default function DashboardPage() {
                   </span>
                   {" "}
                   <span className="practice-correct">
-                    Đúng 19/20 câu
+                    {t("practice.scoreSummary", { correct: 19, total: 20 })}
                   </span>
                 </div>
               </li>
@@ -758,9 +758,9 @@ export default function DashboardPage() {
                     </span>
                   </div>
                   <div className="practice-details">
-                    <h3 className="practice-title" title="Ngữ pháp: Les articles définis">
+                    <h3 className="practice-title" title={t("dashboard.recentModule", { module: t("common.grammar"), title: "Les articles définis" })}>
                       <span className="practice-type">
-                        Ngữ pháp:
+                        {t("dashboard.moduleLabel", { module: t("common.grammar") })}
                       </span>
                       {" "}
                       <a className="practice-link" href="#" data-route="/grammar/lessons/articles-definis" lang="fr">
@@ -773,7 +773,7 @@ export default function DashboardPage() {
                       </span>
                       {" "}
                       <time dateTime="2026-05-23T18:15:00+07:00">
-                        Hôm qua lúc 18:15
+                        {t("time.yesterdayAt", { time: "18:15" })}
                       </time>
                     </p>
                   </div>
@@ -784,7 +784,7 @@ export default function DashboardPage() {
                   </span>
                   {" "}
                   <span className="practice-correct">
-                    Đúng 14/16 câu
+                    {t("practice.scoreSummary", { correct: 14, total: 16 })}
                   </span>
                 </div>
               </li>
@@ -796,9 +796,9 @@ export default function DashboardPage() {
                     </span>
                   </div>
                   <div className="practice-details">
-                    <h3 className="practice-title" title="Chia động từ: Les verbes réguliers en -ER">
+                    <h3 className="practice-title" title={t("dashboard.recentModule", { module: t("common.conjugation"), title: "Les verbes réguliers en -ER" })}>
                       <span className="practice-type">
-                        Chia động từ:
+                        {t("dashboard.moduleLabel", { module: t("common.conjugation") })}
                       </span>
                       {" "}
                       <a className="practice-link" href="#" data-route="/conjugation/lessons/present-regular-er" lang="fr">
@@ -811,7 +811,7 @@ export default function DashboardPage() {
                       </span>
                       {" "}
                       <time dateTime="2026-05-13T21:00:00+07:00">
-                        13 tháng 5 lúc 21:00
+                        {t("time.dateAt", { date: dayMonth(13, 4), time: "21:00" })}
                       </time>
                     </p>
                   </div>
@@ -822,7 +822,7 @@ export default function DashboardPage() {
                   </span>
                   {" "}
                   <span className="practice-correct">
-                    Đúng 15/20 câu
+                    {t("practice.scoreSummary", { correct: 15, total: 20 })}
                   </span>
                 </div>
               </li>
@@ -834,9 +834,9 @@ export default function DashboardPage() {
                     </span>
                   </div>
                   <div className="practice-details">
-                    <h3 className="practice-title" title="Luyện tập tổng hợp">
+                    <h3 className="practice-title" title={t("common.mixedPractice")}>
                       <span className="practice-type">
-                        Luyện tập tổng hợp
+                        {t("common.mixedPractice")}
                       </span>
                     </h3>
                     <p className="practice-date">
@@ -845,7 +845,7 @@ export default function DashboardPage() {
                       </span>
                       {" "}
                       <time dateTime="2026-05-12T20:40:00+07:00">
-                        12 tháng 5 lúc 20:40
+                        {t("time.dateAt", { date: dayMonth(12, 4), time: "20:40" })}
                       </time>
                     </p>
                   </div>
@@ -856,14 +856,14 @@ export default function DashboardPage() {
                   </span>
                   {" "}
                   <span className="practice-correct">
-                    Đúng 10/10 câu
+                    {t("practice.scoreSummary", { correct: 10, total: 10 })}
                   </span>
                 </div>
               </li>
             </ul>
             {/* Shown when recent_practice is empty. */}
             <p className="empty-text" data-view="empty" hidden>
-              Chưa có lần luyện tập nào. Kết quả sẽ xuất hiện ở đây sau khi bạn hoàn thành một bài luyện tập.
+              {t("dashboard.recentEmpty")}
             </p>
           </section>
         </div>
@@ -876,7 +876,7 @@ export default function DashboardPage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

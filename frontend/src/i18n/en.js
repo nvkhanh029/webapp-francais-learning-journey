@@ -1,1 +1,0 @@
-// TODO: English UI strings.

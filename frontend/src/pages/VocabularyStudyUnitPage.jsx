@@ -82,10 +82,11 @@
 */
 import styles from "./VocabularyStudyUnitPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 import init from "./VocabularyStudyUnitPage.script.js";
 
 export default function VocabularyStudyUnitPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Từ vựng" });
+  const rootRef = usePageScript(init, { title: "title.vocabulary" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -93,31 +94,31 @@ export default function VocabularyStudyUnitPage() {
       <header className="site-header">
         <div className="page-container header-content">
           <div className="brand">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
             </span>
           </div>
-          <nav className="main-nav" aria-label="Điều hướng chính">
+          <nav className="main-nav" aria-label={t("common.mainNav")}>
             <a className="nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/vocabulary" aria-current="page">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </nav>
           <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
+            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
               <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
                 VI
               </button>
@@ -126,39 +127,39 @@ export default function VocabularyStudyUnitPage() {
                 EN
               </button>
             </div>
-            <button className="logout-button" type="button" aria-label="Đăng xuất" title="Đăng xuất">
+            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 logout
               </span>
               {" "}
               <span className="logout-label">
-                Đăng xuất
+                {t("common.logout")}
               </span>
             </button>
             {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu điều hướng">
+            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 menu
               </span>
             </button>
           </div>
         </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label="Điều hướng chính" hidden>
+        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
           <div className="page-container mobile-nav-list">
             <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/vocabulary" aria-current="page">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </div>
         </nav>
@@ -169,7 +170,7 @@ export default function VocabularyStudyUnitPage() {
                  text with no route; the current Study Unit is not a link. Subtopic is not part of
                  the trail: it has no route and appears only in the header.
           */}
-          <nav className="breadcrumbs" aria-label="Đường dẫn trang">
+          <nav className="breadcrumbs" aria-label={t("common.breadcrumb")}>
             <ol className="breadcrumb-list">
               <li>
                 <a className="crumb-link" href="#" data-route="/vocabulary">
@@ -178,7 +179,7 @@ export default function VocabularyStudyUnitPage() {
                   </span>
                   {" "}
                   <span>
-                    Từ vựng
+                    {t("common.vocabulary")}
                   </span>
                 </a>
               </li>
@@ -214,7 +215,7 @@ export default function VocabularyStudyUnitPage() {
           <div className="card page-state" data-page-state="loading" role="status" hidden>
             <div className="spinner" aria-hidden="true" />
             <p>
-              Đang tải bài học…
+              {t("common.loadingLesson")}
             </p>
           </div>
           <div className="card page-state" data-page-state="error" role="alert" hidden>
@@ -222,13 +223,13 @@ export default function VocabularyStudyUnitPage() {
               cloud_off
             </span>
             <h1 className="page-state-title">
-              Không thể tải bài học
+              {t("common.loadLessonError")}
             </h1>
             <p>
-              Đã có lỗi khi tải dữ liệu. Vui lòng thử lại.
+              {t("common.loadError")}
             </p>
             <button className="button button-secondary button-compact" type="button" data-action="retry">
-              Thử lại
+              {t("common.retry")}
             </button>
           </div>
           <article aria-labelledby="unit-title" data-unit-content>
@@ -250,14 +251,14 @@ export default function VocabularyStudyUnitPage() {
                   </span>
                   {" "}
                   <span>
-                    Mục:
+                    {t("vocab.subtopicLabel")}
                     {" "}
                     <span lang="fr" data-slot="title" />
                     <span data-slot="support" />
                   </span>
                 </p>
                 {/* Count first, then Review Later (priority), then Learned. */}
-                <ul className="unit-meta" aria-label="Thông tin bài">
+                <ul className="unit-meta" aria-label={t("vocab.unitInfo")}>
                   <li className="badge badge-info" data-slot="count" />
                   <li className="badge badge-review" data-slot="badge-review" hidden>
                     <span className="material-symbols-outlined icon-filled" aria-hidden="true">
@@ -265,7 +266,7 @@ export default function VocabularyStudyUnitPage() {
                     </span>
                     {" "}
                     <span>
-                      Xem lại sau
+                      {t("common.reviewLater")}
                     </span>
                   </li>
                   <li className="badge badge-learned" data-slot="badge-learned" hidden>
@@ -274,7 +275,7 @@ export default function VocabularyStudyUnitPage() {
                     </span>
                     {" "}
                     <span>
-                      Đã học
+                      {t("common.learned")}
                     </span>
                   </li>
                 </ul>
@@ -284,18 +285,18 @@ export default function VocabularyStudyUnitPage() {
             <section className="unit-section" aria-labelledby="entries-title">
               <div className="list-header">
                 <h2 className="list-title" id="entries-title">
-                  Từ và cụm từ
+                  {t("vocab.wordsHeading")}
                 </h2>
               </div>
               <ol className="entry-list" data-entry-list />
               <p className="empty-text" data-entry-empty hidden>
-                Bài này chưa có từ vựng nào.
+                {t("vocab.emptyUnit")}
               </p>
             </section>
             {/* 6. Learning actions: apply to the whole Study Unit, never to a single word. */}
             <aside className="card unit-actions unit-section" aria-labelledby="actions-title">
               <h2 className="actions-title" id="actions-title">
-                Trạng thái và luyện tập
+                {t("lesson.statusHeading")}
               </h2>
               <div className="actions-grid">
                 {/* Learned slot */}
@@ -306,7 +307,7 @@ export default function VocabularyStudyUnitPage() {
                     </span>
                     {" "}
                     <span>
-                      Đánh dấu đã học
+                      {t("common.markLearned")}
                     </span>
                   </button>
                   <div className="state-box state-box-learned" data-slot="learned-box" hidden>
@@ -315,14 +316,14 @@ export default function VocabularyStudyUnitPage() {
                     </span>
                     <p className="state-box-text">
                       <strong>
-                        Đã học
+                        {t("common.learned")}
                       </strong>
-                      Bạn đã đánh dấu bài này là đã học.
+                      {t("lesson.learnedNote")}
                     </p>
                     <button className="state-undo" type="button" data-action="unmark-learned">
-                      Bỏ đánh dấu
+                      {t("lesson.unmark")}
                       <span className="visually-hidden">
-                        đã học
+                        {t("common.learnedLower")}
                       </span>
                     </button>
                   </div>
@@ -335,7 +336,7 @@ export default function VocabularyStudyUnitPage() {
                     </span>
                     {" "}
                     <span>
-                      Xem lại sau
+                      {t("common.reviewLater")}
                     </span>
                   </button>
                   <div className="state-box state-box-review" data-slot="review-box" hidden>
@@ -344,14 +345,14 @@ export default function VocabularyStudyUnitPage() {
                     </span>
                     <p className="state-box-text">
                       <strong>
-                        Xem lại sau
+                        {t("common.reviewLater")}
                       </strong>
-                      Bài này đang nằm trong danh sách xem lại.
+                      {t("lesson.savedNote")}
                     </p>
                     <button className="state-undo" type="button" data-action="remove-review">
-                      Bỏ lưu
+                      {t("lesson.unsave")}
                       <span className="visually-hidden">
-                        khỏi Xem lại sau
+                        {t("lesson.fromReviewLater")}
                       </span>
                     </button>
                   </div>
@@ -360,7 +361,7 @@ export default function VocabularyStudyUnitPage() {
                 <div className="practice-group">
                   <a className="button button-primary" href="#" data-slot="practice">
                     <span>
-                      Bắt đầu luyện tập
+                      {t("common.startPractice")}
                     </span>
                     {" "}
                     <span className="material-symbols-outlined" aria-hidden="true">
@@ -368,7 +369,7 @@ export default function VocabularyStudyUnitPage() {
                     </span>
                   </a>
                   <p className="action-note" data-slot="practice-note" hidden>
-                    Luyện tập giúp củng cố từ vựng và không bắt buộc để đánh dấu đã học.
+                    {t("lesson.practiceNoteVocabulary")}
                   </p>
                 </div>
               </div>
@@ -379,7 +380,7 @@ export default function VocabularyStudyUnitPage() {
                      unavailable card (aria-disabled, no href, not focusable), so the active card
                      never expands into the missing side.
             */}
-            <nav className="unit-nav" aria-label="Điều hướng bài học" data-unit-nav>
+            <nav className="unit-nav" aria-label={t("lesson.navigation")} data-unit-nav>
               <a className="unit-nav-link unit-nav-previous" href="#" data-slot="nav-previous">
                 <span className="material-symbols-outlined" aria-hidden="true">
                   arrow_back
@@ -387,7 +388,7 @@ export default function VocabularyStudyUnitPage() {
                 {" "}
                 <span className="unit-nav-text">
                   <span className="unit-nav-label">
-                    Bài trước
+                    {t("lesson.previous")}
                   </span>
                   {" "}
                   <span className="unit-nav-title" lang="fr" data-slot="title" />
@@ -403,7 +404,7 @@ export default function VocabularyStudyUnitPage() {
                 {" "}
                 <span className="unit-nav-text">
                   <span className="unit-nav-label">
-                    Bài tiếp theo
+                    {t("lesson.next")}
                   </span>
                   {" "}
                   <span className="unit-nav-title" lang="fr" data-slot="title" />
@@ -422,12 +423,12 @@ export default function VocabularyStudyUnitPage() {
         <li class="entry">
             <div class="entry-line">
                 <p class="entry-term" lang="fr" data-slot="french"></p>
-                <p class="entry-ipa" data-slot="ipa"><span class="visually-hidden">Phiên âm: </span><span
+                <p class="entry-ipa" data-slot="ipa"><span class="visually-hidden">${t("vocab.ipa")} </span><span
                         lang="fr-fonipa" data-slot="ipa-text"></span></p>
             </div>
-            <p class="entry-meaning"><span class="visually-hidden">Nghĩa: </span><span data-slot="meaning"></span></p>
+            <p class="entry-meaning"><span class="visually-hidden">${t("vocab.meaning")} </span><span data-slot="meaning"></span></p>
             <div class="entry-example" data-slot="example">
-                <p class="example-fr"><span class="visually-hidden">Ví dụ: </span><span lang="fr"
+                <p class="example-fr"><span class="visually-hidden">${t("vocab.example")} </span><span lang="fr"
                         data-slot="example-fr"></span></p>
                 <p class="example-translation" data-slot="example-translation"></p>
             </div>
@@ -441,7 +442,7 @@ export default function VocabularyStudyUnitPage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

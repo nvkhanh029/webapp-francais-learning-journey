@@ -46,10 +46,11 @@
 */
 import styles from "./NotFoundPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 import init from "./NotFoundPage.script.js";
 
 export default function NotFoundPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Không tìm thấy trang" });
+  const rootRef = usePageScript(init, { title: "title.notFound" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -57,7 +58,7 @@ export default function NotFoundPage() {
       <header className="site-header">
         <div className="page-container header-content">
           <a className="brand" href="#" data-route="/">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
@@ -70,24 +71,24 @@ export default function NotFoundPage() {
           {/* 2. Not-found card */}
           <section className="card not-found-card" aria-labelledby="not-found-title">
             {/* Decorative: the heading and text carry the whole message. */}
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="not-found-mascot" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="not-found-mascot" src="/images/logo.png" />
             <p className="badge">
               <span className="material-symbols-outlined" aria-hidden="true">
                 link_off
               </span>
               {" "}
               <span>
-                Lỗi 404
+                {t("notFound.code")}
               </span>
             </p>
             <h1 className="not-found-title" id="not-found-title">
-              Không tìm thấy trang
+              {t("notFound.title")}
             </h1>
             <p className="not-found-lead">
-              Trang này không tồn tại hoặc địa chỉ đã bị nhập sai.
+              {t("notFound.text")}
               <br />
               {" "}
-              Hãy quay lại để tiếp tục học nhé.
+              {t("notFound.hint")}
             </p>
             <div className="not-found-actions">
               <button className="button button-secondary" type="button" data-action="go-back">
@@ -96,13 +97,13 @@ export default function NotFoundPage() {
                 </span>
                 {" "}
                 <span>
-                  Quay lại trang trước
+                  {t("notFound.back")}
                 </span>
               </button>
               {" "}
               <a className="button button-primary" href="#" data-route="/dashboard">
                 <span>
-                  Về bảng điều khiển
+                  {t("common.backToDashboard")}
                 </span>
                 {" "}
                 <span className="material-symbols-outlined" aria-hidden="true">
@@ -121,7 +122,7 @@ export default function NotFoundPage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

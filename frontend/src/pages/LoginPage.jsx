@@ -42,10 +42,11 @@
 */
 import styles from "./LoginPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 import init from "./LoginPage.script.js";
 
 export default function LoginPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Đăng nhập" });
+  const rootRef = usePageScript(init, { title: "title.login" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -53,15 +54,15 @@ export default function LoginPage() {
       <header className="site-header">
         <div className="page-container header-content">
           <a className="brand" href="#" data-route="/">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
             </span>
           </a>
-          <nav className="header-actions" aria-label="Tài khoản">
+          <nav className="header-actions" aria-label={t("common.account")}>
             <a className="button button-secondary button-compact" href="#" data-route="/register">
-              Đăng ký
+              {t("common.registerAction")}
             </a>
           </nav>
         </div>
@@ -75,7 +76,7 @@ export default function LoginPage() {
                 Content de te revoir !
               </h1>
               <p className="auth-lead">
-                Đăng nhập để tiếp tục quá trình học tiếng Pháp của bạn.
+                {t("auth.loginIntro")}
               </p>
               {/* Fields map to POST /api/v1/auth/login { email, password } (API Contract §6.2). */}
               <form className="login-form" id="login-form" noValidate>
@@ -99,18 +100,18 @@ export default function LoginPage() {
                     </span>
                     {" "}
                     <span>
-                      Vui lòng nhập email.
+                      {t("common.emailRequired")}
                     </span>
                   </p>
                 </div>
                 <div className="form-field">
                   <label className="form-label" htmlFor="login-password">
-                    Mật khẩu
+                    {t("common.password")}
                   </label>
                   <div className="password-control">
-                    <input className="form-input" id="login-password" name="password" type="password" autoComplete="current-password" placeholder="Nhập mật khẩu" required aria-invalid="false" />
+                    <input className="form-input" id="login-password" name="password" type="password" autoComplete="current-password" placeholder={t("auth.passwordPlaceholder")} required aria-invalid="false" />
                     {" "}
-                    <button className="password-toggle" id="password-toggle" type="button" aria-controls="login-password" aria-pressed="false" aria-label="Hiện mật khẩu" title="Hiện mật khẩu">
+                    <button className="password-toggle" id="password-toggle" type="button" aria-controls="login-password" aria-pressed="false" aria-label={t("common.showPassword")} title={t("common.showPassword")}>
                       <span className="material-symbols-outlined" aria-hidden="true">
                         visibility
                       </span>
@@ -122,13 +123,13 @@ export default function LoginPage() {
                     </span>
                     {" "}
                     <span>
-                      Vui lòng nhập mật khẩu.
+                      {t("common.passwordRequired")}
                     </span>
                   </p>
                 </div>
                 <button className="button button-primary login-submit" id="login-submit" type="submit" aria-busy="false">
                   <span data-submit-label>
-                    Đăng nhập
+                    {t("common.loginAction")}
                   </span>
                   {" "}
                   <span className="material-symbols-outlined" aria-hidden="true" data-submit-icon>
@@ -139,24 +140,24 @@ export default function LoginPage() {
                 </button>
               </form>
               <p className="auth-switch">
-                Chưa có tài khoản?
+                {t("auth.noAccount")}
                 {" "}
                 <a className="text-link" href="#" data-route="/register">
-                  Đăng ký
+                  {t("common.registerAction")}
                 </a>
               </p>
             </section>
             {/* Supporting context. Decorative only; the form does not depend on it. */}
-            <aside className="auth-aside" aria-label="Giới thiệu">
+            <aside className="auth-aside" aria-label={t("common.about")}>
               <div>
                 <h2 className="aside-title">
-                  Học tiếng Pháp theo nhịp của riêng bạn
+                  {t("auth.loginAsideTitle")}
                 </h2>
                 <p className="aside-description">
-                  Học Từ vựng, Ngữ pháp và Chia động từ mà không bị giới hạn bởi thứ tự bài học.
+                  {t("auth.loginAsideText")}
                 </p>
               </div>
-              <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="auth-mascot" src="/images/logo.png" />
+              <img alt={t("common.mascotAlt")} className="auth-mascot" src="/images/logo.png" />
             </aside>
           </div>
         </div>
@@ -169,7 +170,7 @@ export default function LoginPage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

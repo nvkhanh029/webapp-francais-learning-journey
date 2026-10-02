@@ -49,10 +49,11 @@
 */
 import styles from "./RegisterPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 import init from "./RegisterPage.script.js";
 
 export default function RegisterPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Đăng ký" });
+  const rootRef = usePageScript(init, { title: "title.register" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -60,15 +61,15 @@ export default function RegisterPage() {
       <header className="site-header">
         <div className="page-container header-content">
           <a className="brand" href="#" data-route="/">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
             </span>
           </a>
-          <nav className="header-actions" aria-label="Tài khoản">
+          <nav className="header-actions" aria-label={t("common.account")}>
             <a className="button button-secondary button-compact" href="#" data-route="/login">
-              Đăng nhập
+              {t("common.loginAction")}
             </a>
           </nav>
         </div>
@@ -79,10 +80,10 @@ export default function RegisterPage() {
           <div className="card auth-card">
             <section className="auth-form-panel" aria-labelledby="register-title">
               <h1 className="auth-title" id="register-title">
-                Tạo tài khoản
+                {t("auth.registerTitle")}
               </h1>
               <p className="auth-lead">
-                Bắt đầu học tiếng Pháp theo chủ đề và theo dõi tiến độ của bạn.
+                {t("auth.registerIntro")}
               </p>
               {/* Fields map to POST /api/v1/auth/register { email, password } (API Contract §6.1). */}
               <form className="auth-form" id="register-form" noValidate>
@@ -107,18 +108,18 @@ export default function RegisterPage() {
                     </span>
                     {" "}
                     <span data-error-text>
-                      Vui lòng nhập email.
+                      {t("common.emailRequired")}
                     </span>
                   </p>
                 </div>
                 <div className="form-field">
                   <label className="form-label" htmlFor="register-password">
-                    Mật khẩu
+                    {t("common.password")}
                   </label>
                   <div className="password-control">
-                    <input className="form-input" id="register-password" name="password" type="password" autoComplete="new-password" placeholder="Ít nhất 8 ký tự" required minLength="8" aria-invalid="false" aria-describedby="password-hint" />
+                    <input className="form-input" id="register-password" name="password" type="password" autoComplete="new-password" placeholder={t("auth.registerPasswordPlaceholder")} required minLength="8" aria-invalid="false" aria-describedby="password-hint" />
                     {" "}
-                    <button className="password-toggle" id="password-toggle" type="button" aria-controls="register-password" aria-pressed="false" aria-label="Hiện mật khẩu" title="Hiện mật khẩu">
+                    <button className="password-toggle" id="password-toggle" type="button" aria-controls="register-password" aria-pressed="false" aria-label={t("common.showPassword")} title={t("common.showPassword")}>
                       <span className="material-symbols-outlined" aria-hidden="true">
                         visibility
                       </span>
@@ -131,7 +132,7 @@ export default function RegisterPage() {
                     </span>
                     {" "}
                     <span>
-                      Mật khẩu phải có ít nhất 8 ký tự.
+                      {t("auth.passwordTooShort")}
                     </span>
                   </p>
                   <p className="field-error" id="password-error" hidden>
@@ -140,13 +141,13 @@ export default function RegisterPage() {
                     </span>
                     {" "}
                     <span data-error-text>
-                      Vui lòng nhập mật khẩu.
+                      {t("common.passwordRequired")}
                     </span>
                   </p>
                 </div>
                 <button className="button button-primary auth-submit" id="register-submit" type="submit" aria-busy="false">
                   <span data-submit-label>
-                    Đăng ký
+                    {t("common.registerAction")}
                   </span>
                   {" "}
                   <span className="material-symbols-outlined" aria-hidden="true" data-submit-icon>
@@ -157,21 +158,21 @@ export default function RegisterPage() {
                 </button>
               </form>
               <p className="auth-switch">
-                Đã có tài khoản?
+                {t("common.hasAccount")}
                 {" "}
                 <a className="text-link" href="#" data-route="/login">
-                  Đăng nhập
+                  {t("common.loginAction")}
                 </a>
               </p>
             </section>
             {/* Supporting context. Decorative only; the form does not depend on it. */}
-            <aside className="auth-aside" aria-label="Giới thiệu">
+            <aside className="auth-aside" aria-label={t("common.about")}>
               <div>
                 <h2 className="aside-title">
-                  Bắt đầu hành trình tiếng Pháp của bạn
+                  {t("auth.registerAsideTitle")}
                 </h2>
                 <p className="aside-description">
-                  Học Từ vựng, Ngữ pháp và Chia động từ theo từng chủ đề, theo nhịp của riêng bạn.
+                  {t("auth.registerAsideText")}
                 </p>
               </div>
               <ul className="aside-benefits">
@@ -181,7 +182,7 @@ export default function RegisterPage() {
                   </span>
                   {" "}
                   <span>
-                    Học tự do, không khóa bài học
+                    {t("auth.registerBenefit1")}
                   </span>
                 </li>
                 <li>
@@ -190,7 +191,7 @@ export default function RegisterPage() {
                   </span>
                   {" "}
                   <span>
-                    Lưu tiến độ và giữ chuỗi ngày học
+                    {t("auth.registerBenefit2")}
                   </span>
                 </li>
                 <li>
@@ -199,11 +200,11 @@ export default function RegisterPage() {
                   </span>
                   {" "}
                   <span>
-                    Luyện tập sau mỗi bài học
+                    {t("auth.registerBenefit3")}
                   </span>
                 </li>
               </ul>
-              <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="auth-mascot" src="/images/logo.png" />
+              <img alt={t("common.mascotAlt")} className="auth-mascot" src="/images/logo.png" />
             </aside>
           </div>
         </div>
@@ -216,7 +217,7 @@ export default function RegisterPage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

@@ -52,10 +52,11 @@
 */
 import styles from "./LanguageSetupPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 import init from "./LanguageSetupPage.script.js";
 
 export default function LanguageSetupPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Thiết lập ngôn ngữ hỗ trợ" });
+  const rootRef = usePageScript(init, { title: "title.languageSetup" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -63,7 +64,7 @@ export default function LanguageSetupPage() {
       <header className="site-header">
         <div className="page-container header-content">
           <span className="brand">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
@@ -82,10 +83,10 @@ export default function LanguageSetupPage() {
                 </span>
               </div>
               <h1 className="setup-title" id="setup-title">
-                Chọn ngôn ngữ hỗ trợ
+                {t("setup.title")}
               </h1>
               <p className="setup-lead">
-                Chọn ngôn ngữ bạn muốn sử dụng cho giao diện, giải thích và bản dịch khi học tiếng Pháp. Tiếng Pháp vẫn là ngôn ngữ bạn học.
+                {t("setup.text")}
               </p>
             </div>
             {/* Form-level error: no selection on submit, or a failed save. Message text is
@@ -101,7 +102,7 @@ export default function LanguageSetupPage() {
                 <span data-form-error-text />
                 <div className="form-alert-actions" data-form-error-retry hidden>
                   <button className="button-retry" type="button" data-action="retry-submit">
-                    Thử lại
+                    {t("common.retry")}
                   </button>
                 </div>
               </div>
@@ -111,7 +112,7 @@ export default function LanguageSetupPage() {
             */}
             <fieldset className="language-group">
               <legend className="visually-hidden" id="language-group-label">
-                Ngôn ngữ hỗ trợ
+                {t("common.supportLanguage")}
               </legend>
               <div className="language-grid" role="radiogroup" aria-labelledby="language-group-label" aria-describedby="form-error" id="language-options">
                 <div className="language-option" data-lang="vi" role="radio" aria-checked="false" tabIndex="0">
@@ -147,7 +148,7 @@ export default function LanguageSetupPage() {
             <div className="setup-actions">
               <button className="button button-primary" id="setup-submit" type="button" data-route="/dashboard" aria-busy="false">
                 <span data-submit-label>
-                  Tiếp tục
+                  {t("common.continue")}
                 </span>
                 {" "}
                 <span className="material-symbols-outlined" aria-hidden="true" data-submit-icon>
@@ -168,7 +169,7 @@ export default function LanguageSetupPage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

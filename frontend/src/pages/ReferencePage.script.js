@@ -1,25 +1,12 @@
 // Behavior carried over from the raw UI prototype (reference.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by ReferencePage.jsx.
-export default function init({ getLanguage, onLanguageChange } = {}) {
+import { t } from "../i18n/index.js";
+
+export default function init({ onLanguageChange } = {}) {
   // UI preview only. No fetching, authentication, or routing is added here.
   // Production components receive this data from GET /api/v1/references/{slug} (API Contract §12.1).
   (() => {
-      let isEnglish = getLanguage() === "en";
       const preview = new URLSearchParams(window.location.search).get("preview");
-
-      // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const buildCopy = (isEnglish) => isEnglish
-          ? {
-              pageTitle: (title) => `Français Learning Journey | ${title}`,
-              menuOpen: "Close navigation menu",
-              menuClosed: "Navigation menu",
-          }
-          : {
-              pageTitle: (title) => `Français Learning Journey | ${title}`,
-              menuOpen: "Đóng menu điều hướng",
-              menuClosed: "Menu điều hướng",
-          };
-      let COPY = buildCopy(isEnglish);
 
       // Sample responses in the shape of GET /api/v1/references/{slug}: exactly four fields.
       // `content` is one localized Markdown string (truncated here); its rendered HTML is in
@@ -62,7 +49,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       /* ---------- Reference ---------- */
       function renderReference(reference, contentTemplateId) {
-          document.title = COPY.pageTitle(reference.title_fr || reference.title);
+          document.title = t("common.pageTitle", { title: reference.title_fr || reference.title });
           setTitles(slot(article, "title"), slot(article, "support"), reference);
 
           const crumbTitle = slot(currentCrumb, "crumb-title");
@@ -109,7 +96,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       function setMenu(open) {
           menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", open ? COPY.menuOpen : COPY.menuClosed);
+          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
           menuIcon.textContent = open ? "close" : "menu";
           mobileNav.hidden = !open;
       }
@@ -128,9 +115,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           if (event.matches) setMenu(false);
       });
       /* ---------- Language change: re-render this page's copy in place ---------- */
-      onLanguageChange((language) => {
-          isEnglish = language === "en";
-          COPY = buildCopy(isEnglish);
+      onLanguageChange(() => {
           if (!article.hidden) showSample();
           setMenu(!mobileNav.hidden);
       });

@@ -1,48 +1,12 @@
 // Behavior carried over from the raw UI prototype (dashboard-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by DashboardPage.jsx.
-export default function init({ getLanguage, onLanguageChange } = {}) {
+import { t, monthName, localeFor } from "../i18n/index.js";
+
+export default function init({ onLanguageChange } = {}) {
   // UI preview only. No fetching, authentication, or application structure is added here.
   // Production components receive this data from the API (API Contract §8.1, §8.2).
   (() => {
-      let locale = getLanguage() === "en" ? "en-US" : "vi-VN";
-      let isEnglish = locale === "en-US";
       const preview = new URLSearchParams(window.location.search).get("preview");
-
-      // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const buildCopy = (isEnglish) => isEnglish
-          ? {
-              lessonsCount: (learned, total) => `${learned}/${total} lesson${total === 1 ? "" : "s"}`,
-              streakAlt: { on: "Flame showing the learning streak", off: "Unlit flame, no learning streak yet" },
-              currentMonth: "This is the current month",
-              nextMonth: "Next month",
-              today: "Today",
-              practiced: "practiced",
-              noPractice: "no practice",
-              notYet: "not yet",
-              daysWithPractice: (n) => `<span>${n} day${n === 1 ? "" : "s"}</span> with practice this month.`,
-              emptyMonth: "No practice days this month yet.",
-              noSample: "No sample data for this month",
-              noSampleSummary: "This prototype has no sample data for this month.",
-              menuOpen: "Close navigation menu",
-              menuClosed: "Navigation menu",
-          }
-          : {
-              lessonsCount: (learned, total) => `${learned}/${total} bài`,
-              streakAlt: { on: "Ngọn lửa biểu thị chuỗi ngày học", off: "Ngọn lửa tắt, chưa có chuỗi ngày học" },
-              currentMonth: "Đây là tháng hiện tại",
-              nextMonth: "Tháng sau",
-              today: "Hôm nay",
-              practiced: "đã luyện tập",
-              noPractice: "chưa luyện tập",
-              notYet: "chưa tới",
-              daysWithPractice: (n) => `<span>${n} ngày</span> có luyện tập trong tháng này.`,
-              emptyMonth: "Chưa có ngày luyện tập nào trong tháng này.",
-              noSample: "chưa có dữ liệu mẫu",
-              noSampleSummary: "Bản mẫu chưa có dữ liệu cho tháng này.",
-              menuOpen: "Đóng menu điều hướng",
-              menuClosed: "Menu điều hướng",
-          };
-      let COPY = buildCopy(isEnglish);
 
       // Sample "today" so the May design stays intact.
       const SAMPLE_TODAY = { year: 2026, month: 5, day: 24 };
@@ -79,7 +43,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           const track = card.querySelector(".progress-track");
           track.setAttribute("aria-valuenow", String(percent));
           track.style.setProperty("--progress", `${percent}%`);
-          card.querySelector(".skill-detail").textContent = COPY.lessonsCount(learned, total);
+          card.querySelector(".skill-detail").textContent = t("common.lessonsOf", { learned, total, n: total });
           card.querySelector("[data-total-text]").textContent = total;
       }
 
@@ -135,13 +99,22 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           document.querySelector("[data-streak-current]").textContent = "0";
       }
 
+      // The unit words follow the numbers (1 day / 14 days).
+      function renderStreakUnits() {
+          const current = Number(document.querySelector("[data-streak-current]").textContent);
+          const longest = Number(document.querySelector("[data-streak-longest]").textContent);
+          document.querySelector("[data-streak-unit]").textContent = t("common.daysInARow", { n: current });
+          document.querySelector("[data-streak-longest-unit]").textContent = t("dashboard.recordDays", { n: longest });
+      }
+      renderStreakUnits();
+
       // Lit flame while the current streak is active, unlit flame when streak.current is 0.
       const STREAK_IMAGE_SRC = { on: "/images/streak-on.png", off: "/images/streak-off.png" };
       function renderStreakImage() {
           const state = streakCurrent > 0 ? "on" : "off";
           const streakImageElement = document.querySelector("[data-streak-image]");
           streakImageElement.setAttribute("src", STREAK_IMAGE_SRC[state]);
-          streakImageElement.setAttribute("alt", COPY.streakAlt[state]);
+          streakImageElement.setAttribute("alt", t(state === "on" ? "dashboard.streakAltOn" : "dashboard.streakAltOff"));
       }
       renderStreakImage();
 
@@ -158,7 +131,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       function setMenu(open) {
           menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", open ? COPY.menuOpen : COPY.menuClosed);
+          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
           menuIcon.textContent = open ? "close" : "menu";
           mobileNav.hidden = !open;
       }
@@ -189,18 +162,14 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
       const currentMonth = SAMPLE_TODAY.year * 12 + SAMPLE_TODAY.month - 1;
       let displayedMonth = currentMonth;
 
-      function capitalize(text) {
-          return text.charAt(0).toLocaleUpperCase(locale) + text.slice(1);
-      }
-
       function makeCell(day, className, description, isToday) {
           const cell = document.createElement("div");
           cell.className = `calendar-day ${className}`;
-          cell.title = `${isToday ? `${COPY.today}, ` : ""}${day}: ${description}`;
+          cell.title = `${isToday ? `${t("dashboard.today")}, ` : ""}${day}: ${description}`;
           cell.append(String(day));
           const hidden = document.createElement("span");
           hidden.className = "visually-hidden";
-          hidden.textContent = `${isToday ? ` (${COPY.today.toLowerCase()})` : ""}: ${description}`;
+          hidden.textContent = `${isToday ? ` (${t("dashboard.today").toLowerCase()})` : ""}: ${description}`;
           cell.append(hidden);
           if (isToday) cell.setAttribute("aria-current", "date");
           return cell;
@@ -214,10 +183,10 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           const isCurrentMonth = displayedMonth === currentMonth;
           const hasData = calendarData.year === year && calendarData.month === month + 1;
 
-          label.textContent = capitalize(new Intl.DateTimeFormat(locale, { month: "long" }).format(firstDay));
-          label.title = new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" }).format(firstDay);
+          label.textContent = monthName(month, year);
+          label.title = new Intl.DateTimeFormat(localeFor(), { month: "long", year: "numeric" }).format(firstDay);
           nextButton.disabled = isCurrentMonth;
-          nextButton.title = isCurrentMonth ? COPY.currentMonth : COPY.nextMonth;
+          nextButton.title = isCurrentMonth ? t("dashboard.currentMonth") : t("dashboard.nextMonth");
 
           // Unique practice days of the displayed month that are not in the future. The grid and the
           // summary below both read this set, so they always agree.
@@ -238,15 +207,15 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
               let cell;
               if (!hasData) {
                   // Prototype only: real past months come from the API.
-                  cell = makeCell(day, "activity-unavailable", COPY.noSample, false);
+                  cell = makeCell(day, "activity-unavailable", t("dashboard.noSample"), false);
               } else if (isCurrentMonth && day > SAMPLE_TODAY.day) {
-                  cell = makeCell(day, "activity-inactive", COPY.notYet, false);
+                  cell = makeCell(day, "activity-inactive", t("dashboard.notYet"), false);
               } else {
                   const isActive = activeDays.has(day);
                   cell = makeCell(
                       day,
                       isActive ? "activity-active" : "activity-inactive",
-                      isActive ? COPY.practiced : COPY.noPractice,
+                      isActive ? t("dashboard.practiced") : t("dashboard.noPractice"),
                       isToday
                   );
               }
@@ -257,11 +226,11 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           days.replaceChildren(fragment);
 
           if (!hasData) {
-              summary.textContent = COPY.noSampleSummary;
+              summary.textContent = t("dashboard.noSampleSummary");
           } else if (activeDays.size === 0) {
-              summary.textContent = COPY.emptyMonth;
+              summary.textContent = t("dashboard.emptyMonth");
           } else {
-              summary.innerHTML = COPY.daysWithPractice(activeDays.size);
+              summary.innerHTML = t("dashboard.daysWithPractice", { n: activeDays.size });
           }
       }
 
@@ -283,11 +252,9 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
       renderMonth();
       if (preview === "calendar-error") setCalendarError(true);
       /* ---------- Language change: re-render this page's copy in place ---------- */
-      onLanguageChange((language) => {
-          isEnglish = language === "en";
-          locale = isEnglish ? "en-US" : "vi-VN";
-          COPY = buildCopy(isEnglish);
+      onLanguageChange(() => {
           renderStreakImage();
+          renderStreakUnits();
           document.querySelectorAll("[data-module-progress]").forEach((moduleCard) => {
               renderModuleProgress(moduleCard, Number(moduleCard.dataset.learned), Number(moduleCard.dataset.total));
           });

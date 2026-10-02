@@ -70,10 +70,11 @@
 */
 import styles from "./MixedPracticePage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 import init from "./MixedPracticePage.script.js";
 
 export default function MixedPracticePage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Luyện tập tổng hợp" });
+  const rootRef = usePageScript(init, { title: "title.mixedPractice" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -81,31 +82,31 @@ export default function MixedPracticePage() {
       <header className="site-header">
         <div className="page-container header-content">
           <div className="brand">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
             </span>
           </div>
-          <nav className="main-nav" aria-label="Điều hướng chính">
+          <nav className="main-nav" aria-label={t("common.mainNav")}>
             <a className="nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </nav>
           <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
+            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
               <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
                 VI
               </button>
@@ -114,39 +115,39 @@ export default function MixedPracticePage() {
                 EN
               </button>
             </div>
-            <button className="logout-button" type="button" aria-label="Đăng xuất" title="Đăng xuất">
+            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 logout
               </span>
               {" "}
               <span className="logout-label">
-                Đăng xuất
+                {t("common.logout")}
               </span>
             </button>
             {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu điều hướng">
+            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 menu
               </span>
             </button>
           </div>
         </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label="Điều hướng chính" hidden>
+        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
           <div className="page-container mobile-nav-list">
             <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </div>
         </nav>
@@ -154,7 +155,7 @@ export default function MixedPracticePage() {
       <main className="page-container practice-page" id="main-content">
         <div className="practice-shell">
           {/* 2. Breadcrumbs: Mixed Practice has no learning unit, so the trail returns to the Dashboard. */}
-          <nav className="breadcrumbs" aria-label="Đường dẫn trang">
+          <nav className="breadcrumbs" aria-label={t("common.breadcrumb")}>
             <ol className="breadcrumb-list">
               <li>
                 <a className="crumb-link" href="#" data-route="/dashboard">
@@ -163,7 +164,7 @@ export default function MixedPracticePage() {
                   </span>
                   {" "}
                   <span>
-                    Bảng điều khiển
+                    {t("common.dashboard")}
                   </span>
                 </a>
               </li>
@@ -173,7 +174,7 @@ export default function MixedPracticePage() {
                 </span>
                 {" "}
                 <span className="crumb-current" aria-current="page">
-                  Luyện tập tổng hợp
+                  {t("common.mixedPractice")}
                 </span>
               </li>
             </ol>
@@ -190,34 +191,34 @@ export default function MixedPracticePage() {
               </div>
               <div className="practice-heading-text">
                 <h1 className="practice-title" id="practice-title">
-                  Luyện tập tổng hợp
+                  {t("common.mixedPractice")}
                 </h1>
                 <p className="practice-description" data-practice-description>
-                  Tối đa 10 câu hỏi ngẫu nhiên từ các bài bạn đã đánh dấu là đã học.
+                  {t("practice.mixedIntro")}
                 </p>
               </div>
             </div>
             <div className="practice-progress" data-progress-block hidden>
               <div className="progress-labels">
                 <span id="progress-label">
-                  Đã trả lời
+                  {t("practice.answered")}
                 </span>
                 {" "}
                 <span className="progress-value" data-answered-text>
-                  0/0 câu
+                  {t("practice.answeredCount", { answered: 0, total: 0 })}
                 </span>
               </div>
               <div className="progress-track" role="progressbar" aria-labelledby="progress-label" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" data-progressbar>
                 <div className="progress-fill" />
               </div>
-              <nav className="stepper-row" aria-label="Danh sách câu hỏi" data-stepper-nav>
+              <nav className="stepper-row" aria-label={t("practice.questionList")} data-stepper-nav>
                 <ol className="stepper" data-stepper />
                 {/* Global action: ends the answering phase from ANY question and opens Review.
                              It is not the final submission (that stays in the Review phase).
                 */}
                 <button className="button button-secondary button-compact finish-button" type="button" data-action="finish">
                   <span>
-                    Hoàn thành bài
+                    {t("practice.finish")}
                   </span>
                   {" "}
                   <span className="material-symbols-outlined" aria-hidden="true">
@@ -237,10 +238,10 @@ export default function MixedPracticePage() {
               </div>
               <div>
                 <h2 className="section-title" id="prestart-title" tabIndex="-1">
-                  Sẵn sàng luyện tập
+                  {t("mixed.readyTitle")}
                 </h2>
                 <p className="card-subtitle">
-                  Một thử thách nhỏ để củng cố kiến thức!
+                  {t("mixed.readyText")}
                 </p>
               </div>
             </div>
@@ -251,10 +252,10 @@ export default function MixedPracticePage() {
                 </span>
                 <div>
                   <p className="prestart-item-title">
-                    Chỉ từ bài đã học
+                    {t("mixed.onlyLearnedTitle")}
                   </p>
                   <p className="prestart-item-text">
-                    Câu hỏi chỉ lấy từ các bài bạn đã đánh dấu là đã học.
+                    {t("mixed.onlyLearnedText")}
                   </p>
                 </div>
               </li>
@@ -264,10 +265,10 @@ export default function MixedPracticePage() {
                 </span>
                 <div>
                   <p className="prestart-item-title">
-                    Tối đa 10 câu hỏi
+                    {t("mixed.maxTitle")}
                   </p>
                   <p className="prestart-item-text">
-                    Nếu chưa có đủ câu hỏi phù hợp, bạn sẽ nhận ít hơn 10 câu và không có câu nào bị lặp lại.
+                    {t("mixed.maxText")}
                   </p>
                 </div>
               </li>
@@ -277,10 +278,10 @@ export default function MixedPracticePage() {
                 </span>
                 <div>
                   <p className="prestart-item-title">
-                    Nhiều dạng nội dung
+                    {t("mixed.mixTitle")}
                   </p>
                   <p className="prestart-item-text">
-                    Câu hỏi có thể thuộc Ngữ pháp, Từ vựng và Chia động từ, tùy vào những bài bạn đã học.
+                    {t("mixed.mixText")}
                   </p>
                 </div>
               </li>
@@ -291,13 +292,13 @@ export default function MixedPracticePage() {
               </span>
               {" "}
               <span>
-                Không cần đạt điểm tối thiểu. Hoàn thành bài luyện tập là đủ để tính vào chuỗi ngày học.
+                {t("mixed.noMinimum")}
               </span>
             </p>
             <div className="action-bar">
               <button className="button button-primary" type="button" data-action="start">
                 <span>
-                  Bắt đầu luyện tập
+                  {t("common.startPractice")}
                 </span>
                 {" "}
                 <span className="material-symbols-outlined" aria-hidden="true">
@@ -314,13 +315,13 @@ export default function MixedPracticePage() {
               info
             </span>
             <h2 className="page-state-title" id="unavailable-title" tabIndex="-1">
-              Chưa thể luyện tập tổng hợp
+              {t("mixed.unavailableTitle")}
             </h2>
             <p>
-              Hãy đánh dấu ít nhất một bài là đã học để bắt đầu luyện tập tổng hợp.
+              {t("dashboard.mixedEmpty")}
             </p>
             <p className="page-state-label" id="unavailable-links-label">
-              Xem bài học
+              {t("common.viewLessons")}
             </p>
             <div className="page-state-actions" role="group" aria-labelledby="unavailable-links-label">
               <a className="button button-secondary button-compact" href="#" data-route="/grammar">
@@ -329,7 +330,7 @@ export default function MixedPracticePage() {
                 </span>
                 {" "}
                 <span>
-                  Ngữ pháp
+                  {t("common.grammar")}
                 </span>
               </a>
               {" "}
@@ -339,7 +340,7 @@ export default function MixedPracticePage() {
                 </span>
                 {" "}
                 <span>
-                  Từ vựng
+                  {t("common.vocabulary")}
                 </span>
               </a>
               {" "}
@@ -349,7 +350,7 @@ export default function MixedPracticePage() {
                 </span>
                 {" "}
                 <span>
-                  Chia động từ
+                  {t("common.conjugation")}
                 </span>
               </a>
             </div>
@@ -358,7 +359,7 @@ export default function MixedPracticePage() {
           <section className="card page-state" data-phase="starting" role="status" aria-live="polite" hidden>
             <div className="spinner" aria-hidden="true" />
             <p>
-              Đang tạo bài luyện tập…
+              {t("mixed.creating")}
             </p>
           </section>
           {/* 4d. Start error: a real request failure, distinct from "unavailable". */}
@@ -367,24 +368,24 @@ export default function MixedPracticePage() {
               cloud_off
             </span>
             <h2 className="page-state-title" tabIndex="-1">
-              Không thể tải bài luyện tập
+              {t("practice.loadError")}
             </h2>
             <p>
-              Đã có lỗi khi tạo bài luyện tập. Vui lòng thử lại.
+              {t("mixed.createError")}
             </p>
             <button className="button button-secondary button-compact" type="button" data-action="start">
-              Thử lại
+              {t("common.retry")}
             </button>
           </section>
           {/* 5. Answering phase: one question at a time (markup generated by the script below).
                  Same structure as practice-page. No per-question source labels: the Start response does not
                  provide them.
           */}
-          <section className="practice-section" data-phase="answering" aria-label="Làm bài luyện tập" hidden>
+          <section className="practice-section" data-phase="answering" aria-label={t("landing.step3Title")} hidden>
             <article className="card question-card" aria-labelledby="question-heading">
               <div className="question-meta">
                 <h2 className="question-number" id="question-heading" tabIndex="-1" data-question-heading>
-                  Câu 1
+                  {t("practice.questionNumber", { n: 1 })}
                 </h2>
                 <span className="badge" data-question-type />
               </div>
@@ -399,13 +400,13 @@ export default function MixedPracticePage() {
                 </span>
                 {" "}
                 <span>
-                  Câu trước
+                  {t("practice.previous")}
                 </span>
               </button>
               {" "}
               <button className="button button-primary" type="button" data-action="next">
                 <span data-next-label>
-                  Câu tiếp theo
+                  {t("practice.next")}
                 </span>
                 {" "}
                 <span className="material-symbols-outlined" aria-hidden="true">
@@ -425,10 +426,10 @@ export default function MixedPracticePage() {
                 </div>
                 <div>
                   <h2 className="section-title" id="review-title" tabIndex="-1">
-                    Xem lại câu trả lời
+                    {t("practice.reviewAnswers")}
                   </h2>
                   <p className="card-subtitle">
-                    Kiểm tra lại trước khi nộp. Bạn vẫn có thể sửa từng câu.
+                    {t("practice.reviewHint")}
                   </p>
                 </div>
               </div>
@@ -438,7 +439,7 @@ export default function MixedPracticePage() {
                 </span>
                 {" "}
                 <span>
-                  Đáp án đúng và giải thích chỉ hiện sau khi bạn nộp bài. Nộp bài xong, kết quả sẽ được ghi lại trong lịch sử luyện tập.
+                  {t("practice.submitNote")}
                 </span>
               </p>
               {/* Shown while some questions are unanswered; final submit stays blocked. */}
@@ -449,11 +450,11 @@ export default function MixedPracticePage() {
                 <div className="state-note-body">
                   <strong data-incomplete-text />
                   {" "}
-                  Hãy trả lời các câu còn thiếu để có thể nộp bài.
+                  {t("practice.missingNote")}
                   {" "}
                   <button className="button button-secondary button-compact" type="button" data-action="answer-missing">
                     <span data-missing-label>
-                      Trả lời câu chưa làm
+                      {t("practice.answerMissing")}
                     </span>
                   </button>
                 </div>
@@ -466,18 +467,18 @@ export default function MixedPracticePage() {
                 </span>
                 <div className="state-note-body">
                   <strong>
-                    Không thể nộp bài luyện tập
+                    {t("practice.submitErrorTitle")}
                   </strong>
                   {" "}
-                  Câu trả lời của bạn vẫn được giữ lại. Vui lòng thử lại.
+                  {t("practice.submitErrorText")}
                   {" "}
                   <button className="button button-secondary button-compact" type="button" data-action="submit">
-                    Thử lại
+                    {t("common.retry")}
                   </button>
                 </div>
               </div>
               <p className="review-submit-hint" id="submit-hint" data-submit-hint hidden>
-                Trả lời hết các câu để nộp bài.
+                {t("practice.submitDisabledHint")}
               </p>
               <div className="review-actions">
                 <button className="button button-secondary button-back" type="button" data-action="continue-editing">
@@ -486,13 +487,13 @@ export default function MixedPracticePage() {
                   </span>
                   {" "}
                   <span>
-                    Tiếp tục làm bài
+                    {t("practice.keepGoing")}
                   </span>
                 </button>
                 {" "}
                 <button className="button button-primary" type="button" data-action="submit" data-submit-main aria-describedby="submit-hint">
                   <span data-submit-label>
-                    Nộp bài luyện tập
+                    {t("practice.submit")}
                   </span>
                   {" "}
                   <span className="material-symbols-outlined" aria-hidden="true">
@@ -513,10 +514,10 @@ export default function MixedPracticePage() {
                 </div>
                 <div>
                   <h2 className="section-title" id="result-title" tabIndex="-1">
-                    Kết quả luyện tập
+                    {t("practice.resultTitle")}
                   </h2>
                   <p className="card-subtitle">
-                    Bạn đã hoàn thành bài luyện tập. Xem lại từng câu bên dưới để nắm chắc hơn nhé!
+                    {t("practice.resultText")}
                   </p>
                 </div>
               </div>
@@ -525,14 +526,14 @@ export default function MixedPracticePage() {
                   <span className="result-count" data-result-count />
                   {" "}
                   <span className="result-count-label">
-                    câu đúng
+                    {t("practice.correctLabel")}
                   </span>
                 </p>
               </div>
               <div>
                 <div className="progress-labels">
                   <span id="accuracy-label">
-                    Độ chính xác
+                    {t("practice.accuracy")}
                   </span>
                   {" "}
                   <span className="progress-value" data-result-accuracy />
@@ -554,10 +555,10 @@ export default function MixedPracticePage() {
                 </div>
                 <div>
                   <h2 className="section-title" id="covered-title">
-                    Nội dung đã luyện tập
+                    {t("mixed.coveredTitle")}
                   </h2>
                   <p className="card-subtitle">
-                    Các bài có câu hỏi trong lần luyện tập này.
+                    {t("mixed.coveredText")}
                   </p>
                 </div>
               </div>
@@ -572,10 +573,10 @@ export default function MixedPracticePage() {
                 </div>
                 <div>
                   <h2 className="section-title" id="question-review-title">
-                    Xem lại từng câu
+                    {t("practice.reviewEach")}
                   </h2>
                   <p className="card-subtitle">
-                    Câu trả lời của bạn, đáp án đúng và giải thích.
+                    {t("practice.reviewEachText")}
                   </p>
                 </div>
               </div>
@@ -585,7 +586,7 @@ export default function MixedPracticePage() {
             <div className="action-bar">
               <a className="button button-secondary" href="#" data-route="/dashboard">
                 <span>
-                  Về bảng điều khiển
+                  {t("common.backToDashboard")}
                 </span>
                 {" "}
                 <span className="material-symbols-outlined" aria-hidden="true">
@@ -595,7 +596,7 @@ export default function MixedPracticePage() {
               {" "}
               <button className="button button-primary" type="button" data-action="practice-again">
                 <span>
-                  Luyện tập lại
+                  {t("practice.retry")}
                 </span>
                 {" "}
                 <span className="material-symbols-outlined" aria-hidden="true">
@@ -614,7 +615,7 @@ export default function MixedPracticePage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

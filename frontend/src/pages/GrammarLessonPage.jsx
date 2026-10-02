@@ -89,10 +89,11 @@
 */
 import styles from "./GrammarLessonPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 import init from "./GrammarLessonPage.script.js";
 
 export default function GrammarLessonPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Ngữ pháp" });
+  const rootRef = usePageScript(init, { title: "title.grammar" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -100,31 +101,31 @@ export default function GrammarLessonPage() {
       <header className="site-header">
         <div className="page-container header-content">
           <div className="brand">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
             </span>
           </div>
-          <nav className="main-nav" aria-label="Điều hướng chính">
+          <nav className="main-nav" aria-label={t("common.mainNav")}>
             <a className="nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/grammar" aria-current="page">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </nav>
           <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
+            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
               <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
                 VI
               </button>
@@ -133,39 +134,39 @@ export default function GrammarLessonPage() {
                 EN
               </button>
             </div>
-            <button className="logout-button" type="button" aria-label="Đăng xuất" title="Đăng xuất">
+            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 logout
               </span>
               {" "}
               <span className="logout-label">
-                Đăng xuất
+                {t("common.logout")}
               </span>
             </button>
             {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu điều hướng">
+            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 menu
               </span>
             </button>
           </div>
         </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label="Điều hướng chính" hidden>
+        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
           <div className="page-container mobile-nav-list">
             <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/grammar" aria-current="page">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </div>
         </nav>
@@ -173,7 +174,7 @@ export default function GrammarLessonPage() {
       <main className="page-container lesson-page subject-grammar" id="main-content">
         <div className="lesson" data-lesson>
           {/* 2. Breadcrumbs. Only "Ngữ pháp" is a link; Part and Chapter have no route (FD §4.5). */}
-          <nav className="breadcrumbs" aria-label="Đường dẫn trang">
+          <nav className="breadcrumbs" aria-label={t("common.breadcrumb")}>
             <ol className="breadcrumb-list">
               <li>
                 <a className="crumb-link" href="/grammar#lesson-articles-indefinis" data-route="/grammar" data-slot="grammar-return">
@@ -182,7 +183,7 @@ export default function GrammarLessonPage() {
                   </span>
                   {" "}
                   <span>
-                    Ngữ pháp
+                    {t("common.grammar")}
                   </span>
                 </a>
               </li>
@@ -231,7 +232,7 @@ export default function GrammarLessonPage() {
           <div className="card page-state" data-page-state="loading" role="status" hidden>
             <div className="spinner" aria-hidden="true" />
             <p>
-              Đang tải bài học…
+              {t("common.loadingLesson")}
             </p>
           </div>
           <div className="card page-state" data-page-state="error" role="alert" hidden>
@@ -239,13 +240,13 @@ export default function GrammarLessonPage() {
               cloud_off
             </span>
             <h1 className="page-state-title">
-              Không thể tải bài học
+              {t("common.loadLessonError")}
             </h1>
             <p>
-              Đã có lỗi khi tải dữ liệu. Vui lòng thử lại.
+              {t("common.loadError")}
             </p>
             <button className="button button-secondary button-compact" type="button" data-action="retry">
-              Thử lại
+              {t("common.retry")}
             </button>
           </div>
           <article className="lesson-article" aria-labelledby="lesson-title" data-lesson-content>
@@ -264,14 +265,14 @@ export default function GrammarLessonPage() {
                   Mạo từ bất định
                 </p>
                 {/* Review Later is listed first: it has priority over Learned. */}
-                <ul className="state-badges" aria-label="Trạng thái bài học" data-slot="badges">
+                <ul className="state-badges" aria-label={t("common.lessonStatus")} data-slot="badges">
                   <li className="badge badge-review" data-slot="badge-review" hidden>
                     <span className="material-symbols-outlined icon-filled" aria-hidden="true">
                       bookmark
                     </span>
                     {" "}
                     <span>
-                      Xem lại sau
+                      {t("common.reviewLater")}
                     </span>
                   </li>
                   <li className="badge badge-learned" data-slot="badge-learned">
@@ -280,7 +281,7 @@ export default function GrammarLessonPage() {
                     </span>
                     {" "}
                     <span>
-                      Đã học
+                      {t("common.learned")}
                     </span>
                   </li>
                 </ul>
@@ -294,7 +295,7 @@ export default function GrammarLessonPage() {
               </div>
               <aside className="card lesson-actions" aria-labelledby="actions-title">
                 <h2 className="actions-title" id="actions-title">
-                  Trạng thái và luyện tập
+                  {t("lesson.statusHeading")}
                 </h2>
                 {/* Learned slot */}
                 <button className="button button-primary button-toggle" type="button" data-action="mark-learned" hidden>
@@ -303,7 +304,7 @@ export default function GrammarLessonPage() {
                   </span>
                   {" "}
                   <span>
-                    Đánh dấu đã học
+                    {t("common.markLearned")}
                   </span>
                 </button>
                 <div className="state-box state-box-learned" data-slot="learned-box">
@@ -312,14 +313,14 @@ export default function GrammarLessonPage() {
                   </span>
                   <p className="state-box-text">
                     <strong>
-                      Đã học
+                      {t("common.learned")}
                     </strong>
-                    Bạn đã đánh dấu bài này là đã học.
+                    {t("lesson.learnedNote")}
                   </p>
                   <button className="state-undo" type="button" data-action="unmark-learned">
-                    Bỏ đánh dấu
+                    {t("lesson.unmark")}
                     <span className="visually-hidden">
-                      đã học
+                      {t("common.learnedLower")}
                     </span>
                   </button>
                 </div>
@@ -330,7 +331,7 @@ export default function GrammarLessonPage() {
                   </span>
                   {" "}
                   <span>
-                    Xem lại sau
+                    {t("common.reviewLater")}
                   </span>
                 </button>
                 <div className="state-box state-box-review" data-slot="review-box" hidden>
@@ -339,14 +340,14 @@ export default function GrammarLessonPage() {
                   </span>
                   <p className="state-box-text">
                     <strong>
-                      Xem lại sau
+                      {t("common.reviewLater")}
                     </strong>
-                    Bài này đang nằm trong danh sách xem lại.
+                    {t("lesson.savedNote")}
                   </p>
                   <button className="state-undo" type="button" data-action="remove-review">
-                    Bỏ lưu
+                    {t("lesson.unsave")}
                     <span className="visually-hidden">
-                      khỏi Xem lại sau
+                      {t("lesson.fromReviewLater")}
                     </span>
                   </button>
                 </div>
@@ -354,7 +355,7 @@ export default function GrammarLessonPage() {
                 <div className="practice-group">
                   <a className="button button-primary" href="#" data-route="/practice/articles-indefinis" data-slot="practice">
                     <span>
-                      Bắt đầu luyện tập
+                      {t("common.startPractice")}
                     </span>
                     {" "}
                     <span className="material-symbols-outlined" aria-hidden="true">
@@ -362,7 +363,7 @@ export default function GrammarLessonPage() {
                     </span>
                   </a>
                   <p className="action-note" data-slot="practice-note" hidden>
-                    Luyện tập giúp củng cố bài học và không bắt buộc để đánh dấu đã học.
+                    {t("lesson.practiceNote")}
                   </p>
                 </div>
                 <p className="visually-hidden" role="status" data-slot="announce" />
@@ -374,7 +375,7 @@ export default function GrammarLessonPage() {
                      unavailable card (aria-disabled, no href, not focusable), so the active card
                      never expands into the missing side.
             */}
-            <nav className="lesson-nav" aria-label="Điều hướng bài học" data-lesson-nav>
+            <nav className="lesson-nav" aria-label={t("lesson.navigation")} data-lesson-nav>
               <a className="lesson-nav-link lesson-nav-previous" href="#" data-slot="nav-previous">
                 <span className="material-symbols-outlined" aria-hidden="true">
                   arrow_back
@@ -382,7 +383,7 @@ export default function GrammarLessonPage() {
                 {" "}
                 <span className="lesson-nav-text">
                   <span className="lesson-nav-label">
-                    Bài trước
+                    {t("lesson.previous")}
                   </span>
                   {" "}
                   <span className="lesson-nav-title" lang="fr" data-slot="title" />
@@ -398,7 +399,7 @@ export default function GrammarLessonPage() {
                 {" "}
                 <span className="lesson-nav-text">
                   <span className="lesson-nav-label">
-                    Bài tiếp theo
+                    {t("lesson.next")}
                   </span>
                   {" "}
                   <span className="lesson-nav-title" lang="fr" data-slot="title" />
@@ -418,7 +419,7 @@ export default function GrammarLessonPage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

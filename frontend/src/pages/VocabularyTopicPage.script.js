@@ -1,37 +1,13 @@
 // Behavior carried over from the raw UI prototype (vocabulary-topic-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by VocabularyTopicPage.jsx.
-export default function init({ getLanguage, onLanguageChange } = {}) {
+import { t } from "../i18n/index.js";
+
+export default function init({ onLanguageChange } = {}) {
   // UI preview only. No fetching, authentication, or routing is added here.
   // Production components receive this data from GET /api/v1/vocabulary/topics/{topic_slug}
   // (API Contract §10.2).
   (() => {
-      let isEnglish = getLanguage() === "en";
       const preview = new URLSearchParams(window.location.search).get("preview");
-
-      // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const buildCopy = (isEnglish) => isEnglish
-          ? {
-              summary: (s, u) => [`${s} mục`, `${u} bài`],
-              menuOpen: "Close navigation menu",
-              menuClosed: "Navigation menu",
-              units: (learned, total) =>
-                  `${learned}/${total} unit${total === 1 ? "" : "s"}`,
-
-              saved: (n) =>
-                  `${n} unit${n === 1 ? "" : "s"}`,
-
-              progressOf: (title) =>
-                  `Progress: ${title}`,
-          }
-          : {
-              summary: (s, u) => [`${s} mục`, `${u} bài`],
-              menuOpen: "Đóng menu điều hướng",
-              menuClosed: "Menu điều hướng",
-              units: (learned, total) => `${learned}/${total} bài`,
-              saved: (n) => `${n} bài`,
-              progressOf: (title) => `Tiến độ ${title}`,
-          };
-      let COPY = buildCopy(isEnglish);
 
       // Sample response in the shape of GET /api/v1/vocabulary/topics/{topic_slug}. Reuses
       // VocabularyPage's own sample Category/Topic (categories[0].topics[0], slug
@@ -227,7 +203,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           slot(section, "heading").id = headingId;
           setTitles(slot(section, "title"), slot(section, "support"), subtopic);
           slot(section, "count").textContent =
-              COPY.units(learned, units.length);
+              t("common.unitsOf", { learned, total: units.length, n: units.length });
           const list = slot(section, "units");
           list.append(...units.map(renderStudyUnit));
           list.hidden = units.length === 0;
@@ -287,10 +263,10 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           );
 
           slot(overview, "count").textContent =
-              COPY.units(learned, unitCount);
+              t("common.unitsOf", { learned, total: unitCount, n: unitCount });
 
           slot(overview, "review-count").textContent =
-              COPY.saved(reviewLater);
+              t("common.unitsN", { n: reviewLater });
 
           overview.classList.toggle(
               "is-complete",
@@ -299,11 +275,14 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
           slot(overview, "track").setAttribute(
               "aria-label",
-              COPY.progressOf(topic.title_fr || topic.title)
+              t("common.progressOf", { title: topic.title_fr || topic.title })
           );
 
           document.querySelector("[data-summary]").replaceChildren(
-              ...COPY.summary(subtopics.length, unitCount).map((text) => {
+              ...[
+                  t("vocab.subtopicsCount", { n: subtopics.length }),
+                  t("common.unitsN", { n: unitCount }),
+              ].map((text) => {
                   const chip = document.createElement("li");
                   chip.className = "badge badge-info";
                   chip.textContent = text;
@@ -338,7 +317,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       function setMenu(open) {
           menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", open ? COPY.menuOpen : COPY.menuClosed);
+          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
           menuIcon.textContent = open ? "close" : "menu";
           mobileNav.hidden = !open;
       }
@@ -357,9 +336,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           if (event.matches) setMenu(false);
       });
       /* ---------- Language change: re-render this page's copy in place ---------- */
-      onLanguageChange((language) => {
-          isEnglish = language === "en";
-          COPY = buildCopy(isEnglish);
+      onLanguageChange(() => {
           if (currentTopic) render(currentTopic);
           setMenu(!mobileNav.hidden);
       });

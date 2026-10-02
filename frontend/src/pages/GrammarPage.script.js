@@ -1,43 +1,12 @@
 // Behavior carried over from the raw UI prototype (grammar-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by GrammarPage.jsx.
-export default function init({ getLanguage, onLanguageChange } = {}) {
+import { t } from "../i18n/index.js";
+
+export default function init({ onLanguageChange } = {}) {
   // UI preview only. No fetching, authentication, or routing is added here.
   // Production components receive this data from GET /api/v1/grammar (API Contract §9.1).
   (() => {
-      let isEnglish = getLanguage() === "en";
       const preview = new URLSearchParams(window.location.search).get("preview");
-
-      // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const buildCopy = (isEnglish) => isEnglish
-          ? {
-              lessons: (learned, total) => `${learned}/${total} lesson${total === 1 ? "" : "s"}`,
-              saved: (n) => `${n} lesson${n === 1 ? "" : "s"}`,
-              position: (n) => `Part ${n}: `,
-              summary: (p, c, l) => [
-                  `${p} part${p === 1 ? "" : "s"}`,
-                  `${c} chapter${c === 1 ? "" : "s"}`,
-                  `${l} lesson${l === 1 ? "" : "s"}`,
-              ],
-              progressOf: (title) => `Progress: ${title}`,
-              collapseAll: "Collapse all",
-              expandAll: "Expand all",
-              menuOpen: "Close navigation menu",
-              menuClosed: "Navigation menu",
-              returnedTo: (title) => `Back to lesson: ${title}`,
-          }
-          : {
-              lessons: (learned, total) => `${learned}/${total} bài`,
-              saved: (n) => `${n} bài`,
-              position: (n) => `Phần ${n}: `,
-              summary: (p, c, l) => [`${p} phần`, `${c} chương`, `${l} bài`],
-              progressOf: (title) => `Tiến độ ${title}`,
-              collapseAll: "Thu gọn tất cả",
-              expandAll: "Mở rộng tất cả",
-              menuOpen: "Đóng menu điều hướng",
-              menuClosed: "Menu điều hướng",
-              returnedTo: (title) => `Đã quay lại bài: ${title}`,
-          };
-      let COPY = buildCopy(isEnglish);
 
       // Sample response in the shape of GET /api/v1/grammar. Titles are sample curriculum
       // data; the layout must not depend on these particular titles or counts.
@@ -169,7 +138,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           const lessons = chapter.lessons || [];
           const learned = lessons.filter((lesson) => lesson.learned).length;
           setTitles(slot(item, "title"), slot(item, "support"), chapter);
-          slot(item, "count").textContent = COPY.lessons(learned, lessons.length);
+          slot(item, "count").textContent = t("common.lessonsOf", { learned: learned, total: lessons.length, n: lessons.length });
           const isComplete = lessons.length > 0 && learned === lessons.length;
           slot(item, "count-badge").classList.toggle("badge-info", !isComplete);
           slot(item, "count-badge").classList.toggle("badge-learned", isComplete);
@@ -192,11 +161,11 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           section.setAttribute("aria-labelledby", headingId);
           slot(section, "heading").id = headingId;
           slot(section, "number").textContent = String(index + 1);
-          slot(section, "position").textContent = COPY.position(index + 1);
+          slot(section, "position").textContent = t("grammar.partPosition", { n: index + 1 });
           setTitles(slot(section, "title"), slot(section, "support"), part);
-          slot(section, "count").textContent = COPY.lessons(learned, lessons.length);
+          slot(section, "count").textContent = t("common.lessonsOf", { learned: learned, total: lessons.length, n: lessons.length });
           const track = slot(section, "track");
-          track.setAttribute("aria-label", COPY.progressOf(part.title_fr || part.title));
+          track.setAttribute("aria-label", t("common.progressOf", { title: part.title_fr || part.title }));
           setProgress(track, slot(section, "percent"), learned, lessons.length);
           slot(section, "chapters").append(...(part.chapters || []).map(renderChapter));
           return section;
@@ -231,12 +200,16 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           const learned = lessons.filter((lesson) => lesson.learned).length;
 
           setProgress(slot(overview, "track"), slot(overview, "percent"), learned, lessons.length);
-          slot(overview, "count").textContent = COPY.lessons(learned, lessons.length);
+          slot(overview, "count").textContent = t("common.lessonsOf", { learned: learned, total: lessons.length, n: lessons.length });
           slot(overview, "review-count").textContent =
-              COPY.saved(lessons.filter((lesson) => lesson.review_later).length);
+              t("common.lessonsN", { n: lessons.filter((lesson) => lesson.review_later).length });
           overview.classList.toggle("is-complete", lessons.length > 0 && learned === lessons.length);
           document.querySelector("[data-summary]").replaceChildren(
-              ...COPY.summary(parts.length, chapters.length, lessons.length).map((text) => {
+              ...[
+                  t("grammar.partsCount", { n: parts.length }),
+                  t("grammar.chaptersCount", { n: chapters.length }),
+                  t("grammar.lessonsCount", { n: lessons.length }),
+              ].map((text) => {
                   const chip = document.createElement("li");
                   chip.className = "badge badge-info";
                   chip.textContent = text;
@@ -260,7 +233,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       function updateToggleAll() {
           const anyOpen = Array.from(chapters()).some((chapter) => chapter.open);
-          slot(toggleAll, "label").textContent = anyOpen ? COPY.collapseAll : COPY.expandAll;
+          slot(toggleAll, "label").textContent = t(anyOpen ? "common.collapseAll" : "common.expandAll");
           slot(toggleAll, "icon").textContent = anyOpen ? "unfold_less" : "unfold_more";
       }
 
@@ -312,7 +285,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
               // rather than a surprise jump, and keeps it reachable by keyboard.
               link.focus({ preventScroll: true });
               const title = slot(link, "title");
-              announce(COPY.returnedTo(title ? title.textContent.trim() : ""));
+              announce(t("grammar.returnedTo", { title: title ? title.textContent.trim() : "" }));
               window.setTimeout(() => link.classList.remove("is-returned"), 1800);
           });
       }
@@ -350,7 +323,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       function setMenu(open) {
           menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", open ? COPY.menuOpen : COPY.menuClosed);
+          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
           menuIcon.textContent = open ? "close" : "menu";
           mobileNav.hidden = !open;
       }
@@ -369,9 +342,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           if (event.matches) setMenu(false);
       });
       /* ---------- Language change: re-render this page's copy in place ---------- */
-      onLanguageChange((language) => {
-          isEnglish = language === "en";
-          COPY = buildCopy(isEnglish);
+      onLanguageChange(() => {
           const openChapters = Array.from(chapters()).map((chapter) => chapter.open);
           if (currentData) {
               render(currentData, { restore: false });

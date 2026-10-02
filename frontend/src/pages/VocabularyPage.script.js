@@ -1,31 +1,12 @@
 // Behavior carried over from the raw UI prototype (vocabulary-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by VocabularyPage.jsx.
-export default function init({ getLanguage, onLanguageChange } = {}) {
+import { t } from "../i18n/index.js";
+
+export default function init({ onLanguageChange } = {}) {
   // UI preview only. No fetching, authentication, or routing is added here.
   // Production components receive this data from GET /api/v1/vocabulary (API Contract §10.1).
   (() => {
-      let isEnglish = getLanguage() === "en";
       const preview = new URLSearchParams(window.location.search).get("preview");
-
-      // Fixed copy used by the script; production copy lives in the i18n dictionaries.
-      const buildCopy = (isEnglish) => isEnglish
-          ? {
-              topics: (n) => `${n} topic${n === 1 ? "" : "s"}`,
-              units: (learned, total) => `${learned}/${total} unit${total === 1 ? "" : "s"}`,
-              saved: (n) => `${n} unit${n === 1 ? "" : "s"}`,
-              summary: (c, t) => [`${c} categor${c === 1 ? "y" : "ies"}`, `${t} topic${t === 1 ? "" : "s"}`],
-              menuOpen: "Close navigation menu",
-              menuClosed: "Navigation menu",
-          }
-          : {
-              topics: (n) => `${n} chủ đề`,
-              units: (learned, total) => `${learned}/${total} bài`,
-              saved: (n) => `${n} bài`,
-              summary: (c, t) => [`${c} danh mục`, `${t} chủ đề`],
-              menuOpen: "Đóng menu điều hướng",
-              menuClosed: "Menu điều hướng",
-          };
-      let COPY = buildCopy(isEnglish);
 
       // Static learner-summary sample for the page-level progress card. Production should
       // source learned/total from GET /api/v1/me/dashboard (progress.vocabulary) and the
@@ -125,7 +106,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           section.setAttribute("aria-labelledby", headingId);
           slot(section, "heading").id = headingId;
           setTitles(slot(section, "title"), slot(section, "support"), category);
-          slot(section, "count").textContent = COPY.topics(topics.length);
+          slot(section, "count").textContent = t("vocab.topicsCount", { n: topics.length });
           const list = slot(section, "topics");
           list.append(...topics.map(renderTopic));
           list.hidden = topics.length === 0;
@@ -162,8 +143,8 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
               progress.learned,
               progress.total
           );
-          slot(overview, "count").textContent = COPY.units(progress.learned, progress.total);
-          slot(overview, "review-count").textContent = COPY.saved(progress.reviewLater);
+          slot(overview, "count").textContent = t("common.unitsOf", { learned: progress.learned, total: progress.total, n: progress.total });
+          slot(overview, "review-count").textContent = t("common.unitsN", { n: progress.reviewLater });
           overview.classList.toggle(
               "is-complete",
               progress.total > 0 && progress.learned === progress.total
@@ -171,7 +152,10 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
           const topicCount = categories.reduce((sum, category) => sum + (category.topics || []).length, 0);
           document.querySelector("[data-summary]").replaceChildren(
-              ...COPY.summary(categories.length, topicCount).map((text) => {
+              ...[
+                  t("vocab.categoriesCount", { n: categories.length }),
+                  t("vocab.topicsCount", { n: topicCount }),
+              ].map((text) => {
                   const chip = document.createElement("li");
                   chip.className = "badge badge-info";
                   chip.textContent = text;
@@ -207,7 +191,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
 
       function setMenu(open) {
           menuButton.setAttribute("aria-expanded", String(open));
-          menuButton.setAttribute("aria-label", open ? COPY.menuOpen : COPY.menuClosed);
+          menuButton.setAttribute("aria-label", t(open ? "common.menuNavClose" : "common.menuNav"));
           menuIcon.textContent = open ? "close" : "menu";
           mobileNav.hidden = !open;
       }
@@ -226,9 +210,7 @@ export default function init({ getLanguage, onLanguageChange } = {}) {
           if (event.matches) setMenu(false);
       });
       /* ---------- Language change: re-render this page's copy in place ---------- */
-      onLanguageChange((language) => {
-          isEnglish = language === "en";
-          COPY = buildCopy(isEnglish);
+      onLanguageChange(() => {
           if (currentView) render(currentView.data, currentView.progress);
           setMenu(!mobileNav.hidden);
       });

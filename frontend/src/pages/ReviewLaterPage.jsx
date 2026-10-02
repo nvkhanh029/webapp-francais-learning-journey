@@ -50,10 +50,11 @@
 */
 import styles from "./ReviewLaterPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 import init from "./ReviewLaterPage.script.js";
 
 export default function ReviewLaterPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Xem lại sau" });
+  const rootRef = usePageScript(init, { title: "title.reviewLater" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -61,31 +62,31 @@ export default function ReviewLaterPage() {
       <header className="site-header">
         <div className="page-container header-content">
           <div className="brand">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
             </span>
           </div>
-          <nav className="main-nav" aria-label="Điều hướng chính">
+          <nav className="main-nav" aria-label={t("common.mainNav")}>
             <a className="nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </nav>
           <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
+            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
               <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
                 VI
               </button>
@@ -94,46 +95,46 @@ export default function ReviewLaterPage() {
                 EN
               </button>
             </div>
-            <button className="logout-button" type="button" aria-label="Đăng xuất" title="Đăng xuất">
+            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 logout
               </span>
               {" "}
               <span className="logout-label">
-                Đăng xuất
+                {t("common.logout")}
               </span>
             </button>
             {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu điều hướng">
+            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 menu
               </span>
             </button>
           </div>
         </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label="Điều hướng chính" hidden>
+        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
           <div className="page-container mobile-nav-list">
             <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </div>
         </nav>
       </header>
       <main className="page-container review-page" id="main-content">
         {/* 2. Breadcrumbs: the way back to the Dashboard card this page is opened from. */}
-        <nav className="breadcrumbs" aria-label="Đường dẫn trang">
+        <nav className="breadcrumbs" aria-label={t("common.breadcrumb")}>
           <ol className="breadcrumb-list">
             <li>
               <a className="crumb-link" href="#" data-route="/dashboard">
@@ -142,7 +143,7 @@ export default function ReviewLaterPage() {
                 </span>
                 {" "}
                 <span>
-                  Bảng điều khiển
+                  {t("common.dashboard")}
                 </span>
               </a>
             </li>
@@ -152,7 +153,7 @@ export default function ReviewLaterPage() {
               </span>
               {" "}
               <span className="crumb-current" aria-current="page">
-                Xem lại sau
+                {t("common.reviewLater")}
               </span>
             </li>
           </ol>
@@ -167,12 +168,12 @@ export default function ReviewLaterPage() {
           <div className="review-header-text">
             <div className="review-heading-row">
               <h1 className="review-page-title">
-                Xem lại sau
+                {t("common.reviewLater")}
               </h1>
               <span className="badge" data-total hidden />
             </div>
             <p className="review-page-description">
-              Các bài bạn đã lưu để xem lại khi cần.
+              {t("dashboard.reviewText")}
             </p>
           </div>
         </header>
@@ -180,7 +181,7 @@ export default function ReviewLaterPage() {
         <div className="card page-state" data-page-state="loading" role="status" hidden>
           <div className="spinner" aria-hidden="true" />
           <p>
-            Đang tải danh sách xem lại…
+            {t("review.loading")}
           </p>
         </div>
         <div className="card page-state" data-page-state="error" role="alert" hidden>
@@ -188,13 +189,13 @@ export default function ReviewLaterPage() {
             cloud_off
           </span>
           <h2 className="page-state-title">
-            Không thể tải danh sách xem lại
+            {t("review.loadError")}
           </h2>
           <p>
-            Đã có lỗi khi tải dữ liệu. Vui lòng thử lại.
+            {t("common.loadError")}
           </p>
           <button className="button button-secondary button-compact" type="button" data-action="retry-page">
-            Thử lại
+            {t("common.retry")}
           </button>
         </div>
         {/* items: [] — one page-level empty state instead of empty module sections. */}
@@ -203,28 +204,28 @@ export default function ReviewLaterPage() {
             bookmark_added
           </span>
           <h2 className="page-state-title" tabIndex="-1">
-            Chưa có bài nào
+            {t("review.emptyTitle")}
           </h2>
           <p>
-            Chọn “Xem lại sau” trong một bài học để lưu bài đó vào đây.
+            {t("review.emptyText")}
           </p>
           <div className="explore-links">
             <a className="lesson-link subject-vocabulary" href="#" data-route="/vocabulary">
-              Từ vựng
+              {t("common.vocabulary")}
               <span className="material-symbols-outlined" aria-hidden="true">
                 arrow_forward
               </span>
             </a>
             {" "}
             <a className="lesson-link subject-grammar" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
               <span className="material-symbols-outlined" aria-hidden="true">
                 arrow_forward
               </span>
             </a>
             {" "}
             <a className="lesson-link subject-conjugation" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
               <span className="material-symbols-outlined" aria-hidden="true">
                 arrow_forward
               </span>
@@ -293,7 +294,7 @@ export default function ReviewLaterPage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

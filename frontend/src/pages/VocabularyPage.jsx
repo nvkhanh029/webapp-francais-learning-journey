@@ -69,10 +69,11 @@
 */
 import styles from "./VocabularyPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 import init from "./VocabularyPage.script.js";
 
 export default function VocabularyPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Từ vựng" });
+  const rootRef = usePageScript(init, { title: "title.vocabulary" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -80,31 +81,31 @@ export default function VocabularyPage() {
       <header className="site-header">
         <div className="page-container header-content">
           <div className="brand">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
             </span>
           </div>
-          <nav className="main-nav" aria-label="Điều hướng chính">
+          <nav className="main-nav" aria-label={t("common.mainNav")}>
             <a className="nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/vocabulary" aria-current="page">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </nav>
           <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
+            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
               <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
                 VI
               </button>
@@ -113,39 +114,39 @@ export default function VocabularyPage() {
                 EN
               </button>
             </div>
-            <button className="logout-button" type="button" aria-label="Đăng xuất" title="Đăng xuất">
+            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 logout
               </span>
               {" "}
               <span className="logout-label">
-                Đăng xuất
+                {t("common.logout")}
               </span>
             </button>
             {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu điều hướng">
+            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 menu
               </span>
             </button>
           </div>
         </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label="Điều hướng chính" hidden>
+        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
           <div className="page-container mobile-nav-list">
             <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/vocabulary" aria-current="page">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </div>
         </nav>
@@ -162,7 +163,7 @@ export default function VocabularyPage() {
               </div>
               <div>
                 <h1 className="page-title" id="page-title">
-                  Từ vựng
+                  {t("common.vocabulary")}
                   <span className="title-glyphs" lang="fr" aria-hidden="true">
                     <span>
                       à
@@ -178,34 +179,34 @@ export default function VocabularyPage() {
                   </span>
                 </h1>
                 <p className="page-description">
-                  Khám phá từ và cụm từ tiếng Pháp theo từng chủ đề, bắt đầu từ bất kỳ chủ đề nào bạn muốn.
+                  {t("vocab.description")}
                 </p>
               </div>
             </div>
             <div className="overview-panel" data-overview hidden>
               <div className="progress-labels">
                 <span>
-                  Tiến độ
+                  {t("common.progress")}
                 </span>
                 {" "}
                 <span className="progress-value" data-slot="percent">
                   0%
                 </span>
               </div>
-              <div className="progress-track" role="progressbar" aria-label="Tiến độ Từ vựng" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-slot="track">
+              <div className="progress-track" role="progressbar" aria-label={t("common.progressVocabulary")} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-slot="track">
                 <div className="progress-fill" />
               </div>
-              <ul className="overview-states" aria-label="Trạng thái học tập">
+              <ul className="overview-states" aria-label={t("common.learningStatus")}>
                 <li className="badge badge-learned">
                   <span className="material-symbols-outlined icon-filled" aria-hidden="true">
                     check_circle
                   </span>
                   {" "}
                   <span>
-                    Đã học:
+                    {t("common.learnedColon")}
                     {" "}
                     <span data-slot="count">
-                      0/0 bài
+                      {t("common.unitsOf", { learned: 0, total: 0, n: 0 })}
                     </span>
                   </span>
                 </li>
@@ -215,10 +216,10 @@ export default function VocabularyPage() {
                   </span>
                   {" "}
                   <span>
-                    Xem lại sau:
+                    {t("common.reviewLaterColon")}
                     {" "}
                     <span data-slot="review-count">
-                      0 bài
+                      {t("common.unitsN", { n: 0 })}
                     </span>
                   </span>
                 </li>
@@ -235,12 +236,12 @@ export default function VocabularyPage() {
               </span>
               {" "}
               <span>
-                Tài liệu tham khảo
+                {t("common.referenceTitle")}
               </span>
             </span>
             {" "}
             <span className="reference-title" id="reference-title">
-              Bảng chữ cái và dấu tiếng Pháp
+              {t("common.alphabetTitle")}
             </span>
             {" "}
             <span className="reference-letters" lang="fr" aria-hidden="true">
@@ -248,12 +249,12 @@ export default function VocabularyPage() {
             </span>
             {" "}
             <span className="reference-note" id="reference-note">
-              Kiến thức nền tảng để tra cứu bất cứ lúc nào, không tính vào tiến độ học tập.
+              {t("common.referenceDescription")}
             </span>
             {" "}
             <span className="reference-cta" aria-hidden="true">
               <span>
-                Xem bảng chữ cái
+                {t("vocab.viewAlphabet")}
               </span>
               {" "}
               <span className="material-symbols-outlined">
@@ -268,7 +269,7 @@ export default function VocabularyPage() {
         <div className="card page-state" data-page-state="loading" role="status" hidden>
           <div className="spinner" aria-hidden="true" />
           <p>
-            Đang tải từ vựng…
+            {t("vocab.loading")}
           </p>
         </div>
         <div className="card page-state" data-page-state="error" role="alert" hidden>
@@ -276,13 +277,13 @@ export default function VocabularyPage() {
             cloud_off
           </span>
           <h2 className="page-state-title">
-            Không thể tải từ vựng
+            {t("vocab.loadError")}
           </h2>
           <p>
-            Đã có lỗi khi tải dữ liệu. Vui lòng thử lại.
+            {t("common.loadError")}
           </p>
           <button className="button button-secondary button-compact" type="button" data-action="retry">
-            Thử lại
+            {t("common.retry")}
           </button>
         </div>
         <div className="card page-state" data-page-state="empty" hidden>
@@ -290,21 +291,21 @@ export default function VocabularyPage() {
             style
           </span>
           <h2 className="page-state-title">
-            Chưa có chủ đề từ vựng nào
+            {t("vocab.emptyTitle")}
           </h2>
           <p>
-            Các chủ đề từ vựng sẽ xuất hiện ở đây khi được bổ sung. Trong lúc chờ, bạn có thể xem bảng chữ cái và dấu ở trên, hoặc học ngữ pháp và chia động từ.
+            {t("vocab.emptyText")}
           </p>
           <div className="explore-links">
             <a className="lesson-link subject-grammar" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
               <span className="material-symbols-outlined" aria-hidden="true">
                 arrow_forward
               </span>
             </a>
             {" "}
             <a className="lesson-link subject-conjugation" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
               <span className="material-symbols-outlined" aria-hidden="true">
                 arrow_forward
               </span>
@@ -313,7 +314,7 @@ export default function VocabularyPage() {
         </div>
         <div data-vocabulary-content hidden>
           {/* 4. Content summary: array lengths of the response, nothing else. */}
-          <ul className="toolbar-summary" data-summary aria-label="Nội dung" />
+          <ul className="toolbar-summary" data-summary aria-label={t("common.contentRegion")} />
           {/* 5. Categories, rendered from the API data with the templates below. */}
           <div className="category-list" data-category-list />
         </div>
@@ -326,10 +327,10 @@ export default function VocabularyPage() {
                     <h2 class="category-title" data-slot="heading"><span data-slot="title" lang="fr"></span></h2>
                     <span class="title-support" data-slot="support"></span>
                 </div>
-                <span class="badge badge-info category-count" data-slot="count">0 chủ đề</span>
+                <span class="badge badge-info category-count" data-slot="count">${t("vocab.topicsCount", { n: 0 })}</span>
             </header>
             <ul class="topic-grid" data-slot="topics"></ul>
-            <p class="empty-text" data-slot="empty" hidden>Danh mục này chưa có chủ đề nào.</p>
+            <p class="empty-text" data-slot="empty" hidden>${t("vocab.emptyCategory")}</p>
         </section>
     ` }} />
       {/* Topic: the whole card is the link to /vocabulary/topics/:slug. No learner state. */}
@@ -354,7 +355,7 @@ export default function VocabularyPage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

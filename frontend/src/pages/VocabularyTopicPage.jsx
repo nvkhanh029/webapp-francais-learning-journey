@@ -76,10 +76,11 @@
 */
 import styles from "./VocabularyTopicPage.module.css";
 import usePageScript from "../hooks/usePageScript.js";
+import { t } from "../i18n/index.js";
 import init from "./VocabularyTopicPage.script.js";
 
 export default function VocabularyTopicPage() {
-  const rootRef = usePageScript(init, { title: "Français Learning Journey | Từ vựng" });
+  const rootRef = usePageScript(init, { title: "title.vocabulary" });
 
   return (
     <div className={styles.page} ref={rootRef}>
@@ -87,31 +88,31 @@ export default function VocabularyTopicPage() {
       <header className="site-header">
         <div className="page-container header-content">
           <div className="brand">
-            <img alt="Linh vật bánh sừng bò đeo kính, tay cầm sách" className="brand-logo" src="/images/logo.png" />
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
             {" "}
             <span className="brand-name">
               Français Learning Journey
             </span>
           </div>
-          <nav className="main-nav" aria-label="Điều hướng chính">
+          <nav className="main-nav" aria-label={t("common.mainNav")}>
             <a className="nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/vocabulary" aria-current="page">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </nav>
           <div className="header-actions">
-            <div className="language-switcher" role="group" aria-label="Ngôn ngữ hỗ trợ">
+            <div className="language-switcher" role="group" aria-label={t("common.supportLanguage")}>
               <button className="language-button" type="button" aria-pressed="true" data-lang="vi" title="Tiếng Việt">
                 VI
               </button>
@@ -120,39 +121,39 @@ export default function VocabularyTopicPage() {
                 EN
               </button>
             </div>
-            <button className="logout-button" type="button" aria-label="Đăng xuất" title="Đăng xuất">
+            <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 logout
               </span>
               {" "}
               <span className="logout-label">
-                Đăng xuất
+                {t("common.logout")}
               </span>
             </button>
             {" "}
-            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu điều hướng">
+            <button className="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label={t("common.menuNav")}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 menu
               </span>
             </button>
           </div>
         </div>
-        <nav className="mobile-nav" id="mobile-nav" aria-label="Điều hướng chính" hidden>
+        <nav className="mobile-nav" id="mobile-nav" aria-label={t("common.mainNav")} hidden>
           <div className="page-container mobile-nav-list">
             <a className="mobile-nav-link" href="#" data-route="/dashboard">
-              Bảng điều khiển
+              {t("common.dashboard")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/vocabulary" aria-current="page">
-              Từ vựng
+              {t("common.vocabulary")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/grammar">
-              Ngữ pháp
+              {t("common.grammar")}
             </a>
             {" "}
             <a className="mobile-nav-link" href="#" data-route="/conjugation">
-              Chia động từ
+              {t("common.conjugation")}
             </a>
           </div>
         </nav>
@@ -162,14 +163,14 @@ export default function VocabularyTopicPage() {
           {/* 2. Breadcrumbs. Only "Từ vựng" is a link; Category is contextual text with no
                  route (do not invent /vocabulary/categories/...); the current Topic is not a link.
           */}
-          <nav className="breadcrumbs" aria-label="Đường dẫn trang">
+          <nav className="breadcrumbs" aria-label={t("common.breadcrumb")}>
             <ol className="breadcrumb-list">
               <li>
                 <a className="crumb-link" href="#" data-route="/vocabulary">
                   <span className="material-symbols-outlined" aria-hidden="true">
                     style
                   </span>
-                  Từ vựng
+                  {t("common.vocabulary")}
                 </a>
               </li>
               <li className="crumb-category" data-crumb="category">
@@ -195,7 +196,7 @@ export default function VocabularyTopicPage() {
           <div className="card page-state" data-page-state="loading" role="status" hidden>
             <div className="spinner" aria-hidden="true" />
             <p>
-              Đang tải chủ đề…
+              {t("vocab.loadingTopic")}
             </p>
           </div>
           <div className="card page-state" data-page-state="error" role="alert" hidden>
@@ -203,13 +204,13 @@ export default function VocabularyTopicPage() {
               cloud_off
             </span>
             <h1 className="page-state-title">
-              Không thể tải chủ đề
+              {t("vocab.loadTopicError")}
             </h1>
             <p>
-              Đã có lỗi khi tải dữ liệu. Vui lòng thử lại.
+              {t("common.loadError")}
             </p>
             <button className="button button-secondary button-compact" type="button" data-action="retry">
-              Thử lại
+              {t("common.retry")}
             </button>
           </div>
           <div data-topic-content>
@@ -231,27 +232,27 @@ export default function VocabularyTopicPage() {
               <div className="overview-panel" data-overview>
                 <div className="progress-labels">
                   <span>
-                    Tiến độ
+                    {t("common.progress")}
                   </span>
                   {" "}
                   <span className="progress-value" data-slot="percent">
                     0%
                   </span>
                 </div>
-                <div className="progress-track" role="progressbar" aria-label="Tiến độ chủ đề" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-slot="track">
+                <div className="progress-track" role="progressbar" aria-label={t("vocab.topicProgress")} aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-slot="track">
                   <div className="progress-fill" />
                 </div>
-                <ul className="overview-states" aria-label="Trạng thái học tập">
+                <ul className="overview-states" aria-label={t("common.learningStatus")}>
                   <li className="badge badge-learned">
                     <span className="material-symbols-outlined icon-filled" aria-hidden="true">
                       check_circle
                     </span>
                     {" "}
                     <span>
-                      Đã học:
+                      {t("common.learnedColon")}
                       {" "}
                       <span data-slot="count">
-                        0/0 bài
+                        {t("common.unitsOf", { learned: 0, total: 0, n: 0 })}
                       </span>
                     </span>
                   </li>
@@ -261,10 +262,10 @@ export default function VocabularyTopicPage() {
                     </span>
                     {" "}
                     <span>
-                      Xem lại sau:
+                      {t("common.reviewLaterColon")}
                       {" "}
                       <span data-slot="review-count">
-                        0 bài
+                        {t("common.unitsN", { n: 0 })}
                       </span>
                     </span>
                   </li>
@@ -274,10 +275,10 @@ export default function VocabularyTopicPage() {
             {/* 5. Content summary + Subtopics, rendered from the API data with the templates
                      below.
             */}
-            <ul className="toolbar-summary" data-summary aria-label="Nội dung" />
+            <ul className="toolbar-summary" data-summary aria-label={t("common.contentRegion")} />
             <section aria-labelledby="topic-title" className="subtopic-list" data-subtopic-list />
             <p className="empty-text" data-topic-empty hidden>
-              Chủ đề này chưa có mục nào.
+              {t("vocab.emptyTopic")}
             </p>
           </div>
         </div>
@@ -294,11 +295,11 @@ export default function VocabularyTopicPage() {
                 </div>
 
                 <span class="badge badge-info subtopic-count" data-slot="count">
-                    0/0 bài
+                    ${t("common.unitsOf", { learned: 0, total: 0, n: 0 })}
                 </span>
             </header>
             <ul class="study-unit-grid" data-slot="units"></ul>
-            <p class="empty-text subtopic-empty" data-slot="empty" hidden>Mục này chưa có bài nào.
+            <p class="empty-text subtopic-empty" data-slot="empty" hidden>${t("vocab.emptySubtopic")}
             </p>
         </section>
     ` }} />
@@ -319,11 +320,11 @@ export default function VocabularyTopicPage() {
                     <span class="unit-meta" data-slot="meta">
                         <span class="badge badge-review" data-slot="review-later" hidden>
                             <span class="material-symbols-outlined icon-filled" aria-hidden="true">bookmark</span>
-                            <span>Xem lại sau</span>
+                            <span>${t("common.reviewLater")}</span>
                         </span>
                         <span class="badge badge-learned" data-slot="learned" hidden>
                             <span class="material-symbols-outlined icon-filled" aria-hidden="true">check_circle</span>
-                            <span>Đã học</span>
+                            <span>${t("common.learned")}</span>
                         </span>
                     </span>
                 </span>
@@ -341,7 +342,7 @@ export default function VocabularyTopicPage() {
           </span>
           {" "}
           <span>
-            Français Learning Journey • Hành trình chinh phục tiếng Pháp
+            {t("common.footer")}
           </span>
         </div>
       </footer>

@@ -1,16 +1,19 @@
 // Behavior carried over from the raw UI prototype (language-setup-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by LanguageSetupPage.jsx.
+import { t } from "../i18n/index.js";
+
 export default function init() {
   // UI prototype only. No API request, session, or redirect is made here.
   (() => {
-      // Fixed copy used by the script; production copy lives in the i18n dictionaries.
+      // Copy read from the central string table (src/i18n/strings.js) each time it is used, so it
+      // always follows the current language.
       const COPY = {
-          submit: "Tiếp tục",
-          submitting: "Đang lưu…",
-          validationTitle: "Chưa chọn ngôn ngữ.",
-          validationText: "Vui lòng chọn ngôn ngữ hỗ trợ.",
-          serverTitle: "Không thể lưu lựa chọn.",
-          serverText: "Đã có lỗi khi lưu ngôn ngữ hỗ trợ. Vui lòng thử lại.",
+          get submit() { return t("setup.submit"); },
+          get submitting() { return t("setup.submitting"); },
+          get validationTitle() { return t("setup.validationTitle"); },
+          get validationText() { return t("setup.validationText"); },
+          get serverTitle() { return t("setup.serverTitle"); },
+          get serverText() { return t("setup.serverText"); },
       };
 
       const options = Array.from(document.querySelectorAll(".language-option"));

@@ -1,17 +1,20 @@
 // Behavior carried over from the raw UI prototype (login-page.html). UI preview only.
 // Called once per mounted page by usePageScript(); it queries the DOM rendered by LoginPage.jsx.
+import { t } from "../i18n/index.js";
+
 export default function init() {
   // UI prototype only. No API request, session, or redirect is made here.
   (() => {
-      // Fixed copy used by the script; production copy lives in the i18n dictionaries.
+      // Copy read from the central string table (src/i18n/strings.js) each time it is used, so it
+      // always follows the current language.
       const COPY = {
-          submit: "Đăng nhập",
-          submitting: "Đang đăng nhập…",
-          showPassword: "Hiện mật khẩu",
-          hidePassword: "Ẩn mật khẩu",
+          get submit() { return t("auth.loginSubmit"); },
+          get submitting() { return t("auth.loginSubmitting"); },
+          get showPassword() { return t("common.showPassword"); },
+          get hidePassword() { return t("common.hidePassword"); },
           // Generic by contract: never reveal whether the email exists (API Contract §6.2).
-          invalidCredentials: "Email hoặc mật khẩu không đúng. Vui lòng kiểm tra lại.",
-          serverError: "Không thể đăng nhập lúc này. Vui lòng thử lại.",
+          get invalidCredentials() { return t("auth.invalidCredentials"); },
+          get serverError() { return t("auth.loginServerError"); },
       };
 
       const form = document.getElementById("login-form");
