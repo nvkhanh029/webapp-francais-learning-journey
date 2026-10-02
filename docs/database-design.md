@@ -651,6 +651,8 @@ LIMIT 1
 
 If no such unit exists, the application should fall back to an Explore Learning prompt rather than inventing a recommendation.
 
+Known limitation: `last_opened_at` is written with one-second resolution (ISO 8601 `timespec="seconds"`), so two units opened within the same second tie under `ORDER BY last_opened_at DESC` and the result between them is undefined. Accepted for the MVP (see API Contract §8.1).
+
 Review Later uses the same state table, conceptually:
 
 ```text

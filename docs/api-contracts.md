@@ -164,7 +164,22 @@ For `validation_error` (`422`), `details` carries field-level codes so the front
 ```
 
 - `details.fields` maps a request field name (`snake_case`) or query-parameter name to one field-level code;
-- field-level codes are stable `snake_case` identifiers: `required`, `invalid_type`, `invalid_format`, `invalid_value`, `too_short`, `future_month`, and `no_fields` (none of the allowed fields were supplied);
+- field-level codes are stable `snake_case` identifiers. The backend returns exactly these:
+
+  | Code | Meaning |
+  |---|---|
+  | `required` | The field is missing, `null`, or empty/blank after trimming (passwords are not trimmed) |
+  | `invalid_type` | The value has the wrong JSON type (for example a number where a string is expected) |
+  | `invalid_format` | The value is a string/text but not in the expected shape (an email without exactly one `@`, a non-numeric `year`/`month` query parameter) |
+  | `invalid_value` | The value has the right type but is not allowed (a `support_language` other than `vi`/`en`, a `year`/`month` outside its range, an unknown or duplicate Practice `question_id`, an `item_id` that is not an option of the question) |
+  | `too_short` | A non-empty string is shorter than the minimum length (a password under 8 characters) |
+  | `future_month` | `month` of the Activity Calendar is later than the server's current month (§8.2) |
+  | `no_fields` | None of the allowed fields of a partial update was supplied (§13.2) |
+
+- `no_fields` is reported on **every** allowed field of that request, because no single field is at fault: `PATCH /me/learning-units/{slug}/state` with neither `learned` nor `review_later` returns `{"learned": "no_fields", "review_later": "no_fields"}`;
+- all invalid fields of one request are reported together when the backend validates them together (for example `email` and `password` on register);
+- field names inside a Practice submission use a path form such as `answers`, `answers[0].question_id`, `answers[0].answer`, or `answers[<question_id>].item_id` (the last form is used after the answers were matched to the run's questions);
+- a request body that parses as JSON but is not a JSON object (an array, string, number, `null`) returns `422 validation_error` with `details` of `{}` (no `fields` key), because no field name applies;
 - `message` remains a safe English fallback; the frontend translates from the field-level code and falls back to `message` for an unknown code;
 - field-level codes never include submitted values, passwords, or implementation details.
 
@@ -185,7 +200,7 @@ For `validation_error` (`422`), `details` carries field-level codes so the front
 | `201 Created` | Resource/run/account created successfully |
 | `400 Bad Request` | Malformed JSON or syntactically invalid request |
 | `401 Unauthorized` | Authentication required or credentials invalid |
-| `403 Forbidden` | Authenticated but explicitly not permitted |
+| `403 Forbidden` | Request explicitly not permitted; currently only `csrf_failed` (§4.7) |
 | `404 Not Found` | Requested resource/run does not exist |
 | `405 Method Not Allowed` | HTTP method is not supported for the route |
 | `409 Conflict` | Request conflicts with current resource/application state |
@@ -218,10 +233,18 @@ Secure = true when served through HTTPS
 
 The following are required, not optional:
 
-- **Session expiry.** An authenticated session must expire. The lifetime is a backend configuration value, not part of the API contract. A request made with an expired or missing session returns `401 not_authenticated`, and the frontend handles it as defined in Frontend Design §6.7.
-- **Secure cookie in production.** Any deployment served over HTTPS must set the session cookie `Secure` flag. `Secure = false` is allowed only for local HTTP development and demonstration.
-- **CSRF protection.** Because the session cookie authenticates state-changing requests (`POST`, `PATCH`, and any future `DELETE`), the backend must reject cross-site state-changing requests. `SameSite = Lax` is a baseline, not a substitute for this requirement. The concrete mechanism is a backend implementation decision documented in Backend Structure; it must not change the request/response shapes in this document without a contract update.
-- **Login rate limiting.** `POST /api/v1/auth/login` must limit repeated failed attempts. When the limit is exceeded the backend returns `429 Too Many Requests` with error code `rate_limited`, a safe `message`, and `details` of `{}`; it may include a `Retry-After` header. Thresholds and the time window are backend configuration values. The limiter must not reveal whether an email exists.
+- **Session expiry.** An authenticated session must expire. The lifetime is a backend configuration value, not part of the API contract; the default is a **24-hour idle timeout** (every request refreshes the cookie, so a learner who keeps using the app stays signed in). A request made with an expired or missing session returns `401 not_authenticated`, and the frontend handles it as defined in Frontend Design §6.7.
+- **Secure cookie in production.** Any deployment served over HTTPS must set the session cookie `Secure` flag. `Secure = false` is allowed only for local HTTP development and demonstration. The backend forces `Secure` on every request that arrives over HTTPS, and `SESSION_COOKIE_SECURE=1` forces it explicitly (for example behind a TLS-terminating proxy).
+- **CSRF protection.** Because the session cookie authenticates state-changing requests (`POST`, `PATCH`, `PUT`, `DELETE`), the backend rejects cross-site state-changing requests with `403 csrf_failed` (details `{}`). `SameSite = Lax` and JSON-only request bodies remain as further layers, but are not the mechanism. The mechanism is a **same-origin check** that never changes a request or response shape and requires **nothing extra from the frontend** (no token, no custom header): browsers attach `Sec-Fetch-Site` and `Origin` themselves and page scripts cannot forge them. For a state-changing request, in order:
+  1. an `Origin` listed in the backend setting `CSRF_TRUSTED_ORIGINS` (default: none) is allowed;
+  2. if `Sec-Fetch-Site` is present, only `same-origin` or `none` is allowed; `same-site` and `cross-site` return `403 csrf_failed`;
+  3. otherwise, if `Origin` is present, it must equal the request's own origin (`Origin: null` is rejected);
+  4. a request with neither header is a non-browser client (curl, test client, scripts) and is allowed, because it carries no victim's ambient cookie.
+
+  Safe methods (`GET`, `HEAD`, `OPTIONS`) are not checked. The check runs before authentication, so a cross-site request returns `403 csrf_failed` even when no session exists.
+- **Login rate limiting.** `POST /api/v1/auth/login` limits repeated **failed** attempts. By default (backend configuration, not contract): at most **5** failed attempts per normalized email and **20** per client IP address within a **300-second** sliding window. When either limit is reached, the next login attempt returns `429 Too Many Requests` with error code `rate_limited`, a safe `message`, `details` of `{}`, and a `Retry-After` header holding the whole seconds (minimum 1) until another attempt is allowed. A blocked attempt is checked before the password is verified, is not counted as a further failure, and is identical for an existing and an unknown email, so the limiter does not reveal whether an email exists. A successful login clears the email counter (not the IP counter). The counters live in server process memory and reset when the Flask process restarts.
+  - Known limitation: because the limit is per email, anyone who repeatedly fails logins for a victim's email can temporarily lock that learner out of logging in for up to the window.
+  - Known limitation: the per-IP limit uses the client address Flask sees. Behind the Vite dev proxy, every browser request arrives from the proxy's address, so all developers/learners on that dev server share one IP counter.
 
 ### 4.8 Identifiers
 
@@ -430,9 +453,11 @@ Content-Type: application/json
 - use a generic authentication error so the API does not reveal whether a specific email exists;
 - create/refresh the authenticated Flask session after valid credentials;
 - apply the login rate limit defined in §4.7;
-- missing or empty fields return `422 validation_error` with `details.fields` codes (`required`) as defined in §4.4.
+- missing, `null`, or blank fields return `422 validation_error` with `details.fields` code `required`, and a non-string value returns `invalid_type` (§4.4); login performs no email-format check, so a badly formatted email fails as `401 invalid_credentials`, not as a validation error.
 
 ### Rate Limited — `429 Too Many Requests`
+
+Response header: `Retry-After: <seconds>` (§4.7).
 
 ```json
 {
@@ -729,6 +754,8 @@ LIMIT 1
 
 If no unfinished opened unit exists, return `null`.
 
+Known limitation: `last_opened_at` is stored with **one-second resolution** (ISO 8601 without fractional seconds). If a learner opens two units within the same second, they tie and the ordering is not defined; either unit may be returned as `continue_learning`. This is accepted for the MVP because a human cannot meaningfully open two units in one second, and no tie-breaker field exists in the schema.
+
 When present, the object carries the unit's place in the curriculum so the Dashboard can render "module • parent section" and "Lesson x/y":
 
 - `parent.kind` is the grouping level of the unit's module: `chapter` for Grammar, `subtopic` for Vocabulary, `tense` for Conjugation;
@@ -786,8 +813,17 @@ Returns the Learning Activity Calendar data for one calendar month. It is separa
 
 | Parameter | Type | Rules |
 |---|---|---|
-| `year` | integer | required; four-digit calendar year |
-| `month` | integer | required; `1`–`12` |
+| `year` | integer | required; whole number from `1000` to `9999` |
+| `month` | integer | required; whole number from `1` to `12` |
+
+Validation (`422 validation_error`, all failing parameters reported together in `details.fields`):
+
+| Case | `details.fields.<name>` |
+|---|---|
+| parameter missing or blank | `required` |
+| not a whole number (`abc`, `9.5`, `2026-09`) | `invalid_format` |
+| whole number outside the range above (`month=13`, `year=999`) | `invalid_value` |
+| `month` later than the server's current month | `future_month` (see Business Rules) |
 
 ### Success — `200 OK`
 
@@ -812,7 +848,7 @@ Returns the Learning Activity Calendar data for one calendar month. It is separa
 - the response carries no per-day session count and no intensity value; each date appears once however many sessions were completed that day;
 - a month with no activity returns `"days": []`;
 - the months are calendar months in `Asia/Ho_Chi_Minh` (§4.10);
-- a month later than the current month (compared against the server's `today`) is rejected with `422 validation_error` and `details.fields.month` set to `future_month`; past months, including months before the learner's first activity, are allowed;
+- a month later than the current month (compared as year and month against the server's `today`) is rejected with `422 validation_error` and `details.fields.month` set to `future_month`; the check runs only after `year` and `month` are valid, and past months, including months before the learner's first activity, are allowed;
 - the endpoint is read-only and never writes progress, streak, or activity state;
 - days that are not in `days` are "no practice" or "not yet" days; the frontend decides which using `today.date` from §8.1.
 
@@ -1698,6 +1734,8 @@ The in-progress question objects do not need to expose their source learning uni
 
 ## 16.2 Optional Mixed Practice Filters — Should Have
 
+> **Implementation status: not implemented (deferred).** Filters are a Should Have feature and the backend does not implement them. Any request body for `POST /api/v1/mixed-practice/start` that contains a `filters` key, whatever its value, returns `422 invalid_mixed_filters` (message `Mixed Practice filters are not supported.`, `details` `{}`) and starts no run. The rules below describe the intended future behavior only; a body without `filters`, or an empty body, starts Mixed Practice normally. Implementing filters requires no contract change beyond removing this note.
+
 The endpoint remains the same:
 
 ```http
@@ -1843,6 +1881,7 @@ For the MVP:
 ```json
 {
   "data": {
+    "practice_run_id": "8fd41b92-87cd-4c38-a876-8ae752d21e08",
     "practice_type": "normal",
     "learning_unit": {
       "slug": "articles-definis",
@@ -1913,6 +1952,8 @@ For the MVP:
 
 `results` is current Result-state response data. It is not required to be persisted as per-question history.
 
+The result echoes `practice_run_id` (the run that was just submitted) in both the normal and the Mixed result. It is informational: it is not a persisted `practice_sessions.id` (§18).
+
 ---
 
 ## 17.3 Mixed Practice Result
@@ -1922,6 +1963,7 @@ For the MVP:
 ```json
 {
   "data": {
+    "practice_run_id": "8fd41b92-87cd-4c38-a876-8ae752d21e08",
     "practice_type": "mixed",
     "correct_count": 7,
     "total_questions": 10,
@@ -2020,13 +2062,18 @@ Incomplete or abandoned practice creates no `practice_sessions` row and therefor
 {
   "error": {
     "code": "incomplete_practice",
-    "message": "All questions must be answered before submitting practice.",
+    "message": "Every question in the practice run must have exactly one submitted answer.",
     "details": {
-      "missing_count": 1
+      "answers": "Answers must contain exactly one entry for every question."
     }
   }
 }
 ```
+
+- the backend returns this one `details` shape, `{"answers": "<fixed safe sentence>"}`, for **every** mismatch between the submitted `question_id` set and the run's question set: a missing answer, an unknown question id, or an extra question id. It does not return `missing_count`; the frontend must not rely on a count and treats `details` as informational;
+- a malformed answer entry (wrong type, duplicate `question_id`, bad answer shape) is not `incomplete_practice`; it returns `422 validation_error` with path-form field names (§4.4);
+- the run is checked first: an unknown/other learner's run returns `404 practice_run_not_found` and an already submitted run returns `409 practice_already_submitted` before the answers are examined;
+- the `message` text is a safe fallback and is not contractual; the frontend branches on `code`.
 
 ### Already Submitted — `409 Conflict`
 
@@ -2046,11 +2093,13 @@ Incomplete or abandoned practice creates no `practice_sessions` row and therefor
 {
   "error": {
     "code": "practice_run_not_found",
-    "message": "This practice session is no longer available. Please start a new practice.",
+    "message": "Practice run was not found or has expired.",
     "details": {}
   }
 }
 ```
+
+The `message` text is not contractual (the frontend branches on `code` and shows its own localized text). The same response is returned for an unknown id, an expired run, and a run owned by another learner, so a run id cannot be probed.
 
 ---
 
@@ -2097,7 +2146,8 @@ The following codes are the main contract-level codes. Additional narrowly scope
 |---|---:|---|
 | `invalid_json` | 400 | Request body is malformed JSON |
 | `validation_error` | 422 | Parsed request fails field validation; `details.fields` carries field-level codes (§4.4) |
-| `rate_limited` | 429 | Login rate limit exceeded (§4.7) |
+| `rate_limited` | 429 | Login rate limit exceeded (§4.7); `Retry-After` header carries the wait in seconds |
+| `csrf_failed` | 403 | State-changing request rejected by the same-origin check (§4.7); details `{}` |
 | `not_authenticated` | 401 | Authenticated session required |
 | `invalid_credentials` | 401 | Login credentials invalid |
 | `email_already_registered` | 409 | Registration email conflicts with existing account |
@@ -2106,7 +2156,7 @@ The following codes are the main contract-level codes. Additional narrowly scope
 | `reference_not_found` | 404 | Reference slug not found |
 | `practice_unavailable` | 409 | Learning unit exists but normal Practice cannot be started |
 | `mixed_practice_unavailable` | 409 | No eligible Mixed Practice questions are available |
-| `invalid_mixed_filters` | 422 | Mixed filter values are invalid |
+| `invalid_mixed_filters` | 422 | Mixed filter values are invalid; currently returned for any `filters` key because filters are not implemented (§16.2) |
 | `practice_run_not_found` | 404 | Temporary practice run is missing/expired |
 | `practice_already_submitted` | 409 | Run was already finalized |
 | `incomplete_practice` | 422 | Not all run questions have final answers |

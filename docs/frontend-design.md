@@ -1152,7 +1152,7 @@ and error form:
 
 The API client should normalize these once rather than requiring every page to parse them differently.
 
-**Field-level validation codes.** For `422 validation_error` the API returns `details.fields`, a map from field name to a field-level code such as `required`, `invalid_format`, `too_short`, `invalid_value`, or `future_month` (API §4.4). The frontend translates each code into a localized message through `t()` and shows it next to its field. An unknown code falls back to the response `message`. The frontend never matches on the English `message` text, and its own convenience validation never replaces the backend result.
+**Field-level validation codes.** For `422 validation_error` the API returns `details.fields`, a map from field name to a field-level code such as `required`, `invalid_type`, `invalid_format`, `too_short`, `invalid_value`, `future_month`, or `no_fields` (API §4.4). The frontend translates each code into a localized message through `t()` and shows it next to its field. An unknown code falls back to the response `message`. The frontend never matches on the English `message` text, and its own convenience validation never replaces the backend result.
 
 ---
 
@@ -1199,9 +1199,31 @@ No auth token is stored in `localStorage` or `sessionStorage`; authentication is
 
 Sessions expire on the server (API §4.7). The frontend treats an expired session like any other `401 not_authenticated`: it clears `currentUser` and routes the learner to Login without presenting stale data as current.
 
-A login attempt rejected with `429 rate_limited` shows a localized "too many attempts, try again later" message on the form and does not clear the entered email.
+### 429 `rate_limited` (login)
 
-State-changing requests rely on the CSRF protection chosen by the backend (API §4.7); the API client adds nothing the API Contract does not define.
+A login attempt rejected with `429 rate_limited` shows a localized "too many attempts, try again later" message on the form and does not clear the entered email. The API client exposes the wait as `ApiError.retryAfterSeconds`, parsed from the `Retry-After` response header (whole seconds; `null` when the header is absent or not a positive number) and only for a `429`. The form uses it to tell the learner roughly how long to wait (for example "try again in about 2 minutes"); when it is `null` the form shows the generic message without a time. The message and the countdown never mention whether the email exists, and a `429` is not an authentication failure: it does not clear `currentUser` and does not trigger the §6.7 unauthorized handler.
+
+### 403 `csrf_failed`
+
+State-changing requests rely on the backend's same-origin CSRF check (API §4.7). The frontend sends **nothing extra**: no token, no custom header, no `Origin` handling. Browsers attach `Origin` and `Sec-Fetch-Site` themselves, and the Vite proxy keeps the app same-origin (§6.4).
+
+If a request nevertheless returns `403 csrf_failed` (for example the app is served from an origin the backend does not trust), the client treats it as a **generic request failure**: it shows the normal localized "something went wrong" error for that action, keeps the learner's input, and does **not** redirect to `/login` and does **not** clear `currentUser`, because the session itself is still valid. It is not retried automatically, and the frontend never matches on the English `message`.
+
+### Non-401 failure of `GET /me`
+
+The initial session check (`GET /api/v1/me`, §4.3.4) has three outcomes, not two:
+
+```text
+200                              -> authenticated
+401 not_authenticated            -> unauthenticated (route to Login as in §4.3)
+anything else (network error,    -> session unknown: "cannot reach the server" state
+status 0, 5xx, 403, 429, other
+non-401 failure)
+```
+
+Only a `401 not_authenticated` proves the learner is signed out. Any other failure means the session state is **unknown**, so the frontend must not treat it as "signed out" (that would send a learner with a valid session to Login, or show a login form while the backend is down). Instead the auth state becomes a dedicated error state (for example `status: "error"` next to `checking`, `authenticated`, `unauthenticated`), the route guards render a full-page `ErrorState` ("cannot reach the server" in the support/UI language) with a **Try again** action that repeats `GET /api/v1/me`, and protected content and the redirect to Login stay blocked until the check succeeds or returns `401`. Public pages that need no session (the Login/Register language choice, §5.5) stay usable.
+
+> **Implementation status (needs implementation):** at the time of this documentation sync, `AuthContext` maps every failed initial `GET /me` (any status) to `unauthenticated`; there is no error/retry state yet. `apiClient.js` already parses `retryAfterSeconds` and `ApiError.isRateLimited`, but no page reads them yet and no localized `rate_limited` message exists. Both behaviors above are the approved design and still to be built in `frontend/`.
 
 ---
 
