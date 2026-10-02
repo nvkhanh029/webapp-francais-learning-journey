@@ -1,4 +1,6 @@
 """Small request-input helpers. Services still enforce business rules."""
+import re
+
 from .errors import ApiError
 
 SUPPORTED_LANGUAGES = {"vi", "en"}
@@ -128,4 +130,25 @@ def validate_support_language(value):
         field_error("support_language", REQUIRED)
     if not isinstance(value, str) or value not in SUPPORTED_LANGUAGES:
         field_error("support_language", INVALID_VALUE)
+    return value
+
+
+_INTEGER_TEXT = re.compile(r"-?[0-9]+")
+
+
+def require_query_integer(args, name, *, minimum, maximum):
+    """Validate a required integer query parameter (API Contract 8.2).
+
+    Missing or blank is `required`; text that is not a whole number is
+    `invalid_format`; a number outside minimum..maximum is `invalid_value`.
+    """
+    raw = args.get(name)
+    if raw is None or not raw.strip():
+        field_error(name, REQUIRED)
+    if not _INTEGER_TEXT.fullmatch(raw):
+        field_error(name, INVALID_FORMAT)
+    # Bound the length before int(): an absurdly long digit string is just out of range.
+    value = int(raw) if len(raw) <= 12 else None
+    if value is None or not minimum <= value <= maximum:
+        field_error(name, INVALID_VALUE)
     return value

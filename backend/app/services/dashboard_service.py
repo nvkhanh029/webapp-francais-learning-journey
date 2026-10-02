@@ -11,11 +11,13 @@ calendar date string ("YYYY-MM-DD"), consistent with `completed_at` using
 ISO 8601. Member 6 owns the write path that produces this value; coordinate
 before changing the assumed format.
 """
+import calendar
 from datetime import datetime, timedelta
 
 from .. import clock
 from ..localization import localized_value
 from ..repositories import learning_state_repository, learning_unit_repository, practice_repository
+from ..validation import FUTURE_MONTH, field_error
 
 RECENT_PRACTICE_LIMIT = 10
 MODULE_TYPES = ("grammar", "vocabulary", "conjugation")
@@ -124,3 +126,21 @@ def get_dashboard(user):
         "mixed_practice": {"available": learning_state_repository.has_any_learned(user_id)},
         "recent_practice": _build_recent_practice(user_id),
     }
+
+
+def get_activity_calendar(user, year, month):
+    """Unique active dates of one calendar month (API Contract 8.2).
+
+    `year`/`month` are already range-checked. A month after the server's current
+    month is rejected; past months, including ones before the learner's first
+    activity, are allowed. Read-only: never writes progress, streak or activity.
+    """
+    today = clock.today()
+    if (year, month) > (today.year, today.month):
+        field_error("month", FUTURE_MONTH)
+
+    last_day = calendar.monthrange(year, month)[1]
+    days = practice_repository.get_activity_dates_between(
+        user["id"], f"{year:04d}-{month:02d}-01", f"{year:04d}-{month:02d}-{last_day:02d}",
+    )
+    return {"year": year, "month": month, "days": days}

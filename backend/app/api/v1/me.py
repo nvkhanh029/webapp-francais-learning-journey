@@ -4,7 +4,7 @@ Routes stay thin: parse input, call a service, return the contract envelope;
 business rules live in the services.
 """
 
-from flask import Blueprint, g, jsonify
+from flask import Blueprint, g, jsonify, request
 
 from ...auth_session import login_required
 from ...services import dashboard_service, learning_state_service, user_service
@@ -13,6 +13,7 @@ from ...validation import (
     field_errors,
     get_json_body,
     require_optional_boolean,
+    require_query_integer,
     validate_fields,
     validate_support_language,
 )
@@ -47,6 +48,17 @@ def update_preferences():
 @login_required
 def get_dashboard():
     return jsonify({"data": dashboard_service.get_dashboard(g.current_user)})
+
+
+@bp.get("/activity-calendar")
+@login_required
+def get_activity_calendar():
+    values = validate_fields({
+        "year": lambda: require_query_integer(request.args, "year", minimum=1000, maximum=9999),
+        "month": lambda: require_query_integer(request.args, "month", minimum=1, maximum=12),
+    })
+    result = dashboard_service.get_activity_calendar(g.current_user, values["year"], values["month"])
+    return jsonify({"data": result})
 
 
 @bp.post("/learning-units/<slug>/open")
