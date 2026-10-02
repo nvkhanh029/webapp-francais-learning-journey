@@ -1,0 +1,168 @@
+{
+  "learning_unit_slug": "les-cycles-de-la-vie",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn từ tiếng Pháp đúng cho “em bé”.",
+      "prompt_en": "Choose the correct French word for “baby”.",
+      "explanation_vi": "“Em bé” là “le bébé”.",
+      "explanation_en": "“Baby” is “le bébé”.",
+      "options": [
+        {
+          "text": "le bébé",
+          "is_correct": true
+        },
+        {
+          "text": "l'enfant",
+          "is_correct": false
+        },
+        {
+          "text": "l'adulte",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "mcq",
+      "prompt_vi": "“La naissance” có nghĩa là gì?",
+      "prompt_en": "What does “la naissance” mean?",
+      "explanation_vi": "“La naissance” nghĩa là “sự sinh ra / birth”.",
+      "explanation_en": "“La naissance” means “birth”.",
+      "options": [
+        {
+          "text": "sự sinh ra / birth",
+          "is_correct": true
+        },
+        {
+          "text": "tuổi thơ / childhood",
+          "is_correct": false
+        },
+        {
+          "text": "cái chết / death",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn từ tiếng Pháp đúng cho “thiếu niên”.",
+      "prompt_en": "Choose the correct French word for “teenager”.",
+      "explanation_vi": "“Thiếu niên” là “l'adolescent”.",
+      "explanation_en": "“Teenager” is “l'adolescent”.",
+      "options": [
+        {
+          "text": "l'adolescence",
+          "is_correct": false
+        },
+        {
+          "text": "l'adolescent",
+          "is_correct": true
+        },
+        {
+          "text": "l'adulte",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 40,
+      "question_type": "mcq",
+      "prompt_vi": "“La retraite” có nghĩa là gì?",
+      "prompt_en": "What does “la retraite” mean?",
+      "explanation_vi": "“La retraite” nghĩa là “sự nghỉ hưu / retirement”.",
+      "explanation_en": "“La retraite” means “retirement”.",
+      "options": [
+        {
+          "text": "hôn nhân / wedding",
+          "is_correct": false
+        },
+        {
+          "text": "thai kỳ / pregnancy",
+          "is_correct": false
+        },
+        {
+          "text": "sự nghỉ hưu / retirement",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền từ thích hợp: L'___ joue dehors.",
+      "prompt_en": "Fill in the blank: L'___ joue dehors.",
+      "explanation_vi": "“Đứa trẻ chơi ở ngoài” là “L'enfant joue dehors”.",
+      "explanation_en": "“The child plays outside” is “L'enfant joue dehors”.",
+      "accepted_answers": [
+        "enfant",
+        "l'enfant"
+      ]
+    },
+    {
+      "sort_order": 60,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền từ thích hợp: ___ prend du temps. (lớn lên)",
+      "prompt_en": "Fill in the blank: ___ prend du temps. (to grow up)",
+      "explanation_vi": "“Lớn lên cần thời gian” là “Grandir prend du temps”.",
+      "explanation_en": "“Growing up takes time” is “Grandir prend du temps”.",
+      "accepted_answers": [
+        "Grandir",
+        "grandir"
+      ]
+    },
+    {
+      "sort_order": 70,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền từ thích hợp: ___ est naturel. (già đi)",
+      "prompt_en": "Fill in the blank: ___ est naturel. (to grow old)",
+      "explanation_vi": "“Già đi là điều tự nhiên” là “Vieillir est naturel”.",
+      "explanation_en": "“Growing old is natural” is “Vieillir est naturel”.",
+      "accepted_answers": [
+        "Vieillir",
+        "vieillir"
+      ]
+    },
+    {
+      "sort_order": 80,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Câu đúng: “L'enfant joue dehors”.",
+      "explanation_en": "Correct sentence: “L'enfant joue dehors”.",
+      "pieces": [
+        "L'enfant",
+        "joue",
+        "dehors"
+      ]
+    },
+    {
+      "sort_order": 90,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Câu đúng: “Le bébé dort dans sa chambre”.",
+      "explanation_en": "Correct sentence: “Le bébé dort dans sa chambre”.",
+      "pieces": [
+        "Le bébé",
+        "dort",
+        "dans sa chambre"
+      ]
+    },
+    {
+      "sort_order": 100,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Câu đúng: “Vieillir est naturel”.",
+      "explanation_en": "Correct sentence: “Vieillir est naturel”.",
+      "pieces": [
+        "Vieillir",
+        "est",
+        "naturel"
+      ]
+    }
+  ]
+}
