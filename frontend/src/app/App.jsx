@@ -1,5 +1,5 @@
-// TODO: Root application component. Compose providers and routes (see providers.jsx, routes.jsx).
+import AppRoutes from "./routes.jsx";
 
 export default function App() {
-  return null;
+  return <AppRoutes />;
 }

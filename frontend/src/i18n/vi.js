@@ -1,1 +1,0 @@
-// TODO: Vietnamese UI strings.

@@ -1,0 +1,1280 @@
+
+        /* ======================================================================
+         1. Theme and base styles (identical to DashboardPage / GrammarPage)
+         ====================================================================== */
+        .page {
+            --font-body: "Nunito Sans", sans-serif;
+            --font-heading: "Be Vietnam Pro", sans-serif;
+
+            --text-caption: 0.75rem;
+            --text-label: 0.8125rem;
+            --text-small: 0.875rem;
+            --text-body: 0.9375rem;
+            --text-practice: 1rem;
+            --text-card-title: 1.0625rem;
+            --text-brand: 1.125rem;
+            --text-section: 1.125rem;
+            --text-feature: 1.25rem;
+            --text-display: 1.75rem;
+            --leading-body: 1.6;
+            --leading-heading: 1.4;
+            --leading-label: 1.5;
+            --tracking-heading: -0.015em;
+            --tracking-label: 0.01em;
+
+            --color-background: #faf7f2;
+            --color-card: #ffffff;
+            --color-border: #eadbcc;
+            --color-heading: #2b2118;
+            --color-text: #231918;
+            --color-muted: #554336;
+            --color-description: #4e453e;
+
+            --color-primary: #8d4b00;
+            --color-primary-dark: #6b3700;
+            --color-primary-soft: #fff5e6;
+            --color-primary-border: #f0dec0;
+
+            --color-blue: #0058be;
+            --color-blue-strong: #085ac0;
+            --color-blue-dark: #004395;
+            --color-blue-soft: #f0f5ff;
+            --color-blue-border: #c5d7ff;
+
+            --color-orange-dark: #9a3412;
+
+            --color-gold: #9a6b12;
+            --color-gold-dark: #80570d;
+            --color-gold-soft: #fff8e1;
+            --color-gold-border: #ead79a;
+
+            /* Learner-state roles, same values as GrammarPage. */
+            --color-sage: #3d7a52;
+            --color-sage-dark: #2e5f3f;
+            --color-sage-soft: #eef6ef;
+            --color-sage-border: #c9e1cf;
+            --color-rose: #a3445c;
+            --color-rose-dark: #8a3349;
+            --color-rose-soft: #fdf1f3;
+            --color-rose-border: #f9cad0;
+
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2.25rem;
+            --page-padding: var(--space-md);
+            --radius-card: 1.5rem;
+            --radius-small: 1rem;
+
+            --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+            --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+
+            /* Reading measure for lesson Markdown: about 70 characters of body text.
+               Page-specific (detail pages only); the page container keeps the shared 1280px. */
+            --reading-measure: 42rem;
+            --actions-width: 20rem;
+        }
+
+        .page :global(*),
+        .page :global(*::before),
+        .page :global(*::after) {
+            box-sizing: border-box;
+        }
+
+        .page {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background: var(--color-background);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: var(--text-body);
+            line-height: var(--leading-body);
+            overscroll-behavior: none;
+        }
+
+        .page :global([hidden]) {
+            display: none !important;
+        }
+
+        .page :global(h1),
+        .page :global(h2),
+        .page :global(h3),
+        .page :global(h4),
+        .page :global(h5),
+        .page :global(h6),
+        .page :global(p) {
+            margin: 0;
+        }
+
+        .page :global(h1),
+        .page :global(h2),
+        .page :global(h3),
+        .page :global(h4),
+        .page :global(h5),
+        .page :global(h6),
+        .page :global(.brand-name) {
+            font-family: var(--font-heading);
+        }
+
+        .page :global(button),
+        .page :global(a) {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .page :global(button) {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .page :global(a) {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page :global(img) {
+            display: block;
+            max-width: 100%;
+        }
+
+        .page :global(button:focus-visible),
+        .page :global(a:focus-visible),
+        .page :global(.table-scroll:focus-visible) {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+
+        .page :global(::selection) {
+            background: #ffdcc3;
+            color: #2f1500;
+        }
+
+        .page :global(.visually-hidden) {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .page :global(.material-symbols-outlined) {
+            display: inline-block;
+            flex-shrink: 0;
+            width: 1em;
+            height: 1em;
+            overflow: hidden;
+            font-family: "Material Symbols Outlined";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "liga";
+        }
+
+        .page :global(.icon-filled) {
+            font-variation-settings: "FILL" 1;
+        }
+
+        /* ======================================================================
+         2. Shared layout and components (same values as DashboardPage; FD §7.6)
+         ====================================================================== */
+        .page :global(.page-container) {
+            width: 100%;
+            max-width: 1280px;
+            margin-inline: auto;
+            padding-inline: var(--page-padding);
+        }
+
+        .page :global(.card) {
+            min-width: 0;
+            padding: var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-card);
+            background: var(--color-card);
+        }
+
+        .page :global(.icon-tile) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--accent-border, var(--color-primary-border));
+            border-radius: 12px;
+            background: var(--accent-soft, var(--color-primary-soft));
+            color: var(--accent, var(--color-primary));
+        }
+
+        .page :global(.icon-tile .material-symbols-outlined) {
+            font-size: 22px;
+        }
+
+        /* Solid gold tile: the Grammar page icon, as on GrammarPage. */
+        .page :global(.icon-tile-solid) {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .page :global(.badge) {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 2px 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+            color: var(--color-primary-dark);
+            font-size: var(--text-caption);
+            font-weight: 700;
+            line-height: var(--leading-label);
+        }
+
+        .page :global(.badge .material-symbols-outlined) {
+            font-size: 16px;
+        }
+
+        .page :global(.badge-learned) {
+            border-color: var(--color-sage-border);
+            background: var(--color-sage-soft);
+            color: var(--color-sage-dark);
+        }
+
+        .page :global(.badge-review) {
+            border-color: var(--color-rose-border);
+            background: var(--color-rose-soft);
+            color: var(--color-rose-dark);
+        }
+
+        .page :global(.button) {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            border: 0;
+            border-radius: var(--radius-small);
+            font-weight: 700;
+            text-align: center;
+            transition: background-color 150ms, color 150ms, box-shadow 150ms, transform 150ms;
+        }
+
+        .page :global(.button .material-symbols-outlined) {
+            transition: transform 150ms;
+        }
+
+        /* Trailing-arrow motion (Dashboard). Toggle buttons with a leading state icon opt out. */
+        .page :global(.button:hover .material-symbols-outlined) {
+            transform: translateX(4px);
+        }
+
+        .page :global(.button-toggle:hover .material-symbols-outlined) {
+            transform: none;
+        }
+
+        .page :global(.button-primary) {
+            padding: 12px var(--space-lg);
+            background: var(--color-heading);
+            color: #ffffff;
+            font-size: var(--text-body);
+            line-height: var(--leading-label);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .page :global(.button-primary:hover) {
+            background: #1f1711;
+            box-shadow: var(--shadow-md);
+        }
+
+        .page :global(.button-primary:active) {
+            transform: translateY(2px);
+        }
+
+        .page :global(.button-secondary) {
+            width: 100%;
+            padding: 12px var(--space-md);
+            border: 1px solid var(--color-border);
+            background: var(--color-background);
+            color: var(--color-heading);
+            font-size: var(--text-body);
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .page :global(.button-secondary:hover) {
+            background: var(--color-heading);
+            color: #ffffff;
+        }
+
+        .page :global(.button-compact) {
+            width: auto;
+            padding: var(--space-sm) var(--space-lg);
+        }
+
+        /* Page-level loading and error states (FD §6.6). */
+        .page :global(.page-state) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xl) var(--space-lg);
+            text-align: center;
+        }
+
+        .page :global(.page-state>.material-symbols-outlined) {
+            color: var(--color-primary);
+            font-size: 32px;
+        }
+
+        .page :global(.page-state-title) {
+            color: var(--color-heading);
+            font-size: var(--text-section);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .page :global(.page-state p) {
+            max-width: 36rem;
+            color: var(--color-muted);
+        }
+
+        .page :global(.page-state .button) {
+            margin-top: var(--space-sm);
+        }
+
+        .page :global(.spinner) {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--color-primary-border);
+            border-top-color: var(--color-primary);
+            border-radius: 50%;
+            animation: spin 900ms linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .page :global(.subject-grammar) {
+            --accent: var(--color-gold);
+            --accent-soft: var(--color-gold-soft);
+            --accent-border: var(--color-gold-border);
+        }
+
+        /* ======================================================================
+         3. Header (identical to DashboardPage)
+         ====================================================================== */
+        .page :global(.site-header) {
+            position: fixed;
+            z-index: 50;
+            top: 0;
+            width: 100%;
+            border-bottom: 1px solid var(--color-border);
+            background: rgb(255 255 255 / 92%);
+            box-shadow: 0 2px 12px -2px rgb(50 30 10 / 4%);
+            backdrop-filter: blur(24px);
+        }
+
+        .page :global(.header-content) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-sm);
+            height: 80px;
+        }
+
+        .page :global(.brand) {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            min-width: 0;
+        }
+
+        .page :global(.brand-logo) {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .page :global(.brand-name) {
+            color: var(--color-primary);
+            font-size: var(--text-body);
+            font-weight: 700;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .page :global(.main-nav) {
+            display: none;
+            align-items: center;
+            flex-shrink: 0;
+            gap: var(--space-sm);
+            padding: var(--space-xs);
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+        }
+
+        .page :global(.nav-link) {
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 9999px;
+            color: var(--color-muted);
+            font-size: var(--text-body);
+            font-weight: 500;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            white-space: nowrap;
+            transition: color 150ms, background-color 150ms;
+        }
+
+        .page :global(.nav-link:hover) {
+            color: var(--color-text);
+        }
+
+        .page :global(.nav-link[aria-current="page"]) {
+            background: rgb(255 255 255 / 80%);
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .page :global(.header-actions) {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            gap: var(--space-sm);
+        }
+
+        .page :global(.language-switcher) {
+            display: inline-flex;
+            padding: 2px;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+        }
+
+        .page :global(.language-button) {
+            padding: 2px 8px;
+            border: 0;
+            border-radius: 9999px;
+            background: transparent;
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 500;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            transition: color 150ms, background-color 150ms;
+        }
+
+        .page :global(.language-button[aria-pressed="true"]) {
+            background: #ffffff;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .page :global(.language-button:hover) {
+            color: var(--color-text);
+        }
+
+        .page :global(.logout-button),
+        .page :global(.menu-button) {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: #ffffff;
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 500;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            white-space: nowrap;
+            transition: color 150ms, border-color 150ms;
+        }
+
+        .page :global(.logout-button) {
+            padding: var(--space-xs) var(--space-sm);
+        }
+
+        .page :global(.logout-button:hover) {
+            border-color: #f9cad0;
+            color: var(--color-orange-dark);
+        }
+
+        .page :global(.logout-button .material-symbols-outlined) {
+            font-size: 16px;
+        }
+
+        .page :global(.logout-label) {
+            display: none;
+        }
+
+        .page :global(.menu-button) {
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+        }
+
+        .page :global(.menu-button:hover) {
+            color: var(--color-text);
+        }
+
+        .page :global(.mobile-nav) {
+            border-top: 1px solid var(--color-border);
+            background: rgb(255 255 255 / 96%);
+        }
+
+        .page :global(.mobile-nav-list) {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            padding-block: var(--space-sm) var(--space-md);
+        }
+
+        .page :global(.mobile-nav-link) {
+            padding: 10px var(--space-md);
+            border-radius: var(--radius-small);
+            color: var(--color-muted);
+            font-size: var(--text-body);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            transition: color 150ms, background-color 150ms;
+        }
+
+        .page :global(.mobile-nav-link:hover) {
+            background: var(--color-primary-soft);
+            color: var(--color-text);
+        }
+
+        .page :global(.mobile-nav-link[aria-current="page"]) {
+            background: var(--color-primary-soft);
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        /* ======================================================================
+         4. Lesson page layout
+         Below 1024px everything stacks in one column capped near the reading measure.
+         From 1024px the Markdown card and the actions card sit side by side; the layout width
+         is the reading measure + card padding + gap + actions column (about 70rem), so the
+         text column stays readable instead of stretching to the 1280px container.
+         ====================================================================== */
+        .page :global(.lesson-page) {
+            flex: 1;
+            padding-top: 112px;
+            padding-bottom: var(--space-xl);
+        }
+
+        .page :global(.lesson) {
+            max-width: 48rem;
+            margin-inline: auto;
+        }
+
+        /* ---------- Breadcrumbs: Grammar (link) > Part > Chapter > Lesson ---------- */
+        .page :global(.breadcrumbs) {
+            margin-bottom: var(--space-md);
+        }
+
+        .page :global(.breadcrumb-list) {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: var(--space-xs);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            line-height: var(--leading-label);
+        }
+
+        .page :global(.breadcrumb-list li) {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .page :global(.crumb-separator) {
+            color: var(--color-gold-border);
+            font-size: 16px;
+        }
+
+        .page :global(.crumb-link) {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+
+            min-height: 44px;
+            padding-inline: var(--space-sm);
+            margin-inline-start: calc(-1 * var(--space-sm));
+
+            border-radius: var(--radius-small);
+            color: var(--color-gold-dark);
+            font-weight: 700;
+
+            transition: background-color 150ms, color 150ms;
+        }
+
+        .page :global(.crumb-link:hover) {
+            background: var(--color-gold-soft);
+        }
+
+        .page :global(.crumb-link .material-symbols-outlined) {
+            font-size: 18px;
+            transition: transform 150ms;
+        }
+
+        .page :global(.crumb-link:hover .material-symbols-outlined) {
+            transform: translateX(-4px);
+        }
+
+        /* Support-language label of a Part/Chapter crumb: shown from 640px only. */
+        .page :global(.crumb-support) {
+            display: none;
+            color: rgb(85 67 54 / 80%);
+        }
+
+        .page :global(.crumb-current) {
+            color: var(--color-heading);
+            font-weight: 600;
+        }
+
+        /* On phones the current lesson crumb is announced but not shown: the h1 right below
+           already displays it, and the trail stays short. */
+        @media (max-width: 639px) {
+
+            .page :global(.breadcrumb-list [data-crumb="part"]),
+            .page :global(.breadcrumb-list [data-crumb="chapter"]),
+            .page :global(.crumb-current-item) {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0 0 0 0);
+                white-space: nowrap;
+            }
+
+            .page :global(.breadcrumbs) {
+                margin-bottom: var(--space-sm);
+            }
+        }
+
+        /* ---------- Lesson header ---------- */
+        .page :global(.lesson-header) {
+            --state-accent: var(--color-border);
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            overflow: hidden;
+        }
+
+        /* State accent strip: the same device as the GrammarPage lesson rows. */
+        .page :global(.lesson-header::before) {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: var(--space-lg);
+            bottom: var(--space-lg);
+            width: 4px;
+            border-radius: 0 4px 4px 0;
+            background: var(--state-accent);
+        }
+
+        /* Priority lives here: .is-saved is declared after .is-learned, so a lesson that is
+           both takes the Review Later accent. Only Review Later tints the surface (as on
+           GrammarPage), keeping learned-only lessons calm. */
+        .page :global(.lesson.is-learned .lesson-header) {
+            --state-accent: var(--color-sage);
+            border-color: var(--color-sage-border);
+        }
+
+        .page :global(.lesson.is-saved .lesson-header) {
+            --state-accent: var(--color-rose);
+            border-color: var(--color-rose-border);
+            /* background: color-mix(in srgb, var(--color-rose-soft) 60%, var(--color-card)); */
+        }
+
+        .page :global(.lesson-heading) {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* French title: the strongest text on the page. */
+        .page :global(.lesson-title) {
+            color: var(--color-heading);
+            font-size: var(--text-display);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: var(--tracking-heading);
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        /* Localized title under a French title (GrammarPage .title-support, header scale). */
+        .page :global(.title-support) {
+            display: block;
+            margin-top: var(--space-xs);
+            color: var(--color-muted);
+            font-family: var(--font-body);
+            font-size: var(--text-card-title);
+            font-weight: 400;
+            line-height: var(--leading-label);
+            overflow-wrap: anywhere;
+        }
+
+        .page :global(.state-badges) {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin: var(--space-md) 0 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        /* ---------- Body: Markdown content + actions ---------- */
+        .page :global(.lesson-body) {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+
+        /* ======================================================================
+         5. Markdown content (rendered by LearningContent)
+         Only generic Markdown elements are styled. One accent per role: gold for small
+         structural warmth (h2 marker, list markers, inline forms), blue for notes.
+         ====================================================================== */
+        .page :global(.markdown-body) {
+            max-width: var(--reading-measure);
+            color: var(--color-text);
+            font-size: var(--text-practice);
+            line-height: var(--leading-body);
+            overflow-wrap: break-word;
+        }
+
+        .page :global(.markdown-body>*+*) {
+            margin-top: var(--space-md);
+        }
+
+        .page :global(.markdown-body>:first-child) {
+            margin-top: 0;
+        }
+
+        /* The page owns the only h1; lesson Markdown starts at ##. */
+        .page :global(.markdown-body h2) {
+            margin-top: var(--space-xl);
+            color: var(--color-heading);
+            font-size: var(--text-section);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .page :global(.markdown-body h2~h2) {
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--color-border);
+        }
+
+        .page :global(.markdown-body h2::before) {
+            content: "";
+            display: block;
+            width: 2rem;
+            height: 3px;
+            margin-bottom: var(--space-sm);
+            border-radius: 9999px;
+            background: var(--color-gold);
+        }
+
+        .page :global(.markdown-body h3) {
+            margin-top: var(--space-lg);
+            color: var(--color-heading);
+            font-size: var(--text-card-title);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .page :global(.markdown-body :is(h2, h3)+*) {
+            margin-top: var(--space-sm);
+        }
+
+        .page :global(.markdown-body strong) {
+            color: var(--color-heading);
+            font-weight: 700;
+        }
+
+        .page :global(.markdown-body a) {
+            border-radius: 2px;
+            color: var(--color-blue-strong);
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .page :global(.markdown-body :is(ul, ol)) {
+            margin-bottom: 0;
+            padding-left: 1.5rem;
+        }
+
+        .page :global(.markdown-body li+li),
+        .page :global(.markdown-body li> :is(ul, ol, p)+*) {
+            margin-top: var(--space-sm);
+        }
+
+        .page :global(.markdown-body li> :is(ul, ol)) {
+            margin-top: var(--space-xs);
+        }
+
+        .page :global(.markdown-body li::marker) {
+            color: var(--color-gold);
+        }
+
+        .page :global(.markdown-body ol>li::marker) {
+            color: var(--color-gold-dark);
+            font-family: var(--font-heading);
+            font-weight: 700;
+        }
+
+        /* Notes, tips, exceptions: one informational style (blue role), whatever the label. */
+        .page :global(.markdown-body blockquote) {
+            margin-inline: 0;
+            margin-bottom: 0;
+            padding: 12px var(--space-md);
+            border: 1px solid var(--color-blue-border);
+            border-left: 4px solid var(--color-blue);
+            border-radius: 12px;
+            background: var(--color-blue-soft);
+            color: var(--color-description);
+        }
+
+        .page :global(.markdown-body blockquote>*+*) {
+            margin-top: var(--space-sm);
+        }
+
+        /* Inline code: authors use it for short forms (un, une, des). Body font, not monospace. */
+        .page :global(.markdown-body code) {
+            padding: 1px 6px;
+            border: 1px solid var(--color-gold-border);
+            border-radius: 6px;
+            background: var(--color-gold-soft);
+            color: var(--color-gold-dark);
+            font-family: inherit;
+            font-size: 0.95em;
+            font-weight: 700;
+        }
+
+        .page :global(.markdown-body hr) {
+            height: 0;
+            margin-block: var(--space-xl);
+            border: 0;
+            border-top: 1px solid var(--color-border);
+        }
+
+        /* Tables scroll inside their own box on narrow screens; the page never scrolls sideways. */
+        .page :global(.table-scroll) {
+            overflow-x: auto;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+        }
+
+        .page :global(.markdown-body table) {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--text-body);
+            line-height: var(--leading-label);
+        }
+
+        .page :global(.markdown-body :is(th, td)) {
+            min-width: 7rem;
+            padding: 10px var(--space-md);
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .page :global(.markdown-body th) {
+            background: var(--color-background);
+            color: var(--color-heading);
+            font-size: var(--text-small);
+            font-weight: 700;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .page :global(.markdown-body tr+tr td) {
+            border-top: 1px solid var(--color-border);
+        }
+
+        /* ======================================================================
+         6. Learning actions
+         Each state has one slot: an action button when off, a status box with an undo control
+         when on. Slot order never changes, so controls do not jump around.
+         ====================================================================== */
+        .page :global(.lesson-actions) {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .page :global(.actions-title) {
+            color: var(--color-heading);
+            font-size: var(--text-card-title);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .page :global(.lesson-actions .button) {
+            width: 100%;
+        }
+
+        .page :global(.state-box) {
+            display: flex;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: var(--space-sm) 12px;
+            padding: 12px var(--space-md);
+            border: 1px solid;
+            border-radius: var(--radius-small);
+            font-size: var(--text-small);
+            line-height: var(--leading-label);
+        }
+
+        .page :global(.state-box>.material-symbols-outlined) {
+            margin-top: 1px;
+        }
+
+        .page :global(.state-box-text) {
+            flex: 1 1 9rem;
+            min-width: 0;
+        }
+
+        .page :global(.state-box-text strong) {
+            display: block;
+            font-size: var(--text-body);
+        }
+
+        .page :global(.state-box-learned) {
+            border-color: var(--color-sage-border);
+            background: var(--color-sage-soft);
+            color: var(--color-sage-dark);
+        }
+
+        .page :global(.state-box-review) {
+            border-color: var(--color-rose-border);
+            background: var(--color-rose-soft);
+            color: var(--color-rose-dark);
+        }
+
+        /* Both states: Learned stays visible but steps back to an outline. */
+        .page :global(.lesson.is-saved .state-box-learned) {
+            background: var(--color-card);
+        }
+
+        .page :global(.state-undo) {
+            align-self: center;
+            min-height: 32px;
+            padding: var(--space-xs) 12px;
+            border: 1px solid currentColor;
+            border-radius: 9999px;
+            background: var(--color-card);
+            color: inherit;
+            font-size: var(--text-label);
+            font-weight: 700;
+            line-height: var(--leading-label);
+            white-space: nowrap;
+            transition: background-color 150ms, color 150ms;
+        }
+
+        .page :global(.state-undo:hover) {
+            background: var(--color-heading);
+            border-color: var(--color-heading);
+            color: #ffffff;
+        }
+
+        .page :global(.practice-group) {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            padding-top: 12px;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .page :global(.action-note) {
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            line-height: var(--leading-body);
+        }
+
+        /* ---------- Previous / Next lesson navigation (global curriculum order; FD §4.5)
+           Secondary to the learning actions above: plain bordered cards, not button-primary/
+           button-secondary. Two balanced cards from 640px; one full-width column below that,
+           long French titles wrap. Both slots always render: a side with no neighbor (first /
+           last lesson) is an unavailable card (below), so the two columns never change width. ---------- */
+        .page :global(.lesson-nav) {
+            display: grid;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        @media (min-width: 640px) {
+            .page :global(.lesson-nav) {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .page :global(.lesson-nav-link) {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            min-height: 44px;
+            padding: 12px var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-card);
+            transition: border-color 150ms, background-color 150ms, box-shadow 150ms;
+        }
+
+        .page :global(.lesson-nav-link:not([aria-disabled="true"]):hover) {
+            border-color: var(--color-gold-border);
+            background: var(--color-gold-soft);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .page :global(.lesson-nav-link .material-symbols-outlined) {
+            flex-shrink: 0;
+            color: var(--color-gold-dark);
+        }
+
+        .page :global(.lesson-nav-text) {
+            min-width: 0;
+        }
+
+        .page :global(.lesson-nav-label) {
+            display: block;
+            color: var(--color-muted);
+            font-size: var(--text-caption);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: var(--tracking-label);
+        }
+
+        .page :global(.lesson-nav-title) {
+            display: block;
+            margin-top: 2px;
+            color: var(--color-heading);
+            font-size: var(--text-small);
+            font-weight: 700;
+            line-height: var(--leading-label);
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .page :global(.lesson-nav-support) {
+            display: block;
+            margin-top: 2px;
+            color: var(--color-muted);
+            font-size: var(--text-caption);
+            overflow-wrap: anywhere;
+        }
+
+        /* Next points right; label/title/support mirror Previous so direction stays obvious
+           even before reading the words (req. still met by the label text alone). */
+        .page :global(.lesson-nav-next) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        /* Unavailable side (first / last lesson): the slot stays in the grid so both columns keep
+           their width and position. Quieter neutral surface and muted text, no hover, no pointer,
+           no navigation. Not an error state. */
+        .page :global(.lesson-nav-link[aria-disabled="true"]) {
+            background: var(--color-background);
+            cursor: default;
+        }
+
+        .page :global(.lesson-nav-link[aria-disabled="true"] .material-symbols-outlined) {
+            color: rgb(85 67 54 / 60%);
+        }
+
+        .page :global(.lesson-nav-link[aria-disabled="true"] .lesson-nav-title) {
+            color: rgb(85 67 54 / 80%);
+            font-weight: 600;
+        }
+
+        /* ======================================================================
+         7. Footer and responsive layout (FD §8)
+         ====================================================================== */
+        .page :global(.site-footer) {
+            width: 100%;
+            margin-top: var(--space-xl);
+            border-top: 1px solid var(--color-border);
+            background: var(--color-background);
+        }
+
+        .page :global(.footer-content) {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding-block: var(--space-lg);
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .page :global(.footer-content .material-symbols-outlined) {
+            color: var(--color-primary);
+        }
+
+        @media (min-width: 640px) {
+            .page {
+                --page-padding: var(--space-lg);
+                --text-section: 1.25rem;
+                --text-feature: 1.375rem;
+                --text-display: 2rem;
+            }
+
+            .page :global(.card) {
+                padding: var(--space-lg);
+            }
+
+            .page :global(.header-content) {
+                gap: var(--space-lg);
+            }
+
+            .page :global(.brand) {
+                gap: var(--space-md);
+            }
+
+            .page :global(.brand-logo) {
+                width: 36px;
+                height: 36px;
+            }
+
+            .page :global(.brand-name) {
+                font-size: var(--text-brand);
+                white-space: nowrap;
+            }
+
+            .page :global(.header-actions) {
+                gap: var(--space-md);
+            }
+
+            .page :global(.logout-label) {
+                display: inline;
+            }
+
+            .page :global(.crumb-support) {
+                display: inline;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .page :global(.main-nav) {
+                display: flex;
+            }
+
+            .page :global(.menu-button),
+            .page :global(.mobile-nav) {
+                display: none !important;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .page {
+                --page-padding: 2.5rem;
+            }
+
+            .page :global(.lesson) {
+                max-width: 70rem;
+            }
+
+            .page :global(.lesson-header),
+            .page :global(.lesson-reading) {
+                padding: var(--space-xl);
+            }
+
+            .page :global(.lesson-header::before) {
+                top: var(--space-xl);
+                bottom: var(--space-xl);
+            }
+
+            .page :global(.lesson-body) {
+                grid-template-columns: minmax(0, 1fr) var(--actions-width);
+                gap: var(--space-xl);
+                align-items: start;
+            }
+
+            /* Actions stay in reach while reading a long lesson (below the 80px header). */
+            .page :global(.lesson-actions) {
+                position: sticky;
+                top: calc(80px + var(--space-lg));
+            }
+        }
+
+        /* Compact header for tablets and smaller laptops (same as Dashboard, FD §8.5). */
+        @media (min-width: 768px) and (max-width: 1199px) {
+
+            .page :global(.header-content),
+            .page :global(.header-actions) {
+                gap: var(--space-sm);
+            }
+
+            .page :global(.brand-name) {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0 0 0 0);
+                white-space: nowrap;
+            }
+
+            .page :global(.logout-label) {
+                display: none;
+            }
+
+            .page :global(.main-nav) {
+                gap: var(--space-xs);
+            }
+
+            .page :global(.nav-link) {
+                padding-inline: var(--space-sm);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .page :global(*),
+            .page :global(*::before),
+            .page :global(*::after) {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    
