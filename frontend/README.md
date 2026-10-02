@@ -20,6 +20,31 @@ The dev server proxies `/api` to the Flask backend at `http://127.0.0.1:5000`
 (`vite.config.js`), so start the backend first. Code uses relative `/api/v1/...`
 URLs only.
 
+## Scripts
+
+```bash
+npm run dev      # Vite dev server with the /api proxy
+npm run build    # production build into dist/
+npm run lint     # eslint (react, react-hooks)
+npm run format   # prettier --write (src/i18n/strings.js is excluded)
+```
+
+Run `npm run lint` and `npm run build` before committing frontend changes.
+
+## Auth guard flag
+
+`VITE_AUTH_GUARD` (see `.env.example`) switches the route guards and the
+session check on or off:
+
+- `off` (default): every route is open and no session check is made, so the
+  static UI is viewable without a backend.
+- `on`: `RequireAuth`, `RequireLanguage` and `GuestRoute` behave as in
+  Frontend Design §4.3, using `GET /api/v1/me` for the session check. The
+  backend must be running.
+
+Set it in a local `frontend/.env.local` (not committed), for example
+`VITE_AUTH_GUARD=on`, and restart the dev server.
+
 ## Notes
 
 - Fixed interface text lives in `src/i18n/strings.js` and is read with `t()`;
