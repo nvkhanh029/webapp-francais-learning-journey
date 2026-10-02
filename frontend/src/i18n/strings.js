@@ -56,6 +56,8 @@ export const strings = {
   "common.lessonStatus": { vi: "Trạng thái bài học", en: "Lesson status" },
   "common.learningStatus": { vi: "Trạng thái học tập", en: "Learning status" },
   "common.lessonsOf": { vi: "{learned}/{total} bài", en: { one: "{learned}/{total} lesson", other: "{learned}/{total} lessons" } },
+  "common.fraction": { vi: "{learned}/{total}", en: "{learned}/{total}" },
+  "common.count": { vi: "{n}", en: "{n}" },
   "common.lessonsN": { vi: "{n} bài", en: { one: "{n} lesson", other: "{n} lessons" } },
   "common.unitsOf": { vi: "{learned}/{total} bài", en: { one: "{learned}/{total} unit", other: "{learned}/{total} units" } },
   "common.unitsN": { vi: "{n} bài", en: { one: "{n} unit", other: "{n} units" } },

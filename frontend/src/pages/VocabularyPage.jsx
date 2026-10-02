@@ -206,7 +206,7 @@ export default function VocabularyPage() {
                     {t("common.learnedColon")}
                     {" "}
                     <span data-slot="count">
-                      {t("common.unitsOf", { learned: 0, total: 0, n: 0 })}
+                      {t("common.fraction", { learned: 0, total: 0 })}
                     </span>
                   </span>
                 </li>
@@ -219,7 +219,7 @@ export default function VocabularyPage() {
                     {t("common.reviewLaterColon")}
                     {" "}
                     <span data-slot="review-count">
-                      {t("common.unitsN", { n: 0 })}
+                      {t("common.count", { n: 0 })}
                     </span>
                   </span>
                 </li>

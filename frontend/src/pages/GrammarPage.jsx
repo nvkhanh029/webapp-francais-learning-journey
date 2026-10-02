@@ -212,7 +212,7 @@ export default function GrammarPage() {
                   {t("common.learnedColon")}
                   {" "}
                   <span data-slot="count">
-                    {t("common.lessonsOf", { learned: 0, total: 0, n: 0 })}
+                    {t("common.fraction", { learned: 0, total: 0 })}
                   </span>
                 </span>
               </li>
@@ -225,7 +225,7 @@ export default function GrammarPage() {
                   {t("common.reviewLaterColon")}
                   {" "}
                   <span data-slot="review-count">
-                    {t("common.lessonsN", { n: 0 })}
+                    {t("common.count", { n: 0 })}
                   </span>
                 </span>
               </li>

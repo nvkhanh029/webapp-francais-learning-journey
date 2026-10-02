@@ -143,8 +143,8 @@ export default function init({ onLanguageChange } = {}) {
               progress.learned,
               progress.total
           );
-          slot(overview, "count").textContent = t("common.unitsOf", { learned: progress.learned, total: progress.total, n: progress.total });
-          slot(overview, "review-count").textContent = t("common.unitsN", { n: progress.reviewLater });
+          slot(overview, "count").textContent = t("common.fraction", { learned: progress.learned, total: progress.total });
+          slot(overview, "review-count").textContent = t("common.count", { n: progress.reviewLater });
           overview.classList.toggle(
               "is-complete",
               progress.total > 0 && progress.learned === progress.total

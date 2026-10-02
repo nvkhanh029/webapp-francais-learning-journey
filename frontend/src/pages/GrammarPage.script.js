@@ -200,9 +200,9 @@ export default function init({ onLanguageChange } = {}) {
           const learned = lessons.filter((lesson) => lesson.learned).length;
 
           setProgress(slot(overview, "track"), slot(overview, "percent"), learned, lessons.length);
-          slot(overview, "count").textContent = t("common.lessonsOf", { learned: learned, total: lessons.length, n: lessons.length });
+          slot(overview, "count").textContent = t("common.fraction", { learned, total: lessons.length });
           slot(overview, "review-count").textContent =
-              t("common.lessonsN", { n: lessons.filter((lesson) => lesson.review_later).length });
+              t("common.count", { n: lessons.filter((lesson) => lesson.review_later).length });
           overview.classList.toggle("is-complete", lessons.length > 0 && learned === lessons.length);
           document.querySelector("[data-summary]").replaceChildren(
               ...[

@@ -263,10 +263,10 @@ export default function init({ onLanguageChange } = {}) {
           );
 
           slot(overview, "count").textContent =
-              t("common.unitsOf", { learned, total: unitCount, n: unitCount });
+              t("common.fraction", { learned, total: unitCount });
 
           slot(overview, "review-count").textContent =
-              t("common.unitsN", { n: reviewLater });
+              t("common.count", { n: reviewLater });
 
           overview.classList.toggle(
               "is-complete",
