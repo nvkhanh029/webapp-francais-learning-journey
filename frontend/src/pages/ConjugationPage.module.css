@@ -1,0 +1,1239 @@
+
+        /* ======================================================================
+         1. Theme and base styles (identical to DashboardPage; FD §7.3, §7.4)
+         ====================================================================== */
+        .page {
+            --font-body: "Nunito Sans", sans-serif;
+            --font-heading: "Be Vietnam Pro", sans-serif;
+
+            --text-caption: 0.75rem;
+            --text-label: 0.8125rem;
+            --text-small: 0.875rem;
+            --text-body: 0.9375rem;
+            --text-practice: 1rem;
+            --text-card-title: 1.0625rem;
+            --text-brand: 1.125rem;
+            --text-section: 1.125rem;
+            --text-feature: 1.25rem;
+            --text-display: 1.75rem;
+            --leading-body: 1.6;
+            --leading-heading: 1.4;
+            --leading-label: 1.5;
+            --tracking-heading: -0.015em;
+            --tracking-label: 0.01em;
+
+            --color-background: #faf7f2;
+            --color-card: #ffffff;
+            --color-border: #eadbcc;
+            --color-heading: #2b2118;
+            --color-text: #231918;
+            --color-muted: #554336;
+            --color-description: #4e453e;
+
+            --color-primary: #8d4b00;
+            --color-primary-dark: #6b3700;
+            --color-primary-soft: #fff5e6;
+            --color-primary-border: #f0dec0;
+
+            --color-blue: #0058be;
+            --color-blue-strong: #085ac0;
+            --color-blue-dark: #004395;
+            --color-blue-soft: #f0f5ff;
+            --color-blue-border: #c5d7ff;
+
+            --color-orange: #b84824;
+            --color-orange-strong: #c2410c;
+            --color-orange-dark: #9a3412;
+            --color-orange-soft: #fff0ed;
+            --color-orange-border: #fdcac1;
+
+            --color-gold: #9a6b12;
+            --color-gold-dark: #80570d;
+
+            /* Learner-state roles, same values as GrammarPage. Soft tints only, always paired
+               with an icon and a text label. */
+            --color-sage: #3d7a52;
+            --color-sage-dark: #2e5f3f;
+            --color-sage-soft: #eef6ef;
+            --color-sage-border: #c9e1cf;
+            --color-rose: #a3445c;
+            --color-rose-dark: #8a3349;
+            --color-rose-soft: #fdf1f3;
+            --color-rose-border: #f9cad0;
+
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2.25rem;
+            --page-padding: var(--space-md);
+            --radius-card: 1.5rem;
+            --radius-small: 1rem;
+
+            --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
+            --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+        }
+
+        .page :global(*),
+        .page :global(*::before),
+        .page :global(*::after) {
+            box-sizing: border-box;
+        }
+
+        .page {
+            -webkit-text-size-adjust: 100%;
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background: var(--color-background);
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: var(--text-body);
+            line-height: var(--leading-body);
+            overscroll-behavior: none;
+        }
+
+        .page :global([hidden]) {
+            display: none !important;
+        }
+
+        .page :global(h1),
+        .page :global(h2),
+        .page :global(h3),
+        .page :global(h4),
+        .page :global(h5),
+        .page :global(h6),
+        .page :global(p) {
+            margin: 0;
+        }
+
+        .page :global(h1),
+        .page :global(h2),
+        .page :global(h3),
+        .page :global(h4),
+        .page :global(h5),
+        .page :global(h6),
+        .page :global(.brand-name) {
+            font-family: var(--font-heading);
+        }
+
+        .page :global(button),
+        .page :global(a) {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .page :global(button) {
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .page :global(a) {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page :global(img) {
+            display: block;
+            max-width: 100%;
+        }
+
+        .page :global(button:focus-visible),
+        .page :global(a:focus-visible) {
+            outline: 2px solid var(--color-primary);
+            outline-offset: 2px;
+        }
+
+        .page :global(::selection) {
+            background: #ffdcc3;
+            color: #2f1500;
+        }
+
+        .page :global(.visually-hidden) {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .page :global(.material-symbols-outlined) {
+            display: inline-block;
+            flex-shrink: 0;
+            width: 1em;
+            height: 1em;
+            overflow: hidden;
+            font-family: "Material Symbols Outlined";
+            font-size: 20px;
+            font-style: normal;
+            font-weight: normal;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            font-feature-settings: "liga";
+        }
+
+        .page :global(.icon-filled) {
+            font-variation-settings: "FILL" 1;
+        }
+
+        /* ======================================================================
+         2. Shared layout and components (same values as DashboardPage; FD §7.6)
+         ====================================================================== */
+        .page :global(.page-container) {
+            width: 100%;
+            max-width: 1280px;
+            margin-inline: auto;
+            padding-inline: var(--page-padding);
+        }
+
+        .page :global(.card) {
+            min-width: 0;
+            padding: var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-card);
+            background: var(--color-card);
+        }
+
+        .page :global(.icon-tile) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--accent-border, var(--color-primary-border));
+            border-radius: 12px;
+            background: var(--accent-soft, var(--color-primary-soft));
+            color: var(--accent, var(--color-primary));
+        }
+
+        /* Compact tile for a title + subtitle header (FD §7.6). */
+        .page :global(.icon-tile-compact) {
+            width: 36px;
+            height: 36px;
+        }
+
+        .page :global(.icon-tile-compact .material-symbols-outlined) {
+            font-size: 20px;
+        }
+
+        .page :global(.badge) {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 2px 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+            color: var(--color-primary-dark);
+            font-size: var(--text-caption);
+            font-weight: 700;
+            line-height: var(--leading-label);
+        }
+
+        .page :global(.badge .material-symbols-outlined) {
+            font-size: 16px;
+        }
+
+        /* Badge color roles: info = counts (blue), learned = sage, review = Review Later (rose). */
+        .page :global(.badge-info) {
+            border-color: var(--color-blue-border);
+            background: var(--color-blue-soft);
+            color: var(--color-blue-dark);
+        }
+
+        .page :global(.badge-learned) {
+            border-color: var(--color-sage-border);
+            background: var(--color-sage-soft);
+            color: var(--color-sage-dark);
+        }
+
+        .page :global(.badge-review) {
+            border-color: var(--color-rose-border);
+            background: var(--color-rose-soft);
+            color: var(--color-rose-dark);
+        }
+
+        .page :global(.button) {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            border: 0;
+            border-radius: var(--radius-small);
+            font-weight: 700;
+            text-align: center;
+            transition: background-color 150ms, color 150ms, box-shadow 150ms, transform 150ms;
+        }
+
+        .page :global(.button .material-symbols-outlined) {
+            transition: transform 150ms;
+        }
+
+        .page :global(.button-secondary) {
+            width: 100%;
+            padding: 12px var(--space-md);
+            border: 1px solid var(--color-border);
+            background: var(--color-background);
+            color: var(--color-heading);
+            font-size: var(--text-body);
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .page :global(.button-compact) {
+            width: auto;
+            padding: var(--space-sm) var(--space-lg);
+        }
+
+        .page :global(.progress-labels) {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xs);
+            color: var(--color-description);
+            font-size: var(--text-caption);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .page :global(.progress-value) {
+            flex-shrink: 0;
+            color: var(--skill-value-color, var(--color-primary-dark));
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .page :global(.progress-track) {
+            height: 8px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+        }
+
+        .page :global(.progress-fill) {
+            width: var(--progress, 0%);
+            height: 100%;
+            border-radius: inherit;
+            background: var(--progress-color, var(--color-primary));
+            transition: width 500ms;
+        }
+
+        .page :global(.empty-text) {
+            padding: var(--space-md);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-small);
+            background: var(--color-background);
+            color: var(--color-muted);
+            font-size: var(--text-small);
+            line-height: var(--leading-body);
+            text-align: center;
+        }
+
+        /* Page-level loading, error, and empty states (FD §6.6). */
+        .page :global(.page-state) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xl) var(--space-lg);
+            text-align: center;
+        }
+
+        .page :global(.page-state>.material-symbols-outlined) {
+            color: var(--color-primary);
+            font-size: 32px;
+        }
+
+        .page :global(.page-state-title) {
+            color: var(--color-heading);
+            font-size: var(--text-section);
+            font-weight: 600;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .page :global(.page-state p) {
+            max-width: 36rem;
+            color: var(--color-muted);
+        }
+
+        .page :global(.page-state .button) {
+            margin-top: var(--space-sm);
+        }
+
+        .page :global(.spinner) {
+            width: 32px;
+            height: 32px;
+            border: 3px solid var(--color-primary-border);
+            border-top-color: var(--color-primary);
+            border-radius: 50%;
+            animation: spin 900ms linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Text-link CTA with trailing arrow (used by the empty state). */
+        .page :global(.explore-links) {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-sm) var(--space-lg);
+            margin-top: var(--space-sm);
+            font-size: var(--text-small);
+            line-height: var(--leading-label);
+        }
+
+        .page :global(.lesson-link) {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+            border-radius: 2px;
+            color: var(--link-color);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .page :global(.lesson-link:hover) {
+            text-decoration: underline;
+        }
+
+        .page :global(.lesson-link:focus-visible) {
+            outline-color: var(--link-color);
+        }
+
+        .page :global(.lesson-link .material-symbols-outlined) {
+            font-size: 14px;
+        }
+
+        /* Subject accent families (FD §7.3). Components read only the generic variables. */
+        .page :global(.subject-conjugation) {
+            --accent: var(--color-orange);
+            --accent-soft: var(--color-orange-soft);
+            --accent-border: var(--color-orange-border);
+            --progress-color: var(--color-orange);
+            --skill-value-color: var(--color-orange-dark);
+            --badge-color: var(--color-orange-dark);
+            --link-color: var(--color-orange-dark);
+        }
+
+        .page :global(.subject-vocabulary) {
+            --link-color: var(--color-blue-strong);
+        }
+
+        .page :global(.subject-grammar) {
+            --link-color: var(--color-gold);
+        }
+
+        /* ======================================================================
+         3. Header (identical to DashboardPage)
+         ====================================================================== */
+        .page :global(.site-header) {
+            position: fixed;
+            z-index: 50;
+            top: 0;
+            width: 100%;
+            border-bottom: 1px solid var(--color-border);
+            background: rgb(255 255 255 / 92%);
+            box-shadow: 0 2px 12px -2px rgb(50 30 10 / 4%);
+            backdrop-filter: blur(24px);
+        }
+
+        .page :global(.header-content) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-sm);
+            height: 80px;
+        }
+
+        .page :global(.brand) {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            min-width: 0;
+        }
+
+        .page :global(.brand-logo) {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .page :global(.brand-name) {
+            color: var(--color-primary);
+            font-size: var(--text-body);
+            font-weight: 700;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .page :global(.main-nav) {
+            display: none;
+            align-items: center;
+            flex-shrink: 0;
+            gap: var(--space-sm);
+            padding: var(--space-xs);
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+        }
+
+        .page :global(.nav-link) {
+            padding: var(--space-xs) var(--space-md);
+            border-radius: 9999px;
+            color: var(--color-muted);
+            font-size: var(--text-body);
+            font-weight: 500;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            white-space: nowrap;
+            transition: color 150ms, background-color 150ms;
+        }
+
+        .page :global(.nav-link:hover) {
+            color: var(--color-text);
+        }
+
+        .page :global(.nav-link[aria-current="page"]) {
+            background: rgb(255 255 255 / 80%);
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .page :global(.header-actions) {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+            gap: var(--space-sm);
+        }
+
+        .page :global(.language-switcher) {
+            display: inline-flex;
+            padding: 2px;
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: var(--color-background);
+        }
+
+        .page :global(.language-button) {
+            padding: 2px 8px;
+            border: 0;
+            border-radius: 9999px;
+            background: transparent;
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 500;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            transition: color 150ms, background-color 150ms;
+        }
+
+        .page :global(.language-button[aria-pressed="true"]) {
+            background: #ffffff;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .page :global(.language-button:hover) {
+            color: var(--color-text);
+        }
+
+        .page :global(.logout-button),
+        .page :global(.menu-button) {
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            border: 1px solid var(--color-border);
+            border-radius: 9999px;
+            background: #ffffff;
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 500;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+            white-space: nowrap;
+            transition: color 150ms, border-color 150ms;
+        }
+
+        .page :global(.logout-button) {
+            padding: var(--space-xs) var(--space-sm);
+        }
+
+        .page :global(.logout-button:hover) {
+            border-color: #f9cad0;
+            color: var(--color-orange-dark);
+        }
+
+        .page :global(.logout-button .material-symbols-outlined) {
+            font-size: 16px;
+        }
+
+        .page :global(.logout-label) {
+            display: none;
+        }
+
+        .page :global(.menu-button) {
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            padding: 0;
+        }
+
+        .page :global(.menu-button:hover) {
+            color: var(--color-text);
+        }
+
+        .page :global(.mobile-nav) {
+            border-top: 1px solid var(--color-border);
+            background: rgb(255 255 255 / 96%);
+        }
+
+        .page :global(.mobile-nav-list) {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+            padding-block: var(--space-sm) var(--space-md);
+        }
+
+        .page :global(.mobile-nav-link) {
+            padding: 10px var(--space-md);
+            border-radius: var(--radius-small);
+            color: var(--color-muted);
+            font-size: var(--text-body);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            transition: color 150ms, background-color 150ms;
+        }
+
+        .page :global(.mobile-nav-link:hover) {
+            background: var(--color-primary-soft);
+            color: var(--color-text);
+        }
+
+        .page :global(.mobile-nav-link[aria-current="page"]) {
+            background: var(--color-primary-soft);
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        /* ======================================================================
+         4. Conjugation page: page header and overall progress
+         Conjugation identity comes only from the existing orange subject family
+         (--accent, --accent-soft, --accent-border): icon tiles, the progress fill and a
+         hover tint. Text on light surfaces stays dark brown or orange-dark for contrast.
+         ====================================================================== */
+        .page :global(.conjugation-page) {
+            flex: 1;
+            padding-top: 112px;
+            padding-bottom: var(--space-xl);
+        }
+
+        .page :global(.page-section) {
+            margin-bottom: var(--space-lg);
+        }
+
+        .page :global(.page-hero) {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-md) var(--space-lg);
+            align-items: center;
+            margin-top: 12px;
+        }
+
+        .page :global(.hero-intro) {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            min-width: 0;
+        }
+
+        .page :global(.icon-tile-solid) {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #ffffff;
+        }
+
+        .page :global(.page-title) {
+            color: var(--color-heading);
+            font-size: var(--text-display);
+            font-weight: 700;
+            line-height: 1.25;
+            letter-spacing: var(--tracking-heading);
+        }
+
+        .page :global(.page-description) {
+            max-width: 27rem;
+            margin-top: var(--space-xs);
+            color: var(--color-muted);
+            font-size: var(--text-body);
+            line-height: var(--leading-body);
+            overflow-wrap: anywhere;
+        }
+
+        .page :global(.overview-panel) {
+            padding: 12px var(--space-md);
+            border: 1px solid var(--color-primary-border);
+            border-radius: var(--radius-small);
+            background: var(--color-background);
+        }
+
+        .page :global(.overview-panel .progress-track) {
+            background: var(--color-card);
+        }
+
+        .page :global(.overview-panel .progress-labels) {
+            margin-bottom: var(--space-sm);
+        }
+
+        /* State totals double as the page's color legend (sage = learned, rose = Review Later). */
+        .page :global(.overview-states) {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm) var(--space-md);
+            margin: var(--space-lg) 0 0;
+            padding: 0;
+            list-style: none;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .page :global(.is-complete) {
+            --progress-color: var(--color-sage);
+            --skill-value-color: var(--color-sage-dark);
+        }
+
+        /* ======================================================================
+         5. Toolbar
+         ====================================================================== */
+        .page :global(.toolbar) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: var(--space-sm) var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .page :global(.toolbar-summary) {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .page :global(.toggle-all) {
+            font-size: var(--text-small);
+        }
+
+        /* ======================================================================
+         6. Tenses > Lessons
+         Tense: one white card. Its header is a single disclosure button (icon tile, French
+         title with localized support line, lesson count, toggle). It is a grouping section,
+         so it shows no progress and no state.
+         Lesson: compact row with a state accent strip; the whole row is the link and the
+         arrow on the far right is the open affordance. Rows sit in a 1 -> 2 column grid.
+         ====================================================================== */
+        .page :global(.tense-list) {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+        }
+
+        .page :global(.card.tense) {
+            overflow: hidden;
+            padding: 0;
+
+        }
+
+        .page :global(.tense-heading) {
+            font-size: inherit;
+        }
+
+        .page :global(.tense-summary) {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            width: 100%;
+            padding: var(--space-md);
+
+            border: 0;
+            background: var(--color-orange-soft);
+            color: inherit;
+            font-family: inherit;
+            text-align: left;
+            transition: background-color 150ms;
+        }
+
+        .page :global(.tense-summary .icon-tile) {
+            background: var(--color-card);
+            border-color: var(--color-orange-border);
+            color: var(--color-orange-dark);
+        }
+
+        .page :global(.tense-summary::after) {
+            content: "";
+            position: absolute;
+            left: -1px;
+            right: -1px;
+            bottom: 0;
+
+            height: 4px;
+            border-radius: 999px;
+
+            background: var(--color-orange);
+        }
+
+        .page :global(.tense-summary:focus-visible) {
+            outline-offset: -2px;
+        }
+
+        .page :global(.tense-summary[aria-expanded="true"]) {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .page :global(.tense-titles) {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .page :global(.tense-title) {
+            display: block;
+            color: var(--color-heading);
+            font-family: var(--font-heading);
+            font-size: var(--text-feature);
+            font-weight: 700;
+            line-height: var(--leading-heading);
+            letter-spacing: var(--tracking-heading);
+            overflow-wrap: anywhere;
+        }
+
+        /* Localized (VI/EN) title under a French title: subordinate but fully readable. */
+        .page :global(.title-support) {
+            display: block;
+            margin-top: 2px;
+            color: var(--color-muted);
+            font-family: var(--font-body);
+            font-size: var(--text-small);
+            font-weight: 400;
+            line-height: var(--leading-label);
+            letter-spacing: normal;
+            overflow-wrap: anywhere;
+        }
+
+        .page :global(.tense-titles .title-support) {
+            font-size: var(--text-body);
+        }
+
+        .page :global(.tense-count) {
+            flex-shrink: 0;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .page :global(.tense-toggle) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--color-blue-border);
+            border-radius: 50%;
+            background: var(--color-blue-soft);
+            color: var(--color-blue-dark);
+            transition: background-color 150ms, color 150ms, border-color 150ms;
+        }
+
+        .page :global(.tense-toggle .material-symbols-outlined) {
+            transition: transform 150ms;
+        }
+
+        .page :global(.tense-summary[aria-expanded="true"] .tense-toggle .material-symbols-outlined) {
+            transform: rotate(180deg);
+        }
+
+        .page :global(.lesson-list) {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: var(--space-sm);
+            margin: 0;
+            padding: var(--space-md);
+            list-style: none;
+        }
+
+        .page :global(.tense-body .empty-text) {
+            margin: var(--space-md);
+        }
+
+        /* Lesson states are set with variables so the priority rule lives in one place:
+           default -> learned (sage) -> saved for Review Later (rose). .is-saved is declared
+           last, so a lesson that is both learned and saved takes the Review Later look. */
+        .page :global(.lesson-item) {
+            --lesson-accent: var(--color-border);
+            --lesson-bg: var(--color-background);
+            --lesson-border: var(--color-border);
+            --lesson-hover-border: var(--accent-border);
+            --lesson-hover-accent: var(--accent);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            height: 100%;
+            padding: 12px 12px 12px var(--space-md);
+            border: 1px solid var(--lesson-border);
+            border-radius: var(--radius-small);
+            background: var(--lesson-bg);
+            transition: background-color 150ms, border-color 150ms, box-shadow 150ms;
+        }
+
+        .page :global(.lesson-item::before) {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            border-radius: 0;
+            background: var(--lesson-accent);
+            transition: background-color 150ms;
+        }
+
+        .page :global(.lesson-item.is-learned) {
+            --lesson-accent: var(--color-sage);
+            --lesson-hover-border: var(--color-sage-border);
+            --lesson-hover-accent: var(--color-sage);
+        }
+
+        .page :global(.lesson-item.is-saved) {
+            --lesson-accent: var(--color-rose);
+            --lesson-bg: color-mix(in srgb, var(--color-rose-soft), var(--color-background));
+            --lesson-border: var(--color-rose-border);
+            --lesson-hover-border: var(--color-rose);
+            --lesson-hover-accent: var(--color-rose);
+        }
+
+        /* Brief return-from-lesson highlight: a ring in the Conjugation accent (never used for
+           learned / Review Later) that fades in and out through the transition above. */
+        .page :global(.lesson-item.is-returned) {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-border), var(--shadow-sm);
+        }
+
+        .page :global(.lesson-status),
+        .page :global(.lesson-arrow) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--color-border);
+            border-radius: 50%;
+            background: var(--color-card);
+        }
+
+        .page :global(.lesson-status) {
+            color: rgb(85 67 54 / 80%);
+            background: var(--color-card);
+            border-color: var(--color-border);
+        }
+
+        .page :global(.lesson-item.is-learned .lesson-status) {
+            border-color: var(--color-sage-border);
+            background: var(--color-card);
+            color: var(--color-sage);
+        }
+
+        .page :global(.lesson-item.is-saved .lesson-status) {
+            border-color: var(--color-rose-border);
+            background: var(--color-card);
+            color: var(--color-rose);
+        }
+
+        .page :global(.lesson-item:is(.is-learned, .is-saved) .lesson-status .material-symbols-outlined) {
+            font-variation-settings: "FILL" 1;
+        }
+
+        .page :global(.lesson-body) {
+            flex: 1;
+            min-width: 0;
+            padding-top: 4px;
+        }
+
+        .page :global(.lesson-title) {
+            display: block;
+            color: var(--color-heading);
+            font-size: var(--text-practice);
+            font-weight: 700;
+            line-height: var(--leading-label);
+            overflow-wrap: anywhere;
+        }
+
+        .page :global(.lesson-meta) {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-top: var(--space-sm);
+        }
+
+        /* Open affordance, always on the far right. Dark brown = strong control. */
+        .page :global(.lesson-arrow) {
+            align-self: center;
+            color: var(--color-heading);
+            transition: background-color 150ms, color 150ms, border-color 150ms;
+        }
+
+        .page :global(.lesson-arrow .material-symbols-outlined) {
+            transition: transform 150ms;
+        }
+
+        /* Keyboard focus mirrors hover; hover-only effects are limited to hover-capable
+           pointers so touch screens get no sticky hover. */
+        .page :global(.lesson-item:focus-visible) {
+            border-color: var(--lesson-hover-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .page :global(.lesson-item:focus-visible::before) {
+            background: var(--lesson-hover-accent);
+        }
+
+        .page :global(.lesson-item:focus-visible .lesson-arrow) {
+            border-color: var(--color-heading);
+            background: var(--color-heading);
+            color: #ffffff;
+        }
+
+        @media (hover: hover) {
+
+            .page :global(.tense-summary:hover .tense-toggle) {
+                border-color: var(--color-blue);
+                background: var(--color-blue);
+                color: #ffffff;
+            }
+
+            .page :global(.lesson-item:hover) {
+                border-color: var(--lesson-hover-border);
+                box-shadow: var(--shadow-sm);
+            }
+
+            .page :global(.lesson-item:hover::before) {
+                background: var(--lesson-hover-accent);
+            }
+
+            .page :global(.lesson-item:hover .lesson-arrow) {
+                border-color: var(--color-heading);
+                background: var(--color-heading);
+                color: #ffffff;
+            }
+
+            .page :global(.lesson-item:hover .lesson-arrow .material-symbols-outlined) {
+                transform: translateX(2px);
+            }
+
+            .page :global(.button-secondary:hover) {
+                background: var(--color-heading);
+                color: #ffffff;
+            }
+
+            .page :global(.button:hover .material-symbols-outlined) {
+                transform: translateX(4px);
+            }
+
+            /* Expand/collapse icons do not point forward, so they do not use the arrow motion. */
+            .page :global(.toggle-all:hover .material-symbols-outlined) {
+                transform: none;
+            }
+        }
+
+        /* ======================================================================
+         7. Footer and responsive layout (FD §8)
+         ====================================================================== */
+        .page :global(.site-footer) {
+            width: 100%;
+            margin-top: var(--space-xl);
+            border-top: 1px solid var(--color-border);
+            background: var(--color-background);
+        }
+
+        .page :global(.footer-content) {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding-block: var(--space-lg);
+            color: var(--color-muted);
+            font-size: var(--text-label);
+            font-weight: 600;
+            line-height: var(--leading-label);
+            letter-spacing: var(--tracking-label);
+        }
+
+        .page :global(.footer-content .material-symbols-outlined) {
+            color: var(--color-primary);
+        }
+
+        @media (min-width: 640px) {
+            .page {
+                --page-padding: var(--space-lg);
+                --text-section: 1.25rem;
+                --text-feature: 1.375rem;
+                --text-display: 2rem;
+            }
+
+            .page :global(.card) {
+                padding: var(--space-lg);
+            }
+
+            .page :global(.tense-summary) {
+                padding: var(--space-md) var(--space-lg);
+            }
+
+            .page :global(.lesson-list) {
+                padding-block: var(--space-lg);
+                padding-inline: calc(var(--space-lg) + 18px);
+            }
+
+            .page :global(.tense-body .empty-text) {
+                margin: var(--space-lg);
+            }
+
+            .page :global(.header-content) {
+                gap: var(--space-lg);
+            }
+
+            .page :global(.brand) {
+                gap: var(--space-md);
+            }
+
+            .page :global(.brand-logo) {
+                width: 36px;
+                height: 36px;
+            }
+
+            .page :global(.brand-name) {
+                font-size: var(--text-brand);
+                white-space: nowrap;
+            }
+
+            .page :global(.header-actions) {
+                gap: var(--space-md);
+            }
+
+            .page :global(.logout-label) {
+                display: inline;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .page :global(.main-nav) {
+                display: flex;
+            }
+
+            .page :global(.menu-button),
+            .page :global(.mobile-nav) {
+                display: none !important;
+            }
+
+            .page :global(.lesson-list) {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .page {
+                --page-padding: 2.5rem;
+            }
+
+            .page :global(.page-hero) {
+                grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+                padding: var(--space-xl);
+            }
+        }
+
+        /* Compact header for tablets and smaller laptops (same as Dashboard, FD §8.5). */
+        @media (min-width: 768px) and (max-width: 1199px) {
+
+            .page :global(.header-content),
+            .page :global(.header-actions) {
+                gap: var(--space-sm);
+            }
+
+            .page :global(.brand-name) {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0 0 0 0);
+                white-space: nowrap;
+            }
+
+            .page :global(.logout-label) {
+                display: none;
+            }
+
+            .page :global(.main-nav) {
+                gap: var(--space-xs);
+            }
+
+            .page :global(.nav-link) {
+                padding-inline: var(--space-sm);
+            }
+        }
+
+        /* Narrow phones: the count badge drops under the title so long titles keep their width. */
+        @media (max-width: 479px) {
+            .page :global(.tense-summary) {
+                flex-wrap: wrap;
+            }
+
+            .page :global(.tense-titles) {
+                flex-basis: calc(100% - 36px - 32px - 2 * var(--space-md));
+            }
+
+            .page :global(.tense-count) {
+                margin-left: calc(36px + var(--space-md));
+                order: 3;
+            }
+
+            .page :global(.tense-toggle) {
+                order: 2;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .page :global(*),
+            .page :global(*::before),
+            .page :global(*::after) {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    

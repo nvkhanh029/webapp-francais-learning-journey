@@ -1,1 +1,9 @@
-/* TODO: Global styles. */
+/* Document-level defaults (FD §10.1). Page-specific styles live in each page's CSS Module. */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  overscroll-behavior: none;
+}
