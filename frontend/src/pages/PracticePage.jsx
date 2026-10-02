@@ -63,7 +63,7 @@ export default function PracticePage() {
   const rootRef = usePageScript(init, { title: "title.practice" });
 
   return (
-    <div className={styles.page} ref={rootRef}>
+    <div className={`app-page ${styles.page}`} ref={rootRef}>
       {/* 1. Header */}
       <header className="site-header">
         <div className="page-container header-content">

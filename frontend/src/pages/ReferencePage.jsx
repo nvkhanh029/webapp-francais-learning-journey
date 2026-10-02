@@ -82,7 +82,7 @@ export default function ReferencePage() {
   const rootRef = usePageScript(init, { title: "title.reference" });
 
   return (
-    <div className={styles.page} ref={rootRef}>
+    <div className={`app-page ${styles.page}`} ref={rootRef}>
       {/* 1. Header (same component as the Dashboard; Vocabulary stays active because the reference is
          reached from the Vocabulary area. No "Reference" item is added).
       */}

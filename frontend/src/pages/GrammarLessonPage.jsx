@@ -96,7 +96,7 @@ export default function GrammarLessonPage() {
   const rootRef = usePageScript(init, { title: "title.grammar" });
 
   return (
-    <div className={styles.page} ref={rootRef}>
+    <div className={`app-page ${styles.page}`} ref={rootRef}>
       {/* 1. Header (same component as the Dashboard; Grammar stays active on lesson pages) */}
       <header className="site-header">
         <div className="page-container header-content">

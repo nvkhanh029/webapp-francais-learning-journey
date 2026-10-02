@@ -103,7 +103,7 @@ export default function ConjugationLessonPage() {
   const rootRef = usePageScript(init, { title: "title.conjugation" });
 
   return (
-    <div className={styles.page} ref={rootRef}>
+    <div className={`app-page ${styles.page}`} ref={rootRef}>
       {/* 1. Header (same component as the Dashboard; Conjugation stays active on lesson pages) */}
       <header className="site-header">
         <div className="page-container header-content">

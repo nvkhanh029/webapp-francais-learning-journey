@@ -3,90 +3,6 @@
          1. Theme and base styles
          Tokens are identical to DashboardPage (FD §7.3, §7.4).
          ====================================================================== */
-        .page {
-            --font-body: "Nunito Sans", sans-serif;
-            --font-heading: "Be Vietnam Pro", sans-serif;
-
-            --text-caption: 0.75rem;
-            --text-label: 0.8125rem;
-            --text-small: 0.875rem;
-            --text-body: 0.9375rem;
-            --text-card-title: 1.0625rem;
-            --text-brand: 1.125rem;
-            --text-section: 1.125rem;
-            --text-feature: 1.25rem;
-            --text-display: 1.75rem;
-            --leading-body: 1.6;
-            --leading-heading: 1.4;
-            --leading-label: 1.5;
-            --tracking-heading: -0.015em;
-            --tracking-label: 0.01em;
-
-            --color-background: #faf7f2;
-            --color-card: #ffffff;
-            --color-border: #eadbcc;
-            --color-heading: #2b2118;
-            --color-text: #231918;
-            --color-muted: #554336;
-            --color-description: #4e453e;
-
-            --color-primary: #8d4b00;
-            --color-primary-dark: #6b3700;
-            --color-primary-soft: #fff5e6;
-            --color-primary-border: #f0dec0;
-
-            --color-blue: #0058be;
-            --color-blue-strong: #085ac0;
-            --color-blue-dark: #004395;
-            --color-blue-soft: #f0f5ff;
-            --color-blue-border: #c5d7ff;
-
-            --color-orange: #b84824;
-            --color-orange-strong: #c2410c;
-            --color-orange-dark: #9a3412;
-            --color-orange-soft: #fff0ed;
-            --color-orange-border: #fdcac1;
-
-            --color-gold: #9a6b12;
-            --color-gold-dark: #80570d;
-            --color-gold-soft: #fff8e1;
-            --color-gold-border: #ead79a;
-
-            --space-xs: 0.25rem;
-            --space-sm: 0.5rem;
-            --space-md: 1rem;
-            --space-lg: 1.5rem;
-            --space-xl: 2.25rem;
-            --page-padding: var(--space-md);
-            --radius-card: 1.5rem;
-            --radius-small: 1rem;
-
-            --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
-            --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
-        }
-
-        .page :global(*),
-        .page :global(*::before),
-        .page :global(*::after) {
-            box-sizing: border-box;
-        }
-
-        .page {
-            -webkit-text-size-adjust: 100%;
-        }
-
-        .page {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-            background: var(--color-background);
-            color: var(--color-text);
-            font-family: var(--font-body);
-            font-size: var(--text-body);
-            line-height: var(--leading-body);
-            overscroll-behavior: none;
-        }
 
         .page :global(h1),
         .page :global(h2),
@@ -118,19 +34,9 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        .page :global(img) {
-            display: block;
-            max-width: 100%;
-        }
-
         .page :global(a:focus-visible) {
             outline: 2px solid var(--color-primary);
             outline-offset: 2px;
-        }
-
-        .page :global(::selection) {
-            background: #ffdcc3;
-            color: #2f1500;
         }
 
         .page :global(.plain-list) {
@@ -164,12 +70,6 @@
         /* ======================================================================
          2. Shared layout and components (same rules as DashboardPage, FD §7.6)
          ====================================================================== */
-        .page :global(.page-container) {
-            width: 100%;
-            max-width: 1280px;
-            margin-inline: auto;
-            padding-inline: var(--page-padding);
-        }
 
         .page :global(.card) {
             min-width: 0;
@@ -189,19 +89,6 @@
             color: var(--color-muted);
             font-size: var(--text-small);
             line-height: var(--leading-body);
-        }
-
-        .page :global(.icon-tile) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--accent-border, var(--color-primary-border));
-            border-radius: 12px;
-            background: var(--accent-soft, var(--color-primary-soft));
-            color: var(--accent, var(--color-primary));
         }
 
         .page :global(.icon-tile .material-symbols-outlined) {
@@ -265,10 +152,6 @@
 
         .page :global(.button-primary:active) {
             transform: translateY(2px);
-        }
-
-        .page :global(.button .material-symbols-outlined) {
-            transition: transform 150ms;
         }
 
         .page :global(.button:hover .material-symbols-outlined) {
@@ -346,45 +229,20 @@
 
         /* Subject accent families (feature-specific pattern, same as DashboardPage). */
         .page :global(.subject-grammar) {
-            --accent: var(--color-gold);
-            --accent-soft: var(--color-gold-soft);
-            --accent-border: var(--color-gold-border);
-            --progress-color: var(--color-gold);
             --skill-value-color: var(--color-gold-dark);
-            --badge-color: var(--color-gold-dark);
         }
 
         .page :global(.subject-vocabulary) {
-            --accent: var(--color-blue);
-            --accent-soft: var(--color-blue-soft);
-            --accent-border: var(--color-blue-border);
-            --progress-color: var(--color-blue-strong);
             --skill-value-color: var(--color-blue-strong);
-            --badge-color: var(--color-blue-dark);
         }
 
         .page :global(.subject-conjugation) {
-            --accent: var(--color-orange);
-            --accent-soft: var(--color-orange-soft);
-            --accent-border: var(--color-orange-border);
-            --progress-color: var(--color-orange-strong);
             --skill-value-color: var(--color-orange-strong);
-            --badge-color: var(--color-orange-dark);
         }
 
         /* ======================================================================
          3. Header (public): brand + Login / Start. No app navigation.
          ====================================================================== */
-        .page :global(.site-header) {
-            position: fixed;
-            z-index: 50;
-            top: 0;
-            width: 100%;
-            border-bottom: 1px solid var(--color-border);
-            background: rgb(255 255 255 / 92%);
-            box-shadow: 0 2px 12px -2px rgb(50 30 10 / 4%);
-            backdrop-filter: blur(24px);
-        }
 
         .page :global(.header-content) {
             display: flex;
@@ -402,13 +260,6 @@
             border-radius: var(--radius-small);
         }
 
-        .page :global(.brand-logo) {
-            flex-shrink: 0;
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-        }
-
         .page :global(.brand-name) {
             min-width: 0;
             color: var(--color-primary);
@@ -416,13 +267,6 @@
             font-weight: 700;
             line-height: var(--leading-heading);
             letter-spacing: var(--tracking-heading);
-        }
-
-        .page :global(.header-actions) {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-            gap: var(--space-sm);
         }
 
         /* The hero repeats this CTA directly below, so it is hidden on phones. */
@@ -855,29 +699,11 @@
             background: var(--color-background);
         }
 
-        .page :global(.footer-content) {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            padding-block: var(--space-lg);
-            color: var(--color-muted);
-            font-size: var(--text-label);
-            font-weight: 600;
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-        }
-
         .page :global(.footer-content .material-symbols-outlined) {
             color: var(--color-primary);
         }
 
         @media (min-width: 640px) {
-            .page {
-                --page-padding: var(--space-lg);
-                --text-section: 1.25rem;
-                --text-feature: 1.375rem;
-                --text-display: 2rem;
-            }
 
             .page :global(.card) {
                 padding: var(--space-lg);
@@ -891,18 +717,9 @@
                 gap: var(--space-md);
             }
 
-            .page :global(.brand-logo) {
-                width: 36px;
-                height: 36px;
-            }
-
             .page :global(.brand-name) {
                 font-size: var(--text-brand);
                 white-space: nowrap;
-            }
-
-            .page :global(.header-actions) {
-                gap: var(--space-md);
             }
 
             .page :global(.header-start) {
@@ -933,9 +750,6 @@
         }
 
         @media (min-width: 1024px) {
-            .page {
-                --page-padding: 2.5rem;
-            }
 
             /* Landing-only: extra hero breathing room, derived from --space-xl. */
             .page :global(.hero) {
@@ -983,16 +797,6 @@
 
             .page :global(.cta-panel) {
                 padding: calc(var(--space-xl) * 1.5) var(--space-xl);
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            .page :global(*),
-            .page :global(*::before),
-            .page :global(*::after) {
-                animation: none !important;
-                transition: none !important;
             }
         }
 

@@ -77,7 +77,7 @@ export default function MixedPracticePage() {
   const rootRef = usePageScript(init, { title: "title.mixedPractice" });
 
   return (
-    <div className={styles.page} ref={rootRef}>
+    <div className={`app-page ${styles.page}`} ref={rootRef}>
       {/* 1. Header. Mixed Practice is not a main navigation item (FD §4.4): no link is marked current. */}
       <header className="site-header">
         <div className="page-container header-content">

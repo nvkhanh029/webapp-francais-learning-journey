@@ -57,7 +57,7 @@ export default function ReviewLaterPage() {
   const rootRef = usePageScript(init, { title: "title.reviewLater" });
 
   return (
-    <div className={styles.page} ref={rootRef}>
+    <div className={`app-page ${styles.page}`} ref={rootRef}>
       {/* 1. Header (same component as the Dashboard; Review Later has no main-nav item, so none is current) */}
       <header className="site-header">
         <div className="page-container header-content">

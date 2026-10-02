@@ -89,7 +89,7 @@ export default function VocabularyStudyUnitPage() {
   const rootRef = usePageScript(init, { title: "title.vocabulary" });
 
   return (
-    <div className={styles.page} ref={rootRef}>
+    <div className={`app-page ${styles.page}`} ref={rootRef}>
       {/* 1. Header (same component as the Dashboard; Vocabulary stays active on Study Unit pages) */}
       <header className="site-header">
         <div className="page-container header-content">

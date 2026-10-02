@@ -76,7 +76,7 @@ export default function GrammarPage() {
   const rootRef = usePageScript(init, { title: "title.grammar" });
 
   return (
-    <div className={styles.page} ref={rootRef}>
+    <div className={`app-page ${styles.page}`} ref={rootRef}>
       {/* 1. Header */}
       <header className="site-header">
         <div className="page-container header-content">

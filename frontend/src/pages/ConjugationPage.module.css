@@ -2,166 +2,11 @@
         /* ======================================================================
          1. Theme and base styles (identical to DashboardPage; FD §7.3, §7.4)
          ====================================================================== */
-        .page {
-            --font-body: "Nunito Sans", sans-serif;
-            --font-heading: "Be Vietnam Pro", sans-serif;
-
-            --text-caption: 0.75rem;
-            --text-label: 0.8125rem;
-            --text-small: 0.875rem;
-            --text-body: 0.9375rem;
-            --text-practice: 1rem;
-            --text-card-title: 1.0625rem;
-            --text-brand: 1.125rem;
-            --text-section: 1.125rem;
-            --text-feature: 1.25rem;
-            --text-display: 1.75rem;
-            --leading-body: 1.6;
-            --leading-heading: 1.4;
-            --leading-label: 1.5;
-            --tracking-heading: -0.015em;
-            --tracking-label: 0.01em;
-
-            --color-background: #faf7f2;
-            --color-card: #ffffff;
-            --color-border: #eadbcc;
-            --color-heading: #2b2118;
-            --color-text: #231918;
-            --color-muted: #554336;
-            --color-description: #4e453e;
-
-            --color-primary: #8d4b00;
-            --color-primary-dark: #6b3700;
-            --color-primary-soft: #fff5e6;
-            --color-primary-border: #f0dec0;
-
-            --color-blue: #0058be;
-            --color-blue-strong: #085ac0;
-            --color-blue-dark: #004395;
-            --color-blue-soft: #f0f5ff;
-            --color-blue-border: #c5d7ff;
-
-            --color-orange: #b84824;
-            --color-orange-strong: #c2410c;
-            --color-orange-dark: #9a3412;
-            --color-orange-soft: #fff0ed;
-            --color-orange-border: #fdcac1;
-
-            --color-gold: #9a6b12;
-            --color-gold-dark: #80570d;
-
-            /* Learner-state roles, same values as GrammarPage. Soft tints only, always paired
-               with an icon and a text label. */
-            --color-sage: #3d7a52;
-            --color-sage-dark: #2e5f3f;
-            --color-sage-soft: #eef6ef;
-            --color-sage-border: #c9e1cf;
-            --color-rose: #a3445c;
-            --color-rose-dark: #8a3349;
-            --color-rose-soft: #fdf1f3;
-            --color-rose-border: #f9cad0;
-
-            --space-xs: 0.25rem;
-            --space-sm: 0.5rem;
-            --space-md: 1rem;
-            --space-lg: 1.5rem;
-            --space-xl: 2.25rem;
-            --page-padding: var(--space-md);
-            --radius-card: 1.5rem;
-            --radius-small: 1rem;
-
-            --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
-            --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
-        }
-
-        .page :global(*),
-        .page :global(*::before),
-        .page :global(*::after) {
-            box-sizing: border-box;
-        }
-
-        .page {
-            -webkit-text-size-adjust: 100%;
-        }
-
-        .page {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-            background: var(--color-background);
-            color: var(--color-text);
-            font-family: var(--font-body);
-            font-size: var(--text-body);
-            line-height: var(--leading-body);
-            overscroll-behavior: none;
-        }
-
-        .page :global([hidden]) {
-            display: none !important;
-        }
-
-        .page :global(h1),
-        .page :global(h2),
-        .page :global(h3),
-        .page :global(h4),
-        .page :global(h5),
-        .page :global(h6),
-        .page :global(p) {
-            margin: 0;
-        }
-
-        .page :global(h1),
-        .page :global(h2),
-        .page :global(h3),
-        .page :global(h4),
-        .page :global(h5),
-        .page :global(h6),
-        .page :global(.brand-name) {
-            font-family: var(--font-heading);
-        }
-
-        .page :global(button),
-        .page :global(a) {
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .page :global(button) {
-            font: inherit;
-            cursor: pointer;
-        }
-
-        .page :global(a) {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .page :global(img) {
-            display: block;
-            max-width: 100%;
-        }
 
         .page :global(button:focus-visible),
         .page :global(a:focus-visible) {
             outline: 2px solid var(--color-primary);
             outline-offset: 2px;
-        }
-
-        .page :global(::selection) {
-            background: #ffdcc3;
-            color: #2f1500;
-        }
-
-        .page :global(.visually-hidden) {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            margin: -1px;
-            padding: 0;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-            white-space: nowrap;
-            border: 0;
         }
 
         .page :global(.material-symbols-outlined) {
@@ -184,19 +29,9 @@
             font-feature-settings: "liga";
         }
 
-        .page :global(.icon-filled) {
-            font-variation-settings: "FILL" 1;
-        }
-
         /* ======================================================================
          2. Shared layout and components (same values as DashboardPage; FD §7.6)
          ====================================================================== */
-        .page :global(.page-container) {
-            width: 100%;
-            max-width: 1280px;
-            margin-inline: auto;
-            padding-inline: var(--page-padding);
-        }
 
         .page :global(.card) {
             min-width: 0;
@@ -204,19 +39,6 @@
             border: 1px solid var(--color-border);
             border-radius: var(--radius-card);
             background: var(--color-card);
-        }
-
-        .page :global(.icon-tile) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--accent-border, var(--color-primary-border));
-            border-radius: 12px;
-            background: var(--accent-soft, var(--color-primary-soft));
-            color: var(--accent, var(--color-primary));
         }
 
         /* Compact tile for a title + subtitle header (FD §7.6). */
@@ -227,20 +49,6 @@
 
         .page :global(.icon-tile-compact .material-symbols-outlined) {
             font-size: 20px;
-        }
-
-        .page :global(.badge) {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 2px 10px;
-            border: 1px solid var(--color-border);
-            border-radius: 9999px;
-            background: var(--color-background);
-            color: var(--color-primary-dark);
-            font-size: var(--text-caption);
-            font-weight: 700;
-            line-height: var(--leading-label);
         }
 
         .page :global(.badge .material-symbols-outlined) {
@@ -270,22 +78,6 @@
         .page :global(.badge-quiet) {
             background: transparent;
             font-weight: 600;
-        }
-
-        .page :global(.button) {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-sm);
-            border: 0;
-            border-radius: var(--radius-small);
-            font-weight: 700;
-            text-align: center;
-            transition: background-color 150ms, color 150ms, box-shadow 150ms, transform 150ms;
-        }
-
-        .page :global(.button .material-symbols-outlined) {
-            transition: transform 150ms;
         }
 
         .page :global(.button-secondary) {
@@ -367,14 +159,6 @@
             font-size: 32px;
         }
 
-        .page :global(.page-state-title) {
-            color: var(--color-heading);
-            font-size: var(--text-section);
-            font-weight: 600;
-            line-height: var(--leading-heading);
-            letter-spacing: var(--tracking-heading);
-        }
-
         .page :global(.page-state p) {
             max-width: 36rem;
             color: var(--color-muted);
@@ -434,36 +218,13 @@
 
         /* Subject accent families (FD §7.3). Components read only the generic variables. */
         .page :global(.subject-conjugation) {
-            --accent: var(--color-orange);
-            --accent-soft: var(--color-orange-soft);
-            --accent-border: var(--color-orange-border);
             --progress-color: var(--color-orange);
             --skill-value-color: var(--color-orange-dark);
-            --badge-color: var(--color-orange-dark);
-            --link-color: var(--color-orange-dark);
-        }
-
-        .page :global(.subject-vocabulary) {
-            --link-color: var(--color-blue-strong);
-        }
-
-        .page :global(.subject-grammar) {
-            --link-color: var(--color-gold);
         }
 
         /* ======================================================================
          3. Header (identical to DashboardPage)
          ====================================================================== */
-        .page :global(.site-header) {
-            position: fixed;
-            z-index: 50;
-            top: 0;
-            width: 100%;
-            border-bottom: 1px solid var(--color-border);
-            background: rgb(255 255 255 / 92%);
-            box-shadow: 0 2px 12px -2px rgb(50 30 10 / 4%);
-            backdrop-filter: blur(24px);
-        }
 
         .page :global(.header-content) {
             display: flex;
@@ -480,13 +241,6 @@
             min-width: 0;
         }
 
-        .page :global(.brand-logo) {
-            flex-shrink: 0;
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-        }
-
         .page :global(.brand-name) {
             color: var(--color-primary);
             font-size: var(--text-body);
@@ -495,153 +249,8 @@
             letter-spacing: var(--tracking-heading);
         }
 
-        .page :global(.main-nav) {
-            display: none;
-            align-items: center;
-            flex-shrink: 0;
-            gap: var(--space-sm);
-            padding: var(--space-xs);
-            border: 1px solid var(--color-border);
-            border-radius: 9999px;
-            background: var(--color-background);
-        }
-
-        .page :global(.nav-link) {
-            padding: var(--space-xs) var(--space-md);
-            border-radius: 9999px;
-            color: var(--color-muted);
-            font-size: var(--text-body);
-            font-weight: 500;
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-            white-space: nowrap;
-            transition: color 150ms, background-color 150ms;
-        }
-
-        .page :global(.nav-link:hover) {
-            color: var(--color-text);
-        }
-
-        .page :global(.nav-link[aria-current="page"]) {
-            background: rgb(255 255 255 / 80%);
-            color: var(--color-primary);
-            font-weight: 700;
-        }
-
-        .page :global(.header-actions) {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-            gap: var(--space-sm);
-        }
-
-        .page :global(.language-switcher) {
-            display: inline-flex;
-            padding: 2px;
-            border: 1px solid var(--color-border);
-            border-radius: 9999px;
-            background: var(--color-background);
-        }
-
-        .page :global(.language-button) {
-            padding: 2px 8px;
-            border: 0;
-            border-radius: 9999px;
-            background: transparent;
-            color: var(--color-muted);
-            font-size: var(--text-label);
-            font-weight: 500;
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-            transition: color 150ms, background-color 150ms;
-        }
-
-        .page :global(.language-button[aria-pressed="true"]) {
-            background: #ffffff;
-            color: var(--color-primary);
-            font-weight: 700;
-        }
-
-        .page :global(.language-button:hover) {
-            color: var(--color-text);
-        }
-
-        .page :global(.logout-button),
-        .page :global(.menu-button) {
-            display: flex;
-            align-items: center;
-            gap: var(--space-xs);
-            border: 1px solid var(--color-border);
-            border-radius: 9999px;
-            background: #ffffff;
-            color: var(--color-muted);
-            font-size: var(--text-label);
-            font-weight: 500;
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-            white-space: nowrap;
-            transition: color 150ms, border-color 150ms;
-        }
-
-        .page :global(.logout-button) {
-            padding: var(--space-xs) var(--space-sm);
-        }
-
-        .page :global(.logout-button:hover) {
-            border-color: #f9cad0;
-            color: var(--color-orange-dark);
-        }
-
         .page :global(.logout-button .material-symbols-outlined) {
             font-size: 16px;
-        }
-
-        .page :global(.logout-label) {
-            display: none;
-        }
-
-        .page :global(.menu-button) {
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            padding: 0;
-        }
-
-        .page :global(.menu-button:hover) {
-            color: var(--color-text);
-        }
-
-        .page :global(.mobile-nav) {
-            border-top: 1px solid var(--color-border);
-            background: rgb(255 255 255 / 96%);
-        }
-
-        .page :global(.mobile-nav-list) {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-xs);
-            padding-block: var(--space-sm) var(--space-md);
-        }
-
-        .page :global(.mobile-nav-link) {
-            padding: 10px var(--space-md);
-            border-radius: var(--radius-small);
-            color: var(--color-muted);
-            font-size: var(--text-body);
-            font-weight: 600;
-            line-height: var(--leading-label);
-            transition: color 150ms, background-color 150ms;
-        }
-
-        .page :global(.mobile-nav-link:hover) {
-            background: var(--color-primary-soft);
-            color: var(--color-text);
-        }
-
-        .page :global(.mobile-nav-link[aria-current="page"]) {
-            background: var(--color-primary-soft);
-            color: var(--color-primary);
-            font-weight: 700;
         }
 
         /* ======================================================================
@@ -1088,29 +697,11 @@
             background: var(--color-background);
         }
 
-        .page :global(.footer-content) {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            padding-block: var(--space-lg);
-            color: var(--color-muted);
-            font-size: var(--text-label);
-            font-weight: 600;
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-        }
-
         .page :global(.footer-content .material-symbols-outlined) {
             color: var(--color-primary);
         }
 
         @media (min-width: 640px) {
-            .page {
-                --page-padding: var(--space-lg);
-                --text-section: 1.25rem;
-                --text-feature: 1.375rem;
-                --text-display: 2rem;
-            }
 
             .page :global(.card) {
                 padding: var(--space-lg);
@@ -1137,34 +728,13 @@
                 gap: var(--space-md);
             }
 
-            .page :global(.brand-logo) {
-                width: 36px;
-                height: 36px;
-            }
-
             .page :global(.brand-name) {
                 font-size: var(--text-brand);
                 white-space: nowrap;
             }
-
-            .page :global(.header-actions) {
-                gap: var(--space-md);
-            }
-
-            .page :global(.logout-label) {
-                display: inline;
-            }
         }
 
         @media (min-width: 768px) {
-            .page :global(.main-nav) {
-                display: flex;
-            }
-
-            .page :global(.menu-button),
-            .page :global(.mobile-nav) {
-                display: none !important;
-            }
 
             .page :global(.lesson-list) {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1172,9 +742,6 @@
         }
 
         @media (min-width: 1024px) {
-            .page {
-                --page-padding: 2.5rem;
-            }
 
             .page :global(.page-hero) {
                 grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
@@ -1199,18 +766,6 @@
                 clip: rect(0 0 0 0);
                 white-space: nowrap;
             }
-
-            .page :global(.logout-label) {
-                display: none;
-            }
-
-            .page :global(.main-nav) {
-                gap: var(--space-xs);
-            }
-
-            .page :global(.nav-link) {
-                padding-inline: var(--space-sm);
-            }
         }
 
         /* Narrow phones: the count badge drops under the title so long titles keep their width. */
@@ -1230,16 +785,6 @@
 
             .page :global(.tense-toggle) {
                 order: 2;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-
-            .page :global(*),
-            .page :global(*::before),
-            .page :global(*::after) {
-                animation: none !important;
-                transition: none !important;
             }
         }
     
