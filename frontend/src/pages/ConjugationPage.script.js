@@ -299,7 +299,7 @@ export default function init({ onLanguageChange } = {}) {
               tenseButtons().forEach((button, index) => {
                   if (index < openTenses.length) setTenseOpen(button, openTenses[index]);
               });
-              updateToggleAll();
+              if (tenseButtons().length) updateToggleAll();
           }
           setMenu(!mobileNav.hidden);
       });

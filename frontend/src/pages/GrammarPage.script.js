@@ -349,7 +349,7 @@ export default function init({ onLanguageChange } = {}) {
               chapters().forEach((chapter, index) => {
                   if (index < openChapters.length) chapter.open = openChapters[index];
               });
-              updateToggleAll();
+              if (chapters().length) updateToggleAll();
           }
           setMenu(!mobileNav.hidden);
       });
