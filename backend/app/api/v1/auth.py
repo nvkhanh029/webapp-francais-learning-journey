@@ -4,7 +4,7 @@ Owner: Member 1 (Auth and User Preferences), docs/api-contracts.md Section 6.
 Routes stay thin: validate the request shape, call the service, establish or
 clear the Flask session through auth_session, return the contract envelope.
 """
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 
 from ...auth_session import end_user_session, start_user_session
 from ...services import auth_service, user_service
@@ -34,7 +34,7 @@ def login():
     # invalid credentials, not as a validation error that hints at the format.
     email = normalize_email(require_string(body, "email"))
     password = require_string(body, "password", strip=False)
-    user = auth_service.authenticate(email, password)
+    user = auth_service.authenticate(email, password, request.remote_addr)
     start_user_session(user["id"])
     return jsonify({"data": {"user": user_service.current_user_model(user)}})
 
