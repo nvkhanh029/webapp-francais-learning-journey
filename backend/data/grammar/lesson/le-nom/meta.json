@@ -1,0 +1,21 @@
+{
+  "slug": "le-nom",
+  "title_fr": "Le nom",
+  "title_vi": "Danh từ",
+  "title_en": "Nouns",
+  "sort_order": 10,
+  "part": {
+    "key": "le-groupe-du-nom-et-les-pronoms",
+    "title_fr": "Le groupe du nom et les pronoms",
+    "title_vi": "Cụm danh từ và đại từ",
+    "title_en": "Noun Groups and Pronouns",
+    "sort_order": 10
+  },
+  "chapter": {
+    "key": "le-nom",
+    "title_fr": "Le nom",
+    "title_vi": "Danh từ",
+    "title_en": "Nouns",
+    "sort_order": 10
+  }
+}
