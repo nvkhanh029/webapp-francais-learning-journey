@@ -9,7 +9,11 @@ from flask import g
 
 from ..errors import ApiError
 from ..localization import localized_value, resolve_support_language
-from ..repositories import vocabulary_repository
+from ..repositories import (
+    learning_state_repository,
+    learning_unit_repository,
+    vocabulary_repository,
+)
 
 
 def _title(row, prefix, support_language):
@@ -27,8 +31,20 @@ def _title(row, prefix, support_language):
     )
 
 
+def _browse_progress(user_id):
+    """Vocabulary Study Units learned / available (API Contract 10.1).
+
+    Same sources as Dashboard progress.vocabulary, so the two always agree.
+    Counts Study Units (learning units), never individual words.
+    """
+    totals = learning_unit_repository.count_by_type()
+    learned = learning_state_repository.count_learned_by_type(user_id)
+    return {"learned": learned.get("vocabulary", 0), "total": totals["vocabulary"]}
+
+
 def browse_categories():
-    """Build the browse payload: categories with their topics, in sort_order."""
+    """Build the browse payload: overall progress plus categories with their
+    topics, in sort_order."""
     language = resolve_support_language(g.current_user["support_language"])
     categories = []
     index = {}  # category_id -> payload, to group the ordered topic rows.
@@ -49,7 +65,7 @@ def browse_categories():
                 "title": _title(row, "topic", language),
             }
         )
-    return {"categories": categories}
+    return {"progress": _browse_progress(g.current_user["id"]), "categories": categories}
 
 
 def get_topic_detail(topic_slug):

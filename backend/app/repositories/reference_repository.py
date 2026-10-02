@@ -12,3 +12,17 @@ def get_page_by_slug(slug):
         """,
         (slug,),
     ).fetchone()
+
+
+def list_pages():
+    """Reference index rows (no Markdown content), in curriculum order.
+
+    Ordered by reference_pages.sort_order, never by primary key.
+    """
+    return get_db().execute(
+        """
+        SELECT slug, title_fr, title_vi, title_en
+        FROM reference_pages
+        ORDER BY sort_order
+        """
+    ).fetchall()

@@ -100,7 +100,8 @@ def test_session_safe_lookup_and_cookie_flow(http_client,app,database_path):
     cookie=start.headers["Set-Cookie"]
     assert "HttpOnly" in cookie and "SameSite=Lax" in cookie
     with http_client.session_transaction() as session:
-        assert dict(session)=={"user_id":1}
+        # "_permanent" is Flask's own expiry flag (API 4.7 session expiry), not learner data.
+        assert dict(session)=={"user_id":1,"_permanent":True}
     response=http_client.get("/__foundation_test/protected")
     assert response.status_code==200
     assert response.json=={"data":{"email":"fixture@example.test"}}
