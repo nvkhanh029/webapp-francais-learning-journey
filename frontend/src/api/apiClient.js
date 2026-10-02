@@ -97,7 +97,11 @@ export async function request(method, path, { query, body } = {}) {
   }
 
   if (payload === null || typeof payload !== "object" || !("data" in payload)) {
-    throw new ApiError({ status: response.status, code: "invalid_response", message: "The server sent an unexpected response." });
+    throw new ApiError({
+      status: response.status,
+      code: "invalid_response",
+      message: "The server sent an unexpected response.",
+    });
   }
   return payload.data;
 }

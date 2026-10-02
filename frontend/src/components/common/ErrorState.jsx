@@ -21,7 +21,12 @@ export default function ErrorState({
       <Heading className="page-state-title">{title}</Heading>
       <p>{message}</p>
       {(onRetry || retryAction) && (
-        <button className="button button-secondary button-compact" type="button" data-action={retryAction} onClick={onRetry}>
+        <button
+          className="button button-secondary button-compact"
+          type="button"
+          data-action={retryAction}
+          onClick={onRetry}
+        >
           {retryLabel}
         </button>
       )}

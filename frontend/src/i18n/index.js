@@ -50,5 +50,7 @@ export function monthName(monthIndex, year = 2026) {
 
 // "12 tháng 5" / "12 May".
 export function dayMonth(day, monthIndex, year = 2026) {
-  return new Intl.DateTimeFormat(localeFor(), { day: "numeric", month: "long" }).format(new Date(year, monthIndex, day, 12));
+  return new Intl.DateTimeFormat(localeFor(), { day: "numeric", month: "long" }).format(
+    new Date(year, monthIndex, day, 12),
+  );
 }

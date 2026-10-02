@@ -56,8 +56,7 @@
   --radius-card: 1.5rem;
   --radius-small: 1rem;
   --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
-  --shadow-md:
-    0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
+  --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -4px rgb(0 0 0 / 10%);
   --color-gold: #9a6b12;
   --color-gold-dark: #80570d;
   --color-gold-soft: #fff8e1;

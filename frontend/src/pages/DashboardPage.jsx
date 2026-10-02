@@ -252,7 +252,7 @@ export default function DashboardPage() {
                     {t("dashboard.continueModule")}                &nbsp;
                   </span>
                   <span lang="fr" data-pending-api="continue_learning.parent">
-                    L'adjectif qualificatif et l'adjectif numéral
+                    L&apos;adjectif qualificatif et l&apos;adjectif numéral
                   </span>
                   &nbsp;
                   <span aria-hidden="true">

@@ -5,7 +5,8 @@
 // and Review Later are not main-navigation items.
 export function navSectionForPath(pathname) {
   if (pathname === "/dashboard") return "/dashboard";
-  if (pathname === "/vocabulary" || pathname.startsWith("/vocabulary/") || pathname.startsWith("/basics/")) return "/vocabulary";
+  if (pathname === "/vocabulary" || pathname.startsWith("/vocabulary/") || pathname.startsWith("/basics/"))
+    return "/vocabulary";
   if (pathname === "/grammar" || pathname.startsWith("/grammar/")) return "/grammar";
   if (pathname === "/conjugation" || pathname.startsWith("/conjugation/")) return "/conjugation";
   return null;

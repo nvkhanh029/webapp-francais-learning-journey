@@ -95,7 +95,9 @@ export function AuthProvider({ children }) {
       }
       const { support_language: saved } = await authApi.updateSupportLanguage(language);
       setState((previous) =>
-        previous.currentUser ? { ...previous, currentUser: { ...previous.currentUser, support_language: saved } } : previous,
+        previous.currentUser
+          ? { ...previous, currentUser: { ...previous.currentUser, support_language: saved } }
+          : previous,
       );
       setLanguage(saved);
       return saved;

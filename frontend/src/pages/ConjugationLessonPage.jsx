@@ -132,7 +132,7 @@ export default function ConjugationLessonPage() {
                 {" "}
                 <span>
                   <span lang="fr" data-slot="title">
-                    Le présent de l'indicatif
+                    Le présent de l&apos;indicatif
                   </span>
                   {" "}
                   <span className="crumb-support" data-slot="support">

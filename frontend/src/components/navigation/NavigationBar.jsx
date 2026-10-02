@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import useAuth from "../../hooks/useAuth.js";
@@ -27,7 +27,12 @@ export default function NavigationBar() {
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   useMobileNavDismiss(menuOpen, closeMenu, menuButtonRef);
-  useEffect(() => setMenuOpen(false), [pathname]);
+  // Close the menu whenever the route changes (adjusting state during render, not in an effect).
+  const [menuPath, setMenuPath] = useState(pathname);
+  if (menuPath !== pathname) {
+    setMenuPath(pathname);
+    setMenuOpen(false);
+  }
 
   const handleLogout = async () => {
     await logout();
@@ -43,14 +48,25 @@ export default function NavigationBar() {
         </div>
         <nav className="main-nav" aria-label={t("common.mainNav")}>
           {NAV_ITEMS.map((item) => (
-            <Link key={item.to} className="nav-link" to={item.to} aria-current={currentPath === item.to ? "page" : undefined}>
+            <Link
+              key={item.to}
+              className="nav-link"
+              to={item.to}
+              aria-current={currentPath === item.to ? "page" : undefined}
+            >
               {t(item.labelKey)}
             </Link>
           ))}
         </nav>
         <div className="header-actions">
           <LanguageSelector />
-          <button className="logout-button" type="button" aria-label={t("common.logout")} title={t("common.logout")} onClick={handleLogout}>
+          <button
+            className="logout-button"
+            type="button"
+            aria-label={t("common.logout")}
+            title={t("common.logout")}
+            onClick={handleLogout}
+          >
             <span className="material-symbols-outlined" aria-hidden="true">
               logout
             </span>

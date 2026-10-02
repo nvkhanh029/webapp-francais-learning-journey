@@ -1,7 +1,9 @@
+import { Suspense } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 
 import SiteFooter from "../components/navigation/SiteFooter.jsx";
 import { t, useLanguage } from "../i18n/index.js";
+import RouteFallback from "../components/common/RouteFallback.jsx";
 import styles from "./PublicLayout.module.css";
 
 // Header actions of the public pages: each page offers the other entry point (FD §4.2).
@@ -47,7 +49,9 @@ export default function PublicLayout() {
         </div>
       </header>
       <div className="page-body">
-        <Outlet />
+        <Suspense fallback={<RouteFallback />}>
+          <Outlet />
+        </Suspense>
       </div>
       <SiteFooter className={isAuthPage ? styles.footerFlush : ""} />
     </div>
