@@ -4,6 +4,10 @@
 // - Keys are grouped by the page (or shared area) that uses them. Content that comes from the API
 //   (lesson titles, topic names, explanations) is NOT in this table.
 export const strings = {
+  // ---- route guards ----
+  "guard.unavailableTitle": { vi: "Không thể kết nối tới máy chủ", en: "Cannot reach the server" },
+  "guard.unavailableText": { vi: "Chưa thể kiểm tra phiên đăng nhập của bạn. Hãy kiểm tra kết nối rồi thử lại.", en: "We could not check your session right now. Check your connection and try again." },
+
   // ---- common ----
   "common.mascotAlt": { vi: "Linh vật bánh sừng bò đeo kính, tay cầm sách", en: "Croissant mascot wearing glasses and holding a book" },
   "common.footer": { vi: "Français Learning Journey • Hành trình chinh phục tiếng Pháp", en: "Français Learning Journey • Your journey to mastering French" },

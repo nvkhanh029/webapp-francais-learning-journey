@@ -1,0 +1,68 @@
+/* Shown by the route guards when the session check could not reach the server. Same card language as the page states. */
+.unavailable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--space-lg);
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  max-width: 420px;
+  padding: var(--space-xl) var(--space-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+  text-align: center;
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  color: var(--color-primary);
+  font-family: "Material Symbols Outlined";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  white-space: nowrap;
+  font-feature-settings: "liga";
+}
+
+.title {
+  margin: 0;
+  color: var(--color-heading);
+  font-size: var(--text-section);
+  line-height: var(--leading-heading);
+}
+
+.text {
+  margin: 0;
+  color: var(--color-muted);
+}
+
+.retry {
+  margin-top: var(--space-sm);
+  padding: var(--space-sm) var(--space-lg);
+  border: 0;
+  border-radius: var(--radius-small);
+  background: var(--color-heading);
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.retry:hover {
+  background: #1f1711;
+}

@@ -1,7 +1,7 @@
 import { createContext, useCallback, useEffect, useMemo, useState } from "react";
 
 import * as authApi from "../api/authApi.js";
-import { setUnauthorizedHandler } from "../api/apiClient.js";
+import { ApiError, setUnauthorizedHandler } from "../api/apiClient.js";
 import { AUTH_GUARD_ENABLED } from "../config.js";
 import { setLanguage } from "../i18n/language.js";
 
@@ -9,16 +9,20 @@ import { setLanguage } from "../i18n/language.js";
 //
 // status: "checking"        the initial GET /me has not finished (route guards wait, FD §4.3.4)
 //         "authenticated"   currentUser is set
-//         "unauthenticated" no session
+//         "unauthenticated" no session (GET /me answered 401)
+//         "unavailable"     GET /me failed for another reason (network, 5xx): the session is unknown, so the guards
+//                           show a "cannot reach the server" state with a retry instead of redirecting to Login
 //
 // With VITE_AUTH_GUARD off there is no session check, so the static UI works without a backend; the status is
 // then "unauthenticated" and the guards let every route through.
 export const AuthContext = createContext(null);
 
 const UNAUTHENTICATED = { status: "unauthenticated", currentUser: null };
+const CHECKING = { status: "checking", currentUser: null };
+const UNAVAILABLE = { status: "unavailable", currentUser: null };
 
 export function AuthProvider({ children }) {
-  const [state, setState] = useState(AUTH_GUARD_ENABLED ? { status: "checking", currentUser: null } : UNAUTHENTICATED);
+  const [state, setState] = useState(AUTH_GUARD_ENABLED ? CHECKING : UNAUTHENTICATED);
 
   const setAuthenticated = useCallback((currentUser) => setState({ status: "authenticated", currentUser }), []);
   const clearSession = useCallback(
@@ -26,18 +30,35 @@ export function AuthProvider({ children }) {
     [],
   );
 
+  // GET /me: 401 means "no session"; any other failure leaves the session unknown.
+  const checkSession = useCallback(
+    (isCancelled) =>
+      authApi
+        .getCurrentUser()
+        .then((user) => !isCancelled() && setAuthenticated(user))
+        .catch((error) => {
+          if (isCancelled()) return;
+          if (error instanceof ApiError && error.status === 401) clearSession();
+          else setState(UNAVAILABLE);
+        }),
+    [setAuthenticated, clearSession],
+  );
+
   // Initial session check.
   useEffect(() => {
     if (!AUTH_GUARD_ENABLED) return undefined;
     let cancelled = false;
-    authApi
-      .getCurrentUser()
-      .then((user) => !cancelled && setAuthenticated(user))
-      .catch(() => !cancelled && clearSession());
+    checkSession(() => cancelled);
     return () => {
       cancelled = true;
     };
-  }, [setAuthenticated, clearSession]);
+  }, [checkSession]);
+
+  // Retry button of the "cannot reach the server" state.
+  const retryAuthCheck = useCallback(() => {
+    setState(CHECKING);
+    checkSession(() => false);
+  }, [checkSession]);
 
   // An expired session on any later request signs the learner out of the UI (FD §6.7).
   useEffect(() => {
@@ -110,6 +131,8 @@ export function AuthProvider({ children }) {
       currentUser: state.currentUser,
       isAuthLoading: state.status === "checking",
       isAuthenticated: state.status === "authenticated",
+      isAuthUnavailable: state.status === "unavailable",
+      retryAuthCheck,
       login,
       register,
       logout,
@@ -117,7 +140,7 @@ export function AuthProvider({ children }) {
       updateSupportLanguage,
       updateLanguage: updateSupportLanguage,
     }),
-    [state, login, register, logout, refreshUser, updateSupportLanguage],
+    [state, retryAuthCheck, login, register, logout, refreshUser, updateSupportLanguage],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
