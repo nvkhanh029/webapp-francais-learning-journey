@@ -174,8 +174,15 @@ def test_progress_counts_learned_and_total_per_module(client, database_path, lea
 
 
 def test_continue_learning_uses_most_recently_opened_unfinished_unit(client, database_path, learner):
-    _insert_learning_unit(database_path, unit_id=1, unit_type="grammar", slug="grammar-1")
-    _insert_learning_unit(database_path, unit_id=2, unit_type="grammar", slug="grammar-2")
+    with sqlite3.connect(database_path) as db:
+        db.execute("INSERT INTO grammar_parts (id, title_fr, sort_order) VALUES (1, 'Part', 10)")
+        db.execute("INSERT INTO grammar_chapters (id, part_id, title_fr, title_vi, title_en, sort_order) "
+                   "VALUES (1, 1, 'Chapitre', 'Chuong', 'Chapter', 10)")
+        for unit_id, slug in ((1, "grammar-1"), (2, "grammar-2")):
+            db.execute("INSERT INTO learning_units (id, unit_type, slug, title_fr, title_vi, title_en) "
+                       "VALUES (?, 'grammar', ?, 'Fixture FR', 'Fixture VI', 'Fixture EN')", (unit_id, slug))
+            db.execute("INSERT INTO grammar_lessons (learning_unit_id, chapter_id, sort_order, content_vi, content_en) "
+                       "VALUES (?, 1, ?, 'x', 'x')", (unit_id, unit_id * 10))
     _insert_state(database_path, unit_id=1, last_opened_at="2026-01-01T10:00:00+00:00")
     _insert_state(database_path, unit_id=2, last_opened_at="2026-01-02T10:00:00+00:00")
 
@@ -184,6 +191,8 @@ def test_continue_learning_uses_most_recently_opened_unfinished_unit(client, dat
     assert response.json["data"]["continue_learning"] == {
         "slug": "grammar-2", "unit_type": "grammar",
         "title_fr": "Fixture FR", "title": "Fixture VI",
+        "parent": {"kind": "chapter", "title_fr": "Chapitre", "title": "Chuong"},
+        "position": {"index": 2, "total": 2},
     }
 
 

@@ -53,3 +53,27 @@ def get_lesson_by_slug(slug):
         """,
         (slug,),
     ).fetchone()
+
+
+def get_unit_position(learning_unit_id):
+    """Parent tense and 1-based place of one Conjugation lesson among its siblings.
+
+    Returns parent_title_fr/vi/en, position_index (by sort_order, never by id)
+    and position_total, or None when the unit is not a Conjugation lesson. Used by the
+    Dashboard Continue Learning object (API Contract 8.1).
+    """
+    return get_db().execute(
+        """
+        SELECT p.title_fr AS parent_title_fr,
+               p.title_vi AS parent_title_vi,
+               p.title_en AS parent_title_en,
+               (SELECT COUNT(*) FROM conjugation_lessons AS s
+                 WHERE s.tense_id = u.tense_id AND s.sort_order <= u.sort_order) AS position_index,
+               (SELECT COUNT(*) FROM conjugation_lessons AS s
+                 WHERE s.tense_id = u.tense_id) AS position_total
+        FROM conjugation_lessons AS u
+        JOIN conjugation_tenses AS p ON p.id = u.tense_id
+        WHERE u.learning_unit_id = ?
+        """,
+        (learning_unit_id,),
+    ).fetchone()

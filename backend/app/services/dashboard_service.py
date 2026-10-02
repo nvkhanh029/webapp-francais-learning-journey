@@ -16,11 +16,24 @@ from datetime import datetime, timedelta
 
 from .. import clock
 from ..localization import localized_value
-from ..repositories import learning_state_repository, learning_unit_repository, practice_repository
+from ..repositories import (
+    conjugation_repository,
+    grammar_repository,
+    learning_state_repository,
+    learning_unit_repository,
+    practice_repository,
+    vocabulary_repository,
+)
 from ..validation import FUTURE_MONTH, field_error
 
 RECENT_PRACTICE_LIMIT = 10
 MODULE_TYPES = ("grammar", "vocabulary", "conjugation")
+# Grouping level of a unit's module and where to read its position (API 8.1).
+CONTINUE_LEARNING_PARENTS = {
+    "grammar": ("chapter", grammar_repository.get_unit_position),
+    "vocabulary": ("subtopic", vocabulary_repository.get_unit_position),
+    "conjugation": ("tense", conjugation_repository.get_unit_position),
+}
 
 
 def _parse_activity_date(value):
@@ -76,11 +89,25 @@ def _build_continue_learning(user_id, support_language):
     row = learning_state_repository.get_continue_learning(user_id)
     if row is None:
         return None
+    kind, get_unit_position = CONTINUE_LEARNING_PARENTS[row["unit_type"]]
+    place = get_unit_position(row["id"])
+    if place is None:
+        # Every learning unit must have its module row (Database Design 4); a
+        # unit without one is a data-integrity bug, not a "no continue" state.
+        raise RuntimeError(f"Learning unit {row['slug']!r} has no {row['unit_type']} record.")
     return {
         "slug": row["slug"],
         "unit_type": row["unit_type"],
         "title_fr": row["title_fr"],
         "title": localized_value(row, "title", support_language, french_fallback_field="title_fr"),
+        "parent": {
+            "kind": kind,
+            "title_fr": place["parent_title_fr"],
+            "title": localized_value(
+                place, "parent_title", support_language, french_fallback_field="parent_title_fr",
+            ),
+        },
+        "position": {"index": place["position_index"], "total": place["position_total"]},
     }
 
 

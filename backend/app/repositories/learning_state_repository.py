@@ -110,7 +110,7 @@ def has_any_learned(user_id):
 def get_continue_learning(user_id):
     """Most recently opened unfinished unit, or None. See Database Design Section 11.1."""
     return get_db().execute(
-        "SELECT lu.slug AS slug, lu.unit_type AS unit_type, "
+        "SELECT lu.id AS id, lu.slug AS slug, lu.unit_type AS unit_type, "
         "lu.title_fr AS title_fr, lu.title_vi AS title_vi, lu.title_en AS title_en "
         "FROM user_learning_state uls "
         "JOIN learning_units lu ON lu.id = uls.learning_unit_id "
