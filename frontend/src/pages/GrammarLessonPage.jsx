@@ -75,7 +75,7 @@ export default function GrammarLessonPage() {
   return (
     <div className={`page-body ${styles.page}`}>
       <main className="page-container lesson-page subject-grammar" id="main-content">
-        <div className="lesson">
+        <div className={`lesson${unitState.learned ? " is-learned" : ""}${unitState.reviewLater ? " is-saved" : ""}`}>
           <nav className="breadcrumbs" aria-label={t("common.breadcrumb")}>
             <ol className="breadcrumb-list">
               <li>

@@ -74,6 +74,12 @@
   color: var(--color-rose-dark);
 }
 
+/* Supporting state in a dual-state unit: outline only, same label and icon (as the list pages). */
+.page :global(.badge-quiet) {
+  background: transparent;
+  font-weight: 600;
+}
+
 /* Trailing-arrow motion (Dashboard). Toggle buttons with a leading state icon opt out. */
 .page :global(.button:hover .material-symbols-outlined) {
   transform: translateX(4px);

@@ -83,7 +83,7 @@ export default function VocabularyStudyUnitPage() {
   return (
     <div className={`page-body ${styles.page}`}>
       <main className="page-container unit-page subject-vocabulary" id="main-content">
-        <div className="unit">
+        <div className={`unit${unitState.learned ? " is-learned" : ""}${unitState.reviewLater ? " is-saved" : ""}`}>
           <nav className="breadcrumbs" aria-label={t("common.breadcrumb")}>
             <ol className="breadcrumb-list">
               <li>
