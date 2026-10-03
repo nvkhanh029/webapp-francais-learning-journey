@@ -359,7 +359,8 @@
   font-size: inherit;
 }
 
-.page :global(.tense-summary) {
+.page :global(.tense-summary),
+.page :global(.tense-header) {
   position: relative;
 
   display: flex;
@@ -382,7 +383,8 @@
   color: var(--color-orange-dark);
 }
 
-.page :global(.tense-summary::after) {
+.page :global(.tense-summary::after),
+.page :global(.tense-header::after) {
   content: "";
   position: absolute;
   left: -1px;
@@ -403,7 +405,8 @@
   border-bottom: 1px solid var(--color-border);
 }
 
-.page :global(.tense-titles) {
+.page :global(.tense-titles),
+.page :global(.tense-heading) {
   flex: 1;
   min-width: 0;
 }
@@ -432,7 +435,8 @@
   overflow-wrap: anywhere;
 }
 
-.page :global(.tense-titles .title-support) {
+.page :global(.tense-titles .title-support),
+.page :global(.tense-heading .title-support) {
   font-size: var(--text-body);
 }
 
@@ -677,7 +681,8 @@
     padding: var(--space-lg);
   }
 
-  .page :global(.tense-summary) {
+  .page :global(.tense-summary),
+  .page :global(.tense-header) {
     padding: var(--space-md) var(--space-lg);
   }
 
@@ -708,8 +713,18 @@
 
 /* Narrow phones: the count badge drops under the title so long titles keep their width. */
 @media (max-width: 479px) {
-  .page :global(.tense-summary) {
+  .page :global(.tense-summary),
+  .page :global(.tense-header) {
     flex-wrap: wrap;
+  }
+
+  .page :global(.tense-heading) {
+    flex-basis: 100%;
+  }
+
+  /* No icon tile in this header, so the badge aligns with the title. */
+  .page :global(.tense-header .tense-count) {
+    margin-left: 0;
   }
 
   .page :global(.tense-titles) {
