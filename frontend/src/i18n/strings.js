@@ -9,6 +9,7 @@ export const strings = {
   "guard.unavailableText": { vi: "Chưa thể kiểm tra phiên đăng nhập của bạn. Hãy kiểm tra kết nối rồi thử lại.", en: "We could not check your session right now. Check your connection and try again." },
 
   // ---- common ----
+  "common.loading": { vi: "Đang tải…", en: "Loading…" },
   "common.mascotAlt": { vi: "Linh vật bánh sừng bò đeo kính, tay cầm sách", en: "Croissant mascot wearing glasses and holding a book" },
   "common.footer": { vi: "Français Learning Journey • Hành trình chinh phục tiếng Pháp", en: "Français Learning Journey • Your journey to mastering French" },
   "common.mainNav": { vi: "Điều hướng chính", en: "Main navigation" },
@@ -67,6 +68,8 @@ export const strings = {
   "common.unitsOf": { vi: "{learned}/{total} bài", en: { one: "{learned}/{total} unit", other: "{learned}/{total} units" } },
   "common.unitsN": { vi: "{n} bài", en: { one: "{n} unit", other: "{n} units" } },
   "common.loadingLesson": { vi: "Đang tải bài học…", en: "Loading the lesson…" },
+  "common.lessonNotFoundTitle": { vi: "Không tìm thấy bài học", en: "Lesson not found" },
+  "common.lessonNotFoundText": { vi: "Bài học này không tồn tại hoặc địa chỉ đã bị nhập sai.", en: "This lesson does not exist or the address was mistyped." },
   "common.loadLessonError": { vi: "Không thể tải bài học", en: "Could not load the lesson" },
   "common.collapseAll": { vi: "Thu gọn tất cả", en: "Collapse all" },
   "common.expandAll": { vi: "Mở rộng tất cả", en: "Expand all" },
@@ -349,6 +352,10 @@ export const strings = {
   "practice.answerMissing": { vi: "Trả lời câu chưa làm", en: "Answer the unanswered question" },
   "practice.submitErrorTitle": { vi: "Không thể nộp bài luyện tập", en: "Could not submit the practice" },
   "practice.submitErrorText": { vi: "Câu trả lời của bạn vẫn được giữ lại. Vui lòng thử lại.", en: "Your answers are still saved. Please try again." },
+  "practice.incompleteTitle": { vi: "Chưa trả lời đủ các câu hỏi", en: "Some questions are unanswered" },
+  "practice.incompleteText": { vi: "Mỗi câu hỏi cần có một câu trả lời trước khi nộp bài. Hãy quay lại và trả lời các câu còn thiếu.", en: "Every question needs an answer before you submit. Go back and answer the missing ones." },
+  "practice.alreadySubmittedTitle": { vi: "Bài luyện tập này đã được nộp", en: "This practice was already submitted" },
+  "practice.alreadySubmittedText": { vi: "Kết quả của lượt này đã được ghi nhận nên không thể nộp lại. Bạn có thể bắt đầu một lượt luyện tập mới.", en: "Its result has already been recorded, so it cannot be submitted again. You can start a new practice." },
   "practice.submitDisabledHint": { vi: "Trả lời hết các câu để nộp bài.", en: "Answer every question to submit." },
   "practice.keepGoing": { vi: "Tiếp tục làm bài", en: "Keep going" },
   "practice.submit": { vi: "Nộp bài luyện tập", en: "Submit practice" },

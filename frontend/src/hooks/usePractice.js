@@ -31,6 +31,10 @@ export default function usePractice() {
   // state: StrictMode's double-invoke happens before a state update from the first pass is flushed,
   // so only a ref reliably prevents the second POST.
   const startedTokenRef = useRef(null);
+  // What the last start asked for, so `restart` can begin a new run of the same kind, and a counter that
+  // makes each restart's token unique.
+  const lastStartRef = useRef(null);
+  const restartCountRef = useRef(0);
 
   const answeredCount = questions.filter((question) => answers[question.question_id] !== undefined).length;
   const unansweredCount = questions.length - answeredCount;
@@ -41,6 +45,7 @@ export default function usePractice() {
   const start = useCallback(async ({ mode, slug, token }) => {
     if (startedTokenRef.current === token) return null;
     startedTokenRef.current = token;
+    lastStartRef.current = { mode, slug };
     setPhase("loading");
     setError(null);
     try {
@@ -80,15 +85,14 @@ export default function usePractice() {
     setPhase("submitting");
     setError(null);
     // Exactly one answer entry per run question, in the shape the contract defines for that question
-    // type (API §17.1). The backend re-validates and rescores everything it receives.
-    const payload = {
-      answers: questions.map((question) => ({
-        question_id: question.question_id,
-        answer: answers[question.question_id],
-      })),
-    };
+    // type (API §17.1). practiceApi wraps the list into { answers } once. The backend re-validates and
+    // rescores everything it receives.
+    const answerList = questions.map((question) => ({
+      question_id: question.question_id,
+      answer: answers[question.question_id],
+    }));
     try {
-      const submitted = await submitPractice(run.practice_run_id, payload);
+      const submitted = await submitPractice(run.practice_run_id, answerList);
       setResult(submitted);
       setPhase("result");
       return submitted;
@@ -100,6 +104,16 @@ export default function usePractice() {
       return null;
     }
   }, [answers, questions, run]);
+
+  // "Practice again" and the error "Try again": start a brand-new run of the same kind as the last
+  // start, without passing through the idle phase (which renders nothing on the normal Practice page).
+  // The fresh token is what lets a second POST through the StrictMode guard in `start`.
+  const restart = useCallback(() => {
+    const last = lastStartRef.current;
+    if (!last) return Promise.resolve(null);
+    restartCountRef.current += 1;
+    return start({ ...last, token: `${last.mode}:${last.slug ?? ""}:restart-${restartCountRef.current}` });
+  }, [start]);
 
   const reset = useCallback(() => {
     startedTokenRef.current = null;
@@ -137,6 +151,7 @@ export default function usePractice() {
     startReview,
     backToAnswering,
     submit,
+    restart,
     reset,
   };
 }

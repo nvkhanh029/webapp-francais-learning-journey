@@ -1,4 +1,5 @@
 import { t, useLanguage } from "../../i18n/index.js";
+import { practiceErrorKeys } from "./practiceErrors.js";
 
 // The review phase (FD §7.12): every answer listed with its question, with an edit action per question.
 //
@@ -23,6 +24,9 @@ export default function PracticeReview({ questions, answers, onEdit, submitError
       .filter(Boolean)
       .join(" ");
   };
+
+  // incomplete_practice has its own wording; any other rejection keeps the generic one (API §17.5).
+  const specificError = practiceErrorKeys(submitError);
 
   const typeLabel = { mcq: "practice.typeMcq", fill_blank: "practice.typeFill", ordering: "practice.typeOrdering" };
 
@@ -53,8 +57,8 @@ export default function PracticeReview({ questions, answers, onEdit, submitError
               error
             </span>
             <div className="state-note-body">
-              <strong>{t("practice.submitErrorTitle")}</strong>
-              <p>{t("practice.submitErrorText")}</p>
+              <strong>{t(specificError ? specificError.titleKey : "practice.submitErrorTitle")}</strong>
+              <p>{t(specificError ? specificError.textKey : "practice.submitErrorText")}</p>
             </div>
           </div>
         )}

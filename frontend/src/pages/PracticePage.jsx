@@ -19,6 +19,7 @@ import { Link, useParams } from "react-router-dom";
 import ErrorState from "../components/common/ErrorState.jsx";
 import LoadingState from "../components/common/LoadingState.jsx";
 import PracticeHeader from "../features/practice/PracticeHeader.jsx";
+import { practiceErrorKeys } from "../features/practice/practiceErrors.js";
 import PracticeResult from "../features/practice/PracticeResult.jsx";
 import PracticeReview from "../features/practice/PracticeReview.jsx";
 import QuestionRenderer from "../features/practice/QuestionRenderer.jsx";
@@ -54,7 +55,7 @@ export default function PracticePage() {
     previousQuestion,
     startReview,
     submit,
-    reset,
+    restart,
   } = practice;
 
   // One start per unit. The token makes a StrictMode double-mount a no-op instead of a second POST
@@ -63,6 +64,7 @@ export default function PracticePage() {
     if (unitSlug) start({ mode: "normal", slug: unitSlug, token: `normal:${unitSlug}` });
   }, [start, unitSlug]);
 
+  const specificError = practiceErrorKeys(error);
   const module = moduleMeta(learningUnit?.unit_type);
   const answeredIds = questions
     .map((question, index) => (answers[question.question_id] !== undefined ? index : -1))
@@ -126,13 +128,13 @@ export default function PracticePage() {
 
           {isBusy && <LoadingState message={t("practice.loading")} />}
 
-          {/* A start failure, an already-finalized run or a lost run all land here. */}
+          {/* A start failure, an already-finalized run or a lost run all land here. Retrying starts a new run. */}
           {phase === "error" && (
             <ErrorState
               headingLevel={1}
-              title={t("practice.loadError")}
-              message={t("common.loadError")}
-              onRetry={() => reset()}
+              title={specificError ? t(specificError.titleKey) : t("practice.loadError")}
+              message={specificError ? t(specificError.textKey) : t("common.loadError")}
+              onRetry={restart}
             />
           )}
 
@@ -216,7 +218,7 @@ export default function PracticePage() {
           )}
 
           {isResult && result && (
-            <PracticeResult result={result} practiceType={result.practice_type ?? "normal"} onRetry={reset} />
+            <PracticeResult result={result} practiceType={result.practice_type ?? "normal"} onRetry={restart} />
           )}
         </div>
       </main>

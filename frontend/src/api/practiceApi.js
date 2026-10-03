@@ -13,6 +13,7 @@ export function startMixedPractice(options = {}) {
 }
 
 // `answers` is the list [{ question_id, answer }] with the answer shape of each question type (API §17.1).
+// It is wrapped once here into the request body { answers: [...] }; callers pass the bare list.
 export function submitPractice(practiceRunId, answers) {
   return apiClient.post(`/practice/runs/${encodeURIComponent(practiceRunId)}/submit`, { answers });
 }

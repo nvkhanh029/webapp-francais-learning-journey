@@ -23,6 +23,7 @@ import { Link } from "react-router-dom";
 import ErrorState from "../components/common/ErrorState.jsx";
 import LoadingState from "../components/common/LoadingState.jsx";
 import PracticeHeader from "../features/practice/PracticeHeader.jsx";
+import { practiceErrorKeys } from "../features/practice/practiceErrors.js";
 import PracticeResult from "../features/practice/PracticeResult.jsx";
 import PracticeReview from "../features/practice/PracticeReview.jsx";
 import QuestionRenderer from "../features/practice/QuestionRenderer.jsx";
@@ -68,6 +69,7 @@ export default function MixedPracticePage() {
   // 0 before the first run; bumped by "Practice again" so a genuinely new run is started.
   const [attempt, setAttempt] = useState(0);
 
+  const specificError = practiceErrorKeys(error);
   const isUnavailable = Boolean(error?.code === "mixed_practice_unavailable");
   const isStarting = phase === "loading" || phase === "submitting";
   const isAnswering = phase === "answering";
@@ -194,8 +196,8 @@ export default function MixedPracticePage() {
           {phase === "error" && !isUnavailable && (
             <ErrorState
               headingLevel={1}
-              title={t("mixed.createError")}
-              message={t("mixed.createError")}
+              title={specificError ? t(specificError.titleKey) : t("mixed.createError")}
+              message={specificError ? t(specificError.textKey) : t("mixed.createError")}
               onRetry={() => setAttempt((count) => count + 1)}
             />
           )}
