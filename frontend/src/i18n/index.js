@@ -42,6 +42,14 @@ export function capitalize(text, language = getLanguage()) {
   return text.charAt(0).toLocaleUpperCase(localeFor(language)) + text.slice(1);
 }
 
+// The seven weekday column headings, Monday first. This is the one list-valued entry in the table
+// (the calendar needs all seven at once), so it is read through this accessor rather than t().
+export function weekdayLabels(key = "calendar.weekdays") {
+  const entry = strings[key];
+  const labels = entry && (entry[getLanguage()] ?? entry.vi);
+  return Array.isArray(labels) ? labels : [];
+}
+
 // Month name for a 0-based month index, e.g. "Tháng 5" / "May".
 export function monthName(monthIndex, year = 2026) {
   const date = new Date(year, monthIndex, 1, 12);

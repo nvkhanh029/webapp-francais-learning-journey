@@ -1,506 +1,504 @@
-
-        /* ======================================================================
+/* ======================================================================
          1. Theme and base styles (identical to DashboardPage; the learner-state
             tokens are the sage role used by the Grammar / Vocabulary / Conjugation pages)
          ====================================================================== */
 
-        .page :global(button:focus-visible),
-        .page :global(a:focus-visible),
-        .page :global([tabindex="-1"]:focus-visible) {
-            outline: 2px solid var(--color-primary);
-            outline-offset: 2px;
-        }
+.page :global(button:focus-visible),
+.page :global(a:focus-visible),
+.page :global([tabindex="-1"]:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
 
-        /* Google Material Symbols are decorative; their labels stay in the HTML. */
-        .page :global(.material-symbols-outlined) {
-            display: inline-block;
-            flex-shrink: 0;
-            width: 1em;
-            height: 1em;
-            overflow: hidden;
-            font-family: "Material Symbols Outlined";
-            font-size: 20px;
-            font-style: normal;
-            font-weight: normal;
-            line-height: 1;
-            letter-spacing: normal;
-            text-transform: none;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-            -webkit-font-smoothing: antialiased;
-            font-feature-settings: "liga";
-        }
+/* Google Material Symbols are decorative; their labels stay in the HTML. */
+.page :global(.material-symbols-outlined) {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  font-family: "Material Symbols Outlined";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "liga";
+}
 
-        /* ======================================================================
+/* ======================================================================
          2. Shared layout and components (same values as DashboardPage)
          ====================================================================== */
 
-        .page :global(.review-page) {
-            flex: 1;
-            padding-top: 112px;
-            padding-bottom: var(--space-xl);
-        }
+.page :global(.review-page) {
+  flex: 1;
+  padding-top: 112px;
+  padding-bottom: var(--space-xl);
+}
 
-        .page :global(.card) {
-            min-width: 0;
-            padding: var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-card);
-            background: var(--color-card);
-        }
+.page :global(.card) {
+  min-width: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+}
 
-        .page :global(.section-title) {
-            color: var(--color-heading);
-            font-size: var(--text-section);
-            font-weight: 600;
-            line-height: var(--leading-heading);
-            overflow-wrap: anywhere;
-            letter-spacing: var(--tracking-heading);
-        }
+.page :global(.section-title) {
+  color: var(--color-heading);
+  font-size: var(--text-section);
+  font-weight: 600;
+  line-height: var(--leading-heading);
+  overflow-wrap: anywhere;
+  letter-spacing: var(--tracking-heading);
+}
 
-        .page :global(.card-subtitle) {
-            color: var(--color-muted);
-            font-size: var(--text-small);
-            line-height: var(--leading-body);
-        }
+.page :global(.card-subtitle) {
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+}
 
-        .page :global(.icon-tile .material-symbols-outlined) {
-            font-size: 22px;
-        }
+.page :global(.icon-tile .material-symbols-outlined) {
+  font-size: 22px;
+}
 
-        /* Compact tile for in-card section headers that sit beside a title. */
-        .page :global(.icon-tile-compact) {
-            width: 36px;
-            height: 36px;
-        }
+/* Compact tile for in-card section headers that sit beside a title. */
+.page :global(.icon-tile-compact) {
+  width: 36px;
+  height: 36px;
+}
 
-        .page :global(.icon-tile-compact .material-symbols-outlined) {
-            font-size: 20px;
-        }
+.page :global(.icon-tile-compact .material-symbols-outlined) {
+  font-size: 20px;
+}
 
-        .page :global(.badge) {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 2px 10px;
-            border: 1px solid var(--color-border);
-            border-radius: 9999px;
-            background: var(--color-background);
-            color: var(--badge-color, var(--color-primary-dark));
-            font-size: var(--text-caption);
-            font-weight: 700;
-            line-height: var(--leading-label);
-            font-variant-numeric: tabular-nums;
-            white-space: nowrap;
-        }
+.page :global(.badge) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  background: var(--color-background);
+  color: var(--badge-color, var(--color-primary-dark));
+  font-size: var(--text-caption);
+  font-weight: 700;
+  line-height: var(--leading-label);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
 
-        .page :global(.badge .material-symbols-outlined) {
-            font-size: 16px;
-        }
+.page :global(.badge .material-symbols-outlined) {
+  font-size: 16px;
+}
 
-        /* Learned state: icon + text, never color alone. */
-        .page :global(.badge-learned) {
-            border-color: var(--color-sage-border);
-            background: var(--color-sage-soft);
-            color: var(--color-sage-dark);
-        }
+/* Learned state: icon + text, never color alone. */
+.page :global(.badge-learned) {
+  border-color: var(--color-sage-border);
+  background: var(--color-sage-soft);
+  color: var(--color-sage-dark);
+}
 
-        .page :global(.button:hover .material-symbols-outlined) {
-            transform: translateX(4px);
-        }
+.page :global(.button:hover .material-symbols-outlined) {
+  transform: translateX(4px);
+}
 
-        .page :global(.button-secondary) {
-            width: 100%;
-            padding: 12px var(--space-md);
-            border: 1px solid var(--color-border);
-            background: var(--color-background);
-            color: var(--color-heading);
-            font-size: var(--text-body);
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-        }
+.page :global(.button-secondary) {
+  width: 100%;
+  padding: 12px var(--space-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-heading);
+  font-size: var(--text-body);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+}
 
-        .page :global(.button-secondary:hover) {
-            background: var(--color-heading);
-            color: #ffffff;
-        }
+.page :global(.button-secondary:hover) {
+  background: var(--color-heading);
+  color: #ffffff;
+}
 
-        .page :global(.button-compact) {
-            width: auto;
-            padding: var(--space-sm) var(--space-lg);
-        }
+.page :global(.button-compact) {
+  width: auto;
+  padding: var(--space-sm) var(--space-lg);
+}
 
-        /* Toggle-style buttons keep a leading state icon still (as on the lesson pages). */
-        .page :global(.button-toggle:hover .material-symbols-outlined) {
-            transform: none;
-        }
+/* Toggle-style buttons keep a leading state icon still (as on the lesson pages). */
+.page :global(.button-toggle:hover .material-symbols-outlined) {
+  transform: none;
+}
 
-        .page :global(.lesson-link) {
-            display: inline-flex;
-            align-items: center;
-            gap: 2px;
-            border-radius: 2px;
-            color: var(--link-color, var(--color-primary));
-            font-weight: 700;
-            white-space: nowrap;
-        }
+.page :global(.lesson-link) {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  border-radius: 2px;
+  color: var(--link-color, var(--color-primary));
+  font-weight: 700;
+  white-space: nowrap;
+}
 
-        .page :global(.lesson-link:hover) {
-            text-decoration: underline;
-        }
+.page :global(.lesson-link:hover) {
+  text-decoration: underline;
+}
 
-        .page :global(.lesson-link:focus-visible) {
-            outline-color: var(--link-color, var(--color-primary));
-        }
+.page :global(.lesson-link:focus-visible) {
+  outline-color: var(--link-color, var(--color-primary));
+}
 
-        .page :global(.lesson-link .material-symbols-outlined) {
-            font-size: 14px;
-        }
+.page :global(.lesson-link .material-symbols-outlined) {
+  font-size: 14px;
+}
 
-        .page :global(.empty-text) {
-            padding: var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-small);
-            background: var(--color-background);
-            color: var(--color-muted);
-            font-size: var(--text-small);
-            line-height: var(--leading-body);
-            text-align: center;
-        }
+.page :global(.empty-text) {
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-background);
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+  text-align: center;
+}
 
-        /* Page-level loading, error and empty states (FD §6.6). */
-        .page :global(.page-state) {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-xl) var(--space-lg);
-            text-align: center;
-        }
+/* Page-level loading, error and empty states (FD §6.6). */
+.page :global(.page-state) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
+}
 
-        .page :global(.page-state>.material-symbols-outlined) {
-            color: var(--color-primary);
-            font-size: 32px;
-        }
+.page :global(.page-state > .material-symbols-outlined) {
+  color: var(--color-primary);
+  font-size: 32px;
+}
 
-        .page :global(.page-state p) {
-            max-width: 32rem;
-            color: var(--color-muted);
-        }
+.page :global(.page-state p) {
+  max-width: 32rem;
+  color: var(--color-muted);
+}
 
-        .page :global(.page-state .button) {
-            margin-top: var(--space-sm);
-        }
+.page :global(.page-state .button) {
+  margin-top: var(--space-sm);
+}
 
-        .page :global(.page-state-title:focus) {
-            outline: none;
-        }
+.page :global(.page-state-title:focus) {
+  outline: none;
+}
 
-        .page :global(.spinner) {
-            width: 32px;
-            height: 32px;
-            border: 3px solid var(--color-primary-border);
-            border-top-color: var(--color-primary);
-            border-radius: 50%;
-            animation: spin 900ms linear infinite;
-        }
+.page :global(.spinner) {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-primary-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 900ms linear infinite;
+}
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-        .page :global(.explore-links) {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: var(--space-xs) var(--space-lg);
-            margin-top: var(--space-sm);
-            font-size: var(--text-small);
-            line-height: var(--leading-label);
-        }
+.page :global(.explore-links) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs) var(--space-lg);
+  margin-top: var(--space-sm);
+  font-size: var(--text-small);
+  line-height: var(--leading-label);
+}
 
-        .page :global(.explore-links .lesson-link) {
-            min-height: 44px;
-        }
+.page :global(.explore-links .lesson-link) {
+  min-height: 44px;
+}
 
-        /* Subject accent families (feature-level pattern shared with the Dashboard). */
+/* Subject accent families (feature-level pattern shared with the Dashboard). */
 
-        /* ======================================================================
+/* ======================================================================
          3. Header: brand, navigation, language controls, logout, compact menu
             (identical to DashboardPage)
          ====================================================================== */
 
-        /* ======================================================================
+/* ======================================================================
          4. Breadcrumbs and page header
          ====================================================================== */
-        .page :global(.breadcrumbs) {
-            margin-bottom: var(--space-md);
-        }
+.page :global(.breadcrumbs) {
+  margin-bottom: var(--space-md);
+}
 
-        .page :global(.breadcrumb-list) {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: var(--space-xs);
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            color: var(--color-muted);
-            font-size: var(--text-label);
-            line-height: var(--leading-label);
-        }
+.page :global(.breadcrumb-list) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-muted);
+  font-size: var(--text-label);
+  line-height: var(--leading-label);
+}
 
-        .page :global(.breadcrumb-list li) {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
-            min-width: 0;
-            overflow-wrap: anywhere;
-        }
+.page :global(.breadcrumb-list li) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 
-        .page :global(.crumb-separator) {
-            color: var(--color-primary-border);
-            font-size: 16px;
-        }
+.page :global(.crumb-separator) {
+  color: var(--color-primary-border);
+  font-size: 16px;
+}
 
-        .page :global(.crumb-link) {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
-            min-height: 44px;
-            padding-inline: var(--space-sm);
-            margin-inline-start: calc(-1 * var(--space-sm));
-            border-radius: var(--radius-small);
-            color: var(--color-primary);
-            font-weight: 700;
-            transition: background-color 150ms;
-        }
+.page :global(.crumb-link) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 44px;
+  padding-inline: var(--space-sm);
+  margin-inline-start: calc(-1 * var(--space-sm));
+  border-radius: var(--radius-small);
+  color: var(--color-primary);
+  font-weight: 700;
+  transition: background-color 150ms;
+}
 
-        .page :global(.crumb-link:hover) {
-            background: var(--color-primary-soft);
-        }
+.page :global(.crumb-link:hover) {
+  background: var(--color-primary-soft);
+}
 
-        .page :global(.crumb-link .material-symbols-outlined) {
-            font-size: 18px;
-            transition: transform 150ms;
-        }
+.page :global(.crumb-link .material-symbols-outlined) {
+  font-size: 18px;
+  transition: transform 150ms;
+}
 
-        .page :global(.crumb-link:hover .material-symbols-outlined) {
-            transform: translateX(-4px);
-        }
+.page :global(.crumb-link:hover .material-symbols-outlined) {
+  transform: translateX(-4px);
+}
 
-        .page :global(.crumb-current) {
-            color: var(--color-heading);
-            font-weight: 600;
-        }
+.page :global(.crumb-current) {
+  color: var(--color-heading);
+  font-weight: 600;
+}
 
-        /* Page header: title, one short sentence, derived count. Deliberately lighter than
+/* Page header: title, one short sentence, derived count. Deliberately lighter than
            the Dashboard greeting: no illustration, no statistics. */
-        .page :global(.review-header) {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-md);
-            margin-bottom: var(--space-lg);
-            padding-bottom: var(--space-md);
-            border-bottom: 1px solid rgb(234 219 204 / 60%);
-        }
+.page :global(.review-header) {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid rgb(234 219 204 / 60%);
+}
 
-        .page :global(.review-header-text) {
-            flex: 1;
-            min-width: 0;
-        }
+.page :global(.review-header-text) {
+  flex: 1;
+  min-width: 0;
+}
 
-        .page :global(.review-heading-row) {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--space-sm) var(--space-md);
-        }
+.page :global(.review-heading-row) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+}
 
-        .page :global(.review-page-title) {
-            color: var(--color-heading);
-            font-size: var(--text-display);
-            font-weight: 700;
-            line-height: 1.25;
-            letter-spacing: var(--tracking-heading);
-            overflow-wrap: anywhere;
-        }
+.page :global(.review-page-title) {
+  color: var(--color-heading);
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: var(--tracking-heading);
+  overflow-wrap: anywhere;
+}
 
-        .page :global(.review-page-description) {
-            margin-top: var(--space-xs);
-            color: var(--color-muted);
-            font-size: var(--text-body);
-            line-height: var(--leading-body);
-        }
+.page :global(.review-page-description) {
+  margin-top: var(--space-xs);
+  color: var(--color-muted);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
 
-        /* ======================================================================
+/* ======================================================================
          5. Module groups and saved rows
          ====================================================================== */
-        .page :global(.review-groups) {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-lg);
-        }
+.page :global(.review-groups) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
 
-        .page :global(.group-heading) {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-md);
-        }
+.page :global(.group-heading) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
 
-        .page :global(.group-heading .badge) {
-            margin-left: auto;
-        }
+.page :global(.group-heading .badge) {
+  margin-left: auto;
+}
 
-        .page :global(.review-list) {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-sm);
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
+.page :global(.review-list) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-        /* One saved learning unit. Stacked on phones; a single row from 768px. */
-        .page :global(.review-item) {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-md);
-            padding: var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-small);
-            background: var(--color-background);
-            transition: background-color 150ms;
-        }
+/* One saved learning unit. Stacked on phones; a single row from 768px. */
+.page :global(.review-item) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-background);
+  transition: background-color 150ms;
+}
 
-        .page :global(.review-item:hover) {
-            background: var(--accent-soft, var(--color-primary-soft));
-        }
+.page :global(.review-item:hover) {
+  background: var(--accent-soft, var(--color-primary-soft));
+}
 
-        .page :global(.review-info) {
-            flex: 1;
-            min-width: 0;
-        }
+.page :global(.review-info) {
+  flex: 1;
+  min-width: 0;
+}
 
-        /* French title: the identity of the unit. */
-        .page :global(.review-title) {
-            color: var(--color-heading);
-            font-size: var(--text-card-title);
-            font-weight: 600;
-            line-height: var(--leading-heading);
-            overflow-wrap: anywhere;
-            letter-spacing: var(--tracking-heading);
-        }
+/* French title: the identity of the unit. */
+.page :global(.review-title) {
+  color: var(--color-heading);
+  font-size: var(--text-card-title);
+  font-weight: 600;
+  line-height: var(--leading-heading);
+  overflow-wrap: anywhere;
+  letter-spacing: var(--tracking-heading);
+}
 
-        /* Localized title: support text, clearly secondary. */
-        .page :global(.review-support) {
-            margin-top: 2px;
-            color: var(--color-muted);
-            font-size: var(--text-small);
-            line-height: var(--leading-body);
-            overflow-wrap: anywhere;
-        }
+/* Localized title: support text, clearly secondary. */
+.page :global(.review-support) {
+  margin-top: 2px;
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+  overflow-wrap: anywhere;
+}
 
-        .page :global(.review-state) {
-            margin-top: var(--space-sm);
-        }
+.page :global(.review-state) {
+  margin-top: var(--space-sm);
+}
 
-        .page :global(.review-actions) {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: var(--space-xs) var(--space-md);
-            padding-top: var(--space-sm);
-            border-top: 1px solid rgb(234 219 204 / 50%);
-        }
+.page :global(.review-actions) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-xs) var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgb(234 219 204 / 50%);
+}
 
-        .page :global(.review-open) {
-            min-height: 44px;
-            padding-inline: var(--space-xs);
-            font-size: var(--text-body);
-        }
+.page :global(.review-open) {
+  min-height: 44px;
+  padding-inline: var(--space-xs);
+  font-size: var(--text-body);
+}
 
-        .page :global(.review-open .material-symbols-outlined) {
-            font-size: 18px;
-        }
+.page :global(.review-open .material-symbols-outlined) {
+  font-size: 18px;
+}
 
-        /* Removing from Review Later is a reversible state change, not deletion:
+/* Removing from Review Later is a reversible state change, not deletion:
            the neutral secondary style is used, not a danger style. */
-        .page :global(.review-remove) {
-            min-height: 44px;
-            padding: var(--space-sm) var(--space-md);
-            font-size: var(--text-small);
-        }
+.page :global(.review-remove) {
+  min-height: 44px;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--text-small);
+}
 
-        .page :global(.review-remove .material-symbols-outlined) {
-            font-size: 18px;
-        }
+.page :global(.review-remove .material-symbols-outlined) {
+  font-size: 18px;
+}
 
-        /* Prototype-only confirmation, mirrors the Stitch draft's toast. */
-        .page :global(.toast) {
-            position: fixed;
-            z-index: 60;
-            right: var(--page-padding);
-            bottom: var(--space-lg);
-            left: var(--page-padding);
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            max-width: 26rem;
-            margin-left: auto;
-            padding: 12px var(--space-md);
-            border-radius: var(--radius-small);
-            background: var(--color-heading);
-            box-shadow: var(--shadow-md);
-            color: #ffffff;
-            font-size: var(--text-small);
-            font-weight: 600;
-            line-height: var(--leading-label);
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(8px);
-            transition: opacity 200ms, transform 200ms;
-        }
+/* Prototype-only confirmation, mirrors the Stitch draft's toast. */
+.page :global(.toast) {
+  position: fixed;
+  z-index: 60;
+  right: var(--page-padding);
+  bottom: var(--space-lg);
+  left: var(--page-padding);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  max-width: 26rem;
+  margin-left: auto;
+  padding: 12px var(--space-md);
+  border-radius: var(--radius-small);
+  background: var(--color-heading);
+  box-shadow: var(--shadow-md);
+  color: #ffffff;
+  font-size: var(--text-small);
+  font-weight: 600;
+  line-height: var(--leading-label);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition:
+    opacity 200ms,
+    transform 200ms;
+}
 
-        .page :global(.toast.is-visible) {
-            opacity: 1;
-            transform: none;
-        }
+.page :global(.toast.is-visible) {
+  opacity: 1;
+  transform: none;
+}
 
-        .page :global(.toast .material-symbols-outlined) {
-            font-size: 18px;
-        }
+.page :global(.toast .material-symbols-outlined) {
+  font-size: 18px;
+}
 
-        /* ======================================================================
+/* ======================================================================
          6. Footer and responsive layout (FD §8)
          ====================================================================== */
 
-        @media (min-width: 640px) {
+@media (min-width: 640px) {
+  .page :global(.card) {
+    padding: var(--space-lg);
+  }
+}
 
-            .page :global(.card) {
-                padding: var(--space-lg);
-            }
-        }
+@media (min-width: 768px) {
+  .page :global(.review-item) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-        @media (min-width: 768px) {
-
-            .page :global(.review-item) {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-
-            .page :global(.review-actions) {
-                flex-shrink: 0;
-                flex-wrap: nowrap;
-                gap: var(--space-md);
-                padding-top: 0;
-                border-top: 0;
-            }
-        }
-    
+  .page :global(.review-actions) {
+    flex-shrink: 0;
+    flex-wrap: nowrap;
+    gap: var(--space-md);
+    padding-top: 0;
+    border-top: 0;
+  }
+}

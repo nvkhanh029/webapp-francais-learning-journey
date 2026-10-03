@@ -1,654 +1,658 @@
-
-        /* ======================================================================
+/* ======================================================================
          1. Theme and base styles (identical to DashboardPage / GrammarPage; FD §7.3, §7.4)
          ====================================================================== */
 
-        .page :global(button:focus-visible),
-        .page :global(a:focus-visible) {
-            outline: 2px solid var(--color-primary);
-            outline-offset: 2px;
-        }
+.page :global(button:focus-visible),
+.page :global(a:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
 
-        .page :global(.material-symbols-outlined) {
-            display: inline-block;
-            flex-shrink: 0;
-            width: 1em;
-            height: 1em;
-            overflow: hidden;
-            font-family: "Material Symbols Outlined";
-            font-size: 20px;
-            font-style: normal;
-            font-weight: normal;
-            line-height: 1;
-            letter-spacing: normal;
-            text-transform: none;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-            -webkit-font-smoothing: antialiased;
-            font-feature-settings: "liga";
-        }
+.page :global(.material-symbols-outlined) {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  font-family: "Material Symbols Outlined";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "liga";
+}
 
-        /* ======================================================================
+/* ======================================================================
          2. Shared layout and components (same values as DashboardPage; FD §7.6)
          ====================================================================== */
 
-        .page :global(.card) {
-            min-width: 0;
-            padding: var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-card);
-            background: var(--color-card);
-        }
+.page :global(.card) {
+  min-width: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+}
 
-        .page :global(.icon-tile .material-symbols-outlined) {
-            font-size: 22px;
-        }
+.page :global(.icon-tile .material-symbols-outlined) {
+  font-size: 22px;
+}
 
-        /* Solid tile: the module page icon (GrammarPage uses gold; Vocabulary uses its blue). */
-        .page :global(.icon-tile-solid) {
-            border-color: var(--accent);
-            background: var(--accent);
-            color: #ffffff;
-        }
+/* Solid tile: the module page icon (GrammarPage uses gold; Vocabulary uses its blue). */
+.page :global(.icon-tile-solid) {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+}
 
-        .page :global(.badge .material-symbols-outlined) {
-            font-size: 16px;
-        }
+.page :global(.badge .material-symbols-outlined) {
+  font-size: 16px;
+}
 
-        /* Content counts: informational role (blue), same as GrammarPage. */
-        .page :global(.badge-info) {
-            border-color: var(--color-blue-border);
-            background: var(--color-blue-soft);
-            color: var(--color-blue-dark);
-        }
+/* Content counts: informational role (blue), same as GrammarPage. */
+.page :global(.badge-info) {
+  border-color: var(--color-blue-border);
+  background: var(--color-blue-soft);
+  color: var(--color-blue-dark);
+}
 
-        .page :global(.badge-learned) {
-            border-color: var(--color-sage-border);
-            background: var(--color-sage-soft);
-            color: var(--color-sage-dark);
-        }
+.page :global(.badge-learned) {
+  border-color: var(--color-sage-border);
+  background: var(--color-sage-soft);
+  color: var(--color-sage-dark);
+}
 
-        .page :global(.badge-review) {
-            border-color: var(--color-rose-border);
-            background: var(--color-rose-soft);
-            color: var(--color-rose-dark);
-        }
+.page :global(.badge-review) {
+  border-color: var(--color-rose-border);
+  background: var(--color-rose-soft);
+  color: var(--color-rose-dark);
+}
 
-        .page :global(.button:hover .material-symbols-outlined) {
-            transform: translateX(4px);
-        }
+.page :global(.button:hover .material-symbols-outlined) {
+  transform: translateX(4px);
+}
 
-        .page :global(.button-secondary) {
-            width: 100%;
-            padding: 12px var(--space-md);
-            border: 1px solid var(--color-border);
-            background: var(--color-background);
-            color: var(--color-heading);
-            font-size: var(--text-body);
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-        }
+.page :global(.button-secondary) {
+  width: 100%;
+  padding: 12px var(--space-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-heading);
+  font-size: var(--text-body);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+}
 
-        .page :global(.button-secondary:hover) {
-            background: var(--color-heading);
-            color: #ffffff;
-        }
+.page :global(.button-secondary:hover) {
+  background: var(--color-heading);
+  color: #ffffff;
+}
 
-        .page :global(.button-compact) {
-            width: auto;
-            padding: var(--space-sm) var(--space-lg);
-        }
+.page :global(.button-compact) {
+  width: auto;
+  padding: var(--space-sm) var(--space-lg);
+}
 
-        .page :global(.progress-labels) {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-xs);
-            color: var(--color-description);
-            font-size: var(--text-caption);
-            font-weight: 600;
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-            font-variant-numeric: tabular-nums;
-        }
+.page :global(.progress-labels) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  color: var(--color-description);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  font-variant-numeric: tabular-nums;
+}
 
-        .page :global(.progress-value) {
-            flex-shrink: 0;
-            color: var(--skill-value-color, var(--color-primary-dark));
-            font-weight: 700;
-            font-variant-numeric: tabular-nums;
-        }
+.page :global(.progress-value) {
+  flex-shrink: 0;
+  color: var(--skill-value-color, var(--color-primary-dark));
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
 
-        .page :global(.progress-track) {
-            height: 8px;
-            overflow: hidden;
-            border: 1px solid var(--color-border);
-            border-radius: 9999px;
-            background: var(--color-background);
-        }
+.page :global(.progress-track) {
+  height: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  background: var(--color-background);
+}
 
-        .page :global(.progress-fill) {
-            width: var(--progress, 0%);
-            height: 100%;
-            border-radius: inherit;
-            background: var(--progress-color, var(--color-primary));
-            transition: width 500ms;
-        }
+.page :global(.progress-fill) {
+  width: var(--progress, 0%);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--progress-color, var(--color-primary));
+  transition: width 500ms;
+}
 
-        .page :global(.empty-text) {
-            padding: var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-small);
-            background: var(--color-card);
-            color: var(--color-muted);
-            font-size: var(--text-small);
-            line-height: var(--leading-body);
-            text-align: center;
-        }
+.page :global(.empty-text) {
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-card);
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+  text-align: center;
+}
 
-        /* Page-level loading, error, and empty states (FD §6.6). */
-        .page :global(.page-state) {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-xl) var(--space-lg);
-            text-align: center;
-        }
+/* Page-level loading, error, and empty states (FD §6.6). */
+.page :global(.page-state) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
+}
 
-        .page :global(.page-state>.material-symbols-outlined) {
-            color: var(--color-primary);
-            font-size: 32px;
-        }
+.page :global(.page-state > .material-symbols-outlined) {
+  color: var(--color-primary);
+  font-size: 32px;
+}
 
-        .page :global(.page-state p) {
-            max-width: 36rem;
-            color: var(--color-muted);
-        }
+.page :global(.page-state p) {
+  max-width: 36rem;
+  color: var(--color-muted);
+}
 
-        .page :global(.page-state .button) {
-            margin-top: var(--space-sm);
-        }
+.page :global(.page-state .button) {
+  margin-top: var(--space-sm);
+}
 
-        .page :global(.spinner) {
-            width: 32px;
-            height: 32px;
-            border: 3px solid var(--color-primary-border);
-            border-top-color: var(--color-primary);
-            border-radius: 50%;
-            animation: spin 900ms linear infinite;
-        }
+.page :global(.spinner) {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-primary-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 900ms linear infinite;
+}
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-        /* Text-link CTA with trailing arrow (used by the empty state). */
-        .page :global(.explore-links) {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: var(--space-sm) var(--space-lg);
-            margin-top: var(--space-sm);
-            font-size: var(--text-small);
-            line-height: var(--leading-label);
-        }
+/* Text-link CTA with trailing arrow (used by the empty state). */
+.page :global(.explore-links) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm) var(--space-lg);
+  margin-top: var(--space-sm);
+  font-size: var(--text-small);
+  line-height: var(--leading-label);
+}
 
-        .page :global(.lesson-link) {
-            display: inline-flex;
-            align-items: center;
-            gap: 2px;
-            border-radius: 2px;
-            color: var(--link-color);
-            font-weight: 700;
-            white-space: nowrap;
-        }
+.page :global(.lesson-link) {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  border-radius: 2px;
+  color: var(--link-color);
+  font-weight: 700;
+  white-space: nowrap;
+}
 
-        .page :global(.lesson-link:hover) {
-            text-decoration: underline;
-        }
+.page :global(.lesson-link:hover) {
+  text-decoration: underline;
+}
 
-        .page :global(.lesson-link:focus-visible) {
-            outline-color: var(--link-color);
-        }
+.page :global(.lesson-link:focus-visible) {
+  outline-color: var(--link-color);
+}
 
-        .page :global(.lesson-link .material-symbols-outlined) {
-            font-size: 14px;
-        }
+.page :global(.lesson-link .material-symbols-outlined) {
+  font-size: 14px;
+}
 
-        /* Subject accent families (FD §7.3). */
-        .page :global(.subject-vocabulary) {
-            --progress-color: var(--color-blue);
-            --skill-value-color: var(--color-blue-dark);
-        }
+/* Subject accent families (FD §7.3). */
+.page :global(.subject-vocabulary) {
+  --progress-color: var(--color-blue);
+  --skill-value-color: var(--color-blue-dark);
+}
 
-        /* ======================================================================
+/* ======================================================================
          3. Header (identical to DashboardPage)
          ====================================================================== */
 
-        /* ======================================================================
+/* ======================================================================
          4. Vocabulary page header + progress + Alphabet & Accents reference
          The left column groups the intro and a GrammarPage-style progress panel.
          Alphabet & Accents remains the companion reference panel on the right from 1024px.
          ====================================================================== */
-        .page :global(.vocabulary-page) {
-            flex: 1;
-            padding-top: 112px;
-            padding-bottom: var(--space-xl);
-        }
+.page :global(.vocabulary-page) {
+  flex: 1;
+  padding-top: 112px;
+  padding-bottom: var(--space-xl);
+}
 
-        .page :global(.page-section) {
-            margin-bottom: var(--space-lg);
-        }
+.page :global(.page-section) {
+  margin-bottom: var(--space-lg);
+}
 
-        .page :global(.page-hero) {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr);
-            gap: var(--space-md) var(--space-lg);
-            align-items: center;
-            margin-top: 12px;
-        }
+.page :global(.page-hero) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md) var(--space-lg);
+  align-items: center;
+  margin-top: 12px;
+}
 
-        .page :global(.hero-main) {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-lg);
-            min-width: 0;
-        }
+.page :global(.hero-main) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  min-width: 0;
+}
 
-        .page :global(.hero-intro) {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-md);
-            min-width: 0;
-        }
+.page :global(.hero-intro) {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  min-width: 0;
+}
 
-        .page :global(.page-title) {
-            color: var(--color-heading);
-            font-size: var(--text-display);
-            font-weight: 700;
-            line-height: 1.25;
-            letter-spacing: var(--tracking-heading);
-        }
+.page :global(.page-title) {
+  color: var(--color-heading);
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: var(--tracking-heading);
+}
 
-        /* Decorative French letters, the brand motif from the mascot (FD §7.5). */
-        .page :global(.title-glyphs) {
-            display: inline-block;
-            margin-left: var(--space-sm);
-            font-size: var(--text-feature);
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            vertical-align: middle;
-            transform: rotate(-6deg);
-        }
+/* Decorative French letters, the brand motif from the mascot (FD §7.5). */
+.page :global(.title-glyphs) {
+  display: inline-block;
+  margin-left: var(--space-sm);
+  font-size: var(--text-feature);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  vertical-align: middle;
+  transform: rotate(-6deg);
+}
 
-        /* Bleu, or, rouge: a small tricolore-and-croissant nod, not a flag block. */
-        .page :global(.title-glyphs>span:nth-child(1)) {
-            color: var(--color-blue);
-        }
+/* Bleu, or, rouge: a small tricolore-and-croissant nod, not a flag block. */
+.page :global(.title-glyphs > span:nth-child(1)) {
+  color: var(--color-blue);
+}
 
-        .page :global(.title-glyphs>span:nth-child(2)) {
-            color: var(--color-gold);
-        }
+.page :global(.title-glyphs > span:nth-child(2)) {
+  color: var(--color-gold);
+}
 
-        .page :global(.title-glyphs>span:nth-child(3)) {
-            color: var(--color-rose);
-        }
+.page :global(.title-glyphs > span:nth-child(3)) {
+  color: var(--color-rose);
+}
 
-        .page :global(.page-description) {
-            max-width: 27rem;
-            margin-top: var(--space-xs);
-            color: var(--color-muted);
-            font-size: var(--text-body);
-            line-height: var(--leading-body);
-            overflow-wrap: anywhere;
-        }
+.page :global(.page-description) {
+  max-width: 27rem;
+  margin-top: var(--space-xs);
+  color: var(--color-muted);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  overflow-wrap: anywhere;
+}
 
+.page :global(.overview-panel) {
+  width: 100%;
+  max-width: 360px;
 
-        .page :global(.overview-panel) {
-            width: 100%;
-            max-width: 360px;
+  padding: 12px var(--space-md);
+  border: 1px solid var(--color-primary-border);
+  border-radius: var(--radius-small);
+  background: var(--color-background);
+}
 
-            padding: 12px var(--space-md);
-            border: 1px solid var(--color-primary-border);
-            border-radius: var(--radius-small);
-            background: var(--color-background);
-        }
+.page :global(.overview-panel .progress-track) {
+  background: var(--color-card);
+}
 
-        .page :global(.overview-panel .progress-track) {
-            background: var(--color-card);
-        }
+.page :global(.overview-panel .progress-labels) {
+  margin-bottom: var(--space-sm);
+}
 
-        .page :global(.overview-panel .progress-labels) {
-            margin-bottom: var(--space-sm);
-        }
+/* State totals double as the page's color legend (sage = learned, rose = Review Later). */
+.page :global(.overview-states) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0 0;
+  padding: 0;
+  list-style: none;
+  font-variant-numeric: tabular-nums;
+}
 
-        /* State totals double as the page's color legend (sage = learned, rose = Review Later). */
-        .page :global(.overview-states) {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-md);
-            margin: var(--space-lg) 0 0;
-            padding: 0;
-            list-style: none;
-            font-variant-numeric: tabular-nums;
-        }
+/* Completed module: same learned-state treatment as GrammarPage. */
+.page :global(.overview-panel.is-complete) {
+  --progress-color: var(--color-sage);
+  --skill-value-color: var(--color-sage-dark);
+}
 
-        /* Completed module: same learned-state treatment as GrammarPage. */
-        .page :global(.overview-panel.is-complete) {
-            --progress-color: var(--color-sage);
-            --skill-value-color: var(--color-sage-dark);
-        }
-
-
-        /* Reference entry: warm gold "croissant" surface, so it reads as a different kind of thing
+/* Reference entry: warm gold "croissant" surface, so it reads as a different kind of thing
            from the white Topic cards. The role is also stated in text (eyebrow + note), and it has
            no learner state of any kind. The whole panel is one link; the CTA is a visual part of it. */
-        .page :global(.reference-card) {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr);
-            gap: var(--space-sm);
-            padding: var(--space-md);
-            border: 1px solid var(--color-gold-border);
-            border-radius: var(--radius-small);
-            background: var(--color-primary-soft);
-            transition: border-color 150ms, box-shadow 150ms;
-        }
+.page :global(.reference-card) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  border: 1px solid var(--color-gold-border);
+  border-radius: var(--radius-small);
+  background: var(--color-primary-soft);
+  transition:
+    border-color 150ms,
+    box-shadow 150ms;
+}
 
-        .page :global(.reference-card:hover),
-        .page :global(.reference-card:focus-visible) {
-            border-color: var(--color-gold);
-            box-shadow: var(--shadow-sm);
-        }
+.page :global(.reference-card:hover),
+.page :global(.reference-card:focus-visible) {
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-sm);
+}
 
-        .page :global(.reference-eyebrow) {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--color-gold-dark);
-            font-size: var(--text-caption);
-            font-weight: 700;
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-        }
+.page :global(.reference-eyebrow) {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-gold-dark);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+}
 
-        .page :global(.reference-eyebrow .material-symbols-outlined) {
-            font-size: 18px;
-        }
+.page :global(.reference-eyebrow .material-symbols-outlined) {
+  font-size: 18px;
+}
 
-        .page :global(.reference-title) {
-            display: block;
-            color: var(--color-heading);
-            font-family: var(--font-heading);
-            font-size: var(--text-card-title);
-            font-weight: 600;
-            line-height: var(--leading-heading);
-            letter-spacing: var(--tracking-heading);
-            overflow-wrap: anywhere;
-        }
+.page :global(.reference-title) {
+  display: block;
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: var(--text-card-title);
+  font-weight: 600;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  overflow-wrap: anywhere;
+}
 
-        /* Decorative sample of the content (accented letters). Hidden from assistive technology:
+/* Decorative sample of the content (accented letters). Hidden from assistive technology:
            the title already says what the page contains. */
-        .page :global(.reference-letters) {
-            display: block;
-            color: var(--color-gold);
-            font-family: var(--font-heading);
-            font-size: var(--text-feature);
-            font-weight: 600;
-            line-height: 1.2;
-            letter-spacing: 0.14em;
-            overflow-wrap: anywhere;
-        }
+.page :global(.reference-letters) {
+  display: block;
+  color: var(--color-gold);
+  font-family: var(--font-heading);
+  font-size: var(--text-feature);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  overflow-wrap: anywhere;
+}
 
-        .page :global(.reference-note) {
-            display: block;
-            color: var(--color-description);
-            font-size: var(--text-small);
-            line-height: var(--leading-body);
-        }
+.page :global(.reference-note) {
+  display: block;
+  color: var(--color-description);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+}
 
-        /* Looks like the compact secondary button; it is not a separate control. */
-        .page :global(.reference-cta) {
-            display: inline-flex;
-            align-items: center;
-            justify-self: start;
-            gap: var(--space-sm);
-            margin-top: var(--space-xs);
-            padding: var(--space-sm) var(--space-md);
-            border: 1px solid var(--color-gold-border);
-            border-radius: var(--radius-small);
-            background: var(--color-card);
-            color: var(--color-heading);
-            font-size: var(--text-small);
-            font-weight: 700;
-            line-height: var(--leading-label);
-            transition: background-color 150ms, color 150ms, border-color 150ms;
-        }
+/* Looks like the compact secondary button; it is not a separate control. */
+.page :global(.reference-cta) {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: var(--space-sm);
+  margin-top: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-gold-border);
+  border-radius: var(--radius-small);
+  background: var(--color-card);
+  color: var(--color-heading);
+  font-size: var(--text-small);
+  font-weight: 700;
+  line-height: var(--leading-label);
+  transition:
+    background-color 150ms,
+    color 150ms,
+    border-color 150ms;
+}
 
-        .page :global(.reference-cta .material-symbols-outlined) {
-            font-size: 18px;
-            transition: transform 150ms;
-        }
+.page :global(.reference-cta .material-symbols-outlined) {
+  font-size: 18px;
+  transition: transform 150ms;
+}
 
-        .page :global(.reference-card:hover .reference-cta),
-        .page :global(.reference-card:focus-visible .reference-cta) {
-            border-color: var(--color-heading);
-            background: var(--color-heading);
-            color: #ffffff;
-        }
+.page :global(.reference-card:hover .reference-cta),
+.page :global(.reference-card:focus-visible .reference-cta) {
+  border-color: var(--color-heading);
+  background: var(--color-heading);
+  color: #ffffff;
+}
 
-        .page :global(.reference-card:hover .reference-cta .material-symbols-outlined) {
-            transform: translateX(4px);
-        }
+.page :global(.reference-card:hover .reference-cta .material-symbols-outlined) {
+  transform: translateX(4px);
+}
 
-        /* ======================================================================
+/* ======================================================================
          5. Content summary
          ====================================================================== */
-        .page :global(.toolbar-summary) {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-xs);
-            margin: 0 0 var(--space-lg);
-            padding: 0;
-            list-style: none;
-            font-variant-numeric: tabular-nums;
-        }
+.page :global(.toolbar-summary) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin: 0 0 var(--space-lg);
+  padding: 0;
+  list-style: none;
+  font-variant-numeric: tabular-nums;
+}
 
-        /* ======================================================================
+/* ======================================================================
          6. Categories > Topics
          Vocabulary's root is one level flatter than Grammar (Category -> Topic), so there is no
          Part card or Chapter disclosure: a Category is an open section heading on the page
          background, and its Topics are white cards directly beneath it. One level of boxes only.
          ====================================================================== */
-        .page :global(.category-list) {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-xl);
-        }
+.page :global(.category-list) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
 
-        /* Category: grouping heading, not a link. Blue marker bar = Vocabulary identity. */
-        .page :global(.category-header) {
-            position: relative;
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: var(--space-sm) var(--space-md);
-            margin-bottom: var(--space-md);
-            padding: 2px 0 var(--space-sm) var(--space-md);
-            border-bottom: 1px solid var(--color-border);
-        }
+/* Category: grouping heading, not a link. Blue marker bar = Vocabulary identity. */
+.page :global(.category-header) {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-md);
+  padding: 2px 0 var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
 
-        .page :global(.category-header::before) {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 2px;
-            bottom: calc(var(--space-sm) + 2px);
-            width: 4px;
-            border-radius: 9999px;
-            background: var(--color-blue);
-        }
+.page :global(.category-header::before) {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: calc(var(--space-sm) + 2px);
+  width: 4px;
+  border-radius: 9999px;
+  background: var(--color-blue);
+}
 
-        .page :global(.category-heading) {
-            flex: 1 1 16rem;
-            min-width: 0;
-        }
+.page :global(.category-heading) {
+  flex: 1 1 16rem;
+  min-width: 0;
+}
 
-        .page :global(.category-title) {
-            color: var(--color-heading);
-            font-size: var(--text-feature);
-            font-weight: 700;
-            line-height: var(--leading-heading);
-            letter-spacing: var(--tracking-heading);
-            overflow-wrap: anywhere;
-        }
+.page :global(.category-title) {
+  color: var(--color-heading);
+  font-size: var(--text-feature);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  overflow-wrap: anywhere;
+}
 
-        /* Localized (VI/EN) title under a French title: subordinate but fully readable. */
-        .page :global(.title-support) {
-            display: block;
-            margin-top: 2px;
-            color: var(--color-muted);
-            font-family: var(--font-body);
-            font-size: var(--text-small);
-            font-weight: 400;
-            line-height: var(--leading-label);
-            letter-spacing: normal;
-            overflow-wrap: anywhere;
-        }
+/* Localized (VI/EN) title under a French title: subordinate but fully readable. */
+.page :global(.title-support) {
+  display: block;
+  margin-top: 2px;
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: var(--text-small);
+  font-weight: 400;
+  line-height: var(--leading-label);
+  letter-spacing: normal;
+  overflow-wrap: anywhere;
+}
 
-        .page :global(.category-heading .title-support) {
-            font-size: var(--text-body);
-        }
+.page :global(.category-heading .title-support) {
+  font-size: var(--text-body);
+}
 
-        .page :global(.category-count) {
-            flex-shrink: 0;
-            margin-top: 4px;
-        }
+.page :global(.category-count) {
+  flex-shrink: 0;
+  margin-top: 4px;
+}
 
-        .page :global(.topic-grid) {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr);
-            gap: var(--space-sm);
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
+.page :global(.topic-grid) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-        /* Topic: the whole card is the link to /vocabulary/topics/:slug. No state strip, badge, or
+/* Topic: the whole card is the link to /vocabulary/topics/:slug. No state strip, badge, or
            status icon: Topics carry no learner state. The arrow on the far right is the open
            affordance (same control as GrammarPage lesson rows). */
-        .page :global(.topic-card) {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            height: 100%;
-            padding: 12px 12px 12px var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-small);
-            background: var(--color-card);
-            transition: border-color 150ms, box-shadow 150ms;
-        }
+.page :global(.topic-card) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 100%;
+  padding: 12px 12px 12px var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-card);
+  transition:
+    border-color 150ms,
+    box-shadow 150ms;
+}
 
-        .page :global(.topic-card:hover),
-        .page :global(.topic-card:focus-visible) {
-            border-color: var(--color-blue);
-            box-shadow: var(--shadow-sm);
-        }
+.page :global(.topic-card:hover),
+.page :global(.topic-card:focus-visible) {
+  border-color: var(--color-blue);
+  box-shadow: var(--shadow-sm);
+}
 
-        .page :global(.topic-body) {
-            flex: 1;
-            min-width: 0;
-        }
+.page :global(.topic-body) {
+  flex: 1;
+  min-width: 0;
+}
 
-        .page :global(.topic-title) {
-            display: block;
-            color: var(--color-heading);
-            font-size: var(--text-practice);
-            font-weight: 700;
-            line-height: var(--leading-label);
-            overflow-wrap: anywhere;
-        }
+.page :global(.topic-title) {
+  display: block;
+  color: var(--color-heading);
+  font-size: var(--text-practice);
+  font-weight: 700;
+  line-height: var(--leading-label);
+  overflow-wrap: anywhere;
+}
 
-        .page :global(.topic-arrow) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            width: 32px;
-            height: 32px;
-            border: 1px solid var(--color-border);
-            border-radius: 50%;
-            background: var(--color-card);
-            color: var(--color-heading);
-            transition: background-color 150ms, color 150ms, border-color 150ms;
-        }
+.page :global(.topic-arrow) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-card);
+  color: var(--color-heading);
+  transition:
+    background-color 150ms,
+    color 150ms,
+    border-color 150ms;
+}
 
-        .page :global(.topic-arrow .material-symbols-outlined) {
-            transition: transform 150ms;
-        }
+.page :global(.topic-arrow .material-symbols-outlined) {
+  transition: transform 150ms;
+}
 
-        .page :global(.topic-card:hover .topic-arrow),
-        .page :global(.topic-card:focus-visible .topic-arrow) {
-            border-color: var(--color-heading);
-            background: var(--color-heading);
-            color: #ffffff;
-        }
+.page :global(.topic-card:hover .topic-arrow),
+.page :global(.topic-card:focus-visible .topic-arrow) {
+  border-color: var(--color-heading);
+  background: var(--color-heading);
+  color: #ffffff;
+}
 
-        .page :global(.topic-card:hover .topic-arrow .material-symbols-outlined) {
-            transform: translateX(2px);
-        }
+.page :global(.topic-card:hover .topic-arrow .material-symbols-outlined) {
+  transform: translateX(2px);
+}
 
-        /* ======================================================================
+/* ======================================================================
          7. Footer and responsive layout (FD §8)
          ====================================================================== */
 
-        @media (min-width: 640px) {
+@media (min-width: 640px) {
+  .page :global(.card) {
+    padding: var(--space-lg);
+  }
 
-            .page :global(.card) {
-                padding: var(--space-lg);
-            }
+  .page :global(.topic-grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-md);
+  }
+}
 
-            .page :global(.topic-grid) {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: var(--space-md);
-            }
-        }
+/* Full-width reference panel (tablet): CTA moves to the right end of the panel. */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .page :global(.reference-card) {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: var(--space-lg);
+  }
 
-        /* Full-width reference panel (tablet): CTA moves to the right end of the panel. */
-        @media (min-width: 640px) and (max-width: 1023px) {
-            .page :global(.reference-card) {
-                grid-template-columns: minmax(0, 1fr) auto;
-                column-gap: var(--space-lg);
-            }
+  .page :global(.reference-card > *) {
+    grid-column: 1;
+  }
 
-            .page :global(.reference-card>*) {
-                grid-column: 1;
-            }
+  .page :global(.reference-card > .reference-cta) {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+    align-self: center;
+    margin-top: 0;
+  }
+}
 
-            .page :global(.reference-card>.reference-cta) {
-                grid-column: 2;
-                grid-row: 1 / span 4;
-                align-self: center;
-                margin-top: 0;
-            }
-        }
+@media (min-width: 1024px) {
+  .page :global(.page-hero) {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    padding: var(--space-xl);
+  }
 
-        @media (min-width: 1024px) {
+  .page :global(.topic-grid) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 
-            .page :global(.page-hero) {
-                grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-                padding: var(--space-xl);
-            }
-
-            .page :global(.topic-grid) {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
-
-        /* Compact header for tablets and smaller laptops (same as Dashboard, FD §8.5). */
-    
+/* Compact header for tablets and smaller laptops (same as Dashboard, FD §8.5). */

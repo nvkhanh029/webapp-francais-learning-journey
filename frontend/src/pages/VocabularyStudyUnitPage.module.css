@@ -1,780 +1,783 @@
-
-        /* ======================================================================
+/* ======================================================================
          1. Theme and base styles (identical to DashboardPage / VocabularyTopicPage)
          ====================================================================== */
 
-        .page :global(button:focus-visible),
-        .page :global(a:focus-visible) {
-            outline: 2px solid var(--color-primary);
-            outline-offset: 2px;
-        }
+.page :global(button:focus-visible),
+.page :global(a:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
 
-        .page :global(.material-symbols-outlined) {
-            display: inline-block;
-            flex-shrink: 0;
-            width: 1em;
-            height: 1em;
-            overflow: hidden;
-            font-family: "Material Symbols Outlined";
-            font-size: 20px;
-            font-style: normal;
-            font-weight: normal;
-            line-height: 1;
-            letter-spacing: normal;
-            text-transform: none;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-            -webkit-font-smoothing: antialiased;
-            font-feature-settings: "liga";
-        }
+.page :global(.material-symbols-outlined) {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  font-family: "Material Symbols Outlined";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "liga";
+}
 
-        /* ======================================================================
+/* ======================================================================
          2. Shared layout and components (same values as DashboardPage; FD §7.6)
          ====================================================================== */
 
-        .page :global(.card) {
-            min-width: 0;
-            padding: var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-card);
-            background: var(--color-card);
-        }
+.page :global(.card) {
+  min-width: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+}
 
-        .page :global(.icon-tile .material-symbols-outlined) {
-            font-size: 22px;
-        }
+.page :global(.icon-tile .material-symbols-outlined) {
+  font-size: 22px;
+}
 
-        /* Solid tile: the module page icon (Vocabulary uses its blue, as on VocabularyPage). */
-        .page :global(.icon-tile-solid) {
-            border-color: var(--accent);
-            background: var(--accent);
-            color: #ffffff;
-        }
+/* Solid tile: the module page icon (Vocabulary uses its blue, as on VocabularyPage). */
+.page :global(.icon-tile-solid) {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #ffffff;
+}
 
-        .page :global(.badge .material-symbols-outlined) {
-            font-size: 16px;
-        }
+.page :global(.badge .material-symbols-outlined) {
+  font-size: 16px;
+}
 
-        /* Content counts: informational role (blue), same as VocabularyPage / VocabularyTopicPage. */
-        .page :global(.badge-info) {
-            border-color: var(--color-blue-border);
-            background: var(--color-blue-soft);
-            color: var(--color-blue-dark);
-        }
+/* Content counts: informational role (blue), same as VocabularyPage / VocabularyTopicPage. */
+.page :global(.badge-info) {
+  border-color: var(--color-blue-border);
+  background: var(--color-blue-soft);
+  color: var(--color-blue-dark);
+}
 
-        .page :global(.badge-learned) {
-            border-color: var(--color-sage-border);
-            background: var(--color-sage-soft);
-            color: var(--color-sage-dark);
-        }
+.page :global(.badge-learned) {
+  border-color: var(--color-sage-border);
+  background: var(--color-sage-soft);
+  color: var(--color-sage-dark);
+}
 
-        .page :global(.badge-review) {
-            border-color: var(--color-rose-border);
-            background: var(--color-rose-soft);
-            color: var(--color-rose-dark);
-        }
+.page :global(.badge-review) {
+  border-color: var(--color-rose-border);
+  background: var(--color-rose-soft);
+  color: var(--color-rose-dark);
+}
 
-        /* Trailing-arrow motion (Dashboard). Toggle buttons with a leading state icon opt out. */
-        .page :global(.button:hover .material-symbols-outlined) {
-            transform: translateX(4px);
-        }
+/* Trailing-arrow motion (Dashboard). Toggle buttons with a leading state icon opt out. */
+.page :global(.button:hover .material-symbols-outlined) {
+  transform: translateX(4px);
+}
 
-        .page :global(.button-toggle:hover .material-symbols-outlined) {
-            transform: none;
-        }
+.page :global(.button-toggle:hover .material-symbols-outlined) {
+  transform: none;
+}
 
-        .page :global(.button-primary) {
-            padding: 12px var(--space-lg);
-            background: var(--color-heading);
-            color: #ffffff;
-            font-size: var(--text-body);
-            line-height: var(--leading-label);
-            box-shadow: var(--shadow-sm);
-        }
+.page :global(.button-primary) {
+  padding: 12px var(--space-lg);
+  background: var(--color-heading);
+  color: #ffffff;
+  font-size: var(--text-body);
+  line-height: var(--leading-label);
+  box-shadow: var(--shadow-sm);
+}
 
-        .page :global(.button-primary:hover) {
-            background: #1f1711;
-            box-shadow: var(--shadow-md);
-        }
+.page :global(.button-primary:hover) {
+  background: #1f1711;
+  box-shadow: var(--shadow-md);
+}
 
-        .page :global(.button-primary:active) {
-            transform: translateY(2px);
-        }
+.page :global(.button-primary:active) {
+  transform: translateY(2px);
+}
 
-        .page :global(.button-secondary) {
-            width: 100%;
-            padding: 12px var(--space-md);
-            border: 1px solid var(--color-border);
-            background: var(--color-background);
-            color: var(--color-heading);
-            font-size: var(--text-body);
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-        }
+.page :global(.button-secondary) {
+  width: 100%;
+  padding: 12px var(--space-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-heading);
+  font-size: var(--text-body);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+}
 
-        .page :global(.button-secondary:hover) {
-            background: var(--color-heading);
-            color: #ffffff;
-        }
+.page :global(.button-secondary:hover) {
+  background: var(--color-heading);
+  color: #ffffff;
+}
 
-        .page :global(.button-compact) {
-            width: auto;
-            padding: var(--space-sm) var(--space-lg);
-        }
+.page :global(.button-compact) {
+  width: auto;
+  padding: var(--space-sm) var(--space-lg);
+}
 
-        .page :global(.empty-text) {
-            padding: var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-small);
-            background: var(--color-card);
-            color: var(--color-muted);
-            font-size: var(--text-small);
-            line-height: var(--leading-body);
-            text-align: center;
-        }
+.page :global(.empty-text) {
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-card);
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+  text-align: center;
+}
 
-        /* Page-level loading and error states (FD §6.6). */
-        .page :global(.page-state) {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-xl) var(--space-lg);
-            text-align: center;
-        }
+/* Page-level loading and error states (FD §6.6). */
+.page :global(.page-state) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
+}
 
-        .page :global(.page-state>.material-symbols-outlined) {
-            color: var(--color-primary);
-            font-size: 32px;
-        }
+.page :global(.page-state > .material-symbols-outlined) {
+  color: var(--color-primary);
+  font-size: 32px;
+}
 
-        .page :global(.page-state p) {
-            max-width: 36rem;
-            color: var(--color-muted);
-        }
+.page :global(.page-state p) {
+  max-width: 36rem;
+  color: var(--color-muted);
+}
 
-        .page :global(.page-state .button) {
-            margin-top: var(--space-sm);
-        }
+.page :global(.page-state .button) {
+  margin-top: var(--space-sm);
+}
 
-        .page :global(.spinner) {
-            width: 32px;
-            height: 32px;
-            border: 3px solid var(--color-primary-border);
-            border-top-color: var(--color-primary);
-            border-radius: 50%;
-            animation: spin 900ms linear infinite;
-        }
+.page :global(.spinner) {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-primary-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 900ms linear infinite;
+}
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-        /* Subject accent family (FD §7.3). This page only uses the Vocabulary (blue) one. */
+/* Subject accent family (FD §7.3). This page only uses the Vocabulary (blue) one. */
 
-        /* ======================================================================
+/* ======================================================================
          3. Header (identical to DashboardPage)
          ====================================================================== */
 
-        /* ======================================================================
+/* ======================================================================
          4. Study Unit page layout
          Focused learning page: one centered column at the same 70rem cap as the Grammar lesson
          page, so vocabulary entries stay a comfortable width instead of stretching to 1280px.
          ====================================================================== */
-        .page :global(.unit-page) {
-            flex: 1;
-            padding-top: 112px;
-            padding-bottom: var(--space-xl);
-        }
+.page :global(.unit-page) {
+  flex: 1;
+  padding-top: 112px;
+  padding-bottom: var(--space-xl);
+}
 
-        .page :global(.unit) {
-            max-width: 70rem;
-            margin-inline: auto;
-        }
+.page :global(.unit) {
+  max-width: 70rem;
+  margin-inline: auto;
+}
 
-        .page :global(.unit-section) {
-            margin-top: var(--space-lg);
-        }
+.page :global(.unit-section) {
+  margin-top: var(--space-lg);
+}
 
-        /* ---------- Breadcrumbs: Từ vựng (link) > Category (context) > Topic (link) > Study Unit ---------- */
-        .page :global(.breadcrumbs) {
-            margin-bottom: var(--space-md);
-        }
+/* ---------- Breadcrumbs: Từ vựng (link) > Category (context) > Topic (link) > Study Unit ---------- */
+.page :global(.breadcrumbs) {
+  margin-bottom: var(--space-md);
+}
 
-        .page :global(.breadcrumb-list) {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: var(--space-xs);
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            color: var(--color-muted);
-            font-size: var(--text-label);
-            line-height: var(--leading-label);
-        }
+.page :global(.breadcrumb-list) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-muted);
+  font-size: var(--text-label);
+  line-height: var(--leading-label);
+}
 
-        .page :global(.breadcrumb-list li) {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
-            min-width: 0;
-            overflow-wrap: anywhere;
-        }
+.page :global(.breadcrumb-list li) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 
-        .page :global(.crumb-separator) {
-            color: var(--color-blue-border);
-            font-size: 16px;
-        }
+.page :global(.crumb-separator) {
+  color: var(--color-blue-border);
+  font-size: 16px;
+}
 
-        .page :global(.crumb-link) {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
+.page :global(.crumb-link) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
 
-            min-height: 44px;
-            padding-inline: var(--space-sm);
-            margin-inline-start: calc(-1 * var(--space-sm));
+  min-height: 44px;
+  padding-inline: var(--space-sm);
+  margin-inline-start: calc(-1 * var(--space-sm));
 
-            border-radius: var(--radius-small);
-            color: var(--color-blue-strong);
-            font-weight: 700;
+  border-radius: var(--radius-small);
+  color: var(--color-blue-strong);
+  font-weight: 700;
 
-            transition: background-color 150ms, color 150ms;
-        }
+  transition:
+    background-color 150ms,
+    color 150ms;
+}
 
-        .page :global(.crumb-link:hover) {
-            background: var(--color-blue-soft);
-        }
+.page :global(.crumb-link:hover) {
+  background: var(--color-blue-soft);
+}
 
-        .page :global(.crumb-link .material-symbols-outlined) {
-            font-size: 18px;
-            transition: transform 150ms;
-        }
+.page :global(.crumb-link .material-symbols-outlined) {
+  font-size: 18px;
+  transition: transform 150ms;
+}
 
-        .page :global(.crumb-link:hover .material-symbols-outlined) {
-            transform: translateX(-4px);
-        }
+.page :global(.crumb-link:hover .material-symbols-outlined) {
+  transform: translateX(-4px);
+}
 
-        /* The Topic link sits mid-trail: same look, no negative inset. */
-        .page :global(.crumb-topic) {
-            margin-inline-start: 0;
-        }
+/* The Topic link sits mid-trail: same look, no negative inset. */
+.page :global(.crumb-topic) {
+  margin-inline-start: 0;
+}
 
-        /* Category: contextual grouping data, no route in the MVP: plain text, never a link. */
-        .page :global(.crumb-category) {
-            font-weight: 500;
-        }
+/* Category: contextual grouping data, no route in the MVP: plain text, never a link. */
+.page :global(.crumb-category) {
+  font-weight: 500;
+}
 
-        /* Support-language label of the Category crumb: shown from 640px only. */
-        .page :global(.crumb-support) {
-            display: none;
-            color: rgb(85 67 54 / 80%);
-        }
+/* Support-language label of the Category crumb: shown from 640px only. */
+.page :global(.crumb-support) {
+  display: none;
+  color: rgb(85 67 54 / 80%);
+}
 
-        .page :global(.crumb-current) {
-            color: var(--color-heading);
-            font-weight: 600;
-        }
+.page :global(.crumb-current) {
+  color: var(--color-heading);
+  font-weight: 600;
+}
 
-        /* On phones the Category and current Study Unit crumbs are announced but not shown: the
+/* On phones the Category and current Study Unit crumbs are announced but not shown: the
            h1 right below already displays the unit, and the trail stays to a short back path. */
-        @media (max-width: 639px) {
+@media (max-width: 639px) {
+  .page :global(.breadcrumb-list [data-crumb="category"]),
+  .page :global(.crumb-current-item) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
 
-            .page :global(.breadcrumb-list [data-crumb="category"]),
-            .page :global(.crumb-current-item) {
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                margin: -1px;
-                overflow: hidden;
-                clip: rect(0 0 0 0);
-                white-space: nowrap;
-            }
+  .page :global(.breadcrumbs) {
+    margin-bottom: var(--space-sm);
+  }
+}
 
-            .page :global(.breadcrumbs) {
-                margin-bottom: var(--space-sm);
-            }
-        }
+/* ---------- Study Unit header: French title first, localized title second ---------- */
+.page :global(.unit-header) {
+  --state-accent: var(--color-border);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  overflow: hidden;
+}
 
-        /* ---------- Study Unit header: French title first, localized title second ---------- */
-        .page :global(.unit-header) {
-            --state-accent: var(--color-border);
-            position: relative;
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-md);
-            overflow: hidden;
-        }
+/* State accent strip: the same device as the Study Unit cards and GrammarLessonPage. */
+.page :global(.unit-header::before) {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: var(--space-lg);
+  bottom: var(--space-lg);
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background: var(--state-accent);
+}
 
-        /* State accent strip: the same device as the Study Unit cards and GrammarLessonPage. */
-        .page :global(.unit-header::before) {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: var(--space-lg);
-            bottom: var(--space-lg);
-            width: 4px;
-            border-radius: 0 4px 4px 0;
-            background: var(--state-accent);
-        }
-
-        /* Priority lives here: .is-saved is declared after .is-learned, so a Study Unit that is
+/* Priority lives here: .is-saved is declared after .is-learned, so a Study Unit that is
            both takes the Review Later accent. Only Review Later tints the surface. */
-        .page :global(.unit.is-learned .unit-header) {
-            --state-accent: var(--color-sage);
-            border-color: var(--color-sage-border);
-        }
+.page :global(.unit.is-learned .unit-header) {
+  --state-accent: var(--color-sage);
+  border-color: var(--color-sage-border);
+}
 
-        .page :global(.unit.is-saved .unit-header) {
-            --state-accent: var(--color-rose);
-            border-color: var(--color-rose-border);
-            /* background: color-mix(in srgb, var(--color-rose-soft) 60%, var(--color-card)); */
-        }
+.page :global(.unit.is-saved .unit-header) {
+  --state-accent: var(--color-rose);
+  border-color: var(--color-rose-border);
+  /* background: color-mix(in srgb, var(--color-rose-soft) 60%, var(--color-card)); */
+}
 
-        .page :global(.unit-heading) {
-            flex: 1;
-            min-width: 0;
-        }
+.page :global(.unit-heading) {
+  flex: 1;
+  min-width: 0;
+}
 
-        .page :global(.unit-title) {
-            color: var(--color-heading);
-            font-size: var(--text-display);
-            font-weight: 700;
-            line-height: 1.25;
-            letter-spacing: var(--tracking-heading);
-            overflow-wrap: break-word;
-            hyphens: auto;
-        }
+.page :global(.unit-title) {
+  color: var(--color-heading);
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: var(--tracking-heading);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
 
-        /* Localized title under a French title: subordinate but fully readable. */
-        .page :global(.title-support) {
-            display: block;
-            margin-top: var(--space-xs);
-            color: var(--color-muted);
-            font-family: var(--font-body);
-            font-size: var(--text-card-title);
-            font-weight: 400;
-            line-height: var(--leading-label);
-            overflow-wrap: anywhere;
-        }
+/* Localized title under a French title: subordinate but fully readable. */
+.page :global(.title-support) {
+  display: block;
+  margin-top: var(--space-xs);
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: var(--text-card-title);
+  font-weight: 400;
+  line-height: var(--leading-label);
+  overflow-wrap: anywhere;
+}
 
-        /* Subtopic context: a grouping label, not a link (no route in the MVP). */
-        .page :global(.unit-context) {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-sm);
-            margin-top: var(--space-md);
-            color: var(--color-description);
-            font-size: var(--text-small);
-            line-height: var(--leading-label);
-            overflow-wrap: anywhere;
-        }
+/* Subtopic context: a grouping label, not a link (no route in the MVP). */
+.page :global(.unit-context) {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  color: var(--color-description);
+  font-size: var(--text-small);
+  line-height: var(--leading-label);
+  overflow-wrap: anywhere;
+}
 
-        .page :global(.unit-context .material-symbols-outlined) {
-            color: var(--color-blue);
-            font-size: 18px;
-        }
+.page :global(.unit-context .material-symbols-outlined) {
+  color: var(--color-blue);
+  font-size: 18px;
+}
 
-        .page :global(.unit-meta) {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-xs);
-            margin: var(--space-md) 0 0;
-            padding: 0;
-            list-style: none;
-        }
+.page :global(.unit-meta) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  list-style: none;
+}
 
-        /* ======================================================================
+/* ======================================================================
          5. Vocabulary entries
          A compact, nested learning surface, not a feature card: 12px radius, small padding,
          natural height. Two columns from 768px, one column below. Optional fields that are
          absent are not rendered, so an entry with only French + meaning is naturally shorter.
          ====================================================================== */
-        /* Section heading: an open heading with the Vocabulary blue marker bar
+/* Section heading: an open heading with the Vocabulary blue marker bar
            (same device as the Subtopic heading on VocabularyTopicPage). */
-        .page :global(.list-header) {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: var(--space-sm) var(--space-md);
-            margin-bottom: var(--space-md);
-            padding: 2px 0 var(--space-sm) var(--space-md);
-            border-bottom: 1px solid var(--color-border);
-        }
+.page :global(.list-header) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-md);
+  padding: 2px 0 var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
 
-        .page :global(.list-header::before) {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 2px;
-            bottom: calc(var(--space-sm) + 2px);
-            width: 4px;
-            border-radius: 9999px;
-            background: var(--color-blue);
-        }
+.page :global(.list-header::before) {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: calc(var(--space-sm) + 2px);
+  width: 4px;
+  border-radius: 9999px;
+  background: var(--color-blue);
+}
 
-        .page :global(.list-title) {
-            color: var(--color-heading);
-            font-size: var(--text-section);
-            font-weight: 700;
-            line-height: var(--leading-heading);
-        }
+.page :global(.list-title) {
+  color: var(--color-heading);
+  font-size: var(--text-section);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+}
 
-        .page :global(.entry-list) {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr);
-            gap: var(--space-sm) var(--space-md);
-            /* Entries keep their own height; rows are not stretched to match a neighbour. */
-            align-items: start;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
+.page :global(.entry-list) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-sm) var(--space-md);
+  /* Entries keep their own height; rows are not stretched to match a neighbour. */
+  align-items: start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-        .page :global(.entry) {
-            min-width: 0;
-            padding: 12px var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
-            background: var(--color-card);
-            transition: border-color 150ms, background-color 150ms;
-        }
+.page :global(.entry) {
+  min-width: 0;
+  padding: 12px var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  background: var(--color-card);
+  transition:
+    border-color 150ms,
+    background-color 150ms;
+}
 
-        /* Hover-capable pointers only: a faint blue tint helps the eye track one entry.
+/* Hover-capable pointers only: a faint blue tint helps the eye track one entry.
            Entries are not interactive, so no cursor, shadow, or movement. */
-        @media (hover: hover) {
-            .page :global(.entry:hover) {
-                border-color: var(--color-blue-border);
-                background: color-mix(in srgb, var(--color-blue-soft) 45%, var(--color-card));
-            }
-        }
+@media (hover: hover) {
+  .page :global(.entry:hover) {
+    border-color: var(--color-blue-border);
+    background: color-mix(in srgb, var(--color-blue-soft) 45%, var(--color-card));
+  }
+}
 
-        .page :global(.entry-line) {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            gap: 2px var(--space-sm);
-        }
+.page :global(.entry-line) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px var(--space-sm);
+}
 
-        /* 1. French word or expression: the strongest text of the entry. */
-        .page :global(.entry-term) {
-            color: var(--color-heading);
-            font-family: var(--font-heading);
-            font-size: var(--text-card-title);
-            font-weight: 700;
-            line-height: var(--leading-heading);
-            letter-spacing: var(--tracking-heading);
-            overflow-wrap: anywhere;
-        }
+/* 1. French word or expression: the strongest text of the entry. */
+.page :global(.entry-term) {
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-size: var(--text-card-title);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  overflow-wrap: anywhere;
+}
 
-        /* 3. IPA: secondary metadata. */
-        .page :global(.entry-ipa) {
-            color: var(--color-muted);
-            font-size: var(--text-small);
-            line-height: var(--leading-label);
-            overflow-wrap: anywhere;
-        }
+/* 3. IPA: secondary metadata. */
+.page :global(.entry-ipa) {
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-label);
+  overflow-wrap: anywhere;
+}
 
-        /* 2. Localized meaning: clearly readable, one step below the French term. */
-        .page :global(.entry-meaning) {
-            margin-top: 2px;
-            color: var(--color-description);
-            font-size: var(--text-body);
-            font-weight: 600;
-            line-height: var(--leading-label);
-            overflow-wrap: anywhere;
-        }
+/* 2. Localized meaning: clearly readable, one step below the French term. */
+.page :global(.entry-meaning) {
+  margin-top: 2px;
+  color: var(--color-description);
+  font-size: var(--text-body);
+  font-weight: 600;
+  line-height: var(--leading-label);
+  overflow-wrap: anywhere;
+}
 
-        /* 4-5. French example and its translation: supportive, lighter than the word + meaning. */
-        .page :global(.entry-example) {
-            margin-top: var(--space-sm);
-            padding-left: 10px;
-            border-left: 2px solid var(--color-blue-border);
-        }
+/* 4-5. French example and its translation: supportive, lighter than the word + meaning. */
+.page :global(.entry-example) {
+  margin-top: var(--space-sm);
+  padding-left: 10px;
+  border-left: 2px solid var(--color-blue-border);
+}
 
-        .page :global(.example-fr) {
-            color: var(--color-text);
-            font-size: var(--text-small);
-            line-height: var(--leading-label);
-            overflow-wrap: anywhere;
-        }
+.page :global(.example-fr) {
+  color: var(--color-text);
+  font-size: var(--text-small);
+  line-height: var(--leading-label);
+  overflow-wrap: anywhere;
+}
 
-        .page :global(.example-translation) {
-            margin-top: 2px;
-            color: var(--color-muted);
-            font-size: var(--text-label);
-            line-height: var(--leading-label);
-            overflow-wrap: anywhere;
-        }
+.page :global(.example-translation) {
+  margin-top: 2px;
+  color: var(--color-muted);
+  font-size: var(--text-label);
+  line-height: var(--leading-label);
+  overflow-wrap: anywhere;
+}
 
-        /* ======================================================================
+/* ======================================================================
          6. Learning actions (same state-box / action-slot pattern as GrammarLessonPage)
          Each state has one slot: an action button when off, a status box with an undo control
          when on. Slot order never changes, so controls do not jump around.
          ====================================================================== */
-        .page :global(.unit-actions) {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
+.page :global(.unit-actions) {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-        .page :global(.actions-title) {
-            color: var(--color-heading);
-            font-size: var(--text-card-title);
-            font-weight: 600;
-            line-height: var(--leading-heading);
-            letter-spacing: var(--tracking-heading);
-            margin-bottom: var(--space-sm);
-        }
+.page :global(.actions-title) {
+  color: var(--color-heading);
+  font-size: var(--text-card-title);
+  font-weight: 600;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  margin-bottom: var(--space-sm);
+}
 
-        .page :global(.actions-grid) {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr);
-            gap: 12px;
-        }
+.page :global(.actions-grid) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
 
-        .page :global(.actions-grid .button) {
-            width: 100%;
-        }
+.page :global(.actions-grid .button) {
+  width: 100%;
+}
 
-        .page :global(.state-box) {
-            display: flex;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: var(--space-sm) 12px;
-            padding: 12px var(--space-md);
-            border: 1px solid;
-            border-radius: var(--radius-small);
-            font-size: var(--text-small);
-            line-height: var(--leading-label);
-        }
+.page :global(.state-box) {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: var(--space-sm) 12px;
+  padding: 12px var(--space-md);
+  border: 1px solid;
+  border-radius: var(--radius-small);
+  font-size: var(--text-small);
+  line-height: var(--leading-label);
+}
 
-        .page :global(.state-box>.material-symbols-outlined) {
-            margin-top: 1px;
-        }
+.page :global(.state-box > .material-symbols-outlined) {
+  margin-top: 1px;
+}
 
-        .page :global(.state-box-text) {
-            flex: 1 1 9rem;
-            min-width: 0;
-        }
+.page :global(.state-box-text) {
+  flex: 1 1 9rem;
+  min-width: 0;
+}
 
-        .page :global(.state-box-text strong) {
-            display: block;
-            font-size: var(--text-body);
-        }
+.page :global(.state-box-text strong) {
+  display: block;
+  font-size: var(--text-body);
+}
 
-        .page :global(.state-box-learned) {
-            border-color: var(--color-sage-border);
-            background: var(--color-sage-soft);
-            color: var(--color-sage-dark);
-        }
+.page :global(.state-box-learned) {
+  border-color: var(--color-sage-border);
+  background: var(--color-sage-soft);
+  color: var(--color-sage-dark);
+}
 
-        .page :global(.state-box-review) {
-            border-color: var(--color-rose-border);
-            background: var(--color-rose-soft);
-            color: var(--color-rose-dark);
-        }
+.page :global(.state-box-review) {
+  border-color: var(--color-rose-border);
+  background: var(--color-rose-soft);
+  color: var(--color-rose-dark);
+}
 
-        /* Both states: Learned stays visible but steps back to an outline. */
-        .page :global(.unit.is-saved .state-box-learned) {
-            background: var(--color-card);
-        }
+/* Both states: Learned stays visible but steps back to an outline. */
+.page :global(.unit.is-saved .state-box-learned) {
+  background: var(--color-card);
+}
 
-        .page :global(.state-undo) {
-            align-self: center;
-            min-height: 32px;
-            padding: var(--space-xs) 12px;
-            border: 1px solid currentColor;
-            border-radius: 9999px;
-            background: var(--color-card);
-            color: inherit;
-            font-size: var(--text-label);
-            font-weight: 700;
-            line-height: var(--leading-label);
-            white-space: nowrap;
-            transition: background-color 150ms, color 150ms;
-        }
+.page :global(.state-undo) {
+  align-self: center;
+  min-height: 32px;
+  padding: var(--space-xs) 12px;
+  border: 1px solid currentColor;
+  border-radius: 9999px;
+  background: var(--color-card);
+  color: inherit;
+  font-size: var(--text-label);
+  font-weight: 700;
+  line-height: var(--leading-label);
+  white-space: nowrap;
+  transition:
+    background-color 150ms,
+    color 150ms;
+}
 
-        .page :global(.state-undo:hover) {
-            background: var(--color-heading);
-            border-color: var(--color-heading);
-            color: #ffffff;
-        }
+.page :global(.state-undo:hover) {
+  background: var(--color-heading);
+  border-color: var(--color-heading);
+  color: #ffffff;
+}
 
-        .page :global(.practice-group) {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-sm);
-            padding-top: 12px;
-            border-top: 1px solid var(--color-border);
-        }
+.page :global(.practice-group) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
 
-        .page :global(.action-note) {
-            color: var(--color-muted);
-            font-size: var(--text-small);
-            line-height: var(--leading-body);
-        }
+.page :global(.action-note) {
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+}
 
-        /* ---------- Previous / Next Study Unit navigation. Copied from GrammarLessonPage
+/* ---------- Previous / Next Study Unit navigation. Copied from GrammarLessonPage
            (.lesson-nav); only the hover accent role changes from Grammar gold to Vocabulary blue.
            Secondary to the learning actions above: plain bordered cards, not buttons. Two balanced
            cards from 640px; one full-width column below that; long French titles wrap. Both slots
            always render: a side with no neighbor is an unavailable card (below), so the two
            columns never change width. ---------- */
-        .page :global(.unit-nav) {
-            display: grid;
-            gap: var(--space-md);
-            margin-top: var(--space-lg);
-        }
+.page :global(.unit-nav) {
+  display: grid;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
 
-        @media (min-width: 640px) {
-            .page :global(.unit-nav) {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+@media (min-width: 640px) {
+  .page :global(.unit-nav) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
-        .page :global(.unit-nav-link) {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            min-height: 44px;
-            padding: 12px var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-small);
-            background: var(--color-card);
-            transition: border-color 150ms, background-color 150ms, box-shadow 150ms;
-        }
+.page :global(.unit-nav-link) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 44px;
+  padding: 12px var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-card);
+  transition:
+    border-color 150ms,
+    background-color 150ms,
+    box-shadow 150ms;
+}
 
-        .page :global(.unit-nav-link:not([aria-disabled="true"]):hover) {
-            border-color: var(--color-blue-border);
-            background: var(--color-blue-soft);
-            box-shadow: var(--shadow-sm);
-        }
+.page :global(.unit-nav-link:not([aria-disabled="true"]):hover) {
+  border-color: var(--color-blue-border);
+  background: var(--color-blue-soft);
+  box-shadow: var(--shadow-sm);
+}
 
-        .page :global(.unit-nav-link .material-symbols-outlined) {
-            flex-shrink: 0;
-            color: var(--color-blue-dark);
-        }
+.page :global(.unit-nav-link .material-symbols-outlined) {
+  flex-shrink: 0;
+  color: var(--color-blue-dark);
+}
 
-        .page :global(.unit-nav-text) {
-            min-width: 0;
-        }
+.page :global(.unit-nav-text) {
+  min-width: 0;
+}
 
-        .page :global(.unit-nav-label) {
-            display: block;
-            color: var(--color-muted);
-            font-size: var(--text-caption);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: var(--tracking-label);
-        }
+.page :global(.unit-nav-label) {
+  display: block;
+  color: var(--color-muted);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+}
 
-        .page :global(.unit-nav-title) {
-            display: block;
-            margin-top: 2px;
-            color: var(--color-heading);
-            font-size: var(--text-small);
-            font-weight: 700;
-            line-height: var(--leading-label);
-            overflow-wrap: break-word;
-            hyphens: auto;
-        }
+.page :global(.unit-nav-title) {
+  display: block;
+  margin-top: 2px;
+  color: var(--color-heading);
+  font-size: var(--text-small);
+  font-weight: 700;
+  line-height: var(--leading-label);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
 
-        .page :global(.unit-nav-support) {
-            display: block;
-            margin-top: 2px;
-            color: var(--color-muted);
-            font-size: var(--text-caption);
-            overflow-wrap: anywhere;
-        }
+.page :global(.unit-nav-support) {
+  display: block;
+  margin-top: 2px;
+  color: var(--color-muted);
+  font-size: var(--text-caption);
+  overflow-wrap: anywhere;
+}
 
-        /* Next points right; label/title/support mirror Previous so direction stays obvious. */
-        .page :global(.unit-nav-next) {
-            flex-direction: row-reverse;
-            text-align: right;
-        }
+/* Next points right; label/title/support mirror Previous so direction stays obvious. */
+.page :global(.unit-nav-next) {
+  flex-direction: row-reverse;
+  text-align: right;
+}
 
-        /* Unavailable side (first / last Study Unit): the slot stays in the grid so both columns
+/* Unavailable side (first / last Study Unit): the slot stays in the grid so both columns
            keep their width and position. Quieter neutral surface and muted text, no hover, no
            pointer, no navigation. Not an error state. */
-        .page :global(.unit-nav-link[aria-disabled="true"]) {
-            background: var(--color-background);
-            cursor: default;
-        }
+.page :global(.unit-nav-link[aria-disabled="true"]) {
+  background: var(--color-background);
+  cursor: default;
+}
 
-        .page :global(.unit-nav-link[aria-disabled="true"] .material-symbols-outlined) {
-            color: rgb(85 67 54 / 60%);
-        }
+.page :global(.unit-nav-link[aria-disabled="true"] .material-symbols-outlined) {
+  color: rgb(85 67 54 / 60%);
+}
 
-        .page :global(.unit-nav-link[aria-disabled="true"] .unit-nav-title) {
-            color: rgb(85 67 54 / 80%);
-            font-weight: 600;
-        }
+.page :global(.unit-nav-link[aria-disabled="true"] .unit-nav-title) {
+  color: rgb(85 67 54 / 80%);
+  font-weight: 600;
+}
 
-        /* ======================================================================
+/* ======================================================================
          7. Footer and responsive layout (FD §8)
          ====================================================================== */
 
-        @media (min-width: 640px) {
+@media (min-width: 640px) {
+  .page :global(.card) {
+    padding: var(--space-lg);
+  }
 
-            .page :global(.card) {
-                padding: var(--space-lg);
-            }
+  .page :global(.crumb-support) {
+    display: inline;
+  }
 
-            .page :global(.crumb-support) {
-                display: inline;
-            }
+  /* Learned + Review Later side by side; Practice spans the row beneath them. */
+  .page :global(.actions-grid) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
 
-            /* Learned + Review Later side by side; Practice spans the row beneath them. */
-            .page :global(.actions-grid) {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                align-items: start;
-            }
+  .page :global(.practice-group) {
+    grid-column: 1 / -1;
+  }
+}
 
-            .page :global(.practice-group) {
-                grid-column: 1 / -1;
-            }
-        }
+@media (min-width: 768px) {
+  .page :global(.entry-list) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 
-        @media (min-width: 768px) {
+@media (min-width: 1024px) {
+  .page :global(.unit-header) {
+    padding: var(--space-xl);
+  }
 
-            .page :global(.entry-list) {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
+  .page :global(.unit-header::before) {
+    top: var(--space-xl);
+    bottom: var(--space-xl);
+  }
 
-        @media (min-width: 1024px) {
+  .page :global(.unit-actions) {
+    padding: var(--space-lg) var(--space-xl) var(--space-xl);
+  }
 
-            .page :global(.unit-header) {
-                padding: var(--space-xl);
-            }
+  /* Learned | Review Later | Practice on one row. */
+  .page :global(.actions-grid) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 
-            .page :global(.unit-header::before) {
-                top: var(--space-xl);
-                bottom: var(--space-xl);
-            }
+  .page :global(.practice-group) {
+    grid-column: auto;
+    padding-top: 0;
+    border-top: 0;
+  }
+}
 
-            .page :global(.unit-actions) {
-                padding: var(--space-lg) var(--space-xl) var(--space-xl);
-            }
-
-            /* Learned | Review Later | Practice on one row. */
-            .page :global(.actions-grid) {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-
-            .page :global(.practice-group) {
-                grid-column: auto;
-                padding-top: 0;
-                border-top: 0;
-            }
-        }
-
-        /* Compact header for tablets and smaller laptops (same as Dashboard, FD §8.5). */
-    
+/* Compact header for tablets and smaller laptops (same as Dashboard, FD §8.5). */
