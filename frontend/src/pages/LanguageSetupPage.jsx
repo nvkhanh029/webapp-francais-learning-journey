@@ -1,176 +1,206 @@
 /*
- Fonts and original illustrations still require an internet connection. -->
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link href="https://fonts.gstatic.com" crossorigin="" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300..800;1,6..12,300..800&amp;display=swap"
-        rel="stylesheet">
+  Language Setup page (route "/setup/language"; FD §4.3.2, §7.15). For an authenticated learner whose saved
+  support_language is still null: inside RequireAuth but outside RequireLanguage -> AppLayout, so it uses a
+  lightweight brand-only header instead of the full app shell.
 
-    <!--
-      Static LanguageSetupPage prototype (route "/setup/language"), refined from a raw Stitch
-      draft into the visual/interaction baseline established by DashboardPage, LoginPage,
-      RegisterPage and LandingPage, per frontend-design.md (FD) §7.15 and
-      claude/stitch-ui-guidelines.md. Plain CSS, no build step.
+  Continue saves the choice with AuthContext.updateSupportLanguage() (PATCH /api/v1/me/preferences, API §7.1) and
+  then goes to the Dashboard; a failed save shows a recoverable error with a retry button.
 
-      Route/access (FD §4.3.2):
-      - Authenticated learner whose saved support_language is still null. Inside RequireAuth but
-        OUTSIDE RequireLanguage -> AppLayout, so this page intentionally does NOT use the full
-        authenticated app shell (no Dashboard nav, no VI/EN language switcher, no logout). It uses
-        a lightweight brand-only header, matching the public auth pages rather than the Dashboard.
+  One explicit choice: Vietnamese (vi) or English (en) as the SUPPORT language. French remains the target language
+  (FR-LANG-03). Neither option is preselected, and the vi read-time fallback (FR-LANG-07) is never presented as an
+  already-saved choice: Continue without a selection shows a validation message.
 
-      Scope:
-      - One explicit choice: Vietnamese (vi) or English (en) as the SUPPORT language for
-        interface/explanations. French remains the target language at all times (FR-LANG-03).
-        No proficiency level, goals, schedule, or any other onboarding field (out of MVP scope).
-      - No silent default. Neither option is preselected, and the vi read-time fallback
-        (FR-LANG-07) is never presented as an already-saved choice. Continuing without a
-        selection shows a validation message instead of proceeding.
-      - No API request. The submit handler validates the selection and marks the integration
-        point for PATCH /api/v1/me/preferences (API Contract §7.1). Routing after a successful
-        save belongs to the app routing/integration layer (not implemented here).
-      - Links use href="#" with the target React route in data-route (FD §4.2). data-route on the
-        submit action is a placeholder for the post-setup destination, kept as a placeholder
-        per the source Stitch draft's routing convention.
-
-      Preview states (prototype only), via the URL query string:
-        ?preview=validation      no selection, Continue pressed: validation error
-        ?preview=server-error    PATCH failed after a valid selection: recoverable error
-        ?preview=submitting      pending submit state (selection already made)
-
-      Page-specific values (no shared token applies) are marked "Setup-only" below.
-
-      Page sections:
-      1. Header (brand only — no auth links, no authenticated app chrome)
-      2. Setup card: eyebrow, heading, description, error banner, language choice, info note, submit
-      3. Footer
+  Preview states (UI review aid), via the URL query string:
+    ?preview=validation      no selection, Continue pressed: validation error
+    ?preview=server-error    save failed after a valid selection: recoverable error
+    ?preview=submitting      pending submit state (selection already made)
 */
+import { useRef, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
+import { SubmitButton } from "../features/auth/AuthFormParts.jsx";
+import { ApiError } from "../api/apiClient.js";
+import { rateLimitMessage } from "../features/auth/useRateLimit.js";
+import useAuth from "../hooks/useAuth.js";
+import useDocumentTitle from "../hooks/useDocumentTitle.js";
+import { t, useLanguage } from "../i18n/index.js";
 import styles from "./LanguageSetupPage.module.css";
-import usePageScript from "../hooks/usePageScript.js";
-import { t } from "../i18n/index.js";
-import init from "./LanguageSetupPage.script.js";
+
+const OPTIONS = [
+  { code: "vi", name: "Tiếng Việt" },
+  { code: "en", name: "English" },
+];
+
+function initialState(preview) {
+  return {
+    selected: preview === "server-error" ? "vi" : preview === "submitting" ? "en" : null,
+    error: preview === "validation" ? "validation" : preview === "server-error" ? "server" : null,
+    submitting: preview === "submitting",
+  };
+}
 
 export default function LanguageSetupPage() {
-  const rootRef = usePageScript(init, { title: "title.languageSetup" });
+  useLanguage();
+  useDocumentTitle("title.languageSetup");
+  const { updateSupportLanguage } = useAuth();
+  const navigate = useNavigate();
+  const preview = useSearchParams()[0].get("preview");
+  const [initial] = useState(() => initialState(preview));
+  const [selected, setSelected] = useState(initial.selected);
+  // error: null, "validation" (nothing selected) or "server" (the save failed).
+  const [error, setError] = useState(initial.error);
+  const [submitting, setSubmitting] = useState(initial.submitting);
+  // Set when the save was answered with 429: its message replaces the generic save-error text.
+  const [rateLimit, setRateLimit] = useState(null);
+  const optionRefs = useRef([]);
+
+  function select(index, { moveFocus = false } = {}) {
+    setSelected(OPTIONS[index].code);
+    setError(null); // Selecting a language clears a prior message.
+    if (moveFocus) optionRefs.current[index].focus();
+  }
+
+  function handleKeyDown(event, index) {
+    const last = OPTIONS.length - 1;
+    if (event.key === " " || event.key === "Enter") {
+      event.preventDefault();
+      select(index);
+    } else if (event.key === "ArrowRight" || event.key === "ArrowDown") {
+      event.preventDefault();
+      select(index === last ? 0 : index + 1, { moveFocus: true });
+    } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
+      event.preventDefault();
+      select(index === 0 ? last : index - 1, { moveFocus: true });
+    }
+  }
+
+  async function handleSubmit() {
+    if (submitting) return;
+    if (!selected) {
+      setError("validation");
+      optionRefs.current[0].focus();
+      return;
+    }
+    setError(null);
+    setRateLimit(null);
+    setSubmitting(true);
+    try {
+      await updateSupportLanguage(selected);
+      navigate("/dashboard", { replace: true });
+    } catch (error) {
+      // Any failure keeps the learner here with their choice intact. A 401 also clears the session, and the route
+      // guard then sends the learner to Login.
+      if (error instanceof ApiError && error.isRateLimited) setRateLimit(rateLimitMessage(error.retryAfterSeconds));
+      setError("server");
+      setSubmitting(false);
+    }
+  }
 
   return (
-    <div className={`app-page ${styles.page}`} ref={rootRef}>
-      {/* 1. Header: brand only (see the note in section 3 of the stylesheet above). */}
+    <div className={`app-page ${styles.page}`}>
+      {/* Header: brand only (no auth links, no authenticated app chrome). */}
       <header className="site-header">
         <div className="page-container header-content">
           <span className="brand">
-            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />
-            {" "}
-            <span className="brand-name">
-              Français Learning Journey
-            </span>
+            <img alt={t("common.mascotAlt")} className="brand-logo" src="/images/logo.png" />{" "}
+            <span className="brand-name">Français Learning Journey</span>
           </span>
         </div>
       </header>
       <main className="setup-main" id="main-content">
         <div className="page-container setup-layout">
-          {/* 2. Setup card */}
           <div className="card setup-card">
             <div className="setup-heading">
               <div className="icon-tile" aria-hidden="true">
-                <span className="material-symbols-outlined">
-                  translate
-                </span>
+                <span className="material-symbols-outlined">translate</span>
               </div>
               <h1 className="setup-title" id="setup-title">
                 {t("setup.title")}
               </h1>
-              <p className="setup-lead">
-                {t("setup.text")}
-              </p>
+              <p className="setup-lead">{t("setup.text")}</p>
             </div>
-            {/* Form-level error: no selection on submit, or a failed save. Message text is
-                     set by the script (validation vs. server-error copy differ).
-            */}
-            <div className="form-alert setup-alert" id="form-error" role="alert" hidden>
+            {/* Form-level error: no selection on submit, or a failed save. */}
+            <div className="form-alert setup-alert" id="form-error" role="alert" hidden={!error}>
               <span className="material-symbols-outlined" aria-hidden="true">
                 error
               </span>
               <div>
-                <span className="form-alert-title" data-form-error-title />
-                {" "}
-                <span data-form-error-text />
-                <div className="form-alert-actions" data-form-error-retry hidden>
-                  <button className="button-retry" type="button" data-action="retry-submit">
+                <span className="form-alert-title">{error && t(`setup.${error}Title`)}</span>{" "}
+                <span>
+                  {error === "server" && rateLimit
+                    ? t(rateLimit.key, rateLimit.params)
+                    : error && t(`setup.${error}Text`)}
+                </span>
+                <div className="form-alert-actions" hidden={error !== "server"}>
+                  <button className="button-retry" type="button" onClick={handleSubmit}>
                     {t("common.retry")}
                   </button>
                 </div>
               </div>
             </div>
-            {/* Language choice: single-selection radiogroup. Neither option is preselected
-                     (no silent default); vi/en carry equal visual weight until chosen.
-            */}
+            {/* Single-selection radiogroup with roving tabindex. Neither option is preselected (no silent
+                default); vi/en carry equal visual weight until chosen. */}
             <fieldset className="language-group">
               <legend className="visually-hidden" id="language-group-label">
                 {t("common.supportLanguage")}
               </legend>
-              <div className="language-grid" role="radiogroup" aria-labelledby="language-group-label" aria-describedby="form-error" id="language-options">
-                <div className="language-option" data-lang="vi" role="radio" aria-checked="false" tabIndex="0">
-                  <div className="language-option-header">
-                    <span className="radio-indicator" aria-hidden="true">
-                      <span className="material-symbols-outlined">
-                        check
-                      </span>
-                    </span>
-                    <p className="language-name">
-                      Tiếng Việt
-                    </p>
-                  </div>
-                </div>
-                <div className="language-option" data-lang="en" role="radio" aria-checked="false" tabIndex="-1">
-                  <div className="language-option-header">
-                    <span className="radio-indicator" aria-hidden="true">
-                      <span className="material-symbols-outlined">
-                        check
-                      </span>
-                    </span>
-                    <p className="language-name">
-                      English
-                    </p>
-                  </div>
-                </div>
+              <div
+                className="language-grid"
+                role="radiogroup"
+                aria-labelledby="language-group-label"
+                aria-describedby="form-error"
+                id="language-options"
+              >
+                {OPTIONS.map((option, index) => {
+                  const isSelected = selected === option.code;
+                  return (
+                    <div
+                      key={option.code}
+                      className="language-option"
+                      data-lang={option.code}
+                      role="radio"
+                      aria-checked={isSelected}
+                      tabIndex={isSelected || (selected === null && index === 0) ? 0 : -1}
+                      ref={(element) => {
+                        optionRefs.current[index] = element;
+                      }}
+                      onClick={() => select(index)}
+                      onKeyDown={(event) => handleKeyDown(event, index)}
+                    >
+                      <div className="language-option-header">
+                        <span className="radio-indicator" aria-hidden="true">
+                          <span className="material-symbols-outlined">check</span>
+                        </span>
+                        <p className="language-name">{option.name}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </fieldset>
-            {/* Fields map to PATCH /api/v1/me/preferences { support_language } (API Contract §7.1).
-                     Not disabled by default: an unselected Continue press shows the validation
-                     message below instead of silently doing nothing.
-            */}
+            {/* Not disabled by default: an unselected Continue press shows the validation message instead of
+                silently doing nothing. */}
             <div className="setup-actions">
-              <button className="button button-primary" id="setup-submit" type="button" data-route="/dashboard" aria-busy="false">
-                <span data-submit-label>
-                  {t("common.continue")}
-                </span>
-                {" "}
-                <span className="material-symbols-outlined" aria-hidden="true" data-submit-icon>
-                  chevron_right
-                </span>
-                {" "}
-                <span className="button-spinner" aria-hidden="true" data-submit-spinner hidden />
-              </button>
+              <SubmitButton
+                id="setup-submit"
+                type="button"
+                className=""
+                icon="chevron_right"
+                submitting={submitting}
+                label={t("setup.submit")}
+                submittingLabel={t("setup.submitting")}
+                onClick={handleSubmit}
+              />
             </div>
           </div>
         </div>
       </main>
-      {/* 3. Footer */}
       <footer className="site-footer">
         <div className="page-container footer-content">
           <span className="material-symbols-outlined" aria-hidden="true">
             auto_stories
-          </span>
-          {" "}
-          <span>
-            {t("common.footer")}
-          </span>
+          </span>{" "}
+          <span>{t("common.footer")}</span>
         </div>
       </footer>
     </div>

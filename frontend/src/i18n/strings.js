@@ -4,6 +4,10 @@
 // - Keys are grouped by the page (or shared area) that uses them. Content that comes from the API
 //   (lesson titles, topic names, explanations) is NOT in this table.
 export const strings = {
+  // ---- route guards ----
+  "guard.unavailableTitle": { vi: "Không thể kết nối tới máy chủ", en: "Cannot reach the server" },
+  "guard.unavailableText": { vi: "Chưa thể kiểm tra phiên đăng nhập của bạn. Hãy kiểm tra kết nối rồi thử lại.", en: "We could not check your session right now. Check your connection and try again." },
+
   // ---- common ----
   "common.mascotAlt": { vi: "Linh vật bánh sừng bò đeo kính, tay cầm sách", en: "Croissant mascot wearing glasses and holding a book" },
   "common.footer": { vi: "Français Learning Journey • Hành trình chinh phục tiếng Pháp", en: "Français Learning Journey • Your journey to mastering French" },
@@ -17,6 +21,7 @@ export const strings = {
   "common.menuNav": { vi: "Menu điều hướng", en: "Navigation menu" },
   "common.menuNavClose": { vi: "Đóng menu điều hướng", en: "Close navigation menu" },
   "common.breadcrumb": { vi: "Đường dẫn trang", en: "Breadcrumb" },
+  "common.actionError": { vi: "Không thể hoàn tất thao tác. Vui lòng thử lại.", en: "Could not complete the action. Please try again." },
   "common.retry": { vi: "Thử lại", en: "Try again" },
   "common.loadError": { vi: "Đã có lỗi khi tải dữ liệu. Vui lòng thử lại.", en: "Something went wrong while loading the data. Please try again." },
   "common.reviewLater": { vi: "Xem lại sau", en: "Review Later" },
@@ -220,6 +225,16 @@ export const strings = {
   "auth.emailTaken": { vi: "Email này đã được đăng ký.", en: "This email is already registered." },
   "auth.invalidRequest": { vi: "Thông tin đăng ký chưa hợp lệ. Vui lòng kiểm tra lại.", en: "The registration details are not valid. Please check and try again." },
   "auth.registerServerError": { vi: "Không thể đăng ký lúc này. Vui lòng thử lại.", en: "Could not sign up right now. Please try again." },
+  "auth.passwordInvalid": { vi: "Mật khẩu không hợp lệ.", en: "The password is not valid." },
+  "auth.rateLimited": { vi: "Bạn đã thử quá nhiều lần. Vui lòng thử lại sau.", en: "Too many attempts. Please try again later." },
+  "auth.rateLimitedSeconds": {
+    vi: "Bạn đã thử quá nhiều lần. Vui lòng thử lại sau {n} giây.",
+    en: { one: "Too many attempts. Please try again in {n} second.", other: "Too many attempts. Please try again in {n} seconds." },
+  },
+  "auth.rateLimitedMinutes": {
+    vi: "Bạn đã thử quá nhiều lần. Vui lòng thử lại sau khoảng {n} phút.",
+    en: { one: "Too many attempts. Please try again in about {n} minute.", other: "Too many attempts. Please try again in about {n} minutes." },
+  },
   // ---- notFound ----
   "notFound.code": { vi: "Lỗi 404", en: "Error 404" },
   "notFound.title": { vi: "Không tìm thấy trang", en: "Page not found" },
