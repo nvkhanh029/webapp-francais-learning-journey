@@ -4,12 +4,13 @@
 class ApiError(Exception):
     """Expected application failure. Messages/details must be safe for clients."""
 
-    def __init__(self, status, code, message, details=None):
+    def __init__(self, status, code, message, details=None, headers=None):
         super().__init__(message)
         self.status = status
         self.code = code
         self.message = message
         self.details = {} if details is None else details
+        self.headers = {} if headers is None else headers
 
 
 def error_payload(code, message, details=None):
@@ -23,7 +24,8 @@ def register_error_handlers(app):
 
     @app.errorhandler(ApiError)
     def handle_api_error(error):
-        return jsonify(error_payload(error.code, error.message, error.details)), error.status
+        response = jsonify(error_payload(error.code, error.message, error.details))
+        return response, error.status, error.headers
 
     @app.errorhandler(HTTPException)
     def handle_http_error(error):
