@@ -18,7 +18,7 @@
   Example verbs are lesson content only: there is no per-verb state, Practice or progress, and a
   searchable Verb Reference is outside the MVP (Requirements §6.3).
 */
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import ErrorState from "../components/common/ErrorState.jsx";
@@ -54,6 +54,13 @@ export default function ConjugationLessonPage() {
 
   const fetchLesson = useCallback(() => getConjugationLesson(lessonSlug), [lessonSlug]);
   const { data: lesson, isLoading, error, reload } = useApiResource(fetchLesson, lessonSlug);
+
+  // The document title follows the content item on screen: the support-language title when
+  // the API returns one, otherwise the module title until the item loads (FD §4.2, FD §9.4).
+  const itemTitle = lesson?.title;
+  useEffect(() => {
+    document.title = t(itemTitle ? "common.pageTitle" : "title.conjugation", { title: itemTitle ?? "" });
+  }, [itemTitle]);
   const fetchBrowse = useCallback(() => getConjugation(), []);
   const { data: browse } = useApiResource(fetchBrowse);
 

@@ -18,7 +18,7 @@
   States (FD §6.6): LoadingState, ErrorState with retry, EmptyState when nothing is saved, otherwise the
   grouped list.
 */
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import EmptyState from "../components/common/EmptyState.jsx";
@@ -46,6 +46,11 @@ function groupByModule(items) {
 
 export default function ReviewLaterPage() {
   useLanguage();
+
+  // The document title follows the shared language state.
+  useEffect(() => {
+    document.title = t("title.reviewLater");
+  });
   const fetchItems = useCallback(() => getReviewLater(), []);
   const { data, isLoading, error, reload } = useApiResource(fetchItems);
 

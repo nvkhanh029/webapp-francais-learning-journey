@@ -25,9 +25,7 @@ export default function RecentPracticeItem({ session, todayDate }) {
   const isPerfect = percent === 100;
   const completed = formatActivityDate(session.completed_at, todayDate);
 
-  const title = isMixed
-    ? typeLabel
-    : t("dashboard.recentModule", { module: typeLabel, title: unit?.title_fr ?? "" });
+  const title = isMixed ? typeLabel : t("dashboard.recentModule", { module: typeLabel, title: unit?.title_fr ?? "" });
 
   return (
     <li className={`practice-item ${isMixed ? "subject-mixed" : (module?.subjectClass ?? "")}`}>

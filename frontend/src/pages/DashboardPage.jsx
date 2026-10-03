@@ -45,7 +45,7 @@ export default function DashboardPage() {
   useLanguage();
   const { data, isLoading, error, reload } = useDashboard();
 
-  // The page title follows the shared language state, as usePageScript did for the scripted pages.
+  // The document title follows the shared language state.
   useEffect(() => {
     document.title = t("title.dashboard");
   });

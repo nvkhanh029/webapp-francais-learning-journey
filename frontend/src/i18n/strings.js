@@ -220,9 +220,20 @@ export const strings = {
   "auth.registerSubmit": { vi: "Đăng ký", en: "Sign up" },
   "auth.registerSubmitting": { vi: "Đang tạo tài khoản…", en: "Creating your account…" },
   "auth.emailInvalid": { vi: "Vui lòng nhập email hợp lệ.", en: "Please enter a valid email." },
+  "auth.passwordTooLong": { vi: "Mật khẩu quá dài.", en: "That password is too long." },
   "auth.emailTaken": { vi: "Email này đã được đăng ký.", en: "This email is already registered." },
   "auth.invalidRequest": { vi: "Thông tin đăng ký chưa hợp lệ. Vui lòng kiểm tra lại.", en: "The registration details are not valid. Please check and try again." },
   "auth.registerServerError": { vi: "Không thể đăng ký lúc này. Vui lòng thử lại.", en: "Could not sign up right now. Please try again." },
+  // ---- auth: unknown session and throttling (FD §6.7) ----
+  // Shown when GET /me fails for a reason other than 401: the session is unknown, so this never says
+  // the learner is signed out.
+  "auth.serverUnavailableText": { vi: "Không thể kết nối tới máy chủ. Vui lòng thử lại để tiếp tục.", en: "We could not reach the server. Please try again to continue." },
+  "auth.rateLimited": { vi: "Bạn đã thử đăng nhập quá nhiều lần. Vui lòng thử lại sau.", en: "Too many attempts. Please try again later." },
+  "auth.rateLimitedWait": { vi: "Bạn đã thử đăng nhập quá nhiều lần. Vui lòng thử lại sau khoảng {minutes} phút.", en: "Too many attempts. Please try again in about {minutes} minutes." },
+  "auth.rateLimitedSeconds": { vi: "Bạn đã thử đăng nhập quá nhiều lần. Vui lòng thử lại sau {seconds} giây.", en: "Too many attempts. Please try again in {seconds} seconds." },
+  // 403 csrf_failed and any other unexpected failure: a generic message that never mentions whether the
+  // email exists and never implies the session ended.
+  "auth.requestFailed": { vi: "Đã có lỗi khi xử lý yêu cầu. Vui lòng thử lại.", en: "Something went wrong while handling the request. Please try again." },
   // ---- notFound ----
   "notFound.code": { vi: "Lỗi 404", en: "Error 404" },
   "notFound.title": { vi: "Không tìm thấy trang", en: "Page not found" },
@@ -270,8 +281,6 @@ export const strings = {
   "vocab.emptySubtopic": { vi: "Mục này chưa có bài nào.", en: "This section has no lessons yet." },
   "vocab.subtopicsCount": { vi: "{n} mục", en: { one: "{n} section", other: "{n} sections" } },
   "vocab.subtopicLabel": { vi: "Mục:", en: "Section:" },
-  "vocab.topicLabel": { vi: "Chủ đề:", en: "Topic:" },
-  "vocab.categoryLabel": { vi: "Danh mục:", en: "Category:" },
   "vocab.unitInfo": { vi: "Thông tin bài", en: "Lesson information" },
   "vocab.wordsHeading": { vi: "Từ và cụm từ", en: "Words and expressions" },
   "vocab.emptyUnit": { vi: "Bài này chưa có từ vựng nào.", en: "This lesson has no vocabulary yet." },

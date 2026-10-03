@@ -29,6 +29,11 @@ import styles from "./PracticePage.module.css";
 
 export default function PracticePage() {
   useLanguage();
+
+  // The document title follows the shared language state.
+  useEffect(() => {
+    document.title = t("title.practice");
+  });
   const { unitSlug } = useParams();
   const practice = usePractice();
   const {

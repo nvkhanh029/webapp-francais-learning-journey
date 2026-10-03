@@ -15,7 +15,7 @@
   States (FD §6.6): LoadingState, ErrorState with retry, EmptyState when there are no lessons at all,
   otherwise the part list.
 */
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import EmptyState from "../components/common/EmptyState.jsx";
@@ -31,6 +31,11 @@ import styles from "./GrammarPage.module.css";
 
 export default function GrammarPage() {
   useLanguage();
+
+  // The document title follows the shared language state.
+  useEffect(() => {
+    document.title = t("title.grammar");
+  });
   const fetchGrammar = useCallback(() => getGrammar(), []);
   const { data, isLoading, error, reload } = useApiResource(fetchGrammar);
 

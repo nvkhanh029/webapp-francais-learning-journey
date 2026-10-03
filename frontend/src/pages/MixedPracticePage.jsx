@@ -39,6 +39,11 @@ const PRESTART_NOTES = [
 
 export default function MixedPracticePage() {
   useLanguage();
+
+  // The document title follows the shared language state.
+  useEffect(() => {
+    document.title = t("title.mixedPractice");
+  });
   const practice = usePractice();
   const {
     phase,

@@ -1,433 +1,430 @@
-
-        /* ======================================================================
+/* ======================================================================
          1. Theme and base styles (identical to DashboardPage / VocabularyPage)
          ====================================================================== */
-        .page {
-
-            /* Reading column for reference Markdown. Page-specific (detail pages only);
+.page {
+  /* Reading column for reference Markdown. Page-specific (detail pages only);
                the page container keeps the shared 1280px. */
-            --reference-width: 70rem;
-        }
+  --reference-width: 70rem;
+}
 
-        .page :global(button:focus-visible),
-        .page :global(a:focus-visible),
-        .page :global(.table-scroll:focus-visible) {
-            outline: 2px solid var(--color-primary);
-            outline-offset: 2px;
-        }
+.page :global(button:focus-visible),
+.page :global(a:focus-visible),
+.page :global(.table-scroll:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
 
-        .page :global(.material-symbols-outlined) {
-            display: inline-block;
-            flex-shrink: 0;
-            width: 1em;
-            height: 1em;
-            overflow: hidden;
-            font-family: "Material Symbols Outlined";
-            font-size: 20px;
-            font-style: normal;
-            font-weight: normal;
-            line-height: 1;
-            letter-spacing: normal;
-            text-transform: none;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-            -webkit-font-smoothing: antialiased;
-            font-feature-settings: "liga";
-        }
+.page :global(.material-symbols-outlined) {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  font-family: "Material Symbols Outlined";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "liga";
+}
 
-        /* ======================================================================
+/* ======================================================================
          2. Shared layout and components (same values as DashboardPage; FD §7.6)
          ====================================================================== */
 
-        .page :global(.card) {
-            min-width: 0;
-            padding: var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-card);
-            background: var(--color-card);
-        }
+.page :global(.card) {
+  min-width: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+}
 
-        .page :global(.icon-tile .material-symbols-outlined) {
-            font-size: 22px;
-        }
+.page :global(.icon-tile .material-symbols-outlined) {
+  font-size: 22px;
+}
 
-        .page :global(.badge .material-symbols-outlined) {
-            font-size: 16px;
-        }
+.page :global(.badge .material-symbols-outlined) {
+  font-size: 16px;
+}
 
-        .page :global(.button-secondary) {
-            width: 100%;
-            padding: 12px var(--space-md);
-            border: 1px solid var(--color-border);
-            background: var(--color-background);
-            color: var(--color-heading);
-            font-size: var(--text-body);
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-        }
+.page :global(.button-secondary) {
+  width: 100%;
+  padding: 12px var(--space-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-heading);
+  font-size: var(--text-body);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+}
 
-        .page :global(.button-compact) {
-            width: auto;
-            padding: var(--space-sm) var(--space-lg);
-        }
+.page :global(.button-compact) {
+  width: auto;
+  padding: var(--space-sm) var(--space-lg);
+}
 
-        /* Page-level loading and error states (FD §6.6). */
-        .page :global(.page-state) {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-xl) var(--space-lg);
-            text-align: center;
-        }
+/* Page-level loading and error states (FD §6.6). */
+.page :global(.page-state) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
+}
 
-        .page :global(.page-state>.material-symbols-outlined) {
-            color: var(--color-primary);
-            font-size: 32px;
-        }
+.page :global(.page-state > .material-symbols-outlined) {
+  color: var(--color-primary);
+  font-size: 32px;
+}
 
-        .page :global(.page-state p) {
-            max-width: 36rem;
-            color: var(--color-muted);
-        }
+.page :global(.page-state p) {
+  max-width: 36rem;
+  color: var(--color-muted);
+}
 
-        .page :global(.page-state .button) {
-            margin-top: var(--space-sm);
-        }
+.page :global(.page-state .button) {
+  margin-top: var(--space-sm);
+}
 
-        .page :global(.spinner) {
-            width: 32px;
-            height: 32px;
-            border: 3px solid var(--color-primary-border);
-            border-top-color: var(--color-primary);
-            border-radius: 50%;
-            animation: spin 900ms linear infinite;
-        }
+.page :global(.spinner) {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-primary-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 900ms linear infinite;
+}
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-        /* Reference role: the same gold the Alphabet & Accents entry uses on VocabularyPage. */
-        .page :global(.reference-role) {
-            --accent: var(--color-gold);
-            --accent-soft: var(--color-gold-soft);
-            --accent-border: var(--color-gold-border);
-        }
+/* Reference role: the same gold the Alphabet & Accents entry uses on VocabularyPage. */
+.page :global(.reference-role) {
+  --accent: var(--color-gold);
+  --accent-soft: var(--color-gold-soft);
+  --accent-border: var(--color-gold-border);
+}
 
-        /* ======================================================================
+/* ======================================================================
          3. Header (identical to DashboardPage / VocabularyPage)
          ====================================================================== */
 
-        /* ======================================================================
+/* ======================================================================
          4. Reference page layout
          One centered reading column at every width. There is no side panel: the page has no
          actions, so nothing competes with the content.
          ====================================================================== */
-        .page :global(.reference-page) {
-            flex: 1;
-            padding-top: 112px;
-            padding-bottom: var(--space-xl);
-        }
+.page :global(.reference-page) {
+  flex: 1;
+  padding-top: 112px;
+  padding-bottom: var(--space-xl);
+}
 
-        .page :global(.reference) {
-            max-width: var(--reference-width);
-            margin-inline: auto;
-        }
+.page :global(.reference) {
+  max-width: var(--reference-width);
+  margin-inline: auto;
+}
 
-        /* ---------- Breadcrumbs: Từ vựng (link) > reference title ---------- */
-        .page :global(.breadcrumbs) {
-            margin-bottom: var(--space-md);
-        }
+/* ---------- Breadcrumbs: Từ vựng (link) > reference title ---------- */
+.page :global(.breadcrumbs) {
+  margin-bottom: var(--space-md);
+}
 
-        .page :global(.breadcrumb-list) {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: var(--space-xs);
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            color: var(--color-muted);
-            font-size: var(--text-label);
-            line-height: var(--leading-label);
-        }
+.page :global(.breadcrumb-list) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-muted);
+  font-size: var(--text-label);
+  line-height: var(--leading-label);
+}
 
-        .page :global(.breadcrumb-list li) {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
-            min-width: 0;
-            overflow-wrap: anywhere;
-        }
+.page :global(.breadcrumb-list li) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 
-        .page :global(.crumb-separator) {
-            color: var(--color-gold-border);
-            font-size: 16px;
-        }
+.page :global(.crumb-separator) {
+  color: var(--color-gold-border);
+  font-size: 16px;
+}
 
-        .page :global(.crumb-link) {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
-            min-height: 44px;
-            padding-inline: var(--space-sm);
-            margin-inline-start: calc(-1 * var(--space-sm));
-            border-radius: var(--radius-small);
-            color: var(--color-gold-dark);
-            font-weight: 700;
-            transition: background-color 150ms, color 150ms;
-        }
+.page :global(.crumb-link) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  min-height: 44px;
+  padding-inline: var(--space-sm);
+  margin-inline-start: calc(-1 * var(--space-sm));
+  border-radius: var(--radius-small);
+  color: var(--color-gold-dark);
+  font-weight: 700;
+  transition:
+    background-color 150ms,
+    color 150ms;
+}
 
-        .page :global(.crumb-link .material-symbols-outlined) {
-            font-size: 18px;
-            transition: transform 150ms;
-        }
+.page :global(.crumb-link .material-symbols-outlined) {
+  font-size: 18px;
+  transition: transform 150ms;
+}
 
-        .page :global(.crumb-current) {
-            color: var(--color-heading);
-            font-weight: 600;
-        }
+.page :global(.crumb-current) {
+  color: var(--color-heading);
+  font-weight: 600;
+}
 
-        /* On phones the current crumb is announced but not shown: the h1 right below already
+/* On phones the current crumb is announced but not shown: the h1 right below already
            displays it, and the trail stays short (same rule as the lesson pages). */
-        @media (max-width: 639px) {
-            .page :global(.crumb-current-item) {
-                position: absolute;
-                width: 1px;
-                height: 1px;
-                margin: -1px;
-                overflow: hidden;
-                clip: rect(0 0 0 0);
-                white-space: nowrap;
-            }
+@media (max-width: 639px) {
+  .page :global(.crumb-current-item) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
 
-            .page :global(.breadcrumbs) {
-                margin-bottom: var(--space-sm);
-            }
-        }
+  .page :global(.breadcrumbs) {
+    margin-bottom: var(--space-sm);
+  }
+}
 
-        /* ---------- Reference header: French title first, localized title second ---------- */
-        .page :global(.reference-header) {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-md);
-        }
+/* ---------- Reference header: French title first, localized title second ---------- */
+.page :global(.reference-header) {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
 
-        .page :global(.reference-heading) {
-            flex: 1;
-            min-width: 0;
-        }
+.page :global(.reference-heading) {
+  flex: 1;
+  min-width: 0;
+}
 
-        /* Text label stating the role, so it never relies on color alone. */
-        .page :global(.reference-label) {
-            margin-bottom: var(--space-sm);
-            color: var(--color-gold-dark);
-        }
+/* Text label stating the role, so it never relies on color alone. */
+.page :global(.reference-label) {
+  margin-bottom: var(--space-sm);
+  color: var(--color-gold-dark);
+}
 
-        .page :global(.reference-label .badge) {
-            border-color: var(--color-gold-border);
-            background: var(--color-gold-soft);
-            color: var(--color-gold-dark);
-        }
+.page :global(.reference-label .badge) {
+  border-color: var(--color-gold-border);
+  background: var(--color-gold-soft);
+  color: var(--color-gold-dark);
+}
 
-        /* French title: the strongest text on the page. */
-        .page :global(.reference-title) {
-            color: var(--color-heading);
-            font-size: var(--text-display);
-            font-weight: 700;
-            line-height: 1.25;
-            letter-spacing: var(--tracking-heading);
-            overflow-wrap: break-word;
-            hyphens: auto;
-        }
+/* French title: the strongest text on the page. */
+.page :global(.reference-title) {
+  color: var(--color-heading);
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: var(--tracking-heading);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
 
-        /* Localized title under the French title (same treatment as the lesson pages). */
-        .page :global(.title-support) {
-            display: block;
-            margin-top: var(--space-xs);
-            color: var(--color-muted);
-            font-family: var(--font-body);
-            font-size: var(--text-card-title);
-            font-weight: 400;
-            line-height: var(--leading-label);
-            overflow-wrap: anywhere;
-        }
+/* Localized title under the French title (same treatment as the lesson pages). */
+.page :global(.title-support) {
+  display: block;
+  margin-top: var(--space-xs);
+  color: var(--color-muted);
+  font-family: var(--font-body);
+  font-size: var(--text-card-title);
+  font-weight: 400;
+  line-height: var(--leading-label);
+  overflow-wrap: anywhere;
+}
 
-        .page :global(.reference-note) {
-            margin-top: var(--space-sm);
-            color: var(--color-description);
-            font-size: var(--text-small);
-            line-height: var(--leading-body);
-        }
+.page :global(.reference-note) {
+  margin-top: var(--space-sm);
+  color: var(--color-description);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+}
 
-
-        /* ======================================================================
+/* ======================================================================
          5. Markdown content (rendered from `content`)
          Same generic-element styling as the lesson pages. Gold = small structural warmth
          (h2 marker, list markers), blue = notes and links. The reference has no state colors.
          ====================================================================== */
-        .page :global(.markdown-body) {
-            color: var(--color-text);
-            font-size: var(--text-practice);
-            line-height: var(--leading-body);
-            overflow-wrap: break-word;
-        }
+.page :global(.markdown-body) {
+  color: var(--color-text);
+  font-size: var(--text-practice);
+  line-height: var(--leading-body);
+  overflow-wrap: break-word;
+}
 
-        .page :global(.markdown-body>*+*) {
-            margin-top: var(--space-md);
-        }
+.page :global(.markdown-body > * + *) {
+  margin-top: var(--space-md);
+}
 
-        .page :global(.markdown-body>:first-child) {
-            margin-top: 0;
-        }
+.page :global(.markdown-body > :first-child) {
+  margin-top: 0;
+}
 
-        /* The page owns the only h1; reference Markdown starts at ##. */
-        .page :global(.markdown-body h2) {
-            margin-top: var(--space-xl);
-            color: var(--color-heading);
-            font-size: var(--text-section);
-            font-weight: 600;
-            line-height: var(--leading-heading);
-            letter-spacing: var(--tracking-heading);
-        }
+/* The page owns the only h1; reference Markdown starts at ##. */
+.page :global(.markdown-body h2) {
+  margin-top: var(--space-xl);
+  color: var(--color-heading);
+  font-size: var(--text-section);
+  font-weight: 600;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+}
 
+.page :global(.markdown-body h2::before) {
+  content: "";
+  display: block;
+  width: 2rem;
+  height: 3px;
+  margin-bottom: var(--space-sm);
+  border-radius: 9999px;
+  background: var(--color-gold);
+}
 
-        .page :global(.markdown-body h2::before) {
-            content: "";
-            display: block;
-            width: 2rem;
-            height: 3px;
-            margin-bottom: var(--space-sm);
-            border-radius: 9999px;
-            background: var(--color-gold);
-        }
+.page :global(.markdown-body h3) {
+  margin-top: var(--space-lg);
+  color: var(--color-heading);
+  font-size: var(--text-card-title);
+  font-weight: 600;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+}
 
-        .page :global(.markdown-body h3) {
-            margin-top: var(--space-lg);
-            color: var(--color-heading);
-            font-size: var(--text-card-title);
-            font-weight: 600;
-            line-height: var(--leading-heading);
-            letter-spacing: var(--tracking-heading);
-        }
+.page :global(.markdown-body :is(h2, h3) + *) {
+  margin-top: var(--space-sm);
+}
 
-        .page :global(.markdown-body :is(h2, h3)+*) {
-            margin-top: var(--space-sm);
-        }
+.page :global(.markdown-body strong) {
+  color: var(--color-heading);
+  font-weight: 700;
+}
 
-        .page :global(.markdown-body strong) {
-            color: var(--color-heading);
-            font-weight: 700;
-        }
+.page :global(.markdown-body a) {
+  border-radius: 2px;
+  color: var(--color-blue-strong);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 
-        .page :global(.markdown-body a) {
-            border-radius: 2px;
-            color: var(--color-blue-strong);
-            font-weight: 600;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
+.page :global(.markdown-body :is(ul, ol)) {
+  margin-bottom: 0;
+  padding-left: 1.5rem;
+}
 
-        .page :global(.markdown-body :is(ul, ol)) {
-            margin-bottom: 0;
-            padding-left: 1.5rem;
-        }
+.page :global(.markdown-body li + li),
+.page :global(.markdown-body li > :is(ul, ol, p) + *) {
+  margin-top: var(--space-sm);
+}
 
-        .page :global(.markdown-body li+li),
-        .page :global(.markdown-body li> :is(ul, ol, p)+*) {
-            margin-top: var(--space-sm);
-        }
+.page :global(.markdown-body li > :is(ul, ol)) {
+  margin-top: var(--space-xs);
+}
 
-        .page :global(.markdown-body li> :is(ul, ol)) {
-            margin-top: var(--space-xs);
-        }
+.page :global(.markdown-body li::marker) {
+  color: var(--color-gold);
+}
 
-        .page :global(.markdown-body li::marker) {
-            color: var(--color-gold);
-        }
+.page :global(.markdown-body ol > li::marker) {
+  color: var(--color-gold-dark);
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
 
-        .page :global(.markdown-body ol>li::marker) {
-            color: var(--color-gold-dark);
-            font-family: var(--font-heading);
-            font-weight: 700;
-        }
+/* Notes, tips, exceptions: one informational style (blue role), whatever the label. */
+.page :global(.markdown-body blockquote) {
+  margin-inline: 0;
+  margin-bottom: 0;
+  padding: 12px var(--space-md);
+  border: 1px solid var(--color-blue-border);
+  border-left: 4px solid var(--color-blue);
+  border-radius: 12px;
+  background: var(--color-blue-soft);
+  color: var(--color-description);
+}
 
-        /* Notes, tips, exceptions: one informational style (blue role), whatever the label. */
-        .page :global(.markdown-body blockquote) {
-            margin-inline: 0;
-            margin-bottom: 0;
-            padding: 12px var(--space-md);
-            border: 1px solid var(--color-blue-border);
-            border-left: 4px solid var(--color-blue);
-            border-radius: 12px;
-            background: var(--color-blue-soft);
-            color: var(--color-description);
-        }
+.page :global(.markdown-body blockquote > * + *) {
+  margin-top: var(--space-sm);
+}
 
-        .page :global(.markdown-body blockquote>*+*) {
-            margin-top: var(--space-sm);
-        }
+/* Inline code: short forms. Body font, not monospace. */
+.page :global(.markdown-body code) {
+  padding: 1px 6px;
+  border: 1px solid var(--color-gold-border);
+  border-radius: 6px;
+  background: var(--color-gold-soft);
+  color: var(--color-gold-dark);
+  font-family: inherit;
+  font-size: 0.95em;
+  font-weight: 700;
+}
 
-        /* Inline code: short forms. Body font, not monospace. */
-        .page :global(.markdown-body code) {
-            padding: 1px 6px;
-            border: 1px solid var(--color-gold-border);
-            border-radius: 6px;
-            background: var(--color-gold-soft);
-            color: var(--color-gold-dark);
-            font-family: inherit;
-            font-size: 0.95em;
-            font-weight: 700;
-        }
+.page :global(.markdown-body hr) {
+  height: 0;
+  margin-block: var(--space-xl);
+  border: 0;
+  border-top: 1px solid var(--color-border);
+}
 
-        .page :global(.markdown-body hr) {
-            height: 0;
-            margin-block: var(--space-xl);
-            border: 0;
-            border-top: 1px solid var(--color-border);
-        }
-
-        /* Tables scroll inside their own box when they cannot fit; the page never scrolls sideways.
+/* Tables scroll inside their own box when they cannot fit; the page never scrolls sideways.
            Cells use a smaller min-width than the lesson pages (5rem instead of 7rem) so a three-column
            alphabet table fits a 390px phone without scrolling; wider tables still scroll locally. */
-        .page :global(.table-scroll) {
-            overflow-x: auto;
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-small);
-        }
+.page :global(.table-scroll) {
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+}
 
-        .page :global(.markdown-body table) {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: var(--text-body);
-            line-height: var(--leading-label);
-        }
+.page :global(.markdown-body table) {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-body);
+  line-height: var(--leading-label);
+}
 
-        .page :global(.markdown-body :is(th, td)) {
-            min-width: 5rem;
-            padding: 8px 12px;
-            text-align: left;
-            vertical-align: top;
-        }
+.page :global(.markdown-body :is(th, td)) {
+  min-width: 5rem;
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+}
 
-        .page :global(.markdown-body th) {
-            background: var(--color-background);
-            color: var(--color-heading);
-            font-size: var(--text-small);
-            font-weight: 700;
-            border-bottom: 1px solid var(--color-border);
-        }
+.page :global(.markdown-body th) {
+  background: var(--color-background);
+  color: var(--color-heading);
+  font-size: var(--text-small);
+  font-weight: 700;
+  border-bottom: 1px solid var(--color-border);
+}
 
-        .page :global(.markdown-body tr+tr td) {
-            border-top: 1px solid var(--color-border);
-        }
+.page :global(.markdown-body tr + tr td) {
+  border-top: 1px solid var(--color-border);
+}
 
-
-        /* ======================================================================
+/* ======================================================================
          5b. Card presentation of Markdown content (presentation only, not a data model)
          The renderer wraps each `##` section in <section class="card ref-section"> and maps a small set
          of Markdown containers to classes (see the header comment). Everything is static: no hover
@@ -439,332 +436,328 @@
            amber  (brand)       tip callout
            blue   (info)        note blockquote (unchanged)
          ====================================================================== */
-        .page :global(.reference-body) {
-            margin-top: var(--space-lg);
-        }
+.page :global(.reference-body) {
+  margin-top: var(--space-lg);
+}
 
-        .page :global(.markdown-body>p:first-child) {
-            padding-inline: var(--space-xs);
-        }
+.page :global(.markdown-body > p:first-child) {
+  padding-inline: var(--space-xs);
+}
 
-        .page :global(.markdown-body>.ref-section) {
-            margin-top: var(--space-lg);
-        }
+.page :global(.markdown-body > .ref-section) {
+  margin-top: var(--space-lg);
+}
 
-        .page :global(.markdown-body>p+.ref-section) {
-            margin-top: var(--space-lg);
-        }
+.page :global(.markdown-body > p + .ref-section) {
+  margin-top: var(--space-lg);
+}
 
-        /* Wider container, but prose keeps a readable line length; cards and tables use the full width. */
-        .page :global(.markdown-body>p),
-        .page :global(.markdown-body .ref-section>p) {
-            max-width: 46rem;
-        }
+/* Wider container, but prose keeps a readable line length; cards and tables use the full width. */
+.page :global(.markdown-body > p),
+.page :global(.markdown-body .ref-section > p) {
+  max-width: 46rem;
+}
 
-        .page :global(.markdown-body .ref-section>h2:first-child) {
-            margin-top: 0;
-        }
+.page :global(.markdown-body .ref-section > h2:first-child) {
+  margin-top: 0;
+}
 
-        /* Even rhythm between a section's blocks (note, cards, callout). */
-        .page :global(.markdown-body .ref-section> :is(blockquote, .ref-cards, .ref-callout)+*), .page :global(.markdown-body .ref-section>*+ :is(blockquote, .ref-cards, .ref-callout)) {
-            margin-top: var(--space-md);
-        }
+/* Even rhythm between a section's blocks (note, cards, callout). */
+.page :global(.markdown-body .ref-section > :is(blockquote, .ref-cards, .ref-callout) + *),
+.page :global(.markdown-body .ref-section > * + :is(blockquote, .ref-cards, .ref-callout)) {
+  margin-top: var(--space-md);
+}
 
-        .page :global(.ref-cards) {
-            --card-bg: var(--color-background);
-            --card-border: var(--color-border);
-            --card-ink: var(--color-primary-dark);
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(max(8rem, calc((100% - 5 * var(--space-sm)) / 6)), 1fr));
-            gap: var(--space-sm);
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
+.page :global(.ref-cards) {
+  --card-bg: var(--color-background);
+  --card-border: var(--color-border);
+  --card-ink: var(--color-primary-dark);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(max(8rem, calc((100% - 5 * var(--space-sm)) / 6)), 1fr));
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-        .page :global(.markdown-body .ref-cards) {
-            padding-left: 0;
-        }
+.page :global(.markdown-body .ref-cards) {
+  padding-left: 0;
+}
 
-        .page :global(.markdown-body .ref-cards>li) {
-            display: flow-root;
-            min-width: 0;
-            margin-top: 0;
-            padding: 10px 12px;
-            border: 1px solid var(--card-border);
-            border-radius: var(--radius-small);
-            background: var(--card-bg);
-            color: var(--color-description);
-            font-size: var(--text-small);
-            line-height: var(--leading-label);
-        }
+.page :global(.markdown-body .ref-cards > li) {
+  display: flow-root;
+  min-width: 0;
+  margin-top: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-small);
+  background: var(--card-bg);
+  color: var(--color-description);
+  font-size: var(--text-small);
+  line-height: var(--leading-label);
+}
 
-        .page :global(.markdown-body .ref-cards>li+li) {
-            margin-top: 0;
-        }
+.page :global(.markdown-body .ref-cards > li + li) {
+  margin-top: 0;
+}
 
-        /* Letters: the character is the first thing you see; IPA and reading are secondary. */
-        .page :global(.markdown-body .ref-cards>li>strong:first-child) {
-            display: block;
-            color: var(--card-ink);
-            font-family: var(--font-heading);
-            font-size: var(--text-feature);
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: var(--tracking-heading);
-        }
+/* Letters: the character is the first thing you see; IPA and reading are secondary. */
+.page :global(.markdown-body .ref-cards > li > strong:first-child) {
+  display: block;
+  color: var(--card-ink);
+  font-family: var(--font-heading);
+  font-size: var(--text-feature);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: var(--tracking-heading);
+}
 
-        .page :global(.markdown-body .ref-cards>li>strong+em) {
-            display: block;
-            margin-block: 2px;
-            color: var(--card-ink);
-            font-style: normal;
-            font-weight: 700;
-        }
+.page :global(.markdown-body .ref-cards > li > strong + em) {
+  display: block;
+  margin-block: 2px;
+  color: var(--card-ink);
+  font-style: normal;
+  font-weight: 700;
+}
 
-        .page :global(.ref-cards--vowels) {
-            --card-bg: var(--color-blue-soft);
-            --card-border: var(--color-blue-border);
-            --card-ink: var(--color-blue-dark);
-        }
+.page :global(.ref-cards--vowels) {
+  --card-bg: var(--color-blue-soft);
+  --card-border: var(--color-blue-border);
+  --card-ink: var(--color-blue-dark);
+}
 
-        .page :global(.ref-cards--consonants) {
-            --card-bg: var(--color-background);
-            --card-border: var(--color-border);
-            --card-ink: var(--color-primary-dark);
-        }
+.page :global(.ref-cards--consonants) {
+  --card-bg: var(--color-background);
+  --card-border: var(--color-border);
+  --card-ink: var(--color-primary-dark);
+}
 
-        /* Accents: one card per mark or small related group; the accented characters sit in a tile. */
-        .page :global(.ref-cards--accents) {
-            --card-bg: var(--color-orange-soft);
-            --card-border: var(--color-orange-border);
-            --card-ink: var(--color-orange-dark);
-            grid-template-columns: minmax(0, 1fr);
-        }
+/* Accents: one card per mark or small related group; the accented characters sit in a tile. */
+.page :global(.ref-cards--accents) {
+  --card-bg: var(--color-orange-soft);
+  --card-border: var(--color-orange-border);
+  --card-ink: var(--color-orange-dark);
+  grid-template-columns: minmax(0, 1fr);
+}
 
-        /* Each accent card has four clearly separated blocks:
+/* Each accent card has four clearly separated blocks:
            header (character tile + French name) / tagline / short points / example box. */
-        .page :global(.markdown-body .ref-cards--accents>li) {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 14px var(--space-md);
-            font-weight: 500;
-        }
+.page :global(.markdown-body .ref-cards--accents > li) {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px var(--space-md);
+  font-weight: 500;
+}
 
-        .page :global(.markdown-body .ref-cards--accents>li>p:first-child) {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+.page :global(.markdown-body .ref-cards--accents > li > p:first-child) {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-        .page :global(.markdown-body .ref-cards--accents>li>p:first-child>strong) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            min-width: 2.75rem;
-            min-height: 2.75rem;
-            padding: 2px 12px;
-            border: 1px solid var(--color-orange-border);
-            border-radius: 12px;
-            background: var(--color-card);
-            color: var(--color-orange);
-            font-family: var(--font-heading);
-            font-size: var(--text-feature);
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: 0.12em;
-        }
+.page :global(.markdown-body .ref-cards--accents > li > p:first-child > strong) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  padding: 2px 12px;
+  border: 1px solid var(--color-orange-border);
+  border-radius: 12px;
+  background: var(--color-card);
+  color: var(--color-orange);
+  font-family: var(--font-heading);
+  font-size: var(--text-feature);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.12em;
+}
 
-        .page :global(.markdown-body .ref-cards--accents>li>p:first-child>em) {
-            color: var(--card-ink);
-            font-family: var(--font-heading);
-            font-size: var(--text-card-title);
-            font-style: normal;
-            font-weight: 600;
-            line-height: var(--leading-heading);
-        }
+.page :global(.markdown-body .ref-cards--accents > li > p:first-child > em) {
+  color: var(--card-ink);
+  font-family: var(--font-heading);
+  font-size: var(--text-card-title);
+  font-style: normal;
+  font-weight: 600;
+  line-height: var(--leading-heading);
+}
 
-        /* Tagline: what the mark is, in one short line. */
-        .page :global(.markdown-body .ref-cards--accents>li>p:nth-child(2)) {
-            color: var(--color-heading);
-            font-size: var(--text-body);
-            line-height: var(--leading-label);
-        }
+/* Tagline: what the mark is, in one short line. */
+.page :global(.markdown-body .ref-cards--accents > li > p:nth-child(2)) {
+  color: var(--color-heading);
+  font-size: var(--text-body);
+  line-height: var(--leading-label);
+}
 
-        .page :global(.markdown-body .ref-cards--accents>li>p:nth-child(2)>strong) {
-            color: var(--card-ink);
-        }
+.page :global(.markdown-body .ref-cards--accents > li > p:nth-child(2) > strong) {
+  color: var(--card-ink);
+}
 
-        /* Points: short, lighter lines instead of one dense paragraph. */
-        .page :global(.markdown-body .ref-cards--accents ul) {
-            margin: 0;
-            padding-left: 1.1rem;
-            color: var(--color-description);
-            font-size: var(--text-small);
-            line-height: var(--leading-label);
-        }
+/* Points: short, lighter lines instead of one dense paragraph. */
+.page :global(.markdown-body .ref-cards--accents ul) {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--color-description);
+  font-size: var(--text-small);
+  line-height: var(--leading-label);
+}
 
-        .page :global(.markdown-body .ref-cards--accents li+li) {
-            margin-top: var(--space-xs);
-        }
+.page :global(.markdown-body .ref-cards--accents li + li) {
+  margin-top: var(--space-xs);
+}
 
-        .page :global(.markdown-body .ref-cards--accents ul li::marker) {
-            color: var(--color-orange);
-        }
+.page :global(.markdown-body .ref-cards--accents ul li::marker) {
+  color: var(--color-orange);
+}
 
-        /* Examples: a separate white box with a small label, one example per line. */
-        .page :global(.markdown-body .ref-cards--accents>li>p:last-child) {
-            margin-top: auto;
-            padding: 8px 12px;
-            border: 1px solid var(--color-orange-border);
-            border-radius: 12px;
-            background: var(--color-card);
-            color: var(--color-text);
-            font-size: var(--text-small);
-            line-height: 1.6;
-        }
+/* Examples: a separate white box with a small label, one example per line. */
+.page :global(.markdown-body .ref-cards--accents > li > p:last-child) {
+  margin-top: auto;
+  padding: 8px 12px;
+  border: 1px solid var(--color-orange-border);
+  border-radius: 12px;
+  background: var(--color-card);
+  color: var(--color-text);
+  font-size: var(--text-small);
+  line-height: 1.6;
+}
 
-        /* The label is a block, so the hard break after it would add an empty line. */
-        .page :global(.markdown-body .ref-cards--accents>li>p:last-child>strong+br) {
-            display: none;
-        }
+/* The label is a block, so the hard break after it would add an empty line. */
+.page :global(.markdown-body .ref-cards--accents > li > p:last-child > strong + br) {
+  display: none;
+}
 
-        .page :global(.markdown-body .ref-cards--accents>li>p:last-child>strong) {
-            display: block;
-            margin-bottom: 2px;
-            color: var(--card-ink);
-            font-size: var(--text-caption);
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
+.page :global(.markdown-body .ref-cards--accents > li > p:last-child > strong) {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--card-ink);
+  font-size: var(--text-caption);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 
-        /* Rules: short titled cards; the bold line is the title, not a glyph. */
-        .page :global(.ref-cards--rules) {
-            --card-bg: var(--color-gold-soft);
-            --card-border: var(--color-gold-border);
-            --card-ink: var(--color-gold-dark);
-            grid-template-columns: minmax(0, 1fr);
-        }
+/* Rules: short titled cards; the bold line is the title, not a glyph. */
+.page :global(.ref-cards--rules) {
+  --card-bg: var(--color-gold-soft);
+  --card-border: var(--color-gold-border);
+  --card-ink: var(--color-gold-dark);
+  grid-template-columns: minmax(0, 1fr);
+}
 
-        .page :global(.markdown-body .ref-cards--rules>li>strong:first-child) {
-            font-family: var(--font-body);
-            font-size: var(--text-body);
-            line-height: var(--leading-label);
-            letter-spacing: normal;
-        }
+.page :global(.markdown-body .ref-cards--rules > li > strong:first-child) {
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-label);
+  letter-spacing: normal;
+}
 
-        /* Tip callout (brand amber), distinct from the blue note blockquote. */
-        .page :global(.markdown-body .ref-callout) {
-            padding: 12px var(--space-md);
-            border: 1px solid var(--color-primary-border);
-            border-left: 4px solid var(--color-primary);
-            border-radius: 12px;
-            background: var(--color-primary-soft);
-            color: var(--color-description);
-        }
+/* Tip callout (brand amber), distinct from the blue note blockquote. */
+.page :global(.markdown-body .ref-callout) {
+  padding: 12px var(--space-md);
+  border: 1px solid var(--color-primary-border);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 12px;
+  background: var(--color-primary-soft);
+  color: var(--color-description);
+}
 
-        .page :global(.markdown-body .ref-callout strong) {
-            color: var(--color-primary-dark);
-        }
+.page :global(.markdown-body .ref-callout strong) {
+  color: var(--color-primary-dark);
+}
 
-        /* An odd last card spans the row instead of leaving a hole. */
-        @media (min-width: 640px) {
+/* An odd last card spans the row instead of leaving a hole. */
+@media (min-width: 640px) {
+  .page :global(.ref-cards--accents),
+  .page :global(.ref-cards--rules) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 
-            .page :global(.ref-cards--accents),
-            .page :global(.ref-cards--rules) {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
+  .page :global(.ref-cards--accents),
+  .page :global(.ref-cards--rules) {
+    gap: var(--space-md);
+  }
 
-            .page :global(.ref-cards--accents),
-            .page :global(.ref-cards--rules) {
-                gap: var(--space-md);
-            }
+  .page :global(.ref-cards--accents > li:last-child:nth-child(odd)),
+  .page :global(.ref-cards--rules > li:last-child:nth-child(odd)) {
+    grid-column: 1 / -1;
+  }
+}
 
-            .page :global(.ref-cards--accents>li:last-child:nth-child(odd)),
-            .page :global(.ref-cards--rules>li:last-child:nth-child(odd)) {
-                grid-column: 1 / -1;
-            }
-        }
-
-
-        /* French terms and IPA.
+/* French terms and IPA.
            Keep v1's existing font weights; accent-card body gets its own 500 weight above. */
-        .page :global(.markdown-body em[lang="fr"]) {
-            color: var(--color-heading);
-            font-style: normal;
-            font-weight: inherit;
-        }
+.page :global(.markdown-body em[lang="fr"]) {
+  color: var(--color-heading);
+  font-style: normal;
+  font-weight: inherit;
+}
 
-        .page :global(.markdown-body .ref-ipa) {
-            color: var(--color-muted);
-            font-size: 0.9em;
-            font-style: normal;
-            font-weight: inherit;
-            letter-spacing: var(--tracking-label);
-            white-space: nowrap;
-        }
+.page :global(.markdown-body .ref-ipa) {
+  color: var(--color-muted);
+  font-size: 0.9em;
+  font-style: normal;
+  font-weight: inherit;
+  letter-spacing: var(--tracking-label);
+  white-space: nowrap;
+}
 
-        .page :global(.markdown-body em+.ref-ipa) {
-            margin-inline-start: var(--space-xs);
-        }
+.page :global(.markdown-body em + .ref-ipa) {
+  margin-inline-start: var(--space-xs);
+}
 
-        /* ---------- Contextual return link (the only action; leaves the page, changes nothing) ---------- */
-        .page :global(.reference-return) {
-            margin-top: var(--space-lg);
-        }
+/* ---------- Contextual return link (the only action; leaves the page, changes nothing) ---------- */
+.page :global(.reference-return) {
+  margin-top: var(--space-lg);
+}
 
-        .page :global(.reference-return .button) {
-            width: 100%;
-        }
+.page :global(.reference-return .button) {
+  width: 100%;
+}
 
-        /* ======================================================================
+/* ======================================================================
          6. Footer and responsive layout (FD §8)
          ====================================================================== */
 
-        /* Hover motion only where hover exists; static content never reacts. */
-        @media (hover: hover) {
-            .page :global(.crumb-link:hover) {
-                background: var(--color-gold-soft);
-            }
+/* Hover motion only where hover exists; static content never reacts. */
+@media (hover: hover) {
+  .page :global(.crumb-link:hover) {
+    background: var(--color-gold-soft);
+  }
 
-            .page :global(.crumb-link:hover .material-symbols-outlined) {
-                transform: translateX(-4px);
-            }
+  .page :global(.crumb-link:hover .material-symbols-outlined) {
+    transform: translateX(-4px);
+  }
 
-            .page :global(.button-secondary:hover) {
-                background: var(--color-heading);
-                color: #ffffff;
-            }
+  .page :global(.button-secondary:hover) {
+    background: var(--color-heading);
+    color: #ffffff;
+  }
 
-            .page :global(.reference-return .button:hover .material-symbols-outlined) {
-                transform: translateX(-4px);
-            }
-        }
+  .page :global(.reference-return .button:hover .material-symbols-outlined) {
+    transform: translateX(-4px);
+  }
+}
 
-        @media (min-width: 640px) {
+@media (min-width: 640px) {
+  .page :global(.card) {
+    padding: var(--space-lg);
+  }
 
-            .page :global(.card) {
-                padding: var(--space-lg);
-            }
+  .page :global(.reference-return .button) {
+    width: auto;
+  }
 
-            .page :global(.reference-return .button) {
-                width: auto;
-            }
+  .page :global(.markdown-body :is(th, td)) {
+    padding: 10px var(--space-md);
+  }
+}
 
-            .page :global(.markdown-body :is(th, td)) {
-                padding: 10px var(--space-md);
-            }
-        }
+@media (min-width: 1024px) {
+  .page :global(.reference-header),
+  .page :global(.ref-section) {
+    padding: var(--space-xl);
+  }
+}
 
-        @media (min-width: 1024px) {
-
-            .page :global(.reference-header),
-            .page :global(.ref-section) {
-                padding: var(--space-xl);
-            }
-        }
-
-        /* Compact header for tablets and smaller laptops (same as Dashboard, FD §8.5). */
-    
+/* Compact header for tablets and smaller laptops (same as Dashboard, FD §8.5). */

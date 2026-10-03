@@ -17,7 +17,7 @@
 
   States (FD §6.6): LoadingState, ErrorState with retry, then breadcrumbs -> header -> subtopics.
 */
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import ErrorState from "../components/common/ErrorState.jsx";
@@ -35,6 +35,13 @@ export default function VocabularyTopicPage() {
 
   const fetchTopic = useCallback(() => getVocabularyTopic(topicSlug), [topicSlug]);
   const { data: topic, isLoading, error, reload } = useApiResource(fetchTopic, topicSlug);
+
+  // The document title follows the content item on screen: the support-language title when
+  // the API returns one, otherwise the module title until the item loads (FD §4.2, FD §9.4).
+  const itemTitle = topic?.title;
+  useEffect(() => {
+    document.title = t(itemTitle ? "common.pageTitle" : "title.vocabulary", { title: itemTitle ?? "" });
+  }, [itemTitle]);
 
   const subtopics = topic?.subtopics ?? [];
   const units = subtopics.flatMap((subtopic) => subtopic?.study_units ?? []);

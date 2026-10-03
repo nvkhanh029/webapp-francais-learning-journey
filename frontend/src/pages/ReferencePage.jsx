@@ -36,9 +36,10 @@ export default function ReferencePage() {
   const title = reference?.title ?? reference?.title_fr;
   const titleFr = reference?.title_fr;
 
-  // The document title follows the page it is showing (FD §4.2, FD §9.4).
+  // The document title follows the page it is showing (FD §4.2, FD §9.4), falling back to the
+  // reference page title while the item is still loading.
   useEffect(() => {
-    if (title) document.title = t("common.pageTitle", { title });
+    document.title = title ? t("common.pageTitle", { title }) : t("title.reference");
   }, [title]);
 
   return (

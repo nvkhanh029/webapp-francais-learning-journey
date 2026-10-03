@@ -468,7 +468,9 @@ frontend/src/
 │   └── guards/
 │       ├── RequireAuth.jsx
 │       ├── RequireLanguage.jsx
-│       └── GuestRoute.jsx
+│       ├── GuestRoute.jsx
+│       ├── GuardLoading.jsx
+│       └── AuthUnavailable.jsx
 │
 ├── layouts/
 │   ├── PublicLayout.jsx
@@ -514,8 +516,7 @@ frontend/src/
 │   ├── useDashboard.js
 │   ├── useActivityCalendar.js
 │   ├── useLearningUnitState.js
-│   ├── usePractice.js
-│   └── usePageScript.js        (temporary)
+│   └── usePractice.js
 │
 ├── api/
 │   ├── apiClient.js
@@ -590,7 +591,7 @@ Owns application-wide React Context state only.
 
 Owns reusable React stateful logic.
 
-`usePageScript.js` is **temporary**. While the pages still run their companion `<Page>.script.js` files against the rendered DOM, it runs the script once per mounted page, turns in-page links into React Router navigation, and connects the page to the language state. It is removed, together with the page scripts, when the pages are rewritten into data-driven React (§3.4, §6.6); new pages must not use it.
+`usePageScript.js` and the companion `<Page>.script.js` files were the prototype's DOM-script layer: the hook ran a script once per mounted page, turned in-page links into React Router navigation, and connected the page to the language state. They were **temporary** and have now been removed together with the page scripts, because every page is rewritten into data-driven React (§3.4, §6.6). Navigation is React Router `<Link>`/`<Navigate>` and the document title is set from the language state in the page itself. They must not be reintroduced.
 
 ### `api/`
 
@@ -1223,7 +1224,7 @@ non-401 failure)
 
 Only a `401 not_authenticated` proves the learner is signed out. Any other failure means the session state is **unknown**, so the frontend must not treat it as "signed out" (that would send a learner with a valid session to Login, or show a login form while the backend is down). Instead the auth state becomes a dedicated error state (for example `status: "error"` next to `checking`, `authenticated`, `unauthenticated`), the route guards render a full-page `ErrorState` ("cannot reach the server" in the support/UI language) with a **Try again** action that repeats `GET /api/v1/me`, and protected content and the redirect to Login stay blocked until the check succeeds or returns `401`. Public pages that need no session (the Login/Register language choice, §5.5) stay usable.
 
-> **Implementation status (needs implementation):** at the time of this documentation sync, `AuthContext` maps every failed initial `GET /me` (any status) to `unauthenticated`; there is no error/retry state yet. `apiClient.js` already parses `retryAfterSeconds` and `ApiError.isRateLimited`, but no page reads them yet and no localized `rate_limited` message exists. Both behaviors above are the approved design and still to be built in `frontend/`.
+> **Implementation status (implemented):** `AuthContext` has the four states `checking`, `authenticated`, `unauthenticated` and `error`. Only a `401 not_authenticated` clears the session; any other failure of the initial `GET /me` sets `status: "error"` and exposes `retryAuth()`, which repeats the check. `RequireAuth` and `GuestRoute` render `AuthUnavailable` ("cannot reach the server" plus a Try again action) while that state lasts, so protected content and the redirect to Login both stay blocked. `LoginForm` reads `ApiError.isRateLimited` and `retryAfterSeconds` and shows the localized `rate_limited` message with the approximate wait, keeping the entered email; `403 csrf_failed` and unexpected failures use the generic message and keep the input. No auth token is stored in web storage.
 
 ---
 

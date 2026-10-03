@@ -20,7 +20,7 @@
   States (FD §6.6): LoadingState, ErrorState with retry, then breadcrumbs -> header -> entries ->
   actions -> previous/next.
 */
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import ErrorState from "../components/common/ErrorState.jsx";
@@ -56,6 +56,13 @@ export default function VocabularyStudyUnitPage() {
 
   const fetchUnit = useCallback(() => getVocabularyStudyUnit(unitSlug), [unitSlug]);
   const { data: unit, isLoading, error, reload } = useApiResource(fetchUnit, unitSlug);
+
+  // The document title follows the content item on screen: the support-language title when
+  // the API returns one, otherwise the module title until the item loads (FD §4.2, FD §9.4).
+  const itemTitle = unit?.title;
+  useEffect(() => {
+    document.title = t(itemTitle ? "common.pageTitle" : "title.vocabulary", { title: itemTitle ?? "" });
+  }, [itemTitle]);
 
   // The Topic is only known from the Study Unit response, so its browse data is fetched for it. The
   // effect of an unset slug is a wasted request that resolves to null and is simply not used.

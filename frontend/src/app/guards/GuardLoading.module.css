@@ -20,6 +20,18 @@
   animation: spin 900ms linear infinite;
 }
 
+/* The "cannot reach the server" state stacks its message and retry under the icon. */
+.loading:has(.message) {
+  flex-direction: column;
+  text-align: center;
+  padding: var(--space-lg);
+}
+
+.message {
+  max-width: 42ch;
+  margin: 0;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);

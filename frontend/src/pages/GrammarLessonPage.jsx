@@ -19,7 +19,7 @@
   previous/next. The breadcrumb trail appears as soon as the browse data identifies the Part and
   Chapter, because it comes from that response rather than from the lesson response.
 */
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import ErrorState from "../components/common/ErrorState.jsx";
@@ -56,6 +56,13 @@ export default function GrammarLessonPage() {
 
   const fetchLesson = useCallback(() => getGrammarLesson(lessonSlug), [lessonSlug]);
   const { data: lesson, isLoading, error, reload } = useApiResource(fetchLesson, lessonSlug);
+
+  // The document title follows the content item on screen: the support-language title when
+  // the API returns one, otherwise the module title until the item loads (FD §4.2, FD §9.4).
+  const itemTitle = lesson?.title;
+  useEffect(() => {
+    document.title = t(itemTitle ? "common.pageTitle" : "title.grammar", { title: itemTitle ?? "" });
+  }, [itemTitle]);
   // The browse response is only needed to locate this lesson's sibling list for previous / next.
   const fetchBrowse = useCallback(() => getGrammar(), []);
   const { data: browse } = useApiResource(fetchBrowse);

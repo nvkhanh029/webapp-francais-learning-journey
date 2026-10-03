@@ -61,13 +61,11 @@ export default function ContinueLearningCard({ continueLearning }) {
             <span className="material-symbols-outlined" aria-hidden="true">
               menu_book
             </span>{" "}
-            <span>{t("common.continueLearning")}</span>{" "}
-            <span aria-hidden="true">✨</span>
+            <span>{t("common.continueLearning")}</span> <span aria-hidden="true">✨</span>
           </p>
           <h2 className="continue-title">
             {module && <span>{`${t(module.labelKey)} • `}</span>}
-            {parentTitle && <span lang="fr">{parentTitle}</span>}{" "}
-            <span aria-hidden="true">🥐☕</span>
+            {parentTitle && <span lang="fr">{parentTitle}</span>} <span aria-hidden="true">🥐☕</span>
           </h2>
           <p className="continue-lesson">
             {position && <span>{t("dashboard.continueLesson", { n: position.index, total: position.total })}</span>}{" "}

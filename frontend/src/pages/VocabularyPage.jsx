@@ -15,7 +15,7 @@
   States (FD §6.6): LoadingState, ErrorState with retry, EmptyState when there are no categories,
   otherwise the category list.
 */
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import EmptyState from "../components/common/EmptyState.jsx";
@@ -32,6 +32,11 @@ import styles from "./VocabularyPage.module.css";
 
 export default function VocabularyPage() {
   useLanguage();
+
+  // The document title follows the shared language state.
+  useEffect(() => {
+    document.title = t("title.vocabulary");
+  });
   const fetchVocabulary = useCallback(() => getVocabulary(), []);
   const fetchReferences = useCallback(() => getReferences(), []);
   const vocabulary = useApiResource(fetchVocabulary);

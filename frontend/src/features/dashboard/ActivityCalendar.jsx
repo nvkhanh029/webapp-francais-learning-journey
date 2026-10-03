@@ -29,7 +29,7 @@ export default function ActivityCalendar({ todayDate }) {
   const dayCount = new Date(year, month + 1, 0, 12).getDate();
   // Monday is column 1. Date.UTC keeps the weekday of the 1st independent of the browser timezone.
   const firstWeekday = new Date(Date.UTC(year, month, 1)).getUTCDay();
-  const firstDayColumn = (firstWeekday + 6) % 7 + 1;
+  const firstDayColumn = ((firstWeekday + 6) % 7) + 1;
 
   const cells = [];
   for (let day = 1; day <= dayCount; day += 1) {
@@ -48,9 +48,7 @@ export default function ActivityCalendar({ todayDate }) {
       >
         {day}
         {/* Text alternative for the colour-coded state (FD §11): never rely on colour alone. */}
-        <span className="visually-hidden">
-          {`${isToday ? ` (${t("dashboard.today")})` : ""}: ${stateLabel}`}
-        </span>
+        <span className="visually-hidden">{`${isToday ? ` (${t("dashboard.today")})` : ""}: ${stateLabel}`}</span>
       </div>,
     );
   }

@@ -4,11 +4,10 @@ A self-paced French-learning web application developed as a Web Application
 Development final project. The planned learner experience combines Grammar,
 Vocabulary and Verb Conjugation, with Vietnamese/English learning support.
 
-**Current phase: backend development plus authorized frontend implementation.
-This repository is a shared scaffold, not the completed application.** Frontend
-Design is finalized (`docs/frontend-design.md`) and the frontend UI exists in
-`frontend/` (React + Vite). Backend feature implementation and the integration of
-the UI with it are still work in progress.
+**Current phase: backend and frontend implementation.** Frontend Design is
+finalized (`docs/frontend-design.md`) and the React + Vite application in
+`frontend/` is implemented and wired to the real `/api/v1` endpoints. Remaining
+work is the approved-content gap noted below plus manual visual verification.
 
 ## Project status
 
@@ -18,9 +17,12 @@ the UI with it are still work in progress.
 | Backend foundation | Flask application factory, seven Blueprint shells, database/session/error/validation/localization helpers, in-memory Practice run store |
 | SQLite | The 17-table schema and a non-destructive initialization command |
 | Content preparation | Authoring templates, source validation, Vocabulary splitting and transactional fresh-database seed |
-| Feature implementation | Auth, preferences, Dashboard, learner state, content endpoints and Practice business logic are **not implemented** |
-| Curriculum | Templates only. The Content/Data Owner supplies approved demo content |
-| Frontend | Design finalized (`docs/frontend-design.md`); the React + Vite UI is implemented in `frontend/` (`package.json`, committed `package-lock.json`, `src/`); wherever a backend endpoint is not implemented yet, the matching screen cannot show real data |
+| Feature implementation | Auth, preferences, Dashboard, learner state, content endpoints and Practice business logic are implemented on the backend (`545` passing tests) |
+| Curriculum | Approved demo content is seeded and validated (`6` Grammar, `8` Vocabulary, `13` Conjugation, `3` Reference, `27` questions). `futur-simple-futur-proche` still needs its approved `title_vi`/`title_en` |
+| Frontend | All pages are implemented and call the real API: Landing, Login, Register, Language Setup, Dashboard, Grammar/Vocabulary/Conjugation/Reference browse and detail, Practice, Mixed Practice, Review Later and the 404 page. The legacy prototype `*.script.js` layer and `usePageScript` hook are gone |
+
+Every screen still needs a human visual pass; the checks that run in CI are the
+backend suite, seed validation, and the frontend lint/build.
 
 Existing files must be inspected and extended, not recreated in parallel.
 Coding assistants must follow [AGENTS.md](AGENTS.md).
@@ -231,10 +233,11 @@ python -m flask --app app run --debug --port 5000
 ```
 
 Keep the terminal open. This is a local development server only.
-No learner-facing endpoints or HTML page are implemented by the scaffold.
-Opening `/` therefore returns JSON **404**, not a landing page. A 404 at an
-unimplemented endpoint does not mean its feature is ready or broken integration;
-check the feature's implementation status first.
+The backend serves `/api/v1` JSON; it does not serve the React application.
+Opening `/` therefore returns JSON **404**, not a landing page. Start Vite in a
+second terminal and use its address for the UI; a 404 at an unimplemented
+endpoint does not mean its feature is ready or broken integration, so check the
+feature's implementation status first.
 
 The frontend UI exists in `frontend/` and follows `docs/frontend-design.md`.
 It is not needed for backend-only work. To run it, use a second terminal with

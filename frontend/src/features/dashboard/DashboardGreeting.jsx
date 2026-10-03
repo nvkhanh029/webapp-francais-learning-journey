@@ -40,8 +40,7 @@ export default function DashboardGreeting({ progress, streak }) {
   return (
     <section className="welcome dashboard-section" aria-labelledby="welcome-title">
       <h1 className="welcome-title" id="welcome-title">
-        <span lang="fr">{salutation}</span>{" "}
-        <span aria-hidden="true">✨</span>
+        <span lang="fr">{salutation}</span> <span aria-hidden="true">✨</span>
       </h1>
       <p className="welcome-description">{t("dashboard.welcome")}</p>
     </section>

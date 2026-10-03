@@ -35,11 +35,7 @@ export default function ModuleProgressCard({ unitType, learned = 0, total = 0 })
         <p className="skill-description">{t(module.descriptionKey)}</p>
       </div>
       <div className="skill-progress">
-        <ProgressBar
-          label={t("common.progress")}
-          percent={percent}
-          ariaLabel={t(module.progressLabelKey)}
-        />
+        <ProgressBar label={t("common.progress")} percent={percent} ariaLabel={t(module.progressLabelKey)} />
         <div className="skill-footer">
           <span className="skill-detail">{t("common.lessonsOf", { learned, total, n: total })}</span>{" "}
           <Link className="lesson-link" to={module.path}>
