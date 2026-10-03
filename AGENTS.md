@@ -197,6 +197,8 @@ Tests must use isolated test databases, never normal `backend/instance/app.db`.
 
 Ownership is by vertical feature slice, not by Flask layer. It defines primary responsibility/review accountability, not exclusive file permissions.
 
+**Original plan (kept as history; not the actual assignment).**
+
 | Owner | Primary feature stream |
 |---|---|
 | Vân Khánh / Project Lead | Auth + User Preferences; architecture/docs/integration coordination |
@@ -206,7 +208,20 @@ Ownership is by vertical feature slice, not by Flask layer. It defines primary r
 | Member 5 | Conjugation + Reference |
 | Member 6 | Practice + Mixed Practice |
 
-> **Note (current state).** The table above is kept as project history. One person now implements everything and approves all baseline changes, so the per-owner coordination and review steps in this section and in §2 are satisfied by that person's approval. Where this file says to ask or report to Vân Khánh, that approval is the one that counts. Ownership names no longer limit who may edit a feature area.
+> **Note (current state).** The table above is the original plan, kept as project history; the actual responsibilities are in the next table. One person now implements everything and approves all baseline changes, so the per-owner coordination and review steps in this section and in §2 are satisfied by that person's approval. Where this file says to ask or report to Vân Khánh, that approval is the one that counts. Ownership names no longer limit who may edit a feature area.
+
+**Actual responsibilities (as stated by the project lead).**
+
+| Person | Responsible for |
+|---|---|
+| Vân Khánh / Project Lead | Ideas, design documents (`docs/`), project skeleton. Backend: shared components (schema, seed, configuration, shared structure), Reference page content, and later integration work (Vietnam-time clock, session hardening, CSRF check, login rate limit, Dashboard "today", activity calendar, Reference index). Frontend: the whole interface; main owner of the React foundation (app structure, shared components, i18n) and API integration (API client, authentication, route guards, wiring pages) |
+| Nguyễn An Khánh | Backend: Auth and Dashboard |
+| Phí Lê Bảo Linh | Backend: Grammar module in full (code, content, quiz questions) |
+| Trần Ngọc Hải | Backend: Vocabulary module in full (code, content, quiz questions) and Conjugation content; Frontend: supports React and API integration |
+| Ngô Tuấn Duy | Backend: code for Reference and Conjugation (no content) |
+| Nguyễn Danh Kiên | Backend: code for Practice and Mixed Practice (no content) |
+
+The team used AI assistants (Claude, Claude Code) for coding, documentation and testing.
 
 A feature owner may change the route, service, repository/runtime state, and tests required by that feature.
 
