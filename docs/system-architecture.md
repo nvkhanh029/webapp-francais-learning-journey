@@ -365,7 +365,11 @@ Architectural rules:
 - passwords are never stored in plain text;
 - the Flask `SECRET_KEY` must remain outside committed source code;
 - session cookies should use `HttpOnly` and `SameSite=Lax` for the MVP;
-- `Secure` is disabled only for local HTTP and should be enabled if the application is ever served through HTTPS;
+- `Secure` is disabled only for local HTTP and is required when the application is served through HTTPS;
+- authenticated sessions expire (lifetime is backend configuration);
+- state-changing requests are protected against CSRF;
+- repeated failed login attempts are rate limited, using server-side in-process state for the MVP;
+- the server uses one clock in `Asia/Ho_Chi_Minh` for activity dates, streaks, and the Dashboard `today` value; the frontend does not decide "today" for those purposes;
 - JWT, OAuth/social login, MFA, and email-verification infrastructure are outside the MVP.
 
 ---

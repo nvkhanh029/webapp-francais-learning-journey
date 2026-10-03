@@ -1,0 +1,91 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "La famille",
+  "topic_slug": "famille",
+  "topic_sort_order": 30,
+  "topic_vi": "Gia đình",
+  "topic_en": "Family",
+  "subtopic": "La famille élargie",
+  "subtopic_key": "famille-elargie",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Đại gia đình",
+  "subtopic_en": "Extended family",
+  "words": [
+    {
+      "french": "les grands-parents",
+      "meaning_vi": "ông bà",
+      "meaning_en": "grandparents",
+      "ipa": "/le ɡʁɑ̃.pa.ʁɑ̃/",
+      "example_fr": "Mes grands-parents habitent à la campagne.",
+      "example_vi": "Ông bà tôi sống ở nông thôn.",
+      "example_en": "My grandparents live in the countryside."
+    },
+    {
+      "french": "l'oncle",
+      "meaning_vi": "chú, bác, cậu",
+      "meaning_en": "uncle",
+      "ipa": "/lɔ̃kl/",
+      "example_fr": "Mon oncle travaille à Paris.",
+      "example_vi": "Chú tôi làm việc ở Paris.",
+      "example_en": "My uncle works in Paris."
+    },
+    {
+      "french": "la tante",
+      "meaning_vi": "cô, dì, thím",
+      "meaning_en": "aunt",
+      "ipa": "/la tɑ̃t/",
+      "example_fr": "Ma tante aime voyager.",
+      "example_vi": "Cô tôi thích đi du lịch.",
+      "example_en": "My aunt likes to travel."
+    },
+    {
+      "french": "le cousin / la cousine",
+      "meaning_vi": "anh chị em họ",
+      "meaning_en": "cousin",
+      "ipa": "/lə ku.zɛ̃ / la ku.zin/",
+      "example_fr": "Mon cousin a douze ans.",
+      "example_vi": "Anh họ tôi mười hai tuổi.",
+      "example_en": "My cousin is twelve years old."
+    },
+    {
+      "french": "le neveu",
+      "meaning_vi": "cháu trai (con của anh chị em)",
+      "meaning_en": "nephew",
+      "ipa": "/lə nə.vø/",
+      "example_fr": "Mon neveu joue au football.",
+      "example_vi": "Cháu trai tôi chơi bóng đá.",
+      "example_en": "My nephew plays football."
+    },
+    {
+      "french": "la nièce",
+      "meaning_vi": "cháu gái (con của anh chị em)",
+      "meaning_en": "niece",
+      "ipa": "/la njɛs/",
+      "example_fr": "Ma nièce adore dessiner.",
+      "example_vi": "Cháu gái tôi rất thích vẽ.",
+      "example_en": "My niece loves drawing."
+    },
+    {
+      "french": "le beau-père",
+      "meaning_vi": "bố chồng, bố vợ",
+      "meaning_en": "father-in-law",
+      "ipa": "/lə bo.pɛʁ/",
+      "example_fr": "Son beau-père est gentil.",
+      "example_vi": "Bố chồng cô ấy rất hiền.",
+      "example_en": "Her father-in-law is kind."
+    },
+    {
+      "french": "la belle-mère",
+      "meaning_vi": "mẹ chồng, mẹ vợ",
+      "meaning_en": "mother-in-law",
+      "ipa": "/la bɛl.mɛʁ/",
+      "example_fr": "Ma belle-mère cuisine bien.",
+      "example_vi": "Mẹ chồng tôi nấu ăn ngon.",
+      "example_en": "My mother-in-law cooks well."
+    }
+  ]
+}

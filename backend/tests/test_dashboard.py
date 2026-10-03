@@ -1,16 +1,23 @@
-"""Dashboard aggregation and streak derivation.
+"""Dashboard aggregation: docs/api-contracts.md Section 8; streak rules in
+docs/requirements-and-analysis.md Section 11 and docs/database-design.md
+Section 11.2/13.3.
 
-Streak edge cases run against the pure ``calculate_streak`` with fixed calendar
-dates; one HTTP test checks the real today/yesterday wiring end to end.
+Streak edge cases are exercised as the pure `dashboard_service.calculate_streak`
+function with fixed calendar dates so they do not depend on the real current
+date (Backend Structure Section 15.8). One end-to-end HTTP test additionally
+checks the real `today`/`yesterday` wiring through the full aggregate read.
 """
 import sqlite3
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 
 import pytest
 
+from app import clock
 from app.services.dashboard_service import calculate_streak
 
 pytestmark = pytest.mark.flask
+
+VN = timezone(timedelta(hours=7))
 
 
 # ---------------------------------------------------------------------------
@@ -136,12 +143,14 @@ def learner(client, database_path):
     return 1
 
 
-def test_new_learner_dashboard_state(client, database_path, learner):
+def test_new_learner_dashboard_state(client, database_path, learner, monkeypatch):
     """Confirm a new learner sees zeroed progress and an empty dashboard."""
+    monkeypatch.setattr(clock, "now", lambda: datetime(2026, 9, 20, 10, 0, tzinfo=VN))
     _insert_learning_unit(database_path, unit_id=1, unit_type="grammar", slug="articles-definis")
     response = client.get("/api/v1/me/dashboard")
     assert response.status_code == 200
     assert response.json["data"] == {
+        "today": {"date": "2026-09-20", "timezone": "Asia/Ho_Chi_Minh"},
         "streak": {"current": 0, "longest": 0, "active_today": False},
         "progress": {
             "grammar": {"learned": 0, "total": 1},
@@ -181,8 +190,15 @@ def test_progress_counts_learned_and_total_per_module(client, database_path, lea
 
 def test_continue_learning_uses_most_recently_opened_unfinished_unit(client, database_path, learner):
     """Confirm continue_learning picks the most recently opened unfinished unit."""
-    _insert_learning_unit(database_path, unit_id=1, unit_type="grammar", slug="grammar-1")
-    _insert_learning_unit(database_path, unit_id=2, unit_type="grammar", slug="grammar-2")
+    with sqlite3.connect(database_path) as db:
+        db.execute("INSERT INTO grammar_parts (id, title_fr, sort_order) VALUES (1, 'Part', 10)")
+        db.execute("INSERT INTO grammar_chapters (id, part_id, title_fr, title_vi, title_en, sort_order) "
+                   "VALUES (1, 1, 'Chapitre', 'Chuong', 'Chapter', 10)")
+        for unit_id, slug in ((1, "grammar-1"), (2, "grammar-2")):
+            db.execute("INSERT INTO learning_units (id, unit_type, slug, title_fr, title_vi, title_en) "
+                       "VALUES (?, 'grammar', ?, 'Fixture FR', 'Fixture VI', 'Fixture EN')", (unit_id, slug))
+            db.execute("INSERT INTO grammar_lessons (learning_unit_id, chapter_id, sort_order, content_vi, content_en) "
+                       "VALUES (?, 1, ?, 'x', 'x')", (unit_id, unit_id * 10))
     _insert_state(database_path, unit_id=1, last_opened_at="2026-01-01T10:00:00+00:00")
     _insert_state(database_path, unit_id=2, last_opened_at="2026-01-02T10:00:00+00:00")
 
@@ -191,6 +207,8 @@ def test_continue_learning_uses_most_recently_opened_unfinished_unit(client, dat
     assert response.json["data"]["continue_learning"] == {
         "slug": "grammar-2", "unit_type": "grammar",
         "title_fr": "Fixture FR", "title": "Fixture VI",
+        "parent": {"kind": "chapter", "title_fr": "Chapitre", "title": "Chuong"},
+        "position": {"index": 2, "total": 2},
     }
 
 
@@ -285,7 +303,7 @@ def test_dashboard_streak_wiring_uses_real_today_and_yesterday(client, database_
     """End-to-end check that activity_date round-trips through the real DB/HTTP
     path; edge cases themselves are covered above by the pure-function tests.
     """
-    today = date.today()
+    today = clock.today()
     yesterday = today - timedelta(days=1)
     _insert_session(database_path, session_id=1, completed_at=f"{yesterday.isoformat()}T09:00:00+00:00",
                      activity_date=yesterday.isoformat())
@@ -295,3 +313,50 @@ def test_dashboard_streak_wiring_uses_real_today_and_yesterday(client, database_
     response = client.get("/api/v1/me/dashboard")
 
     assert response.json["data"]["streak"] == {"current": 2, "longest": 2, "active_today": True}
+
+
+# ---------------------------------------------------------------------------
+# today {date, timezone} and active_today share one clock (API 8.1, 4.10)
+# ---------------------------------------------------------------------------
+
+def test_dashboard_today_is_the_server_date_in_ho_chi_minh(client, learner, monkeypatch):
+    # 2026-09-30 20:00 UTC is already 2026-10-01 03:00 in Asia/Ho_Chi_Minh.
+    monkeypatch.setattr(clock, "now",
+                        lambda: datetime(2026, 9, 30, 20, 0, tzinfo=timezone.utc).astimezone(VN))
+    data = client.get("/api/v1/me/dashboard").json["data"]
+    assert data["today"] == {"date": "2026-10-01", "timezone": "Asia/Ho_Chi_Minh"}
+
+
+def test_dashboard_today_ignores_the_browser_clock(client, learner, monkeypatch):
+    monkeypatch.setattr(clock, "now", lambda: datetime(2030, 1, 2, 23, 59, tzinfo=VN))
+    response = client.get("/api/v1/me/dashboard", headers={"Date": "Mon, 01 Jan 1990 00:00:00 GMT"})
+    assert response.json["data"]["today"]["date"] == "2030-01-02"
+
+
+def test_active_today_agrees_with_today_date(client, database_path, learner, monkeypatch):
+    monkeypatch.setattr(clock, "now", lambda: datetime(2026, 10, 1, 0, 5, tzinfo=VN))
+    _insert_session(database_path, session_id=1, completed_at="2026-10-01T00:01:00+07:00",
+                    activity_date="2026-10-01")
+    _insert_session(database_path, session_id=2, completed_at="2026-09-30T23:50:00+07:00",
+                    activity_date="2026-09-30")
+    data = client.get("/api/v1/me/dashboard").json["data"]
+    assert data["today"]["date"] == "2026-10-01"
+    assert data["streak"] == {"current": 2, "longest": 2, "active_today": True}
+
+
+def test_not_active_today_when_the_last_session_was_yesterday(client, database_path, learner, monkeypatch):
+    monkeypatch.setattr(clock, "now", lambda: datetime(2026, 10, 1, 0, 5, tzinfo=VN))
+    _insert_session(database_path, session_id=1, completed_at="2026-09-30T23:50:00+07:00",
+                    activity_date="2026-09-30")
+    data = client.get("/api/v1/me/dashboard").json["data"]
+    assert data["streak"] == {"current": 1, "longest": 1, "active_today": False}
+
+
+def test_dashboard_reads_the_clock_once_per_request(client, learner, monkeypatch):
+    calls = []
+    def tick():
+        calls.append(1)
+        return datetime(2026, 10, 1, 12, 0, tzinfo=VN)
+    monkeypatch.setattr(clock, "now", tick)
+    client.get("/api/v1/me/dashboard")
+    assert len(calls) == 1

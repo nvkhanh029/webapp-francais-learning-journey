@@ -8,8 +8,9 @@ from flask import Flask
 
 from . import db
 from .auth_session import init_app as init_auth
-from .config import Config
+from .config import Config, env_flag
 from .errors import register_error_handlers
+from .login_rate_limiter import InMemoryLoginRateLimiter
 from .practice_runs import InMemoryPracticeRunStore
 
 
@@ -39,6 +40,9 @@ def create_app(test_config=None):
         # Normal runtime configuration must obtain the secret from the
         # environment (optionally populated from backend/.env above).
         app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+        # Only ever turns Secure on; HTTPS requests are detected regardless.
+        if env_flag("SESSION_COOKIE_SECURE", os.environ):
+            app.config["SESSION_COOKIE_SECURE"] = True
     else:
         # Test configuration is intentionally self-contained. In particular,
         # a missing test SECRET_KEY must not silently fall back to the host
@@ -61,5 +65,8 @@ def create_app(test_config=None):
 
     # Each application instance receives its own temporary Practice run store.
     app.extensions["practice_run_store"] = InMemoryPracticeRunStore()
+    app.extensions["login_rate_limiter"] = InMemoryLoginRateLimiter(
+        app.config["LOGIN_RATE_LIMIT_WINDOW_SECONDS"],
+    )
 
     return app

@@ -1,6 +1,5 @@
-// Root application component: composes global providers and the route tree.
-// Expects providers.jsx (AuthContext) and routes.jsx to supply the app shell.
+import AppRoutes from "./routes.jsx";
 
 export default function App() {
-  return null;
+  return <AppRoutes />;
 }

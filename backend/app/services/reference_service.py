@@ -20,3 +20,22 @@ def get_page(user, slug):
         "title": localized_value(row, "title", language, french_fallback_field="title_fr"),
         "content": localized_value(row, "content", language),
     }
+
+
+def list_pages(user):
+    """Index of reference pages: metadata only, no `content` and no learner `state`.
+
+    Reference pages are not learning units (BR-11), so this read changes no
+    learner state, progress or streak (API Contract 12.1).
+    """
+    language = resolve_support_language(user["support_language"])
+    return {
+        "references": [
+            {
+                "slug": row["slug"],
+                "title_fr": row["title_fr"],
+                "title": localized_value(row, "title", language, french_fallback_field="title_fr"),
+            }
+            for row in reference_repository.list_pages()
+        ]
+    }

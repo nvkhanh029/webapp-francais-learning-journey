@@ -1,0 +1,107 @@
+{
+  "learning_unit_slug": "articles-partitifs",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn mạo từ đúng: Je bois ___ eau.",
+      "prompt_en": "Choose the correct article: Je bois ___ eau.",
+      "explanation_vi": "Eau bắt đầu bằng nguyên âm nên dùng de l': de l'eau.",
+      "explanation_en": "Eau starts with a vowel, so we use de l': de l'eau.",
+      "options": [
+        {
+          "text": "de l'",
+          "is_correct": true
+        },
+        {
+          "text": "du",
+          "is_correct": false
+        },
+        {
+          "text": "de la",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn mạo từ đúng: Elle mange ___ salade.",
+      "prompt_en": "Choose the correct article: Elle mange ___ salade.",
+      "explanation_vi": "Salade là danh từ giống cái nên dùng de la: de la salade.",
+      "explanation_en": "Salade is feminine, so we use de la: de la salade.",
+      "options": [
+        {
+          "text": "de l'",
+          "is_correct": false
+        },
+        {
+          "text": "de la",
+          "is_correct": true
+        },
+        {
+          "text": "du",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn từ đúng: J'ai beaucoup ___ travail.",
+      "prompt_en": "Choose the correct word: J'ai beaucoup ___ travail.",
+      "explanation_vi": "Sau beaucoup, ta chỉ dùng de: beaucoup de travail.",
+      "explanation_en": "After beaucoup we only use de: beaucoup de travail.",
+      "options": [
+        {
+          "text": "du",
+          "is_correct": false
+        },
+        {
+          "text": "le",
+          "is_correct": false
+        },
+        {
+          "text": "de",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "sort_order": 40,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền mạo từ bộ phận (một ít): Il prend ___ pain au petit déjeuner.",
+      "prompt_en": "Fill in the partitive article (some): Il prend ___ pain au petit déjeuner.",
+      "explanation_vi": "Pain là danh từ giống đực không đếm được ở đây nên dùng du: du pain.",
+      "explanation_en": "Pain is masculine and treated as uncountable here, so we use du: du pain.",
+      "accepted_answers": [
+        "du"
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền vào chỗ trống: Je ne bois pas ___ café.",
+      "prompt_en": "Fill in the blank: Je ne bois pas ___ café.",
+      "explanation_vi": "Sau ne … pas, du đổi thành de: Je ne bois pas de café.",
+      "explanation_en": "After ne … pas, du becomes de: Je ne bois pas de café.",
+      "accepted_answers": [
+        "de"
+      ]
+    },
+    {
+      "sort_order": 60,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Chủ ngữ + động từ + mạo từ bộ phận + danh từ: Je mange du fromage.",
+      "explanation_en": "Subject + verb + partitive article + noun: Je mange du fromage.",
+      "pieces": [
+        "Je",
+        "mange",
+        "du",
+        "fromage"
+      ]
+    }
+  ]
+}

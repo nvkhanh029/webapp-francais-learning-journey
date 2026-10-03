@@ -651,6 +651,8 @@ LIMIT 1
 
 If no such unit exists, the application should fall back to an Explore Learning prompt rather than inventing a recommendation.
 
+Known limitation: `last_opened_at` is written with one-second resolution (ISO 8601 `timespec="seconds"`), so two units opened within the same second tie under `ORDER BY last_opened_at DESC` and the result between them is undefined. Accepted for the MVP (see API Contract §8.1).
+
 Review Later uses the same state table, conceptually:
 
 ```text
@@ -676,7 +678,7 @@ Stores one lightweight summary row for every completed normal Practice or Mixed 
 | `correct_count` | INTEGER | Required; number of correct answers |
 | `total_questions` | INTEGER | Required; total number of questions in the completed session |
 
-`completed_at` preserves the exact completion time for chronological history. `activity_date` is derived by the backend from the application's local calendar date at completion time and is used consistently for streak/calendar grouping. It must not be trusted directly from a client-supplied date. A user-configurable timezone is outside the MVP scope.
+`completed_at` preserves the exact completion time for chronological history. `activity_date` is derived by the backend as the `Asia/Ho_Chi_Minh` calendar date of the same completion instant (one server clock for `completed_at`, `activity_date`, the Dashboard `today` value, and streak calculation) and is used consistently for streak/calendar grouping. It must not be trusted directly from a client-supplied date. A user-configurable timezone is outside the MVP scope.
 
 Recommended data rules:
 
@@ -715,7 +717,7 @@ The MVP does **not** store mutable `current_streak` or `longest_streak` counters
 - **current streak:** if the learner is active today, use the consecutive run ending today; if not yet active today but active yesterday, retain the consecutive run ending yesterday; if active on neither today nor yesterday, return `0`;
 - **longest streak:** the maximum consecutive run found in the learner's retained completed-practice history.
 
-Multiple completed sessions on the same backend-local calendar date still count as only one active day for streak purposes. Practice-history rows must therefore be retained for the lifetime of the learner account unless the account or learner state is explicitly reset or deleted.
+Multiple completed sessions on the same `Asia/Ho_Chi_Minh` calendar date still count as only one active day for streak purposes. Practice-history rows must therefore be retained for the lifetime of the learner account unless the account or learner state is explicitly reset or deleted.
 
 The MVP stores only session-level summaries. Per-question answer history, submitted-answer snapshots, and detailed item-level analytics are intentionally not stored.
 
@@ -812,16 +814,16 @@ Important rules:
 
 ## 13.3 Learning Activity Calendar derivation
 
-The Learning Activity Calendar is a Should Have feature and does not require a separate activity table. If implemented, it should be derived from `practice_sessions` using the same valid completed-practice records used by streak logic.
+The Learning Activity Calendar is a Should Have feature that has been selected for implementation (API §8.2). It does not require a separate activity table and is derived from `practice_sessions` using the same valid completed-practice records used by streak logic.
 
 Conceptually:
 
 ```text
 active day       = distinct activity_date with at least one completed practice session
-daily intensity  = number of practice_sessions rows for that activity_date
+calendar month   = the unique active dates whose activity_date falls in the requested month
 ```
 
-This allows multiple sessions on one day to increase calendar intensity while still counting as only one day in the current/longest streak calculations. The calendar is informational only and must not write additional progress or streak state.
+The calendar returns each active date once. It carries no per-day session count and no intensity value, so multiple sessions on one day look the same as one session, exactly as they count as one day in the current/longest streak calculations. The calendar is informational only and must not write additional progress or streak state.
 
 ## 13.4 Future Adaptive Mixed Practice
 
@@ -1107,7 +1109,7 @@ Auto-splitting is intended primarily for content preparation before the curricul
 
 Once learners have persistent progress against existing Study Units, an automated reseed must not silently rebalance those published units, because changing their membership would make previous progress ambiguous.
 
-For the local MVP, recreating and reseeding the database is acceptable during development. A future production version should use stable content IDs and migrations/upserts rather than destructive reseeding.
+For the local MVP, recreating and reseeding the database is acceptable during development, and it is the accepted way to apply a `schema.sql` or authored-content change for now (no migration framework). It is an explicit developer action and discards local learner data. A future production version should use stable content IDs and migrations/upserts rather than destructive reseeding.
 
 ---
 
@@ -1370,7 +1372,7 @@ All contributors should preserve the following decisions:
 8. **Mixed Practice Content Covered is current-result data:** derive it from the learning units represented by the generated question set and do not persist the full composition in Practice History.
 9. **Mixed Practice filters only narrow learned content:** module filters use `learning_units.unit_type`, question-type filters use `questions.question_type`, and no filter may bypass `learned_at`.
 10. **Adaptive/personalized Mixed Practice is future scope:** do not add granular performance-history tables to the MVP solely to support a future idea.
-11. **The Learning Activity Calendar, if implemented, derives from `practice_sessions`; do not create a second activity source.**
+11. **The Learning Activity Calendar (selected for implementation) derives unique active dates from `practice_sessions`; do not create a second activity source.**
 12. **French Alphabet & Accents is reference content, not a `learning_unit`, and must not affect progress, Review Later, Continue Learning, practice, or streaks.**
 13. **Vocabulary IPA is optional and belongs on `vocabulary_words.ipa`; when present, use standard IPA notation.**
 14. **Vocabulary source hierarchy and Study Unit hierarchy are different concepts:** subtopics come from the source structure; Study Units are learning chunks.

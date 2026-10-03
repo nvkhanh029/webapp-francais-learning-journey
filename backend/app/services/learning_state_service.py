@@ -3,8 +3,7 @@
 Learner identity is always the authenticated user_id from the route/session,
 never a client value; the service owns each write transaction.
 """
-from datetime import datetime, timezone
-
+from .. import clock
 from ..db import transaction
 from ..errors import ApiError
 from ..localization import localized_value
@@ -13,7 +12,7 @@ from ..repositories import learning_state_repository, learning_unit_repository
 
 def _now_iso():
     """Backend-authoritative timestamp; never trust a client-supplied time."""
-    return datetime.now(timezone.utc).astimezone().isoformat(timespec="seconds")
+    return clock.now().isoformat(timespec="seconds")
 
 
 def _find_unit_or_404(slug):

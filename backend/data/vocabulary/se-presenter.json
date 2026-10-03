@@ -1,0 +1,100 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les salutations et la politesse",
+  "topic_slug": "greetings",
+  "topic_sort_order": 20,
+  "topic_vi": "Chào hỏi và phép lịch sự",
+  "topic_en": "Greetings and politeness",
+  "subtopic": "Se présenter",
+  "subtopic_key": "se-presenter",
+  "subtopic_sort_order": 20,
+  "subtopic_vi": "Tự giới thiệu",
+  "subtopic_en": "Introducing yourself",
+  "words": [
+    {
+      "french": "je m'appelle",
+      "meaning_vi": "tôi tên là",
+      "meaning_en": "my name is",
+      "ipa": "/ʒə ma.pɛl/",
+      "example_fr": "Je m'appelle Linh.",
+      "example_vi": "Tôi tên là Linh.",
+      "example_en": "My name is Linh."
+    },
+    {
+      "french": "comment tu t'appelles ?",
+      "meaning_vi": "bạn tên là gì?",
+      "meaning_en": "what is your name?",
+      "ipa": "/kɔ.mɑ̃ ty ta.pɛl/",
+      "example_fr": "Salut ! Comment tu t'appelles ?",
+      "example_vi": "Chào bạn! Bạn tên là gì?",
+      "example_en": "Hi! What is your name?"
+    },
+    {
+      "french": "enchanté(e)",
+      "meaning_vi": "rất vui được gặp bạn",
+      "meaning_en": "nice to meet you",
+      "ipa": "/ɑ̃.ʃɑ̃.te/",
+      "example_fr": "Enchanté, monsieur Martin.",
+      "example_vi": "Rất vui được gặp ông Martin.",
+      "example_en": "Nice to meet you, Mr Martin."
+    },
+    {
+      "french": "j'ai vingt ans",
+      "meaning_vi": "tôi hai mươi tuổi",
+      "meaning_en": "I am twenty years old",
+      "ipa": "/ʒe vɛ̃.tɑ̃/",
+      "example_fr": "J'ai vingt ans et j'étudie à Lyon.",
+      "example_vi": "Tôi hai mươi tuổi và tôi học ở Lyon.",
+      "example_en": "I am twenty and I study in Lyon."
+    },
+    {
+      "french": "je suis vietnamien / vietnamienne",
+      "meaning_vi": "tôi là người Việt Nam",
+      "meaning_en": "I am Vietnamese",
+      "ipa": null,
+      "example_fr": "Je suis vietnamienne.",
+      "example_vi": "Tôi là người Việt Nam.",
+      "example_en": "I am Vietnamese."
+    },
+    {
+      "french": "j'habite à …",
+      "meaning_vi": "tôi sống ở …",
+      "meaning_en": "I live in …",
+      "ipa": "/ʒa.bit a/",
+      "example_fr": "J'habite à Paris.",
+      "example_vi": "Tôi sống ở Paris.",
+      "example_en": "I live in Paris."
+    },
+    {
+      "french": "je suis étudiant(e)",
+      "meaning_vi": "tôi là sinh viên",
+      "meaning_en": "I am a student",
+      "ipa": "/ʒə sɥi e.ty.djɑ̃/",
+      "example_fr": "Je suis étudiante en français.",
+      "example_vi": "Tôi là sinh viên ngành tiếng Pháp.",
+      "example_en": "I am a French student."
+    },
+    {
+      "french": "le prénom",
+      "meaning_vi": "tên riêng",
+      "meaning_en": "first name",
+      "ipa": "/lə pʁe.nɔ̃/",
+      "example_fr": "Mon prénom est Anna.",
+      "example_vi": "Tên riêng của tôi là Anna.",
+      "example_en": "My first name is Anna."
+    },
+    {
+      "french": "le nom de famille",
+      "meaning_vi": "họ",
+      "meaning_en": "surname",
+      "ipa": "/lə nɔ̃ də fa.mij/",
+      "example_fr": "Mon nom de famille est Nguyen.",
+      "example_vi": "Họ của tôi là Nguyễn.",
+      "example_en": "My surname is Nguyen."
+    }
+  ]
+}

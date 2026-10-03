@@ -1,2 +1,10 @@
-// Convenience accessor for AuthContext, preferred over using the Context directly.
-// Exposes currentUser, isAuthLoading, and auth actions.
+import { useContext } from "react";
+
+import { AuthContext } from "../context/AuthContext.jsx";
+
+// Public interface to AuthContext (FD §5.6).
+export default function useAuth() {
+  const context = useContext(AuthContext);
+  if (!context) throw new Error("useAuth must be used inside <AuthProvider>.");
+  return context;
+}

@@ -167,9 +167,11 @@ backend/
 ├── app/
 │   ├── __init__.py
 │   ├── config.py
+│   ├── clock.py
 │   ├── db.py
 │   ├── schema.sql
 │   ├── auth_session.py
+│   ├── login_rate_limiter.py
 │   ├── validation.py
 │   ├── errors.py
 │   ├── localization.py
@@ -234,12 +236,18 @@ backend/
 │   ├── test_learning_state.py
 │   ├── test_practice.py
 │   ├── test_dashboard.py
+│   ├── test_activity_calendar.py
+│   ├── test_clock.py
+│   ├── test_session_security.py
+│   ├── test_validation_details.py
 │   └── test_seed_validation.py
 │
 ├── init_db.py
 ├── seed.py
 └── requirements.txt
 ```
+
+The test list above is representative, not exhaustive: the implemented suite also contains further focused files (for example `test_grammar.py`, `test_reference_index.py`, `test_practice_run_store.py`, `test_app_factory.py`), grouped by feature slice (§15).
 
 The `seeding/` package may initially be smaller if the seed implementation is still short. However, the responsibilities of loading, validation, transformation, and database writing should remain conceptually separate so that `seed.py` does not become a single unmaintainable script.
 
@@ -292,6 +300,7 @@ from . import db
 from .errors import register_error_handlers
 from .auth_session import init_app as init_auth
 from .api.v1 import register_blueprints
+from .login_rate_limiter import InMemoryLoginRateLimiter
 from .practice_runs import InMemoryPracticeRunStore
 
 
@@ -313,6 +322,9 @@ def create_app(test_config=None):
     register_blueprints(app)
 
     app.extensions["practice_run_store"] = InMemoryPracticeRunStore()
+    app.extensions["login_rate_limiter"] = InMemoryLoginRateLimiter(
+        app.config["LOGIN_RATE_LIMIT_WINDOW_SECONDS"],
+    )
 
     return app
 ```
@@ -378,6 +390,10 @@ The route modules are grouped by API feature rather than one Python file per end
 The Dashboard endpoint remains in `me.py` because it is a learner-owned `/me/dashboard` route.
 
 Its business logic belongs in `dashboard_service.py`.
+
+The Activity Calendar endpoint (`GET /api/v1/me/activity-calendar`, API §8.2) is also a learner-owned `/me/...` route and lives in `me.py`. Its logic (unique active dates for one month, future-month rejection) belongs in `dashboard_service.py` and reads `practice_sessions` through the existing Practice-history repository; no calendar repository or activity table is created.
+
+The Reference index endpoint (`GET /api/v1/references`, API §12.1) lives in `references.py` with the Reference page endpoint and uses `reference_service.py` and `reference_repository.py`.
 
 Route placement and service responsibility do not need to be one-to-one.
 
@@ -467,7 +483,12 @@ Responsibilities:
 - derive Mixed Practice availability;
 - derive current streak;
 - derive longest streak;
-- build Recent Practice output.
+- build Recent Practice output;
+- return the server `today` value (date and timezone) from the same clock used for `activity_date` and streaks;
+- build `continue_learning` with `parent` and `position` (API §8.1);
+- derive unique active dates for the Activity Calendar month (API §8.2).
+
+All date-sensitive code (`completed_at`, `activity_date`, `today`, streaks, calendar month validation) obtains the current time from one clock helper fixed to `Asia/Ho_Chi_Minh` (API §4.10), so tests can replace that single helper. Code must not call the process-local timezone directly. The helper is `app/clock.py` (§11.8).
 
 There is intentionally no `dashboard_repository.py`. The Dashboard is an aggregate application view and should coordinate existing repositories instead of creating a repository tied to one screen.
 
@@ -781,12 +802,16 @@ The frontend must never provide a `user_id` as authority for learner-owned opera
 It should own the conceptual helpers:
 
 ```text
+verify_same_origin()
 load_current_user()
 start_user_session(user_id)
 end_user_session()
 login_required
 init_app(app)
+SecureAwareSessionInterface
 ```
+
+`init_app(app)` installs the session interface and registers two `before_request` hooks in this order: `verify_same_origin` (CSRF, §9.6.1) first, so a rejected request never reaches a view or the session lookup, then `load_current_user`.
 
 ### 9.3 Starting a session
 
@@ -794,6 +819,7 @@ After successful registration or login:
 
 ```python
 session.clear()
+session.permanent = True      # the cookie carries an expiry; PERMANENT_SESSION_LIFETIME applies
 session["user_id"] = user_id
 ```
 
@@ -837,6 +863,27 @@ Logout does not require an active session.
 
 Repeated logout requests remain successful from the client's perspective so the operation is idempotent.
 
+### 9.6.1 Session hardening (required)
+
+These are required by API §4.7 and are not optional hardening:
+
+- **Expiry.** Sessions are permanent (`session.permanent = True`) and Flask enforces `PERMANENT_SESSION_LIFETIME` (default 24 hours). Each response refreshes the cookie, so this is an idle timeout. An expired session yields the standard `401 not_authenticated`.
+- **Secure cookie.** `SecureAwareSessionInterface` (a `SecureCookieSessionInterface` subclass) sets the `Secure` flag when `SESSION_COOKIE_SECURE` is true **or** the request itself arrived over HTTPS (`request.is_secure`), so a deployment cannot forget the flag. `SESSION_COOKIE_SECURE=1` in the environment is only ever read to turn it on (for example behind a TLS-terminating proxy); it can stay off only for local HTTP.
+- **CSRF.** `verify_same_origin()` runs as a `before_request` hook for every `POST`, `PUT`, `PATCH`, `DELETE` request in one shared place (not per route) and raises `ApiError(403, "csrf_failed")`. It adds nothing to request or response shapes and the frontend sends no token. Decision order: (1) `Origin` in `CSRF_TRUSTED_ORIGINS` (compared case-insensitively, trailing slash ignored) is allowed; (2) if `Sec-Fetch-Site` is present, only `same-origin`/`none` is allowed, anything else (`same-site`, `cross-site`) is rejected; this also stays correct behind the Vite dev proxy where `Host` can differ from the browser origin; (3) otherwise `Origin` must equal the request's own origin, and `Origin: null` is rejected; (4) neither header present means a non-browser client (curl, test client), which carries no ambient cookie and is allowed. `SameSite=Lax` and JSON-only body parsing stay as additional layers.
+- **Login rate limit.** Failed logins are limited (`429 rate_limited` with a `Retry-After` header) by `InMemoryLoginRateLimiter` in `login_rate_limiter.py` (§9.6.2).
+- `validation_error` responses carry `details.fields` field-level codes (API §4.4) built in the service/validation layer, never raw exception text.
+
+### 9.6.2 Login rate limiter
+
+`app/login_rate_limiter.py` defines `InMemoryLoginRateLimiter(window_seconds, clock=time.monotonic)`; `create_app` stores one instance in `app.extensions["login_rate_limiter"]`, so every app instance (and every test) has its own counters.
+
+- Counters are in server process memory (a deque of failure timestamps per key, guarded by a lock). Nothing is persisted and a Flask restart clears them. There is no Redis or database table.
+- Keys are opaque strings built by `auth_service`: `email:<normalized email>` and `ip:<request.remote_addr>`. The limiter never reads the database, so an existing and an unknown email behave identically.
+- `retry_after(key, max_attempts)` returns `0` when allowed, otherwise the whole seconds (minimum 1) until the oldest failure leaves the sliding window. `record_failure(key)` and `reset(key)` complete the interface.
+- `auth_service.authenticate` checks both keys **before** verifying the password and raises `ApiError(429, "rate_limited", ..., headers={"Retry-After": ...})` using the larger wait; a blocked attempt is not recorded again. Each failed attempt (unknown email or wrong password) is recorded on both keys; a successful login resets only the email key.
+- Limits and window come from configuration (§11.1). Defaults: 5 failures per email, 20 per IP, 300 seconds.
+- Known limitations: (1) per-email limiting lets someone who keeps failing logins for a victim's email temporarily lock that learner out for up to the window; (2) behind the Vite dev proxy all requests share the proxy's address, so the per-IP counter is shared by everyone using that dev server; (3) counters are per process, so multiple workers would each count separately. All are accepted for the MVP.
+
 ### 9.7 Password handling
 
 Use Werkzeug password helpers:
@@ -860,11 +907,7 @@ SameSite = Lax
 Secure = false on local HTTP
 ```
 
-If the application is later served through HTTPS:
-
-```text
-Secure = true
-```
+When the application is served through HTTPS the cookie is `Secure = true`: forced automatically for any HTTPS request, or explicitly with `SESSION_COOKIE_SECURE=1` (§9.6.1, §11.1).
 
 ### 9.9 No JWT / Flask-Login layer
 
@@ -924,7 +967,10 @@ Use the API Contract semantics consistently:
 -> authentication required or credentials invalid
 
 403
--> authenticated but explicitly not permitted, when such a contract case exists
+-> request explicitly not permitted; currently only csrf_failed (§9.6.1)
+
+429
+-> login rate limit exceeded (rate_limited, with Retry-After)
 
 404
 -> requested resource/run does not exist
@@ -951,7 +997,8 @@ It carries:
 HTTP status
 machine-readable code
 safe message
-optional details object
+optional details object (defaults to {})
+optional response headers (for example Retry-After on 429)
 ```
 
 Services may raise `ApiError` for expected application failures.
@@ -1018,7 +1065,25 @@ class Config:
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_SAMESITE = "Lax"
     SESSION_COOKIE_SECURE = False
+    PERMANENT_SESSION_LIFETIME = timedelta(hours=24)
+    LOGIN_RATE_LIMIT_MAX_ATTEMPTS = 5
+    LOGIN_RATE_LIMIT_MAX_ATTEMPTS_PER_IP = 20
+    LOGIN_RATE_LIMIT_WINDOW_SECONDS = 300
+    CSRF_TRUSTED_ORIGINS = ()
 ```
+
+| Key | Default | Meaning |
+|---|---|---|
+| `SESSION_COOKIE_HTTPONLY` | `True` | Cookie not readable by page scripts |
+| `SESSION_COOKIE_SAMESITE` | `"Lax"` | Baseline cross-site cookie restriction |
+| `SESSION_COOKIE_SECURE` | `False` | Explicit `Secure` switch for local HTTP. An HTTPS request always gets a `Secure` cookie regardless of this value (§9.6.1). With a real runtime config (`test_config` is `None`) the environment variable `SESSION_COOKIE_SECURE` set to `1`/`true`/`yes` turns it on; the environment can never turn it off |
+| `PERMANENT_SESSION_LIFETIME` | `timedelta(hours=24)` | Session idle timeout (refreshed on every request) |
+| `LOGIN_RATE_LIMIT_MAX_ATTEMPTS` | `5` | Failed logins allowed per normalized email in the window |
+| `LOGIN_RATE_LIMIT_MAX_ATTEMPTS_PER_IP` | `20` | Failed logins allowed per client address in the window |
+| `LOGIN_RATE_LIMIT_WINDOW_SECONDS` | `300` | Sliding window of the login rate limit, in seconds |
+| `CSRF_TRUSTED_ORIGINS` | `()` | Extra browser origins (`scheme://host[:port]`) allowed to make state-changing requests besides the app's own origin (§9.6.1) |
+
+Only `SESSION_COOKIE_SECURE` is read from the environment by `create_app`; the other keys are changed through `test_config` or by editing `config.py`. The `LOGIN_RATE_LIMIT_WINDOW_SECONDS` value is read once when the app is created.
 
 ### 11.2 Database path
 
@@ -1096,6 +1161,22 @@ Mixed Practice target size = 10
 ```
 
 inside `config.py` unless they genuinely become environment-dependent behavior.
+
+### 11.8 `clock.py`: the single server clock
+
+`app/clock.py` is the one source of the current time for the whole backend (API §4.10):
+
+```python
+TIMEZONE_NAME = "Asia/Ho_Chi_Minh"
+_TIMEZONE = timezone(timedelta(hours=7), TIMEZONE_NAME)
+
+def now():    # aware datetime in Asia/Ho_Chi_Minh
+def today():  # now().date()
+```
+
+- Services call `clock.now()` / `clock.today()` for `completed_at`, `activity_date`, the Dashboard `today` value, streaks, calendar month validation, and account/state timestamps; they never call `date.today()` or `datetime.now().astimezone()`. Tests replace this one module's functions.
+- The module uses a **fixed UTC+07:00 offset** (`datetime.timezone`), deliberately **not** `zoneinfo`. Vietnam has no daylight saving time, so a fixed offset is exactly equivalent to `Asia/Ho_Chi_Minh`, and the backend avoids a dependency on the system tz database (on Windows `zoneinfo` would need the extra `tzdata` package). No new dependency is introduced.
+- `TIMEZONE_NAME` (`"Asia/Ho_Chi_Minh"`) is the label returned as `today.timezone` in the Dashboard response; the offset and the label must stay in step if the timezone ever changes.
 
 ---
 
@@ -1285,6 +1366,8 @@ Test/demo fixtures, if needed, must remain separate from the canonical curriculu
 During local development, destructive recreate-and-reseed is acceptable only as an explicit developer action.
 
 Once learner progress exists against frozen content, automated reseeding must not silently rebalance or redefine existing published Study Units.
+
+**Accepted for now (G19):** when `schema.sql` or the authored content changes, recreating the database and reseeding is the accepted workflow. No migration framework is introduced. Because that wipes learner data, it remains an explicit developer action (never automatic) and is acceptable only for local development and demonstration data.
 
 ### 12.12 Seed output
 

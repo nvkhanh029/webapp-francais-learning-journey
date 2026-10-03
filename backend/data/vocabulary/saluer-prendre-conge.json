@@ -1,0 +1,109 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les salutations et la politesse",
+  "topic_slug": "greetings",
+  "topic_sort_order": 20,
+  "topic_vi": "Chào hỏi và phép lịch sự",
+  "topic_en": "Greetings and politeness",
+  "subtopic": "Saluer et prendre congé",
+  "subtopic_key": "saluer-prendre-conge",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Chào hỏi và tạm biệt",
+  "subtopic_en": "Greeting and saying goodbye",
+  "words": [
+    {
+      "french": "bonjour",
+      "meaning_vi": "xin chào (ban ngày)",
+      "meaning_en": "hello, good morning",
+      "ipa": "/bɔ̃.ʒuʁ/",
+      "example_fr": "Bonjour, madame !",
+      "example_vi": "Xin chào bà!",
+      "example_en": "Hello, madam!"
+    },
+    {
+      "french": "bonsoir",
+      "meaning_vi": "chào buổi tối",
+      "meaning_en": "good evening",
+      "ipa": "/bɔ̃.swaʁ/",
+      "example_fr": "Bonsoir, tout le monde !",
+      "example_vi": "Chào buổi tối mọi người!",
+      "example_en": "Good evening, everyone!"
+    },
+    {
+      "french": "salut",
+      "meaning_vi": "chào (thân mật)",
+      "meaning_en": "hi, bye (informal)",
+      "ipa": "/sa.ly/",
+      "example_fr": "Salut, Paul !",
+      "example_vi": "Chào Paul!",
+      "example_en": "Hi, Paul!"
+    },
+    {
+      "french": "au revoir",
+      "meaning_vi": "tạm biệt",
+      "meaning_en": "goodbye",
+      "ipa": "/o ʁə.vwaʁ/",
+      "example_fr": "Au revoir, monsieur.",
+      "example_vi": "Tạm biệt ông.",
+      "example_en": "Goodbye, sir."
+    },
+    {
+      "french": "à bientôt",
+      "meaning_vi": "hẹn sớm gặp lại",
+      "meaning_en": "see you soon",
+      "ipa": "/a bjɛ̃.to/",
+      "example_fr": "Au revoir, à bientôt !",
+      "example_vi": "Tạm biệt, hẹn sớm gặp lại!",
+      "example_en": "Goodbye, see you soon!"
+    },
+    {
+      "french": "à demain",
+      "meaning_vi": "hẹn mai gặp lại",
+      "meaning_en": "see you tomorrow",
+      "ipa": "/a də.mɛ̃/",
+      "example_fr": "Merci pour tout, à demain !",
+      "example_vi": "Cảm ơn vì tất cả, hẹn mai gặp lại!",
+      "example_en": "Thanks for everything, see you tomorrow!"
+    },
+    {
+      "french": "bonne nuit",
+      "meaning_vi": "chúc ngủ ngon",
+      "meaning_en": "good night",
+      "ipa": "/bɔn nɥi/",
+      "example_fr": "Bonne nuit, les enfants !",
+      "example_vi": "Chúc các con ngủ ngon!",
+      "example_en": "Good night, children!"
+    },
+    {
+      "french": "bonne journée",
+      "meaning_vi": "chúc một ngày tốt lành",
+      "meaning_en": "have a nice day",
+      "ipa": "/bɔn ʒuʁ.ne/",
+      "example_fr": "Bonne journée et à ce soir !",
+      "example_vi": "Chúc bạn một ngày tốt lành và hẹn tối nay!",
+      "example_en": "Have a nice day and see you tonight!"
+    },
+    {
+      "french": "comment ça va ?",
+      "meaning_vi": "bạn khỏe không?",
+      "meaning_en": "how are you?",
+      "ipa": null,
+      "example_fr": "Salut Marie, comment ça va ?",
+      "example_vi": "Chào Marie, bạn khỏe không?",
+      "example_en": "Hi Marie, how are you?"
+    },
+    {
+      "french": "ça va bien",
+      "meaning_vi": "tôi khỏe",
+      "meaning_en": "I'm fine",
+      "ipa": "/sa va bjɛ̃/",
+      "example_fr": "Ça va bien, merci.",
+      "example_vi": "Tôi khỏe, cảm ơn.",
+      "example_en": "I'm fine, thank you."
+    }
+  ]
+}

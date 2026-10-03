@@ -241,3 +241,18 @@ def get_activity_dates(user_id):
         (user_id,),
     ).fetchall()
     return [row["activity_date"] for row in rows]
+
+
+def get_activity_dates_between(user_id, first_date, last_date):
+    """Distinct completed-practice activity dates in first_date..last_date, ascending.
+
+    Both bounds are inclusive ISO `YYYY-MM-DD` strings. Same source and
+    definition of an active day as get_activity_dates (streaks).
+    """
+    rows = get_db().execute(
+        "SELECT DISTINCT activity_date FROM practice_sessions "
+        "WHERE user_id = ? AND activity_date >= ? AND activity_date <= ? "
+        "ORDER BY activity_date ASC",
+        (user_id, first_date, last_date),
+    ).fetchall()
+    return [row["activity_date"] for row in rows]

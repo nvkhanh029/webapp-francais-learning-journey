@@ -1,0 +1,100 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "Les salutations et la politesse",
+  "topic_slug": "greetings",
+  "topic_sort_order": 20,
+  "topic_vi": "Chào hỏi và phép lịch sự",
+  "topic_en": "Greetings and politeness",
+  "subtopic": "Les formules de politesse",
+  "subtopic_key": "formules-de-politesse",
+  "subtopic_sort_order": 30,
+  "subtopic_vi": "Các câu xã giao lịch sự",
+  "subtopic_en": "Polite expressions",
+  "words": [
+    {
+      "french": "s'il vous plaît",
+      "meaning_vi": "xin vui lòng (trang trọng)",
+      "meaning_en": "please (formal)",
+      "ipa": "/sil vu plɛ/",
+      "example_fr": "Un café, s'il vous plaît.",
+      "example_vi": "Cho tôi một ly cà phê, xin vui lòng.",
+      "example_en": "A coffee, please."
+    },
+    {
+      "french": "s'il te plaît",
+      "meaning_vi": "làm ơn (thân mật)",
+      "meaning_en": "please (informal)",
+      "ipa": "/sil tə plɛ/",
+      "example_fr": "Aide-moi, s'il te plaît.",
+      "example_vi": "Làm ơn giúp mình với.",
+      "example_en": "Help me, please."
+    },
+    {
+      "french": "merci",
+      "meaning_vi": "cảm ơn",
+      "meaning_en": "thank you",
+      "ipa": "/mɛʁ.si/",
+      "example_fr": "Merci beaucoup !",
+      "example_vi": "Cảm ơn rất nhiều!",
+      "example_en": "Thank you very much!"
+    },
+    {
+      "french": "de rien",
+      "meaning_vi": "không có chi",
+      "meaning_en": "you're welcome",
+      "ipa": "/də ʁjɛ̃/",
+      "example_fr": "Merci ! — De rien.",
+      "example_vi": "Cảm ơn! — Không có chi.",
+      "example_en": "Thanks! — You're welcome."
+    },
+    {
+      "french": "excusez-moi",
+      "meaning_vi": "xin lỗi (trang trọng)",
+      "meaning_en": "excuse me",
+      "ipa": "/ɛk.sky.ze mwa/",
+      "example_fr": "Excusez-moi, où est la gare ?",
+      "example_vi": "Xin lỗi, ga tàu ở đâu ạ?",
+      "example_en": "Excuse me, where is the station?"
+    },
+    {
+      "french": "pardon",
+      "meaning_vi": "xin lỗi, xin phép",
+      "meaning_en": "sorry, pardon",
+      "ipa": "/paʁ.dɔ̃/",
+      "example_fr": "Pardon, je suis en retard.",
+      "example_vi": "Xin lỗi, tôi đến muộn.",
+      "example_en": "Sorry, I am late."
+    },
+    {
+      "french": "je vous en prie",
+      "meaning_vi": "không có gì ạ (trang trọng)",
+      "meaning_en": "you're welcome (formal)",
+      "ipa": "/ʒə vu zɑ̃ pʁi/",
+      "example_fr": "Merci. — Je vous en prie.",
+      "example_vi": "Cảm ơn. — Không có gì ạ.",
+      "example_en": "Thank you. — You're welcome."
+    },
+    {
+      "french": "monsieur",
+      "meaning_vi": "ông, quý ông",
+      "meaning_en": "sir, Mr",
+      "ipa": "/mə.sjø/",
+      "example_fr": "Bonjour, monsieur.",
+      "example_vi": "Xin chào ông.",
+      "example_en": "Hello, sir."
+    },
+    {
+      "french": "madame",
+      "meaning_vi": "bà, quý bà",
+      "meaning_en": "madam, Mrs",
+      "ipa": "/ma.dam/",
+      "example_fr": "Bonsoir, madame.",
+      "example_vi": "Chào buổi tối bà.",
+      "example_en": "Good evening, madam."
+    }
+  ]
+}

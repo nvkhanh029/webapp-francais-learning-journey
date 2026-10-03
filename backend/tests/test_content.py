@@ -51,6 +51,7 @@ def test_vocab_browse_returns_categories_with_topics(client, database_path, cont
     response = client.get("/api/v1/vocabulary")
     assert response.status_code == 200
     assert response.json["data"] == {
+        "progress": {"learned": 0, "total": 1},
         "categories": [{
             "title_fr": "Fixture category",
             "title": "Fixture category",  # fixture has no VI title -> title_fr fallback

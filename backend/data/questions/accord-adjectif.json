@@ -1,0 +1,108 @@
+{
+  "learning_unit_slug": "accord-adjectif",
+  "questions": [
+    {
+      "sort_order": 10,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn dạng đúng: Une maison ___.",
+      "prompt_en": "Choose the correct form: Une maison ___.",
+      "explanation_vi": "Maison là giống cái số ít nên tính từ thêm -e: grande.",
+      "explanation_en": "Maison is feminine singular, so the adjective takes -e: grande.",
+      "options": [
+        {
+          "text": "grande",
+          "is_correct": true
+        },
+        {
+          "text": "grand",
+          "is_correct": false
+        },
+        {
+          "text": "grands",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 20,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn dạng đúng: Les étudiants sont ___.",
+      "prompt_en": "Choose the correct form: Les étudiants sont ___.",
+      "explanation_vi": "Tính từ đã tận cùng bằng -x thì giữ nguyên ở số nhiều giống đực: heureux.",
+      "explanation_en": "An adjective already ending in -x does not change in the masculine plural: heureux.",
+      "options": [
+        {
+          "text": "heureuxs",
+          "is_correct": false
+        },
+        {
+          "text": "heureux",
+          "is_correct": true
+        },
+        {
+          "text": "heureuse",
+          "is_correct": false
+        }
+      ]
+    },
+    {
+      "sort_order": 30,
+      "question_type": "mcq",
+      "prompt_vi": "Chọn dạng đúng: Une ___ idée.",
+      "prompt_en": "Choose the correct form: Une ___ idée.",
+      "explanation_vi": "Giống cái của bon là bonne: une bonne idée.",
+      "explanation_en": "The feminine of bon is bonne: une bonne idée.",
+      "options": [
+        {
+          "text": "bon",
+          "is_correct": false
+        },
+        {
+          "text": "bone",
+          "is_correct": false
+        },
+        {
+          "text": "bonne",
+          "is_correct": true
+        }
+      ]
+    },
+    {
+      "sort_order": 40,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền dạng giống cái của tính từ: Elle est ___. (sportif)",
+      "prompt_en": "Fill in the feminine form of the adjective: Elle est ___. (sportif)",
+      "explanation_vi": "Đuôi -if đổi thành -ive ở giống cái: sportif → sportive.",
+      "explanation_en": "The ending -if becomes -ive in the feminine: sportif → sportive.",
+      "accepted_answers": [
+        "sportive"
+      ]
+    },
+    {
+      "sort_order": 50,
+      "question_type": "fill_blank",
+      "prompt_vi": "Điền dạng đúng của tính từ: Mes amis sont très ___. (gentil)",
+      "prompt_en": "Fill in the correct form of the adjective: Mes amis sont très ___. (gentil)",
+      "explanation_vi": "Amis là giống đực số nhiều nên thêm -s: gentils.",
+      "explanation_en": "Amis is masculine plural, so we add -s: gentils.",
+      "accepted_answers": [
+        "gentils"
+      ]
+    },
+    {
+      "sort_order": 60,
+      "question_type": "ordering",
+      "prompt_vi": "Sắp xếp thành câu đúng.",
+      "prompt_en": "Arrange the pieces into the correct sentence.",
+      "explanation_vi": "Cả petite và contente đều hợp giống cái số ít với fille.",
+      "explanation_en": "Both petite and contente agree with fille (feminine singular).",
+      "pieces": [
+        "La",
+        "petite",
+        "fille",
+        "est",
+        "contente"
+      ]
+    }
+  ]
+}

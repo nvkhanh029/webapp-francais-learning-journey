@@ -1,0 +1,100 @@
+{
+  "category": "L'être humain",
+  "category_key": "etre-humain",
+  "category_sort_order": 10,
+  "category_vi": "Con người",
+  "category_en": "The human being",
+  "topic": "La famille",
+  "topic_slug": "famille",
+  "topic_sort_order": 30,
+  "topic_vi": "Gia đình",
+  "topic_en": "Family",
+  "subtopic": "La famille proche",
+  "subtopic_key": "famille-proche",
+  "subtopic_sort_order": 10,
+  "subtopic_vi": "Gia đình gần",
+  "subtopic_en": "Close family",
+  "words": [
+    {
+      "french": "le père",
+      "meaning_vi": "bố, cha",
+      "meaning_en": "father",
+      "ipa": "/lə pɛʁ/",
+      "example_fr": "Mon père travaille à Hanoï.",
+      "example_vi": "Bố tôi làm việc ở Hà Nội.",
+      "example_en": "My father works in Hanoi."
+    },
+    {
+      "french": "la mère",
+      "meaning_vi": "mẹ",
+      "meaning_en": "mother",
+      "ipa": "/la mɛʁ/",
+      "example_fr": "Ma mère cuisine très bien.",
+      "example_vi": "Mẹ tôi nấu ăn rất giỏi.",
+      "example_en": "My mother cooks very well."
+    },
+    {
+      "french": "le frère",
+      "meaning_vi": "anh trai, em trai",
+      "meaning_en": "brother",
+      "ipa": "/lə fʁɛʁ/",
+      "example_fr": "J'ai un frère et une sœur.",
+      "example_vi": "Tôi có một anh/em trai và một chị/em gái.",
+      "example_en": "I have a brother and a sister."
+    },
+    {
+      "french": "la sœur",
+      "meaning_vi": "chị gái, em gái",
+      "meaning_en": "sister",
+      "ipa": "/la sœʁ/",
+      "example_fr": "Ma sœur s'appelle Lan.",
+      "example_vi": "Chị/em gái tôi tên là Lan.",
+      "example_en": "My sister is called Lan."
+    },
+    {
+      "french": "le fils",
+      "meaning_vi": "con trai",
+      "meaning_en": "son",
+      "ipa": "/lə fis/",
+      "example_fr": "Leur fils étudie à Lyon.",
+      "example_vi": "Con trai của họ học ở Lyon.",
+      "example_en": "Their son studies in Lyon."
+    },
+    {
+      "french": "la fille",
+      "meaning_vi": "con gái",
+      "meaning_en": "daughter, girl",
+      "ipa": "/la fij/",
+      "example_fr": "Elle a une fille de cinq ans.",
+      "example_vi": "Cô ấy có một cô con gái năm tuổi.",
+      "example_en": "She has a five-year-old daughter."
+    },
+    {
+      "french": "les parents",
+      "meaning_vi": "bố mẹ",
+      "meaning_en": "parents",
+      "ipa": "/le pa.ʁɑ̃/",
+      "example_fr": "Mes parents habitent à Lyon.",
+      "example_vi": "Bố mẹ tôi sống ở Lyon.",
+      "example_en": "My parents live in Lyon."
+    },
+    {
+      "french": "le mari",
+      "meaning_vi": "chồng",
+      "meaning_en": "husband",
+      "ipa": "/lə ma.ʁi/",
+      "example_fr": "Son mari est professeur.",
+      "example_vi": "Chồng cô ấy là giáo viên.",
+      "example_en": "Her husband is a teacher."
+    },
+    {
+      "french": "la femme",
+      "meaning_vi": "vợ, người phụ nữ",
+      "meaning_en": "wife, woman",
+      "ipa": "/la fam/",
+      "example_fr": "Sa femme est médecin.",
+      "example_vi": "Vợ anh ấy là bác sĩ.",
+      "example_en": "His wife is a doctor."
+    }
+  ]
+}
