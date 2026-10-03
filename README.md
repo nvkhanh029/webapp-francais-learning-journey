@@ -350,18 +350,20 @@ responses use `{"data": ...}` and errors use `{"error": {"code", "message", "det
 
 ## Team and license
 
-Team (from the repository history; the per-owner split is kept as project history,
-and one person now implements everything and approves baseline changes, see
-[AGENTS.md](AGENTS.md) section 5):
+Team and responsibilities (as stated by the project lead). "Responsible for" means
+module ownership. One person now implements and approves everything, see
+[AGENTS.md](AGENTS.md) section 5 for the original plan versus the actual split.
 
-| Member | Responsibility |
+| Member | Responsible for |
 |---|---|
-| Nguyễn Vân Khánh / Project Lead | Auth and User Preferences; design and integration coordination |
-| Nguyễn An Khánh | Dashboard and Learning State |
-| Phí Lê Bảo Linh | Grammar; authored demo content and quiz data |
-| Trần Ngọc Hải | Vocabulary |
-| Ngô Tuấn Duy | Conjugation and Reference |
-| Nguyễn Danh Kiên | Practice and Mixed Practice |
+| Nguyễn Vân Khánh / Project Lead | Ideas, design documents (`docs/`) and the project skeleton. Backend: shared components (schema, seed, configuration, shared structure) and the Reference page content; later integration work (Vietnam-time clock, session hardening, CSRF check, login rate limit, Dashboard "today", activity calendar, Reference index). Frontend: the whole interface; main owner of the React foundation (app structure, shared components, i18n) and API integration (API client, authentication, route guards, wiring pages to the backend) |
+| Nguyễn An Khánh | Backend: Authentication (Auth) and Dashboard |
+| Phí Lê Bảo Linh | Backend: the Grammar module in full (code, content and quiz questions) |
+| Trần Ngọc Hải | Backend: the Vocabulary module in full (code, content and quiz questions) and the Conjugation content. Frontend: supports the React and API integration work |
+| Ngô Tuấn Duy | Backend: code for Reference and Conjugation (no content) |
+| Nguyễn Danh Kiên | Backend: code for Practice and Mixed Practice (no content) |
+
+The team used AI assistants (Claude, Claude Code) for coding, documentation and testing.
 
 License: to be added (the repository has no license file).
 
