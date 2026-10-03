@@ -1,1196 +1,1191 @@
-
-        /* ======================================================================
+/* ======================================================================
          1. Theme and base styles
          Change shared colors, spacing, and typography here (FD §7.3, §7.4).
          Nunito Sans: body, controls, and compact practice titles.
          Be Vietnam Pro: section/card headings and numeric highlights.
          ====================================================================== */
-        .page {
-
-            /* Type scale in rem. At a 16px browser default: 12, 13, 14, 15, 16, 17px.
+.page {
+  /* Type scale in rem. At a 16px browser default: 12, 13, 14, 15, 16, 17px.
            Larger headings and counters scale up at the 640px breakpoint below. */
-            --text-streak: 1.75rem;
-            --text-score: 1.125rem;
+  --text-streak: 1.75rem;
+  --text-score: 1.125rem;
 
-            --color-perfect: #8e0026;
-        }
+  --color-perfect: #8e0026;
+}
 
-        .page :global(h1),
-        .page :global(h2),
-        .page :global(h3),
-        .page :global(h4),
-        .page :global(h5),
-        .page :global(h6),
-        .page :global(.brand-name),
-        .page :global(.review-count-label),
-        .page :global(.practice-score),
-        .page :global(.practice-type) {
-            font-family: var(--font-heading);
-        }
+.page :global(h1),
+.page :global(h2),
+.page :global(h3),
+.page :global(h4),
+.page :global(h5),
+.page :global(h6),
+.page :global(.brand-name),
+.page :global(.review-count-label),
+.page :global(.practice-score),
+.page :global(.practice-type) {
+  font-family: var(--font-heading);
+}
 
-        /* These labels were body text in the source, even though they are headings here. */
+/* These labels were body text in the source, even though they are headings here. */
 
-        .page :global(button:focus-visible),
-        .page :global(a:focus-visible) {
-            outline: 2px solid var(--color-primary);
-            outline-offset: 2px;
-        }
+.page :global(button:focus-visible),
+.page :global(a:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
 
-        /* Text for assistive technology only. */
+/* Text for assistive technology only. */
 
-        /* Google Material Symbols are decorative; their labels stay in the HTML. */
-        .page :global(.material-symbols-outlined) {
-            display: inline-block;
-            flex-shrink: 0;
-            /* Reserve icon space even while the external icon font is loading. */
-            width: 1em;
-            height: 1em;
-            overflow: hidden;
-            font-family: "Material Symbols Outlined";
-            font-size: 20px;
-            font-style: normal;
-            font-weight: normal;
-            line-height: 1;
-            letter-spacing: normal;
-            text-transform: none;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-            -webkit-font-smoothing: antialiased;
-            font-feature-settings: "liga";
-        }
+/* Google Material Symbols are decorative; their labels stay in the HTML. */
+.page :global(.material-symbols-outlined) {
+  display: inline-block;
+  flex-shrink: 0;
+  /* Reserve icon space even while the external icon font is loading. */
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  font-family: "Material Symbols Outlined";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "liga";
+}
 
-        /* ======================================================================
+/* ======================================================================
          2. Shared layout and reusable components (FD §7.6)
          ====================================================================== */
 
-        .page :global(.dashboard) {
-            flex: 1;
-            padding-top: 112px;
-            padding-bottom: var(--space-xl);
-        }
+.page :global(.dashboard) {
+  flex: 1;
+  padding-top: 112px;
+  padding-bottom: var(--space-xl);
+}
 
-        .page :global(.dashboard-section) {
-            margin-bottom: var(--space-lg);
-        }
+.page :global(.dashboard-section) {
+  margin-bottom: var(--space-lg);
+}
 
-        .page :global(.skills-section),
-        .page :global(.practice-section) {
-            margin-bottom: var(--space-xl);
-        }
+.page :global(.skills-section),
+.page :global(.practice-section) {
+  margin-bottom: var(--space-xl);
+}
 
-        .page :global(.card) {
-            min-width: 0;
-            padding: var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-card);
-            background: var(--color-card);
-        }
+.page :global(.card) {
+  min-width: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+}
 
-        .page :global(.section-heading),
-        .page :global(.heading-with-icon),
-        .page :global(.card-heading) {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-        }
+.page :global(.section-heading),
+.page :global(.heading-with-icon),
+.page :global(.card-heading) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
 
-        .page :global(.section-heading) {
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: var(--space-md);
-        }
+.page :global(.section-heading) {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+}
 
-        .page :global(.section-title) {
-            color: var(--color-heading);
-            font-size: var(--text-section);
-            font-weight: 600;
-            line-height: var(--leading-heading);
-            overflow-wrap: anywhere;
-            letter-spacing: var(--tracking-heading);
-        }
+.page :global(.section-title) {
+  color: var(--color-heading);
+  font-size: var(--text-section);
+  font-weight: 600;
+  line-height: var(--leading-heading);
+  overflow-wrap: anywhere;
+  letter-spacing: var(--tracking-heading);
+}
 
-        .page :global(.section-title>span) {
-            color: var(--color-primary);
-            font-size: 16px;
-        }
+.page :global(.section-title > span) {
+  color: var(--color-primary);
+  font-size: 16px;
+}
 
-        .page :global(.section-icon) {
-            color: var(--color-primary);
-            font-size: 24px;
-        }
+.page :global(.section-icon) {
+  color: var(--color-primary);
+  font-size: 24px;
+}
 
-        .page :global(.card-subtitle) {
-            color: var(--color-muted);
-            font-size: var(--text-small);
-            line-height: var(--leading-body);
-        }
+.page :global(.card-subtitle) {
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+}
 
-        .page :global(.icon-tile .material-symbols-outlined) {
-            font-size: 22px;
-        }
+.page :global(.icon-tile .material-symbols-outlined) {
+  font-size: 22px;
+}
 
-        .page :global(.button-primary) {
-            font-family: var(--font-body);
-            padding: 12px var(--space-lg);
-            background: var(--color-heading);
-            color: #ffffff;
-            font-size: var(--text-body);
-            line-height: var(--leading-label);
-            box-shadow: var(--shadow-sm);
-        }
+.page :global(.button-primary) {
+  font-family: var(--font-body);
+  padding: 12px var(--space-lg);
+  background: var(--color-heading);
+  color: #ffffff;
+  font-size: var(--text-body);
+  line-height: var(--leading-label);
+  box-shadow: var(--shadow-sm);
+}
 
-        .page :global(.button-primary:hover) {
-            background: #1f1711;
-            box-shadow: var(--shadow-md);
-        }
+.page :global(.button-primary:hover) {
+  background: #1f1711;
+  box-shadow: var(--shadow-md);
+}
 
-        .page :global(.button-primary:active) {
-            transform: translateY(2px);
-        }
+.page :global(.button-primary:active) {
+  transform: translateY(2px);
+}
 
-        .page :global(.button:hover .material-symbols-outlined) {
-            transform: translateX(4px);
-        }
+.page :global(.button:hover .material-symbols-outlined) {
+  transform: translateX(4px);
+}
 
-        .page :global(.button-secondary) {
-            width: 100%;
-            padding: 12px var(--space-md);
-            border: 1px solid var(--color-border);
-            background: var(--color-background);
-            color: var(--color-heading);
-            font-size: var(--text-body);
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-        }
+.page :global(.button-secondary) {
+  width: 100%;
+  padding: 12px var(--space-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-heading);
+  font-size: var(--text-body);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+}
 
-        .page :global(.button-secondary:hover) {
-            background: var(--color-heading);
-            color: #ffffff;
-        }
+.page :global(.button-secondary:hover) {
+  background: var(--color-heading);
+  color: #ffffff;
+}
 
-        /* Secondary button sized to its label, used for retry actions. */
-        .page :global(.button-compact) {
-            width: auto;
-            padding: var(--space-sm) var(--space-lg);
-        }
+/* Secondary button sized to its label, used for retry actions. */
+.page :global(.button-compact) {
+  width: auto;
+  padding: var(--space-sm) var(--space-lg);
+}
 
-        /* Set --progress on each bar and keep it equal to aria-valuenow. */
-        .page :global(.progress-labels),
-        .page :global(.skill-footer) {
-            font-size: var(--text-caption);
-            font-weight: 600;
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-        }
+/* Set --progress on each bar and keep it equal to aria-valuenow. */
+.page :global(.progress-labels),
+.page :global(.skill-footer) {
+  font-size: var(--text-caption);
+  font-weight: 600;
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+}
 
-        .page :global(.progress-labels) {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-xs);
-            color: var(--color-description);
-        }
+.page :global(.progress-labels) {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+  color: var(--color-description);
+}
 
-        .page :global(.progress-value) {
-            flex-shrink: 0;
-            color: var(--progress-color, var(--color-primary-dark));
-            font-weight: 700;
-            font-variant-numeric: tabular-nums;
-        }
+.page :global(.progress-value) {
+  flex-shrink: 0;
+  color: var(--progress-color, var(--color-primary-dark));
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
 
-        .page :global(.progress-track) {
-            height: 8px;
-            overflow: hidden;
-            border: 1px solid var(--color-border);
-            border-radius: 9999px;
-            background: var(--color-background);
-        }
+.page :global(.progress-track) {
+  height: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  background: var(--color-background);
+}
 
-        .page :global(.progress-fill) {
-            position: relative;
-            width: var(--progress, 0%);
-            height: 100%;
-            border-radius: inherit;
-            background: var(--progress-color, var(--color-primary));
-            transition: width 500ms;
-        }
+.page :global(.progress-fill) {
+  position: relative;
+  width: var(--progress, 0%);
+  height: 100%;
+  border-radius: inherit;
+  background: var(--progress-color, var(--color-primary));
+  transition: width 500ms;
+}
 
-        /* Inline notice for unavailable or explanatory states (FD §7.6). */
-        .page :global(.state-note) {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-sm);
-            padding: var(--space-sm) 12px;
-            border: 1px solid var(--color-primary-border);
-            border-radius: 12px;
-            background: var(--color-primary-soft);
-            color: var(--color-muted);
-            font-size: var(--text-small);
-            line-height: var(--leading-body);
-        }
+/* Inline notice for unavailable or explanatory states (FD §7.6). */
+.page :global(.state-note) {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 12px;
+  border: 1px solid var(--color-primary-border);
+  border-radius: 12px;
+  background: var(--color-primary-soft);
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+}
 
-        .page :global(.state-note .material-symbols-outlined) {
-            margin-top: 2px;
-            color: var(--color-primary);
-            font-size: 18px;
-        }
+.page :global(.state-note .material-symbols-outlined) {
+  margin-top: 2px;
+  color: var(--color-primary);
+  font-size: 18px;
+}
 
-        /* Short message shown in place of an empty collection. */
-        .page :global(.empty-text) {
-            padding: var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-small);
-            background: var(--color-background);
-            color: var(--color-muted);
-            font-size: var(--text-small);
-            line-height: var(--leading-body);
-            text-align: center;
-        }
+/* Short message shown in place of an empty collection. */
+.page :global(.empty-text) {
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-background);
+  color: var(--color-muted);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+  text-align: center;
+}
 
-        /* Page-level loading and error states (FD §6.6, §7.7). */
-        .page :global(.page-state) {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--space-sm);
-            margin-top: var(--space-lg);
-            padding: var(--space-xl) var(--space-lg);
-            text-align: center;
-        }
+/* Page-level loading and error states (FD §6.6, §7.7). */
+.page :global(.page-state) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
+  text-align: center;
+}
 
-        .page :global(.page-state>.material-symbols-outlined) {
-            color: var(--color-primary);
-            font-size: 32px;
-        }
+.page :global(.page-state > .material-symbols-outlined) {
+  color: var(--color-primary);
+  font-size: 32px;
+}
 
-        .page :global(.page-state p) {
-            color: var(--color-muted);
-        }
+.page :global(.page-state p) {
+  color: var(--color-muted);
+}
 
-        .page :global(.page-state .button) {
-            margin-top: var(--space-sm);
-        }
+.page :global(.page-state .button) {
+  margin-top: var(--space-sm);
+}
 
-        .page :global(.spinner) {
-            width: 32px;
-            height: 32px;
-            border: 3px solid var(--color-primary-border);
-            border-top-color: var(--color-primary);
-            border-radius: 50%;
-            animation: spin 900ms linear infinite;
-        }
+.page :global(.spinner) {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-primary-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 900ms linear infinite;
+}
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-        /* ======================================================================
+/* ======================================================================
          3. Header: brand, navigation, language controls, logout, compact menu
          ====================================================================== */
 
-        /* Compact navigation below 768px (FD §8.5). */
+/* Compact navigation below 768px (FD §8.5). */
 
-        /* ======================================================================
+/* ======================================================================
          4. Greeting, streak, and practice calendar
          ====================================================================== */
-        .page :global(.welcome) {
-            padding-top: 12px;
-            padding-bottom: 4px;
-            border-bottom: 1px solid rgb(234 219 204 / 60%);
-        }
+.page :global(.welcome) {
+  padding-top: 12px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgb(234 219 204 / 60%);
+}
 
-        .page :global(.welcome-title) {
-            color: var(--color-heading);
-            font-size: var(--text-display);
-            font-weight: 700;
-            line-height: 1.25;
-            letter-spacing: var(--tracking-heading);
-        }
+.page :global(.welcome-title) {
+  color: var(--color-heading);
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: var(--tracking-heading);
+}
 
-        .page :global(.welcome-description) {
-            margin-top: var(--space-sm);
-            color: var(--color-muted);
-            font-size: var(--text-body);
-            overflow-wrap: anywhere;
-            line-height: var(--leading-body);
-        }
+.page :global(.welcome-description) {
+  margin-top: var(--space-sm);
+  color: var(--color-muted);
+  font-size: var(--text-body);
+  overflow-wrap: anywhere;
+  line-height: var(--leading-body);
+}
 
-        .page :global(.activity-overview) {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr);
-            gap: var(--space-lg);
-            align-items: stretch;
-        }
+.page :global(.activity-overview) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg);
+  align-items: stretch;
+}
 
-        .page :global(.streak-card) {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-            padding: var(--space-lg);
-            text-align: center;
-        }
+.page :global(.streak-card) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-lg);
+  text-align: center;
+}
 
-        .page :global(.streak-illustration) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 96px;
-            height: 96px;
-            margin-block: 12px;
-            padding: 12px;
-            border: 1px solid #fed7aa;
-            border-radius: 50%;
-            background: #fff7ed;
-            box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
-            transition: transform 150ms;
-        }
+.page :global(.streak-illustration) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  margin-block: 12px;
+  padding: 12px;
+  border: 1px solid #fed7aa;
+  border-radius: 50%;
+  background: #fff7ed;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
+  transition: transform 150ms;
+}
 
-        .page :global(.streak-illustration:hover) {
-            transform: rotate(3deg);
-        }
+.page :global(.streak-illustration:hover) {
+  transform: rotate(3deg);
+}
 
-        .page :global(.streak-illustration img) {
-            width: 64px;
-            height: 64px;
-            object-fit: contain;
-            user-select: none;
-        }
+.page :global(.streak-illustration img) {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  user-select: none;
+}
 
-        .page :global(.streak-count) {
-            color: var(--color-heading);
-            font-size: var(--text-streak);
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: var(--tracking-heading);
-            font-variant-numeric: tabular-nums;
-        }
+.page :global(.streak-count) {
+  color: var(--color-heading);
+  font-size: var(--text-streak);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: var(--tracking-heading);
+  font-variant-numeric: tabular-nums;
+}
 
-        .page :global(.streak-record) {
-            margin-top: 12px;
-            padding: 4px 12px;
-            color: var(--color-text);
-            font-size: var(--text-caption);
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-        }
+.page :global(.streak-record) {
+  margin-top: 12px;
+  padding: 4px 12px;
+  color: var(--color-text);
+  font-size: var(--text-caption);
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+}
 
-        .page :global(.streak-record .material-symbols-outlined) {
-            color: var(--color-primary);
-            font-size: 16px;
-        }
+.page :global(.streak-record .material-symbols-outlined) {
+  color: var(--color-primary);
+  font-size: 16px;
+}
 
-        .page :global(.streak-divider) {
-            width: 100%;
-            margin-top: 12px;
-            padding-top: var(--space-sm);
-            border-top: 1px solid rgb(242 229 201 / 80%);
-        }
+.page :global(.streak-divider) {
+  width: 100%;
+  margin-top: 12px;
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgb(242 229 201 / 80%);
+}
 
-        .page :global(.streak-tip) {
-            display: flex;
-            align-items: center;
-            gap: var(--space-sm);
-            width: 100%;
-            margin-top: var(--space-sm);
-            padding: var(--space-xs) var(--space-sm);
-            border: 1px solid #d5e3fd;
-            border-radius: 12px;
-            background: var(--color-blue-soft);
-            text-align: left;
-        }
+.page :global(.streak-tip) {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  width: 100%;
+  margin-top: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid #d5e3fd;
+  border-radius: 12px;
+  background: var(--color-blue-soft);
+  text-align: left;
+}
 
-        .page :global(.streak-tip .material-symbols-outlined) {
-            color: var(--color-blue);
-            font-size: 18px;
-        }
+.page :global(.streak-tip .material-symbols-outlined) {
+  color: var(--color-blue);
+  font-size: 18px;
+}
 
-        .page :global(.streak-tip p) {
-            color: var(--color-muted);
-            font-size: var(--text-caption);
-            line-height: var(--leading-label);
-        }
+.page :global(.streak-tip p) {
+  color: var(--color-muted);
+  font-size: var(--text-caption);
+  line-height: var(--leading-label);
+}
 
-        .page :global(.streak-tip p>span:first-child) {
-            color: var(--color-blue);
-            font-weight: 600;
-        }
+.page :global(.streak-tip p > span:first-child) {
+  color: var(--color-blue);
+  font-weight: 600;
+}
 
-        .page :global(.activity-card-header) {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
+.page :global(.activity-card-header) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
 
-        .page :global(.activity-card-header .card-heading) {
-            flex: 1 1 15rem;
-            min-width: 0;
-        }
+.page :global(.activity-card-header .card-heading) {
+  flex: 1 1 15rem;
+  min-width: 0;
+}
 
-        .page :global(.activity-card-header .card-heading>div) {
-            min-width: 0;
-        }
+.page :global(.activity-card-header .card-heading > div) {
+  min-width: 0;
+}
 
-        .page :global(.calendar-icon),
-        .page :global(.history-icon) {
-            width: 36px;
-            height: 36px;
-        }
+.page :global(.calendar-icon),
+.page :global(.history-icon) {
+  width: 36px;
+  height: 36px;
+}
 
-        .page :global(.calendar-icon .material-symbols-outlined),
-        .page :global(.history-icon .material-symbols-outlined) {
-            font-size: 20px;
-        }
+.page :global(.calendar-icon .material-symbols-outlined),
+.page :global(.history-icon .material-symbols-outlined) {
+  font-size: 20px;
+}
 
-        .page :global(.calendar-icon) {
-            --accent: var(--color-orange);
-            --accent-soft: var(--color-orange-soft);
-            --accent-border: var(--color-orange-border);
-        }
+.page :global(.calendar-icon) {
+  --accent: var(--color-orange);
+  --accent-soft: var(--color-orange-soft);
+  --accent-border: var(--color-orange-border);
+}
 
-        /* Compact month navigation; no date picker or extra toolbar. */
-        .page :global(.month-navigation) {
-            display: inline-flex;
-            align-items: center;
-            flex: 0 0 auto;
-            gap: 2px;
-            max-width: 100%;
-            margin-left: auto;
-            padding: 2px;
-            border-radius: 9999px;
-            background: var(--color-primary-soft);
-        }
+/* Compact month navigation; no date picker or extra toolbar. */
+.page :global(.month-navigation) {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 2px;
+  max-width: 100%;
+  margin-left: auto;
+  padding: 2px;
+  border-radius: 9999px;
+  background: var(--color-primary-soft);
+}
 
-        .page :global(.month-badge) {
-            min-width: 4rem;
-            color: var(--color-text);
-            font-size: var(--text-label);
-            font-weight: 700;
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-            text-align: center;
-            white-space: nowrap;
-        }
+.page :global(.month-badge) {
+  min-width: 4rem;
+  color: var(--color-text);
+  font-size: var(--text-label);
+  font-weight: 700;
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  text-align: center;
+  white-space: nowrap;
+}
 
-        .page :global(.month-button) {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            flex: 0 0 32px;
-            width: 32px;
-            height: 32px;
-            padding: 0;
-            border: 0;
-            border-radius: 50%;
-            background: transparent;
-            color: var(--color-primary-dark);
-            font-size: 24px;
-            line-height: 1;
-        }
+.page :global(.month-button) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 32px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-primary-dark);
+  font-size: 24px;
+  line-height: 1;
+}
 
-        .page :global(.month-button:hover:not(:disabled)) {
-            background: rgb(255 255 255 / 75%);
-        }
+.page :global(.month-button:hover:not(:disabled)) {
+  background: rgb(255 255 255 / 75%);
+}
 
-        .page :global(.month-button:disabled) {
-            opacity: 0.35;
-            cursor: default;
-        }
+.page :global(.month-button:disabled) {
+  opacity: 0.35;
+  cursor: default;
+}
 
-        /* Prototype only: months without sample data are not shown as zero activity. */
-        .page :global(.activity-unavailable) {
-            border: 1px solid var(--color-border);
-            background: var(--color-background);
-            color: var(--color-muted);
-            font-weight: 500;
-        }
+/* Prototype only: months without sample data are not shown as zero activity. */
+.page :global(.activity-unavailable) {
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+  color: var(--color-muted);
+  font-weight: 500;
+}
 
-        .page :global(.calendar-layout) {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-md);
-            margin-top: 10px;
-        }
+.page :global(.calendar-layout) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: 10px;
+}
 
-        .page :global(.calendar) {
-            flex: 1;
-            min-width: 0;
-            width: 100%;
-        }
+.page :global(.calendar) {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+}
 
-        .page :global(.calendar-weekdays),
-        .page :global(.calendar-days) {
-            display: grid;
-            grid-template-columns: repeat(7, minmax(0, 1fr));
-            gap: 6px;
-            text-align: center;
-            font-size: var(--text-caption);
-            font-weight: 700;
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-            font-variant-numeric: tabular-nums;
-        }
+.page :global(.calendar-weekdays),
+.page :global(.calendar-days) {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  text-align: center;
+  font-size: var(--text-caption);
+  font-weight: 700;
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+  font-variant-numeric: tabular-nums;
+}
 
-        .page :global(.calendar-weekdays) {
-            margin-bottom: var(--space-sm);
-            font-weight: 400;
-            color: var(--color-muted);
-        }
+.page :global(.calendar-weekdays) {
+  margin-bottom: var(--space-sm);
+  font-weight: 400;
+  color: var(--color-muted);
+}
 
-        .page :global(.calendar-day) {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 36px;
-            border-radius: 8px;
-        }
+.page :global(.calendar-day) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  border-radius: 8px;
+}
 
-        /* Binary streak state shared by days and the legend swatch:
+/* Binary streak state shared by days and the legend swatch:
            practiced (one style, no intensity levels) or not practiced / not yet (FD §7.7). */
-        .page :global(.activity-active) {
-            border: 1px solid #f5dcb7;
-            background: #fdf0de;
-            color: #a64a26;
-        }
+.page :global(.activity-active) {
+  border: 1px solid #f5dcb7;
+  background: #fdf0de;
+  color: #a64a26;
+}
 
-        .page :global(.activity-inactive) {
-            border: 1px solid #e5e7eb;
-            background: #e5e7eb;
-            color: rgb(var(--color-muted-rgb) / 40%);
-            font-weight: 500;
-            user-select: none;
-        }
+.page :global(.activity-inactive) {
+  border: 1px solid #e5e7eb;
+  background: #e5e7eb;
+  color: rgb(var(--color-muted-rgb) / 40%);
+  font-weight: 500;
+  user-select: none;
+}
 
-        .page :global(.calendar-summary) {
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-            gap: var(--space-sm);
-            padding-top: var(--space-sm);
-            border-top: 1px solid var(--color-primary-border);
-            color: var(--color-muted);
-            font-size: var(--text-caption);
-            line-height: var(--leading-label);
-        }
+.page :global(.calendar-summary) {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  gap: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-primary-border);
+  color: var(--color-muted);
+  font-size: var(--text-caption);
+  line-height: var(--leading-label);
+}
 
-        .page :global(.calendar-summary p>span) {
-            color: #a64a26;
-            font-weight: 700;
-        }
+.page :global(.calendar-summary p > span) {
+  color: #a64a26;
+  font-weight: 700;
+}
 
-        .page :global(.calendar-legend) {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            font-weight: 600;
-            letter-spacing: var(--tracking-label);
-        }
+.page :global(.calendar-legend) {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+}
 
-        .page :global(.legend-row) {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-xs);
-        }
+.page :global(.legend-row) {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-xs);
+}
 
-        .page :global(.legend-row .legend-swatch) {
-            margin-top: 2px;
-        }
+.page :global(.legend-row .legend-swatch) {
+  margin-top: 2px;
+}
 
-        .page :global(.legend-row-muted) {
-            color: rgb(var(--color-muted-rgb) / 80%);
-        }
+.page :global(.legend-row-muted) {
+  color: rgb(var(--color-muted-rgb) / 80%);
+}
 
-        .page :global(.legend-swatch) {
-            position: relative;
-            flex-shrink: 0;
-            width: 14px;
-            height: 14px;
-            border-radius: 2px;
-        }
+.page :global(.legend-swatch) {
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+}
 
-        /* Inline loading/error state inside the calendar card. */
-        .page :global(.calendar-state) {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: var(--space-sm);
-            margin-top: 10px;
-            padding: var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-small);
-            background: var(--color-background);
-            color: var(--color-muted);
-            font-size: var(--text-small);
-        }
+/* Inline loading/error state inside the calendar card. */
+.page :global(.calendar-state) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-top: 10px;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-background);
+  color: var(--color-muted);
+  font-size: var(--text-small);
+}
 
-        /* ======================================================================
+/* ======================================================================
          5. Continue-learning card
          ====================================================================== */
-        .page :global(.continue-card) {
-            position: relative;
-            overflow: hidden;
-        }
+.page :global(.continue-card) {
+  position: relative;
+  overflow: hidden;
+}
 
-        .page :global(.continue-card::before) {
-            position: absolute;
-            inset: 0 auto 0 0;
-            width: 10px;
-            background: var(--color-primary);
-            content: "";
-        }
+.page :global(.continue-card::before) {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 10px;
+  background: var(--color-primary);
+  content: "";
+}
 
-        .page :global(.continue-content) {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: var(--space-md);
-            padding-left: var(--space-sm);
-        }
+.page :global(.continue-content) {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-left: var(--space-sm);
+}
 
-        .page :global(.continue-details) {
-            flex: 1;
-            min-width: 0;
-        }
+.page :global(.continue-details) {
+  flex: 1;
+  min-width: 0;
+}
 
-        .page :global(.continue-eyebrow) {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: var(--space-xs);
-            margin-bottom: 6px;
-            color: var(--color-primary-dark);
-            font-size: var(--text-caption);
-            font-weight: 700;
-            line-height: var(--leading-label);
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
+.page :global(.continue-eyebrow) {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-bottom: 6px;
+  color: var(--color-primary-dark);
+  font-size: var(--text-caption);
+  font-weight: 700;
+  line-height: var(--leading-label);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 
-        .page :global(.continue-eyebrow .material-symbols-outlined) {
-            color: var(--color-primary);
-        }
+.page :global(.continue-eyebrow .material-symbols-outlined) {
+  color: var(--color-primary);
+}
 
-        .page :global(.continue-title) {
-            color: var(--color-heading);
-            font-size: var(--text-feature);
-            font-weight: 600;
-            line-height: var(--leading-heading);
-            overflow-wrap: anywhere;
-            letter-spacing: var(--tracking-heading);
-        }
+.page :global(.continue-title) {
+  color: var(--color-heading);
+  font-size: var(--text-feature);
+  font-weight: 600;
+  line-height: var(--leading-heading);
+  overflow-wrap: anywhere;
+  letter-spacing: var(--tracking-heading);
+}
 
-        .page :global(.continue-title>span[aria-hidden]) {
-            display: inline-block;
-            font-size: 18px;
-        }
+.page :global(.continue-title > span[aria-hidden]) {
+  display: inline-block;
+  font-size: 18px;
+}
 
-        .page :global(.continue-lesson) {
-            margin-top: var(--space-sm);
-            color: var(--color-description);
-            line-height: var(--leading-body);
-            overflow-wrap: anywhere;
-            font-size: var(--text-body);
-        }
+.page :global(.continue-lesson) {
+  margin-top: var(--space-sm);
+  color: var(--color-description);
+  line-height: var(--leading-body);
+  overflow-wrap: anywhere;
+  font-size: var(--text-body);
+}
 
-        .page :global(.continue-lesson-title) {
-            display: inline-block;
-            margin-top: var(--space-xs);
-            padding: 2px 10px;
-            border: 1px solid var(--color-primary-border);
-            border-radius: 8px;
-            background: var(--color-primary-soft);
-            color: var(--color-heading);
-            font-weight: 600;
-        }
+.page :global(.continue-lesson-title) {
+  display: inline-block;
+  margin-top: var(--space-xs);
+  padding: 2px 10px;
+  border: 1px solid var(--color-primary-border);
+  border-radius: 8px;
+  background: var(--color-primary-soft);
+  color: var(--color-heading);
+  font-weight: 600;
+}
 
-        .page :global(.continue-button) {
-            flex-shrink: 0;
-            width: 100%;
-            padding: var(--space-md) var(--space-xl);
-        }
+.page :global(.continue-button) {
+  flex-shrink: 0;
+  width: 100%;
+  padding: var(--space-md) var(--space-xl);
+}
 
-        /* Explore state when there is nothing to continue. */
-        .page :global(.explore-links) {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-sm) var(--space-lg);
-            margin-top: var(--space-md);
-            font-size: var(--text-small);
-            line-height: var(--leading-label);
-        }
+/* Explore state when there is nothing to continue. */
+.page :global(.explore-links) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-lg);
+  margin-top: var(--space-md);
+  font-size: var(--text-small);
+  line-height: var(--leading-label);
+}
 
-        /* ======================================================================
+/* ======================================================================
          6. Module progress cards: shared structure, separate subject colors
          ====================================================================== */
-        .page :global(.subject-grammar) {
-            --skill-value-color: var(--color-gold-dark);
-        }
+.page :global(.subject-grammar) {
+  --skill-value-color: var(--color-gold-dark);
+}
 
-        .page :global(.subject-vocabulary) {
-            --skill-value-color: var(--color-blue-strong);
-        }
+.page :global(.subject-vocabulary) {
+  --skill-value-color: var(--color-blue-strong);
+}
 
-        .page :global(.subject-conjugation) {
-            --skill-value-color: var(--color-orange-strong);
-        }
+.page :global(.subject-conjugation) {
+  --skill-value-color: var(--color-orange-strong);
+}
 
-        .page :global(.subject-mixed) {
-            --skill-value-color: var(--color-primary-dark);
-        }
+.page :global(.subject-mixed) {
+  --skill-value-color: var(--color-primary-dark);
+}
 
-        .page :global(.skills-grid) {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr);
-            gap: var(--space-md);
-        }
+.page :global(.skills-grid) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md);
+}
 
-        .page :global(.skill-card) {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
-            padding: var(--space-lg);
-            border-radius: var(--radius-small);
-            transition: box-shadow 150ms;
-        }
+.page :global(.skill-card) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: var(--space-lg);
+  border-radius: var(--radius-small);
+  transition: box-shadow 150ms;
+}
 
-        .page :global(.skill-card:hover) {
-            box-shadow: var(--shadow-sm);
-        }
+.page :global(.skill-card:hover) {
+  box-shadow: var(--shadow-sm);
+}
 
-        .page :global(.skill-card-header) {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-sm);
-        }
+.page :global(.skill-card-header) {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
 
-        .page :global(.skill-card-header .badge) {
-            color: var(--badge-color);
-        }
+.page :global(.skill-card-header .badge) {
+  color: var(--badge-color);
+}
 
-        .page :global(.skill-title) {
-            color: var(--color-heading);
-            font-size: var(--text-card-title);
-            font-weight: 600;
-            line-height: var(--leading-heading);
-            letter-spacing: var(--tracking-heading);
-        }
+.page :global(.skill-title) {
+  color: var(--color-heading);
+  font-size: var(--text-card-title);
+  font-weight: 600;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+}
 
-        .page :global(.skill-description) {
-            margin-top: 6px;
-            color: var(--color-description);
-            font-size: var(--text-small);
-            line-height: var(--leading-body);
-            overflow-wrap: anywhere;
-        }
+.page :global(.skill-description) {
+  margin-top: 6px;
+  color: var(--color-description);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+  overflow-wrap: anywhere;
+}
 
-        .page :global(.skill-progress) {
-            margin-top: var(--space-md);
-            padding-top: var(--space-xs);
-        }
+.page :global(.skill-progress) {
+  margin-top: var(--space-md);
+  padding-top: var(--space-xs);
+}
 
-        .page :global(.skill-progress .progress-value) {
-            color: var(--skill-value-color);
-        }
+.page :global(.skill-progress .progress-value) {
+  color: var(--skill-value-color);
+}
 
-        .page :global(.skill-footer) {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: var(--space-sm);
-            margin-top: var(--space-sm);
-            padding-top: var(--space-xs);
-        }
+.page :global(.skill-footer) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-xs);
+}
 
-        .page :global(.skill-detail) {
-            color: #5c524a;
-            font-size: var(--text-caption);
-            font-variant-numeric: tabular-nums;
-        }
+.page :global(.skill-detail) {
+  color: #5c524a;
+  font-size: var(--text-caption);
+  font-variant-numeric: tabular-nums;
+}
 
-        .page :global(.lesson-link) {
-            display: inline-flex;
-            align-items: center;
-            gap: 2px;
-            border-radius: 2px;
-            color: var(--link-color);
-            font-weight: 700;
-            white-space: nowrap;
-        }
+.page :global(.lesson-link) {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  border-radius: 2px;
+  color: var(--link-color);
+  font-weight: 700;
+  white-space: nowrap;
+}
 
-        .page :global(.lesson-link:hover) {
-            text-decoration: underline;
-        }
+.page :global(.lesson-link:hover) {
+  text-decoration: underline;
+}
 
-        .page :global(.lesson-link:focus-visible) {
-            outline-color: var(--link-color);
-        }
+.page :global(.lesson-link:focus-visible) {
+  outline-color: var(--link-color);
+}
 
-        .page :global(.lesson-link .material-symbols-outlined) {
-            font-size: 14px;
-        }
+.page :global(.lesson-link .material-symbols-outlined) {
+  font-size: 14px;
+}
 
-        /* ======================================================================
+/* ======================================================================
          7. Mixed Practice and Review Later
          ====================================================================== */
 
-        .page :global(.practice-grid) {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr);
-            gap: var(--space-lg);
-        }
+.page :global(.practice-grid) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg);
+}
 
-        .page :global(.mixed-card),
-        .page :global(.review-card) {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
+.page :global(.mixed-card),
+.page :global(.review-card) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-        .page :global(.mixed-card-header) {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: var(--space-md);
-            margin-bottom: var(--space-md);
-        }
+.page :global(.mixed-card-header) {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
 
-        .page :global(.mixed-title),
-        .page :global(.review-title) {
-            color: var(--color-heading);
-            font-size: var(--text-feature);
-            font-weight: 600;
-            line-height: var(--leading-heading);
-            letter-spacing: var(--tracking-heading);
-        }
+.page :global(.mixed-title),
+.page :global(.review-title) {
+  color: var(--color-heading);
+  font-size: var(--text-feature);
+  font-weight: 600;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+}
 
-        .page :global(.mixed-description) {
-            max-width: 448px;
-            margin-top: var(--space-xs);
-            color: var(--color-description);
-            font-size: var(--text-body);
-            line-height: var(--leading-body);
-        }
+.page :global(.mixed-description) {
+  max-width: 448px;
+  margin-top: var(--space-xs);
+  color: var(--color-description);
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+}
 
-        .page :global(.mixed-actions) {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: var(--space-md);
-            padding-top: var(--space-xs);
-        }
+.page :global(.mixed-actions) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  padding-top: var(--space-xs);
+}
 
-        .page :global(.review-card-header) {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: var(--space-sm);
-            margin-bottom: var(--space-md);
-        }
+.page :global(.review-card-header) {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
 
-        .page :global(.review-counter) {
-            display: flex;
-            align-items: baseline;
-            flex-wrap: wrap;
-            gap: var(--space-sm);
-            margin-block: var(--space-md);
-        }
+.page :global(.review-counter) {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-block: var(--space-md);
+}
 
-        .page :global(.review-count) {
-            color: var(--color-heading);
-            font-size: var(--text-streak);
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: var(--tracking-heading);
-            font-variant-numeric: tabular-nums;
-        }
+.page :global(.review-count) {
+  color: var(--color-heading);
+  font-size: var(--text-streak);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: var(--tracking-heading);
+  font-variant-numeric: tabular-nums;
+}
 
-        .page :global(.review-count-label) {
-            color: var(--color-primary-dark);
-            font-size: var(--text-body);
-            font-weight: 600;
-            line-height: var(--leading-label);
-        }
+.page :global(.review-count-label) {
+  color: var(--color-primary-dark);
+  font-size: var(--text-body);
+  font-weight: 600;
+  line-height: var(--leading-label);
+}
 
-        .page :global(.review-description) {
-            margin-top: var(--space-sm);
-            color: var(--color-description);
-            font-size: var(--text-small);
-            line-height: var(--leading-body);
-        }
+.page :global(.review-description) {
+  margin-top: var(--space-sm);
+  color: var(--color-description);
+  font-size: var(--text-small);
+  line-height: var(--leading-body);
+}
 
-        .page :global(.review-empty) {
-            margin-block: var(--space-md);
-            text-align: left;
-        }
+.page :global(.review-empty) {
+  margin-block: var(--space-md);
+  text-align: left;
+}
 
-        .page :global(.review-action) {
-            padding-top: var(--space-sm);
-        }
+.page :global(.review-action) {
+  padding-top: var(--space-sm);
+}
 
-        .page :global(.review-action .material-symbols-outlined) {
-            font-size: 18px;
-        }
+.page :global(.review-action .material-symbols-outlined) {
+  font-size: 18px;
+}
 
-        /* ======================================================================
+/* ======================================================================
          8. Recent practice
          ====================================================================== */
-        .page :global(.recent-practice .card-heading) {
-            align-items: flex-start;
-        }
+.page :global(.recent-practice .card-heading) {
+  align-items: flex-start;
+}
 
-        .page :global(.history-icon) {
-            --accent: var(--color-primary);
-            --accent-soft: var(--color-primary-soft);
-            --accent-border: var(--color-primary-border);
-        }
+.page :global(.history-icon) {
+  --accent: var(--color-primary);
+  --accent-soft: var(--color-primary-soft);
+  --accent-border: var(--color-primary-border);
+}
 
-        .page :global(.practice-list) {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-sm);
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
+.page :global(.practice-list) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-        .page :global(.practice-item) {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: var(--space-md);
-            padding: var(--space-md);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-small);
-            background: var(--color-background);
-            transition: background-color 150ms;
-        }
+.page :global(.practice-item) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  background: var(--color-background);
+  transition: background-color 150ms;
+}
 
-        .page :global(.practice-item:hover) {
-            background: var(--accent-soft, var(--color-primary-soft));
-        }
+.page :global(.practice-item:hover) {
+  background: var(--accent-soft, var(--color-primary-soft));
+}
 
-        .page :global(.practice-info) {
-            display: flex;
-            align-items: center;
-            flex: 1;
-            gap: var(--space-md);
-            min-width: 0;
-        }
+.page :global(.practice-info) {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: var(--space-md);
+  min-width: 0;
+}
 
-        .page :global(.practice-details) {
-            flex: 1;
-            min-width: 0;
-        }
+.page :global(.practice-details) {
+  flex: 1;
+  min-width: 0;
+}
 
-        /* Keep long Recent Practice titles to a predictable two-line height. */
-        .page :global(.practice-title) {
-            display: -webkit-box;
-            overflow: hidden;
-            color: var(--color-text);
-            font-size: var(--text-practice);
-            font-weight: 500;
-            line-height: var(--leading-label);
-            overflow-wrap: anywhere;
-            font-family: var(--font-body);
-            letter-spacing: normal;
-            -webkit-box-orient: vertical;
-            line-clamp: 2;
-            -webkit-line-clamp: 2;
-        }
+/* Keep long Recent Practice titles to a predictable two-line height. */
+.page :global(.practice-title) {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--color-text);
+  font-size: var(--text-practice);
+  font-weight: 500;
+  line-height: var(--leading-label);
+  overflow-wrap: anywhere;
+  font-family: var(--font-body);
+  letter-spacing: normal;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+}
 
-        .page :global(.practice-type) {
-            display: inline;
-            margin-right: 4px;
-            font-size: var(--text-body);
-            font-weight: 700;
-            line-height: inherit;
-            letter-spacing: var(--tracking-label);
-        }
+.page :global(.practice-type) {
+  display: inline;
+  margin-right: 4px;
+  font-size: var(--text-body);
+  font-weight: 700;
+  line-height: inherit;
+  letter-spacing: var(--tracking-label);
+}
 
-        /* Normal Practice content labels link back to the learning unit. */
-        .page :global(.practice-link) {
-            border-radius: 2px;
-            text-decoration: underline;
-            text-decoration-color: transparent;
-            text-underline-offset: 3px;
-            transition: text-decoration-color 150ms;
-        }
+/* Normal Practice content labels link back to the learning unit. */
+.page :global(.practice-link) {
+  border-radius: 2px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 150ms;
+}
 
-        .page :global(.practice-link:hover) {
-            text-decoration-color: currentColor;
-        }
+.page :global(.practice-link:hover) {
+  text-decoration-color: currentColor;
+}
 
-        .page :global(.practice-date) {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: var(--space-xs);
-            color: var(--color-description);
-            font-size: var(--text-caption);
-            line-height: var(--leading-label);
-        }
+.page :global(.practice-date) {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-xs);
+  color: var(--color-description);
+  font-size: var(--text-caption);
+  line-height: var(--leading-label);
+}
 
-        .page :global(.practice-date .material-symbols-outlined) {
-            font-size: 14px;
-        }
+.page :global(.practice-date .material-symbols-outlined) {
+  font-size: 14px;
+}
 
-        .page :global(.practice-result) {
-            flex-shrink: 0;
-            padding-top: var(--space-sm);
-            border-top: 1px solid rgb(234 219 204 / 50%);
-            text-align: right;
-        }
+.page :global(.practice-result) {
+  flex-shrink: 0;
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgb(234 219 204 / 50%);
+  text-align: right;
+}
 
-        .page :global(.practice-score) {
-            display: block;
-            color: var(--color-primary-dark);
-            font-size: var(--text-score);
-            font-weight: 600;
-            line-height: 1.3;
-            letter-spacing: var(--tracking-heading);
-            font-variant-numeric: tabular-nums;
-        }
+.page :global(.practice-score) {
+  display: block;
+  color: var(--color-primary-dark);
+  font-size: var(--text-score);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: var(--tracking-heading);
+  font-variant-numeric: tabular-nums;
+}
 
-        /* Perfect scores use a distinct red accent regardless of practice subject. */
-        .page :global(.practice-score.is-perfect) {
-            color: var(--color-perfect);
-        }
+/* Perfect scores use a distinct red accent regardless of practice subject. */
+.page :global(.practice-score.is-perfect) {
+  color: var(--color-perfect);
+}
 
-        .page :global(.practice-correct) {
-            display: block;
-            margin-top: var(--space-xs);
-            color: var(--color-description);
-            font-size: var(--text-caption);
-            font-weight: 600;
-            line-height: var(--leading-label);
-            letter-spacing: var(--tracking-label);
-        }
+.page :global(.practice-correct) {
+  display: block;
+  margin-top: var(--space-xs);
+  color: var(--color-description);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  line-height: var(--leading-label);
+  letter-spacing: var(--tracking-label);
+}
 
-        /* ======================================================================
+/* ======================================================================
          9. Footer and responsive layout (FD §8)
          ====================================================================== */
 
-        /* Small tablets and larger phones. */
-        @media (min-width: 640px) {
-            .page {
-                --text-streak: 1.875rem;
-            }
+/* Small tablets and larger phones. */
+@media (min-width: 640px) {
+  .page {
+    --text-streak: 1.875rem;
+  }
 
-            .page :global(.card) {
-                padding: var(--space-lg);
-            }
+  .page :global(.card) {
+    padding: var(--space-lg);
+  }
 
-            .page :global(.calendar-weekdays),
-            .page :global(.calendar-days) {
-                gap: 8px;
-            }
+  .page :global(.calendar-weekdays),
+  .page :global(.calendar-days) {
+    gap: 8px;
+  }
 
-            .page :global(.continue-content) {
-                padding-left: var(--space-md);
-            }
+  .page :global(.continue-content) {
+    padding-left: var(--space-md);
+  }
 
-            .page :global(.continue-lesson-title) {
-                margin-top: 0;
-            }
-        }
+  .page :global(.continue-lesson-title) {
+    margin-top: 0;
+  }
+}
 
-        /* Three module cards, horizontal practice-history rows, full navigation. */
-        @media (min-width: 768px) {
-            .page :global(.skills-grid) {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
+/* Three module cards, horizontal practice-history rows, full navigation. */
+@media (min-width: 768px) {
+  .page :global(.skills-grid) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 
-            .page :global(.practice-item) {
-                flex-direction: row;
-                align-items: center;
-            }
+  .page :global(.practice-item) {
+    flex-direction: row;
+    align-items: center;
+  }
 
-            .page :global(.practice-result) {
-                padding-top: 0;
-                border-top: 0;
-            }
-        }
+  .page :global(.practice-result) {
+    padding-top: 0;
+    border-top: 0;
+  }
+}
 
-        /* Desktop dashboard columns. */
-        @media (min-width: 1024px) {
+/* Desktop dashboard columns. */
+@media (min-width: 1024px) {
+  .page :global(.activity-overview) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
 
-            .page :global(.activity-overview) {
-                grid-template-columns: repeat(12, minmax(0, 1fr));
-            }
+  .page :global(.streak-card) {
+    grid-column: span 4;
+  }
 
-            .page :global(.streak-card) {
-                grid-column: span 4;
-            }
+  .page :global(.activity-card) {
+    grid-column: span 8;
+  }
 
-            .page :global(.activity-card) {
-                grid-column: span 8;
-            }
+  .page :global(.calendar-layout) {
+    flex-direction: row;
+    align-items: stretch;
+  }
 
-            .page :global(.calendar-layout) {
-                flex-direction: row;
-                align-items: stretch;
-            }
+  .page :global(.calendar-summary) {
+    width: 176px;
+    justify-content: space-between;
+    padding-top: 22px;
+    padding-left: var(--space-md);
+    border-top: 0;
+    border-left: 1px solid var(--color-primary-border);
+  }
 
-            .page :global(.calendar-summary) {
-                width: 176px;
-                justify-content: space-between;
-                padding-top: 22px;
-                padding-left: var(--space-md);
-                border-top: 0;
-                border-left: 1px solid var(--color-primary-border);
-            }
+  .page :global(.continue-card),
+  .page :global(.mixed-card),
+  .page :global(.review-card) {
+    padding: var(--space-xl);
+  }
 
-            .page :global(.continue-card),
-            .page :global(.mixed-card),
-            .page :global(.review-card) {
-                padding: var(--space-xl);
-            }
+  .page :global(.continue-content) {
+    flex-direction: row;
+    align-items: center;
+  }
 
-            .page :global(.continue-content) {
-                flex-direction: row;
-                align-items: center;
-            }
+  .page :global(.continue-details) {
+    padding-right: var(--space-md);
+  }
 
-            .page :global(.continue-details) {
-                padding-right: var(--space-md);
-            }
+  .page :global(.continue-button) {
+    width: auto;
+    white-space: nowrap;
+  }
 
-            .page :global(.continue-button) {
-                width: auto;
-                white-space: nowrap;
-            }
+  .page :global(.practice-grid) {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
 
-            .page :global(.practice-grid) {
-                grid-template-columns: repeat(12, minmax(0, 1fr));
-            }
+  .page :global(.mixed-card) {
+    grid-column: span 7;
+  }
 
-            .page :global(.mixed-card) {
-                grid-column: span 7;
-            }
+  .page :global(.review-card) {
+    grid-column: span 5;
+  }
+}
 
-            .page :global(.review-card) {
-                grid-column: span 5;
-            }
-        }
-
-        /* Compact header layout for tablets and smaller laptops. */
-        @media (min-width: 768px) and (max-width: 1199px) {
-
-            /* Brand text stays available to assistive technology. */
-        }
-    
+/* Compact header layout for tablets and smaller laptops. */
+@media (min-width: 768px) and (max-width: 1199px) {
+  /* Brand text stays available to assistive technology. */
+}

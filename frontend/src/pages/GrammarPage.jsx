@@ -1,250 +1,117 @@
 /*
- Fonts and the logo still require an internet connection. -->
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link href="https://fonts.gstatic.com" crossorigin="" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300..800;1,6..12,300..800&amp;display=swap"
-        rel="stylesheet">
+  Grammar browse page (route "/grammar", protected).
+  Part -> Chapter -> Lesson hierarchy rendered from GET /api/v1/grammar (API Contract §9.1).
 
-    <!--
-      Static Grammar browse prototype (GrammarPage, route /grammar). Visual system, app shell,
-      and shared patterns follow the approved Dashboard (DashboardPage) and
-      frontend-design.md (FD) §4.5, §7.6, §7.8, §8, §9, §11. Plain CSS, no build step.
+  Data:
+  - The browse endpoint returns metadata only, already ordered by sort_order, with `learned` /
+    `review_later` per lesson (API §9.1). Titles come from the API; none is hard-coded here
+    (FD §3.4). The response is rendered as received, so added Parts/Chapters/Lessons appear without a
+    code change.
+  - Part and Chapter are grouping structures inside this page, not routes (FD §4.5). Collapsing a
+    Chapter is frontend-only UI state and costs no API call (API §9.1).
+  - The percentage is derived as floor(learned / total) clamped to 0-100 (FD §7.7); the counts stay
+    backend truth (FD §3.3).
 
-      Data:
-      - The page is rendered from SAMPLE_GRAMMAR in the script below, which has the exact
-        shape of GET /api/v1/grammar (API Contract §9.1): parts[] > chapters[] > lessons[],
-        each lesson { slug, title, title_fr, learned, review_later }. Nothing else is shown.
-      - Part and Chapter are groups inside this page; only lessons link anywhere
-        (data-route="/grammar/lessons/:slug"). Links use href="#"; no routing or API logic.
-      - Counts and percentages are derived from the lesson booleans (see FD §15 note in the
-        summary delivered with this file). Part numbers come from array order.
-      - French is the target language, so title_fr is the primary title of every Part,
-        Chapter, and Lesson (lang="fr") and the localized title is the support line below it.
-        When the API falls back to title_fr for a missing translation (API §4.9), the
-        support line is omitted rather than repeating the French.
-      - Color by role (used the same way everywhere on this page):
-          cream / white          structural surfaces (page, cards, Part header band)
-          dark brown             text and strong controls (lesson arrow on hover/focus)
-          blue (existing family) structure and information: Part number tile (solid),
-                                 Chapter toggle (soft), content counts
-          sage                   learned / completed (status, badge, finished chapter/part)
-          rose                   Review Later, "revisit" (status, badge, lesson surface)
-          gold (Grammar family)  small warmth only: page icon, progress fill, hover tint
-                                 on lessons without a state, one decorative glyph
-        Every state also has an icon and a text label; color is never the only signal.
-      - Lesson state priority: Review Later > Learned. A lesson that is both keeps both
-        badges, but the rose surface, border, status icon, and first badge belong to
-        Review Later; the learned badge switches to a quieter outline style.
-      - Expanding/collapsing Chapters is frontend-only UI state (API §9.1, FD §5.7).
-      - Returning from a lesson: GrammarLessonPage's "Quay lại Ngữ pháp" control links back here
-        with the current lesson slug encoded as a URL hash, e.g. #lesson-articles-indefinis (no
-        API/backend change - the slug already comes from GET /api/v1/grammar). Once the Grammar
-        data above has rendered, this page looks up that slug, opens its parent Chapter if it was
-        collapsed, scrolls the lesson into view, and gives it a brief, non-color-only highlight
-        (see restoreLessonContext() in the script and .lesson-item.is-returned in the CSS).
-
-      Preview states (prototype only), via the URL query string:
-        ?preview=loading       Grammar request loading
-        ?preview=error         Grammar request failed
-        ?preview=empty         parts is an empty array
-        ?preview=not-started   no lesson learned or saved yet
-
-      Try the return-from-lesson behavior by opening this file with a hash such as
-      #lesson-articles-indefinis, or by using the "Quay lại Ngữ pháp" link on the lesson prototype.
-
-      Page sections:
-      1. Header (same component as the Dashboard, Grammar active)
-      2. Page header: title, description, overall progress
-      3. Page states: loading, error, empty
-      4. Toolbar: content summary, expand/collapse all chapters
-      5. Parts > Chapters > Lessons (rendered from templates)
-      6. Footer
+  States (FD §6.6): LoadingState, ErrorState with retry, EmptyState when there are no lessons at all,
+  otherwise the part list.
 */
+import { useCallback, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import EmptyState from "../components/common/EmptyState.jsx";
 import ErrorState from "../components/common/ErrorState.jsx";
 import LoadingState from "../components/common/LoadingState.jsx";
-import ProgressBar from "../components/common/ProgressBar.jsx";
 import PageHeader from "../components/common/PageHeader.jsx";
+import { getGrammar } from "../api/grammarApi.js";
+import GrammarPartSection from "../features/grammar/GrammarPartSection.jsx";
+import OverviewPanel from "../features/learning/OverviewPanel.jsx";
+import useApiResource from "../hooks/useApiResource.js";
+import { t, useLanguage } from "../i18n/index.js";
 import styles from "./GrammarPage.module.css";
-import usePageScript from "../hooks/usePageScript.js";
-import { t } from "../i18n/index.js";
-import init from "./GrammarPage.script.js";
 
 export default function GrammarPage() {
-  const rootRef = usePageScript(init, { title: "title.grammar" });
+  useLanguage();
+
+  // The document title follows the shared language state.
+  useEffect(() => {
+    document.title = t("title.grammar");
+  });
+  const fetchGrammar = useCallback(() => getGrammar(), []);
+  const { data, isLoading, error, reload } = useApiResource(fetchGrammar);
+
+  const parts = data?.parts ?? [];
+  const lessons = parts.flatMap((part) => (part?.chapters ?? []).flatMap((chapter) => chapter?.lessons ?? []));
+  const learned = lessons.filter((lesson) => lesson.learned).length;
+  const saved = lessons.filter((lesson) => lesson.review_later).length;
+  // Same rule as the other browse pages: a response with no Parts or no lessons at all is the empty
+  // state, not a page of empty groups.
+  const isEmpty = !isLoading && !error && (parts.length === 0 || lessons.length === 0);
 
   return (
-    <div className={`page-body ${styles.page}`} ref={rootRef}>
+    <div className={`page-body ${styles.page}`}>
       <main className="page-container grammar-page subject-grammar" id="main-content">
-        {/* Announces context restored after returning from a lesson (see restoreLessonContext()).
-             Scrolling and the highlight below are visual only, so this is the non-visual signal
-             required alongside them.
-        */}
-        <p className="visually-hidden" role="status" aria-live="polite" data-live-region />
-        {/* 2. Page header: fixed UI label (not a curriculum title). Progress and state totals
-             are derived from the data.
-        */}
-        <section className="card page-hero page-section" aria-labelledby="page-title">
-          <PageHeader icon="draw" title={t("common.grammar")} description={t("grammar.description")} glyphs={["é", "ç", "à"]} />
-          <div className="overview-panel" data-overview hidden>
-            <ProgressBar label={t("common.progress")} percent={0} ariaLabel={t("common.progressGrammar")} valueProps={{ "data-slot": "percent" }} trackProps={{ "data-slot": "track" }} />
-            <ul className="overview-states" aria-label={t("common.lessonStatus")}>
-              <li className="badge badge-learned">
-                <span className="material-symbols-outlined icon-filled" aria-hidden="true">
-                  check_circle
-                </span>
-                {" "}
-                <span>
-                  {t("common.learnedColon")}
-                  {" "}
-                  <span data-slot="count">
-                    {t("common.fraction", { learned: 0, total: 0 })}
-                  </span>
-                </span>
-              </li>
-              <li className="badge badge-review">
-                <span className="material-symbols-outlined icon-filled" aria-hidden="true">
-                  bookmark
-                </span>
-                {" "}
-                <span>
-                  {t("common.reviewLaterColon")}
-                  {" "}
-                  <span data-slot="review-count">
-                    {t("common.count", { n: 0 })}
-                  </span>
-                </span>
-              </li>
-            </ul>
-          </div>
+        <p className="visually-hidden">{t("grammar.description")}</p>
+        <section className="card page-hero page-section">
+          <PageHeader icon="draw" title={t("common.grammar")} description={t("grammar.description")} />
+          {!isEmpty && (
+            <OverviewPanel
+              learned={learned}
+              total={lessons.length}
+              saved={saved}
+              progressAriaLabel={t("common.progressGrammar")}
+            />
+          )}
         </section>
-        {/* 3. Page states (FD §6.6). Shown instead of the Grammar content. */}
-        <LoadingState hidden message={t("grammar.loading")} />
-        <ErrorState hidden headingLevel={2} title={t("grammar.loadError")} retryAction="retry" />
-        <EmptyState hidden icon="menu_book" headingLevel={2} title={t("grammar.emptyTitle")} message={t("grammar.emptyText")}>
-          <div className="explore-links">
-            <a className="lesson-link subject-vocabulary" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-              <span className="material-symbols-outlined" aria-hidden="true">
-                arrow_forward
-              </span>
-            </a>
-            {" "}
-            <a className="lesson-link subject-conjugation" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-              <span className="material-symbols-outlined" aria-hidden="true">
-                arrow_forward
-              </span>
-            </a>
-          </div>
-        </EmptyState>
-        <div data-grammar-content hidden>
-          {/* 4. Toolbar */}
-          <div className="toolbar">
-            <ul className="toolbar-summary" data-summary aria-label={t("common.contentRegion")} />
-            <button className="button button-secondary button-compact toggle-all" type="button" data-action="toggle-all">
-              <span className="material-symbols-outlined" aria-hidden="true" data-slot="icon">
-                unfold_less
-              </span>
-              {" "}
-              <span data-slot="label">
-                {t("common.collapseAll")}
-              </span>
-            </button>
-          </div>
-          {/* 5. Parts, rendered from the API data with the templates below. */}
-          <div className="part-list" data-part-list />
-        </div>
+
+        {isLoading && <LoadingState message={t("grammar.loading")} />}
+        {error && (
+          <ErrorState
+            headingLevel={1}
+            title={t("grammar.loadError")}
+            message={t("common.loadError")}
+            onRetry={reload}
+          />
+        )}
+        {isEmpty && (
+          <EmptyState icon="draw" title={t("grammar.emptyTitle")} message={t("grammar.emptyText")} headingLevel={1}>
+            <div className="explore-links">
+              <Link className="lesson-link subject-vocabulary" to="/vocabulary">
+                {t("common.vocabulary")}
+                <span className="material-symbols-outlined" aria-hidden="true">
+                  arrow_forward
+                </span>
+              </Link>{" "}
+              <Link className="lesson-link subject-conjugation" to="/conjugation">
+                {t("common.conjugation")}
+                <span className="material-symbols-outlined" aria-hidden="true">
+                  arrow_forward
+                </span>
+              </Link>
+            </div>
+          </EmptyState>
+        )}
+
+        {data && !isEmpty && (
+          <>
+            <div className="toolbar">
+              <ul className="toolbar-summary" aria-label={t("common.contentRegion")}>
+                <li className="badge badge-info">{t("grammar.partsCount", { n: parts.length })}</li>
+                <li className="badge badge-info">
+                  {t("grammar.chaptersCount", {
+                    n: parts.reduce((total_, part) => total_ + (part?.chapters?.length ?? 0), 0),
+                  })}
+                </li>
+                <li className="badge badge-info">{t("grammar.lessonsCount", { n: lessons.length })}</li>
+              </ul>
+            </div>
+            <div className="part-list">
+              {parts.map((part, index) => (
+                <GrammarPartSection key={`part-${index + 1}`} part={part} index={index} />
+              ))}
+            </div>
+          </>
+        )}
       </main>
-      {/* Part: one card per parts[] item. Title order: title_fr (primary), then title. */}
-      <template id="part-template" dangerouslySetInnerHTML={{ __html: `
-        <section class="card part">
-            <div class="part-header">
-                <div class="part-heading">
-                    <div class="icon-tile icon-tile-solid icon-tile-blue part-number" aria-hidden="true"
-                        data-slot="number">1</div>
-                    <div class="part-titles">
-                        <h2 class="part-title" data-slot="heading"><span class="visually-hidden"
-                                data-slot="position">${t("grammar.partPosition", { n: 1 }).trim()} </span><span data-slot="title" lang="fr"></span></h2>
-                        <span class="title-support" data-slot="support"></span>
-                    </div>
-                </div>
-                <div class="part-progress">
-                    <div class="progress-labels">
-                        <span data-slot="count">${t("common.lessonsOf", { learned: 0, total: 0, n: 0 })}</span>
-                        <span class="progress-value" data-slot="percent">0%</span>
-                    </div>
-                    <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                        aria-valuenow="0" data-slot="track">
-                        <div class="progress-fill"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="part-body">
-                <ul class="chapter-list" data-slot="chapters"></ul>
-            </div>
-        </section>
-    ` }} />
-      {/* Chapter: collapsible group inside a Part (frontend-only open state). */}
-      <template id="chapter-template" dangerouslySetInnerHTML={{ __html: `
-        <li>
-            <details class="chapter" open>
-                <summary class="chapter-summary">
-                    <span class="chapter-toggle" aria-hidden="true">
-                        <span class="material-symbols-outlined">expand_more</span>
-                    </span>
-                    <span class="chapter-heading">
-                        <h3 class="chapter-title" data-slot="title" lang="fr"></h3>
-                        <span class="title-support" data-slot="support"></span>
-                    </span>
-                    <span class="badge badge-info chapter-count" data-slot="count-badge"><span
-                            class="material-symbols-outlined icon-filled" aria-hidden="true" data-slot="count-icon"
-                            hidden>check_circle</span><span data-slot="count">${t("common.lessonsOf", { learned: 0, total: 0, n: 0 })}</span><span
-                            class="visually-hidden"> ${t("common.learnedLower")}</span></span>
-                </summary>
-                <ul class="lesson-list" data-slot="lessons"></ul>
-                <p class="empty-text" data-slot="empty" hidden>${t("grammar.emptyChapter")}</p>
-            </details>
-        </li>
-    ` }} />
-      {/* Lesson: the whole row is the link to /grammar/lessons/:slug.
-         State classes: is-learned (sage), is-saved (rose, whenever review_later is true).
-         Review Later has priority: its badge comes first and its styling wins; in a dual-state
-         lesson the learned badge becomes the quiet outline variant.
-      */}
-      <template id="lesson-template" dangerouslySetInnerHTML={{ __html: `
-        <li>
-            <a class="lesson-item" href="#" data-slot="link">
-                <span class="lesson-status" aria-hidden="true">
-                    <span class="material-symbols-outlined" data-slot="status">radio_button_unchecked</span>
-                </span>
-                <span class="lesson-body">
-                    <span class="lesson-title" data-slot="title" lang="fr"></span>
-                    <span class="title-support" data-slot="support"></span>
-                    <span class="lesson-meta" data-slot="meta">
-                        <span class="badge badge-review" data-slot="review-later" hidden>
-                            <span class="material-symbols-outlined icon-filled" aria-hidden="true">bookmark</span>
-                            <span>${t("common.reviewLater")}</span>
-                        </span>
-                        <span class="badge badge-learned" data-slot="learned" hidden>
-                            <span class="material-symbols-outlined icon-filled" aria-hidden="true">check_circle</span>
-                            <span>${t("common.learned")}</span>
-                        </span>
-                    </span>
-                </span>
-                <span class="lesson-arrow" aria-hidden="true">
-                    <span class="material-symbols-outlined">arrow_forward</span>
-                </span>
-            </a>
-        </li>
-    ` }} />
     </div>
   );
 }

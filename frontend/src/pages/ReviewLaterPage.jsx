@@ -1,172 +1,249 @@
 /*
- Fonts and the brand illustration still require an internet connection. -->
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link href="https://fonts.gstatic.com" crossorigin="" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300..800;1,6..12,300..800&amp;display=swap"
-        rel="stylesheet">
+  Review Later page (route "/review-later", protected).
+  Rendered from GET /api/v1/me/review-later (API Contract §13.3).
 
-    <!--
-      Static ReviewLaterPage prototype (route /review-later, FD §4.2, §7.14).
-      Reached from the Dashboard "Xem lại sau" card ("Mở danh sách xem lại").
-      Same shell, tokens and patterns as DashboardPage; no Tailwind, no build step.
+  Data:
+  - The endpoint returns only the authenticated learner's units with `review_later = true`, already
+    ordered by curriculum order: module in the order grammar, vocabulary, conjugation, then the unit's
+    position in its module (API §13.3). The page groups that list by `unit_type` for display and never
+    re-sorts it, so removing and re-adding a unit does not change its place (API §13.3, FD §7.14).
+  - `review_later` is not repeated per item because membership already implies it (API §13.3).
+  - `learned` is shown per item and stays independent: Review Later never means "not learned"
+    (FD §7.14, Requirements §12).
+  - When the API has fallen back to `title_fr` for a missing translation, the localized line is hidden
+    rather than repeating the French title (API §4.9).
+  - Removal goes through PATCH /api/v1/me/learning-units/{slug}/state with `review_later: false`,
+    which changes only that field and never touches `learned` (API §13.2).
 
-      Data:
-      - Sample values follow GET /api/v1/me/review-later: data.items[] with
-        slug, unit_type (grammar | vocabulary | conjugation), title_fr, title, learned.
-        Membership in the list already means "saved"; there is no review_later field,
-        and nothing else (dates, levels, scores, priority) is shown because the API has none.
-      - Grouping by module and the total count are frontend presentation, derived from items[].
-      - Review Later and Learned are independent: every item is saved; "Đã học" is shown
-        only when learned is true and nothing negative is shown otherwise.
-      - Links use href="#" with the target React route in data-route
-        (grammar -> /grammar/lessons/:slug, vocabulary -> /vocabulary/study-units/:slug,
-        conjugation -> /conjugation/lessons/:slug). The frontend maps unit_type to the route.
-      - "Bỏ lưu" would call PATCH /api/v1/me/learning-units/{slug}/state with
-        { "review_later": false }. In this prototype it only removes the sample row.
-      - Review Later is not in the main navigation, so no main-nav item is current.
-
-      Preview states (prototype only), via the URL query string:
-        (none)                   populated list, mixed learned / not learned
-        ?preview=single          one saved item (groups without items are omitted)
-        ?preview=long-titles     very long French and localized titles
-        ?preview=empty           items: []
-        ?preview=loading         list loading state
-        ?preview=error           list load failure
-
-      Page sections:
-      1. Header (same component as the Dashboard, no current item)
-      2. Breadcrumbs: Dashboard > Xem lại sau
-      3. Page header: title, short explanation, derived saved count
-      4. Page states: loading, error, empty
-      5. Module groups (Grammar, Vocabulary, Conjugation), each a card of saved rows
-      6. Footer
+  States (FD §6.6): LoadingState, ErrorState with retry, EmptyState when nothing is saved, otherwise the
+  grouped list.
 */
+import { useCallback, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import EmptyState from "../components/common/EmptyState.jsx";
 import ErrorState from "../components/common/ErrorState.jsx";
 import LoadingState from "../components/common/LoadingState.jsx";
-import Breadcrumbs from "../components/common/Breadcrumbs.jsx";
+import { getReviewLater, updateLearningUnitState } from "../api/learningStateApi.js";
+import useApiResource from "../hooks/useApiResource.js";
+import { t, useLanguage } from "../i18n/index.js";
+import { CURRICULUM_MODULE_ORDER, learningUnitPath, moduleMeta } from "../utils/routeHelpers.js";
 import styles from "./ReviewLaterPage.module.css";
-import usePageScript from "../hooks/usePageScript.js";
-import { t } from "../i18n/index.js";
-import init from "./ReviewLaterPage.script.js";
+
+// Group the already-ordered list by module without reordering anything inside a group (API §13.3).
+// Modules appear in the endpoint's curriculum order — grammar, vocabulary, conjugation — which is not
+// the Dashboard card order, so the groups follow the curriculum sequence the API already used.
+function groupByModule(items) {
+  const byType = items.reduce((groups, item) => {
+    const key = item.unit_type ?? "other";
+    groups[key] = groups[key] ? [...groups[key], item] : [item];
+    return groups;
+  }, {});
+  const ordered = CURRICULUM_MODULE_ORDER.filter((unitType) => byType[unitType]);
+  const extras = Object.keys(byType).filter((unitType) => !CURRICULUM_MODULE_ORDER.includes(unitType));
+  return [...ordered, ...extras].map((unitType) => ({ unitType, items: byType[unitType] }));
+}
 
 export default function ReviewLaterPage() {
-  const rootRef = usePageScript(init, { title: "title.reviewLater" });
+  useLanguage();
+
+  // The document title follows the shared language state.
+  useEffect(() => {
+    document.title = t("title.reviewLater");
+  });
+  const fetchItems = useCallback(() => getReviewLater(), []);
+  const { data, isLoading, error, reload, refresh } = useApiResource(fetchItems);
+
+  const [pendingSlug, setPendingSlug] = useState(null);
+  const [announcement, setAnnouncement] = useState("");
+  const [actionError, setActionError] = useState(null);
+
+  const items = data?.items ?? [];
+  const groups = groupByModule(items);
+  const isEmpty = !isLoading && !error && items.length === 0;
+
+  // Remove from Review Later through the shared learner-state endpoint. Only `review_later` is sent, so
+  // the unit's learned state is untouched (API §13.2).
+  const remove = async (item) => {
+    setPendingSlug(item.slug);
+    setActionError(null);
+    try {
+      await updateLearningUnitState(item.slug, { review_later: false });
+      setAnnouncement(t("review.removed"));
+      // The list itself is backend truth, so it is refetched rather than patched locally (FD §3.3).
+      // refresh() keeps the list on screen while it re-reads, so removing a unit never flashes the
+      // loading state.
+      refresh();
+    } catch (cause) {
+      setActionError(cause);
+    } finally {
+      setPendingSlug(null);
+    }
+  };
 
   return (
-    <div className={`page-body ${styles.page}`} ref={rootRef}>
-      {/* 1. Header (same component as the Dashboard; Review Later has no main-nav item, so none is current) */}
+    <div className={`page-body ${styles.page}`}>
       <main className="page-container review-page" id="main-content">
-        {/* 2. Breadcrumbs: the way back to the Dashboard card this page is opened from. */}
-        <Breadcrumbs items={[{ label: t("common.dashboard"), to: "/dashboard", icon: "arrow_back" }, { label: t("common.reviewLater") }]} />
-        {/* 3. Page header. The count is derived from items.length; no new API field. */}
+        <nav className="breadcrumbs" aria-label={t("common.breadcrumb")}>
+          <ol className="breadcrumb-list">
+            <li>
+              <Link className="crumb-link" to="/dashboard">
+                <span className="material-symbols-outlined" aria-hidden="true">
+                  bookmark
+                </span>{" "}
+                <span>{t("common.dashboard")}</span>
+              </Link>
+            </li>
+            <li>
+              <span className="material-symbols-outlined crumb-separator" aria-hidden="true">
+                chevron_right
+              </span>{" "}
+              <span className="crumb-current" aria-current="page">
+                {t("common.reviewLater")}
+              </span>
+            </li>
+          </ol>
+        </nav>
+
         <header className="review-header">
           <div className="icon-tile" aria-hidden="true">
-            <span className="material-symbols-outlined">
-              bookmark_added
-            </span>
+            <span className="material-symbols-outlined">bookmark_added</span>
           </div>
           <div className="review-header-text">
             <div className="review-heading-row">
-              <h1 className="review-page-title">
-                {t("common.reviewLater")}
-              </h1>
-              <span className="badge" data-total hidden />
+              <h1 className="review-page-title">{t("common.reviewLater")}</h1>
+              {items.length > 0 && <span className="badge">{t("review.total", { n: items.length })}</span>}
             </div>
-            <p className="review-page-description">
-              {t("dashboard.reviewText")}
-            </p>
+            <p className="review-page-description">{t("review.description")}</p>
           </div>
         </header>
-        {/* 4. Page-level states (FD §6.6). Shown instead of the list; no sample data behind them. */}
-        <LoadingState hidden message={t("review.loading")} />
-        <ErrorState hidden headingLevel={2} title={t("review.loadError")} retryAction="retry-page" />
-        {/* items: [] — one page-level empty state instead of empty module sections. */}
-        <EmptyState hidden icon="bookmark_added" headingLevel={2} titleTabIndex={-1} title={t("review.emptyTitle")} message={t("review.emptyText")}>
-          <div className="explore-links">
-            <a className="lesson-link subject-vocabulary" href="#" data-route="/vocabulary">
-              {t("common.vocabulary")}
-              <span className="material-symbols-outlined" aria-hidden="true">
-                arrow_forward
-              </span>
-            </a>
-            {" "}
-            <a className="lesson-link subject-grammar" href="#" data-route="/grammar">
-              {t("common.grammar")}
-              <span className="material-symbols-outlined" aria-hidden="true">
-                arrow_forward
-              </span>
-            </a>
-            {" "}
-            <a className="lesson-link subject-conjugation" href="#" data-route="/conjugation">
-              {t("common.conjugation")}
-              <span className="material-symbols-outlined" aria-hidden="true">
-                arrow_forward
-              </span>
-            </a>
+
+        {isLoading && <LoadingState message={t("review.loading")} />}
+        {error && (
+          <ErrorState headingLevel={1} title={t("review.loadError")} message={t("common.loadError")} onRetry={reload} />
+        )}
+        {actionError && (
+          <div className="state-note" role="alert">
+            <span className="material-symbols-outlined" aria-hidden="true">
+              error
+            </span>{" "}
+            <span>{t("common.loadError")}</span>
           </div>
-        </EmptyState>
-        {/* 5. Module groups, rendered from items[] (script below). Groups with no items are omitted. */}
-        <div className="review-groups" data-review-content hidden />
-        {/* One group card per module. Unit rows are cloned into [data-slot="items"]. */}
-        <template id="group-template" dangerouslySetInnerHTML={{ __html: `
-            <section class="card review-group" data-group>
-                <div class="group-heading">
-                    <div class="icon-tile icon-tile-compact" aria-hidden="true">
-                        <span class="material-symbols-outlined" data-slot="icon"></span>
+        )}
+
+        {isEmpty && (
+          <EmptyState icon="bookmark" title={t("review.emptyTitle")} message={t("review.emptyText")} headingLevel={1}>
+            <div className="explore-links">
+              <Link className="lesson-link subject-vocabulary" to="/vocabulary">
+                {t("common.vocabulary")}
+                <span className="material-symbols-outlined" aria-hidden="true">
+                  arrow_forward
+                </span>
+              </Link>{" "}
+              <Link className="lesson-link subject-grammar" to="/grammar">
+                {t("common.grammar")}
+                <span className="material-symbols-outlined" aria-hidden="true">
+                  arrow_forward
+                </span>
+              </Link>{" "}
+              <Link className="lesson-link subject-conjugation" to="/conjugation">
+                {t("common.conjugation")}
+                <span className="material-symbols-outlined" aria-hidden="true">
+                  arrow_forward
+                </span>
+              </Link>
+            </div>
+          </EmptyState>
+        )}
+
+        {data && !isEmpty && (
+          <div className="review-groups">
+            {groups.map((group) => {
+              const module = moduleMeta(group.unitType);
+              return (
+                <section
+                  className="card review-group"
+                  key={group.unitType}
+                  aria-labelledby={`review-${group.unitType}`}
+                >
+                  <div className="group-heading">
+                    <div className="icon-tile icon-tile-compact" aria-hidden="true">
+                      <span className="material-symbols-outlined">{module?.icon ?? "menu_book"}</span>
                     </div>
-                    <h2 class="section-title" data-slot="title"></h2>
-                    <span class="badge" data-slot="count"></span>
-                </div>
-                <ul class="review-list" role="list" data-slot="items"></ul>
-            </section>
-        ` }} />
-        {/* One saved learning unit. Open (link) and remove (button) are separate controls.
-             The Learned badge is rendered only when learned is true.
-        */}
-        <template id="item-template" dangerouslySetInnerHTML={{ __html: `
-            <li class="review-item" data-item>
-                <div class="review-info">
-                    <h3 class="review-title" lang="fr" data-slot="title-fr"></h3>
-                    <p class="review-support" data-slot="title"></p>
-                    <p class="review-state" data-slot="learned" hidden>
-                        <span class="badge badge-learned">
-                            <span class="material-symbols-outlined icon-filled" aria-hidden="true">check_circle</span>
-                            <span data-slot="learned-text"></span>
-                        </span>
-                    </p>
-                </div>
-                <div class="review-actions">
-                    <a class="lesson-link review-open" href="#" data-slot="open">
-                        <span data-slot="open-text"></span>
-                        <span class="visually-hidden" data-slot="open-context"></span>
-                        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
-                    </a>
-                    <button class="button button-secondary button-compact button-toggle review-remove" type="button"
-                        data-action="remove-review">
-                        <span class="material-symbols-outlined" aria-hidden="true">bookmark_remove</span>
-                        <span data-slot="remove-text"></span>
-                        <span class="visually-hidden" data-slot="remove-context"></span>
-                    </button>
-                </div>
-            </li>
-        ` }} />
+                    <h2 className="section-title" id={`review-${group.unitType}`}>
+                      {module ? t(module.labelKey) : t("common.reviewLater")}
+                    </h2>
+                    <span className="badge">{t("review.groupCount", { n: group.items.length })}</span>
+                  </div>
+                  <ul className="review-list" role="list">
+                    {group.items.map((item) => {
+                      const path = learningUnitPath(item.unit_type, item.slug);
+                      // Hidden when the API fell back to title_fr, so the French title is not repeated.
+                      const hasSupport = Boolean(item.title_fr && item.title && item.title !== item.title_fr);
+                      return (
+                        <li className="review-item" key={`${item.unit_type}-${item.slug}`}>
+                          <div className="review-info">
+                            <h3 className="review-title" lang="fr">
+                              {item.title_fr ?? item.title}
+                            </h3>
+                            {hasSupport && <p className="review-support">{item.title}</p>}
+                            {item.learned && (
+                              <p className="review-state">
+                                <span className="badge badge-learned">
+                                  <span className="material-symbols-outlined icon-filled" aria-hidden="true">
+                                    check_circle
+                                  </span>
+                                  <span>{t("common.learned")}</span>
+                                </span>
+                              </p>
+                            )}
+                          </div>
+                          <div className="review-actions">
+                            {path && (
+                              <Link className="lesson-link review-open" to={path}>
+                                <span>{t("review.openLesson")}</span>
+                                {/* Repeated link text needs context; the French title carries its own language. */}
+                                <span className="visually-hidden" lang="fr">
+                                  {item.title_fr ?? item.title}
+                                </span>
+                                <span className="material-symbols-outlined" aria-hidden="true">
+                                  arrow_forward
+                                </span>
+                              </Link>
+                            )}
+                            <button
+                              className="button button-secondary button-compact button-toggle review-remove"
+                              type="button"
+                              disabled={pendingSlug === item.slug}
+                              onClick={() => remove(item)}
+                            >
+                              <span className="material-symbols-outlined" aria-hidden="true">
+                                bookmark_remove
+                              </span>
+                              <span>{t("review.remove")}</span>
+                              <span className="visually-hidden" lang="fr">
+                                {` ${item.title_fr ?? item.title}`}
+                              </span>
+                            </button>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </section>
+              );
+            })}
+          </div>
+        )}
+
+        {/* Removal is confirmed politely without moving focus (FD §11). */}
+        <div className="toast" role="status" aria-live="polite" aria-atomic="true">
+          <span className="material-symbols-outlined" aria-hidden="true">
+            bookmark_remove
+          </span>{" "}
+          <span>{announcement}</span>
+        </div>
       </main>
-      {/* Prototype-only confirmation (announced politely). Not part of the API flow. */}
-      <div className="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
-        <span className="material-symbols-outlined" aria-hidden="true">
-          bookmark_remove
-        </span>
-        {" "}
-        <span id="toast-message" />
-      </div>
     </div>
   );
 }

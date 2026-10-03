@@ -9,6 +9,7 @@ export const strings = {
   "guard.unavailableText": { vi: "Chưa thể kiểm tra phiên đăng nhập của bạn. Hãy kiểm tra kết nối rồi thử lại.", en: "We could not check your session right now. Check your connection and try again." },
 
   // ---- common ----
+  "common.loading": { vi: "Đang tải…", en: "Loading…" },
   "common.mascotAlt": { vi: "Linh vật bánh sừng bò đeo kính, tay cầm sách", en: "Croissant mascot wearing glasses and holding a book" },
   "common.footer": { vi: "Français Learning Journey • Hành trình chinh phục tiếng Pháp", en: "Français Learning Journey • Your journey to mastering French" },
   "common.mainNav": { vi: "Điều hướng chính", en: "Main navigation" },
@@ -67,6 +68,8 @@ export const strings = {
   "common.unitsOf": { vi: "{learned}/{total} bài", en: { one: "{learned}/{total} unit", other: "{learned}/{total} units" } },
   "common.unitsN": { vi: "{n} bài", en: { one: "{n} unit", other: "{n} units" } },
   "common.loadingLesson": { vi: "Đang tải bài học…", en: "Loading the lesson…" },
+  "common.lessonNotFoundTitle": { vi: "Không tìm thấy bài học", en: "Lesson not found" },
+  "common.lessonNotFoundText": { vi: "Bài học này không tồn tại hoặc địa chỉ đã bị nhập sai.", en: "This lesson does not exist or the address was mistyped." },
   "common.loadLessonError": { vi: "Không thể tải bài học", en: "Could not load the lesson" },
   "common.collapseAll": { vi: "Thu gọn tất cả", en: "Collapse all" },
   "common.expandAll": { vi: "Mở rộng tất cả", en: "Expand all" },
@@ -107,7 +110,6 @@ export const strings = {
   "dashboard.nextMonth": { vi: "Tháng sau", en: "Next month" },
   "dashboard.currentMonth": { vi: "Đây là tháng hiện tại", en: "This is the current month" },
   "dashboard.calendarError": { vi: "Không thể tải lịch luyện tập của tháng này.", en: "Could not load the practice calendar for this month." },
-  "dashboard.daysWithPractice": { vi: "<span>{n} ngày</span> có luyện tập trong tháng này.", en: { one: "<span>{n} day</span> with practice this month.", other: "<span>{n} days</span> with practice this month." } },
   "dashboard.daysCount": { vi: "{n} ngày", en: { one: "{n} day", other: "{n} days" } },
   "dashboard.daysWithPracticeText": { vi: "có luyện tập trong tháng này.", en: "with practice this month." },
   "dashboard.emptyMonth": { vi: "Chưa có ngày luyện tập nào trong tháng này.", en: "No practice days this month yet." },
@@ -117,9 +119,6 @@ export const strings = {
   "dashboard.practiced": { vi: "đã luyện tập", en: "practiced" },
   "dashboard.noPractice": { vi: "chưa luyện tập", en: "no practice" },
   "dashboard.notYet": { vi: "chưa tới", en: "not yet" },
-  "dashboard.noSample": { vi: "chưa có dữ liệu mẫu", en: "no sample data" },
-  "dashboard.noSampleSummary": { vi: "Bản mẫu chưa có dữ liệu cho tháng này.", en: "This prototype has no sample data for this month." },
-  "dashboard.continueModule": { vi: "Ngữ pháp •", en: "Grammar •" },
   "dashboard.continueLesson": { vi: "Bài {n}/{total}:", en: "Lesson {n}/{total}:" },
   "dashboard.continueEmptyTitle": { vi: "Chưa có bài học đang học dở", en: "No lesson in progress" },
   "dashboard.continueEmptyText": { vi: "Hãy chọn một bài để bắt đầu. Bài bạn mở gần nhất sẽ xuất hiện ở đây.", en: "Pick a lesson to get started. The lesson you opened most recently will appear here." },
@@ -138,6 +137,13 @@ export const strings = {
   "dashboard.recentEmpty": { vi: "Chưa có lần luyện tập nào. Kết quả sẽ xuất hiện ở đây sau khi bạn hoàn thành một bài luyện tập.", en: "No practice yet. Results will appear here after you complete a practice." },
   "dashboard.recentModule": { vi: "{module}: {title}", en: "{module}: {title}" },
   "dashboard.moduleLabel": { vi: "{module}:", en: "{module}:" },
+  // ---- calendar ----
+  // Weekday column headings, Monday first (FD §7.7). A list rather than a string, so it is read
+  // through weekdayLabels() instead of t(). No weekday wording is hard-coded in the calendar.
+  "calendar.weekdays": {
+    vi: ["T2", "T3", "T4", "T5", "T6", "T7", "CN"],
+    en: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+  },
   // ---- time ----
   "time.todayAt": { vi: "Hôm nay lúc {time}", en: "Today at {time}" },
   "time.yesterdayAt": { vi: "Hôm qua lúc {time}", en: "Yesterday at {time}" },
@@ -222,6 +228,7 @@ export const strings = {
   "auth.registerSubmit": { vi: "Đăng ký", en: "Sign up" },
   "auth.registerSubmitting": { vi: "Đang tạo tài khoản…", en: "Creating your account…" },
   "auth.emailInvalid": { vi: "Vui lòng nhập email hợp lệ.", en: "Please enter a valid email." },
+  "auth.passwordTooLong": { vi: "Mật khẩu quá dài.", en: "That password is too long." },
   "auth.emailTaken": { vi: "Email này đã được đăng ký.", en: "This email is already registered." },
   "auth.invalidRequest": { vi: "Thông tin đăng ký chưa hợp lệ. Vui lòng kiểm tra lại.", en: "The registration details are not valid. Please check and try again." },
   "auth.registerServerError": { vi: "Không thể đăng ký lúc này. Vui lòng thử lại.", en: "Could not sign up right now. Please try again." },
@@ -252,6 +259,8 @@ export const strings = {
   "grammar.partsCount": { vi: "{n} phần", en: { one: "{n} part", other: "{n} parts" } },
   "grammar.chaptersCount": { vi: "{n} chương", en: { one: "{n} chapter", other: "{n} chapters" } },
   "grammar.returnedTo": { vi: "Đã quay lại bài: {title}", en: "Back to lesson: {title}" },
+  "grammar.partLabel": { vi: "Phần:", en: "Part:" },
+  "grammar.chapterLabel": { vi: "Chương:", en: "Chapter:" },
   "grammar.lessonsCount": { vi: "{n} bài", en: { one: "{n} lesson", other: "{n} lessons" } },
   // ---- conj ----
   "conj.description": { vi: "Học quy tắc và mẫu chia động từ theo từng thì, bắt đầu từ bất kỳ bài nào bạn muốn.", en: "Learn conjugation rules and patterns tense by tense, starting from any lesson you like." },
@@ -343,6 +352,10 @@ export const strings = {
   "practice.answerMissing": { vi: "Trả lời câu chưa làm", en: "Answer the unanswered question" },
   "practice.submitErrorTitle": { vi: "Không thể nộp bài luyện tập", en: "Could not submit the practice" },
   "practice.submitErrorText": { vi: "Câu trả lời của bạn vẫn được giữ lại. Vui lòng thử lại.", en: "Your answers are still saved. Please try again." },
+  "practice.incompleteTitle": { vi: "Chưa trả lời đủ các câu hỏi", en: "Some questions are unanswered" },
+  "practice.incompleteText": { vi: "Mỗi câu hỏi cần có một câu trả lời trước khi nộp bài. Hãy quay lại và trả lời các câu còn thiếu.", en: "Every question needs an answer before you submit. Go back and answer the missing ones." },
+  "practice.alreadySubmittedTitle": { vi: "Bài luyện tập này đã được nộp", en: "This practice was already submitted" },
+  "practice.alreadySubmittedText": { vi: "Kết quả của lượt này đã được ghi nhận nên không thể nộp lại. Bạn có thể bắt đầu một lượt luyện tập mới.", en: "Its result has already been recorded, so it cannot be submitted again. You can start a new practice." },
   "practice.submitDisabledHint": { vi: "Trả lời hết các câu để nộp bài.", en: "Answer every question to submit." },
   "practice.keepGoing": { vi: "Tiếp tục làm bài", en: "Keep going" },
   "practice.submit": { vi: "Nộp bài luyện tập", en: "Submit practice" },

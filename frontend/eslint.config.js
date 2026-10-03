@@ -19,7 +19,7 @@ export default [
     },
   },
   {
-    files: ["*.js"],
+    files: ["*.js", "tests/**/*.js"],
     languageOptions: { globals: globals.node },
   },
 ];
