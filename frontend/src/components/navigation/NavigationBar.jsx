@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth.js";
 import { t, useLanguage } from "../../i18n/index.js";
 import { navSectionForPath } from "../../utils/routeHelpers.js";
+import HeaderNotice from "./HeaderNotice.jsx";
 import LanguageSelector from "./LanguageSelector.jsx";
 import MobileNavMenu, { MobileNavButton, useMobileNavDismiss } from "./MobileNavMenu.jsx";
 
@@ -34,9 +35,15 @@ export default function NavigationBar() {
     setMenuOpen(false);
   }
 
+  // A header action that failed while the session is still valid (403 csrf_failed on logout, a failed language save).
+  const [actionFailed, setActionFailed] = useState(false);
+  const dismissNotice = useCallback(() => setActionFailed(false), []);
+
   const handleLogout = async () => {
-    await logout();
-    navigate("/login", { replace: true });
+    setActionFailed(false);
+    // false: the server rejected the request and the session was kept, so stay where we are.
+    if (await logout()) navigate("/login", { replace: true });
+    else setActionFailed(true);
   };
 
   return (
@@ -59,7 +66,7 @@ export default function NavigationBar() {
           ))}
         </nav>
         <div className="header-actions">
-          <LanguageSelector />
+          <LanguageSelector onError={() => setActionFailed(true)} />
           <button
             className="logout-button"
             type="button"
@@ -75,6 +82,7 @@ export default function NavigationBar() {
           <MobileNavButton open={menuOpen} onToggle={() => setMenuOpen((open) => !open)} buttonRef={menuButtonRef} />
         </div>
       </div>
+      <HeaderNotice visible={actionFailed} onDismiss={dismissNotice} />
       <MobileNavMenu open={menuOpen} items={NAV_ITEMS} currentPath={currentPath} onNavigate={closeMenu} />
     </header>
   );
