@@ -51,6 +51,9 @@ export default function ContinueLearningCard({ continueLearning }) {
   // The parent kind (chapter / subtopic / tense) only selects the parent's own localized title, which
   // the API already returns; the module label comes from unit_type (API §8.1).
   const parentTitle = continueLearning.parent?.title ?? continueLearning.parent?.title_fr;
+  // The localized title is in the support language; only the French title (shown when there is no
+  // localized one, or when the API fell back to it) is marked as French (API §4.9, FD §9.4).
+  const parentIsFrench = !continueLearning.parent?.title || continueLearning.parent.title === continueLearning.parent.title_fr;
   const position = continueLearning.position;
 
   return (
@@ -65,7 +68,7 @@ export default function ContinueLearningCard({ continueLearning }) {
           </p>
           <h2 className="continue-title">
             {module && <span>{`${t(module.labelKey)} • `}</span>}
-            {parentTitle && <span lang="fr">{parentTitle}</span>} <span aria-hidden="true">🥐☕</span>
+            {parentTitle && <span lang={parentIsFrench ? "fr" : undefined}>{parentTitle}</span>} <span aria-hidden="true">🥐☕</span>
           </h2>
           <p className="continue-lesson">
             {position && <span>{t("dashboard.continueLesson", { n: position.index, total: position.total })}</span>}{" "}

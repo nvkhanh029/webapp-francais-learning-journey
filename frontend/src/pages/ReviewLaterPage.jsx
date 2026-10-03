@@ -52,7 +52,7 @@ export default function ReviewLaterPage() {
     document.title = t("title.reviewLater");
   });
   const fetchItems = useCallback(() => getReviewLater(), []);
-  const { data, isLoading, error, reload } = useApiResource(fetchItems);
+  const { data, isLoading, error, reload, refresh } = useApiResource(fetchItems);
 
   const [pendingSlug, setPendingSlug] = useState(null);
   const [announcement, setAnnouncement] = useState("");
@@ -71,7 +71,9 @@ export default function ReviewLaterPage() {
       await updateLearningUnitState(item.slug, { review_later: false });
       setAnnouncement(t("review.removed"));
       // The list itself is backend truth, so it is refetched rather than patched locally (FD §3.3).
-      reload();
+      // refresh() keeps the list on screen while it re-reads, so removing a unit never flashes the
+      // loading state.
+      refresh();
     } catch (cause) {
       setActionError(cause);
     } finally {

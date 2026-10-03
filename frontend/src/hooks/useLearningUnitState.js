@@ -6,9 +6,10 @@ import { t } from "../i18n/index.js";
 // Owns the learner-state interactions shared by every learning-unit page (FD §5.6):
 // recording the open, Mark as Learned / Unmark, and Review Later add / remove.
 //
-// The backend is the only authority for this state. The hook keeps no mirrored copy of `learned` /
-// `review_later`: it renders `serverState` exactly as the GET returned it, and only after a PATCH
-// confirms a change does the parent refetch and hand down the new value (FD §3.3, API §13.2).
+// The backend is the only authority for this state. The hook renders `serverState` as the GET returned
+// it and, after a PATCH, the `state` object the PATCH response confirms — never an optimistic guess
+// (FD §3.3, FD §12, API §13.2). The confirmed state replaces the GET value until a newer GET (a reload
+// or another unit) hands down a new `serverState`, so the buttons and badges update without a reload.
 // PATCH semantics mean only the supplied field changes, so marking learned never disturbs
 // Review Later and vice versa (API §13.2).
 export default function useLearningUnitState(slug, serverState) {
@@ -16,6 +17,8 @@ export default function useLearningUnitState(slug, serverState) {
   const [error, setError] = useState(null);
   const [announcement, setAnnouncement] = useState("");
   const [attempt, setAttempt] = useState(0);
+  // The state a PATCH confirmed, tied to the GET value it superseded so a fresher GET wins.
+  const [confirmed, setConfirmed] = useState(null);
   // Remembers the slug already recorded, so a StrictMode double-mount does not repeat the POST.
   const recordedSlug = useRef(null);
 
@@ -37,6 +40,7 @@ export default function useLearningUnitState(slug, serverState) {
       setError(null);
       try {
         const payload = await updateLearningUnitState(slug, patch);
+        if (payload?.state) setConfirmed({ slug, base: serverState, state: payload.state });
         setAnnouncement(t(announceKey));
         return payload?.state ?? null;
       } catch (cause) {
@@ -46,7 +50,7 @@ export default function useLearningUnitState(slug, serverState) {
         setPendingAction(null);
       }
     },
-    [slug],
+    [slug, serverState],
   );
 
   const markLearned = useCallback(() => run("learned", { learned: true }, "lesson.marked"), [run]);
@@ -56,9 +60,11 @@ export default function useLearningUnitState(slug, serverState) {
 
   const retry = useCallback(() => setAttempt((current) => current + 1), []);
 
+  const shown = confirmed && confirmed.slug === slug && confirmed.base === serverState ? confirmed.state : serverState;
+
   return {
-    learned: Boolean(serverState?.learned),
-    reviewLater: Boolean(serverState?.review_later),
+    learned: Boolean(shown?.learned),
+    reviewLater: Boolean(shown?.review_later),
     isLearnedPending: pendingAction === "learned" || pendingAction === "unlearned",
     isReviewPending: pendingAction === "review" || pendingAction === "unreview",
     error,

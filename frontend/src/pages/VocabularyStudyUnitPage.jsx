@@ -25,6 +25,7 @@ import { Link, useParams } from "react-router-dom";
 
 import ErrorState from "../components/common/ErrorState.jsx";
 import LoadingState from "../components/common/LoadingState.jsx";
+import NotFoundState from "../components/common/NotFoundState.jsx";
 import { getVocabularyStudyUnit, getVocabularyTopic } from "../api/vocabularyApi.js";
 import LearningUnitActions from "../features/learning/LearningUnitActions.jsx";
 import LearningUnitHeader from "../features/learning/LearningUnitHeader.jsx";
@@ -125,7 +126,15 @@ export default function VocabularyStudyUnitPage() {
           </nav>
 
           <LoadingState hidden={!isLoading} message={t("common.loadingLesson")} />
-          {error && (
+          {error && error.status === 404 && (
+            <NotFoundState
+              title={t("common.lessonNotFoundTitle")}
+              message={t("common.lessonNotFoundText")}
+              backTo="/vocabulary"
+              backLabel={t("common.vocabulary")}
+            />
+          )}
+          {error && error.status !== 404 && (
             <ErrorState
               headingLevel={1}
               title={t("common.loadLessonError")}

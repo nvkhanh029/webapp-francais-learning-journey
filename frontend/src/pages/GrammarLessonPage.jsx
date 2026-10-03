@@ -24,6 +24,7 @@ import { Link, useParams } from "react-router-dom";
 
 import ErrorState from "../components/common/ErrorState.jsx";
 import LoadingState from "../components/common/LoadingState.jsx";
+import NotFoundState from "../components/common/NotFoundState.jsx";
 import { getGrammar, getGrammarLesson } from "../api/grammarApi.js";
 import GrammarLessonContent from "../features/grammar/GrammarLessonContent.jsx";
 import LearningUnitActions from "../features/learning/LearningUnitActions.jsx";
@@ -115,7 +116,15 @@ export default function GrammarLessonPage() {
           </nav>
 
           <LoadingState hidden={!isLoading} message={t("common.loadingLesson")} />
-          {error && (
+          {error && error.status === 404 && (
+            <NotFoundState
+              title={t("common.lessonNotFoundTitle")}
+              message={t("common.lessonNotFoundText")}
+              backTo="/grammar"
+              backLabel={t("common.grammar")}
+            />
+          )}
+          {error && error.status !== 404 && (
             <ErrorState
               headingLevel={1}
               title={t("common.loadLessonError")}
