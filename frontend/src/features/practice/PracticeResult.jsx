@@ -53,14 +53,44 @@ export default function PracticeResult({ result, practiceType, onRetry }) {
               // module has to be resolved per group rather than taken from the run.
               const groupModule = moduleMeta(unitType);
               return (
-                <div key={unitType}>
-                  <h3 className="section-title">{groupModule ? t(groupModule.labelKey) : t("common.practice")}</h3>
-                  <ul className="covered-list">
-                    {items.map((item) => (
-                      <li key={item.slug} lang="fr">
-                        {item.title_fr ?? item.title}
-                      </li>
-                    ))}
+                <div className={`covered-group ${groupModule?.subjectClass ?? ""}`.trim()} key={unitType}>
+                  <h3 className="covered-group-title">
+                    {groupModule && (
+                      <span className="material-symbols-outlined" aria-hidden="true">
+                        {groupModule.icon}
+                      </span>
+                    )}
+                    {groupModule ? t(groupModule.labelKey) : t("common.practice")}
+                  </h3>
+                  <ul className="covered-items">
+                    {items.map((item) => {
+                      const path = learningUnitPath(item.unit_type, item.slug);
+                      const hasLocal = Boolean(item.title_fr && item.title && item.title !== item.title_fr);
+                      const text = (
+                        <>
+                          <span className="covered-link-text">
+                            <span className="covered-title-fr" lang={item.title_fr ? "fr" : undefined}>
+                              {item.title_fr ?? item.title}
+                            </span>
+                            {hasLocal && <span className="covered-title-local">{item.title}</span>}
+                          </span>
+                          <span className="material-symbols-outlined" aria-hidden="true">
+                            arrow_forward
+                          </span>
+                        </>
+                      );
+                      return (
+                        <li key={item.slug}>
+                          {path ? (
+                            <Link className="covered-link" to={path}>
+                              {text}
+                            </Link>
+                          ) : (
+                            <span className="covered-link">{text}</span>
+                          )}
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               );

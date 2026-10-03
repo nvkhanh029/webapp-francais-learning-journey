@@ -52,40 +52,46 @@ export default function AnswerFeedback({ result, index }) {
 
   return (
     <li className={`result-item ${isCorrect ? "is-correct" : "is-incorrect"}`}>
-      <p className="review-type">
-        {t("practice.reviewTypeLine", {
-          n: result.question_number ?? index + 1,
-          type: t(TYPE_LABEL_KEY[result.question_type] ?? "practice.typeMcq"),
-        })}
-      </p>
-      <p className="review-prompt">{result.prompt}</p>
-
-      <div className="feedback-row">
-        <span className="badge">
-          <span className="material-symbols-outlined" aria-hidden="true">
+      <div className="result-item-header">
+        <div>
+          <h3 className="question-number">
+            {t("practice.questionNumber", { n: result.question_number ?? index + 1 })}
+          </h3>
+          <p className="review-type">{t(TYPE_LABEL_KEY[result.question_type] ?? "practice.typeMcq")}</p>
+        </div>
+        <span className="result-status">
+          <span className="material-symbols-outlined icon-filled" aria-hidden="true">
             {isCorrect ? "check_circle" : "cancel"}
-          </span>{" "}
-          <span>{t(isCorrect ? "practice.resultCorrect" : "practice.resultIncorrect")}</span>
+          </span>
+          {t(isCorrect ? "practice.resultCorrect" : "practice.resultIncorrect")}
         </span>
       </div>
 
-      <p className="feedback-answer">
-        <span className="visually-hidden">{t("practice.reviewYourAnswer")} </span>
-        <span lang={result.question_type === "mcq" ? "fr" : undefined}>
-          <AnswerText value={result.submitted_answer} question={result} />
-        </span>
-      </p>
+      <p className="result-prompt">{result.prompt}</p>
 
-      {!isCorrect && (
-        <p className="feedback-correct">
-          <span className="visually-hidden">{t("practice.correctAnswer")} </span>
-          <CorrectAnswer answer={result.correct_answer} />
-        </p>
-      )}
+      <dl className="answer-facts">
+        <div className="answer-fact">
+          <dt>{t("practice.yourAnswerLabel")}</dt>
+          <dd lang={result.question_type === "mcq" ? "fr" : undefined}>
+            <AnswerText value={result.submitted_answer} question={result} />
+          </dd>
+        </div>
+        <div className="answer-fact">
+          <dt>{t("practice.correctAnswer")}</dt>
+          <dd lang="fr">
+            <CorrectAnswer answer={result.correct_answer} />
+          </dd>
+        </div>
+      </dl>
 
       {result.explanation && (
-        <p className="feedback-explanation">
-          <strong>{t("practice.explanation")}</strong> {result.explanation}
+        <p className="state-note explanation">
+          <span className="material-symbols-outlined" aria-hidden="true">
+            lightbulb
+          </span>
+          <span>
+            <strong>{t("practice.explanation")}</strong> {result.explanation}
+          </span>
         </p>
       )}
     </li>
