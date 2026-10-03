@@ -30,69 +30,73 @@ export default function LearningUnitActions({
 }) {
   useLanguage();
 
-  return (
-    <aside className={`card ${variant}-actions ${className}`.trim()} aria-labelledby={titleId}>
-      <h2 className="actions-title" id={titleId}>
-        {t("lesson.statusHeading")}
-      </h2>
+  // The Vocabulary Study Unit panel lays its slots out in `.actions-grid` (1 -> 2 -> 3 columns) with the
+  // Learned and Review Later controls each in their own slot, as on the approved layout. Grammar and
+  // Conjugation lessons keep the stacked sidebar panel, so their controls are direct children.
+  const isGrid = variant === "unit";
+  const slot = (node) => (isGrid ? <div>{node}</div> : node);
 
-      {/* Learned */}
-      {learned ? (
-        <div className="state-box state-box-learned">
-          <span className="material-symbols-outlined icon-filled" aria-hidden="true">
-            check_circle
-          </span>
-          <p className="state-box-text">
-            <strong>{t("common.learned")}</strong>
-            {t("lesson.learnedNote")}
-          </p>
-          <button className="state-undo" type="button" disabled={isLearnedPending} onClick={onUnmarkLearned}>
-            {t("lesson.unmark")}
-            <span className="visually-hidden">{t("common.learnedLower")}</span>
-          </button>
-        </div>
-      ) : (
-        <button
-          className="button button-primary button-toggle"
-          type="button"
-          disabled={isLearnedPending}
-          onClick={onMarkLearned}
-        >
-          <span className="material-symbols-outlined" aria-hidden="true">
-            check
-          </span>{" "}
-          <span>{t("common.markLearned")}</span>
-        </button>
-      )}
+  const learnedControl = learned ? (
+    <div className="state-box state-box-learned">
+      <span className="material-symbols-outlined icon-filled" aria-hidden="true">
+        check_circle
+      </span>
+      <p className="state-box-text">
+        <strong>{t("common.learned")}</strong>
+        {t("lesson.learnedNote")}
+      </p>
+      <button className="state-undo" type="button" disabled={isLearnedPending} onClick={onUnmarkLearned}>
+        {t("lesson.unmark")}
+        <span className="visually-hidden">{t("common.learnedLower")}</span>
+      </button>
+    </div>
+  ) : (
+    <button
+      className="button button-primary button-toggle"
+      type="button"
+      disabled={isLearnedPending}
+      onClick={onMarkLearned}
+    >
+      <span className="material-symbols-outlined" aria-hidden="true">
+        check
+      </span>{" "}
+      <span>{t("common.markLearned")}</span>
+    </button>
+  );
 
-      {/* Review Later — independent from Learned */}
-      {reviewLater ? (
-        <div className="state-box state-box-review">
-          <span className="material-symbols-outlined icon-filled" aria-hidden="true">
-            bookmark
-          </span>
-          <p className="state-box-text">
-            <strong>{t("common.reviewLater")}</strong>
-            {t("lesson.savedNote")}
-          </p>
-          <button className="state-undo" type="button" disabled={isReviewPending} onClick={onRemoveFromReview}>
-            {t("lesson.unsave")}
-            <span className="visually-hidden">{t("lesson.fromReviewLater")}</span>
-          </button>
-        </div>
-      ) : (
-        <button
-          className="button button-secondary button-toggle"
-          type="button"
-          disabled={isReviewPending}
-          onClick={onSaveForReview}
-        >
-          <span className="material-symbols-outlined" aria-hidden="true">
-            bookmark
-          </span>{" "}
-          <span>{t("common.reviewLater")}</span>
-        </button>
-      )}
+  // Review Later — independent from Learned.
+  const reviewControl = reviewLater ? (
+    <div className="state-box state-box-review">
+      <span className="material-symbols-outlined icon-filled" aria-hidden="true">
+        bookmark
+      </span>
+      <p className="state-box-text">
+        <strong>{t("common.reviewLater")}</strong>
+        {t("lesson.savedNote")}
+      </p>
+      <button className="state-undo" type="button" disabled={isReviewPending} onClick={onRemoveFromReview}>
+        {t("lesson.unsave")}
+        <span className="visually-hidden">{t("lesson.fromReviewLater")}</span>
+      </button>
+    </div>
+  ) : (
+    <button
+      className="button button-secondary button-toggle"
+      type="button"
+      disabled={isReviewPending}
+      onClick={onSaveForReview}
+    >
+      <span className="material-symbols-outlined" aria-hidden="true">
+        bookmark
+      </span>{" "}
+      <span>{t("common.reviewLater")}</span>
+    </button>
+  );
+
+  const controls = (
+    <>
+      {slot(learnedControl)}
+      {slot(reviewControl)}
 
       <div className="practice-group">
         <Link className={`button ${learned ? "button-primary" : "button-secondary"}`} to={`/practice/${slug}`}>
@@ -103,6 +107,16 @@ export default function LearningUnitActions({
         </Link>
         {!learned && <p className="action-note">{t(practiceNoteKey)}</p>}
       </div>
+    </>
+  );
+
+  return (
+    <aside className={`card ${variant}-actions ${className}`.trim()} aria-labelledby={titleId}>
+      <h2 className="actions-title" id={titleId}>
+        {t("lesson.statusHeading")}
+      </h2>
+
+      {isGrid ? <div className="actions-grid">{controls}</div> : controls}
 
       {/* A failed mutation keeps the learner on the page with their state unchanged (FD §6.7). */}
       {error && (
