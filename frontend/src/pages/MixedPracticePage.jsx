@@ -1,515 +1,287 @@
 /*
- Fonts and original illustrations still require an internet connection. -->
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link href="https://fonts.gstatic.com" crossorigin="" rel="preconnect">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300..800;1,6..12,300..800&amp;display=swap"
-        rel="stylesheet">
+  Mixed Practice (route "/mixed-practice", protected).
 
-    <!--
-      Static Mixed Practice page prototype (route /mixed-practice).
-      Sources: Requirements §8.3, §9 (Mixed Practice), frontend-design.md §4.6, §4.7, §5.8, §7.12, §8.7,
-      the CURRENT normalized PracticePage (active answering / review / result interaction) and the
-      CURRENT DashboardPage (Mixed Practice entry identity, app shell, tokens).
+  Data:
+  - The run comes from POST /api/v1/mixed-practice/start (API §16.1). Mixed Practice draws questions
+    only from learning units the learner has explicitly Marked as Learned (API §16, Requirements §9.1).
+  - Mixed Practice has no single learning unit, so the Start response carries none (API §16.1) and the
+    page keeps the Mixed accent throughout. After submission the response adds `content_covered`, which
+    is current-result data only and is not persisted Practice History (API §17.3).
+  - Filters are a deferred Should Have feature: any `filters` key returns 422 invalid_mixed_filters, so
+    the request body stays empty (API §16.2). No filter UI is offered.
+  - The page does not pre-check availability. It calls start and treats the authoritative
+    `409 mixed_practice_unavailable` as the answer, showing the same inline notice (FD §5.4.7).
+  - Answers stay in React state until final submission; the backend scores everything (API §17,
+    FD §13.17).
 
-      One page, one route. Practice Result is NOT a separate route: pre-start, starting, answering,
-      reviewing and result are phases of this same page (FD §4.7). There is no /mixed-practice/result.
-
-      Decisions against the raw Stitch draft:
-      - Optional Mixed Practice filters are REMOVED. They are "Should Have" (Requirements §9.4, §18.2), no
-        CURRENT Project file selects them for implementation, so Mixed Practice must start without any
-        configuration. (No difficulty / CEFR / weak-area / lesson selection either.)
-      - No hard-coded 10 questions. The session size is data-driven (total_questions may be < 10); the
-        prototype sample uses 7 questions. The stepper, progress and review all follow the real count.
-      - No per-question source labels (Grammar / Vocabulary / Conjugation). The Start response does not
-        expose them; the backend derives Content Covered after submit.
-      - No fixed module / question-type quotas are implied anywhere in the copy.
-      - Answering, Review, incomplete Review, submit error and Result reuse the practice-page patterns.
-        "Hoàn thành bài" opens Review from ANY question; it is not the final submit.
-      - Result adds "Nội dung đã luyện tập" (Content Covered): distinct learning units of THIS session
-        (slug, unit_type, title_fr, localized title). French title is primary. Links only use supported
-        routes (/grammar/lessons/{slug}, /vocabulary/study-units/{slug}, /conjugation/lessons/{slug}).
-      - No pass/fail, no minimum score, no module-progress or "Mixed progress" copy, no timer / XP / hearts.
-      - Mixed Practice is not a main navigation item, so no nav link is marked current.
-      - Unavailable (no learned content) is an informational state, separate from the start error state.
-
-      Data:
-      - Question and result values below are SAMPLE data shaped like the Mixed Practice Start / Submit
-        responses. Production components receive them from the API. The prototype never scores anything,
-        never selects questions and never decides eligibility (backend is authoritative, FD §3.3, §13.17).
-      - Links and buttons that navigate use href="#" with the target React route in data-route.
-        No API, authentication, routing or persistence logic (FD §5.8: Practice state is temporary).
-
-      Preview states (prototype only), via the URL query string:
-        (none)                       pre-start, available
-        ?preview=unavailable         no learned content, Mixed Practice not available
-        ?preview=starting            session is being generated
-        ?preview=start-error         session generation failed
-        ?preview=answering           generated session, empty answers
-        ?preview=answering-partial   generated session with some answers filled in
-        ?preview=reviewing           review before final submit (all answered)
-        ?preview=reviewing-incomplete  review with unanswered questions (final submit blocked)
-        ?preview=submit-error        review with a failed final submit
-        ?preview=result              submitted result + Content Covered
-
-      Page sections:
-      1. Header (with compact menu below 768px)
-      2. Breadcrumbs
-      3. Practice header (title, progress, question stepper)
-      4. Pre-start and page states (available / unavailable / starting / start error)
-      5. Answering phase
-      6. Reviewing phase
-      7. Result phase (summary, Content Covered, question review)
-      8. Footer
+  Phases (FD §5.6): prestart -> starting -> answering -> reviewing -> submitting -> result, plus
+  start-error and unavailable.
 */
-import Breadcrumbs from "../components/common/Breadcrumbs.jsx";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+import ErrorState from "../components/common/ErrorState.jsx";
+import LoadingState from "../components/common/LoadingState.jsx";
+import PracticeHeader from "../features/practice/PracticeHeader.jsx";
+import PracticeResult from "../features/practice/PracticeResult.jsx";
+import PracticeReview from "../features/practice/PracticeReview.jsx";
+import QuestionRenderer from "../features/practice/QuestionRenderer.jsx";
+import usePractice from "../hooks/usePractice.js";
+import { t, useLanguage } from "../i18n/index.js";
 import styles from "./MixedPracticePage.module.css";
-import usePageScript from "../hooks/usePageScript.js";
-import { t } from "../i18n/index.js";
-import init from "./MixedPracticePage.script.js";
+
+// The pre-start explanation. These are fixed UI notes, not content returned by the API.
+const PRESTART_NOTES = [
+  { icon: "casino", titleKey: "mixed.readyTitle", textKey: "mixed.readyText" },
+  { icon: "school", titleKey: "mixed.onlyLearnedTitle", textKey: "mixed.onlyLearnedText" },
+  { icon: "shuffle", titleKey: "mixed.maxTitle", textKey: "mixed.maxText" },
+];
 
 export default function MixedPracticePage() {
-  const rootRef = usePageScript(init, { title: "title.mixedPractice" });
+  useLanguage();
+  const practice = usePractice();
+  const {
+    phase,
+    questions,
+    answers,
+    currentIndex,
+    currentQuestion,
+    result,
+    error,
+    unansweredCount,
+    canReview,
+    start,
+    setAnswer,
+    goTo,
+    nextQuestion,
+    previousQuestion,
+    startReview,
+    backToAnswering,
+    submit,
+    reset,
+  } = practice;
+  // 0 before the first run; bumped by "Practice again" so a genuinely new run is started.
+  const [attempt, setAttempt] = useState(0);
+
+  const isUnavailable = Boolean(error?.code === "mixed_practice_unavailable");
+  const isStarting = phase === "loading" || phase === "submitting";
+  const isAnswering = phase === "answering";
+  const isReviewing = phase === "reviewing";
+  const isResult = phase === "result";
+  const isPrestart = phase === "idle";
+
+  const begin = () => start({ mode: "mixed", token: `mixed:${attempt}` });
+
+  // A StrictMode double-mount must not mint a second server-side run (API §18), which the token in
+  // `start` guarantees. This effect only reacts to a deliberate retry after an attempt.
+  useEffect(() => {
+    if (attempt > 0) begin();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- a retry is driven by `attempt` alone.
+  }, [attempt]);
+
+  const answeredIds = questions
+    .map((question, index) => (answers[question.question_id] !== undefined ? index : -1))
+    .filter((index) => index >= 0);
 
   return (
-    <div className={`page-body ${styles.page}`} ref={rootRef}>
-      {/* 1. Header. Mixed Practice is not a main navigation item (FD §4.4): no link is marked current. */}
+    <div className={`page-body ${styles.page}`}>
       <main className="page-container practice-page" id="main-content">
         <div className="practice-shell">
-          {/* 2. Breadcrumbs: Mixed Practice has no learning unit, so the trail returns to the Dashboard. */}
-          <Breadcrumbs items={[{ label: t("common.dashboard"), to: "/dashboard", icon: "arrow_back" }, { label: t("common.mixedPractice") }]} />
-          {/* 3. Practice header. The progress block and question stepper are shown only while answering
-                 (stepper) and answering / reviewing (progress). Their length follows total_questions.
-          */}
-          <section className="card practice-header" aria-labelledby="practice-title">
-            <div className="practice-heading">
-              <div className="icon-tile icon-tile-solid subject-mixed" aria-hidden="true">
-                <span className="material-symbols-outlined">
-                  casino
-                </span>
-              </div>
-              <div className="practice-heading-text">
-                <h1 className="practice-title" id="practice-title">
-                  {t("common.mixedPractice")}
-                </h1>
-                <p className="practice-description" data-practice-description>
-                  {t("practice.mixedIntro")}
-                </p>
-              </div>
-            </div>
-            <div className="practice-progress" data-progress-block hidden>
-              <div className="progress-labels">
-                <span id="progress-label">
-                  {t("practice.answered")}
-                </span>
-                {" "}
-                <span className="progress-value" data-answered-text>
-                  {t("practice.answeredCount", { answered: 0, total: 0 })}
-                </span>
-              </div>
-              <div className="progress-track" role="progressbar" aria-labelledby="progress-label" aria-valuemin="0" aria-valuemax="0" aria-valuenow="0" data-progressbar>
-                <div className="progress-fill" />
-              </div>
-              <nav className="stepper-row" aria-label={t("practice.questionList")} data-stepper-nav>
-                <ol className="stepper" data-stepper />
-                {/* Global action: ends the answering phase from ANY question and opens Review.
-                             It is not the final submission (that stays in the Review phase).
-                */}
-                <button className="button button-secondary button-compact finish-button" type="button" data-action="finish">
-                  <span>
-                    {t("practice.finish")}
-                  </span>
-                  {" "}
+          <nav className="breadcrumbs" aria-label={t("common.breadcrumb")}>
+            <ol className="breadcrumb-list">
+              <li>
+                <Link className="crumb-link subject-mixed" to="/dashboard">
                   <span className="material-symbols-outlined" aria-hidden="true">
-                    fact_check
-                  </span>
-                </button>
-              </nav>
-            </div>
-          </section>
-          {/* 4a. Pre-start, available: a focused introduction. No configuration, no filters. */}
-          <section className="card practice-section" data-phase="prestart" aria-labelledby="prestart-title">
-            <div className="card-heading">
-              <div className="icon-tile" aria-hidden="true">
-                <span className="material-symbols-outlined">
-                  bolt
+                    arrow_back
+                  </span>{" "}
+                  <span>{t("common.dashboard")}</span>
+                </Link>
+              </li>
+              <li>
+                <span className="material-symbols-outlined crumb-separator" aria-hidden="true">
+                  chevron_right
+                </span>{" "}
+                <span className="crumb-current" aria-current="page">
+                  {t("common.mixedPractice")}
                 </span>
-              </div>
-              <div>
-                <h2 className="section-title" id="prestart-title" tabIndex="-1">
-                  {t("mixed.readyTitle")}
-                </h2>
-                <p className="card-subtitle">
-                  {t("mixed.readyText")}
+              </li>
+            </ol>
+          </nav>
+
+          <PracticeHeader
+            title={t("common.mixedPractice")}
+            description={isResult ? null : t("practice.mixedIntro")}
+            icon="casino"
+            subjectClass="subject-mixed"
+            totalQuestions={questions.length}
+            answeredIds={answeredIds}
+            currentIndex={currentIndex}
+            onJumpTo={goTo}
+          />
+
+          {/* Pre-start: what Mixed Practice does, then an explicit Start. */}
+          {isPrestart && (
+            <section className="practice-section">
+              <div className="card">
+                <div className="card-heading">
+                  <div className="icon-tile" aria-hidden="true">
+                    <span className="material-symbols-outlined">casino</span>
+                  </div>
+                  <div>
+                    <h2 className="section-title">{t("mixed.readyTitle")}</h2>
+                    <p className="card-subtitle">{t("mixed.readyText")}</p>
+                  </div>
+                </div>
+                <ul className="prestart-list">
+                  {PRESTART_NOTES.map((note) => (
+                    <li className="prestart-item" key={note.titleKey}>
+                      <span className="material-symbols-outlined" aria-hidden="true">
+                        {note.icon}
+                      </span>
+                      <div>
+                        <p className="prestart-item-title">{t(note.titleKey)}</p>
+                        <p className="prestart-item-text">{t(note.textKey)}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+                <p className="state-note prestart-note">
+                  <span className="material-symbols-outlined" aria-hidden="true">
+                    info
+                  </span>{" "}
+                  <span>{t("mixed.noMinimum")}</span>
                 </p>
-              </div>
-            </div>
-            <ul className="prestart-list">
-              <li className="prestart-item">
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  task_alt
-                </span>
-                <div>
-                  <p className="prestart-item-title">
-                    {t("mixed.onlyLearnedTitle")}
-                  </p>
-                  <p className="prestart-item-text">
-                    {t("mixed.onlyLearnedText")}
-                  </p>
-                </div>
-              </li>
-              <li className="prestart-item">
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  quiz
-                </span>
-                <div>
-                  <p className="prestart-item-title">
-                    {t("mixed.maxTitle")}
-                  </p>
-                  <p className="prestart-item-text">
-                    {t("mixed.maxText")}
-                  </p>
-                </div>
-              </li>
-              <li className="prestart-item">
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  category
-                </span>
-                <div>
-                  <p className="prestart-item-title">
-                    {t("mixed.mixTitle")}
-                  </p>
-                  <p className="prestart-item-text">
-                    {t("mixed.mixText")}
-                  </p>
-                </div>
-              </li>
-            </ul>
-            <p className="state-note prestart-note">
-              <span className="material-symbols-outlined" aria-hidden="true">
-                info
-              </span>
-              {" "}
-              <span>
-                {t("mixed.noMinimum")}
-              </span>
-            </p>
-            <div className="action-bar">
-              <button className="button button-primary" type="button" data-action="start">
-                <span>
-                  {t("common.startPractice")}
-                </span>
-                {" "}
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  bolt
-                </span>
-              </button>
-            </div>
-          </section>
-          {/* 4b. Unavailable: normal informational state (mixed_practice.available is false). Not an error.
-                 Eligibility is decided by the backend; this state is only a preview.
-          */}
-          <section className="card page-state" data-phase="unavailable" aria-labelledby="unavailable-title" hidden>
-            <span className="material-symbols-outlined" aria-hidden="true">
-              info
-            </span>
-            <h2 className="page-state-title" id="unavailable-title" tabIndex="-1">
-              {t("mixed.unavailableTitle")}
-            </h2>
-            <p>
-              {t("dashboard.mixedEmpty")}
-            </p>
-            <p className="page-state-label" id="unavailable-links-label">
-              {t("common.viewLessons")}
-            </p>
-            <div className="page-state-actions" role="group" aria-labelledby="unavailable-links-label">
-              <a className="button button-secondary button-compact" href="#" data-route="/grammar">
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  draw
-                </span>
-                {" "}
-                <span>
-                  {t("common.grammar")}
-                </span>
-              </a>
-              {" "}
-              <a className="button button-secondary button-compact" href="#" data-route="/vocabulary">
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  style
-                </span>
-                {" "}
-                <span>
-                  {t("common.vocabulary")}
-                </span>
-              </a>
-              {" "}
-              <a className="button button-secondary button-compact" href="#" data-route="/conjugation">
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  schedule
-                </span>
-                {" "}
-                <span>
-                  {t("common.conjugation")}
-                </span>
-              </a>
-            </div>
-          </section>
-          {/* 4c. Starting: the Start request is in flight (session generation). */}
-          <section className="card page-state" data-phase="starting" role="status" aria-live="polite" hidden>
-            <div className="spinner" aria-hidden="true" />
-            <p>
-              {t("mixed.creating")}
-            </p>
-          </section>
-          {/* 4d. Start error: a real request failure, distinct from "unavailable". */}
-          <section className="card page-state" data-phase="start-error" role="alert" hidden>
-            <span className="material-symbols-outlined" aria-hidden="true">
-              cloud_off
-            </span>
-            <h2 className="page-state-title" tabIndex="-1">
-              {t("practice.loadError")}
-            </h2>
-            <p>
-              {t("mixed.createError")}
-            </p>
-            <button className="button button-secondary button-compact" type="button" data-action="start">
-              {t("common.retry")}
-            </button>
-          </section>
-          {/* 5. Answering phase: one question at a time (markup generated by the script below).
-                 Same structure as practice-page. No per-question source labels: the Start response does not
-                 provide them.
-          */}
-          <section className="practice-section" data-phase="answering" aria-label={t("landing.step3Title")} hidden>
-            <article className="card question-card" aria-labelledby="question-heading">
-              <div className="question-meta">
-                <h2 className="question-number" id="question-heading" tabIndex="-1" data-question-heading>
-                  {t("practice.questionNumber", { n: 1 })}
-                </h2>
-                <span className="badge" data-question-type />
-              </div>
-              <p className="question-instruction" data-question-instruction />
-              <div data-question-body />
-              <p className="badge" role="status" data-answer-status />
-            </article>
-            <div className="question-nav">
-              <button className="button button-secondary button-back" type="button" data-action="previous">
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  arrow_back
-                </span>
-                {" "}
-                <span>
-                  {t("practice.previous")}
-                </span>
-              </button>
-              {" "}
-              <button className="button button-primary" type="button" data-action="next">
-                <span data-next-label>
-                  {t("practice.next")}
-                </span>
-                {" "}
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  arrow_forward
-                </span>
-              </button>
-            </div>
-          </section>
-          {/* 6. Reviewing phase: neutral summary of answers. Correctness is NOT revealed here. */}
-          <section className="practice-section" data-phase="reviewing" aria-labelledby="review-title" hidden>
-            <div className="card">
-              <div className="card-heading">
-                <div className="icon-tile" aria-hidden="true">
-                  <span className="material-symbols-outlined">
-                    fact_check
-                  </span>
-                </div>
-                <div>
-                  <h2 className="section-title" id="review-title" tabIndex="-1">
-                    {t("practice.reviewAnswers")}
-                  </h2>
-                  <p className="card-subtitle">
-                    {t("practice.reviewHint")}
-                  </p>
-                </div>
-              </div>
-              <p className="state-note review-note">
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  info
-                </span>
-                {" "}
-                <span>
-                  {t("practice.submitNote")}
-                </span>
-              </p>
-              {/* Shown while some questions are unanswered; final submit stays blocked. */}
-              <div className="state-note review-note" role="status" data-review-incomplete hidden>
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  edit_note
-                </span>
-                <div className="state-note-body">
-                  <strong data-incomplete-text />
-                  {" "}
-                  {t("practice.missingNote")}
-                  {" "}
-                  <button className="button button-secondary button-compact" type="button" data-action="answer-missing">
-                    <span data-missing-label>
-                      {t("practice.answerMissing")}
+                <div className="action-bar">
+                  <button className="button button-primary" type="button" onClick={begin}>
+                    <span>{t("common.startPractice")}</span>{" "}
+                    <span className="material-symbols-outlined" aria-hidden="true">
+                      bolt
                     </span>
                   </button>
                 </div>
               </div>
-              <ol className="review-list" data-review-list />
-              {/* Final submit failed (FD §7.12): answers are kept, retry submits again. */}
-              <div className="state-note state-note-danger submit-error" role="alert" data-submit-error hidden>
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  error
-                </span>
-                <div className="state-note-body">
-                  <strong>
-                    {t("practice.submitErrorTitle")}
-                  </strong>
-                  {" "}
-                  {t("practice.submitErrorText")}
-                  {" "}
-                  <button className="button button-secondary button-compact" type="button" data-action="submit">
-                    {t("common.retry")}
-                  </button>
-                </div>
-              </div>
-              <p className="review-submit-hint" id="submit-hint" data-submit-hint hidden>
-                {t("practice.submitDisabledHint")}
-              </p>
-              <div className="review-actions">
-                <button className="button button-secondary button-back" type="button" data-action="continue-editing">
+            </section>
+          )}
+
+          {isStarting && <LoadingState message={t("mixed.creating")} />}
+
+          {/* The authoritative eligibility answer: no learned unit means no Mixed Practice (API §16.1). */}
+          {isUnavailable && (
+            <section className="card page-state" role="status">
+              <span className="material-symbols-outlined" aria-hidden="true">
+                info
+              </span>
+              <h2 className="page-state-title">{t("mixed.unavailableTitle")}</h2>
+              <p>{t("mixed.unavailableText")}</p>
+              <p className="page-state-label" />
+              <div className="page-state-actions">
+                <Link className="button button-secondary button-compact" to="/dashboard">
                   <span className="material-symbols-outlined" aria-hidden="true">
                     arrow_back
-                  </span>
-                  {" "}
-                  <span>
-                    {t("practice.keepGoing")}
-                  </span>
+                  </span>{" "}
+                  <span>{t("common.backToDashboard")}</span>
+                </Link>
+              </div>
+            </section>
+          )}
+
+          {/* Any other start failure. */}
+          {phase === "error" && !isUnavailable && (
+            <ErrorState
+              headingLevel={1}
+              title={t("mixed.createError")}
+              message={t("mixed.createError")}
+              onRetry={() => setAttempt((count) => count + 1)}
+            />
+          )}
+
+          {isAnswering && currentQuestion && (
+            <section className="practice-section" aria-label={t("practice.questionRegion")}>
+              <QuestionRenderer
+                question={currentQuestion}
+                index={currentIndex}
+                total={questions.length}
+                answer={answers[currentQuestion.question_id]}
+                onAnswer={(value) => setAnswer(currentQuestion.question_id, value)}
+              />
+              <div className="question-nav">
+                <button
+                  className="button button-secondary button-back"
+                  type="button"
+                  disabled={currentIndex === 0}
+                  onClick={previousQuestion}
+                >
+                  <span className="material-symbols-outlined" aria-hidden="true">
+                    arrow_back
+                  </span>{" "}
+                  <span>{t("practice.previous")}</span>
                 </button>
-                {" "}
-                <button className="button button-primary" type="button" data-action="submit" data-submit-main aria-describedby="submit-hint">
-                  <span data-submit-label>
-                    {t("practice.submit")}
-                  </span>
-                  {" "}
+                {currentIndex < questions.length - 1 ? (
+                  <button className="button button-primary" type="button" onClick={nextQuestion}>
+                    <span>{t("practice.next")}</span>{" "}
+                    <span className="material-symbols-outlined" aria-hidden="true">
+                      arrow_forward
+                    </span>
+                  </button>
+                ) : (
+                  <button className="button button-primary" type="button" disabled={!canReview} onClick={startReview}>
+                    <span>{t("practice.reviewAnswers")}</span>{" "}
+                    <span className="material-symbols-outlined" aria-hidden="true">
+                      arrow_forward
+                    </span>
+                  </button>
+                )}
+              </div>
+              {!canReview && <p className="review-submit-hint">{t("practice.missingNote")}</p>}
+              {unansweredCount > 0 && (
+                <p className="review-submit-hint">{t("practice.unansweredCount", { n: unansweredCount })}</p>
+              )}
+            </section>
+          )}
+
+          {isReviewing && (
+            <>
+              <PracticeReview
+                questions={questions}
+                answers={answers}
+                submitError={error}
+                onEdit={(index) => {
+                  goTo(index);
+                  backToAnswering();
+                }}
+              />
+              <div className="review-actions">
+                <button className="button button-secondary button-back" type="button" onClick={backToAnswering}>
+                  <span className="material-symbols-outlined" aria-hidden="true">
+                    arrow_back
+                  </span>{" "}
+                  <span>{t("practice.answerAction")}</span>
+                </button>
+                <button
+                  className="button button-primary"
+                  type="button"
+                  disabled={!canReview || phase === "submitting"}
+                  onClick={submit}
+                >
+                  <span>{phase === "submitting" ? t("practice.submitting") : t("practice.submit")}</span>{" "}
                   <span className="material-symbols-outlined" aria-hidden="true">
                     send
                   </span>
                 </button>
               </div>
-            </div>
-          </section>
-          {/* 7. Result phase: rendered from the (sample) Submit response. Not a separate route. */}
-          <section className="practice-section" data-phase="result" aria-labelledby="result-title" hidden>
-            <div className="card result-summary">
-              <div className="card-heading">
-                <div className="icon-tile" aria-hidden="true">
-                  <span className="material-symbols-outlined">
-                    emoji_events
-                  </span>
-                </div>
-                <div>
-                  <h2 className="section-title" id="result-title" tabIndex="-1">
-                    {t("practice.resultTitle")}
-                  </h2>
-                  <p className="card-subtitle">
-                    {t("practice.resultText")}
-                  </p>
-                </div>
-              </div>
-              <div>
-                <p className="result-score">
-                  <span className="result-count" data-result-count />
-                  {" "}
-                  <span className="result-count-label">
-                    {t("practice.correctLabel")}
-                  </span>
-                </p>
-              </div>
-              <div>
-                <div className="progress-labels">
-                  <span id="accuracy-label">
-                    {t("practice.accuracy")}
-                  </span>
-                  {" "}
-                  <span className="progress-value" data-result-accuracy />
-                </div>
-                <div className="progress-track" role="progressbar" aria-labelledby="accuracy-label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-result-bar>
-                  <div className="progress-fill" />
-                </div>
-              </div>
-            </div>
-            {/* Content Covered (Requirements §9.2): distinct learning units represented by THIS session,
-                     from the Submit response. Not all learned units, not the filters, not a guessed mix.
-            */}
-            <div className="card practice-section" aria-labelledby="covered-title">
-              <div className="card-heading">
-                <div className="icon-tile subject-mixed" aria-hidden="true">
-                  <span className="material-symbols-outlined">
-                    category
-                  </span>
-                </div>
-                <div>
-                  <h2 className="section-title" id="covered-title">
-                    {t("mixed.coveredTitle")}
-                  </h2>
-                  <p className="card-subtitle">
-                    {t("mixed.coveredText")}
-                  </p>
-                </div>
-              </div>
-              <div className="covered-groups" data-covered-groups />
-            </div>
-            <div className="card practice-section" aria-labelledby="question-review-title">
-              <div className="card-heading result-list-heading">
-                <div className="icon-tile" aria-hidden="true">
-                  <span className="material-symbols-outlined">
-                    rule
-                  </span>
-                </div>
-                <div>
-                  <h2 className="section-title" id="question-review-title">
-                    {t("practice.reviewEach")}
-                  </h2>
-                  <p className="card-subtitle">
-                    {t("practice.reviewEachText")}
-                  </p>
-                </div>
-              </div>
-              <ol className="result-list" data-result-list />
-            </div>
-            {/* No single source lesson exists, so there is no "Quay lại bài học" action. */}
-            <div className="action-bar">
-              <a className="button button-secondary" href="#" data-route="/dashboard">
-                <span>
-                  {t("common.backToDashboard")}
-                </span>
-                {" "}
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  arrow_forward
-                </span>
-              </a>
-              {" "}
-              <button className="button button-primary" type="button" data-action="practice-again">
-                <span>
-                  {t("practice.retry")}
-                </span>
-                {" "}
-                <span className="material-symbols-outlined" aria-hidden="true">
-                  replay
-                </span>
-              </button>
-            </div>
-          </section>
+            </>
+          )}
+
+          {isResult && result && (
+            <PracticeResult
+              result={result}
+              practiceType="mixed"
+              onRetry={() => {
+                reset();
+                setAttempt((count) => count + 1);
+              }}
+            />
+          )}
         </div>
       </main>
     </div>

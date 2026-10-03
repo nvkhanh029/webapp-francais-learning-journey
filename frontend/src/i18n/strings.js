@@ -240,6 +240,8 @@ export const strings = {
   "grammar.partsCount": { vi: "{n} phần", en: { one: "{n} part", other: "{n} parts" } },
   "grammar.chaptersCount": { vi: "{n} chương", en: { one: "{n} chapter", other: "{n} chapters" } },
   "grammar.returnedTo": { vi: "Đã quay lại bài: {title}", en: "Back to lesson: {title}" },
+  "grammar.partLabel": { vi: "Phần:", en: "Part:" },
+  "grammar.chapterLabel": { vi: "Chương:", en: "Chapter:" },
   "grammar.lessonsCount": { vi: "{n} bài", en: { one: "{n} lesson", other: "{n} lessons" } },
   // ---- conj ----
   "conj.description": { vi: "Học quy tắc và mẫu chia động từ theo từng thì, bắt đầu từ bất kỳ bài nào bạn muốn.", en: "Learn conjugation rules and patterns tense by tense, starting from any lesson you like." },
@@ -268,6 +270,8 @@ export const strings = {
   "vocab.emptySubtopic": { vi: "Mục này chưa có bài nào.", en: "This section has no lessons yet." },
   "vocab.subtopicsCount": { vi: "{n} mục", en: { one: "{n} section", other: "{n} sections" } },
   "vocab.subtopicLabel": { vi: "Mục:", en: "Section:" },
+  "vocab.topicLabel": { vi: "Chủ đề:", en: "Topic:" },
+  "vocab.categoryLabel": { vi: "Danh mục:", en: "Category:" },
   "vocab.unitInfo": { vi: "Thông tin bài", en: "Lesson information" },
   "vocab.wordsHeading": { vi: "Từ và cụm từ", en: "Words and expressions" },
   "vocab.emptyUnit": { vi: "Bài này chưa có từ vựng nào.", en: "This lesson has no vocabulary yet." },

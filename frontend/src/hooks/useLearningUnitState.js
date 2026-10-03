@@ -51,14 +51,8 @@ export default function useLearningUnitState(slug, serverState) {
 
   const markLearned = useCallback(() => run("learned", { learned: true }, "lesson.marked"), [run]);
   const unmarkLearned = useCallback(() => run("unlearned", { learned: false }, "lesson.unmarked"), [run]);
-  const saveForReview = useCallback(
-    () => run("review", { review_later: true }, "lesson.savedMessage"),
-    [run],
-  );
-  const removeFromReview = useCallback(
-    () => run("unreview", { review_later: false }, "lesson.removedMessage"),
-    [run],
-  );
+  const saveForReview = useCallback(() => run("review", { review_later: true }, "lesson.savedMessage"), [run]);
+  const removeFromReview = useCallback(() => run("unreview", { review_later: false }, "lesson.removedMessage"), [run]);
 
   const retry = useCallback(() => setAttempt((current) => current + 1), []);
 

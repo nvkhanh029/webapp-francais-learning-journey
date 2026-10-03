@@ -36,6 +36,11 @@ export const LEARNING_MODULES = {
 // Dashboard module order: Vocabulary, Grammar, Conjugation (FD §7.7).
 export const DASHBOARD_MODULE_ORDER = ["vocabulary", "grammar", "conjugation"];
 
+// Review Later / curriculum module order: Grammar, Vocabulary, Conjugation (API §13.3). This is the
+// order the endpoint already returns items in, and it is deliberately NOT the Dashboard card order,
+// so the Review Later page groups without re-sorting anything.
+export const CURRICULUM_MODULE_ORDER = ["grammar", "vocabulary", "conjugation"];
+
 // Presentation/navigation metadata for a `unit_type`, or null when the value is not one of the three
 // modules. Callers must handle null rather than assume a module.
 export function moduleMeta(unitType) {
