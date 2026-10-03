@@ -102,7 +102,6 @@ export const strings = {
   "dashboard.nextMonth": { vi: "Tháng sau", en: "Next month" },
   "dashboard.currentMonth": { vi: "Đây là tháng hiện tại", en: "This is the current month" },
   "dashboard.calendarError": { vi: "Không thể tải lịch luyện tập của tháng này.", en: "Could not load the practice calendar for this month." },
-  "dashboard.daysWithPractice": { vi: "<span>{n} ngày</span> có luyện tập trong tháng này.", en: { one: "<span>{n} day</span> with practice this month.", other: "<span>{n} days</span> with practice this month." } },
   "dashboard.daysCount": { vi: "{n} ngày", en: { one: "{n} day", other: "{n} days" } },
   "dashboard.daysWithPracticeText": { vi: "có luyện tập trong tháng này.", en: "with practice this month." },
   "dashboard.emptyMonth": { vi: "Chưa có ngày luyện tập nào trong tháng này.", en: "No practice days this month yet." },
@@ -112,9 +111,6 @@ export const strings = {
   "dashboard.practiced": { vi: "đã luyện tập", en: "practiced" },
   "dashboard.noPractice": { vi: "chưa luyện tập", en: "no practice" },
   "dashboard.notYet": { vi: "chưa tới", en: "not yet" },
-  "dashboard.noSample": { vi: "chưa có dữ liệu mẫu", en: "no sample data" },
-  "dashboard.noSampleSummary": { vi: "Bản mẫu chưa có dữ liệu cho tháng này.", en: "This prototype has no sample data for this month." },
-  "dashboard.continueModule": { vi: "Ngữ pháp •", en: "Grammar •" },
   "dashboard.continueLesson": { vi: "Bài {n}/{total}:", en: "Lesson {n}/{total}:" },
   "dashboard.continueEmptyTitle": { vi: "Chưa có bài học đang học dở", en: "No lesson in progress" },
   "dashboard.continueEmptyText": { vi: "Hãy chọn một bài để bắt đầu. Bài bạn mở gần nhất sẽ xuất hiện ở đây.", en: "Pick a lesson to get started. The lesson you opened most recently will appear here." },
@@ -133,6 +129,13 @@ export const strings = {
   "dashboard.recentEmpty": { vi: "Chưa có lần luyện tập nào. Kết quả sẽ xuất hiện ở đây sau khi bạn hoàn thành một bài luyện tập.", en: "No practice yet. Results will appear here after you complete a practice." },
   "dashboard.recentModule": { vi: "{module}: {title}", en: "{module}: {title}" },
   "dashboard.moduleLabel": { vi: "{module}:", en: "{module}:" },
+  // ---- calendar ----
+  // Weekday column headings, Monday first (FD §7.7). A list rather than a string, so it is read
+  // through weekdayLabels() instead of t(). No weekday wording is hard-coded in the calendar.
+  "calendar.weekdays": {
+    vi: ["T2", "T3", "T4", "T5", "T6", "T7", "CN"],
+    en: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+  },
   // ---- time ----
   "time.todayAt": { vi: "Hôm nay lúc {time}", en: "Today at {time}" },
   "time.yesterdayAt": { vi: "Hôm qua lúc {time}", en: "Yesterday at {time}" },
