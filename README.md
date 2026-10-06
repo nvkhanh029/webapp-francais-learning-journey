@@ -84,16 +84,60 @@ these are computed authoritatively by the backend.
 | [frontend/README.md](frontend/README.md) | Frontend scripts and the authentication-guard flag |
 | [AGENTS.md](AGENTS.md) | Instructions for coding assistants |
 
-## Getting started
+## How to run
 
-Backend, from `backend/`: create a virtual environment, install
-`requirements.txt`, copy `.env.example` to `.env` with a locally generated
-`SECRET_KEY`, then run `python init_db.py`, `python seed.py`, and
-`flask --app app run --debug`.
+### Prerequisites
 
-Frontend, from `frontend/` in a separate terminal: run `npm ci`, set
-`VITE_AUTH_GUARD=on` in `.env.local`, and run `npm run dev`. The development
-server proxies `/api` requests to Flask at `http://127.0.0.1:5000`.
+- Git.
+- Python 3.12 and Node.js with npm.
+- No separate database server is required; SQLite ships with Python.
+
+### Terminal 1 — backend
+
+Run these from `backend/`. The backend must be started first, as the frontend
+proxies API requests to it.
+
+```bash
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+cp .env.example .env
+python -c "import secrets; print(secrets.token_hex(32))"
+```
+
+On Windows PowerShell, use `python -m venv .venv`,
+`.\.venv\Scripts\Activate.ps1`, and `Copy-Item .env.example .env` in place of
+the corresponding lines above.
+
+Paste the printed value after `SECRET_KEY=` in `backend/.env`. Each machine
+uses its own secret; the file is never committed. Then initialise and start
+the server (same on every platform):
+
+```bash
+python init_db.py
+python seed.py
+flask --app app run --debug
+```
+
+Flask listens on `http://127.0.0.1:5000` by default. Leave this terminal
+running.
+
+### Terminal 2 — frontend
+
+In a second terminal, from the repository root:
+
+```bash
+cd frontend
+npm ci
+echo "VITE_AUTH_GUARD=on" > .env.local
+npm run dev
+```
+
+`VITE_AUTH_GUARD=on` enables the route guards and the session check against
+`GET /api/v1/me`; restart `npm run dev` after changing it. The Vite
+development server runs on port 5173 by default and forwards `/api` to
+`http://127.0.0.1:5000`. Open `http://localhost:5173` in the browser.
 
 Detailed procedures are documented in [frontend/README.md](frontend/README.md)
 and the design baselines listed above. Coding assistants contributing to this
