@@ -97,6 +97,8 @@ these are computed authoritatively by the backend.
 Run these from `backend/`. The backend must be started first, as the frontend
 proxies API requests to it.
 
+macOS / Linux:
+
 ```bash
 cd backend
 python3 -m venv .venv
@@ -106,9 +108,20 @@ cp .env.example .env
 python -c "import secrets; print(secrets.token_hex(32))"
 ```
 
-On Windows PowerShell, use `python -m venv .venv`,
-`.\.venv\Scripts\Activate.ps1`, and `Copy-Item .env.example .env` in place of
-the corresponding lines above.
+Windows (PowerShell):
+
+```powershell
+cd backend
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+Copy-Item .env.example .env
+python -c "import secrets; print(secrets.token_hex(32))"
+```
+
+If PowerShell blocks `Activate.ps1` under the execution policy, do not change
+the system-wide policy. Run the commands in this section with
+`.\.venv\Scripts\python.exe` in place of `python` instead.
 
 Paste the printed value after `SECRET_KEY=` in `backend/.env`. Each machine
 uses its own secret; the file is never committed. Then initialise and start
@@ -125,12 +138,23 @@ running.
 
 ### Terminal 2 — frontend
 
-In a second terminal, from the repository root:
+In a second terminal, from the repository root.
+
+macOS / Linux:
 
 ```bash
 cd frontend
 npm ci
 echo "VITE_AUTH_GUARD=on" > .env.local
+npm run dev
+```
+
+Windows (PowerShell):
+
+```powershell
+cd frontend
+npm ci
+Set-Content -Path .env.local -Value "VITE_AUTH_GUARD=on" -Encoding ascii
 npm run dev
 ```
 
